@@ -1,0 +1,51 @@
+@media (max-width: 1199px) {
+  #guoku_main_nav .container .nav-container {
+    width: 80%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #guoku_main_nav .container .nav-container .right-list {
+    margin-right: -10px;
+  }
+  .grid-layout-md {
+    width: 80%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #guoku_footer .grid {
+    width: 80%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #index_article_container.grid {
+    width: 80%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #index_article_container .article-item {
+    width: 50%;
+  }
+  #index_article_container .article-item.width-2 {
+    width: 100%;
+  }
+  .article-list-body .container {
+    width: 100%!important;
+  }
+  #selection_article_list .selection-article-item .article-title,
+  #custom_selection_article_list .selection-article-item .article-title {
+    font-size: 18px!important;
+    font-weight: 500;
+  }
+  #new_selection_article_list .new-selection-article-item .article-title {
+    font-size: 18px!important;
+    font-weight: 500;
+  }
+  .guoku-content.index-page .late-category {
+    display: none;
+  }
+}
+/*# sourceMappingURL=guoku_front.css.map */

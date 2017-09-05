@@ -103,3 +103,6 @@ ven/
 .mypy_cache/
 
 db.sqlite3
+.idea/*
+
+.dev_anchen.py

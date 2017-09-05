@@ -1,0 +1,173 @@
+{% extends "web/static_base.html" %}
+{% load staticfiles %}
+
+ {% block meta-og %}
+    <meta property="og:title" content="关于我们 | BoCheng Idea 博丞品牌顾问" >
+    <meta property="og:url"   content="{{ request.build_absolute_uri }}" >
+    <meta property="og:description" content="博丞品牌顾问 Bocheng Idea 着力于建立品牌的商品价值体系，创造自带流量的商品以及聚粉内容商业化的二次创作，打造基于粉丝、品牌与商品形象之间的口碑新生态，实现商品的变现与生意增长。Bocheng Idea, Life & Design Inspiration, create products and experiences that grow businesses and improve lives by leveraging our expertise.">
+{% endblock %}
+
+{% block meta-common %}
+    <meta name="title"  content="关于我们 | BoCheng Idea 博丞品牌顾问">
+    <meta name="keywords" content="关于,网站介绍,人才招聘,联系方式,团队,品牌客户,博丞,Bocheng,品牌咨询,Branding,4A,广告策划,Digital,Marketing,互动,营销,移动互联网,市场推广,Advertising,Agency,广告公司,广告代理,Creative,广告创意,品牌传播,Copy,Design,文案,策划,Package Design,包装设计,产品设计,Fast Moving Consumer Goods,FMCG,快消品,Packaged Mass Consumption Goods,PMCG,电商代运营,获奖作品,Crossover,跨界,媒介,智库">
+    <meta name="description" content="博丞品牌顾问 Bocheng Idea 着力于建立品牌的商品价值体系，创造自带流量的商品以及聚粉内容商业化的二次创作，打造基于粉丝、品牌与商品形象之间的口碑新生态，实现商品的变现与生意增长。Bocheng Idea, Life & Design Inspiration, create products and experiences that grow businesses and improve lives by leveraging our expertise.">
+{% endblock %}
+
+{% block title %}
+    关于我们 | BoCheng Idea 博丞品牌顾问
+{% endblock %}
+{% block seo_title %}
+    关于我们 | BoCheng Idea 博丞品牌顾问
+{% endblock %}
+
+
+{% block main %}
+<section class="white adjust-top page-section">
+    <div class="container">
+        <div class="row ">
+
+            <div class="col-sm-12  txt-container main-intro">
+                <h2>
+                    博丞品牌顾问
+                </h2>
+                <p >
+                    着力于建立品牌的产品价值体系，<br>创造自带流量的商品以及聚粉内容商业化的二次创作，<br>
+                    打造基于粉丝、品牌与产品形象之间的口碑新生态，<br>
+                    实现产品的变现与生意增长。
+                </p>
+
+                <h3>价值</h3>
+                <p>
+                    以生意为导向服务于品牌，以生活方式为导向服务于消费者
+                </p>
+                <h3>定位</h3>
+                <p>
+                    「消费品社交生产力」专家
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="transparent page-section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-6 txt-container">
+                <h3>Build for Branding</h3>
+                <p>
+                    与品牌共同创造改变
+                </p>
+            </div>
+            <div class="col-sm-6  txt-container">
+                <h3>Creative for Continuing</h3>
+                <p>
+                    一切的创造都是为了生意的持续增长
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="transparent page-section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-4 col-md-4 col-sm-4  txt-container">
+
+                <img src="{% static 'images/bocheng/v1.png' %}">
+             <h3>Crowds 人群</h3>
+             <p>数据分析细分人群的生活场景<br>
+掌握玩物垂直领域的消费需求，建设玩物人群管理<br>
+创造和消费者新的连接方式、空间延伸、需求内核<br></p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4  txt-container">
+
+              <img src="{% static 'images/bocheng/v2.png' %}">
+              <h3>Merchandise 商品</h3>
+              <p>
+建立完整的产品价值体系，创造销售及社交口碑<br>
+每件商品都是真实的内容建设，是社交内容持续经营的核心要素，参与且影响人群的生活方式</p>
+            </div>
+             <div class="col-lg-4 col-md-4 col-sm-4  txt-container">
+              <img src="{% static 'images/bocheng/v3.png' %}">
+              <h3>Culture 文化</h3>
+              <p>为品牌及商品注入社交与情感价值<br>
+为品牌创造具有辨识度的形象<br>
+与品牌共同塑造具有生命力的文化</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="white page-section">
+    <div class="container">
+        <div class="row  service-list">
+            <div class="col-sm-12 txt-container">
+                    <h2>SERVICES</h2>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 txt-container">
+                 <h3>创意</h3>
+                 <p>理解与挖掘品牌内涵、品牌成长空间，为品牌定制产品与传播策略</p>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 txt-container ">
+                 <h3>产品</h3>
+                 <p>为产品注入社交与传播属性，强化品牌的文化内涵</p>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 txt-container">
+                 <h3>整合</h3>
+                 <p>整合线上与线下、新媒体与传统媒体、电商站内与站外等，资源全面，使传播与互动立体化</p>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 txt-container">
+                 <h3>链接</h3>
+                 <p>通过传播塑造品牌形象，通过品牌形象的说服力实现销售的引导</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="white page-section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-12 txt-container">
+                    <h2>CLIENTS</h2>
+            </div>
+            <div class="col-lg-12">
+                <div class="brand-list">
+                    <img src="{% static 'images/bocheng/thermos-60.png' %}">
+                    <img src="{% static 'images/bocheng/costa-60.png' %}">
+                    <img src="{% static 'images/bocheng/alfi-60.png' %}">
+                    <img src="{% static 'images/bocheng/aigle-60.png' %}">
+                    <img src="{% static 'images/bocheng/lily-60.png' %}">
+                    <img src="{% static 'images/bocheng/earth-music-ecology-60.png' %}">
+                    <img src="{% static 'images/bocheng/bbc-60.png' %}">
+                    <img src="{% static 'images/bocheng/nescafe-60.png' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="transparent page-section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-12 txt-container">
+                <p><img class="about-logo" src="{% static 'images/bocheng/logo.png' %}" width="100px"></p>
+            </div>
+            <div class="col-lg-8 col-lg-offset-2 txt-container ">
+                <br><br>
+                中国最具「生意创造」能力的品牌创意顾问公司<br>
+为品牌持续带去价值及生意收益<br><br>
+连续 7 年服务于全球第一大保温品牌 THERMOS，<br>深入创意策划、商品设计生产营销推广甚至销售每一环节；<br>
+连续 7 年服务于英国第一咖啡品牌 COSTA COFFEE，<br>深入市场分析、创意策划、周边商品设计生产营销推广甚至销售每一环节；<br>
+连续 7 年服务于法国百年历史旅行休闲品牌 AIGLE，<br>提供品牌创意策划、全方位营销推广、会员体系建立等各个环节。<br>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock %}
