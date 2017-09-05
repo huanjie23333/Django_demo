@@ -64,7 +64,7 @@ ROOT_URLCONF = 'quark.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '../templates'), ],
+        'DIRS': (),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -160,7 +160,7 @@ COMPRESS_PRECOMPILERS = (
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     # 'compressor.filters.cleancss.CleanCSSFilter',
-    # 'compressor.filters.cssmin.rCSSMinFilter',
+    'compressor.filters.cssmin.rCSSMinFilter',
 ]
 # COMPRESS_CLEAN_CSS_BINARY = '/usr/bin/cleancss'
 
