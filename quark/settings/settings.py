@@ -25,6 +25,8 @@ SECRET_KEY = '@qai(b0#l9nfe%1e9upy1ur5*8$&^-=gd%!5=km$(ui0e0$h^r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_ID = 1
+
 ALLOWED_HOSTS = ["www.bit03.com", "bit03.com"]
 
 
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bootstrap3',
+    'compressor',
+
     'web',
 ]
 
@@ -50,6 +54,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'quark.urls'
@@ -57,7 +64,7 @@ ROOT_URLCONF = 'quark.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, '../templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +86,7 @@ WSGI_APPLICATION = 'quark.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '../db.sqlite3'),
     }
 }
 
@@ -106,9 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Shanghai'
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'zh-hans'
 
 USE_I18N = True
 
@@ -117,8 +124,47 @@ USE_L10N = True
 USE_TZ = True
 
 
+USE_X_FORWARDED_HOST = True
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL              = '//static.bit03.com/static/'
 STATIC_ROOT             = '/data/www/static/'
+
+
+STATICFILES_DIRS = (
+    os.path.join(os.getcwd(), 'static'),
+)
+
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+
+HTML_MINIFY = True
+
+COMPRESS_ENABLED = False
+COMPRESS_PRECOMPILERS = (
+    # ('text/coffeescript', 'coffee --compile --stdio'),
+    ('text/less', '/usr/local/bin/lessc {infile} {outfile}'),
+    # ('text/x-sass', 'sass {infile} {outfile}'),
+    # ('text/x-scss', 'sass --scss {infile} {outfile}'),
+)
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    # 'compressor.filters.cleancss.CleanCSSFilter',
+    # 'compressor.filters.cssmin.rCSSMinFilter',
+]
+# COMPRESS_CLEAN_CSS_BINARY = '/usr/bin/cleancss'
+
+COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
+
+COMPRESS_OUTPUT_DIR = 'release'
+COMPRESS_OFFLINE = True

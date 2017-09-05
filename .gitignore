@@ -86,8 +86,6 @@ celerybeat-schedule
 .venv
 venv/
 ENV/
-ven/
-.idea/
 
 # Spyder project settings
 .spyderproject
@@ -104,5 +102,3 @@ ven/
 
 db.sqlite3
 .idea/*
-
-.dev_anchen.py
