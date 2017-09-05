@@ -1,0 +1,24 @@
+@media (min-width: 1200px) {
+  #guoku_main_nav .container .nav-container {
+    width: 1076px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #guoku_main_nav .container .nav-container .right-list {
+    margin-right: 0px;
+  }
+  #index_article_container.grid {
+    width: 1084px;
+  }
+  .event_wrapper {
+    width: 1170px;
+  }
+  .guoku-content.index-page .category-cell.col-lg-2 {
+    width: 12.5%;
+  }
+  #guoku_main_nav .search .search-input {
+    width: 200px;
+    box-sizing: border-box;
+  }
+}
+/*# sourceMappingURL=guoku_front.css.map */

@@ -1,0 +1,133 @@
+@import "../lib/var.less";
+@import "../lib/mixin.less";
+@import "../lib/normal.less";
+@import "../lib/widgets.less";
+@import "../lib/bsfix.less";
+
+body{
+  color: @common-text-color;
+  font-size:@font-size-normal;
+  a{
+   color:@link-color;
+   line-height: @base-line-height;
+   text-decoration: none;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+  background-color:@default-background;
+  font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+@header_height: 110px;
+@header_bk:#fff;
+#header{
+   background: @header_bk;
+   .main-logo{
+         height: @header_height;
+     line-height: @header_height;
+   }
+   .price-list{
+       &>li{
+          float: left;
+          width:25%;
+          height:@header_height;
+          text-align: center;
+          .quote{
+             vertical-align: middle;
+             height:30px;
+             text-align: left;
+             padding-top: 35px;
+             .quote-head{
+                font-size:@font-size-small;
+                font-weight: 700;
+             }
+             .quote-price{
+                font-size:@font-size-big;
+                font-weight:400;
+                font-family:DIN,Microsoft YaHei,Helvetica Neue,Helvetica,sans-serif;
+                margin-top:-4px;
+                .g-icon svg{
+                   margin-left:-5px;
+                   height:16px;
+                   width:16px;
+                }
+             }
+          }
+
+       }
+   }
+}
+
+@box-bg-color:#fff;
+@box-header-border-color:#f3f3f3;
+@box-header-font-color:#ff552e;
+
+#content{
+
+  .box{
+    margin-top: @gutter-size;
+    background-color:@box-bg-color;
+    width: 100%;
+    padding:10px 20px 10px 20px;
+    .box-header{
+      height: 37px;
+      border-bottom: 1px solid @box-header-border-color;
+      padding-top: 8px;
+      margin: 2px 20px 4px 0;
+      font-size: 16px;
+      color: @box-header-font-color;
+      font-weight: 700;
+      overflow: hidden;
+    }
+
+    .box-body{
+       .site-list{
+
+          li{
+            display: inline-block;
+            .clearfix;
+            line-height:30px;
+            color:#0E8ED8;
+            margin-right:20px;
+          }
+       }
+    }
+  }
+
+  .bar-right{
+    height: 10px;
+    overflow: visible;
+  }
+}
+
+
+#footer{
+  .logo{
+      width: 160px;
+  }
+
+  .info-list{
+       .info-header{
+         font-size: 16px;
+         margin-bottom: 20px;
+       }
+       li{
+          font
+       }
+  }
+}
+
+
+@import "dimentions/lg.less";
+@import "dimentions/md.less";
+@import "dimentions/sm.less";
+@import "dimentions/xs.less";
+
+.test{
+  color:black;
+
+}
+
+//@ sourceMappingURL= '/static/css/web/main.css.map'
