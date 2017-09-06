@@ -64,7 +64,9 @@ window.location.href = url;</script><![endif]-->
 {% endblock %}
 {# footer ends --------#}
 {% block basic_script %}
-    <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>
+    {% compress css %}
+       <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
 
 {% block trackers %}

@@ -1,9 +1,14 @@
 require([
         'libs/polyfills',
         'jquery',
+        'subapp/data/datafeed'
     ],
     function (polyfill,
-              jQuery
+              $,
+              DataFeed
+
               ) {
-        console.log('in');
+        var datafeed = new DataFeed();
+        console.log('finish');
+
     });
