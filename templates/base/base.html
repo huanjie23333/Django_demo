@@ -11,9 +11,11 @@ window.location.href = url;</script><![endif]-->
 <head>
     {% include "base/snippets/meta.html" %}
     <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
+    <title>
     {% block title %}
         Bit03 - 数字货币与区块链技术导航
     {% endblock %}
+    </title>
     <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
 
 {% bootstrap_css %}
@@ -62,7 +64,9 @@ window.location.href = url;</script><![endif]-->
 {% endblock %}
 {# footer ends --------#}
 {% block basic_script %}
-    <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>
+    {% compress css %}
+       <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
 
 {% block trackers %}

@@ -21,7 +21,6 @@ requirejs.config({
         Backbone: 'libs/backbone.min',
         snowFall: 'libs/jquery.snow',
         jqueryeasing:'libs/jqueryeasing'
-
     },
 
     shim: {
