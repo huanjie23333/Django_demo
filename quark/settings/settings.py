@@ -169,3 +169,7 @@ COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
 COMPRESS_OUTPUT_DIR = 'release'
 COMPRESS_OFFLINE = True
+
+
+
+IS_LOCAL_TESTING = False
