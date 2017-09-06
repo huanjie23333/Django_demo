@@ -19,7 +19,12 @@ from web.views import IndexView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
-
     url(r'^$', IndexView.as_view(), name='home_page'),
 ]
+
+
+
+from django.conf import settings
+from django.conf.urls.static import static
+if settings.IS_LOCAL_TESTING:
+    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
