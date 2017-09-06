@@ -449,12 +449,19 @@ ul li {
   padding-left: 10px;
   padding-right: 10px;
 }
+.inner-row {
+  margin-left: -10px;
+  margin-right: 0px;
+}
 body {
   color: #434446;
   font-size: 14px;
   background-color: #f8f8f8;
   font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
   -webkit-font-smoothing: subpixel-antialiased;
+}
+body .seo-only {
+  display: none;
 }
 body a {
   color: #434446;
@@ -535,8 +542,8 @@ body a:hover {
 }
 #footer .info-list .info-header {
   font-size: 16px;
+  margin-bottom: 20px;
 }
 .test {
   color: black;
 }
-/*# sourceMappingURL=main.css.map */

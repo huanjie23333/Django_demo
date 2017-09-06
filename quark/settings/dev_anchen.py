@@ -1,4 +1,7 @@
-from quark.settings import *
+from .settings import *
+
+
+SECRET_KEY = '@qai(b0#l9nfe%1e9upy1ur5*8$&^-=gd%!5=km$(ui0e0$h^r'
 
 IS_LOCAL_TESTING = True
 TEMPLATES = [
@@ -17,7 +20,7 @@ TEMPLATES = [
     },
 ]
 
-ALLOWED_HOSTS += ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1',]
 STATIC_URL = '/static/'
 STATIC_ROOT = '/mad_sand/quark/static/'
 STATICFILES_DIRS = []
