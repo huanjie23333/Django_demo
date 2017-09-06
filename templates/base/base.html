@@ -17,37 +17,40 @@ window.location.href = url;</script><![endif]-->
 <head>
     {% include "base/snippets/meta.html" %}
     <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
-<title>
     {% block title %}
         Bit03 - 数字货币与区块链技术导航
     {% endblock %}
-</title>
+    <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
+    <title>
+        {% block title %}
+            Bit03 - 数字货币与区块链技术导航
+        {% endblock %}
+    </title>
 
 {% bootstrap_css %}
 
 {% block base_css %}
-{#    <link rel="stylesheet" type="text/css" href="{% static 'css/web/bootstrap/css/bootstrap.min.css' %}">#}
     {% compress css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/web/main.css' %}">
     {% endcompress %}
 {% endblock %}
 
-{% block user_css %}
-{% endblock %}
+    {% block user_css %}
+    {% endblock %}
 
-{% block browser_compat %}
-{#   put browser compat code here     #}
-{% endblock %}
+    {% block browser_compat %}
+        {#   put browser compat code here     #}
+    {% endblock %}
 </head>
 
 <body class="">
 {#   seo header here#}
 <div class="seo-only">
-<h1>
-    {% block seo_title %}
-        Bit03 - 数字货币与区块链技术导航
-    {% endblock %}
-</h1>
+    <h1>
+        {% block seo_title %}
+            Bit03 - 数字货币与区块链技术导航
+        {% endblock %}
+    </h1>
 </div>
 {#    seo header end------------ #}
 
@@ -59,18 +62,38 @@ window.location.href = url;</script><![endif]-->
 
 {# content #}
 {% block content %}
-<section id="content">
-</section>
+    <section id="content">
+    </section>
 {% endblock %}
 {# content ends ------------#}
 
 {# footer -------#}
 {% block footer %}
-{% include 'web/partial/footer.html' %}
+    {% include 'web/partial/footer.html' %}
 {% endblock %}
 {# footer ends --------#}
 {% block basic_script %}
-    <script data-main="{{ global_static_url_prefix }}js/web/jsbuild/index_page_app_build.js" src="{{ global_static_url_prefix }}js/web/app/require.js"></script>
+    <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>
+{% endblock %}
+
+{% block trackers %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-105874577-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?4f7c3b36ed0491f90852e05efd64e62f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 {% endblock %}
 </body>
 </html>
