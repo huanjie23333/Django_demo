@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <!--
 <html>
@@ -14,42 +15,42 @@ window.location.href = url;</script><![endif]-->
 
 <html>
 <head>
-{% block metas %}
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="Keywords"  content="比特币导航,区块链门户,上网导航,数字货币网址大全,网址导航,bit03上网导航,bit03网址,bit03导航,bit03网址大全" />
-    <meta name="Description" content="description：bit03 是汇集全网优质数字货币、区块链项目网址及资源的中文上网导航。及时收录比特币 Bitcoin、比特币现金 Bitcoin Cash、莱特币 Litecoin、以太坊 Ethereum、经典以太币 Ethereum Classic 等相关交易所、挖矿算力、当前交易价、交易数据统计及分析等分类的网址与内容，让你的数字货币网络生活更简单直接。了解数字货币，从 bit03 开始。" />
-    <meta name="mobile-agent" content="format=xhtml; url={{ mobile_url }}">
-    <meta name="mobile-agent" content="format=html5; url={{ mobile_url }}">
-    <meta name="mobile-agent" content="format=wml; url={{ mobile_url }}">
-{% endblock %}
-    <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
-<title>
-    {% block title %}
-        Bit03 - 数字货币与区块链技术导航
+    {% block metas %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="Keywords"  content="比特币导航,区块链门户,上网导航,数字货币网址大全,网址导航,bit03上网导航,bit03网址,bit03导航,bit03网址大全" />
+        <meta name="Description" content="description：bit03 是汇集全网优质数字货币、区块链项目网址及资源的中文上网导航。及时收录比特币 Bitcoin、比特币现金 Bitcoin Cash、莱特币 Litecoin、以太坊 Ethereum、经典以太币 Ethereum Classic 等相关交易所、挖矿算力、当前交易价、交易数据统计及分析等分类的网址与内容，让你的数字货币网络生活更简单直接。了解数字货币，从 bit03 开始。" />
+        <meta name="mobile-agent" content="format=xhtml; url={{ mobile_url }}">
+        <meta name="mobile-agent" content="format=html5; url={{ mobile_url }}">
+        <meta name="mobile-agent" content="format=wml; url={{ mobile_url }}">
     {% endblock %}
-</title>
+    <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
+    <title>
+        {% block title %}
+            Bit03 - 数字货币与区块链技术导航
+        {% endblock %}
+    </title>
 
-{% block base_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/web/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/web/main.css' %}">
-{% endblock %}
+    {% block base_css %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/web/main.css' %}">
+    {% endblock %}
 
-{% block user_css %}
-{% endblock %}
+    {% block user_css %}
+    {% endblock %}
 
-{% block browser_compat %}
-{#   put browser compat code here     #}
-{% endblock %}
+    {% block browser_compat %}
+        {#   put browser compat code here     #}
+    {% endblock %}
 </head>
 
 <body class="">
 {#   seo header here#}
 <div class="seo-only">
-<h1>
-    {% block seo_title %}
-        Bit03 - 数字货币与区块链技术导航
-    {% endblock %}
-</h1>
+    <h1>
+        {% block seo_title %}
+            Bit03 - 数字货币与区块链技术导航
+        {% endblock %}
+    </h1>
 </div>
 {#    seo header end------------ #}
 
@@ -61,18 +62,38 @@ window.location.href = url;</script><![endif]-->
 
 {# content #}
 {% block content %}
-<section id="content">
-</section>
+    <section id="content">
+    </section>
 {% endblock %}
 {# content ends ------------#}
 
 {# footer -------#}
 {% block footer %}
-{% include 'web/partial/footer.html' %}
+    {% include 'web/partial/footer.html' %}
 {% endblock %}
 {# footer ends --------#}
 {% block basic_script %}
-    <script data-main="{{ global_static_url_prefix }}js/web/jsbuild/index_page_app_build.js" src="{{ global_static_url_prefix }}js/web/app/require.js"></script>
+    <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>
+{% endblock %}
+
+{% block trackers %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-105874577-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?4f7c3b36ed0491f90852e05efd64e62f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 {% endblock %}
 </body>
 </html>
