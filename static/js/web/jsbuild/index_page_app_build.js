@@ -315,12 +315,20 @@ define('subapp/header/quote',['libs/Class','underscore'],function(Class,_){
            }
        },
        update:function(data){
+           this.data = data;
            var symbols = ['BTC', 'ETH', 'LTC'];
            _.map(this.elements, this.handle_element.bind(this));
        },
-       handle_element: function(key, value){
-            console.log(key);
-            console.log(value);
+       handle_element: function(elem, key){
+            var the_quote = _.filter(this.data, function(item){
+                return item['symbol'] == key
+            })[0];
+            this.set_price(elem, the_quote);
+       },
+       set_price:function(elem, quote){
+           var price = Math.round(parseFloat(quote['price_cny'])*100)/100.0;
+           $(elem).find('.price').html(price);
+           return;
        }
    });
    return Quote;
@@ -331,8 +339,29 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
 
 ){
     var DataFeed = Class.extend({
+        can_use_ws: function () {
+            //try {
+            //    this.ws = new WebSocket("wss://api.huobi.pro/ws",)
+            //    this.ws.send({
+            //          "sub": "market.btccny.kline.1min",
+            //          "id": "id1"
+            //    });
+            //}
+            //catch (exp){
+            //    return false;
+            //}
+            return false;
+        },
         init: function(){
-            $.when($.ajax({
+
+           if (!this.can_use_ws()){
+                this.update_quote();
+                window.setInterval(this.update_quote.bind(this),15000)
+           }
+        },
+
+        update_quote:function(){
+             $.when($.ajax({
                 url: 'https://api.coinmarketcap.com/v1/ticker/?limit=10&convert=CNY',
                 method:'GET'
             })
@@ -344,7 +373,7 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
         },
 
         get_data_success:function(data){
-            console.log(data);
+            console.log(data[0]['price_cny']);
             this.quote.update(data);
         },
         get_data_fail:function(){

@@ -107,18 +107,29 @@ body{
 
 
 #footer{
+  margin-top:10px;
+  background-color:#fff;
   .logo{
-      width: 160px;
+      img{
+        width: 160px;
+        padding-top:60px;
+      }
   }
 
   .info-list{
-       .info-header{
-         font-size: 16px;
-         margin-bottom: 20px;
-       }
+       margin-top:40px;
+       margin-bottom:20px;
        li{
-
+          font-size:@font-size-small;
+          color:@support-text-color;
+          line-height:@font-size-small*2;
        }
+       .info-header{
+          color:@common-text-color;
+          font-size: 16px;
+          margin-bottom: 20px;
+       }
+
   }
 }
 
