@@ -1,6 +1,6 @@
 from .settings import *
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["www.bit03.com", "bit03.com"]
 
@@ -20,3 +20,13 @@ CACHES = {
         },
     },
 }
+
+
+COMPRESS_ENABLED = True
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cleancss.CleanCSSFilter',
+]
+COMPRESS_CLEAN_CSS_BINARY = '/usr/bin/cleancss'
+COMPRESS_CLEAN_CSS_ARGUMENTS = '--s0'
