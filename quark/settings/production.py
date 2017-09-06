@@ -2,6 +2,8 @@ from .settings import *
 
 DEBUG = True
 
+ALLOWED_HOSTS = ["www.bit03.com", "bit03.com"]
+
 '''session
 '''
 SESSION_ENGINE          = 'django.contrib.sessions.backends.cache'

@@ -27,7 +27,7 @@ DEBUG = True
 
 SITE_ID = 1
 
-ALLOWED_HOSTS = ["www.bit03.com", "bit03.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -64,7 +64,8 @@ ROOT_URLCONF = 'quark.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': (),
+        'DIRS': [os.path.join(BASE_DIR, '../templates'), ],
+        # 'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

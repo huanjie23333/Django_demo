@@ -1,0 +1,1 @@
+from web.tests.views import WebViewTestCase
