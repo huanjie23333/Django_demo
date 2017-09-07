@@ -20,6 +20,9 @@ class Nav(models.Model):
     class Meta:
         ordering = ['-score']
 
+    def __str__(self):
+        "{ename} - {cname}".format(ename=self.ename, cname=self.cname)
+
     @property
     def main_name(self):
         return self.cname or self.ename
