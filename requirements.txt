@@ -8,6 +8,8 @@ django-compressor==2.2
 django-htmlmin==0.10.0
 django-nose==1.4.5
 django-taggit==0.22.1
+django-extensions==1.9.0
+django-model-utils==3.0.0
 gevent==1.2.2
 greenlet==0.4.12
 gunicorn==19.7.1
@@ -18,3 +20,5 @@ rcssmin==1.0.6
 rjsmin==1.0.12
 six==1.10.0
 webencodings==0.5.1
+
+

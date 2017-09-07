@@ -8,87 +8,93 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="box">
-                        <div class="box-header">最热网站</div>
+                        <div class="box-header">热门推荐</div>
                         <div class="box-body">
                             <ul class="site-list">
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
+                                {% for site in recommend %}
+                                  <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="box-footer"></div>
                     </div>
-
                     <div class="box">
                         <div class="box-header">
-                            最热网站
+                            数字货币
                         </div>
                         <div class="box-body">
                             <ul class="site-list">
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
+                                {% for site in coins %}
+                                  <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                {% endfor %}
+
                             </ul>
                         </div>
                         <div class="box-footer"></div>
                     </div>
-
                     <div class="inner-row row">
-                        <div class="col-sm-6    ">
+                        <div class="col-sm-6">
                             <div class="box box-half">
-                                <div class="box-header">交易所</div>
+                                <div class="box-header">行业资讯</div>
                                 <div class="box-body">
                                     <ul class="site-list">
-                                        <li>btc-china</li>
-                                        <li>比特大陆</li>
-                                        <li>云币</li>
-                                        <li>比特币之家</li>
-                                        <li>蚂蚁矿机</li>
-                                        <li>btc-china</li>
-                                        <li>比特大陆</li>
-                                        <li>云币</li>
-                                        <li>比特币之家</li>
-                                        <li>蚂蚁矿机</li>
+                                         {% for site in sectorinfo %}
+                                           <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                         {% endfor %}
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="box box-half">
-                                <div class="box-header">交易所</div>
+                                <div class="box-header">交易平台</div>
                                 <div class="box-body">
                                     <ul class="site-list">
-                                        <li>btc-china</li>
-                                        <li>比特大陆</li>
-                                        <li>云币</li>
-                                        <li>比特币之家</li>
-                                        <li>蚂蚁矿机</li>
-                                        <li>btc-china</li>
-                                        <li>比特大陆</li>
-                                        <li>云币</li>
-                                        <li>比特币之家</li>
-                                        <li>蚂蚁矿机</li>
+                                        {% for site in exchanges %}
+                                           <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                         {% endfor %}
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                                <div class="box box-half">
+                                    <div class="box-header">数字钱包</div>
+                                    <div class="box-body">
+                                        <ul class="site-list">
+                                            {% for site in purse %}
+                                               <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                             {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                       </div>
+                        <div class="col-sm-6">
+                                <div class="box box-half">
+                                    <div class="box-header">挖矿算力</div>
+                                    <div class="box-body">
+                                        <ul class="site-list">
+                                            {% for site in minning %}
+                                               <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                             {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-sm-6">
+                                <div class="box box-half">
+                                    <div class="box-header">挖矿算力</div>
+                                    <div class="box-body">
+                                        <ul class="site-list">
+                                            {% for site in blockchain %}
+                                               <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                             {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
-
                 <div class="col-sm-4 ">
                     <div class="box">
                         <div class="box-header">边栏交易所</div>
@@ -263,7 +269,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 {% endblock %}
 {##}
