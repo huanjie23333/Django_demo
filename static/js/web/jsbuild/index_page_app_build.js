@@ -356,7 +356,7 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
 
            if (!this.can_use_ws()){
                 this.update_quote();
-                window.setInterval(this.update_quote.bind(this),15000)
+                window.setInterval(this.update_quote.bind(this),30000)
            }
         },
 
