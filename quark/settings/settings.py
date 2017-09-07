@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'taggit',
     'django_extensions',
 
+
     'web',
     'nav'
 ]

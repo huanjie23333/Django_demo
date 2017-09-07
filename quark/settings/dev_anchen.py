@@ -20,9 +20,27 @@ TEMPLATES = [
     },
 ]
 
+
+
 ALLOWED_HOSTS = ['127.0.0.1',]
 STATIC_URL = '/static/'
 STATIC_ROOT = '/mad_sand/quark/static/'
 STATICFILES_DIRS = []
 
+Current_Dbhost = '127.0.0.1'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bit03',
+        'USER': 'root',
+        'PASSWORD': 'mypass740323',
+        'HOST': Current_Dbhost,
+        'PORT': '6301',
+        'OPTIONS': {
+            'use_unicode':'utf8mb4',
+            'init_command':'SET default_storage_engine=INNODB',
+        }
+    },
+
+}
 
