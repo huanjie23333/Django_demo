@@ -19,7 +19,7 @@ class CategoryFilter(SimpleListFilter):
 
 class NavAdmin(admin.ModelAdmin):
     list_filter = (CategoryFilter,'status','highlight')
-    list_display = ['cname', 'ename', 'location', \
+    list_display = ['main_name','cname', 'ename', 'location', \
                     'status', 'web_site', 'category' ,\
                     'tag_list', 'highlight']
     search_fields = ('cname', 'ename', )
