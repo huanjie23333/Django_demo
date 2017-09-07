@@ -1,5 +1,5 @@
 define(['libs/Class', 'masonry'],
-    function(Class,mansonry){
+    function(Class,masonry){
         var Layout = Class.extend({
             init: function(){
                 $('.grid').masonry({
