@@ -356,7 +356,7 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
 
            if (!this.can_use_ws()){
                 this.update_quote();
-                window.setInterval(this.update_quote.bind(this),15000)
+                window.setInterval(this.update_quote.bind(this),30000)
            }
         },
 
@@ -382,17 +382,23 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
     });
     return DataFeed;
 });
+;
+define("subapp/layout", function(){});
+
 require([
         'libs/polyfills',
         'jquery',
-        'subapp/data/datafeed'
+        'subapp/data/datafeed',
+        'subapp/layout'
     ],
     function (polyfill,
               $,
-              DataFeed
+              DataFeed,
+              Layout
 
               ) {
         var datafeed = new DataFeed();
+        var layout = new Layout();
         console.log('finish');
 
     });

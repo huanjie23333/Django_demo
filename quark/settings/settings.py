@@ -43,8 +43,11 @@ INSTALLED_APPS = [
     'bootstrap3',
     'compressor',
     'taggit',
+    'django_extensions',
+
 
     'web',
+    'nav'
 ]
 
 MIDDLEWARE = [
