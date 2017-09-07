@@ -6,7 +6,7 @@ ALLOWED_HOSTS = ["www.bit03.com", "bit03.com"]
 
 '''session
 '''
-SESSION_ENGINE          = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE          = 'django.contrib.sessions.backends.file'
 SESSION_COOKIE_DOMAIN   = ".bit03.com"
 
 CACHES = {

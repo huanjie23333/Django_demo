@@ -89,10 +89,18 @@ body{
        .site-list{
 
           li{
+            a{
+              color: @site-link-color;
+
+              &:hover{
+                color: @site-link-highlight-color;
+                //text-decoration: underline;
+              }
+            }
             display: inline-block;
             .clearfix;
             line-height:30px;
-            color:#0E8ED8;
+            color: @site-link-color;
             margin-right:20px;
           }
        }
@@ -120,14 +128,15 @@ body{
        margin-top:40px;
        margin-bottom:20px;
        li{
-          font-size:@font-size-small;
+          font-size:@font-size-normal;
           color:@support-text-color;
-          line-height:@font-size-small*2;
+          line-height:@font-size-normal*2;
        }
        .info-header{
           color:@common-text-color;
           font-size: 16px;
           margin-bottom: 20px;
+          font-weight:600;
        }
 
   }
