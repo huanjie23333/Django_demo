@@ -17,14 +17,14 @@ class Nav(models.Model):
     status = StatusField(_('status'), choices_name='STATUS', default=STATUS.published)
     category = models.CharField(max_length=64,null=False,blank=False)
     alias = models.CharField(max_length=64, null=True, blank=True)
-    # cat = models.ForeignKey()
+    highlight = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-score']
 
 
     def __str__(self):
-        "{ename} - {cname}".format(ename=self.ename, cname=self.cname)
+        return self.ename or self.cname
 
     @property
     def main_name(self):

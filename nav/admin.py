@@ -18,8 +18,12 @@ class CategoryFilter(SimpleListFilter):
             return queryset
 
 class NavAdmin(admin.ModelAdmin):
-    list_filter = (CategoryFilter,)
-    list_display = ['cname', 'ename', 'location', 'status', 'web_site', 'category' ,'tag_list']
+    list_filter = (CategoryFilter,'status','highlight')
+    list_display = ['cname', 'ename', 'location', \
+                    'status', 'web_site', 'category' ,\
+                    'tag_list', 'highlight']
+    search_fields = ('cname', 'ename', )
+    list_editable = ('status', 'highlight' )
 
     def get_queryset(self, request):
         return super(NavAdmin, self).get_queryset(request).prefetch_related('tags')
