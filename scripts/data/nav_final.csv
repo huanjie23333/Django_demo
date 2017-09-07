@@ -1,0 +1,406 @@
+ename,cname,alias,location,website,tag,score,category
+Bitcoin,比特币,BTC,,https://bitcoin.org/zh_CN/,"数字货币,PoW",100,数字货币
+Bitcoin Cash,比特币现金,BCC,,https://www.bitcoincash.org/,"数字货币,PoW",75,数字货币
+Litecoin,莱特币,LTC,,https://litecoin.org/cn/,"数字货币,PoW",80,数字货币
+Dogecoin,狗狗币,DOGE,,http://dogecoin.com/,"数字货币,PoW",50,数字货币
+DASH,达世币,DASH,,https://www.dash.org/cn/,"数字货币,PoW",65,数字货币
+Namecoin,域名币,NMC,,https://namecoin.org/,"数字货币,PoW",,数字货币
+Zcash,,ZEC,,https://z.cash/zh/index.html,"数字货币,PoW",63,数字货币
+0x,,ZRX,,https://0xproject.com/,数字货币,60,数字货币
+BitShares,比特股,BTS,,https://bitshares.org/,"数字货币,PoS",68,数字货币
+Stratis,斯特拉,STRAT,,https://stratisplatform.com/,数字货币,62,数字货币
+Nextcoin,未来币,NXT,,https://nxtplatform.org/,"数字货币,PoS",48,数字货币
+Blackcoin,黑币,BLK,,http://blackcoin.co/,"数字货币,PoS",,数字货币
+Siacoin,细亚币,SC,,https://sia.tech/zh-hans/,数字货币,61,数字货币
+Ethereum,以太坊,ETH,,https://www.ethereum.org/,"数字货币,PoW,PoS",95,数字货币
+Ethereum Classic,以太经典,ETC,,https://ethereumclassic.github.io/,"数字货币,PoW,PoS",70,数字货币
+Peercoin,点点币,PPC,,https://peercoin.net/,"数字货币,PoW,PoS",,数字货币
+Brickblock,Brickblock 代币,BBT,,https://www.brickblock.io/zh,数字货币,,数字货币
+Ripple,瑞波币,XRP,,https://ripple.com/,数字货币,80,数字货币
+Stellar,恒星币,XLM,,https://www.stellar.org/,数字货币,60,数字货币
+Counterparty,合约币,XCP,,https://counterparty.io/,"数字货币,PoB",,数字货币
+IOTA,埃欧塔,IOTA,,https://iota.org/,数字货币,,数字货币
+ardor,阿朵,ARDR,,https://www.ardorplatform.org/,数字货币,34,数字货币
+Lisk,,LSK,,https://lisk.io/,"数字货币,DPoS",76,数字货币
+Factom,公证通,FCT,,https://www.factom.com/devs/tokens,数字货币,58,数字货币
+Golem,,GNT,,https://golem.network/,数字货币,56,数字货币
+MaidSafeCoin,互联网币,MAID,,https://maidsafe.net/safecoin.html,数字货币,54,数字货币
+NAVCoin,,NAV,,https://navcoin.org/,数字货币,52,数字货币
+Burst,爆裂币,BURST,,http://burstcoin.cn/,数字货币,47,数字货币
+GameCredits,游戏点,GAME,,http://gamecredits.com,数字货币,46,数字货币
+Augur,,REP,,https://augur.net/,数字货币,45,数字货币
+Pinkcoin,,PINK,,https://getstarted.with.pink/,数字货币,44,数字货币
+Bytecoin,,BCN,,https://bytecoin.org/,数字货币,43,数字货币
+VeriCoin,维理币,VRC,,https://portal.vericoin.info/zh/,数字货币,42,数字货币
+Steem,,STEEM,,https://steem.io/,数字货币,40,数字货币
+Komodo,,KMD,,https://komodoplatform.com/,数字货币,38,数字货币
+LBRY Credits,,LBC,,https://lbry.io/,数字货币,36,数字货币
+Decred,,DCR,,https://www.decred.org/,"数字货币,PoW,PoS",35,数字货币
+Radium,,RADS,,https://projectradium.org/,数字货币,32,数字货币
+Viacoin,,VIA,,https://viacoin.org/,数字货币,31,数字货币
+CLAMS,,CLAM,,http://www.clamcoin.org/,数字货币,30,数字货币
+Expanse,,EXP,,http://www.expanse.tech/,数字货币,29,数字货币
+Gnosis,,GNO,,https://gnosis.pm/,数字货币,27,数字货币
+Vertcoin,绿币,VTC,,https://vertcoin.org/,数字货币,26,数字货币
+Synereo AMP,,AMP,,http://www.synereo.com/,数字货币,25,数字货币
+FoldingCoin,,FLDC,,http://foldingcoin.net/,数字货币,24,数字货币
+BitcoinPlus,,XBC,,https://www.bitcoinplus.org/,"数字货币,PoW",23,数字货币
+Storjcoin X,,SJCX,,https://storj.io/,数字货币,22,数字货币
+PotCoin,,POT,,http://www.potcoin.com/,数字货币,21,数字货币
+PascalCoin,,PASC,,http://www.pascalcoin.org/,数字货币,19,数字货币
+Primecoin,,XPM,,http://primecoin.io/,数字货币,18,数字货币
+Counterparty,,XCP,,https://counterparty.io/,数字货币,17,数字货币
+Florincoin,,FLO,,http://florincoin.org/,数字货币,16,数字货币
+Bela,,BELA,,http://livebela.com/,数字货币,15,数字货币
+Riecoin,,RIC,,http://riecoin.org/,数字货币,14,数字货币
+Einsteinium,锿币,EMC2,,https://www.emc2.foundation/,数字货币,13,数字货币
+DNotes,,NOTE,,http://dnotescoin.com/,数字货币,10,数字货币
+Omni,奥妙币,OMNI,,http://www.omnicoin.org/,数字货币,10,数字货币
+Bitmark,,BTM,,https://bitmark.com/,数字货币,10,数字货币
+Namecoin,域名币,NMC,,https://namecoin.org/,数字货币,10,数字货币
+Nautiluscoin,,NAUT,,http://www.nautiluscoin.com/,数字货币,10,数字货币
+Gridcoin,格雷德币,GRC,,http://www.gridcoin.us/,数字货币,10,数字货币
+BitCrystals,,BCY,,http://bitcrystals.com/,数字货币,10,数字货币
+Vcash,,XVC,,https://vcash.info/,数字货币,10,数字货币
+Huntercoin,猎手币,HUC,,http://huntercoin.org/,数字货币,10,数字货币
+New Economy Movement,新经币,XEM,,https://nem.io/,数字货币,,数字货币
+Emercoin,崛起币,EMC,,https://emercoin.com/,数字货币,,数字货币
+PutinCoin,普京币,PUT,,https://putincoin.org/,"数字货币,PoW,PoS",,数字货币
+Syscoin,系统币,SYS,,http://syscoin.org/,数字货币,50,数字货币
+DigiByte,极特币,DGB,,https://digibyte.co/,数字货币,70,数字货币
+EarthCoin,地球币,EAC,,http://getearthcoin.com,数字货币,,数字货币
+Cryptonite,氪石币,XCN,,https://cryptonite.info/,数字货币,,数字货币
+MergeCoin,众合币,MGC,,http://www.mergecoin.com/,"数字货币,PoW,PoS",,数字货币
+Monero,门罗币,XMR,,https://getmonero.org/,数字货币,78,数字货币
+ZhaocaiCoin,招财币,ZCC,,http://www.zccoin.org/,数字货币,,数字货币
+PrimeCoin,质数币,XPM,,http://primecoin.io/,数字货币,,数字货币
+NCShares,资产股,NCS,,https://www.ncshares.org/,数字货币,,数字货币
+YBCoin,元宝币,YBC,,http://www.ybcoin.com/,数字货币,,数字货币
+MegaCoin,美卡币,MEC,,http://www.megacoin.eu/,数字货币,,数字货币
+NEO,小蚁股,NEO,,https://neo.org/,数字货币,,数字货币
+MCSports,行云币,MCC,,http://www.mcsports.cn/,数字货币,,数字货币
+FrozenCoin,冰河币,FZ,,http://fzcoin.cc/,数字货币,,数字货币
+TransferCoin,传送币,TFC,,https://transfercoin.io/,数字货币,,数字货币
+YiBitcoin,一号币,YTC,,http://www.yibitcoin.com/,数字货币,,数字货币
+Zetacoin,泽塔币,ZET,,http://www.zetac.org/,"数字货币,PoW",,数字货币
+GooCoin,谷壳币,GOOC,,http://www.goocoin.com/,数字货币,,数字货币
+Monkey Treasure Coin,猴宝币,MTC,,http://www.houbaocoin.com/,"数字货币,PoW,PoS",,数字货币
+WorldCoin,世界币,WDC,,https://worldcoin.global/,"数字货币,PoW",,数字货币
+PoloCoin,保罗币,PLC,,https://platincoin.com/,"数字货币,PoW",,数字货币
+SharkTrust,鲨之信,SKT,,https://www.sharktrust.org/,数字货币,,数字货币
+MermaidCoin,美人鱼币,MRYC,,http://www.mrycoin.com/,数字货币,,数字货币
+Lucky Coin,幸运币,LKC,,http://www.xyuncoin.com/,"数字货币,PoS",,数字货币
+SafeNetSpace,安网币,DNC,,http://darknetspace.org/cn/,数字货币,,数字货币
+InfiniteCoin,无限币,IFC,,http://infinitecoin.com/,数字货币,,数字货币
+PuerCoin,普银,PEB,,https://www.puercoin.com/,数字货币,,数字货币
+Zerocoin,零币,XZC,,http://zerocoin.org/,数字货币,,数字货币
+DACRS,智能坊,DACRS,,http://www.dacrs.com/,"数字货币,PoS",,数字货币
+Infchain,讯链币,INF,,http://www.infchain.com/,数字货币,,数字货币
+ICOShares,小企股,ICS,,http://www.icochain.com/,数字货币,,数字货币
+Lepaoquan,活力币,HLB,,https://www.lepaoquan.com/,数字货币,,数字货币
+VPNCoin,薇币,VASH,,http://www.bitnet.cc/,数字货币,,数字货币
+CHAINB,区块链铅笔,,中国,http://chainb.com/,媒体,80,行业资讯
+8BTC,巴比特,,中国,http://www.8btc.com/,媒体,89,行业资讯
+JINSE,金色财经,,中国,http://www.jinse.com/,媒体,85,行业资讯
+,共享财经,,中国,http://www.gongxiangcj.com/,媒体,,行业资讯
+,核财经,,中国,http://seven.ylyedu.com/,媒体,,行业资讯
+Cointelegraph,,,美国,https://cointelegraph.com/,媒体,90,行业资讯
+Coindesk,,,美国,https://www.coindesk.com/,媒体,90,行业资讯
+Bitcoin Magazine,巴比特杂志,,,https://bitcoinmagazine.com/,媒体,89,行业资讯
+Bitcoin.com,,,,https://news.bitcoin.com/,媒体,88,行业资讯
+BTCMANAGER,,,,http://btcmanager.com/,媒体,75,行业资讯
+THE ETHER REVIEW,,,,https://etherreview.info/,媒体,88,行业资讯
+THE LEDGER,财富杂志 LEDGER 栏目,,,http://fortune.com/ledger/,媒体,85,行业资讯
+ALTCOIN TODAY,,,美国,http://www.altcointoday.com/,媒体,,行业资讯
+COINFOX,,,美国,http://www.coinfox.info/,媒体,70,行业资讯
+COIN JOURNAL,,,英国,https://coinjournal.net/,媒体,70,行业资讯
+NEWSBTC,,,英国,http://www.newsbtc.com/,资讯,,行业资讯
+ETHNews,,,加拿大,https://www.ethnews.com/,资讯,,行业资讯
+LetsTalkBitcoin,LTB,,美国,https://letstalkbitcoin.com/,资讯,,行业资讯
+BTC123,,,中国,https://www.btc123.com/,资讯,,行业资讯
+BlockCast,区块客,,中国台湾,http://blockcast.it/,资讯,,行业资讯
+TheBitcoinNews,,,瑞士,https://thebitcoinnews.com/,资讯,,行业资讯
+cryptocoins news,,,挪威,https://www.cryptocoinsnews.com/,资讯,,行业资讯
+Inside Bitcoins,,,南非,http://insidebitcoins.com/,资讯,,行业资讯
+Bitcoin86,比特币资讯网,,中国,http://www.bitcoin86.com/,资讯,,行业资讯
+,区块链财经,,中国,http://www.blockchain.hk/,资讯,,行业资讯
+CYBTC,彩云比特,,中国,http://www.cybtc.com/,资讯,,行业资讯
+Bitrends,币区势,,中国,http://biqushi.cn/,资讯,,行业资讯
+MinerFun,趣挖网,,中国,http://minerfun.com/,资讯,,行业资讯
+,玩币族,,中国,http://www.wanbizu.com/,资讯,,行业资讯
+BTCFans,比特范,,中国,http://btcfans.com/,资讯,,行业资讯
+Bitecoin,比特币中文网,,中国,http://www.bitecoin.com/,资讯,,行业资讯
+,区块网,,中国,http://qukuaiwang.com.cn/,资讯,,行业资讯
+BTC798,比特币之家,,中国,http://www.btc798.com/,资讯,,行业资讯
+BiViews,币视界,,中国,http://www.biviews.com/,资讯,,行业资讯
+WABI,挖币网,,中国,https://www.wabi.com/,资讯,,行业资讯
+BTC126,比特币家园,,中国,http://www.btc126.com/,资讯,,行业资讯
+BlockValue,价值区块链,,中国,http://www.blockvalue.com/,资讯,,行业资讯
+BitcoinTalk,BitcoinTalk 中文区,,美国,https://bitcointalk.org/index.php?board=30.0,"社区,比特币",,行业资讯
+Reddit Bitcoin,Reddit 比特币区,,美国,https://www.reddit.com/r/Bitcoin/,"社区,比特币",,行业资讯
+CYBTC Forum,彩云比特论坛,,中国,http://www.cybtc.com/forum.php,"社区,比特币",,行业资讯
+Monero,Monero 台湾正體中文站,,中国台湾,https://xmr-tw.org/,"社区,门罗币",,行业资讯
+IOTA China,IOTA 中国,,中国,http://www.iotachina.com/,"社区,艾欧塔",,行业资讯
+8BTC Forum,巴比特论坛,,中国,http://8btc.com/,社区,,行业资讯
+Coingogo,币源社区,,中国,https://www.coingogo.com/,社区,,行业资讯
+Bitcoin TW,比特台湾,,中国台湾,http://forum.bitcoin-tw.com/,社区,,行业资讯
+LaiteB,莱特币中文官网,,中国,http://www.laiteb.com/,"社区,莱特币",,行业资讯
+,洋洋访谈,,中国,http://weibo.com/3244140934,微博,,行业资讯
+ahr999,,,中国,http://weibo.com/ahr999,微博,,行业资讯
+P2PBUCKS,,,中国,http://weibo.com/238878996,微博,,行业资讯
+,杜九一,,中国,http://weibo.com/imjiuyi,微博,,行业资讯
+Excellion,,,中国,http://weibo.com/excellion,微博,,行业资讯
+,我是老猫,,中国,http://weibo.com/fngm,微博,,行业资讯
+,闪电HSL,,中国,https://weibo.com/tan90d,微博,,行业资讯
+HUOBI,火币网,,中国,https://www.huobi.com/,交易平台,90,交易平台
+BTCChina,比特币中国,,中国,https://www.btcchina.com/,交易平台,75,交易平台
+OKCoin.cn,OKCoin币行,,中国,https://www.okcoin.cn/,交易平台,88,交易平台
+,币创网,,中国,https://www.bichuang.com/,交易平台,,交易平台
+ViaBTC,微比特,,中国,https://www.viabtc.com/,交易平台,66,交易平台
+BTC38,比特时代,,中国,http://www.btc38.com/,交易平台,75,交易平台
+Bitkan,币看,,中国,https://bitkan.com/,交易平台,76,交易平台
+Binance,币安,,中国,https://www.binance.com/,交易平台,72,交易平台
+BTCTrade,比特币交易网,,中国,http://www.btctrade.com/,交易平台,60,交易平台
+CHBTC,中国比特币,,中国,https://www.chbtc.com/,交易平台,79,交易平台
+COIN78,币兴网,,中国,https://www.coin78.com/,交易平台,,交易平台
+,bitvc,,中国,https://www.bitvc.com/,交易平台,,交易平台
+ETCWin,币盈网,,中国,https://www.etcwin.com/,交易平台,,交易平台
+BTer,比特儿,,中国,https://bter.com/,交易平台,73,交易平台
+BTC100,,,中国,https://www.btc100.com/,交易平台,56,交易平台
+LHANG,链行,,中国,https://www.lhang.com/,交易平台,,交易平台
+,大比特,,中国,https://www.dabtc.com/,交易平台,,交易平台
+,大红火,,中国,https://www.dahonghuo.com/,交易平台,,交易平台
+,元宝网,,中国,https://www.yuanbao.com/,交易平台,,交易平台
+YUNBI,云币网,,中国,https://yunbi.com/,交易平台,60,交易平台
+JUBI,聚币网,,中国,https://www.jubi.com/,交易平台,60,交易平台
+BitBank,比特币银行,,中国,https://www.bitbank.com/,交易平台,,交易平台
+,海枫藤,,中国,https://www.szzc.com/,交易平台,,交易平台
+,51数字资产,,中国,https://www.51szzc.com/,交易平台,,交易平台
+OKCoin.com,OKCoin国际,,中国香港,https://www.okcoin.com/,交易平台,70,交易平台
+BTCC,,,中国香港,https://www.btcc.com/,交易平台,71,交易平台
+Bitfinex,,,中国香港,https://www.bitfinex.com/,交易平台,88,交易平台
+BitMEX,,,中国香港,https://www.bitmex.com/?lang=zh-CN,交易平台,83,交易平台
+ANXPRO,,,中国香港,https://anxpro.com/,交易平台,50,交易平台
+gatecoin,,,中国香港,https://gatecoin.com/cn,交易平台,67,交易平台
+MIXCOINS,币贝网,,英国,http://www.mixcoins.com/,交易平台,85,交易平台
+LakeBTC,,,中国,https://www.lakebtc.com/,交易平台,68,交易平台
+CoinBase,,,美国,https://www.coinbase.com/,交易平台,94,交易平台
+Kraken,,,美国,https://www.kraken.com/,交易平台,82,交易平台
+itBit,,,新加坡,https://www.itbit.com/,交易平台,64,交易平台
+Poloniex,P网,,美国,https://www.poloniex.com/,交易平台,87,交易平台
+BITTREX,B网,,美国,https://www.bittrex.com/,交易平台,86,交易平台
+GDAX,,,美国,https://www.gdax.com/,交易平台,85,交易平台
+BTC-e,,,美国,https://btc-e.nz/,交易平台,60,交易平台
+BITSANE,,,美国,https://bitsane.com/,交易平台,50,交易平台
+GEMINI,双子星,,美国,https://gemini.com/,交易平台,78,交易平台
+BTCBear,,,英国,https://btcbear.com/,交易平台,,交易平台
+LibertyX,,,美国,https://libertyx.com/,交易平台,,交易平台
+AllCoin,,,加拿大,https://www.allcoin.com/,交易平台,52,交易平台
+VAULTORO,,,英国,https://www.vaultoro.com/,交易平台,66,交易平台
+BITSO,,,墨西哥,https://bitso.com/,交易平台,62,交易平台
+GoCoin,,,美国,https://www.gocoin.com/,交易平台,65,交易平台
+QuadrigaCX,,,加拿大,https://www.quadrigacx.com/,交易平台,55,交易平台
+QRYPTOS,,,日本,https://www.qryptos.com/,交易平台,,交易平台
+BTC Markets,,,澳大利亚,https://www.btcmarkets.net/,交易平台,70,交易平台
+bitbank,,,日本,https://bitbank.cc/,交易平台,50,交易平台
+coincheck,,,日本,https://coincheck.com/,交易平台,80,交易平台
+BTCBOX,,,日本,https://btcbox.com/,交易平台,40,交易平台
+BitFlyer,,,日本,https://bitflyer.jp/,交易平台,69,交易平台
+QUOINEX,,,日本,https://quoinex.com/?lang=en,交易平台,63,交易平台
+Zaif,,,日本,https://zaif.jp/,交易平台,62,交易平台
+Bithumb,,,韩国,https://www.bithumb.com/,交易平台,90,交易平台
+Coinone,,,韩国,https://coinone.co.kr/,交易平台,82,交易平台
+Korbit,,,韩国,https://www.korbit.co.kr/,交易平台,79,交易平台
+Coinplug,,,韩国,https://www.coinplug.com/,交易平台,,交易平台
+Bitstamp,,,英国,https://www.bitstamp.net/,交易平台,79,交易平台
+Gatehub,,,英国,https://gatehub.net/,交易平台,,交易平台
+bitbargain,英国面对面,,英国,https://bitbargain.co.uk/,交易平台,,交易平台
+EXMO,,,英国,https://exmo.com/zh/,交易平台,61,交易平台
+BITBOAT,,,英国,https://www.bitboat.net/en,交易平台,,交易平台
+LiveCoin,,,英国,https://www.livecoin.net/,交易平台,65,交易平台
+BitBay,,,波兰,https://bitbay.net/,交易平台,43,交易平台
+DSX,,,英国,https://dsx.uk/zh-cn/,交易平台,56,交易平台
+Bitex,,,荷兰,https://bitex.la/,交易平台,,交易平台
+Anycoin DIRECT,,,荷兰,https://anycoindirect.eu/,交易平台,,交易平台
+HitBTC,,,丹麦,https://hitbtc.com/,交易平台,80,交易平台
+Bit2Me,,,西班牙,https://bit2me.com/,交易平台,,交易平台
+Zyado,,,葡萄牙,https://www.zyado.com/,交易平台,40,交易平台
+btcxIndia,,,印度,https://btcxindia.com/,交易平台,50,交易平台
+UNOCOIN,,,印度,https://www.unocoin.com/,交易平台,,交易平台
+BX.in.th,,,泰国,https://bx.in.th/,交易平台,60,交易平台
+USECRYPTOS,,,巴西,https://usecryptos.com/,交易平台,,交易平台
+CEX.io,,,英国,https://cex.io/,交易平台,62,交易平台
+LocalBitcoins,,,芬兰,https://localbitcoins.com/,交易平台,58,交易平台
+ShapeShift,,,瑞士,https://shapeshift.io/,交易平台,89,交易平台
+harborly,,,美国,https://harbor.ly/,交易平台,,交易平台
+safello,,,瑞典,https://safello.com/,交易平台,,交易平台
+bitt,,,巴巴多斯,https://www.bitt.com/,交易平台,,交易平台
+sosobtc,,,中国,https://www.sosobtc.com/,行情,,交易平台
+BitcoinWisdom,,,,https://bitcoinwisdom.com/,行情,85,交易平台
+BTC.com,,,中国,https://btc.com/,行情,89,交易平台
+BLOCKCHAIN,,,英国,https://blockchain.info/,行情,89,交易平台
+BLOCKCHAIR,,,俄罗斯,https://blockchair.com/,行情,90,交易平台
+Coin Dance,,,,https://coin.dance/,行情,88,交易平台
+WinkDex,,,美国,http://winkdex.com/,行情,87,交易平台
+Bigterminal,,,,https://beta.bigterminal.com/,行情,,交易平台
+Bitcoin Ticker,,,,http://bitcointicker.co/,行情,,交易平台
+BitCoin Monitor,,,,https://www.bitcoinmonitor.com/,行情,,交易平台
+Exchange War,,,,https://exchangewar.info/,行情,,交易平台
+CryptoCompare,,,英国,https://www.cryptocompare.com/,行情,,交易平台
+Blocktrail,,,荷兰,https://www.blocktrail.com/BTC,行情,,交易平台
+Bitcoincharts,,,,https://bitcoincharts.com/,行情,,交易平台
+CryptoCurrency Market Capitalizations,,,,https://coinmarketcap.com/,行情,80,交易平台
+Coin Choose,,,,https://www.coinchoose.com/,行情,,交易平台
+Blockmeta,,,中国,https://blockmeta.com/,行情,,交易平台
+fiatleak,,,,http://fiatleak.com/,行情,,交易平台
+Bitcoinity,,,,http://bitcoinity.org/,行情,,交易平台
+BIMAO,币猫,,中国,https://k.bimao.com/,行情,,交易平台
+Statoshi,,,,https://statoshi.info/,行情,,交易平台
+,,,,,,,交易平台
+BitAccess,,,加拿大,https://bitaccess.co/,ATM,,交易平台
+Bixin,币信,,中国,https://bixin.com/,钱包,84,钱包支付
+BitPay,,,美国,https://bitpay.com/,"钱包,全平台钱包",87,钱包支付
+Copay,,,美国,https://copay.io/,"钱包,全平台钱包",85,钱包支付
+Tokenly Pockets,,,美国,https://tokenly.com/,"钱包,网页钱包",,钱包支付
+BLOCKCHAIN,,,英国,https://blockchain.info/zh-cn/wallet/,"钱包,桌面钱包,网页钱包",89,钱包支付
+JAXX,,,加拿大,https://jaxx.io/,"钱包,桌面钱包,网页钱包",88,钱包支付
+EXODUS,,,美国,https://www.exodus.io/,"钱包,全平台钱包",83,钱包支付
+Wirex,,,英国,https://wirexapp.com/zh-cn/,钱包,80,钱包支付
+Circle,,,美国,https://www.circle.com/,钱包,80,钱包支付
+BitGo,,,美国,https://www.bitgo.com/solutions#wallet,"钱包,桌面钱包,网页钱包",,钱包支付
+Xapo,,,美国,https://xapo.com/,"钱包,手机钱包",85,钱包支付
+Coinkite,,,加拿大,https://coinkite.com/,钱包,,钱包支付
+Luno,,,英国,https://www.luno.com/,钱包,84,钱包支付
+Bither,比太钱包,,中国,https://bither.net/,"钱包,桌面钱包,手机钱包",,钱包支付
+StrongCoin,,,,https://strongcoin.com/,"钱包,桌面钱包,网页钱包",,钱包支付
+BTC.com Wallet,BTC.com 钱包,,中国,https://wallet.btc.com/,"钱包,网页钱包",80,钱包支付
+,快钱包,,中国,https://qianbao.qukuai.com/,钱包,,钱包支付
+mobi,,,中国,https://www.mobi.me/,钱包,78,钱包支付
+BitoEX,币托,,中国台湾,https://www.bitoex.com/,钱包,,钱包支付
+,币付宝,,中国,https://www.bifubao.com/,钱包,,钱包支付
+BTCT,比特汇,,中国,https://www.btct.com/,钱包,,钱包支付
+BitPie,比特派,,中国,http://bitpie.com/,钱包,,钱包支付
+COINAPULT,,,巴拿马,https://coinapult.com/,钱包,,钱包支付
+WageCan,,,中国台湾,https://wagecan.com/,钱包,,钱包支付
+Ethereum Wallet,Ethereum 钱包,,加拿大,https://github.com/ethereum/mist/releases,"钱包,桌面钱包",85,钱包支付
+MYCELIUM,,,美国,https://wallet.mycelium.com/cn/,"钱包,手机钱包",75,钱包支付
+airBitz,,,美国,https://airbitz.co/,"钱包,手机钱包",,钱包支付
+LAMASSU,,,英国,https://lamassu.is/,钱包,,钱包支付
+chip-chap,,,西班牙,https://chip-chap.com/,钱包,,钱包支付
+wyre,,,美国,https://www.sendwyre.com/,钱包,70,钱包支付
+breadwallet,,,美国,https://breadwallet.com/,"钱包,手机钱包",,钱包支付
+ELECTRUM,,,美国,https://electrum.org/,"钱包,桌面钱包",80,钱包支付
+Bitcoin Core,,,美国,https://bitcoin.org/zh_CN/download,"钱包,桌面钱包",,钱包支付
+KeepKey,,,美国,https://www.keepkey.com/,"钱包,硬件钱包",80,钱包支付
+ColdLar,库神,,中国,http://www.coldlar.com/,"钱包,硬件钱包",70,钱包支付
+BWallet,币定行,,中国,https://www.bidingxing.com/bwallet,"钱包,硬件钱包",,钱包支付
+Ledger,,,法国,https://www.ledgerwallet.com/,"钱包,硬件钱包",73,钱包支付
+case,,,,https://choosecase.com/,"钱包,硬件钱包",73,钱包支付
+TREZOR,,,捷克,https://trezor.io/,"钱包,硬件钱包",75,钱包支付
+COOLBITX,,,中国台湾,https://www.coolbitx.com/home-ch,"钱包,硬件钱包",70,钱包支付
+Lykke,,,瑞士,https://www.lykke.com/,"钱包,手机钱包",,钱包支付
+CoinsBank,,,,https://coinsbank.com/,"钱包,网页钱包",,钱包支付
+Green Address,,,马耳他,https://greenaddress.it/,"钱包,网页钱包,手机钱包",,钱包支付
+Bitrefill,,,瑞典,https://www.bitrefill.com/china/,"比特币,支付",,钱包支付
+ColoredCoins,彩色币,,,http://coloredcoins.org/,"区块链,智能合约",,区块链技术
+Lightning Network,闪电网络,,,https://lightning.network/,"区块链,智能合约",,区块链技术
+Hyperledger,超级账本,,,https://www.hyperledger.org/,"区块链,智能合约",,区块链技术
+The DAO,,,,https://forum.daohub.org/,"区块链,智能合约",,区块链技术
+RootStock,,,,http://www.rsk.co/,"区块链,智能合约",,区块链技术
+Synereo,,,,http://www.synereo.com/,"区块链,智能合约",,区块链技术
+WINGS,,,,https://www.wings.ai/,"区块链,智能合约",,区块链技术
+Energo,,,中国,http://energolabs.com/,"区块链,智能合约",,区块链技术
+Factom,公证通,,,https://www.factom.com/,"区块链,公证防伪",,区块链技术
+Binded,,,,https://binded.com/,"区块链,公证防伪",,区块链技术
+Stampery,,,,https://stampery.com/,"区块链,公证防伪",,区块链技术
+BYTOM,比原链,,中国,https://bytom.io/,"区块链,资产交易",,区块链技术
+Symbiont,,,,https://symbiont.io/,"区块链,资产交易",,区块链技术
+Digital Asset,,,,https://www.digitalasset.com/,"区块链,资产交易",,区块链技术
+tØ,,,,https://tzero.com/,"区块链,资产交易",,区块链技术
+Metaverse,元界,,,http://mvs.live/,"区块链,资产交易",,区块链技术
+,瑞资链,,,https://reitschain.com/,"区块链,资产交易",,区块链技术
+,公信宝,,,https://www.gxb.io/,"区块链,资产交易",,区块链技术
+R3CEV,,,,https://www.r3.com/,"区块链,银行结算",,区块链技术
+Corda,,,,https://www.corda.net/,"区块链,银行结算",,区块链技术
+OpenBazaar,,,,https://www.openbazaar.org/,"区块链,电子商务",,区块链技术
+Skuchain,,,,http://www.skuchain.com/,"区块链,电子商务",,区块链技术
+Purse,,,,https://purse.io/,"区块链,电子商务",,区块链技术
+VeChain,唯链,,中国,https://www.vechain.com/,"区块链,电子商务",,区块链技术
+Bitmessage,比特信,,,https://bitmessage.org/,"区块链,社交通讯",,区块链技术
+Gems,,,,https://gem.co/,"区块链,社交通讯",,区块链技术
+,,,,,,,区块链技术
+MaidSafe,,,,https://maidsafe.net/,"区块链,文件存储",,区块链技术
+Enigma,,,,https://www.enigma.com/,"区块链,文件存储",,区块链技术
+Storj,,,,https://storj.io/,"区块链,文件存储",,区块链技术
+BlockCypher,,,,https://www.blockcypher.com/,"区块链,数据API",,区块链技术
+0x,,,美国,https://0xproject.com/,"区块链,交易平台",85,区块链技术
+Augur,,,,https://augur.net/,区块链,,区块链技术
+IPFS,,,,https://ipfs.io/,区块链,,区块链技术
+Lisk,,,,https://lisk.io/,区块链,,区块链技术
+DECENT,,,,https://decent.ch/,"区块链,内容平台",80,区块链技术
+steemit,,,,https://steemit.com/,"区块链,内容平台",78,区块链技术
+YOURS,,,,https://www.yours.org/,"区块链,内容平台",75,区块链技术
+EBOOKCHAIN,亿书,,,http://ebookchain.org/,"区块链,内容平台",,区块链技术
+YOYOW,,,,https://yoyow.org/,"区块链,内容平台",,区块链技术
+CCTime,加密货币时讯,,,https://cctime.org/,"区块链,内容平台",,区块链技术
+DELPHY,天算,,,https://delphy.org/,区块链,,区块链技术
+ChronoBank,,,,https://chronobank.io/,区块链,,区块链技术
+DFINITY,,,美国,https://dfinity.network/,区块链,,区块链技术
+Colu,,,英国,http://colu.com/,"区块链,支付",,区块链技术
+Blockstream,,,美国,https://blockstream.com/,"区块链,实验室",,区块链技术
+,万向区块链实验室,,中国,http://www.blockchainlabs.org/,"区块链,实验室",,区块链技术
+String Labs,,,美国,http://string.technology/cn/,"区块链,实验室",,区块链技术
+bloq,,,,http://bloq.com/,"区块链,实验室",,区块链技术
+North America Blockchain Association (NABA) ,北美区块链协会,,美国,http://www.nablockchain.org/,"区块链,协会",88,区块链技术
+Distributed Autonomous Coalition Asia,DACA 区块链协会,,,http://www.daca.asia/,"区块链,协会",,区块链技术
+Asia Blockchain Foundation,亚洲区块链基金会,,,http://asiablockchainfoundation.org/,"区块链,协会",,区块链技术
+The Bitcoin Foundation,比特币基金会,,,https://bitcoinfoundation.org/,"区块链,协会",,区块链技术
+The Ethereum Foundation,以太坊基金会,,,https://www.ethereum.org/foundation,"区块链,协会",,区块链技术
+Blockchain Summit,,,,http://www.neckerblockchainsummit.com/,"区块链,协会",,区块链技术
+The Blockchain Academy,区块链学院,,,https://www.theblockchainacademy.com/,"区块链,协会",,区块链技术
+ETHWaterloo,,,加拿大,https://ethwaterloo.com/,"区块链,协会",,区块链技术
+Blockgeeks Lab,,,加拿大,http://blockgeekslab.com/,"区块链,协会",,区块链技术
+Enterprise Ethereum Alliance（EEA）,企业以太坊联盟,,,https://entethalliance.org/,"区块链,联盟",,区块链技术
+ChinaLedger,中国分布式总账基础协议联盟,,中国,http://chinaledger.com/,"区块链,联盟",,区块链技术
+r3,,,新加坡,https://www.r3.com/,"区块链,联盟",,区块链技术
+BPSA,国际区块链专利共享联盟,,,http://bpsa.io/,"区块链,联盟",,区块链技术
+BTC.TOP,莱比特,,中国,http://btc.top/,"挖矿,矿池",88,挖矿算力
+ANTPOOL,蚂蚁矿池,,中国,https://antpool.com/,"挖矿,矿池",89,挖矿算力
+ViaBTC,微比特,,中国,https://pool.viabtc.com/,"挖矿,矿池",87,挖矿算力
+BTC,BTC 矿池,,中国,https://pool.btc.com/,"挖矿,矿池",80,挖矿算力
+F2Pool,鱼池,,中国,https://www.f2pool.com/,"挖矿,矿池",78,挖矿算力
+BTCC,国池,,中国,https://pool.btcchina.com/,"挖矿,矿池",75,挖矿算力
+SLUSH POOL,驰骋矿池,,中国,https://slushpool.com/,"挖矿,矿池",73,挖矿算力
+Bixin,币信矿池,,中国,https://bixin.com/common/pool_landing,"挖矿,矿池",72,挖矿算力
+Bitclub,,,冰岛,https://bitclubpool.com/,"挖矿,矿池",70,挖矿算力
+Hashing24,,,英国,https://hashing24.com/,"挖矿,矿池",68,挖矿算力
+BW,币网,,中国,https://www.bw.com/,"挖矿,矿池",67,挖矿算力
+GBMiners,,,印度,http://gbminers.com/,"挖矿,矿池",65,挖矿算力
+GHash.IO,,,英国,http://ghash.io/,"挖矿,矿池",,挖矿算力
+P2Pool,,,,http://p2pool.in/,"挖矿,矿池",,挖矿算力
+BitMinter,,,,https://bitminter.com/,"挖矿,矿池",,挖矿算力
+MULTIPOOL,,,美国,https://www.multipool.us/,"挖矿,矿池",,挖矿算力
+LitecoinPool,,,,https://www.litecoinpool.org/,"挖矿,矿池",,挖矿算力
+,,,,,,,挖矿算力
+91Pool,,,中国,http://www.91pool.com/,"挖矿,矿池",,挖矿算力
+bitcoin.com,,,,https://pool.bitcoin.com/index_zh.html,"挖矿,矿池",,挖矿算力
+,八宝池,,中国,http://8baochi.com/,"挖矿,矿池",,挖矿算力
+BLOCKCHAIN,,,英国,https://blockchain.info/pools,"挖矿,算力",,挖矿算力
+BitcoinWisdom,,,,https://bitcoinwisdom.com/bitcoin/difficulty,"挖矿,算力",,挖矿算力
+P2Pool,,,美国,http://p2pool.info/,"挖矿,算力",,挖矿算力
+QuKuai,区块,,中国,http://qukuai.com/,"挖矿,算力",,挖矿算力
+BITMAIN,比特大陆,,中国,https://www.bitmain.com/,"挖矿,矿机",95,挖矿算力
+BitFury,,,美国,http://bitfury.com/,"挖矿,矿机",,挖矿算力
+UNMiner,优联矿业,,中国,http://www.unminer.com/,"挖矿,矿机",,挖矿算力
+PANDA MINER,熊猫矿机,,中国,https://www.pandaminer.com/,"挖矿,矿机",,挖矿算力
+Canaan,阿瓦隆,,中国,https://canaan.io/,"挖矿,矿机",,挖矿算力
+SFARDS,理安科技,,中国,http://www.sfards.com/,"挖矿,矿机",,挖矿算力
+Butterfly Labs,蝴蝶矿机,,中国,http://www.butterflylabs.com/,"挖矿,矿机",,挖矿算力
+MINR.INFO,矿机追踪,,,http://minr.info/,挖矿,,挖矿算力
+BTCFans,比特范,,中国,http://mining.btcfans.com/,"挖矿,收益计算",,挖矿算力
+ALLOSCOMP,,,,https://alloscomp.com/bitcoin/calculator,"挖矿,收益计算",,挖矿算力
+WABI,挖币网,,中国,https://www.wabi.com/diff.html,"挖矿,收益计算",,挖矿算力
+HASHNEST,算力巢,,中国,https://www.hashnest.com/,"挖矿,算力托管",,挖矿算力
+OXBTC,,,中国,https://www.oxbtc.com/,"挖矿,算力托管",,挖矿算力
+MINER.Tool,,,中国,http://miner.tools/,"挖矿,算力托管",,挖矿算力
+POW8,算力吧,,中国,https://pow8.com/,"挖矿,算力托管",,挖矿算力

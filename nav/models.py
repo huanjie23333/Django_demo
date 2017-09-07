@@ -20,5 +20,9 @@ class Nav(models.Model):
     class Meta:
         ordering = ['-score']
 
+    @property
+    def main_name(self):
+        return self.cname or self.ename
+
 
 # Create your models here.

@@ -382,17 +382,23 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
     });
     return DataFeed;
 });
+;
+define("subapp/layout", function(){});
+
 require([
         'libs/polyfills',
         'jquery',
-        'subapp/data/datafeed'
+        'subapp/data/datafeed',
+        'subapp/layout'
     ],
     function (polyfill,
               $,
-              DataFeed
+              DataFeed,
+              Layout
 
               ) {
         var datafeed = new DataFeed();
+        var layout = new Layout();
         console.log('finish');
 
     });
