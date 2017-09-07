@@ -21,7 +21,7 @@ class Nav(models.Model):
         ordering = ['-score']
 
     def __str__(self):
-        "{ename} - {cname}".format(ename=self.ename, cname=self.cname)
+        return self.ename or self.cname
 
     @property
     def main_name(self):
