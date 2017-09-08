@@ -114,13 +114,27 @@ body{
 }
 
 
+//for grid layout
+#grid[data-columns]::before{
+  content: '2 .column.size-1of2';
+}
+#grid{
+  .column {
+    float: left;
+    border-left: solid 10px @default-background;
+  }
+  .size-1of2 { width: 50%; }
+}
+
+
+
 #footer{
   margin-top:10px;
   background-color:#fff;
   .logo{
       img{
-        width: 120px;
-        padding-top: 29px;
+            width: 280px;
+            padding-top: 30px;
       }
   }
 

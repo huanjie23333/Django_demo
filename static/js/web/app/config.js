@@ -24,22 +24,22 @@ requirejs.config({
     },
 
     shim: {
-        'jqueryeasing': {
-            deps:['jquery'],
-            exports: 'jqueryeasing'
-        },
-        'snowFall':{
-            deps:['jquery'],
-            exports:'snowFall'
-        },
+        //'jqueryeasing': {
+        //    deps:['jquery'],
+        //    exports: 'jqueryeasing'
+        //},
+        //'snowFall':{
+        //    deps:['jquery'],
+        //    exports:'snowFall'
+        //},
         // shim won't handle script load , you still need require script in your source
-        'Backbone':{
-            deps:['underscore',],
-            exports:'Backbone'
-        },
-        'bootbox':{
-            deps: ['jquery', 'bootstrap']
-        },
+        //'Backbone':{
+        //    deps:['underscore',],
+        //    exports:'Backbone'
+        //},
+        //'bootbox':{
+        //    deps: ['jquery', 'bootstrap']
+        //},
         'cookie':{
             deps:['jquery']
         },
@@ -52,9 +52,9 @@ requirejs.config({
         'jquery':{
             exports:'jQuery'
         },
-        'underscore':{
-            exports: '_'
-        },
+        //'underscore':{
+        //    exports: '_'
+        //},
         'masonry':{
             deps:['jquery']
         }

@@ -543,13 +543,23 @@ body a:hover {
   height: 10px;
   overflow: visible;
 }
+#grid[data-columns]::before {
+  content: '2 .column.size-1of2';
+}
+#grid .column {
+  float: left;
+  border-left: solid 10px #f8f8f8;
+}
+#grid .size-1of2 {
+  width: 50%;
+}
 #footer {
   margin-top: 10px;
   background-color: #fff;
 }
 #footer .logo img {
-  width: 120px;
-  padding-top: 29px;
+  width: 280px;
+  padding-top: 30px;
 }
 #footer .info-list {
   margin-top: 40px;
