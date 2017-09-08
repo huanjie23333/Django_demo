@@ -4,17 +4,17 @@ from taggit.managers import TaggableManager
 from model_utils.fields import StatusField
 from model_utils import Choices
 
-class Nav(models.Model):
 
+class Nav(models.Model):
     STATUS = Choices('remove', 'draft', 'published')
-    cname = models.CharField(max_length=64, null=True,blank=True)
+    cname = models.CharField(max_length=64, null=True, blank=True)
     ename = models.CharField(max_length=64, null=True, blank=True)
     location = models.CharField(max_length=32, null=True, blank=True)
-    web_site = models.URLField(blank=True,null=True)
+    web_site = models.URLField(blank=True, null=True)
     score = models.IntegerField(default=0)
     tags = TaggableManager()
     status = StatusField(_('status'), choices_name='STATUS', default=STATUS.published)
-    category = models.CharField(max_length=64,null=False,blank=False)
+    category = models.CharField(max_length=64, null=False, blank=False)
     alias = models.CharField(max_length=64, null=True, blank=True)
 
     class Meta:
@@ -26,6 +26,5 @@ class Nav(models.Model):
     @property
     def main_name(self):
         return self.cname or self.ename
-
 
 # Create your models here.
