@@ -1,7 +1,6 @@
 define(['libs/Class', 'subapp/header/quote'],function(
     Class,
     Quote
-
 ){
     var DataFeed = Class.extend({
         can_use_ws: function () {
@@ -18,6 +17,7 @@ define(['libs/Class', 'subapp/header/quote'],function(
             return false;
         },
         init: function(){
+
            this.quote = new Quote();
            if (!this.can_use_ws()){
                 this.update_quote();

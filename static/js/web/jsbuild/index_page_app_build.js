@@ -336,7 +336,6 @@ define('subapp/header/quote',['libs/Class','underscore'],function(Class,_){
 define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
     Class,
     Quote
-
 ){
     var DataFeed = Class.extend({
         can_use_ws: function () {
@@ -353,6 +352,7 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
             return false;
         },
         init: function(){
+
            this.quote = new Quote();
            if (!this.can_use_ws()){
                 this.update_quote();
@@ -382,6 +382,69 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
     });
     return DataFeed;
 });
+;
+define("libs/event", function(){});
+
+define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
+
+    var Feed = Class.extend(Event.prototype, {
+        init: function (options) {
+            this.options = options;
+            this.interval = options.interval || 5000
+            this._running = false;
+        },
+
+        stop: function(){
+            window.clearInterval(this._rid);
+        },
+
+        run: function(){
+            if(this._running) return ;
+            this._running = true;
+            this._run();
+            this._rid = window.setInterval(this._run.bind(this), this.interval)
+        },
+
+        _run: function(){
+            $.when($.ajax(this.options)).then(
+                this.request_success.bind(this),
+                this.request_fail.bind(this)
+            )
+        },
+
+        request_success:function(data){
+            this.emit('data_arrive', data);
+        },
+        request_fail:function(){
+            this.emit('request_fail', data);
+        },
+
+    });
+
+    return Feed;
+
+});
+define('subapp/data/allcoinprice',['libs/Class'], function(Class){
+    var AllCoinPrice = Class.extend({
+        init: function(feed){
+            if(!feed){
+                throw Error('can not init a price app without a feed');
+            }
+            this.dataFeed = feed;
+            this.dataFeed.on('data_arrive',this.handle_data.bind(this));
+            this.dataFeed.on('data_fail', this.handle_fail.bind(this));
+        },
+        handle_data: function(data){
+            console.log( 'price data arrive');
+            console.log(data);
+        },
+        handle_fail:function(error){
+            console.log('price data fail');
+            console.log(error);
+        },
+    });
+    return AllCoinPrice;
+});
 /*!
  * Salvattore 1.0.9 by @rnmp and @ppold
  * https://github.com/rnmp/salvattore
@@ -393,15 +456,25 @@ require([
         'libs/polyfills',
         'jquery',
         'subapp/data/datafeed',
+        'subapp/data/feed',
+        'subapp/data/allcoinprice',
         'libs/salvattore'
     ],
     function (polyfill,
               $,
               DataFeed,
+              Feed,
+              AllCoin,
               Layout
 
               ) {
         var datafeed = new DataFeed();
+        //here for side bar price list render
+        var all_price_feed = new Feed({
+
+        });
+
+        //
         console.log('finish');
 
     });

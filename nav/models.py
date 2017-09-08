@@ -12,7 +12,7 @@ class Nav(models.Model):
     location = models.CharField(max_length=32, null=True, blank=True)
     web_site = models.URLField(blank=True, null=True)
     score = models.IntegerField(default=0)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     status = StatusField(_('status'), choices_name='STATUS', default=STATUS.published)
     category = models.CharField(max_length=64, null=False, blank=False)
     alias = models.CharField(max_length=64, null=True, blank=True)
