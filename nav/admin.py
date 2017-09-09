@@ -19,11 +19,12 @@ class CategoryFilter(SimpleListFilter):
 
 class NavAdmin(admin.ModelAdmin):
     list_filter = (CategoryFilter,'status','highlight')
-    list_display = ['main_name','cname', 'ename', 'location', \
+    list_display = ['main_name','cname', 'ename', 'location','score', \
                     'status', 'category' ,\
                     'tag_list', 'highlight']
     search_fields = ('cname', 'ename', )
     list_editable = ('status', 'highlight' )
+
 
     def get_queryset(self, request):
         return super(NavAdmin, self).get_queryset(request).prefetch_related('tags')
@@ -31,5 +32,9 @@ class NavAdmin(admin.ModelAdmin):
     def tag_list(self, obj):
         return u", ".join(o.name for o in obj.tags.all())
 
+    def main_name(self, obj):
+        return obj.main_name
+
+    main_name.admin_order_field = 'ename'
 
 admin.site.register(Nav, NavAdmin)

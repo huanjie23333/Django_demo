@@ -1,6 +1,7 @@
 define(['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
 
-    var Feed = Class.extend(Event.prototype, {
+    var _Feed = Class.extend(Event.prototype);
+    var Feed = _Feed.extend({
         init: function (options) {
             this.options = options;
             this.interval = options.interval || 5000
@@ -28,8 +29,8 @@ define(['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
         request_success:function(data){
             this.emit('data_arrive', data);
         },
-        request_fail:function(){
-            this.emit('request_fail', data);
+        request_fail:function(data){
+            this.emit('request_fail',data);
         },
 
     });

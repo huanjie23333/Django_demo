@@ -42,6 +42,7 @@ body{
              height:30px;
              text-align: left;
              padding-top: 35px;
+             padding-left:30px;
              .quote-head{
                 font-size:@font-size-small;
                 font-weight: 700;
@@ -51,10 +52,17 @@ body{
                 font-weight:400;
                 font-family:DIN,Microsoft YaHei,Helvetica Neue,Helvetica,sans-serif;
                 margin-top:-4px;
-                .g-icon svg{
-                   margin-left:-5px;
-                   height:16px;
-                   width:16px;
+                .price{
+                  .pricing-ele;
+                }
+                i{
+                  position: relative;
+                  top: -2px;
+                  left: -5px;
+                  .pricing-ele;
+                }
+                i::before{
+                  font-size:24px;
                 }
              }
           }
@@ -97,11 +105,34 @@ body{
                 //text-decoration: underline;
               }
             }
+            a.highlight{
+              color:@site-link-highlight-color;
+            }
+
             display: inline-block;
             .clearfix;
             line-height:30px;
             color: @site-link-color;
             margin-right:20px;
+          }
+       }
+       .coin-list{
+          li{
+            line-height: 30px;
+            font-size: @font-size-normal;
+            color: @common-text-color;
+            padding-top:10px;
+            .coin-name{
+                font-weight:600;
+            }
+            .coin-price{
+                .pricing-ele;
+                padding-left: 20px;
+            }
+            .coin-1h-state{
+                padding-left:20px;
+                .pricing-ele;
+            }
           }
        }
     }
@@ -131,29 +162,49 @@ body{
 #footer{
   margin-top:10px;
   background-color:#fff;
+  height:60px;
   .logo{
       img{
             width: 280px;
-            padding-top: 30px;
       }
   }
 
-  .info-list{
-       margin-top:40px;
-       margin-bottom:20px;
-       li{
-          font-size:@font-size-normal;
-          color:@support-text-color;
-          line-height:@font-size-normal*2;
-       }
-       .info-header{
-          color:@common-text-color;
-          font-size: 16px;
-          margin-bottom: 20px;
-          font-weight:600;
-       }
-
+  .footer-list{
+    li{
+      float:left;
+      height:40px;
+      display:inline-block;
+      margin-left:20px;
+      line-height: 40px;
+      padding-top:15px;
+      padding-bottom:10px;
+    }
+    li.logo{
+      padding-top:5px;
+    }
+    .action{
+      i{
+        margin-right:10px;
+      }
+    }
   }
+
+  //.info-list{
+  //     margin-top:40px;
+  //     margin-bottom:20px;
+  //     li{
+  //        font-size:@font-size-normal;
+  //        color:@support-text-color;
+  //        line-height:@font-size-normal*2;
+  //     }
+  //     .info-header{
+  //        color:@common-text-color;
+  //        font-size: 16px;
+  //        margin-bottom: 20px;
+  //        font-weight:600;
+  //     }
+  //
+  //}
 }
 
 

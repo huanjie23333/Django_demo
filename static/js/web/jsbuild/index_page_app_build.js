@@ -319,16 +319,32 @@ define('subapp/header/quote',['libs/Class','underscore'],function(Class,_){
            var symbols = ['BTC', 'ETH', 'LTC'];
            _.map(this.elements, this.handle_element.bind(this));
        },
+       set_price:function(elem, quote){
+           var price = Math.round(parseFloat(quote['price_cny'])*100)/100.0;
+           $(elem).find('.price').html(price);
+
+           var change = 0
+           try{
+                var change = parseFloat(quote['percent_change_1h']);
+           }
+           catch(error){
+
+           }
+           if (change > 0){
+               $(elem).find('.price').removeClass('fall').addClass('raise');
+               $(elem).find('i').removeClass('fall fa-long-arrow-down').addClass('fa-long-arrow-up raise');
+           }else{
+               $(elem).find('.price').removeClass('raise').addClass('fall');
+               $(elem).find('i').removeClass('fa-long-arrow-up raise').addClass('fall fa-long-arrow-down');
+           }
+
+           return;
+       },
        handle_element: function(elem, key){
             var the_quote = _.filter(this.data, function(item){
                 return item['symbol'] == key
             })[0];
             this.set_price(elem, the_quote);
-       },
-       set_price:function(elem, quote){
-           var price = Math.round(parseFloat(quote['price_cny'])*100)/100.0;
-           $(elem).find('.price').html(price);
-           return;
        }
    });
    return Quote;
@@ -382,12 +398,76 @@ define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
     });
     return DataFeed;
 });
-;
-define("libs/event", function(){});
+define('libs/event',[], function () {
 
+    var Event = function () {
+    }
+    Event.prototype = {
+        on: function (name, callback, ctx) {
+            var e = this.e || (this.e = {});
+
+            (e[name] || (e[name] = [])).push({
+                fn: callback,
+                ctx: ctx
+            });
+
+            return this;
+        },
+
+        once: function (name, callback, ctx) {
+            var self = this;
+
+            function listener() {
+                self.off(name, listener);
+                callback.apply(ctx, arguments);
+            };
+
+            listener._ = callback
+            return this.on(name, listener, ctx);
+        },
+
+        emit: function (name) {
+            var data = [].slice.call(arguments, 1);
+            var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+            var i = 0;
+            var len = evtArr.length;
+
+            for (i; i < len; i++) {
+                evtArr[i].fn.apply(evtArr[i].ctx, data);
+            }
+
+            return this;
+        },
+
+        off: function (name, callback) {
+            var e = this.e || (this.e = {});
+            var evts = e[name];
+            var liveEvents = [];
+
+            if (evts && callback) {
+                for (var i = 0, len = evts.length; i < len; i++) {
+                    if (evts[i].fn !== callback && evts[i].fn._ !== callback)
+                        liveEvents.push(evts[i]);
+                }
+            }
+
+            // Remove event from queue to prevent memory leak
+            // Suggested by https://github.com/lazd
+            // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
+
+            (liveEvents.length)
+                ? e[name] = liveEvents
+                : delete e[name];
+
+            return this;
+        }
+    }
+    return Event;
+});
 define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
 
-    var Feed = Class.extend(Event.prototype, {
+    var _Feed = Class.extend(Event.prototype);
+    var Feed = _Feed.extend({
         init: function (options) {
             this.options = options;
             this.interval = options.interval || 5000
@@ -415,8 +495,8 @@ define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class,
         request_success:function(data){
             this.emit('data_arrive', data);
         },
-        request_fail:function(){
-            this.emit('request_fail', data);
+        request_fail:function(data){
+            this.emit('request_fail',data);
         },
 
     });
@@ -424,19 +504,28 @@ define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class,
     return Feed;
 
 });
-define('subapp/data/allcoinprice',['libs/Class'], function(Class){
+define('subapp/data/allcoinprice',['libs/Class',''], function(Class){
     var AllCoinPrice = Class.extend({
-        init: function(feed){
-            if(!feed){
+        init: function(option){
+
+            if(!option["feed"]){
                 throw Error('can not init a price app without a feed');
             }
-            this.dataFeed = feed;
+            this.dataFeed = option["feed"];
             this.dataFeed.on('data_arrive',this.handle_data.bind(this));
             this.dataFeed.on('data_fail', this.handle_fail.bind(this));
+
+            if(!option["adapter"]){
+                throw Error('need adapter to goon');
+            }
+            this.adapter = option["adapter"];
         },
         handle_data: function(data){
-            console.log( 'price data arrive');
-            console.log(data);
+            //console.log(data);
+            var new_data = this.adapter.update(data).spit();
+            console.log( 'spit out');
+            //console.log(new_data);
+
         },
         handle_fail:function(error){
             console.log('price data fail');
@@ -444,6 +533,42 @@ define('subapp/data/allcoinprice',['libs/Class'], function(Class){
         },
     });
     return AllCoinPrice;
+});
+define('subapp/adapters/adapter',['libs/Class','underscore'],function(Class,_){
+    var BaseAdapter = Class.extend({
+        init: function(dictionary){
+            this.dictionary = dictionary;
+        },
+        update: function(data){
+            this.old = this.data;
+            this.data = data;
+            return this;
+        },
+        spit: function(){
+            return _.map(this.data, this.handle_data.bind(this));
+
+        },
+        handle_data:function(single_entry){
+            var new_entry = {}
+            _.map(this.dictionary, function(key_right,key_left ){
+                new_entry[key_right] = single_entry[key_left];
+            });
+            return new_entry
+        }
+    });
+
+    return BaseAdapter;
+});
+define('subapp/dictionarys/coinmarketcap',[],function(){
+    return {
+        'symbol':'symbol',
+        'name' : 'name',
+        'price_cny':'price_cny',
+        'percent_change_1h':'percent_change_1h',
+        'last_updated':'last_updated',
+        'id':'id',
+        'percent_change_1h':'change'
+    }
 });
 /*!
  * Salvattore 1.0.9 by @rnmp and @ppold
@@ -458,6 +583,8 @@ require([
         'subapp/data/datafeed',
         'subapp/data/feed',
         'subapp/data/allcoinprice',
+        'subapp/adapters/adapter',
+        'subapp/dictionarys/coinmarketcap',
         'libs/salvattore'
     ],
     function (polyfill,
@@ -465,14 +592,22 @@ require([
               DataFeed,
               Feed,
               AllCoin,
+              Adapter,
+              CoinMarketDic,
               Layout
-
               ) {
         var datafeed = new DataFeed();
         //here for side bar price list render
         var all_price_feed = new Feed({
-
+            url: 'https://api.coinmarketcap.com/v1/ticker/?limit=20&convert=CNY',
+            method: 'GET',
+            interval: 5000
         });
+        var all_coin = new AllCoin({
+            feed: all_price_feed,
+            adapter : new Adapter(CoinMarketDic)
+        });
+        all_price_feed.run();
 
         //
         console.log('finish');

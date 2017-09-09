@@ -52,12 +52,9 @@ requirejs.config({
         'jquery':{
             exports:'jQuery'
         },
-        //'underscore':{
-        //    exports: '_'
-        //},
-        'masonry':{
-            deps:['jquery']
-        }
+        'underscore':{
+            exports: '_'
+        },
     }
 });
 

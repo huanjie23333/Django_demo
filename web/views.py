@@ -37,7 +37,7 @@ class IndexView(TemplateView):
         return Nav.objects.filter(category='挖矿算力')
 
     def get_blockchain(self):
-        return Nav.objects.filter(category='区块链技术')
+        return Nav.objects.filter(category='区块链')
 
 
 
