@@ -1,7 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
 
-
 {% block content %}
     <section id="content">
         <div class="container">
@@ -12,7 +11,7 @@
                         <div class="box-body">
                             <ul class="site-list">
                                 {% for site in recommend %}
-                                  <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                    {% include 'web/partial/site_list_item.html' %}
                                 {% endfor %}
                             </ul>
                         </div>
@@ -25,244 +24,144 @@
                         <div class="box-body">
                             <ul class="site-list">
                                 {% for site in coins %}
-                                  <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+                                     {% include 'web/partial/site_list_item.html' %}
                                 {% endfor %}
-
                             </ul>
                         </div>
                         <div class="box-footer"></div>
                     </div>
-                    <div class="inner-row row grid">
-                        <div class="col-sm-6 grid-item">
+                    <div class="inner-row row" id="grid" data-columns>
+                        {#                        <div class="col-sm-12">#}
+                        {#                            #}
+                        {#                        </div>#}
+                        {#                        <div class="col-sm-12">#}
+                        {#                                #}
+                        {#                        </div>#}
+                        <div class=" grid-item">
                             <div class="box box-half">
                                 <div class="box-header">行业资讯</div>
                                 <div class="box-body">
                                     <ul class="site-list">
-                                         {% for site in sectorinfo %}
-                                           <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
-                                         {% endfor %}
+                                        {% for site in sectorinfo %}
+                                             {% include 'web/partial/site_list_item.html' %}
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 grid-item">
+                        <div class=" grid-item">
                             <div class="box box-half">
                                 <div class="box-header">交易平台</div>
                                 <div class="box-body">
                                     <ul class="site-list">
                                         {% for site in exchanges %}
-                                           <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
-                                         {% endfor %}
+                                             {% include 'web/partial/site_list_item.html' %}
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 grid-item">
-                                <div class="box box-half">
-                                    <div class="box-header">钱包支付</div>
-                                    <div class="box-body">
-                                        <ul class="site-list">
-                                            {% for site in purse %}
-                                               <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
-                                             {% endfor %}
-                                        </ul>
-                                    </div>
+                        <div class="grid-item">
+                            <div class="box box-half">
+                                <div class="box-header">钱包支付</div>
+                                <div class="box-body">
+                                    <ul class="site-list">
+                                        {% for site in purse %}
+                                             {% include 'web/partial/site_list_item.html' %}
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                       </div>
-                        <div class="col-sm-6 grid-item">
-                                <div class="box box-half">
-                                    <div class="box-header">挖矿算力</div>
-                                    <div class="box-body">
-                                        <ul class="site-list">
-                                            {% for site in minning %}
-                                               <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
-                                             {% endfor %}
-                                        </ul>
-                                    </div>
-                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-6 grid-item">
-                                <div class="box box-half">
-                                    <div class="box-header">区块链</div>
-                                    <div class="box-body">
-                                        <ul class="site-list">
-                                            {% for site in blockchain %}
-                                               <li><a href="{{ site.web_site }}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
-                                             {% endfor %}
-                                        </ul>
-                                    </div>
+                        <div class=" grid-item">
+                            <div class="box box-half">
+                                <div class="box-header">挖矿算力</div>
+                                <div class="box-body">
+                                    <ul class="site-list">
+                                        {% for site in minning %}
+                                             {% include 'web/partial/site_list_item.html' %}
+                                        {% endfor %}
+                                    </ul>
                                 </div>
+                            </div>
+                        </div>
+                        <div class=" grid-item">
+                            <div class="box box-half">
+                                <div class="box-header">区块链</div>
+                                <div class="box-body">
+                                    <ul class="site-list">
+                                        {% for site in blockchain %}
+                                             {% include 'web/partial/site_list_item.html' %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4 ">
                     <div class="box">
-                        <div class="box-header">边栏交易所</div>
+                        <div class="box-header">最新币价</div>
                         <div class="box-body">
-                            <ul class="site-list">
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li><li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
-                                <li>btc-china</li>
-                                <li>比特大陆</li>
-                                <li>云币</li>
-                                <li>比特币之家</li>
-                                <li>蚂蚁矿机</li>
+                            <ul class="coin-list">
+                                <li>
+                                    <span class="coin-name">
+                                        BTC-比特币
+                                    </span>
+                                    <span class="coin-price fall">
+                                        30000.3234
+                                    </span>
+                                    <span class="coin-1h-state fall">
+                                         2.3%
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <span class="coin-name">
+                                        BTC-比特币
+                                    </span>
+                                    <span class="coin-price raise">
+                                        30000.3234
+                                    </span>
+                                    <span class="coin-1h-state raise">
+                                         2.3%
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="coin-name">
+                                        BTC-比特币
+                                    </span>
+                                    <span class="coin-price fall">
+                                        30000.3234
+                                    </span>
+                                    <span class="coin-1h-state fall">
+                                         2.3%
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="coin-name">
+                                        BTC-比特币
+                                    </span>
+                                    <span class="coin-price raise">
+                                        30000.3234
+                                    </span>
+                                    <span class="coin-1h-state raise">
+                                         2.3%
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="coin-name">
+                                        BTC-比特币
+                                    </span>
+                                    <span class="coin-price fall">
+                                        30000.3234
+                                    </span>
+                                    <span class="coin-1h-state fall">
+                                         2.3%
+                                    </span>
+                                </li>
+
+
                             </ul>
                         </div>
                     </div>

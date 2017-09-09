@@ -394,6 +394,15 @@ ul li {
   border-bottom: 8px solid #f8f8f8;
   padding: 0 0 12px 20px;
 }
+.pricing-ele {
+  color: #434446;
+}
+.pricing-ele.fall {
+  color: #009632;
+}
+.pricing-ele.raise {
+  color: #f23333;
+}
 .col-lg-1,
 .col-lg-10,
 .col-lg-11,
@@ -489,6 +498,7 @@ body a:hover {
   height: 30px;
   text-align: left;
   padding-top: 35px;
+  padding-left: 30px;
 }
 #header .price-list > li .quote .quote-head {
   font-size: 12px;
@@ -500,10 +510,29 @@ body a:hover {
   font-family: DIN, Microsoft YaHei, Helvetica Neue, Helvetica, sans-serif;
   margin-top: -4px;
 }
-#header .price-list > li .quote .quote-price .g-icon svg {
-  margin-left: -5px;
-  height: 16px;
-  width: 16px;
+#header .price-list > li .quote .quote-price .price {
+  color: #434446;
+}
+#header .price-list > li .quote .quote-price .price.fall {
+  color: #009632;
+}
+#header .price-list > li .quote .quote-price .price.raise {
+  color: #f23333;
+}
+#header .price-list > li .quote .quote-price i {
+  position: relative;
+  top: -2px;
+  left: -5px;
+  color: #434446;
+}
+#header .price-list > li .quote .quote-price i.fall {
+  color: #009632;
+}
+#header .price-list > li .quote .quote-price i.raise {
+  color: #f23333;
+}
+#header .price-list > li .quote .quote-price i::before {
+  font-size: 24px;
 }
 #content .box {
   margin-top: 10px;
@@ -533,38 +562,80 @@ body a:hover {
 #content .box .box-body .site-list li a:hover {
   color: #ff552e;
 }
+#content .box .box-body .site-list li a.highlight {
+  color: #ff552e;
+}
 #content .box .box-body .site-list li:after {
   content: " ";
   display: block;
   height: 0;
   clear: both;
 }
+#content .box .box-body .coin-list li {
+  line-height: 30px;
+  font-size: 14px;
+  color: #434446;
+  padding-top: 10px;
+}
+#content .box .box-body .coin-list li .coin-name {
+  font-weight: 600;
+}
+#content .box .box-body .coin-list li .coin-price {
+  color: #434446;
+  padding-left: 20px;
+}
+#content .box .box-body .coin-list li .coin-price.fall {
+  color: #009632;
+}
+#content .box .box-body .coin-list li .coin-price.raise {
+  color: #f23333;
+}
+#content .box .box-body .coin-list li .coin-1h-state {
+  padding-left: 20px;
+  color: #434446;
+}
+#content .box .box-body .coin-list li .coin-1h-state.fall {
+  color: #009632;
+}
+#content .box .box-body .coin-list li .coin-1h-state.raise {
+  color: #f23333;
+}
 #content .bar-right {
   height: 10px;
   overflow: visible;
 }
+#grid[data-columns]::before {
+  content: '2 .column.size-1of2';
+}
+#grid .column {
+  float: left;
+  border-left: solid 10px #f8f8f8;
+}
+#grid .size-1of2 {
+  width: 50%;
+}
 #footer {
   margin-top: 10px;
   background-color: #fff;
+  height: 60px;
 }
 #footer .logo img {
-  width: 120px;
-  padding-top: 29px;
+  width: 280px;
 }
-#footer .info-list {
-  margin-top: 40px;
-  margin-bottom: 20px;
+#footer .footer-list li {
+  float: left;
+  height: 40px;
+  display: inline-block;
+  margin-left: 20px;
+  line-height: 40px;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
-#footer .info-list li {
-  font-size: 14px;
-  color: #aaa;
-  line-height: 28px;
+#footer .footer-list li.logo {
+  padding-top: 5px;
 }
-#footer .info-list .info-header {
-  color: #434446;
-  font-size: 16px;
-  margin-bottom: 20px;
-  font-weight: 600;
+#footer .footer-list .action i {
+  margin-right: 10px;
 }
 .test {
   color: black;
