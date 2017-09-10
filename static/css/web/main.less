@@ -57,8 +57,8 @@ body{
                 }
                 i{
                   position: relative;
-                  top: -2px;
-                  left: -5px;
+                  top: -3px;
+                  left: -3px;
                   .pricing-ele;
                 }
                 i::before{
@@ -94,9 +94,22 @@ body{
     }
 
     .box-body{
-       .site-list{
 
+       .site-list{
+          border-bottom: 1px solid @box-header-border-color;
+          padding-bottom: 5px;
           li{
+            &.tag-list-head{
+               color:@common-text-color;
+               font-weight: 600;
+            }
+            &.tag-list-tail{
+               color:@support-text-color;
+               float:right;
+               .clearfix;
+               display: inline-block;
+               //font-size:12px;
+            }
             a{
               color: @site-link-color;
 
@@ -116,7 +129,11 @@ body{
             margin-right:20px;
           }
        }
+       .site-list:last-child{
+         border-bottom:none;
+       }
        .coin-list{
+
           li{
             line-height: 30px;
             font-size: @font-size-normal;
@@ -124,15 +141,27 @@ body{
             padding-top:10px;
             .coin-name{
                 font-weight:600;
+                display: inline-block;
+                width:90px;
             }
             .coin-price{
                 .pricing-ele;
                 padding-left: 20px;
+                display: inline-block;
+                width: 100px;
             }
-            .coin-1h-state{
+            .coin-change{
                 padding-left:20px;
                 .pricing-ele;
+                display: inline-block;
             }
+          }
+          li.list-header{
+             color: @support-text-color;
+             //border-bottom : 1px solid @support-text-color;
+             .coin-name, .coin-price, .coin-change{
+               color: @support-text-color;
+             }
           }
        }
     }
@@ -207,6 +236,10 @@ body{
   //}
 }
 
+
+#bookmarkme{
+  cursor:pointer;
+}
 
 @import "dimentions/lg.less";
 @import "dimentions/md.less";

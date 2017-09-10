@@ -4,7 +4,6 @@ from taggit.managers import TaggableManager
 from model_utils.fields import StatusField
 from model_utils import Choices
 from caching.base import CachingManager, CachingMixin
-# from
 
 
 class Nav(CachingMixin, models.Model):

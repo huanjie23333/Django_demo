@@ -521,8 +521,8 @@ body a:hover {
 }
 #header .price-list > li .quote .quote-price i {
   position: relative;
-  top: -2px;
-  left: -5px;
+  top: -3px;
+  left: -3px;
   color: #434446;
 }
 #header .price-list > li .quote .quote-price i.fall {
@@ -550,11 +550,30 @@ body a:hover {
   font-weight: 700;
   overflow: hidden;
 }
+#content .box .box-body .site-list {
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 5px;
+}
 #content .box .box-body .site-list li {
   display: inline-block;
   line-height: 30px;
   color: #0E8ED8;
   margin-right: 20px;
+}
+#content .box .box-body .site-list li.tag-list-head {
+  color: #434446;
+  font-weight: 600;
+}
+#content .box .box-body .site-list li.tag-list-tail {
+  color: #aaa;
+  float: right;
+  display: inline-block;
+}
+#content .box .box-body .site-list li.tag-list-tail:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
 }
 #content .box .box-body .site-list li a {
   color: #0E8ED8;
@@ -571,6 +590,9 @@ body a:hover {
   height: 0;
   clear: both;
 }
+#content .box .box-body .site-list:last-child {
+  border-bottom: none;
+}
 #content .box .box-body .coin-list li {
   line-height: 30px;
   font-size: 14px;
@@ -579,10 +601,14 @@ body a:hover {
 }
 #content .box .box-body .coin-list li .coin-name {
   font-weight: 600;
+  display: inline-block;
+  width: 90px;
 }
 #content .box .box-body .coin-list li .coin-price {
   color: #434446;
   padding-left: 20px;
+  display: inline-block;
+  width: 100px;
 }
 #content .box .box-body .coin-list li .coin-price.fall {
   color: #009632;
@@ -590,15 +616,24 @@ body a:hover {
 #content .box .box-body .coin-list li .coin-price.raise {
   color: #f23333;
 }
-#content .box .box-body .coin-list li .coin-1h-state {
+#content .box .box-body .coin-list li .coin-change {
   padding-left: 20px;
   color: #434446;
+  display: inline-block;
 }
-#content .box .box-body .coin-list li .coin-1h-state.fall {
+#content .box .box-body .coin-list li .coin-change.fall {
   color: #009632;
 }
-#content .box .box-body .coin-list li .coin-1h-state.raise {
+#content .box .box-body .coin-list li .coin-change.raise {
   color: #f23333;
+}
+#content .box .box-body .coin-list li.list-header {
+  color: #aaa;
+}
+#content .box .box-body .coin-list li.list-header .coin-name,
+#content .box .box-body .coin-list li.list-header .coin-price,
+#content .box .box-body .coin-list li.list-header .coin-change {
+  color: #aaa;
 }
 #content .bar-right {
   height: 10px;
@@ -636,6 +671,9 @@ body a:hover {
 }
 #footer .footer-list .action i {
   margin-right: 10px;
+}
+#bookmarkme {
+  cursor: pointer;
 }
 .test {
   color: black;
