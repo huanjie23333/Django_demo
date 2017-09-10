@@ -94,9 +94,22 @@ body{
     }
 
     .box-body{
-       .site-list{
 
+       .site-list{
+          border-bottom: 1px solid @box-header-border-color;
+          padding-bottom: 5px;
           li{
+            &.tag-list-head{
+               color:@common-text-color;
+               font-weight: 600;
+            }
+            &.tag-list-tail{
+               color:@support-text-color;
+               float:right;
+               .clearfix;
+               display: inline-block;
+               //font-size:12px;
+            }
             a{
               color: @site-link-color;
 
@@ -115,6 +128,9 @@ body{
             color: @site-link-color;
             margin-right:20px;
           }
+       }
+       .site-list:last-child{
+         border-bottom:none;
        }
        .coin-list{
 
@@ -220,6 +236,10 @@ body{
   //}
 }
 
+
+#bookmarkme{
+  cursor:pointer;
+}
 
 @import "dimentions/lg.less";
 @import "dimentions/md.less";

@@ -3,12 +3,10 @@ from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
 from model_utils.fields import StatusField
 from model_utils import Choices
+from caching.base import CachingManager, CachingMixin
 
-class NavManager(models.Manager):
-    def get_category_sites(self, category):
-        pass
 
-class Nav(models.Model):
+class Nav(CachingMixin, models.Model):
     STATUS = Choices('remove', 'draft', 'published')
     cname = models.CharField(max_length=64, null=True, blank=True)
     ename = models.CharField(max_length=64, null=True, blank=True)
@@ -21,7 +19,7 @@ class Nav(models.Model):
     alias = models.CharField(max_length=64, null=True, blank=True)
     highlight = models.BooleanField(default=False)
 
-
+    objects = CachingManager()
 
     class Meta:
         ordering = ['-score']

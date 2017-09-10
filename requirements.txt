@@ -6,6 +6,7 @@ diskcache==2.9.0
 Django==1.11.4
 django-appconf==1.0.2
 django-bootstrap3==9.0.0
+django-cache-machine==0.9.1
 django-compressor==2.2
 django-extensions==1.9.0
 django-htmlmin==0.10.0

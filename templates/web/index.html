@@ -22,11 +22,13 @@
                             数字货币
                         </div>
                         <div class="box-body">
-                            <ul class="site-list">
-                                {% for site in coins %}
-                                     {% include 'web/partial/site_list_item.html' %}
+
+                                {% for tag_list in coins_tag_navs %}
+                                    <ul class="site-list">
+                                     {% include 'web/partial/tag_list.html' %}
+                                     </ul>
                                 {% endfor %}
-                            </ul>
+
                         </div>
                         <div class="box-footer"></div>
                     </div>
@@ -41,11 +43,11 @@
                             <div class="box box-half">
                                 <div class="box-header">行业资讯</div>
                                 <div class="box-body">
-                                    <ul class="site-list">
-                                        {% for site in sectorinfo %}
-                                             {% include 'web/partial/site_list_item.html' %}
-                                        {% endfor %}
-                                    </ul>
+                                    {% for tag_list in sector_info_tag_navs %}
+                                        <ul class="site-list">
+                                         {% include 'web/partial/tag_list.html' %}
+                                         </ul>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -53,11 +55,11 @@
                             <div class="box box-half">
                                 <div class="box-header">交易平台</div>
                                 <div class="box-body">
-                                    <ul class="site-list">
-                                        {% for site in exchanges %}
-                                             {% include 'web/partial/site_list_item.html' %}
-                                        {% endfor %}
-                                    </ul>
+                                    {% for tag_list in exchanges_tag_navs %}
+                                        <ul class="site-list">
+                                         {% include 'web/partial/tag_list.html' %}
+                                         </ul>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -65,11 +67,11 @@
                             <div class="box box-half">
                                 <div class="box-header">钱包支付</div>
                                 <div class="box-body">
-                                    <ul class="site-list">
-                                        {% for site in purse %}
-                                             {% include 'web/partial/site_list_item.html' %}
-                                        {% endfor %}
-                                    </ul>
+                                   {% for tag_list in purse_tag_navs %}
+                                        <ul class="site-list">
+                                         {% include 'web/partial/tag_list.html' %}
+                                         </ul>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -77,11 +79,11 @@
                             <div class="box box-half">
                                 <div class="box-header">挖矿算力</div>
                                 <div class="box-body">
-                                    <ul class="site-list">
-                                        {% for site in minning %}
-                                             {% include 'web/partial/site_list_item.html' %}
-                                        {% endfor %}
-                                    </ul>
+                                    {% for tag_list in minning_tag_navs %}
+                                        <ul class="site-list">
+                                         {% include 'web/partial/tag_list.html' %}
+                                         </ul>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -89,11 +91,11 @@
                             <div class="box box-half">
                                 <div class="box-header">区块链</div>
                                 <div class="box-body">
-                                    <ul class="site-list">
-                                        {% for site in blockchain %}
-                                             {% include 'web/partial/site_list_item.html' %}
-                                        {% endfor %}
-                                    </ul>
+                                   {% for tag_list in blockchain_tag_navs %}
+                                        <ul class="site-list">
+                                         {% include 'web/partial/tag_list.html' %}
+                                         </ul>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>

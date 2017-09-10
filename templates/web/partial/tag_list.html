@@ -1,0 +1,5 @@
+<li class="tag-list-head">{{ tag_list.tagname }}</li>
+{% for site in tag_list.navs %}
+    {% include 'web/partial/site_list_item.html' %}
+{% endfor %}
+<li class="tag-list-tail"><i class="fa fa-angle-right"></i></li>
