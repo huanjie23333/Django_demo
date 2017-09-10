@@ -4,6 +4,9 @@ from taggit.managers import TaggableManager
 from model_utils.fields import StatusField
 from model_utils import Choices
 
+class NavManager(models.Manager):
+    def get_category_sites(self, category):
+        pass
 
 class Nav(models.Model):
     STATUS = Choices('remove', 'draft', 'published')
@@ -17,6 +20,8 @@ class Nav(models.Model):
     category = models.CharField(max_length=64, null=False, blank=False)
     alias = models.CharField(max_length=64, null=True, blank=True)
     highlight = models.BooleanField(default=False)
+
+
 
     class Meta:
         ordering = ['-score']

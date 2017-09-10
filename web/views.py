@@ -16,6 +16,9 @@ class IndexView(TemplateView):
         context['purse'] = self.get_purse()
         context['minning']  = self.get_minning()
         context['blockchain']  = self.get_blockchain()
+
+        context['coins_tags'] = self.get_coins_tags()
+
         return context
 
     def get_recommend_nav(self):
@@ -38,6 +41,10 @@ class IndexView(TemplateView):
 
     def get_blockchain(self):
         return Nav.objects.filter(category='区块链')
+
+    def get_coins_tags(few):
+
+        pass
 
 
 

@@ -521,8 +521,8 @@ body a:hover {
 }
 #header .price-list > li .quote .quote-price i {
   position: relative;
-  top: -2px;
-  left: -5px;
+  top: -3px;
+  left: -3px;
   color: #434446;
 }
 #header .price-list > li .quote .quote-price i.fall {
@@ -579,10 +579,14 @@ body a:hover {
 }
 #content .box .box-body .coin-list li .coin-name {
   font-weight: 600;
+  display: inline-block;
+  width: 90px;
 }
 #content .box .box-body .coin-list li .coin-price {
   color: #434446;
   padding-left: 20px;
+  display: inline-block;
+  width: 100px;
 }
 #content .box .box-body .coin-list li .coin-price.fall {
   color: #009632;
@@ -590,15 +594,24 @@ body a:hover {
 #content .box .box-body .coin-list li .coin-price.raise {
   color: #f23333;
 }
-#content .box .box-body .coin-list li .coin-1h-state {
+#content .box .box-body .coin-list li .coin-change {
   padding-left: 20px;
   color: #434446;
+  display: inline-block;
 }
-#content .box .box-body .coin-list li .coin-1h-state.fall {
+#content .box .box-body .coin-list li .coin-change.fall {
   color: #009632;
 }
-#content .box .box-body .coin-list li .coin-1h-state.raise {
+#content .box .box-body .coin-list li .coin-change.raise {
   color: #f23333;
+}
+#content .box .box-body .coin-list li.list-header {
+  color: #aaa;
+}
+#content .box .box-body .coin-list li.list-header .coin-name,
+#content .box .box-body .coin-list li.list-header .coin-price,
+#content .box .box-body .coin-list li.list-header .coin-change {
+  color: #aaa;
 }
 #content .bar-right {
   height: 10px;

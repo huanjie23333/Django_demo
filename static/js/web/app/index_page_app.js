@@ -4,9 +4,10 @@ require([
         'subapp/data/datafeed',
         'subapp/data/feed',
         'subapp/data/allcoinprice',
-        'subapp/adapters/adapter',
-        'subapp/dictionarys/coinmarketcap',
-        'libs/salvattore'
+        'subapp/adapters/coinmarketcapAdapter',
+        'libs/salvattore',
+        'subapp/tools/bookmark'
+
     ],
     function (polyfill,
               $,
@@ -14,21 +15,25 @@ require([
               Feed,
               AllCoin,
               Adapter,
-              CoinMarketDic,
-              Layout
+              Layout,
+              BookMark
               ) {
         var datafeed = new DataFeed();
+
+
         //here for side bar price list render
         var all_price_feed = new Feed({
-            url: 'https://api.coinmarketcap.com/v1/ticker/?limit=20&convert=CNY',
+            url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',
             method: 'GET',
             interval: 5000
         });
         var all_coin = new AllCoin({
             feed: all_price_feed,
-            adapter : new Adapter(CoinMarketDic)
+            adapter : new Adapter()
         });
         all_price_feed.run();
+        //
+
 
         //
         console.log('finish');
