@@ -43,6 +43,12 @@ class Dapps(CachingMixin, models.Model):
     ropsten = models.URLField(max_length=255)
     site = models.URLField(max_length=255)
     github = models.URLField(max_length=255)
+    blog = models.URLField(max_length=255)
+    wiki = models.URLField(max_length=255)
+    slack = models.URLField(max_length=255)
+    gitter = models.URLField(max_length=255)
+    reddit = models.URLField(max_length=255)
+
     created_at = models.DateTimeField(default=timezone.now, db_index=True)
     updated_at = models.DateTimeField(default=timezone.now, db_index=True)
 
