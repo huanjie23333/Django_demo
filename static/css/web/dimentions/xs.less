@@ -4,6 +4,16 @@
 //for xs screen , and all screen NOT sx
 
 @media (max-width:768px){
+  #grid[data-columns]::before{
+  content: '1 .column.size-1of1';
+  }
+  #grid{
+    .column {
+      float: left;
+      border-left: 0px;
+    }
+    .size-1of1 { width: 100%; }
+  }
 
 }
 
