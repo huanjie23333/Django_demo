@@ -76,7 +76,8 @@ body{
 @box-header-font-color:#ff552e;
 
 #content{
-
+  background-color:@default-content-background;
+  padding-bottom:@gutter-size;
   .box{
     margin-top: @gutter-size;
     background-color:@box-bg-color;
@@ -181,7 +182,7 @@ body{
 #grid{
   .column {
     float: left;
-    border-left: solid 10px @default-background;
+    border-left: solid 10px @default-content-background;
   }
   .size-1of2 { width: 50%; }
 }
@@ -189,7 +190,7 @@ body{
 
 
 #footer{
-  margin-top:10px;
+  margin-top:0px;
   background-color:#fff;
   height:60px;
   .logo{
