@@ -1,16 +1,16 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
-from nav.serializers import DappsSerializer
-from nav.models import Dapps
+from nav.serializers import ProjectSerializer
+from nav.models import Project
 
 
-class DappsListAPIView(ListCreateAPIView):
-    serializer_class = DappsSerializer
-    queryset = Dapps.objects.all()
-    model = Dapps
+class ProjectListAPIView(ListCreateAPIView):
+    serializer_class = ProjectSerializer
+    queryset = Project.objects.all()
+    model = Project
 
 
-class DappsDetailAPIView(RetrieveAPIView):
-    serializer_class = DappsSerializer
-    queryset = Dapps.objects.all()
-    model = Dapps
+class ProjectDetailAPIView(RetrieveAPIView):
+    serializer_class = ProjectSerializer
+    queryset = Project.objects.all()
+    model = Project
     lookup_field = 'slug'

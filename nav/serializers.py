@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from nav.models import Dapps
+from nav.models import Project
 
 
-class DappsSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Dapps
+        model = Project
         fields = '__all__'

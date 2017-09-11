@@ -34,7 +34,7 @@ class Nav(CachingMixin, models.Model):
         return self.cname or self.ename
 
 
-class Dapps(CachingMixin, models.Model):
+class Project(CachingMixin, models.Model):
     slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
     name = models.CharField(max_length=128, default='')
     founder = models.CharField(max_length=128, default='')
@@ -51,6 +51,10 @@ class Dapps(CachingMixin, models.Model):
 
     created_at = models.DateTimeField(default=timezone.now, db_index=True)
     updated_at = models.DateTimeField(default=timezone.now, db_index=True)
+
+    tags = TaggableManager()
+
+    objects = CachingManager()
 
     def __str__(self):
         return self.name
