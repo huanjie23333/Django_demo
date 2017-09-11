@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -28,7 +27,6 @@ DEBUG = True
 SITE_ID = 1
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -44,6 +42,9 @@ INSTALLED_APPS = [
     'compressor',
     'taggit',
     'django_extensions',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
 
     'web',
     'nav'
@@ -83,7 +84,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'quark.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -94,6 +94,11 @@ DATABASES = {
     }
 }
 
+##
+# session
+##
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+SESSION_FILE_PATH = '/tmp/'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -113,7 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -127,21 +131,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 USE_X_FORWARDED_HOST = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL              = '//static.bit03.com/static/'
-STATIC_ROOT             = '/data/www/static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = '/data/www/static/'
 
 STATICFILES_DIRS = (
     os.path.join(os.getcwd(), 'static'),
 )
-
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -149,7 +149,6 @@ STATICFILES_FINDERS = (
     #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'compressor.finders.CompressorFinder',
 )
-
 
 HTML_MINIFY = True
 
@@ -173,6 +172,23 @@ COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 COMPRESS_OUTPUT_DIR = 'release'
 COMPRESS_OFFLINE = True
 
-
-
 IS_LOCAL_TESTING = False
+
+
+##
+# rest framework
+##
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'PAGE_SIZE': 30,
+}
