@@ -7,3 +7,5 @@ class DappsListAPIView(ListAPIView):
     serializer_class = DappsSerializer
     queryset = Dapps.objects.all()
     model = Dapps
+
+    
