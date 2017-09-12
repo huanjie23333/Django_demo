@@ -1,5 +1,7 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django_extensions.db import fields
 from taggit.managers import TaggableManager
 from model_utils.fields import StatusField
 from model_utils import Choices
@@ -24,7 +26,6 @@ class Nav(CachingMixin, models.Model):
     class Meta:
         ordering = ['-score']
 
-
     def __str__(self):
         return self.ename or self.cname
 
@@ -32,4 +33,28 @@ class Nav(CachingMixin, models.Model):
     def main_name(self):
         return self.cname or self.ename
 
-# Create your models here.
+
+class Project(CachingMixin, models.Model):
+    slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
+    name = models.CharField(max_length=128, default='')
+    founder = models.CharField(max_length=128, default='')
+    license = models.CharField(max_length=255, default='')
+    mainnet_contract_address = models.URLField(max_length=255)
+    ropsten = models.URLField(max_length=255, null=True)
+    site = models.URLField(max_length=255, null=True)
+    github = models.URLField(max_length=255, null=True)
+    blog = models.URLField(max_length=255, null=True)
+    wiki = models.URLField(max_length=255, null=True)
+    slack = models.URLField(max_length=255, null=True)
+    gitter = models.URLField(max_length=255, null=True)
+    reddit = models.URLField(max_length=255, null=True)
+
+    created_at = models.DateTimeField(default=timezone.now, db_index=True)
+    updated_at = models.DateTimeField(default=timezone.now, db_index=True)
+
+    tags = TaggableManager()
+
+    objects = CachingManager()
+
+    def __str__(self):
+        return self.name
