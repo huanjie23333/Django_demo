@@ -1,14 +1,13 @@
 {% load static %}
 {% load compress bootstrap3 %}
 <!DOCTYPE html>
-<!--[if lt IE 9]><script type="text/javascript">var tip = '建议升级你的浏览器（如 Chrome, Firefox）以获得更好的体验！',
-    url = 'http://browsehappy.com';
-document.execCommand('stop');
-alert(tip);
-window.location.href = url;</script><![endif]-->
+
+
+
 
 <html{% if LANGUAGE_CODE %} lang="{{ LANGUAGE_CODE }}"{% endif %}>
 <head>
+
     {% include "base/snippets/meta.html" %}
     <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
     <title>
@@ -31,8 +30,15 @@ window.location.href = url;</script><![endif]-->
     {% endblock %}
 
     {% block browser_compat %}
-        {#   put browser compat code here     #}
+        {#   put browser compat code here  #}
     {% endblock %}
+
+ <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+ <![endif]-->
 </head>
 
 <body class="">
@@ -65,8 +71,8 @@ window.location.href = url;</script><![endif]-->
 {% endblock %}
 {# footer ends --------#}
 {% block basic_script %}
-    {% compress css %}
-       <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>
+    {% compress js %}
+{#       <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>#}
     {% endcompress %}
 {% endblock %}
 

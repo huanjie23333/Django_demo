@@ -21,7 +21,7 @@ class IndexView(TemplateView):
 
         context['coins_tag_navs'] = self.get_tag_for_category('数字货币')
         context['sector_info_tag_navs'] = self.get_tag_for_category('行业资讯')
-        context['exchanges_tag_navs'] = self.get_tag_for_category('交易平台')
+        context['exchanges_tag_navs'] = self.get_tag_for_category('交易理财')
         context['purse_tag_navs'] = self.get_tag_for_category('钱包支付')
         context['minning_tag_navs'] = self.get_tag_for_category('挖矿算力')
         context['blockchain_tag_navs'] = self.get_tag_for_category('区块链')
