@@ -7,6 +7,10 @@ from model_utils.fields import StatusField
 from model_utils import Choices
 from caching.base import CachingManager, CachingMixin
 
+class Category(CachingMixin, models.Model):
+    cname = models.CharField(max_length=64, null=False, blank=False)
+    ename = models.CharField(max_length=64, null=False, blank=False)
+
 
 class Nav(CachingMixin, models.Model):
     STATUS = Choices('remove', 'draft', 'published')
@@ -20,6 +24,7 @@ class Nav(CachingMixin, models.Model):
     category = models.CharField(max_length=64, null=False, blank=False)
     alias = models.CharField(max_length=64, null=True, blank=True)
     highlight = models.BooleanField(default=False)
+    cat = models.ForeignKey(Category, related_name='navs')
 
     objects = CachingManager()
 
