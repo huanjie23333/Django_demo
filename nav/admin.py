@@ -18,7 +18,6 @@ class CategoryFilter(SimpleListFilter):
             return queryset
 
 class NavAdmin(admin.ModelAdmin):
-
     list_filter = (CategoryFilter,'status','highlight')
     list_display = ['main_name','cname','location','web_site', 'ename', \
                     'status', 'cate', \

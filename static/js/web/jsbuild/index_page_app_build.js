@@ -682,6 +682,14 @@ define('subapp/adapters/coinmarketcapAdapter',['subapp/adapters/adapter', 'subap
             RIC                :"黎曼币RIC",
             TAG                :"奖赏币TAG",
             TMC                :"时代币TMC",
+            XMR                :"门罗币XMR",
+             MIOTA            :"艾欧塔MIOTA",
+             OMG               :"OMG",
+             NEO                  :"小蚁股NEO",
+             BCC                  :"比特币现金BCC",
+             QTUM                  : "量子链QTUM",
+             STRAT              :"斯特拉STRAT",
+             ZEC                   :"Zcash|ZEC",
             };
 
         var CoinMarketAdapter = AdapterBase.extend({
