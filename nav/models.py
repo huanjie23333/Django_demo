@@ -26,7 +26,7 @@ class Nav(CachingMixin, models.Model):
     tags = TaggableManager(blank=True)
     status = StatusField(_('status'), choices_name='STATUS', default=STATUS.published)
     # deprecated , will be removed
-    category = models.CharField(max_length=64, null=False, blank=False)
+    # category = models.CharField(max_length=64, null=True, blank=True)
     alias = models.CharField(max_length=64, null=True, blank=True)
     highlight = models.BooleanField(default=False)
     #add foreign key for category

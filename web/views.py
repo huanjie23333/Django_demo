@@ -5,7 +5,7 @@ from nav.models import Nav, Category
 from taggit.models import TaggedItem, Tag
 from django.db.models import Count
 
-INDEX_CATEGORY_IDS_LIST=[1,2,3,4,5,6]
+INDEX_CATEGORY_IDS_LIST=[1,2,3,4,5,6,7]
 
 class CategoryView(TemplateView):
     template_name = 'web/category.html'
@@ -60,13 +60,16 @@ class IndexView(TemplateView):
         # context['blockchain_tag_navs'] = self.get_tag_for_category(category_id=6)
 
         categories = list(Category.objects.filter(id__in=INDEX_CATEGORY_IDS_LIST))
+        cates = dict([(obj.id, obj) for obj in categories])
+        sorted_cates = [cates[id] for id in INDEX_CATEGORY_IDS_LIST]
+        #sorted
 
         context['categories'] = [ {
             'category_name': cate.cname,
             'category_ename': cate.ename,
             'cate_tags': self.get_tag_for_category(cate.id)
         }
-            for cate in categories
+            for cate in sorted_cates
         ]
         return context
 
@@ -89,6 +92,7 @@ class IndexView(TemplateView):
                          }
                          for obj in tagids]
         return tag_nav_list
+
 
     def get_nav_ids_by_category(self, category_id):
         return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
