@@ -15,5 +15,37 @@
     .size-1of1 { width: 100%; }
   }
 
+  #header{
+    .main-logo{
+       height: 30px;
+       line-height: 40px;
+       padding-top:10px;
+       img{
+         height:30px;
+       }
+    }
+    .price-list{
+      border-top: 1px solid #ddd;
+      margin-top: 10px;
+    }
+    .price-list > li{
+        height: 60px;
+        .quote{
+          padding-top:5px;
+          padding-left:0px;
+          padding-right:15px;
+          .quote-price{
+             font-size:20px;
+             position: relative;
+             i::before{
+               font-size:0.9em;
+               position:relative;
+               top:2px;
+             }
+          }
+        }
+    }
+  }
+
 }
 

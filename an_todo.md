@@ -16,5 +16,12 @@ https://moz.com/learn/seo/internal-link
 
 5. admin interface upgrade
 
+------------- for index 
+
+6. ALTER TABLE `quark`.`nav_category` 
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`id`, `cname`, `ename`);
+ 
+
 
 

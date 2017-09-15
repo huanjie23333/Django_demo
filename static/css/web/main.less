@@ -9,7 +9,7 @@ body{
     display: none;
   }
   color: @common-text-color;
-  font-size:@font-size-normal;
+  font-size:@font-size-normal;m
   a{
    color:@link-color;
    line-height: @base-line-height;
@@ -92,6 +92,9 @@ body{
       color: @box-header-font-color;
       font-weight: 700;
       overflow: hidden;
+      a, a:hover{
+         color: @box-header-font-color;
+      }
     }
 
     .box-body{
@@ -99,16 +102,25 @@ body{
        .site-list{
           border-bottom: 1px solid @box-header-border-color;
           padding-bottom: 5px;
+          position:relative;
+          padding-right: 5px;
           li{
             &.tag-list-head{
                color:@common-text-color;
                font-weight: 600;
             }
             &.tag-list-tail{
+               a, a:hover{
+                 color: @support-text-color;
+                 text-decoration: none;
+               }
                color:@support-text-color;
                float:right;
                .clearfix;
                display: inline-block;
+               position:absolute;
+               right:0px;
+               bottom: 5px;
                //font-size:12px;
             }
             a{
@@ -132,6 +144,7 @@ body{
        }
        .site-list:last-child{
          border-bottom:none;
+         margin-bottom:0px;
        }
        .coin-list{
 
@@ -174,6 +187,11 @@ body{
   }
 }
 
+.category-content{
+  .tag-list-tail{
+     display:none!important;
+  }
+}
 
 //for grid layout
 #grid[data-columns]::before{
