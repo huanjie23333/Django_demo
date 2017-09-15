@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+
+{% block content %}
+    <section id="content">
+        <div class="container static-content">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h2>关于我们</h2>
+                    <p>
+                       区块链导航 ChainDH.com 第一站，创建于 2017 年 9 月，是中国前沿的区块链上网导航站点，亦是不断增长的区块链技术爱好者、区块链资产拥趸、用户上网的好帮手、中文上网导航的领先品牌。
+                    </p>
+
+                    <H2>了解区块链，从这里开始！</H2>
+                    <p>
+                        ChainDH 专注于区块链以及区块链资产、技术、金融科技 FinTech 等领域，始终致力于为用户提供简单、实用、贴心的导航服务。通过 ChainDH 更容易深入了解区块链资产，如比特币、以太坊、莱特币，乃至其他颇有潜力的区块链项目，使数字理财上网更轻松、行业资讯内容更精彩，是我们每一个 ChainDH.com 同仁努力的目标。
+                    </p>
+                    <h2> ChainDH.com 区块链导航</h2>
+                    <p>作为数字货币上网导航领先品牌，免不了被部分网站所模仿，为了保证你的上网安全，请牢记我们的网址 <a href="http://www.chaindh.com">www.chaindh.com</a></p>
+                    <p>如果你与我们一样喜欢 ChainDH，请把它也分享给你的朋友吧！:)</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{##}
+{% block basic_script %}
+     {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

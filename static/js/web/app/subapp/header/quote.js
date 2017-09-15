@@ -25,10 +25,10 @@ define(['libs/Class','underscore'],function(Class,_){
            }
            if (change > 0){
                $(elem).find('.price').removeClass('fall').addClass('raise');
-               $(elem).find('i').removeClass('fall fa-long-arrow-down').addClass('fa-long-arrow-up raise');
+               $(elem).find('i').removeClass('fall fa-arrow-down').addClass('fa-arrow-up raise');
            }else{
                $(elem).find('.price').removeClass('raise').addClass('fall');
-               $(elem).find('i').removeClass('fa-long-arrow-up raise').addClass('fall fa-long-arrow-down');
+               $(elem).find('i').removeClass('fa-arrow-up raise').addClass('fall fa-arrow-down');
            }
 
            return;

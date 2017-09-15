@@ -523,6 +523,9 @@ ul li {
     margin-right: 0;
   }
 }
+body.static-body {
+  height: 100%;
+}
 body {
   color: #434446;
   font-size: 14px;
@@ -533,12 +536,12 @@ body {
 body .seo-only {
   display: none;
 }
-body m a {
+body a {
   color: #434446;
   line-height: 1.5em;
   text-decoration: none;
 }
-body m a:hover {
+body a:hover {
   text-decoration: none;
 }
 #header {
@@ -547,6 +550,9 @@ body m a:hover {
 #header .main-logo {
   height: 110px;
   line-height: 110px;
+}
+#header .main-logo img {
+  width: 200px;
 }
 #header .price-list > li {
   float: left;
@@ -557,17 +563,17 @@ body m a:hover {
 #header .price-list > li .quote {
   vertical-align: middle;
   height: 30px;
-  text-align: left;
+  text-align: center;
   padding-top: 35px;
   padding-left: 30px;
 }
 #header .price-list > li .quote .quote-head {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 #header .price-list > li .quote .quote-price {
-  font-size: 30px;
-  font-weight: 400;
+  font-size: 28px;
+  font-weight: 600;
   font-family: DIN, Microsoft YaHei, Helvetica Neue, Helvetica, sans-serif;
   margin-top: -4px;
 }
@@ -582,7 +588,7 @@ body m a:hover {
 }
 #header .price-list > li .quote .quote-price i {
   position: relative;
-  top: -3px;
+  top: 0px;
   left: -3px;
   color: #434446;
 }
@@ -738,22 +744,76 @@ body m a:hover {
   height: 60px;
 }
 #footer .logo img {
-  width: 280px;
+  width: 140px;
 }
 #footer .footer-list li {
   float: left;
   height: 40px;
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 40px;
   line-height: 40px;
   padding-top: 15px;
   padding-bottom: 10px;
 }
+#footer .footer-list li a,
+#footer .footer-list li a:hover {
+  color: #434446;
+  text-decoration: none;
+}
 #footer .footer-list li.logo {
-  padding-top: 5px;
+  padding-top: 15px;
+  margin-left: 0px;
 }
 #footer .footer-list .action i {
-  margin-right: 10px;
+  margin-right: 5px;
+}
+.static-content {
+  padding-top: 30px;
+  text-align: left;
+  min-height: 600px;
+  max-width: 900px;
+}
+.static-content h1,
+.static-content h2,
+.static-content h3 {
+  margin: 30px auto ;
+  text-align: left;
+}
+.static-content a,
+.static-content a:hover {
+  color: #0E8ED8;
+}
+.static-content h2 {
+  font-size: 26px;
+}
+.static-content h3 {
+  font-size: 18px;
+}
+.static-content .tag-item {
+  margin-right: 35px;
+  line-height: 2em;
+}
+.static-content .cate-tag-wrapper {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+.static-content .cate-tag-wrapper:last-child {
+  border-bottom: 0px;
+}
+.static-content .cate-tag-wrapper h3 {
+  margin: 20px auto;
+}
+.static-content .cate-tag-wrapper .cate-tags {
+  text-wrap: none;
+}
+.static-content .cate-tag-wrapper .cate-tags:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.static-content .cate-tag-wrapper .cate-tags li {
+  float: left;
 }
 #bookmarkme {
   cursor: pointer;
@@ -761,6 +821,9 @@ body m a:hover {
 @media (max-width: 1199px) {
   .container {
     width: 95%;
+  }
+  #header .main-logo img {
+    width: 160px;
   }
 }
 @media (max-width: 768px) {
@@ -781,6 +844,7 @@ body m a:hover {
   }
   #header .main-logo img {
     height: 30px;
+    width: auto;
   }
   #header .price-list {
     border-top: 1px solid #ddd;
@@ -790,7 +854,7 @@ body m a:hover {
     height: 60px;
   }
   #header .price-list > li .quote {
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 0px;
     padding-right: 15px;
   }

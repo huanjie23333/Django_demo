@@ -2,20 +2,23 @@
 <section id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-10 col-xs-12">
+            <div class="col-sm-10 col-xs-8">
                 <ul class="footer-list">
                     <li class="logo">
-                        <img src="{% static 'images/logo-bottom.png' %}">
+                        <img src="{% static 'images/chaindh-dh-bottom.png' %}">
                     </li>
-                    <li>关于我们</li>
-                    <li>网站地图</li>
+                    <li><a href="{% url 'web_about' %}">关于我们</a></li>
+                    <li><a href="{% url 'web_sitemap' %}">全站地图</a></li>
 {#                    <li>备案信息</li>#}
                 </ul>
             </div>
-            <div class="col-sm-2 col-xs-12">
+            <div class="col-sm-2  col-xs-4">
                 <ul class="footer-list">
-                    <li class="action" id="bookmarkme"><i class="fa fa-star"></i>收藏本站</li>
-
+                    <li class="action" id="bookmarkme">
+                        <a>
+                            <i class="fa fa-star"></i>收藏本站
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+
+{% block content %}
+    <section id="content">
+        <div class="container static-content">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h2>全站地图</h2>
+                    {% for cate in category_tag_list %}
+                        <div class="cate-tag-wrapper">
+                            <div class="cate-name">
+                                <h3>
+                                    <a href="{% url 'category_page' cate.cateename %}">
+                                    {{ cate.catename }}
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="cate-tags">
+                                <ul>
+                                {% for tag in cate.tag_list %}
+                                     <li class="tag-item">
+                                         <a href="{% url 'category_page' cate.cateename %}">
+                                            {{ tag.tag__name }}
+                                         </a>
+                                     </li>
+                                {% endfor  %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+            </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{##}
+{% block basic_script %}
+     {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

@@ -98,6 +98,38 @@ class IndexView(TemplateView):
         return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
 
 
+class AboutView(TemplateView):
+    template_name = 'web/about.html'
+    pass
+
+
+class SiteMapView(TemplateView):
+    template_name = 'web/sitemap.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SiteMapView, self).get_context_data(**kwargs)
+        context['category_tag_list'] = self.get_all_tag_list()
+        return context
+
+    def get_all_tag_list(self):
+        categories = Category.objects.all()
+        return [{
+            'catename':cate.cname,
+            'cateename':cate.ename,
+            'tag_list': self.get_cate_tag_list(cate.id)
+        } for cate in categories ]
+
+
+    def get_cate_tag_list(self, category_id):
+        nav_ids  = list(self.get_nav_ids_by_category(category_id))
+        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids)\
+                           .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id'))\
+                           .order_by('-tagCount'))
+        return tagids
+
+
+    def get_nav_ids_by_category(self, category_id):
+        return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
 
 
 
