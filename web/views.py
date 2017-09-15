@@ -5,7 +5,7 @@ from nav.models import Nav, Category
 from taggit.models import TaggedItem, Tag
 from django.db.models import Count
 
-INDEX_CATEGORY_IDS_LIST=[1,2,7,3,4,5,6]
+INDEX_CATEGORY_IDS_LIST=[1,2,3,4,5,6,7]
 
 class CategoryView(TemplateView):
     template_name = 'web/category.html'
