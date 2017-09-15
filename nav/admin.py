@@ -19,11 +19,11 @@ class CategoryFilter(SimpleListFilter):
 
 class NavAdmin(admin.ModelAdmin):
     list_filter = (CategoryFilter,'status','highlight')
-    list_display = ['main_name','cname','location','web_site', 'ename', \
+    list_display = ['main_name','web_site', \
                     'status', 'cate', \
                     'tag_list', 'highlight',]
     search_fields = ('cname', 'ename', )
-    list_editable = ('status', 'highlight' ,'cate')
+    list_editable = ('status', 'highlight')
 
 
     def get_queryset(self, request):
