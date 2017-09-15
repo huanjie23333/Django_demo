@@ -2,4 +2,8 @@
 {% for site in tag_list.navs %}
     {% include 'web/partial/site_list_item.html' %}
 {% endfor %}
-<li class="tag-list-tail"><i class="fa fa-angle-right"></i></li>
+<li class="tag-list-tail">
+     <a href="{% url 'category_page' cate_ename %}">
+     <i class="fa fa-angle-right"></i>
+     </a>
+</li>

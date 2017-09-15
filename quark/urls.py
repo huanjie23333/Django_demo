@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from web.views import IndexView
+from web.views import IndexView, CategoryView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^api/dapps/', include('nav.urls.api', namespace='dapps')),
-    url(r'^$', IndexView.as_view(), name='home_page'),
+    url(r'^$', IndexView.as_view(), name='web_index'),
+    url(r'^cate/(?P<cate_ename>[a-zA-Z_]+).htm$', CategoryView.as_view(), name='category_page'),
 ]
 
 
@@ -30,3 +31,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 if settings.IS_LOCAL_TESTING:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

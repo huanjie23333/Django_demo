@@ -533,12 +533,12 @@ body {
 body .seo-only {
   display: none;
 }
-body a {
+body m a {
   color: #434446;
   line-height: 1.5em;
   text-decoration: none;
 }
-body a:hover {
+body m a:hover {
   text-decoration: none;
 }
 #header {
@@ -615,9 +615,15 @@ body a:hover {
   font-weight: 700;
   overflow: hidden;
 }
+#content .box .box-header a,
+#content .box .box-header a:hover {
+  color: #ff552e;
+}
 #content .box .box-body .site-list {
   border-bottom: 1px solid #f3f3f3;
   padding-bottom: 5px;
+  position: relative;
+  padding-right: 5px;
 }
 #content .box .box-body .site-list li {
   display: inline-block;
@@ -633,6 +639,14 @@ body a:hover {
   color: #aaa;
   float: right;
   display: inline-block;
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+}
+#content .box .box-body .site-list li.tag-list-tail a,
+#content .box .box-body .site-list li.tag-list-tail a:hover {
+  color: #aaa;
+  text-decoration: none;
 }
 #content .box .box-body .site-list li.tag-list-tail:after {
   content: " ";
@@ -657,6 +671,7 @@ body a:hover {
 }
 #content .box .box-body .site-list:last-child {
   border-bottom: none;
+  margin-bottom: 0px;
 }
 #content .box .box-body .coin-list li {
   line-height: 30px;
@@ -703,6 +718,9 @@ body a:hover {
 #content .bar-right {
   height: 10px;
   overflow: visible;
+}
+.category-content .tag-list-tail {
+  display: none!important;
 }
 #grid[data-columns]::before {
   content: '2 .column.size-1of2';
@@ -755,6 +773,35 @@ body a:hover {
   }
   #grid .size-1of1 {
     width: 100%;
+  }
+  #header .main-logo {
+    height: 30px;
+    line-height: 40px;
+    padding-top: 10px;
+  }
+  #header .main-logo img {
+    height: 30px;
+  }
+  #header .price-list {
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+  }
+  #header .price-list > li {
+    height: 60px;
+  }
+  #header .price-list > li .quote {
+    padding-top: 5px;
+    padding-left: 0px;
+    padding-right: 15px;
+  }
+  #header .price-list > li .quote .quote-price {
+    font-size: 20px;
+    position: relative;
+  }
+  #header .price-list > li .quote .quote-price i::before {
+    font-size: 0.9em;
+    position: relative;
+    top: 2px;
   }
 }
 .test {

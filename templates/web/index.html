@@ -17,106 +17,105 @@
                         </div>
                         <div class="box-footer"></div>
                     </div>
-                    <div class="box">
-                        <div class="box-header">
-                            数字货币
-                        </div>
-                        <div class="box-body">
+                   {% for cate in categories %}
+                        <div class="box">
+                                <div class="box-header">
+                                  <a href="{% url 'category_page' cate.category_ename %}">
+                                      {{ cate.category_name }}
+                                  </a>
+                                </div>
+                                <div class="box-body">
 
-                                {% for tag_list in coins_tag_navs %}
-                                    <ul class="site-list">
-                                     {% include 'web/partial/tag_list.html' %}
-                                     </ul>
-                                {% endfor %}
-
-                        </div>
-                        <div class="box-footer"></div>
-                    </div>
-                    <div class="inner-row row" id="grid" data-columns>
-                        {#                        <div class="col-sm-12">#}
-                        {#                            #}
-                        {#                        </div>#}
-                        {#                        <div class="col-sm-12">#}
-                        {#                                #}
-                        {#                        </div>#}
-                        <div class=" grid-item">
-                            <div class="box box-half">
-                                <div class="box-header">行业资讯</div>
-                                <div class="box-body">
-                                    {% for tag_list in sector_info_tag_navs %}
+                                    {% for tag_list in cate.cate_tags %}
+                                        {% with cate_ename=cate.category_ename %}
                                         <ul class="site-list">
-                                         {% include 'web/partial/tag_list.html' %}
-                                         </ul>
+                                            {% include 'web/partial/tag_list.html' %}
+                                        </ul>
+                                        {% endwith %}
                                     {% endfor %}
                                 </div>
-                            </div>
+                                <div class="box-footer"></div>
                         </div>
-                        <div class=" grid-item">
-                            <div class="box box-half">
-                                <div class="box-header">交易理财</div>
-                                <div class="box-body">
-                                    {% for tag_list in exchanges_tag_navs %}
-                                        <ul class="site-list">
-                                         {% include 'web/partial/tag_list.html' %}
-                                         </ul>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="box box-half">
-                                <div class="box-header">钱包支付</div>
-                                <div class="box-body">
-                                   {% for tag_list in purse_tag_navs %}
-                                        <ul class="site-list">
-                                         {% include 'web/partial/tag_list.html' %}
-                                         </ul>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" grid-item">
-                            <div class="box box-half">
-                                <div class="box-header">挖矿算力</div>
-                                <div class="box-body">
-                                    {% for tag_list in minning_tag_navs %}
-                                        <ul class="site-list">
-                                         {% include 'web/partial/tag_list.html' %}
-                                         </ul>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" grid-item">
-                            <div class="box box-half">
-                                <div class="box-header">区块链</div>
-                                <div class="box-body">
-                                   {% for tag_list in blockchain_tag_navs %}
-                                        <ul class="site-list">
-                                         {% include 'web/partial/tag_list.html' %}
-                                         </ul>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   {% endfor %}
+{#                    <div class="inner-row row" id="grid" data-columns>#}
+{#                        <div class=" grid-item">#}
+{#                            <div class="box box-half">#}
+{#                                <div class="box-header">行业资讯</div>#}
+{#                                <div class="box-body">#}
+{#                                    {% for tag_list in sector_info_tag_navs %}#}
+{#                                        <ul class="site-list">#}
+{#                                         {% include 'web/partial/tag_list.html' %}#}
+{#                                         </ul>#}
+{#                                    {% endfor %}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class=" grid-item">#}
+{#                            <div class="box box-half">#}
+{#                                <div class="box-header">交易理财</div>#}
+{#                                <div class="box-body">#}
+{#                                    {% for tag_list in exchanges_tag_navs %}#}
+{#                                        <ul class="site-list">#}
+{#                                         {% include 'web/partial/tag_list.html' %}#}
+{#                                         </ul>#}
+{#                                    {% endfor %}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="grid-item">#}
+{#                            <div class="box box-half">#}
+{#                                <div class="box-header">钱包支付</div>#}
+{#                                <div class="box-body">#}
+{#                                   {% for tag_list in purse_tag_navs %}#}
+{#                                        <ul class="site-list">#}
+{#                                         {% include 'web/partial/tag_list.html' %}#}
+{#                                         </ul>#}
+{#                                    {% endfor %}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class=" grid-item">#}
+{#                            <div class="box box-half">#}
+{#                                <div class="box-header">挖矿算力</div>#}
+{#                                <div class="box-body">#}
+{#                                    {% for tag_list in minning_tag_navs %}#}
+{#                                        <ul class="site-list">#}
+{#                                         {% include 'web/partial/tag_list.html' %}#}
+{#                                         </ul>#}
+{#                                    {% endfor %}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class=" grid-item">#}
+{#                            <div class="box box-half">#}
+{#                                <div class="box-header">区块链</div>#}
+{#                                <div class="box-body">#}
+{#                                   {% for tag_list in blockchain_tag_navs %}#}
+{#                                        <ul class="site-list">#}
+{#                                         {% include 'web/partial/tag_list.html' %}#}
+{#                                         </ul>#}
+{#                                    {% endfor %}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                 </div>
                 <div class="col-sm-4 col-xs-12">
                     <div class="box">
                         <div class="box-header">最新币价</div>
                         <div class="box-body">
                             <ul class="coin-list" id="coin_list">
-                                <li class="list-header">
-                                    <span class="coin-name">
-                                         币种
-                                    </span>
-                                    <span class="coin-price">
-                                        报价
-                                    </span>
-                                    <span class="coin-change">
-                                        一小时变化
-                                    </span>
-                                </li>
+{#                                <li class="list-header">#}
+{#                                    <span class="coin-name">#}
+{#                                         币种#}
+{#                                    </span>#}
+{#                                    <span class="coin-price">#}
+{#                                        报价#}
+{#                                    </span>#}
+{#                                    <span class="coin-change">#}
+{#                                        一小时变化#}
+{#                                    </span>#}
+{#                                </li>#}
 
                             </ul>
                         </div>

@@ -1,0 +1,69 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+
+{% block content %}
+    <section id="content" class="category-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                        <div class="box">
+                                <div class="box-header">
+                                    {{ category.cname }}
+                                </div>
+                                <div class="box-body">
+
+                                    {% for tag_list in tag_lists %}
+                                        <ul class="site-list">
+                                            {% include 'web/partial/tag_list.html' %}
+                                        </ul>
+                                    {% endfor %}
+                                </div>
+                                <div class="box-footer"></div>
+                        </div>
+
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="box">
+                        <div class="box-header">最新币价</div>
+                        <div class="box-body">
+                            <ul class="coin-list" id="coin_list">
+{#                                <li class="list-header">#}
+{#                                    <span class="coin-name">#}
+{#                                         币种#}
+{#                                    </span>#}
+{#                                    <span class="coin-price">#}
+{#                                        报价#}
+{#                                    </span>#}
+{#                                    <span class="coin-change">#}
+{#                                        一小时变化#}
+{#                                    </span>#}
+{#                                </li>#}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{##}
+{% block basic_script %}
+    <script id="coin_template" type="text/template">
+     <li id="<%=id%>">
+                                    <span class="coin-name">
+                                        <%=name_cn%>
+                                    </span>
+                                    <span class="coin-price fall">
+                                        <%=price_cny%>
+                                    </span>
+                                    <span class="coin-change fall">
+                                         <%=change_percent%>
+                                    </span>
+                                </li>
+    </script>
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
