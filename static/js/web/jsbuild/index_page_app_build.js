@@ -689,7 +689,14 @@ define('subapp/adapters/coinmarketcapAdapter',['subapp/adapters/adapter', 'subap
              BCC                  :"比特币现金BCC",
              QTUM                  : "量子链QTUM",
              STRAT              :"斯特拉STRAT",
-             ZEC                   :"Zcash|ZEC",
+             ZEC                   :"Zcash(ZEC)",
+             Bytecoin              :"Bytecoin(BCN)",
+             MAID                   :"互联网币MAID",
+             GNT                   :"Golem(GNT)",
+             REP                   :"Augur(REP)",
+             KMD                       :"Komodo(KMD)",
+             DCR                  :"Decred(DCR)",
+             FCT                   :"公证通(FCT)",
             };
 
         var CoinMarketAdapter = AdapterBase.extend({
