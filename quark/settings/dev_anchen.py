@@ -2,12 +2,15 @@ from .settings import *
 
 
 
-SESSION_ENGINE          = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE  = 'django.contrib.sessions.backends.cache'
 
 
 INSTALLED_APPS += [
     'debug_toolbar',
+    'django_nose'
 ]
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 INTERNAL_IPS =['127.0.0.1']
 

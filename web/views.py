@@ -38,9 +38,6 @@ class CategoryView(TemplateView):
 
 class IndexView(TemplateView):
     template_name = 'web/index.html'
-    def get_category_ids_list(self):
-        pass
-
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)

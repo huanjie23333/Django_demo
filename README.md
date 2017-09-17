@@ -26,3 +26,17 @@ cd /path/to/quark
 ```bash
 pip install -r requirements.txt 
 ```
+
+### test
+1. in python env , run 
+
+    coverage run ./manage.py test --settings=YOUR_SETTINGS_PATH
+    
+    coverage report 
+    
+2. see .coveragerc for config 
+    
+    
+     
+    
+    

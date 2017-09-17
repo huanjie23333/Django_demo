@@ -1,0 +1,18 @@
+[run]
+branch = True
+
+omit = */migrations/*
+       */apps.py
+       */settings/*
+       */tests/*
+
+parallel = on
+
+
+source = quark
+         nav
+         web
+
+
+[report]
+show_missing = on
