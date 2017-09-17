@@ -23,6 +23,7 @@
        img{
          height:30px;
          width:auto;
+         margin-top:12px;
        }
     }
     .price-list{
@@ -30,11 +31,11 @@
       margin-top: 10px;
     }
     .price-list > li{
-        height: 60px;
+        height: 65px;
         .quote{
           padding-top:10px;
           padding-left:0px;
-          padding-right:15px;
+          padding-right:0px;
           .quote-price{
              font-size:20px;
              position: relative;
@@ -46,6 +47,22 @@
           }
         }
     }
+  }
+  #footer .footer-list li {
+       display: block;
+       float:none;
+       margin: 5px 0px;
+       &:last-child{
+         padding-bottom: 20px;
+       }
+       &.about-item{
+           position:relative;
+           top:5px;
+       }
+       &.sitemap-item{
+           position:relative;
+           top:-10px;
+       }
   }
 
 }

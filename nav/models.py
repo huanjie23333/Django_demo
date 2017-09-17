@@ -10,10 +10,14 @@ from caching.base import CachingManager, CachingMixin
 class Category(CachingMixin, models.Model):
     cname = models.CharField(max_length=64, null=False, blank=False, db_index=True)
     ename = models.CharField(max_length=64, null=False, blank=False, db_index=True)
+    order = models.IntegerField(default=1)
 
     objects = CachingManager()
     def __str__(self):
         return self.cname
+
+    class Meta:
+        ordering = ['-order']
 
 
 class Nav(CachingMixin, models.Model):

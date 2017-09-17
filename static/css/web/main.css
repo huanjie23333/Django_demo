@@ -746,6 +746,15 @@ body a:hover {
 #footer .logo img {
   width: 140px;
 }
+#footer .footer-list {
+  margin-bottom: 30px;
+}
+#footer .footer-list:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
 #footer .footer-list li {
   float: left;
   height: 40px;
@@ -845,18 +854,19 @@ body a:hover {
   #header .main-logo img {
     height: 30px;
     width: auto;
+    margin-top: 12px;
   }
   #header .price-list {
     border-top: 1px solid #ddd;
     margin-top: 10px;
   }
   #header .price-list > li {
-    height: 60px;
+    height: 65px;
   }
   #header .price-list > li .quote {
     padding-top: 10px;
     padding-left: 0px;
-    padding-right: 15px;
+    padding-right: 0px;
   }
   #header .price-list > li .quote .quote-price {
     font-size: 20px;
@@ -866,6 +876,22 @@ body a:hover {
     font-size: 0.9em;
     position: relative;
     top: 2px;
+  }
+  #footer .footer-list li {
+    display: block;
+    float: none;
+    margin: 5px 0px;
+  }
+  #footer .footer-list li:last-child {
+    padding-bottom: 20px;
+  }
+  #footer .footer-list li.about-item {
+    position: relative;
+    top: 5px;
+  }
+  #footer .footer-list li.sitemap-item {
+    position: relative;
+    top: -10px;
   }
 }
 .test {
