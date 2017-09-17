@@ -746,6 +746,12 @@ body a:hover {
 #footer .logo img {
   width: 140px;
 }
+#footer .footer-list:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
 #footer .footer-list li {
   float: left;
   height: 40px;

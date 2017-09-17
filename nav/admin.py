@@ -42,5 +42,5 @@ admin.site.register(Nav, NavAdmin)
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('cname', 'ename')
+    list_display = ('cname', 'ename', 'order')
 admin.site.register(Category, CategoryAdmin)
