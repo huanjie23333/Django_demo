@@ -162,10 +162,10 @@ COMPRESS_PRECOMPILERS = (
 
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
-    # 'compressor.filters.cleancss.CleanCSSFilter',
-    'compressor.filters.cssmin.rCSSMinFilter',
+    'compressor.filters.cleancss.CleanCSSFilter',
+    # 'compressor.filters.cssmin.rCSSMinFilter',
 ]
-# COMPRESS_CLEAN_CSS_BINARY = '/usr/bin/cleancss'
+COMPRESS_CLEAN_CSS_BINARY = '/usr/bin/cleancss'
 
 COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
