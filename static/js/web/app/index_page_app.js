@@ -22,7 +22,7 @@ require([
               ) {
         var datafeed = new DataFeed();
 
-        var scroll_price = new ScrollPrice();
+        //var scroll_price = new ScrollPrice();
 
         //here for side bar price list render
         var all_price_feed = new Feed({
