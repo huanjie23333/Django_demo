@@ -36,9 +36,6 @@ require([
         });
         all_price_feed.run();
         //
-
-
-        //
         console.log('finish');
 
     });

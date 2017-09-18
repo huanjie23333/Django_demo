@@ -660,14 +660,12 @@ ZEC : "Zcash ZEC",
 SC : "细亚币SC",
 XLM : "恒星币XLM",
 ZRX : "0x ZRX",
-FCT : "公证通FCT",
 NAV : "NAVCoin NAV",
 DOGE : "狗狗币DOGE",
 SYS : "系统币SYS",
 NXT : "未来币NXT",
 BURST : "爆裂币BURST",
 GAME : "游戏点GAME",
-REP : "Augur REP",
 PINK : "Pinkcoin PINK",
 VRC : "维理币VRC",
 LBC : "LBRY Credits LBC",
@@ -756,7 +754,7 @@ define('subapp/adapters/coinmarketcapAdapter',[
                 return _.filter(data, this._filter.bind(this));
             },
             _filter: function(entry){
-                return ((!(_.contains(['BTC', 'ETH', 'LTC'], entry['symbol']))) && (_.contains(_.keys(CoinDic), entry['symbol'])))
+                return  (_.contains(_.keys(CoinDic), entry['symbol']))
             },
             get_change_class: function (entry) {
                 var change = 0 ;
@@ -1329,9 +1327,6 @@ require([
             adapter : new Adapter()
         });
         all_price_feed.run();
-        //
-
-
         //
         console.log('finish');
 

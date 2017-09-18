@@ -16,7 +16,7 @@ define([
                 return _.filter(data, this._filter.bind(this));
             },
             _filter: function(entry){
-                return ((!(_.contains(['BTC', 'ETH', 'LTC'], entry['symbol']))) && (_.contains(_.keys(CoinDic), entry['symbol'])))
+                return  (_.contains(_.keys(CoinDic), entry['symbol']))
             },
             get_change_class: function (entry) {
                 var change = 0 ;
