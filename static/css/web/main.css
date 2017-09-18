@@ -725,6 +725,9 @@ body a:hover {
   height: 10px;
   overflow: visible;
 }
+#content .price_container {
+  position: relative;
+}
 .category-content .tag-list-tail {
   display: none!important;
 }
@@ -793,7 +796,7 @@ body a:hover {
   color: #0E8ED8;
 }
 .static-content h2 {
-  font-size: 26px;
+  font-size: 24px;
 }
 .static-content h3 {
   font-size: 18px;
@@ -881,17 +884,10 @@ body a:hover {
     display: block;
     float: none;
     margin: 5px 0px;
+    text-align: center;
   }
   #footer .footer-list li:last-child {
     padding-bottom: 20px;
-  }
-  #footer .footer-list li.about-item {
-    position: relative;
-    top: 5px;
-  }
-  #footer .footer-list li.sitemap-item {
-    position: relative;
-    top: -10px;
   }
 }
 .test {

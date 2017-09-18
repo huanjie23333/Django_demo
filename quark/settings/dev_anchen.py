@@ -11,6 +11,11 @@ INSTALLED_APPS += [
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=web,nav,quark',
+]
+
 
 INTERNAL_IPS =['127.0.0.1']
 

@@ -5,6 +5,7 @@ require([
         'subapp/data/feed',
         'subapp/data/allcoinprice',
         'subapp/adapters/coinmarketcapAdapter',
+        'subapp/scrollprice',
         'libs/salvattore',
         'subapp/tools/bookmark'
 
@@ -15,11 +16,13 @@ require([
               Feed,
               AllCoin,
               Adapter,
+              ScrollPrice,
               Layout,
               BookMark
               ) {
         var datafeed = new DataFeed();
 
+        var scroll_price = new ScrollPrice();
 
         //here for side bar price list render
         var all_price_feed = new Feed({
