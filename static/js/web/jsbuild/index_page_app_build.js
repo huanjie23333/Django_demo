@@ -1216,6 +1216,7 @@ define('subapp/scrollprice',['fastdom', 'jquery','libs/Class', 'underscore'],fun
         },
         schedulePriceMove:function(){
             var that = this;
+
             if (!this.read){
                 this.read = fastdom.read(function(){
                     that.scrollTop = $(window).scrollTop();
@@ -1237,7 +1238,8 @@ define('subapp/scrollprice',['fastdom', 'jquery','libs/Class', 'underscore'],fun
 
         moveprice:function(){
             //console.log('move header');
-            if(this.current_move_target>=0) {
+
+            if(this.current_move_target>=0 || $(window).width()<=768) {
                 this.read = null;
                 //console.log(this.current_move_target);
                 this.price_container.css({
