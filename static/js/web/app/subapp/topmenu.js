@@ -74,7 +74,7 @@ define(['bootstrap',
             $(window).scroll(this.scheduleHeaderMove.bind(this));
             //$(window).scroll(_.debounce(this.show.bind(this), 100));
         },
-        scheduleHeaderMove:function(){
+        schedulePriceMove:function(){
             var that = this;
             if (!this.read){
                 this.read = fastdom.read(function(){
@@ -91,7 +91,7 @@ define(['bootstrap',
 
             this.write = fastdom.write(this.moveHeader.bind(this));
         },
-        moveHeader:function(){
+        moveprice:function(){
             //console.log('move header');
 
             if (_.isNull(this.scrollTop)) {

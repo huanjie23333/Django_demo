@@ -643,61 +643,109 @@ define('subapp/dictionaries/coinmarketcap',[],function(){
         'percent_change_1h':'change'
     }
 });
-define('subapp/adapters/coinmarketcapAdapter',['subapp/adapters/adapter', 'subapp/dictionaries/coinmarketcap', 'underscore'],
-    function(AdapterBase, coinmarketDictionary, _){
+define('subapp/dictionaries/coin_dic',[],function(){
+var CoinDic = {
+BTC : "比特币BTC",
+ETH : "以太坊ETH",
+LTC : "莱特币LTC",
+XRP : "瑞波币XRP",
+XMR : "门罗币XMR",
+LSK : "Lisk LSK",
+BCH : "BCC",
+ETC : "以太经典ETC",
+DGB : "极特币DGB",
+BTS : "比特股BTS",
+DASH : "达世币DASH",
+ZEC : "Zcash ZEC",
+SC : "细亚币SC",
+XLM : "恒星币XLM",
+ZRX : "0x ZRX",
+FCT : "公证通FCT",
+NAV : "NAVCoin NAV",
+DOGE : "狗狗币DOGE",
+SYS : "系统币SYS",
+NXT : "未来币NXT",
+BURST : "爆裂币BURST",
+GAME : "游戏点GAME",
+REP : "Augur REP",
+PINK : "Pinkcoin PINK",
+VRC : "维理币VRC",
+LBC : "LBRY Credits LBC",
+ARDR : "阿朵ARDR",
+RADS : "Radium RADS",
+EXP : "Expanse EXP",
+VTC : "绿币VTC",
+AMP : "Synereo AMP AMP",
+FLDC : "FoldingCoin FLDC",
+XBC : "BitcoinPlus XBC",
+SJCX : "Storjcoin X SJCX",
+POT : "PotCoin POT",
+PASC : "PascalCoin PASC",
+XPM : "Primecoin XPM",
+XCP : "Counterparty XCP",
+FLO : "Florincoin FLO",
+BELA : "Bela BELA",
+RIC : "Riecoin RIC",
+EMC2 : "锿币EMC2",
+NMC : "域名币NMC",
+NOTE : "DNotes NOTE",
+OMNI : "奥妙币OMNI",
+BTM : "Bitmark BTM",
+NAUT : "Nautiluscoin NAUT",
+GRC : "格雷德币GRC",
+BCY : "BitCrystals BCY",
+XVC : "Vcash XVC",
+HUC : "猎手币HUC",
+BLK : "黑币BLK",
+PPC : "点点币PPC",
+BBT : "Brickblock BBT",
+XCP : "合约币XCP",
+IOTA : "埃欧塔IOTA",
+XEM : "新经币XEM",
+EMC : "崛起币EMC",
+PUT : "普京币PUT",
+EAC : "地球币EAC",
+XCN : "氪石币XCN",
+MGC : "众合币MGC",
+ZCC : "招财币ZCC",
+XPM : "质数币XPM",
+NCS : "资产股NCS",
+YBC : "元宝币YBC",
+MEC : "美卡币MEC",
+NEO : "小蚁股NEO",
+MCC : "行云币MCC",
+FZ : "冰河币FZ",
+TFC : "传送币TFC",
+YTC : "一号币YTC",
+ZET : "泽塔币ZET",
+GOOC : "谷壳币GOOC",
+MTC : "猴宝币MTC",
+WDC : "世界币WDC",
+PLC : "保罗币PLC",
+SKT : "鲨之信SKT",
+MRYC : "美人鱼币MRYC",
+LKC : "幸运币LKC",
+DNC : "安网币DNC",
+IFC : "无限币IFC",
+PEB : "普银PEB",
+XZC : "零币XZC",
+DACRS : "智能坊DACRS",
+INF : "讯链币INF",
+ICS : "小企股ICS",
+HLB : "活力币HLB",
+VASH : "薇币VASH",
+};
+return CoinDic;
+});
 
-
-         var CoinDic = {
-             BTC               :"比特币BTC",
-             LTC               :"莱特币LTC",
-             DOGE              :"狗狗币DOGE",
-             ETH               :"以太币ETH",
-             ETC               :"以太经典ETC",
-             BCH                :"比特币现金",
-             XRP               :"瑞波币XRP",
-             BTS               :"比特股BTS",
-             XLM               :"恒星币XLM",
-             NXT               :"未来币NXT",
-              ARDR             :"阿朵ARDR",
-              BLK              :"黑币BLK",
-             XEM               :"新经币XEM",
-             EMC               :"崛起币EMC",
-             DASH              :"达世币DASH",
-              INF              :"讯链INF",
-              XZC              :"零币XZC",
-             SYS               :"系统币SYS",
-              VASH             :"微币VASH",
-             EAC               :"地球币EAC",
-             XCN               :"氪石币XCN",
-             PPC               :"点点币PPC",
-             MGC               :"众合币MGC",
-             HLB               :"活力币HLB",
-             ZCC               :"招财币ZCC",
-             XPM               :"质数币XPM",
-             NCS               :"资产股NCS",
-             YBC               :"元宝币YBC",
-             MEC               :"美卡币MEC",
-            WDC                :"世界币WDC",
-            QRK                 :"夸克币QRK",
-            RIC                :"黎曼币RIC",
-            TAG                :"奖赏币TAG",
-            TMC                :"时代币TMC",
-            XMR                :"门罗币XMR",
-             MIOTA            :"艾欧塔MIOTA",
-             OMG               :"OMG",
-             NEO                  :"小蚁股NEO",
-             BCC                  :"比特币现金BCC",
-             QTUM                  : "量子链QTUM",
-             STRAT              :"斯特拉STRAT",
-             ZEC                   :"Zcash(ZEC)",
-             Bytecoin              :"Bytecoin(BCN)",
-             MAID                   :"互联网币MAID",
-             GNT                   :"Golem(GNT)",
-             REP                   :"Augur(REP)",
-             KMD                       :"Komodo(KMD)",
-             DCR                  :"Decred(DCR)",
-             FCT                   :"公证通(FCT)",
-            };
+define('subapp/adapters/coinmarketcapAdapter',[
+    'subapp/adapters/adapter',
+    'subapp/dictionaries/coinmarketcap',
+    'subapp/dictionaries/coin_dic',
+    'underscore'],
+    function(AdapterBase, coinmarketDictionary,
+             CoinDic
+             ,_){
 
         var CoinMarketAdapter = AdapterBase.extend({
             init:function(){
@@ -708,7 +756,7 @@ define('subapp/adapters/coinmarketcapAdapter',['subapp/adapters/adapter', 'subap
                 return _.filter(data, this._filter.bind(this));
             },
             _filter: function(entry){
-                return !(_.contains(['BTC', 'ETH', 'LTC'], entry['symbol']));
+                return ((!(_.contains(['BTC', 'ETH', 'LTC'], entry['symbol']))) && (_.contains(_.keys(CoinDic), entry['symbol'])))
             },
             get_change_class: function (entry) {
                 var change = 0 ;
@@ -733,11 +781,492 @@ define('subapp/adapters/coinmarketcapAdapter',['subapp/adapters/adapter', 'subap
                 entry['change_percent'] = entry['change'] + '%';
                 entry['price_cny'] = Math.round(parseFloat(entry['price_cny'] * 10000))/10000.00;
                 return entry;
-
             }
         });
 
         return CoinMarketAdapter
+});
+/**
+ * FastDom
+ *
+ * Eliminates layout thrashing
+ * by batching DOM read/write
+ * interactions.
+ *
+ * @author Wilson Page <wilsonpage@me.com>
+ */
+
+;(function(fastdom){
+
+  'use strict';
+
+  // Normalize rAF
+  var raf = window.requestAnimationFrame
+    || window.webkitRequestAnimationFrame
+    || window.mozRequestAnimationFrame
+    || window.msRequestAnimationFrame
+    || function(cb) { return window.setTimeout(cb, 1000 / 60); };
+
+  /**
+   * Creates a fresh
+   * FastDom instance.
+   *
+   * @constructor
+   */
+  function FastDom() {
+    this.frames = [];
+    this.lastId = 0;
+
+    // Placing the rAF method
+    // on the instance allows
+    // us to replace it with
+    // a stub for testing.
+    this.raf = raf;
+
+    this.batch = {
+      hash: {},
+      read: [],
+      write: [],
+      mode: null
+    };
+  }
+
+  /**
+   * Adds a job to the
+   * read batch and schedules
+   * a new frame if need be.
+   *
+   * @param  {Function} fn
+   * @public
+   */
+  FastDom.prototype.read = function(fn, ctx) {
+    var job = this.add('read', fn, ctx);
+    var id = job.id;
+
+    // Add this job to the read queue
+    this.batch.read.push(job.id);
+
+    // We should *not* schedule a new frame if:
+    // 1. We're 'reading'
+    // 2. A frame is already scheduled
+    var doesntNeedFrame = this.batch.mode === 'reading'
+      || this.batch.scheduled;
+
+    // If a frame isn't needed, return
+    if (doesntNeedFrame) return id;
+
+    // Schedule a new
+    // frame, then return
+    this.scheduleBatch();
+    return id;
+  };
+
+  /**
+   * Adds a job to the
+   * write batch and schedules
+   * a new frame if need be.
+   *
+   * @param  {Function} fn
+   * @public
+   */
+  FastDom.prototype.write = function(fn, ctx) {
+    var job = this.add('write', fn, ctx);
+    var mode = this.batch.mode;
+    var id = job.id;
+
+    // Push the job id into the queue
+    this.batch.write.push(job.id);
+
+    // We should *not* schedule a new frame if:
+    // 1. We are 'writing'
+    // 2. We are 'reading'
+    // 3. A frame is already scheduled.
+    var doesntNeedFrame = mode === 'writing'
+      || mode === 'reading'
+      || this.batch.scheduled;
+
+    // If a frame isn't needed, return
+    if (doesntNeedFrame) return id;
+
+    // Schedule a new
+    // frame, then return
+    this.scheduleBatch();
+    return id;
+  };
+
+  /**
+   * Defers the given job
+   * by the number of frames
+   * specified.
+   *
+   * If no frames are given
+   * then the job is run in
+   * the next free frame.
+   *
+   * @param  {Number}   frame
+   * @param  {Function} fn
+   * @public
+   */
+  FastDom.prototype.defer = function(frame, fn, ctx) {
+
+    // Accepts two arguments
+    if (typeof frame === 'function') {
+      ctx = fn;
+      fn = frame;
+      frame = 1;
+    }
+
+    var self = this;
+    var index = frame - 1;
+
+    return this.schedule(index, function() {
+      self.run({
+        fn: fn,
+        ctx: ctx
+      });
+    });
+  };
+
+  /**
+   * Clears a scheduled 'read',
+   * 'write' or 'defer' job.
+   *
+   * @param  {Number|String} id
+   * @public
+   */
+  FastDom.prototype.clear = function(id) {
+
+    // Defer jobs are cleared differently
+    if (typeof id === 'function') {
+      return this.clearFrame(id);
+    }
+
+    // Allow ids to be passed as strings
+    id = Number(id);
+
+    var job = this.batch.hash[id];
+    if (!job) return;
+
+    var list = this.batch[job.type];
+    var index = list.indexOf(id);
+
+    // Clear references
+    delete this.batch.hash[id];
+    if (~index) list.splice(index, 1);
+  };
+
+  /**
+   * Clears a scheduled frame.
+   *
+   * @param  {Function} frame
+   * @private
+   */
+  FastDom.prototype.clearFrame = function(frame) {
+    var index = this.frames.indexOf(frame);
+    if (~index) this.frames.splice(index, 1);
+  };
+
+  /**
+   * Schedules a new read/write
+   * batch if one isn't pending.
+   *
+   * @private
+   */
+  FastDom.prototype.scheduleBatch = function() {
+    var self = this;
+
+    // Schedule batch for next frame
+    this.schedule(0, function() {
+      self.batch.scheduled = false;
+      self.runBatch();
+    });
+
+    // Set flag to indicate
+    // a frame has been scheduled
+    this.batch.scheduled = true;
+  };
+
+  /**
+   * Generates a unique
+   * id for a job.
+   *
+   * @return {Number}
+   * @private
+   */
+  FastDom.prototype.uniqueId = function() {
+    return ++this.lastId;
+  };
+
+  /**
+   * Calls each job in
+   * the list passed.
+   *
+   * If a context has been
+   * stored on the function
+   * then it is used, else the
+   * current `this` is used.
+   *
+   * @param  {Array} list
+   * @private
+   */
+  FastDom.prototype.flush = function(list) {
+    var id;
+
+    while (id = list.shift()) {
+      this.run(this.batch.hash[id]);
+    }
+  };
+
+  /**
+   * Runs any 'read' jobs followed
+   * by any 'write' jobs.
+   *
+   * We run this inside a try catch
+   * so that if any jobs error, we
+   * are able to recover and continue
+   * to flush the batch until it's empty.
+   *
+   * @private
+   */
+  FastDom.prototype.runBatch = function() {
+    try {
+
+      // Set the mode to 'reading',
+      // then empty all read jobs
+      this.batch.mode = 'reading';
+      this.flush(this.batch.read);
+
+      // Set the mode to 'writing'
+      // then empty all write jobs
+      this.batch.mode = 'writing';
+      this.flush(this.batch.write);
+
+      this.batch.mode = null;
+
+    } catch (e) {
+      this.runBatch();
+      throw e;
+    }
+  };
+
+  /**
+   * Adds a new job to
+   * the given batch.
+   *
+   * @param {Array}   list
+   * @param {Function} fn
+   * @param {Object}   ctx
+   * @returns {Number} id
+   * @private
+   */
+  FastDom.prototype.add = function(type, fn, ctx) {
+    var id = this.uniqueId();
+    return this.batch.hash[id] = {
+      id: id,
+      fn: fn,
+      ctx: ctx,
+      type: type
+    };
+  };
+
+  /**
+   * Runs a given job.
+   *
+   * Applications using FastDom
+   * have the options of setting
+   * `fastdom.onError`.
+   *
+   * This will catch any
+   * errors that may throw
+   * inside callbacks, which
+   * is useful as often DOM
+   * nodes have been removed
+   * since a job was scheduled.
+   *
+   * Example:
+   *
+   *   fastdom.onError = function(e) {
+   *     // Runs when jobs error
+   *   };
+   *
+   * @param  {Object} job
+   * @private
+   */
+  FastDom.prototype.run = function(job){
+    var ctx = job.ctx || this;
+    var fn = job.fn;
+
+    // Clear reference to the job
+    delete this.batch.hash[job.id];
+
+    // If no `onError` handler
+    // has been registered, just
+    // run the job normally.
+    if (!this.onError) {
+      return fn.call(ctx);
+    }
+
+    // If an `onError` handler
+    // has been registered, catch
+    // errors that throw inside
+    // callbacks, and run the
+    // handler instead.
+    try { fn.call(ctx); } catch (e) {
+      this.onError(e);
+    }
+  };
+
+  /**
+   * Starts a rAF loop
+   * to empty the frame queue.
+   *
+   * @private
+   */
+  FastDom.prototype.loop = function() {
+    var self = this;
+    var raf = this.raf;
+
+    // Don't start more than one loop
+    if (this.looping) return;
+
+    raf(function frame() {
+      var fn = self.frames.shift();
+
+      // If no more frames,
+      // stop looping
+      if (!self.frames.length) {
+        self.looping = false;
+
+      // Otherwise, schedule the
+      // next frame
+      } else {
+        raf(frame);
+      }
+
+      // Run the frame.  Note that
+      // this may throw an error
+      // in user code, but all
+      // fastdom tasks are dealt
+      // with already so the code
+      // will continue to iterate
+      if (fn) fn();
+    });
+
+    this.looping = true;
+  };
+
+  /**
+   * Adds a function to
+   * a specified index
+   * of the frame queue.
+   *
+   * @param  {Number}   index
+   * @param  {Function} fn
+   * @return {Function}
+   * @private
+   */
+  FastDom.prototype.schedule = function(index, fn) {
+
+    // Make sure this slot
+    // hasn't already been
+    // taken. If it has, try
+    // re-scheduling for the next slot
+    if (this.frames[index]) {
+      return this.schedule(index + 1, fn);
+    }
+
+    // Start the rAF
+    // loop to empty
+    // the frame queue
+    this.loop();
+
+    // Insert this function into
+    // the frames queue and return
+    return this.frames[index] = fn;
+  };
+
+  // We only ever want there to be
+  // one instance of FastDom in an app
+  fastdom = fastdom || new FastDom();
+
+  /**
+   * Expose 'fastdom'
+   */
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = fastdom;
+  } else if (typeof define === 'function' && define.amd) {
+    define('fastdom',[],function(){ return fastdom; });
+  } else {
+    window['fastdom'] = fastdom;
+  }
+
+})(window.fastdom);
+
+
+define('subapp/scrollprice',['fastdom', 'jquery','libs/Class', 'underscore'],function(fastdom, $, Class, _){
+
+    var ScrollPriceApp = Class.extend({
+        init: function(){
+            this.price_container = $('#side_column')
+            this.setupScrollMenu();
+        },
+        setupScrollMenu: function(){
+            $(window).scroll(this.schedulePriceMove.bind(this));
+        },
+        schedulePriceMove:function(){
+            var that = this;
+
+            if (!this.read){
+                this.read = fastdom.read(function(){
+                    that.scrollTop = $(window).scrollTop();
+                    if($('#header').length){
+                         //console.log('top: :'+ $('#header')[0].getBoundingClientRect().top);
+                         that.current_move_target = $('#header')[0].getBoundingClientRect().top + 110;
+                         that.css_left_target = $('#main_column')[0].getBoundingClientRect().right;
+
+                    }
+                });
+            }
+
+            if(this.write) {
+                fastdom.clear(this.write);
+            }
+
+            this.write = fastdom.write(this.moveprice.bind(this));
+        },
+
+        moveprice:function(){
+            //console.log('move header');
+
+            if(this.current_move_target>=0 || $(window).width()<=768) {
+                this.read = null;
+                //console.log(this.current_move_target);
+                this.price_container.css({
+                    top:0+'px',
+                    left:0 + 'px',
+                    position:'relative'
+                });
+
+                return ;
+            }else{
+                this.price_container.css({
+                    top:0+'px' ,
+                    left: this.css_left_target +'px',
+                    position:'fixed',
+                });
+                //console.log(this.current_move_target);
+                this.read = null ;
+                return ;
+
+            }
+
+
+        },
+    });
+
+    return ScrollPriceApp;
+
 });
 /*!
  * Salvattore 1.0.9 by @rnmp and @ppold
@@ -770,6 +1299,7 @@ require([
         'subapp/data/feed',
         'subapp/data/allcoinprice',
         'subapp/adapters/coinmarketcapAdapter',
+        'subapp/scrollprice',
         'libs/salvattore',
         'subapp/tools/bookmark'
 
@@ -780,11 +1310,13 @@ require([
               Feed,
               AllCoin,
               Adapter,
+              ScrollPrice,
               Layout,
               BookMark
               ) {
         var datafeed = new DataFeed();
 
+        var scroll_price = new ScrollPrice();
 
         //here for side bar price list render
         var all_price_feed = new Feed({
