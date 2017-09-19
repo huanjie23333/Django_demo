@@ -11,7 +11,9 @@
                         <div class="box-body">
                             <ul class="site-list">
                                 {% for site in recommend %}
+                                   {% with  cate_cname='热门推荐' %}
                                     {% include 'web/partial/site_list_item.html' %}
+                                   {% endwith %}
                                 {% endfor %}
                             </ul>
                         </div>
@@ -27,7 +29,7 @@
                                 <div class="box-body">
 
                                     {% for tag_list in cate.cate_tags %}
-                                        {% with cate_ename=cate.category_ename %}
+                                        {% with cate_ename=cate.category_ename cate_cname=cate.category_name %}
                                         <ul class="site-list">
                                             {% include 'web/partial/tag_list.html' %}
                                         </ul>

@@ -1266,6 +1266,53 @@ define('subapp/scrollprice',['fastdom', 'jquery','libs/Class', 'underscore'],fun
     return ScrollPriceApp;
 
 });
+define('subapp/tracker',['libs/Class', 'jquery'],function(Class, $){
+
+    var Tracker = Class.extend({
+        init: function(){
+            $('a[data-category]').click(this.track_click.bind(this));
+        },
+        track_click_bd: function (e) {
+            var category = $(e.target).attr('data-category');
+            var tag = $(e.target).attr('data-tag');
+            var site = $(e.target).attr('data-site');
+            window._hmt.push(['_trackEvent',
+                              'link', 'click',
+                              'category', category,
+                              'tag', tag,
+                              'site', site
+                            ]);
+
+
+        },
+        track_click_gg: function (e) {
+        //
+            var category = $(e.target).attr('data-category');
+            var tag = $(e.target).attr('data-tag');
+            var site = $(e.target).attr('data-site');
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'off_site_link',
+                eventAction: 'click',
+                eventLabel: site,
+                transport: 'beacon'
+
+            });
+            return ;
+        },
+        track_click:function(e){
+            if(window._hmt){
+                this.track_click_bd(e);
+            }
+            if(window.ga){
+                this.track_click_gg(e);
+            }
+        },
+    });
+
+    return Tracker;
+
+});
 /*!
  * Salvattore 1.0.9 by @rnmp and @ppold
  * https://github.com/rnmp/salvattore
@@ -1298,6 +1345,7 @@ require([
         'subapp/data/allcoinprice',
         'subapp/adapters/coinmarketcapAdapter',
         'subapp/scrollprice',
+        'subapp/tracker',
         'libs/salvattore',
         'subapp/tools/bookmark'
 
@@ -1309,13 +1357,14 @@ require([
               AllCoin,
               Adapter,
               ScrollPrice,
+              Tracker,
               Layout,
               BookMark
               ) {
         var datafeed = new DataFeed();
 
         //var scroll_price = new ScrollPrice();
-
+        var tracker = new Tracker();
         //here for side bar price list render
         var all_price_feed = new Feed({
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',
