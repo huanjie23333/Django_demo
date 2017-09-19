@@ -398,10 +398,10 @@ ul li {
   color: #434446;
 }
 .pricing-ele.fall {
-  color: #009632;
+  color: #f23333;
 }
 .pricing-ele.raise {
-  color: #f23333;
+  color: #009632;
 }
 .col-lg-1,
 .col-lg-10,
@@ -581,10 +581,10 @@ body a:hover {
   color: #434446;
 }
 #header .price-list > li .quote .quote-price .price.fall {
-  color: #009632;
+  color: #f23333;
 }
 #header .price-list > li .quote .quote-price .price.raise {
-  color: #f23333;
+  color: #009632;
 }
 #header .price-list > li .quote .quote-price i {
   position: relative;
@@ -593,10 +593,10 @@ body a:hover {
   color: #434446;
 }
 #header .price-list > li .quote .quote-price i.fall {
-  color: #009632;
+  color: #f23333;
 }
 #header .price-list > li .quote .quote-price i.raise {
-  color: #f23333;
+  color: #009632;
 }
 #header .price-list > li .quote .quote-price i::before {
   font-size: 24px;
@@ -697,10 +697,10 @@ body a:hover {
   width: 100px;
 }
 #content .box .box-body .coin-list li .coin-price.fall {
-  color: #009632;
+  color: #f23333;
 }
 #content .box .box-body .coin-list li .coin-price.raise {
-  color: #f23333;
+  color: #009632;
 }
 #content .box .box-body .coin-list li .coin-change {
   padding-left: 20px;
@@ -708,10 +708,10 @@ body a:hover {
   display: inline-block;
 }
 #content .box .box-body .coin-list li .coin-change.fall {
-  color: #009632;
+  color: #f23333;
 }
 #content .box .box-body .coin-list li .coin-change.raise {
-  color: #f23333;
+  color: #009632;
 }
 #content .box .box-body .coin-list li.list-header {
   color: #aaa;
@@ -891,5 +891,5 @@ body a:hover {
   }
 }
 .test {
-  color: black;
+  color: red;
 }
