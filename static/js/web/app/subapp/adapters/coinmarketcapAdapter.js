@@ -35,10 +35,15 @@ define([
             get_cnname: function (entry) {
                  return CoinDic[entry['symbol']]? CoinDic[entry['symbol']] :entry['symbol'];
             },
+            get_change_percent: function (change_str) {
+                 var value = parseFloat(change_str);
+                 var percent_str =  value >0 ? '+' + value + '%' : value + '%';
+                return percent_str
+            },
             clean_entry: function(entry){
                 entry['change_class'] = this.get_change_class(entry);
                 entry['name_cn'] = this.get_cnname(entry);
-                entry['change_percent'] = entry['change'] + '%';
+                entry['change_percent'] = this.get_change_percent(entry['change']);
                 entry['price_cny'] = Math.round(parseFloat(entry['price_cny'] * 10000))/10000.00;
                 return entry;
             }
