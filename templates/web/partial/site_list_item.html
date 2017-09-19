@@ -1,2 +1,13 @@
 
-<li><a href="{{ site.web_site }}" class="{% if site.highlight %} highlight {% endif %}" target=_blank title="{{ site.main_name }}" rel="nofollow">{{ site.main_name }}</a></li>
+<li><a href="{{ site.web_site }}"
+       class="{% if site.highlight %} highlight {% endif %}"
+       target=_blank
+       title="{{ site.main_name }}"
+       rel="nofollow"
+       data-category="{{ cate_cname }}"
+       data-tag="{{ tag_list.tagname }}"
+       data-site="{{ site.main_name }}"
+    >
+    {{ site.main_name }}
+    </a>
+</li>
