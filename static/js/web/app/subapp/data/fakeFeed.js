@@ -1,11 +1,12 @@
 define(['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
-
+    //TODO ： baseon interval push event , not use xhr
     var _Feed = Class.extend(Event.prototype);
-    var Feed = _Feed.extend({
+    var FakeFeed = _Feed.extend({
         init: function (options) {
             this.options = options;
             this.interval = options.interval || 5000;
             this._running = false;
+
         },
 
         stop: function(){
@@ -40,6 +41,6 @@ define(['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
 
     });
 
-    return Feed;
+    return FakeFeed;
 
 });

@@ -7,6 +7,7 @@ require([
         'subapp/adapters/coinmarketcapAdapter',
         'subapp/scrollprice',
         'subapp/tracker',
+        'subapp/sidebar',
         'libs/salvattore',
         'subapp/tools/bookmark'
 
@@ -19,14 +20,19 @@ require([
               Adapter,
               ScrollPrice,
               Tracker,
+              SideBar,
               Layout,
               BookMark
               ) {
         var datafeed = new DataFeed();
 
+
         //var scroll_price = new ScrollPrice();
         var tracker = new Tracker();
         //here for side bar price list render
+
+        var sidebar = new SideBar();
+        
         var all_price_feed = new Feed({
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',
             method: 'GET',

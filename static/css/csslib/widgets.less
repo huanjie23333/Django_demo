@@ -1,0 +1,72 @@
+@import "../csslib/mixin.less";
+@import "../csslib/var.less";
+
+.seo-only{
+  display:none;
+}
+
+.v-helper{
+  display:inline-block;
+  height:100%;
+  vertical-align: middle;
+  width:0px;
+}
+
+.clearfix{
+  &:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+  }
+}
+
+.img-box{
+  display: block;
+  height: 0;
+  padding-bottom: 100%;
+  overflow: hidden;
+  text-align: center;
+  border: none;
+  display: block;
+  a{
+    display: block;
+    position: relative;
+
+
+    img{
+      background-color: #f6f6f6;
+      max-height: 100%;
+      max-width: 100%;
+      //margin-left:auto;
+      //margin-right:auto;
+    }
+  }
+}
+
+
+// for panel
+
+.panel{
+  border-bottom: 8px solid #f8f8f8;
+  padding: 0 0 12px 20px;
+}
+
+.pricing-ele{
+  color: @common-text-color;
+  &.fall{
+    color: @falling-color;
+  }
+  &.raise{
+    color: @raising-color
+  }
+}
+
+.site-link-style{
+  color: @support-text-color;
+  text-decoration: none;
+}
+
+.middle-wrapper{
+   text-align: center;
+}
