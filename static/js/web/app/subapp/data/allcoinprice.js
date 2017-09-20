@@ -51,10 +51,7 @@ define(['libs/Class','utils/template','jquery','underscore'], function(Class,Tem
             }else{
                 this.create_element(coin_data);
             }
-
         },
-
-
     });
     return AllCoinPrice;
 });

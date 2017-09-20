@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+
+{% block content %}
+    <section id="content">
+        <div class="container static-content">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    news
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{##}
+{% block basic_script %}
+     {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

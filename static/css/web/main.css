@@ -403,6 +403,13 @@ ul li {
 .pricing-ele.raise {
   color: #009632;
 }
+.site-link-style {
+  color: #aaa;
+  text-decoration: none;
+}
+.middle-wrapper {
+  text-align: center;
+}
 .col-lg-1,
 .col-lg-10,
 .col-lg-11,
@@ -642,7 +649,6 @@ body a:hover {
   font-weight: 600;
 }
 #content .box .box-body .site-list li.tag-list-tail {
-  color: #aaa;
   float: right;
   display: inline-block;
   position: absolute;
@@ -827,6 +833,33 @@ body a:hover {
 .static-content .cate-tag-wrapper .cate-tags li {
   float: left;
 }
+.news-wrapper ul.news-list li {
+  padding: 10px 10px 10px 0px;
+}
+.news-wrapper ul.news-list .news-title {
+  margin-bottom: 5px;
+}
+.news-wrapper ul.news-list .news-title span {
+  width: 100%;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  max-height: 3em;
+  overflow: hidden;
+  display: block;
+}
+.news-wrapper ul.news-list .news-title span {
+  color: #434446;
+  cursor: pointer;
+}
+.news-wrapper ul.news-list .news-content {
+  margin-bottom: 10px;
+  border: 1px solid #f3f3f3;
+  color: #aaa;
+  padding: 20px 20px;
+}
+.news-wrapper ul.news-list .pub-time {
+  color: #aaa;
+}
 #bookmarkme {
   cursor: pointer;
 }
@@ -891,5 +924,5 @@ body a:hover {
   }
 }
 .test {
-  color: red;
+  color: black;
 }

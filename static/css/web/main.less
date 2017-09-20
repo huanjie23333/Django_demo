@@ -1,8 +1,10 @@
-@import "../lib/var.less";
-@import "../lib/mixin.less";
-@import "../lib/normal.less";
-@import "../lib/widgets.less";
-@import "../lib/bsfix.less";
+@import "../csslib/var.less";
+@import "../csslib/mixin.less";
+@import "../csslib/normal.less";
+@import "../csslib/widgets.less";
+@import "../csslib/timeline.less";
+@import "../csslib/bsfix.less";
+
 
 body.static-body{
   height:100%;
@@ -79,9 +81,7 @@ body{
    }
 }
 
-@box-bg-color:#fff;
-@box-header-border-color:#f3f3f3;
-@box-header-font-color:#ff552e;
+
 
 #content{
   background-color:@default-content-background;
@@ -119,10 +119,8 @@ body{
             }
             &.tag-list-tail{
                a, a:hover{
-                 color: @support-text-color;
-                 text-decoration: none;
+                 .site-link-style;
                }
-               color:@support-text-color;
                float:right;
                .clearfix;
                display: inline-block;
@@ -318,6 +316,38 @@ body{
 
 }
 
+.news-wrapper{
+  ul.news-list{
+    li{
+        padding:10px 10px 10px 0px;
+    }
+    .news-title{
+       margin-bottom:5px;
+       span{
+          width: 100%;
+          text-overflow: ellipsis;
+          line-height: 1.5em;
+          max-height: 3em;
+          overflow: hidden;
+          display:block;
+       }
+       span{
+         color: @common-text-color;
+         cursor: pointer;
+       }
+    }
+    .news-content{
+       margin-bottom:10px;
+       border:1px solid @box-header-border-color;
+       color: @support-text-color;
+       padding: 20px 20px;
+    }
+    .pub-time{
+        color: @support-text-color;
+    }
+  }
+
+}
 #bookmarkme{
   cursor:pointer;
 }
@@ -328,7 +358,7 @@ body{
 @import "dimentions/xs.less";
 
 .test{
-  color:red;
+  color:black;
 
 }
 

@@ -24,8 +24,6 @@ define(['libs/Class','underscore'],function(Class,_){
             _.map(this.dictionary, function(key_right,key_left ){
                 new_entry[key_right] = single_entry[key_left];
             });
-
-
             return this.clean_entry(new_entry);
         }
     });

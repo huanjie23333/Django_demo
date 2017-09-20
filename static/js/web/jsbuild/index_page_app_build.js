@@ -470,7 +470,7 @@ define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class,
     var Feed = _Feed.extend({
         init: function (options) {
             this.options = options;
-            this.interval = options.interval || 5000
+            this.interval = options.interval || 5000;
             this._running = false;
         },
 
@@ -482,7 +482,12 @@ define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class,
             if(this._running) return ;
             this._running = true;
             this._run();
-            this._rid = window.setInterval(this._run.bind(this), this.interval)
+            if(this.interval>0) {
+                this._rid = window.setInterval(this._run.bind(this), this.interval)
+            }else{
+                this._running = false;
+                return ;
+            }
         },
 
         _run: function(){
@@ -591,10 +596,7 @@ define('subapp/data/allcoinprice',['libs/Class','utils/template','jquery','under
             }else{
                 this.create_element(coin_data);
             }
-
         },
-
-
     });
     return AllCoinPrice;
 });
@@ -624,8 +626,6 @@ define('subapp/adapters/adapter',['libs/Class','underscore'],function(Class,_){
             _.map(this.dictionary, function(key_right,key_left ){
                 new_entry[key_right] = single_entry[key_left];
             });
-
-
             return this.clean_entry(new_entry);
         }
     });
@@ -1318,6 +1318,142 @@ define('subapp/tracker',['libs/Class', 'jquery'],function(Class, $){
     return Tracker;
 
 });
+define('subapp/sidebar/news',['libs/Class', 'subapp/data/feed','utils/template','jquery', 'underscore'],
+    function(Class,Feed,Template , $, _){
+
+        var NewsApp = Class.extend({
+            handle_title_click: function(e) {
+               var $content  = $(e.currentTarget).parent().find('.news-content');
+                   $content.toggleClass('hidden');
+                   return ;
+            },
+
+            setupTitleClick: function () {
+                this.$news_list.on('click', '.news-title', this.handle_title_click.bind(this));
+            },
+
+            init: function(option){
+                this.$news_list = $('.news-list');
+                this.template =  Template($('#news_template').html());
+
+                if(!option["feed"]){
+                    throw Error('can not init a price app without a feed');
+                }
+
+                if(!option["adapter"]){
+                    throw Error('need adapter to goon');
+                }
+
+                this.dataFeed = option["feed"];
+                this.dataFeed.on('data_arrive',this.handle_data.bind(this));
+                this.dataFeed.on('data_fail', this.handle_fail.bind(this));
+
+                this.adapter = option["adapter"];
+                this.setupTitleClick();
+            },
+
+            handle_data: function(data){
+                this.data_list = this.adapter.update(data).spit();
+                this.render();
+             },
+            handle_fail: function(data){
+                console.log('news data fail');
+                console.log(data);
+            },
+            render: function(){
+                 _.map(this.data_list, this._render_item.bind(this));
+            },
+
+            _render_item: function(entry){
+                 this.create_element(entry);
+            },
+
+            create_element: function (entry) {
+                this.$news_list.append($(this.template(entry)))
+            },
+
+        });
+        return NewsApp;
+
+});
+define('subapp/adapters/coinbeef',[
+    'subapp/adapters/adapter',
+    'underscore'],
+    function(AdapterBase, _){
+
+        var CoinbeefAdapter = AdapterBase.extend({
+
+            is_in_24h: function(entry){
+                var entry_date = this.get_entry_date(entry);
+                return this.first_date - entry_date <= 1000*60*60*24;
+            },
+
+            get_24h_entry: function (results) {
+               this.first_date = this.get_entry_date(results[0]);
+               return _.filter(results, this.is_in_24h.bind(this));
+            },
+
+            get_entry_date: function (entry) {
+                return entry['published_at'] * 1000;
+            },
+
+            spit: function(){
+                var  news_list = this.get_24h_entry(this.data['results']);
+                return _.map(news_list, this.add_formatted_time.bind(this));
+            },
+
+            format_time: function (time_diff) {
+                var sec_diff = Math.ceil(time_diff/1000.0);
+                if(sec_diff <= 60){
+                    return  sec_diff + '秒前';
+                }
+
+                var min_diff = Math.ceil(sec_diff/60.0) - 1;
+                if(sec_diff > 60 && sec_diff < 3600){
+                    return  min_diff + '分钟前';
+                }
+
+                var hour_diff = Math.ceil(min_diff/60.0) -1;
+                if(min_diff>60){
+                    return hour_diff + '小时前';
+                }
+
+                var day_diff = Math.ceil(hour_diff/24.0) -1;
+                if(hour_diff>24){
+                    return day_diff + '天前';
+                }
+
+            },
+            add_formatted_time: function(entry){
+                var time_diff = Date.now() - this.get_entry_date(entry);
+                entry['time_diff'] = this.format_time(time_diff);
+                return entry;
+            }
+
+        });
+
+        return CoinbeefAdapter
+});
+define('subapp/sidebar',['libs/Class','jquery','subapp/sidebar/news', 'subapp/data/feed', 'subapp/adapters/coinbeef'],
+    function(Class,$,NewsApp, Feed, CoinBeefAdapter){
+
+    var SideBarApp = Class.extend({
+        init:function(){
+            this.newsFeed = new Feed({
+                url: 'http://www.chainscoop.com/api/news.json',
+                method: 'GET',
+                interval:-1, // no repeat
+            });
+            this.news =new NewsApp({
+                feed:  this.newsFeed,
+                adapter: new CoinBeefAdapter()
+            });
+
+            this.newsFeed.run();
+        }
+    });
+    return SideBarApp;
+});
 /*!
  * Salvattore 1.0.9 by @rnmp and @ppold
  * https://github.com/rnmp/salvattore
@@ -1351,6 +1487,7 @@ require([
         'subapp/adapters/coinmarketcapAdapter',
         'subapp/scrollprice',
         'subapp/tracker',
+        'subapp/sidebar',
         'libs/salvattore',
         'subapp/tools/bookmark'
 
@@ -1363,14 +1500,19 @@ require([
               Adapter,
               ScrollPrice,
               Tracker,
+              SideBar,
               Layout,
               BookMark
               ) {
         var datafeed = new DataFeed();
 
+
         //var scroll_price = new ScrollPrice();
         var tracker = new Tracker();
         //here for side bar price list render
+
+        var sidebar = new SideBar();
+        
         var all_price_feed = new Feed({
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',
             method: 'GET',
