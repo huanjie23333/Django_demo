@@ -1385,7 +1385,7 @@ define('subapp/adapters/coinbeef',[
 
             is_in_24h: function(entry){
                 var entry_date = this.get_entry_date(entry);
-                return this.first_date - entry_date <= 1000*60*60*24;
+                return this.first_date - entry_date <= 1000*60*60*16;
             },
 
             get_24h_entry: function (results) {

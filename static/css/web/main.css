@@ -855,7 +855,8 @@ body a:hover {
   margin-bottom: 10px;
   border: 1px solid #f3f3f3;
   color: #aaa;
-  padding: 20px 20px;
+  padding: 12px;
+  margin-top: 12px;
 }
 .news-wrapper ul.news-list .pub-time {
   color: #aaa;
