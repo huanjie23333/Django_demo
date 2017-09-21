@@ -1425,7 +1425,8 @@ define('subapp/adapters/coinbeef',[
 
             },
             add_formatted_time: function(entry){
-                var time_diff = Date.now() - this.get_entry_date(entry);
+                var utc_fix = new Date().getTimezoneOffset();
+                var time_diff = Date.now() + 1000*60*utc_fix - this.get_entry_date(entry);
                 entry['time_diff'] = this.format_time(time_diff);
                 return entry;
             }
