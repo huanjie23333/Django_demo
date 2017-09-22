@@ -16,10 +16,10 @@ define([
             },
             add_time_title: function(entry){
                 var utc_fix = new Date().getTimezoneOffset();
-                var local_timestamp = this.get_entry_date(entry) + 1000*60*utc_fix
+                var local_timestamp = this.get_entry_date(entry) - 1000*60*utc_fix
                 var dt = new Date(local_timestamp);
                 var month = entry['month'] = dt.getMonth() + 1;
-                var date = entry['date'] = dt.getDate()+1;
+                var date = entry['date'] = dt.getDate();
 
                 if(this.last_show_date == date && this.last_show_month == month){
                     entry['show_time'] = false;

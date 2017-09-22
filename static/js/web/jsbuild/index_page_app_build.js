@@ -1583,10 +1583,10 @@ define('subapp/adapters/coinbeef_all',[
             },
             add_time_title: function(entry){
                 var utc_fix = new Date().getTimezoneOffset();
-                var local_timestamp = this.get_entry_date(entry) + 1000*60*utc_fix
+                var local_timestamp = this.get_entry_date(entry) - 1000*60*utc_fix
                 var dt = new Date(local_timestamp);
                 var month = entry['month'] = dt.getMonth() + 1;
-                var date = entry['date'] = dt.getDate()+1;
+                var date = entry['date'] = dt.getDate();
 
                 if(this.last_show_date == date && this.last_show_month == month){
                     entry['show_time'] = false;
@@ -1621,8 +1621,22 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
                 return feed;
             },
 
+            display_loading_info: function () {
+                if(this.$loadBtn && this.$loadBtn.length){
+                    this.$loadBtn.html('加载中...');
+                }
+            },
+
+            hide_loading_info: function () {
+                 if(this.$loadBtn && this.$loadBtn.length){
+                     this.$loadBtn.html('加载更多');
+                 }
+            },
+
             load_next: function () {
                 if(!this.next_page_url) return ;
+
+                this.display_loading_info();
 
                 //release old feed
                 delete(this.dataFeed);
@@ -1637,7 +1651,7 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
 
             },
             initLoadBtn: function () {
-                var $btn = $('.btn-load-news');
+                var $btn = this.$loadBtn = $('.btn-load-news');
                 if(!$btn.length){
                     return
                 }
@@ -1695,6 +1709,7 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
             handle_fail: function(data){
                 console.log('news data fail');
                 console.log(data);
+                this.hide_loading_info();
             },
 
             render: function(){
