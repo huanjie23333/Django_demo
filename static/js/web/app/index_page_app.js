@@ -8,6 +8,8 @@ require([
         'subapp/scrollprice',
         'subapp/tracker',
         'subapp/sidebar',
+        'subapp/newsline',
+        'subapp/gotop',
         'libs/salvattore',
         'subapp/tools/bookmark'
 
@@ -21,6 +23,8 @@ require([
               ScrollPrice,
               Tracker,
               SideBar,
+              NewsLine,
+              GoTop,
               Layout,
               BookMark
               ) {
@@ -32,6 +36,8 @@ require([
         //here for side bar price list render
 
         var sidebar = new SideBar();
+        var newsline = new NewsLine();
+        var gotop = new GoTop();
         
         var all_price_feed = new Feed({
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',

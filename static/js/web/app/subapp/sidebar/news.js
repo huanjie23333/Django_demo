@@ -14,6 +14,8 @@ define(['libs/Class', 'subapp/data/feed','utils/template','jquery', 'underscore'
 
             init: function(option){
                 this.$news_list = $('.news-list');
+                if(!!!this.$news_list.length) return ;
+
                 this.template =  Template($('#news_template').html());
 
                 if(!option["feed"]){

@@ -36,15 +36,24 @@ define([
                 }
 
                 var hour_diff = Math.ceil(min_diff/60.0) -1;
-                if(min_diff>60){
+                if(min_diff>60 && min_diff<60*24){
                     return hour_diff + '小时前';
                 }
 
                 var day_diff = Math.ceil(hour_diff/24.0) -1;
-                if(hour_diff>24){
+                if(hour_diff>24 && hour_diff< 7*24){
                     return day_diff + '天前';
                 }
 
+                var week_diff = Math.ceil(day_diff/7.0) ;
+                if(day_diff >= 7 && day_diff < 7*4){
+                    return week_diff + '周前';
+                }
+
+                var mon_diff = Math.ceil(week_diff/4.0) ;
+                if(week_diff >= 4 && week_diff < 52){
+                    return mon_diff +'月前';
+                }
             },
             add_formatted_time: function(entry){
                 var utc_fix = new Date().getTimezoneOffset();

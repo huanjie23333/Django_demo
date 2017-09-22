@@ -114,3 +114,7 @@ class SiteMapView(TemplateView):
 
 class NewsListView(TemplateView):
     template_name = 'web/news.html'
+
+class ErrorView(TemplateView):
+    def get(self, request):
+        raise Exception('error for test')

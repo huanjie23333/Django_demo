@@ -4,6 +4,9 @@ define(['libs/Class','utils/template','jquery','underscore'], function(Class,Tem
 
         init: function(option){
             this.$coin_list= $('#coin_list');
+
+            if(!!!this.$coin_list.length) return ;
+
             this.tempalte = Template($('#coin_template').html())
             if(!option["feed"]){
                 throw Error('can not init a price app without a feed');
