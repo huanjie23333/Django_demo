@@ -29,7 +29,8 @@ urlpatterns = [
     url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
     url(r'^sitemap\.htm$', SiteMapView.as_view(), name='web_sitemap'),
     url(r'^news\.htm', NewsListView.as_view(), name='web_news'),
-    url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
+    # url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
+    url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^news/', include('web.urls.news', namespace='news')),
 
     url(r'^$', IndexView.as_view(), name='web_index'),
