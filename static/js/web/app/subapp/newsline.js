@@ -90,6 +90,7 @@ define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/
                 }
                 this.data_list = this.adapter.update(data).spit();
                 this.render();
+                this.hide_loading_info();
             },
 
             get_next_page_url:function(origin_url){

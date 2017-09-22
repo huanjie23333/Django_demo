@@ -1576,9 +1576,6 @@ define('subapp/adapters/coinbeef_all',[
               var result =  _.map(this.data['results'],
                              this.add_formatted_time.bind(this));
 
-              this.last_show_month = null;
-              this.last_show_date = null;
-
               return _.map(result, this.add_time_title.bind(this));
             },
             add_time_title: function(entry){
@@ -1694,6 +1691,7 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
                 }
                 this.data_list = this.adapter.update(data).spit();
                 this.render();
+                this.hide_loading_info();
             },
 
             get_next_page_url:function(origin_url){
