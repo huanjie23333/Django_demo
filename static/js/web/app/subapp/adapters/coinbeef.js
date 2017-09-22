@@ -50,9 +50,14 @@ define([
                     return week_diff + '周前';
                 }
 
-                var mon_diff = Math.ceil(week_diff/4.0) ;
-                if(week_diff >= 4 && week_diff < 52){
+                var mon_diff = Math.ceil(day_diff/30) ;
+                if(day_diff >= 30 && day_diff<366){
                     return mon_diff +'月前';
+                }
+
+                var year_diff = Math.ceil(day_diff/365)
+                if(day_diff >=366){
+                    return year_diff + '年前';
                 }
             },
             add_formatted_time: function(entry){
