@@ -349,6 +349,40 @@ body{
   }
 
 }
+
+.gotop-wrapper{
+   position: fixed;
+   display: none;
+   height: 50px;
+   width: 50px;
+   border: 1px solid @box-header-border-color;
+   bottom: 84px;
+   background: #fff;
+   text-align: center;
+   opacity: 0.4;
+   &:hover{
+     opacity: 1;
+   }
+   &:active{
+     opacity:0.4;
+   }
+   span {
+      font-size: 50px;
+      line-height: 50px;
+      top: -2px;
+      position: relative;
+      color: @site-link-color;
+   }
+}
+
+.error-content{
+   .middle-wrapper>h2, .middle-wrapper>div, .middle-wrapper>h3{
+      text-align: center;
+   }
+   h3{
+      line-height:1.7em;
+   }
+}
 #bookmarkme{
   cursor:pointer;
 }
@@ -359,7 +393,7 @@ body{
 @import "dimentions/xs.less";
 
 .test{
-  color:black;
+  color:red;
 
 }
 

@@ -1,59 +1,75 @@
- <div class="col-sm-4 col-xs-12 news-wrapper"  id="side_column">
-                   <div class="box hidden-xs">
-                       <div class="box-header">
-                          24h 快讯
-                       </div>
-                       <div class="box-body">
-                           <ul class="news-list">
-                           </ul>
-                       </div>
-                       <div class="box-footer">
-{#                           <div class="middle-wrapper">#}
-{#                                  <a class="btn btn-primary" href="{% url 'web_news' %}">#}
-{#                                      查看更多#}
-{#                                  </a>#}
-{#                           </div>#}
-                       </div>
-                   </div>
-                    <div class="box">
-                        <div class="box-header">行情报价</div>
-                        <div class="box-body">
-                            <ul class="coin-list" id="coin_list">
-{#                                <li class="list-header">#}
-{#                                    <span class="coin-name">#}
-{#                                         币种#}
-{#                                    </span>#}
-{#                                    <span class="coin-price">#}
-{#                                        报价#}
-{#                                    </span>#}
-{#                                    <span class="coin-change">#}
-{#                                        一小时变化#}
-{#                                    </span>#}
-{#                                </li>#}
+<div class="col-sm-4 col-xs-12 news-wrapper"  id="side_column">
+    <div class="box hidden-xs">
+        <div class="box-header">
+            24h 快讯
+        </div>
+        <div class="box-body">
+            <div class="news-list timeline small-line">
+            </div>
+        </div>
+        <div class="box-footer">
+            <div class="middle-wrapper">
+                <a class="btn btn-primary white-btn" href="{% url 'web_news' %}">
+                    查看更多
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-header">行情报价</div>
+        <div class="box-body">
+            <ul class="coin-list" id="coin_list">
 
-                            </ul>
-                        </div>
-                    </div>
- </div>
+            </ul>
+        </div>
+    </div>
+</div>
 
- <script id="news_template" type="text/template">
-                                <li>
-                                   <div class="news-title">
-                                       <span href="">
-                                       <%=title%>
-                                        </span>
-                                   </div>
-                                   <div class="news-content hidden">
-                                       <%=content%>
-                                   </div>
-                                   <div class="pub-time">
-                                       <%=time_diff%>
-                                   </div>
-                               </li>
-    </script>
+<script id="news_template" type="text/template">
 
-    <script id="coin_template" type="text/template">
-     <li id="<%=id%>">
+        <div class="entry">
+            <div class="left-content">
+                <h3>
+{#                    <% if(show_time){ %>#}
+{#                      <div class="show-time">#}
+{#                       <span class="month"><%=month%>月</span>#}
+{#                       <span class="date"><%=date%></span>#}
+{#                      </div>#}
+{#                    <% } %>#}
+                </h3>
+                <p></p>
+            </div>
+            <div class="body">
+                <p class="news-title"><%=title%></p>
+                <ul>
+                    <li class="news-content hidden"><%=content%>
+                        <% if(origin_link) { %>
+                        <a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                        <% }%>
+
+                    </li>
+{#                    <li><%=time_diff%></li>#}
+                </ul>
+            </div>
+        </div>
+
+{#    <li>#}
+{#        <div class="news-title">#}
+{#                                       <span href="">#}
+{#                                       <%=title%>#}
+{#                                        </span>#}
+{#        </div>#}
+{#        <div class="news-content hidden">#}
+{#            <%=content%>#}
+{#        </div>#}
+{#        <div class="pub-time">#}
+{#            <%=time_diff%>#}
+{#        </div>#}
+    </li>
+</script>
+
+<script id="coin_template" type="text/template">
+    <li id="<%=id%>">
                                     <span class="coin-name">
                                         <%=name_cn%>
                                     </span>
@@ -63,5 +79,11 @@
                                     <span class="coin-change fall">
                                          <%=change_percent%>
                                     </span>
-                                </li>
-    </script>
+    </li>
+</script>
+
+<script language="javascript" >
+    {% autoescape off %}
+         var news_obj = {{ sidebar_news_json_str }};
+    {% endautoescape %}
+</script>

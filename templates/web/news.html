@@ -3,19 +3,64 @@
 
 {% block content %}
     <section id="content">
-        <div class="container static-content">
+        <div class="container">
             <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                    news
-                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="timeline newsline">
 
+                            </div>
+                            <div class="middle-wrapper">
+                                <a class="btn btn-primary white-btn btn-load-news">
+                                    加载更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include 'web/partial/side_bar.html' %}
             </div>
         </div>
     </section>
+
+     <a class="gotop-wrapper">
+        <span class="btn-top" id="top_link">
+            <i class="fa fa-angle-up"></i>
+        </span>
+    </a>
+
+    <script id="newsline_template" type="text/template">
+        <div class="entry">
+            <div class="left-content">
+                <h3>
+                    <% if(show_time){ %>
+                      <div class="show-time">
+                       <span class="month"><%=month%>月</span>
+                       <span class="date"><%=date%></span>
+                      </div>
+                    <% } %>
+                </h3>
+                <p></p>
+            </div>
+            <div class="body">
+                <p class="news-title"><%=title%></p>
+                <ul>
+                    <li class="news-content"><%=content%>
+                        <% if(origin_link) { %>
+                        <a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                        <% }%>
+
+                    </li>
+                    <li><%=time_diff%></li>
+                </ul>
+            </div>
+        </div>
+    </script>
 {% endblock %}
 {##}
 {% block basic_script %}
-     {% compress js %}
+    {% compress js %}
         <script src="{% static 'js/web/app/require.js' %}"></script>
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
     {% endcompress %}

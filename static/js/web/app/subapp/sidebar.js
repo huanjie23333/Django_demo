@@ -1,11 +1,13 @@
-define(['libs/Class','jquery','subapp/sidebar/news', 'subapp/data/feed', 'subapp/adapters/coinbeef'],
-    function(Class,$,NewsApp, Feed, CoinBeefAdapter){
+define(['libs/Class','jquery','subapp/sidebar/news', 'subapp/data/fakeFeed', 'subapp/adapters/coinbeef'],
+    function(Class,$,NewsApp, FakeFeed, CoinBeefAdapter){
 
     var SideBarApp = Class.extend({
         init:function(){
-            this.newsFeed = new Feed({
-                url: 'http://www.chainscoop.com/api/news.json',
-                method: 'GET',
+            if(!window.news_obj){
+                throw Error('CAN NOT FIND NEWS DATA');
+            }
+            this.newsFeed = new FakeFeed({
+                data:window.news_obj,
                 interval:-1, // no repeat
             });
             this.news =new NewsApp({

@@ -26,10 +26,8 @@ define(['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
         },
 
         _run: function(){
-            $.when($.ajax(this.options)).then(
-                this.request_success.bind(this),
-                this.request_fail.bind(this)
-            )
+            this.data = this.options['data'];
+            this.request_success(this.data);
         },
 
         request_success:function(data){

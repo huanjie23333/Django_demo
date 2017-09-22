@@ -1,6 +1,6 @@
 from .settings import *
 
-
+DEBUG = True
 
 SESSION_ENGINE  = 'django.contrib.sessions.backends.cache'
 
@@ -68,7 +68,7 @@ TEMPLATES = [
 
 
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.172.164']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.172.164','192.168.172.176']
 STATIC_URL = '/static/'
 STATIC_ROOT = '/mad_sand/quark/static/'
 STATICFILES_DIRS = []
