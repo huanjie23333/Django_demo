@@ -1,10 +1,8 @@
 # -*- coding: UTF-8  -*-
-import json
-
 import requests
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
 
-from django.views.generic import TemplateView, View, ListView
+from django.views.generic import TemplateView, View
 from django.shortcuts import get_object_or_404
 from django.core.cache import cache
 from django.db.models import Count
@@ -73,9 +71,6 @@ class CategoryView(SideBarDataMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CategoryView, self).get_context_data(**kwargs)
         cate = self.get_category()
-        # cate = context['category'] = self.get_object()
-        # context['tag_lists'] = self.get_tag_for_category(cate.id, )
-        print(cate)
         context.update({
             'category': cate,
             'cate_ename': cate.ename,
