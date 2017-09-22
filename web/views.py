@@ -59,26 +59,27 @@ class SideBarDataMixin(NewsDataMixin):
         return context
 
 
-class CategoryView(SideBarDataMixin, ListView):
+class CategoryView(SideBarDataMixin, TemplateView):
     template_name = 'web/category.html'
-    model = Nav
-    queryset = Nav.objects.all()
 
     def get_category(self):
         return get_object_or_404(Category, ename=self.ename)
 
-    def get_queryset(self):
-        _queryset = super(CategoryView, self).get_queryset()
-        _queryset = _queryset.filter(cate__ename=self.ename)
-        return _queryset
+    # def get_queryset(self):
+    #     _queryset = super(CategoryView, self).get_queryset()
+    #     _queryset = _queryset.filter(cate__ename=self.ename)
+    #     return _queryset
 
     def get_context_data(self, **kwargs):
         context = super(CategoryView, self).get_context_data(**kwargs)
         cate = self.get_category()
         # cate = context['category'] = self.get_object()
-        context['tag_lists'] = self.get_tag_for_category(cate.id, )
+        # context['tag_lists'] = self.get_tag_for_category(cate.id, )
+        print(cate)
         context.update({
-            'category': self.get_category(),
+            'category': cate,
+            'cate_ename': cate.ename,
+            "tag_lists": self.get_tag_for_category(cate.id)
         })
         return context
 
@@ -104,7 +105,8 @@ class CategoryView(SideBarDataMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         self.ename = kwargs.pop('cate_ename')
-        return super(CategoryView, self).get(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
+        # return super(CategoryView, self).get(request, *args, **kwargs)
 
 
 class IndexView(SideBarDataMixin, TemplateView):
