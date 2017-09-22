@@ -17,8 +17,22 @@ define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/
                 return feed;
             },
 
+            display_loading_info: function () {
+                if(this.$loadBtn && this.$loadBtn.length){
+                    this.$loadBtn.html('加载中...');
+                }
+            },
+
+            hide_loading_info: function () {
+                 if(this.$loadBtn && this.$loadBtn.length){
+                     this.$loadBtn.html('加载更多');
+                 }
+            },
+
             load_next: function () {
                 if(!this.next_page_url) return ;
+
+                this.display_loading_info();
 
                 //release old feed
                 delete(this.dataFeed);
@@ -33,7 +47,7 @@ define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/
 
             },
             initLoadBtn: function () {
-                var $btn = $('.btn-load-news');
+                var $btn = this.$loadBtn = $('.btn-load-news');
                 if(!$btn.length){
                     return
                 }
@@ -91,6 +105,7 @@ define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/
             handle_fail: function(data){
                 console.log('news data fail');
                 console.log(data);
+                this.hide_loading_info();
             },
 
             render: function(){
