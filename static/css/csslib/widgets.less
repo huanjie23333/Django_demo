@@ -75,9 +75,10 @@
     color: @site-link-color;
     background-color: #fff;
     border-color:@site-link-color;
-    &:hover{
+    &:hover,&:focus,&:active{
        color: @site-link-highlight-color;
        background-color: #fff;
        border-color:@site-link-highlight-color;
+       .box-shadow(none);
     }
 }

@@ -415,10 +415,15 @@ ul li {
   background-color: #fff;
   border-color: #0E8ED8;
 }
-.white-btn:hover {
+.white-btn:hover,
+.white-btn:focus,
+.white-btn:active {
   color: #ff552e;
   background-color: #fff;
   border-color: #ff552e;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 .timeline {
   width: 100%;
