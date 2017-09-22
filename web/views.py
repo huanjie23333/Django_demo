@@ -9,7 +9,6 @@ from django.shortcuts import get_object_or_404
 from django.core.cache import cache
 from django.db.models import Count
 
-
 from nav.models import Nav, Category
 from taggit.models import TaggedItem
 
@@ -17,10 +16,10 @@ from django.http import HttpResponse
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 
-class NewsDataMixin(object):
 
+class NewsDataMixin(object):
     def get_newslist_page(self, page):
-        r = requests.get('http://www.chainscoop.com/api/news.json?page=%s'%page)
+        r = requests.get('http://www.chainscoop.com/api/news.json?page=%s' % page)
         if r.status_code == 200:
             return r.text
 
@@ -52,15 +51,17 @@ class NewsDataMixin(object):
         assert 0 < page <= 30000
         return page
 
-class SideBarDataMixin(NewsDataMixin):
 
+class SideBarDataMixin(NewsDataMixin):
     def get_context_data(self):
         context = super(SideBarDataMixin, self).get_context_data()
         context['sidebar_news_json_str'] = self.get_page_data(1)
         return context
 
-class CategoryView(SideBarDataMixin,TemplateView):
+
+class CategoryView(SideBarDataMixin, TemplateView):
     template_name = 'web/category.html'
+
     def get_context_data(self, **kwargs):
         context = super(CategoryView, self).get_context_data(**kwargs)
         cate = context['category'] = self.get_object()
@@ -68,25 +69,27 @@ class CategoryView(SideBarDataMixin,TemplateView):
         return context
 
     def get_object(self):
-        ename = self.kwargs.get('cate_ename')
-        return get_object_or_404(Category, ename=ename)
-
+        # ename = self.kwargs.get('cate_ename')
+        return get_object_or_404(Category, ename=self.ename)
 
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
-
-        nav_ids  = list(self.get_nav_ids_by_category(category_id))
-        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids)\
-                           .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id'))\
-                           .order_by('-tagCount'))[:tag_range]
-        tag_nav_list = [ {
-                         'tagname': obj['tag__name'],
-                         'navs':  Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id)[:site_range]
-                         }
-                         for obj in tagids]
+        nav_ids = list(self.get_nav_ids_by_category(category_id))
+        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids) \
+                      .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
+                      .order_by('-tagCount'))[:tag_range]
+        tag_nav_list = [{
+            'tagname': obj['tag__name'],
+            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id)[:site_range]
+        }
+            for obj in tagids]
         return tag_nav_list
 
     def get_nav_ids_by_category(self, category_id):
         return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
+
+    def get(self, request, *args, **kwargs):
+        self.ename = kwargs.pop('cate_ename')
+        return super(CategoryView, self).get(request, *args, **kwargs)
 
 
 class IndexView(SideBarDataMixin, TemplateView):
@@ -98,7 +101,7 @@ class IndexView(SideBarDataMixin, TemplateView):
 
         categories = list(Category.objects.all())
 
-        context['categories'] = [ {
+        context['categories'] = [{
             'category_name': cate.cname,
             'category_ename': cate.ename,
             'cate_tags': self.get_tag_for_category(cate.id)
@@ -114,18 +117,16 @@ class IndexView(SideBarDataMixin, TemplateView):
         return Nav.objects.filter(score__gte=85)
 
     def get_tag_for_category(self, category_id, tag_range=3, site_range=20):
-
-        nav_ids  = list(self.get_nav_ids_by_category(category_id))
-        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids)\
-                           .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id'))\
-                           .order_by('-tagCount'))
-        tag_nav_list = [ {
-                         'tagname': obj['tag__name'],
-                         'navs':  Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id)[:site_range]
-                         }
-                         for obj in tagids]
+        nav_ids = list(self.get_nav_ids_by_category(category_id))
+        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids) \
+                      .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
+                      .order_by('-tagCount'))
+        tag_nav_list = [{
+            'tagname': obj['tag__name'],
+            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id)[:site_range]
+        }
+            for obj in tagids]
         return tag_nav_list
-
 
     def get_nav_ids_by_category(self, category_id):
         return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
@@ -147,24 +148,20 @@ class SiteMapView(TemplateView):
     def get_all_tag_list(self):
         categories = Category.objects.all()
         return [{
-            'catename':cate.cname,
-            'cateename':cate.ename,
+            'catename': cate.cname,
+            'cateename': cate.ename,
             'tag_list': self.get_cate_tag_list(cate.id)
-        } for cate in categories ]
-
+        } for cate in categories]
 
     def get_cate_tag_list(self, category_id):
-        nav_ids  = list(self.get_nav_ids_by_category(category_id))
-        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids)\
-                           .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id'))\
-                           .order_by('-tagCount'))
+        nav_ids = list(self.get_nav_ids_by_category(category_id))
+        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids) \
+                      .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
+                      .order_by('-tagCount'))
         return tagids
-
 
     def get_nav_ids_by_category(self, category_id):
         return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
-
-
 
 
 # view for testing 500 page.
@@ -173,14 +170,11 @@ class ErrorView(StaffuserRequiredMixin, TemplateView):
         raise Exception('error for test')
 
 
-
-class NewsApiView(AjaxResponseMixin,JSONResponseMixin,NewsDataMixin,View):
-
+class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
     # def get(self,request):
     #     return self.get_ajax(request)
 
     def get_ajax(self, request, *args, **kwargs):
-
         page = self.get_page_num()
         json_str = self.get_page_data(page)
         # save yout keys set here, so you can clear them at once
@@ -194,12 +188,12 @@ class NewsListView(SideBarDataMixin, TemplateView):
     template_name = 'web/news.html'
 
 
-class ClearNewsCacheView(StaffuserRequiredMixin,NewsDataMixin,TemplateView):
+class ClearNewsCacheView(StaffuserRequiredMixin, NewsDataMixin, TemplateView):
     template_name = 'web/clear_news_cache.html'
+
     def get_context_data(self, **kwargs):
         context = {}
         context['key_list'] = self.get_key_list()
         cache.delete_many(context['key_list'])
         self.reset_key_list()
         return context
-
