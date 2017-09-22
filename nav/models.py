@@ -7,12 +7,14 @@ from model_utils.fields import StatusField
 from model_utils import Choices
 from caching.base import CachingManager, CachingMixin
 
+
 class Category(CachingMixin, models.Model):
     cname = models.CharField(max_length=64, null=False, blank=False, db_index=True)
     ename = models.CharField(max_length=64, null=False, blank=False, db_index=True)
     order = models.IntegerField(default=1)
 
     objects = CachingManager()
+
     def __str__(self):
         return self.cname
 
@@ -33,7 +35,7 @@ class Nav(CachingMixin, models.Model):
     # category = models.CharField(max_length=64, null=True, blank=True)
     alias = models.CharField(max_length=64, null=True, blank=True)
     highlight = models.BooleanField(default=False)
-    #add foreign key for category
+    # add foreign key for category
     cate = models.ForeignKey(Category, related_name='navs', default=1)
 
     objects = CachingManager()

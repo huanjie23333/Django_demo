@@ -4,7 +4,7 @@ import json
 import requests
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
 
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, ListView
 from django.shortcuts import get_object_or_404
 from django.core.cache import cache
 from django.db.models import Count
@@ -59,19 +59,34 @@ class SideBarDataMixin(NewsDataMixin):
         return context
 
 
-class CategoryView(SideBarDataMixin, TemplateView):
+class CategoryView(SideBarDataMixin, ListView):
     template_name = 'web/category.html'
+    model = Nav
+    queryset = Nav.objects.all()
+
+    def get_category(self):
+        return get_object_or_404(Category, ename=self.ename)
+
+    def get_queryset(self):
+        _queryset = super(CategoryView, self).get_queryset()
+        _queryset = _queryset.filter(cate__ename=self.ename)
+        return _queryset
 
     def get_context_data(self, **kwargs):
         context = super(CategoryView, self).get_context_data(**kwargs)
-        cate = context['category'] = self.get_object()
+        cate = self.get_category()
+        # cate = context['category'] = self.get_object()
         context['tag_lists'] = self.get_tag_for_category(cate.id, )
+        context.update({
+            'category': self.get_category(),
+        })
         return context
 
-    def get_object(self):
-        # ename = self.kwargs.get('cate_ename')
-        return get_object_or_404(Category, ename=self.ename)
-
+    #
+    # def get_object(self):
+    #     # ename = self.kwargs.get('cate_ename')
+    #     return get_object_or_404(Category, ename=self.ename)
+    #
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
         tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids) \
