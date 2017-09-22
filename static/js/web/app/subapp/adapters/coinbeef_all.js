@@ -9,9 +9,6 @@ define([
               var result =  _.map(this.data['results'],
                              this.add_formatted_time.bind(this));
 
-              this.last_show_month = null;
-              this.last_show_date = null;
-
               return _.map(result, this.add_time_title.bind(this));
             },
             add_time_title: function(entry){
