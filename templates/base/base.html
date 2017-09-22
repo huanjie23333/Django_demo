@@ -83,30 +83,31 @@ var _hmt = _hmt || [];
 
 {% block trackers %}
     {# 这里是统计代码 #}
-    <script>
+    {% if not debug %}
 
+        <script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-105874577-1', 'auto');
 
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-105874577-1', 'auto');
+        // Replace the following lines with the plugins you want to use.
+        ga('require', 'outboundLinkTracker');
+        // ...
 
-    // Replace the following lines with the plugins you want to use.
-    ga('require', 'outboundLinkTracker');
-    // ...
-
-    ga('send', 'pageview');
-    </script>
-    <script async src="https://www.google-analytics.com/analytics.js"></script>
-    {% compress js %}
-    <script async src="{% static 'js/web/app/libs/autotrack.js' %}"></script>
-    {% endcompress %}
-    <script>
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?4f7c3b36ed0491f90852e05efd64e62f";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+        ga('send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js"></script>
+        {% compress js %}
+        <script async src="{% static 'js/web/app/libs/autotrack.js' %}"></script>
+        {% endcompress %}
+        <script>
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?4f7c3b36ed0491f90852e05efd64e62f";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    {% endif %}
 {% endblock %}
 </body>
 </html>
