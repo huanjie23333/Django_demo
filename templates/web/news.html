@@ -46,9 +46,7 @@
             <div class="body">
                 <p class="news-title"><%=title%></p>
                 <ul>
-                    <li class="news-content"><%=content%>
-                        <% if(origin_link) { %>
-                        <a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" target="_blank">「原文链接」</a>
                         <% }%>
 
                     </li>
