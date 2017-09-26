@@ -55,7 +55,7 @@ class Project(CachingMixin, models.Model):
     slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
     name = models.CharField(max_length=128, default='')
     founder = models.CharField(max_length=128, default='')
-    license = models.CharField(max_length=255, default='')
+    software_license = models.CharField(max_length=255, default='')
     mainnet_contract_address = models.URLField(max_length=255)
     ropsten = models.URLField(max_length=255, null=True)
     site = models.URLField(max_length=255, null=True)
