@@ -53,10 +53,10 @@ class Nav(CachingMixin, models.Model):
 
 class Project(CachingMixin, models.Model):
     slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
-    name = models.CharField(max_length=128, default='')
+    name = models.CharField(max_length=128, default='', unique=True)
     founder = models.CharField(max_length=128, default='')
-    license = models.CharField(max_length=255, default='')
-    mainnet_contract_address = models.URLField(max_length=255)
+    software_license = models.CharField(max_length=255, default='')
+    mainnet_contract_address = models.URLField(max_length=255, null=True)
     ropsten = models.URLField(max_length=255, null=True)
     site = models.URLField(max_length=255, null=True)
     github = models.URLField(max_length=255, null=True)
@@ -66,8 +66,10 @@ class Project(CachingMixin, models.Model):
     gitter = models.URLField(max_length=255, null=True)
     reddit = models.URLField(max_length=255, null=True)
 
-    created_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
-    updated_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
+    origin_link = models.URLField(max_length=255, null=True)
+
+    created = models.DateField(default=timezone.now, db_index=True)
+    last_updated = models.DateField(default=timezone.now, db_index=True)
 
     tags = TaggableManager()
 
@@ -75,3 +77,6 @@ class Project(CachingMixin, models.Model):
 
     def __str__(self):
         return self.name
+
+    def tag_list(self):
+        return [o.name for o in self.tags.all()]
