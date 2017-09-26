@@ -68,8 +68,8 @@ class Project(CachingMixin, models.Model):
 
     origin_link = models.URLField(max_length=255, null=True)
 
-    created = models.DateTimeField(default=timezone.now, db_index=True)
-    last_updated = models.DateTimeField(default=timezone.now, db_index=True)
+    created = models.DateField(default=timezone.now, db_index=True)
+    last_updated = models.DateField(default=timezone.now, db_index=True)
 
     tags = TaggableManager()
 
