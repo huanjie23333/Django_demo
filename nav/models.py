@@ -77,3 +77,6 @@ class Project(CachingMixin, models.Model):
 
     def __str__(self):
         return self.name
+
+    def tag_list(self, obj):
+        return u", ".join(o.name for o in obj.tags.all())
