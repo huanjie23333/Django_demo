@@ -56,7 +56,7 @@ class Project(CachingMixin, models.Model):
     name = models.CharField(max_length=128, default='', unique=True)
     founder = models.CharField(max_length=128, default='')
     software_license = models.CharField(max_length=255, default='')
-    mainnet_contract_address = models.URLField(max_length=255)
+    mainnet_contract_address = models.URLField(max_length=255, null=True)
     ropsten = models.URLField(max_length=255, null=True)
     site = models.URLField(max_length=255, null=True)
     github = models.URLField(max_length=255, null=True)
@@ -65,6 +65,8 @@ class Project(CachingMixin, models.Model):
     slack = models.URLField(max_length=255, null=True)
     gitter = models.URLField(max_length=255, null=True)
     reddit = models.URLField(max_length=255, null=True)
+
+    origin_link = models.URLField(max_length=255, null=True)
 
     created = models.DateTimeField(default=timezone.now, db_index=True)
     last_updated = models.DateTimeField(default=timezone.now, db_index=True)
