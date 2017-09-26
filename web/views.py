@@ -85,7 +85,7 @@ class CategoryView(SideBarDataMixin, TemplateView):
     #
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
-        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids) \
+        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
                       .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
                       .order_by('-tagCount'))[:tag_range]
         tag_nav_list = [{
@@ -130,7 +130,7 @@ class IndexView(SideBarDataMixin, TemplateView):
 
     def get_tag_for_category(self, category_id, tag_range=3, site_range=20):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
-        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids) \
+        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
                       .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
                       .order_by('-tagCount'))
         tag_nav_list = [{
