@@ -7,7 +7,6 @@ class ProjectListAPIView(ListCreateAPIView):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
     model = Project
-    
 
 
 class ProjectDetailAPIView(RetrieveAPIView):
