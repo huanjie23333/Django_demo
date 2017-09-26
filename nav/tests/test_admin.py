@@ -44,4 +44,3 @@ class NavAdminTest(WithDataTestCase):
 
         ca = CategoryAdmin(Category, self.site)
         self.assertEqual(str(ca), 'nav.CategoryAdmin')
-
