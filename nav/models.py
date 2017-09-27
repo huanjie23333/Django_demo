@@ -76,7 +76,7 @@ class Project(CachingMixin, models.Model):
     objects = CachingManager()
 
     class Meta:
-        ordering = ["-created"]
+        ordering = ["-last_updated"]
 
     def __str__(self):
         return self.name
