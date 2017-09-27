@@ -19,7 +19,20 @@ class CategoryModelTestCase(WithDataTestCase):
         new_cate = Category.objects.create(cname='foo', ename='bar')
         self.assertEqual(str(new_cate), 'foo')
 
-class NavModelTest(WithDataTestCase):
+    def test_category_obj_str(self):
+        cat = Category.objects.create(cname='cname_1', ename='ename_1')
+        self.assertEqual(str(cat), 'cname_1')
+
+    def test_category_order(self):
+        cat_1 = Category.objects.create(cname='cname1', order=10)
+        cat_1 = Category.objects.create(cname='cname2', order=20)
+        cat_2 = Category.objects.create(cname='cname3', order=15)
+        c_list = list(Category.objects.all())
+        self.assertEqual(c_list[0].cname , 'cname2')
+
+
+
+class NavModelTestCase(WithDataTestCase):
 
     def test_nav_creation(self):
         cate = Category.objects.create(cname='foo', ename='bar')
@@ -28,11 +41,19 @@ class NavModelTest(WithDataTestCase):
         self.assertEqual(nav.main_name, 'foo')
 
 
-class ProjectModelTest(WithDataTestCase):
+class ProjectModelTestCase(WithDataTestCase):
 
     def test_project_creation(self):
         project = Project.objects.create(slug='foo', name='eth_0')
         self.assertEqual(str(project), 'eth_0')
+
+    def test_project_tag_list(self):
+        project = Project.objects.create(slug='foo', name='eth_0')
+        project.tags.add('TAG', 'WORD', 'THREE')
+        self.assertEqual(set(project.tag_list()), set(['THREE', 'TAG', 'WORD', ]))
+
+
+
 
 
 

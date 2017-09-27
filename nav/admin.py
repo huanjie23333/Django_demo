@@ -29,7 +29,8 @@ class NavAdmin(admin.ModelAdmin):
     list_editable = ('status', 'highlight')
 
     def get_queryset(self, request):
-        return super(NavAdmin, self).get_queryset(request).prefetch_related('tags')
+        return super(NavAdmin, self).get_queryset(request)\
+                    .prefetch_related('tags')
 
     def tag_list(self, obj):
         return u", ".join(o.name for o in obj.tags.all())

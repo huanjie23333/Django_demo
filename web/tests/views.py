@@ -22,3 +22,8 @@ class WebViewTestCase(WithDataTestCase):
         res = self.client.get(reverse('web_sitemap'))
         self.assertIs(res.status_code, 200)
         self.assertTemplateUsed(res, 'web/sitemap.html')
+
+    def test_can_get_sitmap(self):
+        res = self.client.get(reverse('web_about'))
+        self.assertIs(res.status_code, 200)
+        self.assertTemplateUsed(res, 'web/about.html')
