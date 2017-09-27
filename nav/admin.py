@@ -22,9 +22,7 @@ class CategoryFilter(SimpleListFilter):
 
 class NavAdmin(admin.ModelAdmin):
     list_filter = (CategoryFilter, 'status', 'highlight')
-    list_display = ['main_name', 'web_site', \
-                    'status', 'cate', \
-                    'tag_list', 'highlight', ]
+    list_display = ['main_name', 'web_site', 'status', 'cate', 'tag_list', 'highlight', ]
     search_fields = ('cname', 'ename',)
     list_editable = ('status', 'highlight')
 
@@ -46,7 +44,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class DappsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'founder', 'site']
+    list_display = ['name', 'founder', 'site', 'created', 'last_updated']
+
+    def tag_list(self, obj):
+        return u", ".join(o.name for o in obj.tags.all())
 
 
 admin.site.register(Nav, NavAdmin)

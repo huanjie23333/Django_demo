@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 from nav.serializers import ProjectSerializer
 from nav.models import Project
 
@@ -9,8 +9,8 @@ class ProjectListAPIView(ListCreateAPIView):
     model = Project
 
 
-class ProjectDetailAPIView(RetrieveAPIView):
+class ProjectDetailAPIView(RetrieveUpdateAPIView):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
     model = Project
-    lookup_field = 'slug'
+    lookup_field = 'name'

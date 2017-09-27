@@ -56,7 +56,7 @@ class Project(CachingMixin, models.Model):
     name = models.CharField(max_length=128, default='', unique=True)
     founder = models.CharField(max_length=128, default='')
     software_license = models.CharField(max_length=255, default='')
-    mainnet_contract_address = models.URLField(max_length=255, null=True)
+    mainnet_contract_address = models.CharField(max_length=255, null=True)
     ropsten = models.URLField(max_length=255, null=True)
     site = models.URLField(max_length=255, null=True)
     github = models.URLField(max_length=255, null=True)
@@ -74,6 +74,9 @@ class Project(CachingMixin, models.Model):
     tags = TaggableManager()
 
     objects = CachingManager()
+
+    class Meta:
+        ordering = ["-last_updated"]
 
     def __str__(self):
         return self.name
