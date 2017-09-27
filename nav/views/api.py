@@ -13,4 +13,4 @@ class ProjectDetailAPIView(RetrieveAPIView):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
     model = Project
-    lookup_field = 'slug'
+    lookup_field = 'name'
