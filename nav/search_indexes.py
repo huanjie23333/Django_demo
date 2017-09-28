@@ -7,6 +7,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     cname = indexes.CharField(boost=1.25)
     ename = indexes.CharField(boost=1.25)
     tags = indexes.FacetMultiValueField()
+    score = indexes.FacetIntegerField()
     status = indexes.FacetCharField()
     alias = indexes.CharField()
     cate = indexes.FacetIntegerField()
