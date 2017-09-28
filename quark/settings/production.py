@@ -56,9 +56,9 @@ COMPRESS_CLEAN_CSS_ARGUMENTS = '--s0'
 '''
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        # 'URL': 'http://10.28.200.189:8983/solr',
-        'URL': 'http://10.136.17.139:8983/solr',
+        'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
+        'URL': 'http://10.132.64.227:9200/',
+        'INDEX_NAME': 'eshop',
         'BATCH_SIZE': 1000,
     },
 }
