@@ -1,28 +1,30 @@
 # -*- coding: UTF-8  -*-
 import requests
+
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
+from taggit.models import TaggedItem
 
 from django.views.generic import TemplateView, View
 from django.shortcuts import get_object_or_404
 from django.core.cache import cache
 from django.db.models import Count
+from django.http import HttpResponse
 
 from nav.models import Nav, Category
-from taggit.models import TaggedItem
 
-from django.http import HttpResponse
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 
 
 class NewsDataMixin(object):
-    def get_newslist_page(self, page):
+
+    def get_newslist_page(self, page=1):
         r = requests.get('http://www.chainscoop.com/api/news.json?page=%s' % page)
         if r.status_code == 200:
             return r.text
 
     def get_key_list(self):
-        return cache.get(NEWS_LIST_KEY_SET, [])
+        return cache.get(NEWS_LIST_KEY_SET, set())
 
     def reset_key_list(self):
         return cache.delete(NEWS_LIST_KEY_SET)
@@ -51,38 +53,15 @@ class NewsDataMixin(object):
 
 
 class SideBarDataMixin(NewsDataMixin):
-    def get_context_data(self):
-        context = super(SideBarDataMixin, self).get_context_data()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['sidebar_news_json_str'] = self.get_page_data(1)
         return context
 
 
-class CategoryView(SideBarDataMixin, TemplateView):
-    template_name = 'web/category.html'
+class CategoryTagDataMixin(object):
 
-    def get_category(self):
-        return get_object_or_404(Category, ename=self.ename)
-
-    # def get_queryset(self):
-    #     _queryset = super(CategoryView, self).get_queryset()
-    #     _queryset = _queryset.filter(cate__ename=self.ename)
-    #     return _queryset
-
-    def get_context_data(self, **kwargs):
-        context = super(CategoryView, self).get_context_data(**kwargs)
-        cate = self.get_category()
-        context.update({
-            'category': cate,
-            'cate_ename': cate.ename,
-            "tag_lists": self.get_tag_for_category(cate.id)
-        })
-        return context
-
-    #
-    # def get_object(self):
-    #     # ename = self.kwargs.get('cate_ename')
-    #     return get_object_or_404(Category, ename=self.ename)
-    #
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
         tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
@@ -90,25 +69,41 @@ class CategoryView(SideBarDataMixin, TemplateView):
                       .order_by('-tagCount'))[:tag_range]
         tag_nav_list = [{
             'tagname': obj['tag__name'],
-            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id)[:site_range]
+            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id, status=Nav.STATUS.published)[:site_range]
         }
             for obj in tagids]
         return tag_nav_list
 
     def get_nav_ids_by_category(self, category_id):
-        return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
+        return Nav.objects.filter(cate_id=category_id, status=Nav.STATUS.published).values_list('id', flat=True)
+
+
+class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
+    template_name = 'web/category.html'
+
+    def get_category(self):
+        return get_object_or_404(Category, ename=self.ename)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cate = self.get_category()
+        context.update({
+            'category': cate,
+            'cate_ename': cate.ename,
+            "tag_lists": self.get_tag_for_category(cate.id, tag_range=3000, site_range=10000 )
+        })
+        return context
 
     def get(self, request, *args, **kwargs):
         self.ename = kwargs.pop('cate_ename')
         return super().get(request, *args, **kwargs)
-        # return super(CategoryView, self).get(request, *args, **kwargs)
 
 
-class IndexView(SideBarDataMixin, TemplateView):
+class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
     template_name = 'web/index.html'
 
     def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
 
         categories = list(Category.objects.all())
@@ -116,44 +111,25 @@ class IndexView(SideBarDataMixin, TemplateView):
         context['categories'] = [{
             'category_name': cate.cname,
             'category_ename': cate.ename,
-            'cate_tags': self.get_tag_for_category(cate.id)
+            'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20)
         }
             for cate in categories
         ]
         return context
 
-    def get_category_nav(self, category):
-        return Nav.objects.filter(category=category)
-
     def get_recommend_nav(self):
-        return Nav.objects.filter(score__gte=85)
-
-    def get_tag_for_category(self, category_id, tag_range=3, site_range=20):
-        nav_ids = list(self.get_nav_ids_by_category(category_id))
-        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
-                      .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
-                      .order_by('-tagCount'))
-        tag_nav_list = [{
-            'tagname': obj['tag__name'],
-            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id)[:site_range]
-        }
-            for obj in tagids]
-        return tag_nav_list
-
-    def get_nav_ids_by_category(self, category_id):
-        return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
+        return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
 
 class AboutView(TemplateView):
     template_name = 'web/about.html'
-    pass
 
 
 class SiteMapView(TemplateView):
     template_name = 'web/sitemap.html'
 
     def get_context_data(self, **kwargs):
-        context = super(SiteMapView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['category_tag_list'] = self.get_all_tag_list()
         return context
 

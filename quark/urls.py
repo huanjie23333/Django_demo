@@ -47,7 +47,7 @@ if settings.IS_LOCAL_TESTING:
 
     from web.views import ErrorView
     urlpatterns = urlpatterns + [
-         url(r'^error.htm$', ErrorView.as_view(), name='web_error_testing'),
+         url(r'^error\.htm$', ErrorView.as_view(), name='web_error_testing'),
     ]
 
 if settings.DEBUG:

@@ -108,6 +108,11 @@ node_modules/
 #local setting file
 dev_anchen.py
 an_todo.md
+do_test.sh
+do_migrate.sh
+
+
+
 
 # index
 quark/settings/whoosh_index/*

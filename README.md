@@ -29,8 +29,6 @@ pip install -r requirements.txt
 
 ### test
 1. in python env , run 
-
-    coverage run ./manage.py test --settings=YOUR_SETTINGS_PATH
     
     coverage report 
     
