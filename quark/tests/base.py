@@ -2,6 +2,9 @@
 
 from django.test import TestCase
 from nav.models import Nav, Category
+
+
+# from django_nose import FastFixtureTestCase
 from django.contrib.auth.models import User
 
 

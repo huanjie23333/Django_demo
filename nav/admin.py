@@ -45,6 +45,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class DappsAdmin(admin.ModelAdmin):
     list_display = ['name', 'founder', 'site', 'created', 'last_updated']
+    search_fields = ['name', ]
 
     def tag_list(self, obj):
         return u", ".join(o.name for o in obj.tags.all())

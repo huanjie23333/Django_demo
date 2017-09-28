@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'bootstrap3',
     'compressor',
+    'haystack',
     'taggit',
     'django_extensions',
     'rest_framework',
@@ -190,6 +191,14 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'PAGE_SIZE': 20,
+}
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
 }
 
 
