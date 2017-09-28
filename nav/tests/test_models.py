@@ -35,7 +35,9 @@ class CategoryModelTestCase(WithDataTestCase):
 class NavModelTestCase(WithDataTestCase):
     def test_nav_creation(self):
         cate = Category.objects.create(cname='foo', ename='bar')
-        nav = Nav.objects.create(cname='foo', ename='bar', location='china', tags='few, lot', cate=cate)
+        nav = Nav.objects.create(cname='foo', ename='bar', location='china', cate=cate)
+        nav.tags.add('few')
+        nav.tags.add('lot')
         self.assertEqual(str(nav), 'bar')
         self.assertEqual(nav.main_name, 'foo')
 
