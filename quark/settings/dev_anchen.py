@@ -10,6 +10,9 @@ INSTALLED_APPS += [
     'django_nose'
 ]
 
+INSTALLED_APPS.pop(7)
+
+
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-coverage',

@@ -1,2 +1,2 @@
-from .test_admin import NavAdminTest
-from .test_models import CategoryModelTestCase, NavModelTest, ProjectModelTest
+from .test_admin import NavAdminTestCase
+from .test_models import NavModelTestCase, ProjectModelTestCase
