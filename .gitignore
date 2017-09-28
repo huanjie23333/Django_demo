@@ -109,4 +109,5 @@ node_modules/
 dev_anchen.py
 an_todo.md
 
-
+# index
+quark/settings/whoosh_index/*
