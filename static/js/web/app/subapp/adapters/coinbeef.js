@@ -66,7 +66,6 @@ define([
                 entry['time_diff'] = this.format_time(time_diff);
                 return entry;
             }
-
         });
 
         return CoinbeefAdapter
