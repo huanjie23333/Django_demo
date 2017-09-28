@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'bootstrap3',
     'compressor',
+    'haystack',
     'taggit',
     'django_extensions',
     'rest_framework',
