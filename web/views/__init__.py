@@ -185,3 +185,6 @@ class ClearNewsCacheView(StaffuserRequiredMixin, NewsDataMixin, TemplateView):
         cache.delete_many(context['key_list'])
         self.reset_key_list()
         return context
+
+class NewsDetailView(SideBarDataMixin, TemplateView):
+    pass

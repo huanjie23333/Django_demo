@@ -100,6 +100,25 @@
     float: right;
     width: 85%;
     padding-left: @gutter;
+    .news-info{
+      padding:10px 0px 0px;
+    }
+    .tag-list-wrapper{
+         float: right;
+         .tag-list{
+            .clearfix;
+            li{
+               display: inline-block;
+            }
+            .tag-item{
+              margin: 0 5px 0 0;
+              &:last-child{
+                 margin:0 0 ;
+              }
+            }
+
+         }
+      }
     p {
       &.news-title{
         font-size: 16px;
@@ -181,17 +200,7 @@
             margin:0;
           }
       }
-      .tag-list-wrapper{
-         float: right;
-         .tag-list{
-            .clearfix;
-            li{
-               display: inline-block;
 
-            }
-            
-         }
-      }
     }
   }
 }

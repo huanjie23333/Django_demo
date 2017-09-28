@@ -50,12 +50,12 @@
                         <% }%>
 
                     </li>
-                    <li><span><%=time_diff%></span>
+                    <li class="news-info"><span><%=time_diff%></span>
                         <span class="tag-list-wrapper">
                             <ul class="tag-list">
-                                <li class="tag-item">lfew</li>
-                                <li class="tag-item">lfew</li>
-                                <li class="tag-item">lfew</li>
+                                <% for( var i = 0; i < tag_list.length; i++ ) { %>
+                                <li class="tag-item"><%=tag_list[i]%></li>
+                                <% } %>
                             </ul>
                         </span>
                     </li>
