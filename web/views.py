@@ -69,13 +69,13 @@ class CategoryTagDataMixin(object):
                       .order_by('-tagCount'))[:tag_range]
         tag_nav_list = [{
             'tagname': obj['tag__name'],
-            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id)[:site_range]
+            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id, status=Nav.STATUS.published)[:site_range]
         }
             for obj in tagids]
         return tag_nav_list
 
     def get_nav_ids_by_category(self, category_id):
-        return Nav.objects.filter(cate_id=category_id).values_list('id', flat=True)
+        return Nav.objects.filter(cate_id=category_id, status=Nav.STATUS.published).values_list('id', flat=True)
 
 
 class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
@@ -118,7 +118,7 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         return context
 
     def get_recommend_nav(self):
-        return Nav.objects.filter(score__gte=85)
+        return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
 
 class AboutView(TemplateView):

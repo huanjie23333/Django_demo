@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
+from nav.models import Nav
 from quark.tests.base import WithDataTestCase
 from django.contrib.auth.models import User
 
@@ -20,7 +21,6 @@ class TestCategoryViewTestCase(WithDataTestCase):
 
 
 class TestIndexViewTestCase(WithDataTestCase):
-
     def test_get_index(self):
         resp = self.client.get(reverse('web_index'))
         self.assertEqual(resp.status_code, 200)
@@ -37,6 +37,9 @@ class TestIndexViewTestCase(WithDataTestCase):
         self.assertContains(resp, 'nav2')
 
         self.assertContains(resp, '/category/finance.htm')
+
+
+
 
 
 class TestNewsListViewTestCase(WithDataTestCase):
@@ -68,4 +71,32 @@ class TestNewsApiViewTestCase(WithDataTestCase):
 
 
 
+class TestIndexDraftNavTestCase(WithDataTestCase):
+    def test_draf_nav_not_shown(self):
+        d_nav = Nav.objects.create(cname='draft_nav_cn', \
+                                   ename='draft_nav_en', \
+                                   cate=self.cate1,\
+                                   location='china',\
+                                   status=Nav.STATUS.draft
+                                   )
+
+        d_nav2 = Nav.objects.create(cname='published_nav_cn', \
+                                    ename='published_nav_en',\
+                                    location='china',\
+                                    status=Nav.STATUS.published,\
+                                    cate=self.cate1)
+
+        d_nav.tags.add('tag_new')
+        d_nav2.tags.add('tag_new')
+
+        d_nav.save()
+        d_nav2.save()
+
+        resp = self.client.get(reverse('web_index'))
+        print(resp)
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'web/index.html')
+        self.assertContains(resp, text='tag_new')
+        self.assertContains(resp, text='published_nav_cn')
+        self.assertNotContains(resp, text='draft_nav_cn')
 
