@@ -49,3 +49,16 @@ COMPRESS_CSS_FILTERS = [
 ]
 COMPRESS_CLEAN_CSS_BINARY = '/usr/bin/cleancss'
 COMPRESS_CLEAN_CSS_ARGUMENTS = '--s0'
+
+
+''' django haystack
+
+'''
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        # 'URL': 'http://10.28.200.189:8983/solr',
+        'URL': 'http://10.136.17.139:8983/solr',
+        'BATCH_SIZE': 1000,
+    },
+}

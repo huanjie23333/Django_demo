@@ -193,6 +193,13 @@ REST_FRAMEWORK = {
 }
 
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
