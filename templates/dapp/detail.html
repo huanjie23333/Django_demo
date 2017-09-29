@@ -1,0 +1,105 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+
+{% block meta %}
+        {% include "dapp/partial/dapp_detail_meta.html" %}
+{% endblock %}
+{% block title %}
+    {{ project.name }} - 以太坊应用 | 区块链导航 | chaindh.com
+{% endblock %}
+
+{% block seo_title %}
+    {{ project.name }} - 以太坊应用 | 区块链导航 | chaindh.com
+ {% endblock %}
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                    <div class="box">
+                        <div class="box-body middle-wrapper news-detail-wrapper">
+                            <div class="news-title">
+                                    {{ project.name }}
+                            </div>
+                            <div class="news-content">
+                                  {{ project.enbio}}
+                            </div>
+                            <div class="news-info">
+                                  <span>{{ project.last_updated }}</span>
+                                   <span class="tag-list-wrapper">
+                                        <ul class="tag-list">
+                                            <li class="tag-list-head">
+                                                <i class="fa fa-tag"></i>
+                                            </li>
+                                             {% for tag in project.tag_list %}
+                                               <li class="tag-item">{{ tag }}</li>
+                                             {% endfor %}
+                                        </ul>
+                                    </span>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                {% include 'web/partial/side_bar.html' %}
+            </div>
+        </div>
+    </section>
+
+     <a class="gotop-wrapper">
+        <span class="btn-top" id="top_link">
+            <i class="fa fa-angle-up"></i>
+        </span>
+    </a>
+
+    <script id="newsline_template" type="text/template">
+        <div class="entry">
+            <div class="left-content">
+                <h3>
+                    <% if(show_time){ %>
+                      <div class="show-time">
+                       <span class="month"><%=month%>月</span>
+                       <span class="date"><%=date%></span>
+                      </div>
+                    <% } %>
+                </h3>
+                <p></p>
+            </div>
+            <div class="body">
+                <p class="news-title">
+                    <a href="<%=url%>">
+                      <%=title%>
+                    </a>
+                </p>
+                <ul>
+                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                        <% }%>
+
+                    </li>
+                    <li class="news-info"><span><%=time_diff%></span>
+                        <span class="tag-list-wrapper">
+                            <ul class="tag-list">
+                                <li class="tag-list-head">
+                                    <i class="fa fa-tag"></i>
+                                </li>
+                                <% for( var i = 0; i < tag_list.length; i++ ) { %>
+                                <li class="tag-item"><%=tag_list[i]%></li>
+                                <% } %>
+                            </ul>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </script>
+{% endblock %}
+{##}
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
