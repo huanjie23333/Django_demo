@@ -28,7 +28,7 @@ class Nav(CachingMixin, models.Model):
     ename = models.CharField(max_length=64, null=True, blank=True)
     location = models.CharField(max_length=32, null=True, blank=True)
     web_site = models.URLField(blank=True, null=True)
-    score = models.IntegerField(default=0)
+    score = models.IntegerField(default=0, db_index=True)
     tags = TaggableManager(blank=True)
     status = StatusField(_('status'), choices_name='STATUS', default=STATUS.published)
     # deprecated , will be removed
@@ -37,6 +37,9 @@ class Nav(CachingMixin, models.Model):
     highlight = models.BooleanField(default=False)
     # add foreign key for category
     cate = models.ForeignKey(Category, related_name='navs', default=1)
+
+    created_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
+    updated_at = models.DateTimeField(auto_now=True, editable=False, db_index=True)
 
     objects = CachingManager()
 
