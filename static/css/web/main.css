@@ -971,7 +971,7 @@ body a:hover {
   display: none!important;
 }
 #grid[data-columns]::before {
-  content: '2 .column.size-1of2';
+  content: '3 .column.size-1of3';
 }
 #grid .column {
   float: left;
@@ -979,6 +979,15 @@ body a:hover {
 }
 #grid .size-1of2 {
   width: 50%;
+}
+#grid .size-1of3 {
+  width: 33.333%;
+}
+#grid .size-1of4 {
+  width: 25%;
+}
+#grid .size-1of1 {
+  width: 100%;
 }
 #footer {
   margin-top: 0px;
@@ -1136,6 +1145,14 @@ body a:hover {
   #header .main-logo img {
     width: 160px;
   }
+  #grid[data-columns]::before {
+    content: '3 .column.size-1of3';
+  }
+}
+@media (min-width: 768px) {
+  #grid[data-columns]::before {
+    content: '2 .column.size-1of2';
+  }
 }
 @media (max-width: 768px) {
   #grid[data-columns]::before {
@@ -1187,6 +1204,9 @@ body a:hover {
   }
   #footer .footer-list li:last-child {
     padding-bottom: 20px;
+  }
+  #grid[data-columns]::before {
+    content: '1 .column.size-1of1';
   }
 }
 .test {

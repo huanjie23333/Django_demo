@@ -5,8 +5,8 @@ from factory.django import DjangoModelFactory
 
 class ProjectFactory(DjangoModelFactory):
     class Meta:
-        model = 'nav.models.Project'
-        django_get_or_create = 'name'
+        model = 'nav.Project'
+        django_get_or_create = ('name',)
 
 
 class TestDappViewTestCase(TestCase):
@@ -24,5 +24,6 @@ class TestDappViewTestCase(TestCase):
         self.assertTemplateUsed(resp, 'dapp/list.html')
         self.assertTemplateUsed(resp, 'dapp/partial/dapp_list_meta.html')
         self.assertContains(resp, 'proj_name_1')
+
 
 
