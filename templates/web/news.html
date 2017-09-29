@@ -1,11 +1,12 @@
 {% extends 'base/base.html' %}
+{% load i18n static compress %}
+
 {% block meta %}
         {% include "web/partial/news_meta.html" %}
 {% endblock %}
 {% block title %}
     {{ news.title }} | 区块链导航 | chaindh.com
 {% endblock %}
-{% load i18n static compress %}
 {% block content %}
     <section id="content">
         <div class="container">

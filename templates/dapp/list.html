@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block meta %}
+    {% include "dapp/partial/dapp_list_meta.html" %}
+{% endblock %}
+{% block title %}
+    dapp list title | 区块链导航 | chaindh.com
+{% endblock %}
+
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                {% for project in projects %}
+                    {{ project.name }}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
