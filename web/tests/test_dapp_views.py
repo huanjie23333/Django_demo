@@ -20,7 +20,7 @@ class TestDappViewTestCase(TestCase):
     def test_dapp_list_view(self):
 
         resp = self.client.get(reverse('dapp:list'))
-        self.assertEqual(resp.status_code, 404)
+        self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'dapp/list.html')
         self.assertTemplateUsed(resp, 'dapp/partial/dapp_list_meta.html')
         self.assertContains(resp, 'proj_name_1')
