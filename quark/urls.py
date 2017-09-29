@@ -35,6 +35,7 @@ urlpatterns = [
     # url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^news/', include('web.urls.news', namespace='news')),
+    url(r'^dapp/', include('web.urls.dapp', namespace='dapp')),
 
     url(r'^search', include('web.urls.search', namespace='search')),
     url(r'^$', IndexView.as_view(), name='web_index'),
