@@ -40,17 +40,22 @@ class TestIndexViewTestCase(WithDataTestCase):
 
 
 
-
-
 class TestNewsListViewTestCase(WithDataTestCase):
 
     def test_get_newslist(self):
         resp = self.client.get(reverse('web_news'))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed('web/news2.html')
+        self.assertTemplateUsed(resp, 'web/news_list.html')
         nd = NewsDataMixin()
         jsonstr = nd.get_newslist_page(1)
         self.assertContains(resp, jsonstr)
+
+class TestNewsDetailViewTestCase(TestCase):
+    def test_get_newslist(self):
+        resp = self.client.get(reverse('news:detail', args=['647056354412',]), )
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'web/news.html')
+
 
 
 class TestClearNewsCacheViewTestCase(WithDataTestCase):

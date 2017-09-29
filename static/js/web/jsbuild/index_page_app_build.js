@@ -1458,31 +1458,31 @@ define('subapp/adapters/coinbeef',[
                 }
 
                 var min_diff = Math.ceil(sec_diff/60.0) - 1;
-                if(sec_diff > 60 && sec_diff < 3600){
+                if(sec_diff > 60 && sec_diff <= 3600){
                     return  min_diff + '分钟前';
                 }
 
                 var hour_diff = Math.ceil(min_diff/60.0) -1;
-                if(min_diff>60 && min_diff<60*24){
+                if(hour_diff <= 24){
                     return hour_diff + '小时前';
                 }
 
                 var day_diff = Math.ceil(hour_diff/24.0) -1;
-                if(hour_diff>24 && hour_diff< 7*24){
+                if( day_diff <= 7){
                     return day_diff + '天前';
                 }
 
                 var week_diff = Math.ceil(day_diff/7.0) ;
-                if(day_diff >= 7 && day_diff < 7*4){
+                if(day_diff <= 31){
                     return week_diff + '周前';
                 }
 
                 var mon_diff = Math.ceil(day_diff/30) ;
-                if(day_diff >= 30 && day_diff<366){
+                if(day_diff<=365){
                     return mon_diff +'月前';
                 }
 
-                var year_diff = Math.ceil(day_diff/365)
+                var year_diff = Math.ceil(day_diff/365);
                 if(day_diff >=366){
                     return year_diff + '年前';
                 }
@@ -1493,7 +1493,6 @@ define('subapp/adapters/coinbeef',[
                 entry['time_diff'] = this.format_time(time_diff);
                 return entry;
             }
-
         });
 
         return CoinbeefAdapter
@@ -1577,6 +1576,7 @@ define('subapp/adapters/coinbeef_all',[
                              this.add_formatted_time.bind(this));
 
               return _.map(result, this.add_time_title.bind(this));
+
             },
             add_time_title: function(entry){
                 var utc_fix = new Date().getTimezoneOffset();
@@ -1584,14 +1584,21 @@ define('subapp/adapters/coinbeef_all',[
                 var dt = new Date(local_timestamp);
                 var month = entry['month'] = dt.getMonth() + 1;
                 var date = entry['date'] = dt.getDate();
+                var year = entry['data'] = dt.getYear();
 
-                if(this.last_show_date == date && this.last_show_month == month){
+                if(this.last_show_date == date
+                    && this.last_show_month == month
+                ){
                     entry['show_time'] = false;
                 } else{
                     entry['show_time'] = true;
                     this.last_show_date = date;
                     this.last_show_month = month;
                 }
+
+                //if(this.last_show_year == year){
+                //
+                //}
 
                 return entry ;
             }

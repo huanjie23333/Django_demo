@@ -253,3 +253,6 @@ LOGGING = {
         },
     }
 }
+
+
+NEWS_DETAIL_API = 'http://www.chainscoop.com/api/news/'
