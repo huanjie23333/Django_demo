@@ -1,0 +1,8 @@
+{% extends "base/base.html" %}
+
+
+{% block content %}
+    {% for row in object_list %}
+        {{ row.web_site }}
+    {% endfor %}
+{% endblock %}

@@ -1,2 +1,3 @@
-{{ object.cname }}
-{{ object.ename }}
+{{ object.main_name }}
+{{ objecct.alias }}
+

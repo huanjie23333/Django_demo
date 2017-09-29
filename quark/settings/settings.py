@@ -194,14 +194,22 @@ REST_FRAMEWORK = {
 }
 
 
+##
+# django haystack
+##
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+HAYSTACK_DEFAULT_OPERATOR = 'AND'
+HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 
 
+##
+# logging
+##
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,

@@ -1,5 +1,5 @@
 from haystack.generic_views import SearchView
 
 
-class SiteSearchView(SearchView):
+class NavSearchView(SearchView):
     pass

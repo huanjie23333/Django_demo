@@ -22,6 +22,9 @@ from web.views import IndexView, CategoryView,\
 from quark.views import page_error, webpage_not_found
 
 
+handler404 = webpage_not_found
+handler500 = page_error
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -33,11 +36,10 @@ urlpatterns = [
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^news/', include('web.urls.news', namespace='news')),
 
+    url(r'^search', include('web.urls.search', namespace='search')),
     url(r'^$', IndexView.as_view(), name='web_index'),
 ]
 
-handler404 = webpage_not_found
-handler500 = page_error
 
 
 from django.conf import settings
