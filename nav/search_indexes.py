@@ -10,7 +10,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     web_site = indexes.CharField(model_attr='web_site', default='')
     location = indexes.FacetCharField(model_attr='location')
     tags = indexes.FacetMultiValueField()
-    score = indexes.FacetIntegerField(model_attr='score')
+    score = indexes.FacetIntegerField(model_attr='score', default=0)
     status = indexes.FacetCharField(model_attr='status')
     alias = indexes.CharField(model_attr='alias', default='')
     cate_id = indexes.FacetIntegerField(model_attr='cate_id')
@@ -22,5 +22,4 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
         return self.get_model().objects.all()
 
     def prepare_tags(self, obj):
-        print (obj.main_name)
         return [o.name for o in obj.tags.all()]
