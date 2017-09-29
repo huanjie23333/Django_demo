@@ -16,12 +16,10 @@ from django.conf import settings
 
 from nav.models import Nav, Category
 
-
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 
 
 class NewsDataMixin(object):
-
     def get_newslist_page(self, page=1):
         r = requests.get('http://www.chainscoop.com/api/news.json?page=%s' % page)
         if r.status_code == 200:
@@ -57,7 +55,6 @@ class NewsDataMixin(object):
 
 
 class SideBarDataMixin(NewsDataMixin):
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['sidebar_news_json_str'] = self.get_page_data(1)
@@ -65,7 +62,6 @@ class SideBarDataMixin(NewsDataMixin):
 
 
 class CategoryTagDataMixin(object):
-
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
         tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
@@ -73,7 +69,8 @@ class CategoryTagDataMixin(object):
                       .order_by('-tagCount'))[:tag_range]
         tag_nav_list = [{
             'tagname': obj['tag__name'],
-            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id, status=Nav.STATUS.published)[:site_range]
+            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id, status=Nav.STATUS.published)[
+                    :site_range]
         }
             for obj in tagids]
         return tag_nav_list
@@ -94,7 +91,7 @@ class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         context.update({
             'category': cate,
             'cate_ename': cate.ename,
-            "tag_lists": self.get_tag_for_category(cate.id, tag_range=3000, site_range=10000 )
+            "tag_lists": self.get_tag_for_category(cate.id, tag_range=3000, site_range=10000)
         })
         return context
 
@@ -190,22 +187,20 @@ class ClearNewsCacheView(StaffuserRequiredMixin, NewsDataMixin, TemplateView):
         self.reset_key_list()
         return context
 
-class NewsDetailView(SideBarDataMixin, DetailView ):
+
+class NewsDetailView(SideBarDataMixin, DetailView):
     context_object_name = 'news'
     template_name = 'web/news.html'
 
     def format_time(self, time_stamp):
         return datetime.fromtimestamp(int(time_stamp))
 
-
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug')
-        r = requests.get("%s%s" %(settings.NEWS_DETAIL_API, slug))
-        if r.status_code == 200 :
-            obj =  json.loads(r.text)
+        r = requests.get("%s%s" % (settings.NEWS_DETAIL_API, slug))
+        if r.status_code == 200:
+            obj = json.loads(r.text)
             obj['published_time'] = self.format_time(obj['published_at'])
             return obj
         else:
             return None
-
-

@@ -18,6 +18,7 @@ from ..models import Category, Nav
 
 from quark.tests.base import WithDataTestCase
 
+
 class MockRequest:
     pass
 
@@ -32,16 +33,16 @@ request.user = MockSuperUser()
 
 from ..admin import NavAdmin, CategoryAdmin
 
-class NavAdminTestCase(WithDataTestCase):
 
+class NavAdminTestCase(WithDataTestCase):
     def setUp(self):
         super(NavAdminTestCase, self).setUp()
         self.site = AdminSite()
         self.category = Category.objects.create(
-                                                cname='cate_cname',
-                                                ename='cate_ename',
-                                                order=20
-                                                )
+            cname='cate_cname',
+            ename='cate_ename',
+            order=20
+        )
 
     def test_modeladmin_str(self):
         ma = NavAdmin(Nav, self.site)
@@ -53,27 +54,23 @@ class NavAdminTestCase(WithDataTestCase):
     def test_navadmin_list_filter(self):
         na = NavAdmin(Nav, self.site)
         fields = list(na.get_fields(request))
-        self.assertEqual(set(fields), set(['cname', 'ename', 'location', \
-                                           'web_site', 'score','status', \
+        self.assertEqual(set(fields), set(['cname', 'ename', 'location',
+                                           'web_site', 'score', 'status',
                                            'alias', 'highlight', 'cate', 'tags']))
-
 
     def test_navadmin_list_data(self):
         na = NavAdmin(Nav, self.site)
         query = na.get_queryset(request)
         self.assertEqual(len(query), 2)
-        self.assertEqual(query[0].cname , 'foo')
-
-
+        self.assertEqual(query[0].cname, 'foo')
 
     def test_lookup(self):
         ca = CategoryAdmin(Category, self.site)
         self.assertEqual(list(ca.get_form(request).base_fields),
-                               ['cname','ename', 'order' ])
+                         ['cname', 'ename', 'order'])
 
 
 class TestAdminSiteTestCase(WithDataTestCase):
-
     def create_user(self):
         self.username = "test_admin"
         self.password = User.objects.make_random_password()
