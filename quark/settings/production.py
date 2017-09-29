@@ -58,7 +58,7 @@ HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
         'URL': 'http://10.132.64.227:9200/',
-        'INDEX_NAME': 'eshop',
+        'INDEX_NAME': 'site',
         'BATCH_SIZE': 1000,
     },
 }
