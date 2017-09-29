@@ -442,6 +442,9 @@ ul li {
 }
 .tag-list-wrapper .tag-list .tag-item {
   margin: 0 0 0 0;
+  color: #aaa;
+  line-height: 1.5em;
+  font-weight: 400;
 }
 .tag-list-wrapper .tag-list .tag-item::after {
   content: '·';
@@ -453,10 +456,54 @@ ul li {
 .tag-list-wrapper .tag-list .tag-item:last-child::after {
   content: '';
 }
-.tag-item {
-  line-height: 1.5em;
+.project-wrapper {
+  text-align: center;
+}
+.project-wrapper .p-title {
+  font-size: 1.5em;
+  line-height: 3em;
+}
+.project-wrapper .p-founder {
+  font-weight: 600;
+}
+.project-wrapper .p-bio {
+  height: 3em;
+  max-height: 3em;
+}
+.project-wrapper .p-social-wrapper:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.project-wrapper .p-social-wrapper li {
+  display: inline-block;
+  margin-left: 3px;
+}
+.project-wrapper .p-tags-wrapper:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.project-wrapper .p-tags-wrapper li {
+  display: inline-block;
+  margin-left: 3px;
+}
+.project-wrapper .p-status-wrapper:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.project-wrapper .p-status-wrapper .status {
+  float: left;
+  display: inline-block;
+}
+.project-wrapper .p-status-wrapper .last-update {
+  float: right;
   color: #aaa;
-  font-size: 1em;
+  font-size: 0.85em;
 }
 .timeline {
   width: 100%;
@@ -971,7 +1018,7 @@ body a:hover {
   display: none!important;
 }
 #grid[data-columns]::before {
-  content: '3 .column.size-1of3';
+  content: '4 .column.size-1of4';
 }
 #grid .column {
   float: left;
@@ -1138,7 +1185,17 @@ body a:hover {
 #bookmarkme {
   cursor: pointer;
 }
-@media (max-width: 1199px) {
+@media (min-width: 1200px) {
+  #grid[data-columns]::before {
+    content: '4 .column.size-1of4';
+  }
+}
+@media (min-width: 1199px) {
+  #grid[data-columns]::before {
+    content: '4 .column.size-1of4';
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
   .container {
     width: 95%;
   }
@@ -1147,11 +1204,6 @@ body a:hover {
   }
   #grid[data-columns]::before {
     content: '3 .column.size-1of3';
-  }
-}
-@media (min-width: 768px) {
-  #grid[data-columns]::before {
-    content: '2 .column.size-1of2';
   }
 }
 @media (max-width: 768px) {
@@ -1208,6 +1260,17 @@ body a:hover {
   #grid[data-columns]::before {
     content: '1 .column.size-1of1';
   }
+}
+.container.dapp-container {
+  width: 100%;
+  padding: 0 0;
+}
+.container.dapp-container .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.container.dapp-container .row .column:last-child {
+  border-right: solid 10px #f8f8f8;
 }
 .test {
   color: red;

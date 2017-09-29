@@ -221,7 +221,7 @@ body{
 
 //for grid layout
 #grid[data-columns]::before{
-  content: '3 .column.size-1of3';
+  content: '4 .column.size-1of4';
 }
 
 
@@ -412,6 +412,21 @@ body{
 @import "dimentions/md.less";
 @import "dimentions/sm.less";
 @import "dimentions/xs.less";
+
+
+.container.dapp-container{
+   width:100%;
+   padding:0 0;
+   .row{
+      margin-left:0px;
+      margin-right:0px;
+      .column{
+        &:last-child{
+          border-right: solid 10px @default-content-background;
+        }
+      }
+   }
+}
 
 .test{
   color:red;
