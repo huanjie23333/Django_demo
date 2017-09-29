@@ -7,7 +7,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     cname = indexes.CharField(model_attr='cname', default='')
     ename = indexes.CharField(model_attr='ename', default='')
     main_name = indexes.CharField(model_attr='main_name', boost=1.25)
-    web_site = indexes.CharField(model_attr='web_site')
+    web_site = indexes.CharField(model_attr='web_site', default='')
     location = indexes.FacetCharField(model_attr='location')
     tags = indexes.FacetMultiValueField()
     score = indexes.FacetIntegerField(model_attr='score')
