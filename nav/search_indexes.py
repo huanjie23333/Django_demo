@@ -23,3 +23,6 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
 
     def prepare_tags(self, obj):
         return [o.name for o in obj.tags.all()]
+
+    def get_updated_field(self):
+        return 'updated_at'
