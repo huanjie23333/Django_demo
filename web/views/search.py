@@ -1,5 +1,8 @@
 import logging
+from django.views import generic
+from django.http import JsonResponse
 from haystack.generic_views import SearchView, FacetedSearchView
+from haystack.query import  SearchQuerySet
 from nav.models import Nav
 
 logger = logging.getLogger("django")
@@ -7,6 +10,18 @@ logger = logging.getLogger("django")
 
 class NavSearchView(SearchView):
     pass
+
+
+class NavAutoCompleteView(generic.View):
+    http_method_names = ['get']
+
+    def get(self, request, *args, **kwargs):
+        sqs = SearchQuerySet().autocomplete(main_name_auto=request.GET.get("q", ""))[:10]
+        suggestions = [result.main_name for result in sqs]
+        res = {
+            'results': suggestions
+        }
+        return JsonResponse(data=res)
 
 
 class NavFacetedSearchView(FacetedSearchView):
@@ -21,7 +36,6 @@ class NavFacetedSearchView(FacetedSearchView):
         return qs
 
     def get_context_data(self, **kwargs):
-        logger.info(self.queryset.facet_counts())
         context = super(NavFacetedSearchView, self).get_context_data(**kwargs)
         context.update({'facets': self.get_queryset().facet_counts()})
         return context

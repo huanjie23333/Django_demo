@@ -3,6 +3,7 @@
 
 {% block content %}
     <div class="row">
+{#    {{ object_list }}#}
         {% for tag in facets.fields.tags %}
             {{ tag }}
         {% endfor %}
