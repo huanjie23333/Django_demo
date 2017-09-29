@@ -10,7 +10,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     web_site = indexes.CharField(model_attr='web_site', default='')
     location = indexes.FacetCharField(model_attr='location')
     tags = indexes.FacetMultiValueField()
-    score = indexes.FacetIntegerField(model_attr='score', default=0)
+    rank = indexes.FacetIntegerField(model_attr='score', default=0)
     status = indexes.FacetCharField(model_attr='status')
     alias = indexes.CharField(model_attr='alias', default='')
     cate_id = indexes.FacetIntegerField(model_attr='cate_id')
