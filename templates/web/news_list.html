@@ -1,5 +1,11 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
+{% block meta %}
+        {% include "web/partial/news_list_meta.html" %}
+{% endblock %}
+{% block title %}
+    区块链快讯列表 | 区块链导航 | http://www.chaindh.com/news.htm
+{% endblock %}
 
 {% block content %}
     <section id="content">

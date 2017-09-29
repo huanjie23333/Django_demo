@@ -54,7 +54,7 @@ class TestNewsDetailViewTestCase(TestCase):
     def test_get_newslist(self):
         resp = self.client.get(reverse('news:detail', args=['647056354412',]), )
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, 'web/news_list.html')
+        self.assertTemplateUsed(resp, 'web/news.html')
 
 
 
