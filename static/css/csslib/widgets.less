@@ -1,18 +1,18 @@
 @import "../csslib/mixin.less";
 @import "../csslib/var.less";
 
-.seo-only{
-  display:none;
+.seo-only {
+  display: none;
 }
 
-.v-helper{
-  display:inline-block;
-  height:100%;
+.v-helper {
+  display: inline-block;
+  height: 100%;
   vertical-align: middle;
-  width:0px;
+  width: 0px;
 }
 
-.clearfix{
+.clearfix {
   &:after {
     content: " ";
     display: block;
@@ -21,7 +21,7 @@
   }
 }
 
-.img-box{
+.img-box {
   display: block;
   height: 0;
   padding-bottom: 100%;
@@ -29,12 +29,11 @@
   text-align: center;
   border: none;
   display: block;
-  a{
+  a {
     display: block;
     position: relative;
 
-
-    img{
+    img {
       background-color: #f6f6f6;
       max-height: 100%;
       max-width: 100%;
@@ -44,41 +43,74 @@
   }
 }
 
-
 // for panel
 
-.panel{
+.panel {
   border-bottom: 8px solid #f8f8f8;
   padding: 0 0 12px 20px;
 }
 
-.pricing-ele{
+.pricing-ele {
   color: @common-text-color;
-  &.fall{
+  &.fall {
     color: @falling-color;
   }
-  &.raise{
+  &.raise {
     color: @raising-color
   }
 }
 
-.site-link-style{
+.site-link-style {
   color: @support-text-color;
   text-decoration: none;
 }
 
-.middle-wrapper{
-   text-align: center;
+.middle-wrapper {
+  text-align: center;
 }
 
-.white-btn{
-    color: @site-link-color;
+.white-btn {
+  color: @site-link-color;
+  background-color: #fff;
+  border-color: @site-link-color;
+  &:hover, &:focus, &:active {
+    color: @site-link-highlight-color;
     background-color: #fff;
-    border-color:@site-link-color;
-    &:hover,&:focus,&:active{
-       color: @site-link-highlight-color;
-       background-color: #fff;
-       border-color:@site-link-highlight-color;
-       .box-shadow(none);
-    }
+    border-color: @site-link-highlight-color;
+    .box-shadow(none);
+  }
 }
+
+.tag-list-wrapper {
+  float: right;
+  .tag-list {
+    .clearfix;
+    li {
+      display: inline-block;
+    }
+    .tag-list-head {
+      margin-right: 5px;
+    }
+    .tag-item {
+      margin: 0 0 0 0;
+      &::after {
+        content: '·';
+        padding-left: 3px;
+      }
+      &:last-child {
+        margin: 0 0;
+        &::after {
+          content: '';
+        }
+      }
+    }
+
+  }
+}
+
+.tag-item {
+  line-height: 1.5em;
+  color: @support-text-color;
+  font-size: 1em;
+}
+

@@ -1,40 +1,27 @@
 {% extends 'base/base.html' %}
+{% load i18n static compress %}
 {% block meta %}
-        {% include "web/partial/news_meta.html" %}
+        {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
 {% block title %}
-    {{ news.title }} | 区块链导航 | chaindh.com
+    区块链快讯列表 | 区块链导航 | http://www.chaindh.com/news.htm
 {% endblock %}
-{% load i18n static compress %}
+
 {% block content %}
     <section id="content">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-xs-12">
                     <div class="box">
-                        <div class="box-body middle-wrapper news-detail-wrapper">
-                            <div class="news-title">
-                                    {{ news.title }}
-                            </div>
-                            <div class="news-content">
-                                  {{ news.content}}
-                            </div>
-                            <div class="news-info">
-                                  <span>{{ news.published_time }}</span>
-                                   <span class="tag-list-wrapper">
-                                        <ul class="tag-list">
-                                            <li class="tag-list-head">
-                                                <i class="fa fa-tag"></i>
-                                            </li>
-                                             {% for tag in news.tag_list %}
-                                               <li class="tag-item">{{ tag }}</li>
-                                             {% endfor %}
-                                        </ul>
-                                    </span>
+                        <div class="box-body">
+                            <div class="timeline newsline">
 
                             </div>
-
-
+                            <div class="middle-wrapper">
+                                <a class="btn white-btn btn-load-news">
+                                    加载更多
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,9 +51,7 @@
             </div>
             <div class="body">
                 <p class="news-title">
-                    <a href="<%=url%>">
                       <%=title%>
-                    </a>
                 </p>
                 <ul>
                     <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" target="_blank">「原文链接」</a>

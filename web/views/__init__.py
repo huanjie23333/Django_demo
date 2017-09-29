@@ -1,14 +1,18 @@
 # -*- coding: UTF-8  -*-
+import json
+from datetime import datetime
+
 import requests
 
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
 from taggit.models import TaggedItem
 
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, DetailView
 from django.shortcuts import get_object_or_404
 from django.core.cache import cache
 from django.db.models import Count
 from django.http import HttpResponse
+from django.conf import settings
 
 from nav.models import Nav, Category
 
@@ -173,7 +177,7 @@ class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
 
 
 class NewsListView(SideBarDataMixin, TemplateView):
-    template_name = 'web/news.html'
+    template_name = 'web/news_list.html'
 
 
 class ClearNewsCacheView(StaffuserRequiredMixin, NewsDataMixin, TemplateView):
@@ -185,3 +189,23 @@ class ClearNewsCacheView(StaffuserRequiredMixin, NewsDataMixin, TemplateView):
         cache.delete_many(context['key_list'])
         self.reset_key_list()
         return context
+
+class NewsDetailView(SideBarDataMixin, DetailView ):
+    context_object_name = 'news'
+    template_name = 'web/news.html'
+
+    def format_time(self, time_stamp):
+        return datetime.fromtimestamp(int(time_stamp))
+
+
+    def get_object(self, queryset=None):
+        slug = self.kwargs.get('slug')
+        r = requests.get("%s%s" %(settings.NEWS_DETAIL_API, slug))
+        if r.status_code == 200 :
+            obj =  json.loads(r.text)
+            obj['published_time'] = self.format_time(obj['published_at'])
+            return obj
+        else:
+            return None
+
+
