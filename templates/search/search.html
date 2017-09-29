@@ -2,12 +2,7 @@
 
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            {% for row in object_list %}
-                {{ row }}
-            {% endfor %}
-        </div>
-    </div>
-
+    {% for row in object_list %}
+        {{ row.web_site }}
+    {% endfor %}
 {% endblock %}
