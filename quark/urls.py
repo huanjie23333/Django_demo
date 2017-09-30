@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include , handler404, handler500
 from django.contrib import admin
 from web.views import IndexView, CategoryView,\
-                      AboutView, SiteMapView,\
-                      NewsListView
+                      AboutView, SiteMapView
+
+from web.views.news import NewsListView
 
 from quark.views import page_error, webpage_not_found
 
@@ -35,6 +36,7 @@ urlpatterns = [
     # url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^news/', include('web.urls.news', namespace='news')),
+    url(r'^dapp/', include('web.urls.dapp', namespace='dapp')),
 
     url(r'^search/', include('web.urls.search', namespace='search')),
     url(r'^$', IndexView.as_view(), name='web_index'),

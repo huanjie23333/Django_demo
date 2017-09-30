@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+
+{% load i18n static compress %}
+
+{% block meta %}
+    {% include "dapp/partial/dapp_list_meta.html" %}
+{% endblock %}
+{% block title %}
+    以太坊应用列表 | 区块链导航 | chaindh.com
+{% endblock %}
+
+{% block seo_title %}
+    以太坊应用列表 | 区块链导航 | chaindh.com
+{% endblock %}
+
+{% block content %}
+    <section id="content">
+        <div class="container dapp-container">
+            <div class="row" id="grid" data-columns>
+                {% for project in projects %}
+                <div class="box project-wrapper">
+                    <div class="box-body {{ project.state }}" >
+                        <div class="p-title">{{ project.name }}</div>
+{#                        <div class="p-founder">{{ project.founder }}</div>#}
+                        <div class="p-bio">{{ project.enbio }}</div>
+                        <div class="p-social-wrapper">
+                            <ul class="social-list">
+                                {% if project.site %}<li><a href="{{ project.site }}" ><i class="fa fa-globe"></i></a></li>{% endif %}
+                                {% if project.github %}<li><a href="{{ project.github }}"><i class="fa fa-github"></i></a></li>{% endif %}
+                                {% if project.blog %}<li><a href="{{ project.blog }}"><i class="fa fa-book"></i></a></li>{% endif %}
+                                {% if project.wiki %}<li><a href="{{ project.wiki }}"><i class="fa fa-wikipedia-w"></i></a></li>{% endif %}
+                                {% if project.slack %}<li><a href="{{ project.slack }}"><i class="fa fa-slack"></i></a></li>{% endif %}
+                                {% if project.twitter %}<li><a href="{{ project.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                                {% if project.facebook %}<li><a href="{{ project.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                                {% if project.reddit %}<li><a href="{{ project.reddit }}"><i class="fa fa-reddit-alien"></i></a></li>{% endif %}
+                                {% if project.ropsten %}<li><a href="{{ project.ropsten }}"><i class="fa fa-bug"></i></a></li>{% endif %}
+                                {% if project.gitter %}<li><a href="{{ project.gitter }}"><i class="fa fa-comments"></i></a></li>{% endif %}
+                                {% if project.mainnet_contract_address %}<li><a href="{{ project.mainnet_contract_address }}"><i class="fa fa-cogs"></i></a></li>{% endif %}
+
+                            </ul>
+                        </div>
+                        <div class="tag-list-wrapper">
+                            <ul class="tag-list">
+                                <li class="tag-list-head">
+                                    <i class="fa fa-tag"></i>
+                                </li>
+                                {% for tag in project.tag_list %}
+                                   <li class="tag-item"> {{ tag }} </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="p-status-wrapper">
+{#                            <span class="status">{{ project.state }}</span>#}
+{#                            <span class="last-update">{{ project.last_updated }}</span>#}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/dapp_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

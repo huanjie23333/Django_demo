@@ -18,7 +18,7 @@ define([
                 var dt = new Date(local_timestamp);
                 var month = entry['month'] = dt.getMonth() + 1;
                 var date = entry['date'] = dt.getDate();
-                var year = entry['data'] = dt.getYear();
+                var year = entry['year'] = dt.getFullYear();
 
                 if(this.last_show_date == date
                     && this.last_show_month == month
@@ -30,9 +30,12 @@ define([
                     this.last_show_month = month;
                 }
 
-                //if(this.last_show_year == year){
-                //
-                //}
+                if(this.last_show_year == year){
+                    entry['show_year'] = false;
+                }else{
+                    entry['show_year'] = true;
+                    this.last_show_year = year;
+                }
 
                 return entry ;
             }

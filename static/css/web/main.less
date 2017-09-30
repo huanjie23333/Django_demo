@@ -221,14 +221,19 @@ body{
 
 //for grid layout
 #grid[data-columns]::before{
-  content: '2 .column.size-1of2';
+  content: '4 .column.size-1of4';
 }
+
+
 #grid{
   .column {
     float: left;
     border-left: solid 10px @default-content-background;
   }
-  .size-1of2 { width: 50%; }
+  .size-1of2 { width: 50%;}
+  .size-1of3 { width: 33.333%;}
+  .size-1of4 { width: 25%;}
+  .size-1of1 { width: 100%;}
 }
 
 
@@ -407,6 +412,39 @@ body{
 @import "dimentions/md.less";
 @import "dimentions/sm.less";
 @import "dimentions/xs.less";
+
+
+.container.dapp-container{
+   width:100%;
+   padding:0 0;
+   .row{
+      margin-left:0px;
+      margin-right:0px;
+      .column{
+        &:last-child{
+          border-right: solid 10px @default-content-background;
+        }
+      }
+   }
+}
+
+.news-line-wrapper{
+  .tag-list-filter-wrapper{
+     padding-left:27px;
+    .tag-filter-item{
+         margin: 0 0.5em;
+         display: inline-block;
+         a{
+           color: @site-link-color;
+           line-height:2em;
+           &.active, &:hover, &:active, &:focus{
+             color:@site-link-highlight-color;
+             text-decoration: none;
+           }
+         }
+      }
+  }
+}
 
 .test{
   color:red;

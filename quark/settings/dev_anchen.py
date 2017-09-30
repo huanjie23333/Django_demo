@@ -10,7 +10,6 @@ INSTALLED_APPS += [
     'django_nose'
 ]
 
-INSTALLED_APPS.pop(7)
 
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -20,7 +19,7 @@ NOSE_ARGS = [
 ]
 
 
-INTERNAL_IPS =['127.0.0.1','0.0.0.0','10.0.0.74']
+INTERNAL_IPS =['127.0.0.1','0.0.0.0','10.0.0.74','192.168.172.192']
 
 # DEBUG_TOOLBAR_PANELS = [
 #     'debug_toolbar.panels.versions.VersionsPanel',
@@ -71,7 +70,7 @@ TEMPLATES = [
 
 
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.172.164','192.168.172.176']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192']
 STATIC_URL = '/static/'
 STATIC_ROOT = '/mad_sand/quark/static/'
 STATICFILES_DIRS = []
@@ -90,6 +89,14 @@ DATABASES = {
             'init_command':'SET default_storage_engine=INNODB',
         }
     },
+}
 
+
+import os
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
 }
 

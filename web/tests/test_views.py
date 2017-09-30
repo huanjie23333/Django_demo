@@ -3,13 +3,12 @@ from django.urls import reverse
 
 from nav.models import Nav
 from quark.tests.base import WithDataTestCase
-from django.contrib.auth.models import User
 
-from web.views import NewsDataMixin
+from web.views import SideBarDataMixin
+from web.views.news import NewsDataMixin
 
 
 class TestCategoryViewTestCase(WithDataTestCase):
-
     def test_get_category(self):
         resp = self.client.get(reverse('category_page', args=[self.cate1.ename]))
         self.assertEqual(resp.status_code, 200)
@@ -39,16 +38,15 @@ class TestIndexViewTestCase(WithDataTestCase):
         self.assertContains(resp, '/category/finance.htm')
 
 
-
 class TestNewsListViewTestCase(WithDataTestCase):
-
     def test_get_newslist(self):
         resp = self.client.get(reverse('web_news'))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'web/news_list.html')
         nd = NewsDataMixin()
-        jsonstr = nd.get_newslist_page(1)
+        jsonstr = nd._get_newslist_page(1)
         self.assertContains(resp, jsonstr)
+
 
 class TestNewsDetailViewTestCase(TestCase):
     def test_get_newslist(self):
@@ -57,9 +55,7 @@ class TestNewsDetailViewTestCase(TestCase):
         self.assertTemplateUsed(resp, 'web/news.html')
 
 
-
 class TestClearNewsCacheViewTestCase(WithDataTestCase):
-
     def test_get_clear_cache_page(self):
         self.create_user()
         self.client.login(username=self.username, password=self.password)
@@ -70,7 +66,7 @@ class TestClearNewsCacheViewTestCase(WithDataTestCase):
 
 class TestNewsApiViewTestCase(WithDataTestCase):
     def test_api_get(self):
-        resp = self.client.get(reverse('news:list'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        resp = self.client.get(reverse('news:json_list'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'www.chainscoop.com')
 
@@ -78,17 +74,17 @@ class TestNewsApiViewTestCase(WithDataTestCase):
 
 class TestIndexDraftNavTestCase(WithDataTestCase):
     def test_draf_nav_not_shown(self):
-        d_nav = Nav.objects.create(cname='draft_nav_cn', \
-                                   ename='draft_nav_en', \
-                                   cate=self.cate1,\
-                                   location='china',\
+        d_nav = Nav.objects.create(cname='draft_nav_cn',
+                                   ename='draft_nav_en',
+                                   cate=self.cate1,
+                                   location='china',
                                    status=Nav.STATUS.draft
                                    )
 
-        d_nav2 = Nav.objects.create(cname='published_nav_cn', \
-                                    ename='published_nav_en',\
-                                    location='china',\
-                                    status=Nav.STATUS.published,\
+        d_nav2 = Nav.objects.create(cname='published_nav_cn',
+                                    ename='published_nav_en',
+                                    location='china',
+                                    status=Nav.STATUS.published,
                                     cate=self.cate1)
 
         d_nav.tags.add('tag_new')
@@ -104,4 +100,17 @@ class TestIndexDraftNavTestCase(WithDataTestCase):
         self.assertContains(resp, text='tag_new')
         self.assertContains(resp, text='published_nav_cn')
         self.assertNotContains(resp, text='draft_nav_cn')
+
+
+class TestSidebarDataMixin(TestCase):
+    def test_can_get_news_tags(self):
+        sd = SideBarDataMixin()
+        tag_list = sd.get_news_tag_list()
+        self.assertIsInstance(tag_list, list)
+        self.assertNotEqual(len(tag_list), 0)
+
+
+
+
+
 

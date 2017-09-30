@@ -1,32 +1,46 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
+
 {% block meta %}
-        {% include "web/partial/news_list_meta.html" %}
+        {% include "dapp/partial/dapp_detail_meta.html" %}
 {% endblock %}
 {% block title %}
-    区块链快讯列表 | 区块链导航 | http://www.chaindh.com/news.htm
+    {{ project.name }} - 以太坊应用 | 区块链导航 | chaindh.com
 {% endblock %}
 
- {% block seo_title %}
-    区块链快讯列表 | 区块链导航 | chaindh.com
+{% block seo_title %}
+    {{ project.name }} - 以太坊应用 | 区块链导航 | chaindh.com
  {% endblock %}
 
 {% block content %}
     <section id="content">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 col-xs-12 news-line-wrapper">
+                <div class="col-sm-8 col-xs-12">
                     <div class="box">
-                        <div class="box-body">
-                            {% include 'web/partial/news_tag_filter.html' %}
-                            <div class="timeline newsline">
+                        <div class="box-body middle-wrapper news-detail-wrapper">
+                            <div class="news-title">
+                                    {{ project.name }}
+                            </div>
+                            <div class="news-content">
+                                  {{ project.enbio}}
+                            </div>
+                            <div class="news-info">
+                                  <span>{{ project.last_updated }}</span>
+                                   <span class="tag-list-wrapper">
+                                        <ul class="tag-list">
+                                            <li class="tag-list-head">
+                                                <i class="fa fa-tag"></i>
+                                            </li>
+                                             {% for tag in project.tag_list %}
+                                               <li class="tag-item">{{ tag }}</li>
+                                             {% endfor %}
+                                        </ul>
+                                    </span>
 
                             </div>
-                            <div class="middle-wrapper">
-                                <a class="btn white-btn btn-load-news">
-                                    加载更多
-                                </a>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -56,7 +70,9 @@
             </div>
             <div class="body">
                 <p class="news-title">
+                    <a href="<%=url%>">
                       <%=title%>
+                    </a>
                 </p>
                 <ul>
                     <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" target="_blank">「原文链接」</a>
@@ -78,12 +94,6 @@
                 </ul>
             </div>
         </div>
-    </script>
-
-    <script language="javascript">
-        {% autoescape off %}
-            var news_obj = {{ news_json_str }};
-        {% endautoescape %}
     </script>
 {% endblock %}
 {##}
