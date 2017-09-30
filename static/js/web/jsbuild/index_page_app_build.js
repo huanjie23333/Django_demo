@@ -1502,7 +1502,7 @@ define('subapp/sidebar',['libs/Class','jquery','subapp/sidebar/news', 'subapp/da
 
     var SideBarApp = Class.extend({
         init:function(){
-            
+
             this.newsFeed = new FakeFeed({
                 data:window.news_obj,
                 interval:-1, // no repeat
