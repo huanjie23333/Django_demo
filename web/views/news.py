@@ -21,8 +21,11 @@ NEWS_TAG_LIST_KEY = 'newslist:tags:list'
 NEWS_TAG_API_URL = 'http://www.chainscoop.com/api/news/tags.json'
 
 class NewsDataMixin(object):
-    def _get_newslist_page(self, page=1):
-        r = requests.get('http://www.chainscoop.com/api/news.json?page=%s' % page)
+    def _get_newslist_page(self, page=1, tag=None):
+        url = 'http://www.chainscoop.com/api/news.json?page=%s' % page
+        if tag:
+            url = "%s&tag=%s"%(url,tag)
+        r = requests.get(url)
         if r.status_code == 200:
             return r.text
 
@@ -37,9 +40,9 @@ class NewsDataMixin(object):
         cache_key_set.add(cache_key)
         cache.set(NEWS_LIST_KEY_SET, cache_key_set, timeout=None)
 
-    def get_news_page_data_json(self, page=1,):
-        cache_key = self.get_cache_key(page)
-        json_str = cache.get_or_set(cache_key, self._get_newslist_page(page), timeout=60 * 30)
+    def get_news_page_data_json(self, page=1, tag=None):
+        cache_key = self.get_cache_key(page, tag)
+        json_str = cache.get_or_set(cache_key, self._get_newslist_page(page, tag), timeout=60 * 30)
         self.add_key_set(cache_key)
         return json_str
 
@@ -53,8 +56,10 @@ class NewsDataMixin(object):
             return result
 
 
-    def get_cache_key(self, page):
+    def get_cache_key(self, page=1, tag=None):
         cache_key = 'newslist:page:%s' % page
+        if tag:
+            cache_key = "%s:%s" %(cache_key, tag)
         return cache_key
 
     def get_page_num(self):
@@ -63,6 +68,10 @@ class NewsDataMixin(object):
         assert type(page) == int
         assert 0 < page <= 30000
         return page
+
+    def get_tag(self):
+        return self.request.GET.get('tag', None)
+
 
     def get_news_tag_list(self):
         return  cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60*30)
@@ -82,9 +91,8 @@ class NewsDataMixin(object):
 class SideBarDataMixin(NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['sidebar_news_json_str'] = self.get_news_page_data_json(1)
-        context['news_tag_list'] = self.get_news_tag_list()
-        context['news_list'] = self.get_news_page_list()
+        context['sidebar_news_tag_list'] = self.get_news_tag_list()
+        context['sidebar_news_list'] = self.get_news_page_list()
         return context
 
 
@@ -95,23 +103,36 @@ class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
 
     def get_ajax(self, request, *args, **kwargs):
         page = self.get_page_num()
-        json_str = self.get_news_page_data_json(page)
-        # save yout keys set here, so you can clear them at once
+        tag = self.get_tag()
+        json_str = self.get_news_page_data_json(page, tag=tag)
 
         return HttpResponse(json_str,
                             content_type=self.get_content_type(),
                             status=200)
 
 
-class NewsListView(SideBarDataMixin, ListView):
+class NewsListView(SideBarDataMixin, TemplateView):
     template_name = 'web/news_list.html'
-    def get_queryset(self):
-        return self.get_news_page_list()
+    context_object_name = 'news_list'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['news_list'] =  self.get_news_page_list()
+        context['news_json_str'] = self.get_news_page_data_json(1)
+        return context
 
 
-class NewsTagListView(NewsListView):
-    def get_queryset(self):
-        pass
+class NewsTagListView(SideBarDataMixin, TemplateView):
+    template_name = 'web/news_list.html'
+    def get_tag(self):
+        return self.kwargs.get('tag', None)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tag = context['current_tag'] = self.get_tag()
+        context['news_list'] =  self.get_news_page_list(tag=tag)
+        context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)
+
+        return context
 
 
 class ClearNewsCacheView(StaffuserRequiredMixin, NewsDataMixin, TemplateView):

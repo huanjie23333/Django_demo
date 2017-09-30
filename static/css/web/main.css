@@ -457,8 +457,8 @@ ul li {
   content: '';
 }
 .tag-list-filter-wrapper {
-  text-align: center;
-  margin: 20px;
+  text-align: left;
+  margin: 20px 0px;
 }
 .tag-list-filter-wrapper .tag-list-filter-list:after {
   content: " ";

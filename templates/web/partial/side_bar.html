@@ -5,7 +5,7 @@
         </div>
         <div class="box-body">
             <div class="news-list timeline small-line">
-                {% for news in news_list|slice:':5' %}
+                {% for news in sidebar_news_list|slice:':5' %}
                     <div class="entry">
                         <div class="left-content">
                             <h3>
@@ -17,7 +17,7 @@
                             <ul>
                                 <li class="news-content hidden">{{ news.content }}
                                     {% if news.origin_link %}
-                                      <a href="{{ news.origin_link }}" target="_blank">「原文链接」</a>
+                                        <a href="{{ news.origin_link }}" target="_blank">「原文链接」</a>
                                     {% endif %}
 
                                 </li>
@@ -32,6 +32,22 @@
                 <a class="btn white-btn" href="{% url 'web_news' %}">
                     查看更多
                 </a>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-header">快讯标签</div>
+        <div class="box-body">
+            <div class="tag-list-filter-wrapper">
+                <ul class="tag-list-filter-list">
+                    {% for tag in sidebar_news_tag_list %}
+                        <li class="tag-filter-item">
+                            <a href="{% url 'news:tag_news' tag.name %}">
+                                {{ tag.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
@@ -102,8 +118,3 @@
     </li>
 </script>
 
-<script language="javascript">
-    {% autoescape off %}
-        var news_obj = {{ sidebar_news_json_str }};
-    {% endautoescape %}
-</script>

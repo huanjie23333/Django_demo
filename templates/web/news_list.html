@@ -20,7 +20,7 @@
                         <div class="box-body">
                             <div class="tag-list-filter-wrapper">
                                 <ul class="tag-list-filter-list">
-                                    {% for tag in news_tag_list %}
+                                    {% for tag in sidebar_news_tag_list %}
                                         <li class="tag-filter-item">
                                             <a href="{% url 'news:tag_news' tag.name %}">
                                                 {{ tag.name }}
@@ -88,6 +88,12 @@
                 </ul>
             </div>
         </div>
+    </script>
+
+    <script language="javascript">
+        {% autoescape off %}
+            var news_obj = {{ news_json_str }};
+        {% endautoescape %}
     </script>
 {% endblock %}
 {##}

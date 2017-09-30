@@ -1514,7 +1514,7 @@ define('subapp/sidebar',['libs/Class','jquery','subapp/sidebar/news', 'subapp/da
                 adapter: new CoinBeefAdapter()
             });
             // already rendered by server
-            // not need feed to run ......
+            // close the feed
             //this.newsFeed.run();
         }
     });
@@ -1680,6 +1680,7 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
                 this.dataFeed = this.get_fake_feed({
                     data: window.news_obj,
                     interval:-1, // no repeat
+
                 });
 
                 this.adapter = new CoinBeefAdapter();

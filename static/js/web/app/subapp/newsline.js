@@ -71,6 +71,7 @@ define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/
                 this.dataFeed = this.get_fake_feed({
                     data: window.news_obj,
                     interval:-1, // no repeat
+
                 });
 
                 this.adapter = new CoinBeefAdapter();
