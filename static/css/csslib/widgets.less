@@ -120,10 +120,11 @@
          margin: 0 0.5em;
          display: inline-block;
          a{
-           color: @support-text-color;
+           color: @site-link-color;
            line-height:2em;
-           &.active, &:hover, &:active{
-             color: @site-link-color;
+           &:hover, &:active, &:focus{
+             color:@site-link-highlight-color;
+             text-decoration: none;
            }
          }
       }

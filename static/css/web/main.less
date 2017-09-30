@@ -431,6 +431,18 @@ body{
 .news-line-wrapper{
   .tag-list-filter-wrapper{
      padding-left:27px;
+    .tag-filter-item{
+         margin: 0 0.5em;
+         display: inline-block;
+         a{
+           color: @site-link-color;
+           line-height:2em;
+           &.active, &:hover, &:active, &:focus{
+             color:@site-link-highlight-color;
+             text-decoration: none;
+           }
+         }
+      }
   }
 }
 

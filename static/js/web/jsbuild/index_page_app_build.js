@@ -608,22 +608,26 @@ define('subapp/adapters/adapter',['libs/Class','underscore'],function(Class,_){
         init: function(dictionary){
             this.dictionary = dictionary;
         },
+
         update: function(data){
             this.old = this.data;
             this.data = data;
             return this;
         },
+
         filter_data: function (data) {
             return data;
         },
+
         spit: function(){
              var data = this.filter_data(this.data);
              return _.map(data, this.handle_data.bind(this));
-
         },
+
         clean_entry: function (new_entry) {
             return new_entry;
         },
+
         handle_data:function(single_entry){
             var new_entry = {}
             _.map(this.dictionary, function(key_right,key_left ){
@@ -1583,7 +1587,7 @@ define('subapp/adapters/coinbeef_all',[
                 var dt = new Date(local_timestamp);
                 var month = entry['month'] = dt.getMonth() + 1;
                 var date = entry['date'] = dt.getDate();
-                var year = entry['data'] = dt.getYear();
+                var year = entry['year'] = dt.getFullYear();
 
                 if(this.last_show_date == date
                     && this.last_show_month == month
@@ -1595,9 +1599,12 @@ define('subapp/adapters/coinbeef_all',[
                     this.last_show_month = month;
                 }
 
-                //if(this.last_show_year == year){
-                //
-                //}
+                if(this.last_show_year == year){
+                    entry['show_year'] = false;
+                }else{
+                    entry['show_year'] = true;
+                    this.last_show_year = year;
+                }
 
                 return entry ;
             }
