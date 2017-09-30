@@ -2,7 +2,7 @@
 
 from quark.tests.base import WithDataTestCase
 
-from web.views import NewsDataMixin
+from web.views.news import NewsDataMixin
 from django.core.cache import cache
 
 

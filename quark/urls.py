@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include , handler404, handler500
 from django.contrib import admin
 from web.views import IndexView, CategoryView,\
-                      AboutView, SiteMapView,\
-                      NewsListView
+                      AboutView, SiteMapView
+
+from web.views.news import NewsListView
 
 from quark.views import page_error, webpage_not_found
 

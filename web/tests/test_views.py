@@ -4,7 +4,8 @@ from django.urls import reverse
 from nav.models import Nav
 from quark.tests.base import WithDataTestCase
 
-from web.views import NewsDataMixin, SideBarDataMixin
+from web.views import SideBarDataMixin
+from web.views.news import NewsDataMixin
 
 
 class TestCategoryViewTestCase(WithDataTestCase):
@@ -65,7 +66,7 @@ class TestClearNewsCacheViewTestCase(WithDataTestCase):
 
 class TestNewsApiViewTestCase(WithDataTestCase):
     def test_api_get(self):
-        resp = self.client.get(reverse('news:list'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        resp = self.client.get(reverse('news:json_list'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'www.chainscoop.com')
 
