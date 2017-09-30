@@ -9,6 +9,7 @@ from django.db.models import Count
 from nav.models import Nav, Category
 from web.views.news import SideBarDataMixin
 
+
 class CategoryTagDataMixin(object):
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
@@ -73,7 +74,7 @@ class AboutView(TemplateView):
     template_name = 'web/about.html'
 
 
-class SiteMapView(TemplateView):
+class SiteMapView(SideBarDataMixin, TemplateView):
     template_name = 'web/sitemap.html'
 
     def get_context_data(self, **kwargs):
@@ -91,7 +92,7 @@ class SiteMapView(TemplateView):
 
     def get_cate_tag_list(self, category_id):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
-        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids) \
+        tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
                       .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
                       .order_by('-tagCount'))
         return tagids
