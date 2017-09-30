@@ -111,14 +111,23 @@
   }
 }
 
-//.tag-item {
-//  line-height: 1.5em;
-//  color: @support-text-color;
-//  font-size: 1em;
-//  line-height: 3em;
-//  font-weight: 400;
-//}
-
+.tag-list-filter-wrapper{
+   text-align: center;
+   margin: 20px;
+   .tag-list-filter-list{
+      .clearfix;
+      .tag-filter-item{
+         margin: 0 0.5em;
+         display: inline-block;
+         a{
+           color: @support-text-color;
+           &.active{
+             color: @site-link-color;
+           }
+         }
+      }
+   }
+}
 
 .project-wrapper{
    .transition(all 1s);

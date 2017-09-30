@@ -14,8 +14,9 @@ define(['libs/Class','jquery','subapp/sidebar/news', 'subapp/data/fakeFeed', 'su
                 feed:  this.newsFeed,
                 adapter: new CoinBeefAdapter()
             });
-
-            this.newsFeed.run();
+            // already rendered by server
+            // not need feed to run ......
+            //this.newsFeed.run();
         }
     });
     return SideBarApp;

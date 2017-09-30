@@ -31,8 +31,8 @@ class TestDappViewTestCase(TestCase):
         resp = self.client.get(reverse('dapp:detail', args=[p.slug, ]))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'dapp/detail.html')
-        self.assertTemplateUsed(resp, 'dapp/patial/dapp_detail_meta.html')
-        self.assertContains(resp, 'fd_2')
+        self.assertTemplateUsed(resp, 'dapp/partial/dapp_detail_meta.html')
+        self.assertContains(resp, 'proj_name_1')
 
 
 

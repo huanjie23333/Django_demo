@@ -1,10 +1,30 @@
-<div class="col-sm-4 col-xs-12 news-wrapper"  id="side_column">
+<div class="col-sm-4 col-xs-12 news-wrapper" id="side_column">
     <div class="box hidden-xs">
         <div class="box-header">
             24h 快讯
         </div>
         <div class="box-body">
             <div class="news-list timeline small-line">
+                {% for news in news_list|slice:':5' %}
+                    <div class="entry">
+                        <div class="left-content">
+                            <h3>
+                            </h3>
+                            <p></p>
+                        </div>
+                        <div class="body">
+                            <p class="news-title">{{ news.title }}</p>
+                            <ul>
+                                <li class="news-content hidden">{{ news.content }}
+                                    {% if news.origin_link %}
+                                      <a href="{{ news.origin_link }}" target="_blank">「原文链接」</a>
+                                    {% endif %}
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div class="box-footer">
@@ -27,44 +47,44 @@
 
 <script id="news_template" type="text/template">
 
-        <div class="entry">
-            <div class="left-content">
-                <h3>
-{#                    <% if(show_time){ %>#}
-{#                      <div class="show-time">#}
-{#                       <span class="month"><%=month%>月</span>#}
-{#                       <span class="date"><%=date%></span>#}
-{#                      </div>#}
-{#                    <% } %>#}
-                </h3>
-                <p></p>
-            </div>
-            <div class="body">
-                <p class="news-title"><%=title%></p>
-                <ul>
-                    <li class="news-content hidden"><%=content%>
-                        <% if(origin_link) { %>
-                        <a href="<%=origin_link%>" target="_blank">「原文链接」</a>
-                        <% }%>
-
-                    </li>
-{#                    <li><%=time_diff%></li>#}
-                </ul>
-            </div>
+    <div class="entry">
+        <div class="left-content">
+            <h3>
+                {#                    <% if(show_time){ %>#}
+                {#                      <div class="show-time">#}
+                {#                       <span class="month"><%=month%>月</span>#}
+                {#                       <span class="date"><%=date%></span>#}
+                {#                      </div>#}
+                {#                    <% } %>#}
+            </h3>
+            <p></p>
         </div>
+        <div class="body">
+            <p class="news-title"><%=title%></p>
+            <ul>
+                <li class="news-content hidden"><%=content%>
+                    <% if(origin_link) { %>
+                    <a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                    <% }%>
 
-{#    <li>#}
-{#        <div class="news-title">#}
-{#                                       <span href="">#}
-{#                                       <%=title%>#}
-{#                                        </span>#}
-{#        </div>#}
-{#        <div class="news-content hidden">#}
-{#            <%=content%>#}
-{#        </div>#}
-{#        <div class="pub-time">#}
-{#            <%=time_diff%>#}
-{#        </div>#}
+                </li>
+                {#                    <li><%=time_diff%></li>#}
+            </ul>
+        </div>
+    </div>
+
+    {#    <li>#}
+    {#        <div class="news-title">#}
+    {#                                       <span href="">#}
+    {#                                       <%=title%>#}
+    {#                                        </span>#}
+    {#        </div>#}
+    {#        <div class="news-content hidden">#}
+    {#            <%=content%>#}
+    {#        </div>#}
+    {#        <div class="pub-time">#}
+    {#            <%=time_diff%>#}
+    {#        </div>#}
     </li>
 </script>
 
@@ -82,8 +102,8 @@
     </li>
 </script>
 
-<script language="javascript" >
+<script language="javascript">
     {% autoescape off %}
-         var news_obj = {{ sidebar_news_json_str }};
+        var news_obj = {{ sidebar_news_json_str }};
     {% endautoescape %}
 </script>

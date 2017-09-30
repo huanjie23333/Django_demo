@@ -10,7 +10,7 @@ class TestNewsDataMixinTestCase(WithDataTestCase):
 
     def test_get_newslist_page(self):
         nd = NewsDataMixin()
-        json_str = nd.get_newslist_page()
+        json_str = nd._get_newslist_page()
         self.assertIn('results', json_str)
 
     def test_get_key_list(self):
@@ -28,7 +28,7 @@ class TestNewsDataMixinTestCase(WithDataTestCase):
     def test_get_page_data(self):
         nd = NewsDataMixin()
         page_num = 1
-        json_str = nd.get_page_data(page_num)
+        json_str = nd.get_news_page_data_json(page_num)
         key = nd.get_cache_key(page_num)
         self.assertEqual(cache.get(key), json_str)
 
