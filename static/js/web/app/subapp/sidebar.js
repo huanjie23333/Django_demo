@@ -3,9 +3,7 @@ define(['libs/Class','jquery','subapp/sidebar/news', 'subapp/data/fakeFeed', 'su
 
     var SideBarApp = Class.extend({
         init:function(){
-            if(!window.news_obj){
-                throw Error('CAN NOT FIND NEWS DATA');
-            }
+
             this.newsFeed = new FakeFeed({
                 data:window.news_obj,
                 interval:-1, // no repeat

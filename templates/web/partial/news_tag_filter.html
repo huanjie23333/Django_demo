@@ -1,0 +1,11 @@
+<div class="tag-list-filter-wrapper">
+    <ul class="tag-list-filter-list">
+        {% for tag in sidebar_news_tag_list %}
+            <li class="tag-filter-item">
+                <a href="{% url 'news:tag_news' tag.name %}"  class="{% if current_tag == tag.name %}active{% endif %}">
+                    {{ tag.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

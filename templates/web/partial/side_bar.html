@@ -38,17 +38,7 @@
     <div class="box">
         <div class="box-header">快讯标签</div>
         <div class="box-body">
-            <div class="tag-list-filter-wrapper">
-                <ul class="tag-list-filter-list">
-                    {% for tag in sidebar_news_tag_list %}
-                        <li class="tag-filter-item">
-                            <a href="{% url 'news:tag_news' tag.name %}">
-                                {{ tag.name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+            {% include 'web/partial/news_tag_filter.html' %}
         </div>
     </div>
     <div class="box">

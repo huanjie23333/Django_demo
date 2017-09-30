@@ -21,6 +21,7 @@ NEWS_TAG_LIST_KEY = 'newslist:tags:list'
 NEWS_TAG_API_URL = 'http://www.chainscoop.com/api/news/tags.json'
 
 class NewsDataMixin(object):
+
     def _get_newslist_page(self, page=1, tag=None):
         url = 'http://www.chainscoop.com/api/news.json?page=%s' % page
         if tag:
@@ -71,7 +72,6 @@ class NewsDataMixin(object):
 
     def get_tag(self):
         return self.request.GET.get('tag', None)
-
 
     def get_news_tag_list(self):
         return  cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60*30)
