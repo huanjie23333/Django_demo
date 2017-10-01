@@ -667,13 +667,13 @@ ul li {
   color: #ff552e;
   text-decoration: none;
 }
-.entry .body p {
+.entry .body h1 {
   line-height: 1.4em;
 }
-.entry .body p.news-title {
-  font-size: 16px;
+.entry .body h1.news-title {
+  font-size: 18px;
 }
-.entry .body p:first-child {
+.entry .body h1:first-child {
   margin-top: 0;
   font-weight: 400;
 }
