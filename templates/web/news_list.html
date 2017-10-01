@@ -15,6 +15,16 @@
     <section id="content">
         <div class="container">
             <div class="row">
+                <div class="seo-only">
+                    {% for news in sidebar_news_list %}
+                        <div class="entry">
+                                <h1 class="news-title">{{ news.title }}</h1>
+                                <p class="news-content">
+                                        {{ news.content }}
+                                </p>
+                        </div>
+                    {% endfor %}
+                </div>
                 <div class="col-sm-8 col-xs-12 news-line-wrapper">
                     <div class="box">
                         <div class="box-body">
