@@ -4,17 +4,27 @@
         {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
 {% block title %}
-    区块链快讯列表 | 区块链导航 | http://www.chaindh.com/news.htm
+    新闻快讯 - 区块链导航
 {% endblock %}
 
  {% block seo_title %}
-    区块链快讯列表 | 区块链导航 | chaindh.com
+    新闻快讯 - 区块链导航
  {% endblock %}
 
 {% block content %}
     <section id="content">
         <div class="container">
             <div class="row">
+                <div class="seo-only">
+                    {% for news in sidebar_news_list %}
+                        <div class="entry">
+                                <h1 class="news-title">{{ news.title }}</h1>
+                                <p class="news-content">
+                                        {{ news.content }}
+                                </p>
+                        </div>
+                    {% endfor %}
+                </div>
                 <div class="col-sm-8 col-xs-12 news-line-wrapper">
                     <div class="box">
                         <div class="box-body">
@@ -55,11 +65,11 @@
                 <p></p>
             </div>
             <div class="body">
-                <p class="news-title">
+                <h1 class="news-title">
                       <%=title%>
-                </p>
+                </h1>
                 <ul>
-                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「原文链接」</a>
                         <% }%>
 
                     </li>
@@ -70,7 +80,7 @@
                                     <i class="fa fa-tag"></i>
                                 </li>
                                 <% for( var i = 0; i < tag_list.length; i++ ) { %>
-                                <li class="tag-item"><%=tag_list[i]%></li>
+                                <li class="tag-item"><a href="/news/tag/<%=tag_list[i]%>/" target="_blank"><%=tag_list[i]%></a></li>
                                 <% } %>
                             </ul>
                         </span>
