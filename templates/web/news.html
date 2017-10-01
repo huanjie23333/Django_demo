@@ -5,8 +5,11 @@
         {% include "web/partial/news_meta.html" %}
 {% endblock %}
 {% block title %}
-    {{ news.title }} | 区块链导航 | chaindh.com
+    {{ news.title }} | 区块链导航
 {% endblock %}
+ {% block seo_title %}
+    {{ news.title }} | 区块链导航
+ {% endblock %}
 {% block content %}
     <section id="content">
         <div class="container">

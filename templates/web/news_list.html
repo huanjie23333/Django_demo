@@ -4,11 +4,11 @@
         {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
 {% block title %}
-    区块链快讯 | 区块链导航
+    新闻快讯 - 区块链导航
 {% endblock %}
 
  {% block seo_title %}
-    区块链快讯 | 区块链导航
+    新闻快讯 - 区块链导航
  {% endblock %}
 
 {% block content %}
@@ -59,7 +59,7 @@
                       <%=title%>
                 </p>
                 <ul>
-                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「原文链接」</a>
                         <% }%>
 
                     </li>
