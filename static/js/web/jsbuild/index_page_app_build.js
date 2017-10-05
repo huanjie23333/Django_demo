@@ -305,27 +305,69 @@ define('libs/Class',[], function(){
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Underscore may be freely distributed under the MIT license.
 (function(){function n(n){function t(t,r,e,u,i,o){for(;i>=0&&o>i;i+=n){var a=u?u[i]:i;e=r(e,t[a],a,t)}return e}return function(r,e,u,i){e=b(e,i,4);var o=!k(r)&&m.keys(r),a=(o||r).length,c=n>0?0:a-1;return arguments.length<3&&(u=r[o?o[c]:c],c+=n),t(r,e,u,o,c,a)}}function t(n){return function(t,r,e){r=x(r,e);for(var u=O(t),i=n>0?0:u-1;i>=0&&u>i;i+=n)if(r(t[i],i,t))return i;return-1}}function r(n,t,r){return function(e,u,i){var o=0,a=O(e);if("number"==typeof i)n>0?o=i>=0?i:Math.max(i+a,o):a=i>=0?Math.min(i+1,a):i+a+1;else if(r&&i&&a)return i=r(e,u),e[i]===u?i:-1;if(u!==u)return i=t(l.call(e,o,a),m.isNaN),i>=0?i+o:-1;for(i=n>0?o:a-1;i>=0&&a>i;i+=n)if(e[i]===u)return i;return-1}}function e(n,t){var r=I.length,e=n.constructor,u=m.isFunction(e)&&e.prototype||a,i="constructor";for(m.has(n,i)&&!m.contains(t,i)&&t.push(i);r--;)i=I[r],i in n&&n[i]!==u[i]&&!m.contains(t,i)&&t.push(i)}var u=this,i=u._,o=Array.prototype,a=Object.prototype,c=Function.prototype,f=o.push,l=o.slice,s=a.toString,p=a.hasOwnProperty,h=Array.isArray,v=Object.keys,g=c.bind,y=Object.create,d=function(){},m=function(n){return n instanceof m?n:this instanceof m?void(this._wrapped=n):new m(n)};"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=m),exports._=m):u._=m,m.VERSION="1.8.3";var b=function(n,t,r){if(t===void 0)return n;switch(null==r?3:r){case 1:return function(r){return n.call(t,r)};case 2:return function(r,e){return n.call(t,r,e)};case 3:return function(r,e,u){return n.call(t,r,e,u)};case 4:return function(r,e,u,i){return n.call(t,r,e,u,i)}}return function(){return n.apply(t,arguments)}},x=function(n,t,r){return null==n?m.identity:m.isFunction(n)?b(n,t,r):m.isObject(n)?m.matcher(n):m.property(n)};m.iteratee=function(n,t){return x(n,t,1/0)};var _=function(n,t){return function(r){var e=arguments.length;if(2>e||null==r)return r;for(var u=1;e>u;u++)for(var i=arguments[u],o=n(i),a=o.length,c=0;a>c;c++){var f=o[c];t&&r[f]!==void 0||(r[f]=i[f])}return r}},j=function(n){if(!m.isObject(n))return{};if(y)return y(n);d.prototype=n;var t=new d;return d.prototype=null,t},w=function(n){return function(t){return null==t?void 0:t[n]}},A=Math.pow(2,53)-1,O=w("length"),k=function(n){var t=O(n);return"number"==typeof t&&t>=0&&A>=t};m.each=m.forEach=function(n,t,r){t=b(t,r);var e,u;if(k(n))for(e=0,u=n.length;u>e;e++)t(n[e],e,n);else{var i=m.keys(n);for(e=0,u=i.length;u>e;e++)t(n[i[e]],i[e],n)}return n},m.map=m.collect=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=Array(u),o=0;u>o;o++){var a=e?e[o]:o;i[o]=t(n[a],a,n)}return i},m.reduce=m.foldl=m.inject=n(1),m.reduceRight=m.foldr=n(-1),m.find=m.detect=function(n,t,r){var e;return e=k(n)?m.findIndex(n,t,r):m.findKey(n,t,r),e!==void 0&&e!==-1?n[e]:void 0},m.filter=m.select=function(n,t,r){var e=[];return t=x(t,r),m.each(n,function(n,r,u){t(n,r,u)&&e.push(n)}),e},m.reject=function(n,t,r){return m.filter(n,m.negate(x(t)),r)},m.every=m.all=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=0;u>i;i++){var o=e?e[i]:i;if(!t(n[o],o,n))return!1}return!0},m.some=m.any=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=0;u>i;i++){var o=e?e[i]:i;if(t(n[o],o,n))return!0}return!1},m.contains=m.includes=m.include=function(n,t,r,e){return k(n)||(n=m.values(n)),("number"!=typeof r||e)&&(r=0),m.indexOf(n,t,r)>=0},m.invoke=function(n,t){var r=l.call(arguments,2),e=m.isFunction(t);return m.map(n,function(n){var u=e?t:n[t];return null==u?u:u.apply(n,r)})},m.pluck=function(n,t){return m.map(n,m.property(t))},m.where=function(n,t){return m.filter(n,m.matcher(t))},m.findWhere=function(n,t){return m.find(n,m.matcher(t))},m.max=function(n,t,r){var e,u,i=-1/0,o=-1/0;if(null==t&&null!=n){n=k(n)?n:m.values(n);for(var a=0,c=n.length;c>a;a++)e=n[a],e>i&&(i=e)}else t=x(t,r),m.each(n,function(n,r,e){u=t(n,r,e),(u>o||u===-1/0&&i===-1/0)&&(i=n,o=u)});return i},m.min=function(n,t,r){var e,u,i=1/0,o=1/0;if(null==t&&null!=n){n=k(n)?n:m.values(n);for(var a=0,c=n.length;c>a;a++)e=n[a],i>e&&(i=e)}else t=x(t,r),m.each(n,function(n,r,e){u=t(n,r,e),(o>u||1/0===u&&1/0===i)&&(i=n,o=u)});return i},m.shuffle=function(n){for(var t,r=k(n)?n:m.values(n),e=r.length,u=Array(e),i=0;e>i;i++)t=m.random(0,i),t!==i&&(u[i]=u[t]),u[t]=r[i];return u},m.sample=function(n,t,r){return null==t||r?(k(n)||(n=m.values(n)),n[m.random(n.length-1)]):m.shuffle(n).slice(0,Math.max(0,t))},m.sortBy=function(n,t,r){return t=x(t,r),m.pluck(m.map(n,function(n,r,e){return{value:n,index:r,criteria:t(n,r,e)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(r>e||r===void 0)return 1;if(e>r||e===void 0)return-1}return n.index-t.index}),"value")};var F=function(n){return function(t,r,e){var u={};return r=x(r,e),m.each(t,function(e,i){var o=r(e,i,t);n(u,e,o)}),u}};m.groupBy=F(function(n,t,r){m.has(n,r)?n[r].push(t):n[r]=[t]}),m.indexBy=F(function(n,t,r){n[r]=t}),m.countBy=F(function(n,t,r){m.has(n,r)?n[r]++:n[r]=1}),m.toArray=function(n){return n?m.isArray(n)?l.call(n):k(n)?m.map(n,m.identity):m.values(n):[]},m.size=function(n){return null==n?0:k(n)?n.length:m.keys(n).length},m.partition=function(n,t,r){t=x(t,r);var e=[],u=[];return m.each(n,function(n,r,i){(t(n,r,i)?e:u).push(n)}),[e,u]},m.first=m.head=m.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:m.initial(n,n.length-t)},m.initial=function(n,t,r){return l.call(n,0,Math.max(0,n.length-(null==t||r?1:t)))},m.last=function(n,t,r){return null==n?void 0:null==t||r?n[n.length-1]:m.rest(n,Math.max(0,n.length-t))},m.rest=m.tail=m.drop=function(n,t,r){return l.call(n,null==t||r?1:t)},m.compact=function(n){return m.filter(n,m.identity)};var S=function(n,t,r,e){for(var u=[],i=0,o=e||0,a=O(n);a>o;o++){var c=n[o];if(k(c)&&(m.isArray(c)||m.isArguments(c))){t||(c=S(c,t,r));var f=0,l=c.length;for(u.length+=l;l>f;)u[i++]=c[f++]}else r||(u[i++]=c)}return u};m.flatten=function(n,t){return S(n,t,!1)},m.without=function(n){return m.difference(n,l.call(arguments,1))},m.uniq=m.unique=function(n,t,r,e){m.isBoolean(t)||(e=r,r=t,t=!1),null!=r&&(r=x(r,e));for(var u=[],i=[],o=0,a=O(n);a>o;o++){var c=n[o],f=r?r(c,o,n):c;t?(o&&i===f||u.push(c),i=f):r?m.contains(i,f)||(i.push(f),u.push(c)):m.contains(u,c)||u.push(c)}return u},m.union=function(){return m.uniq(S(arguments,!0,!0))},m.intersection=function(n){for(var t=[],r=arguments.length,e=0,u=O(n);u>e;e++){var i=n[e];if(!m.contains(t,i)){for(var o=1;r>o&&m.contains(arguments[o],i);o++);o===r&&t.push(i)}}return t},m.difference=function(n){var t=S(arguments,!0,!0,1);return m.filter(n,function(n){return!m.contains(t,n)})},m.zip=function(){return m.unzip(arguments)},m.unzip=function(n){for(var t=n&&m.max(n,O).length||0,r=Array(t),e=0;t>e;e++)r[e]=m.pluck(n,e);return r},m.object=function(n,t){for(var r={},e=0,u=O(n);u>e;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},m.findIndex=t(1),m.findLastIndex=t(-1),m.sortedIndex=function(n,t,r,e){r=x(r,e,1);for(var u=r(t),i=0,o=O(n);o>i;){var a=Math.floor((i+o)/2);r(n[a])<u?i=a+1:o=a}return i},m.indexOf=r(1,m.findIndex,m.sortedIndex),m.lastIndexOf=r(-1,m.findLastIndex),m.range=function(n,t,r){null==t&&(t=n||0,n=0),r=r||1;for(var e=Math.max(Math.ceil((t-n)/r),0),u=Array(e),i=0;e>i;i++,n+=r)u[i]=n;return u};var E=function(n,t,r,e,u){if(!(e instanceof t))return n.apply(r,u);var i=j(n.prototype),o=n.apply(i,u);return m.isObject(o)?o:i};m.bind=function(n,t){if(g&&n.bind===g)return g.apply(n,l.call(arguments,1));if(!m.isFunction(n))throw new TypeError("Bind must be called on a function");var r=l.call(arguments,2),e=function(){return E(n,e,t,this,r.concat(l.call(arguments)))};return e},m.partial=function(n){var t=l.call(arguments,1),r=function(){for(var e=0,u=t.length,i=Array(u),o=0;u>o;o++)i[o]=t[o]===m?arguments[e++]:t[o];for(;e<arguments.length;)i.push(arguments[e++]);return E(n,r,this,this,i)};return r},m.bindAll=function(n){var t,r,e=arguments.length;if(1>=e)throw new Error("bindAll must be passed function names");for(t=1;e>t;t++)r=arguments[t],n[r]=m.bind(n[r],n);return n},m.memoize=function(n,t){var r=function(e){var u=r.cache,i=""+(t?t.apply(this,arguments):e);return m.has(u,i)||(u[i]=n.apply(this,arguments)),u[i]};return r.cache={},r},m.delay=function(n,t){var r=l.call(arguments,2);return setTimeout(function(){return n.apply(null,r)},t)},m.defer=m.partial(m.delay,m,1),m.throttle=function(n,t,r){var e,u,i,o=null,a=0;r||(r={});var c=function(){a=r.leading===!1?0:m.now(),o=null,i=n.apply(e,u),o||(e=u=null)};return function(){var f=m.now();a||r.leading!==!1||(a=f);var l=t-(f-a);return e=this,u=arguments,0>=l||l>t?(o&&(clearTimeout(o),o=null),a=f,i=n.apply(e,u),o||(e=u=null)):o||r.trailing===!1||(o=setTimeout(c,l)),i}},m.debounce=function(n,t,r){var e,u,i,o,a,c=function(){var f=m.now()-o;t>f&&f>=0?e=setTimeout(c,t-f):(e=null,r||(a=n.apply(i,u),e||(i=u=null)))};return function(){i=this,u=arguments,o=m.now();var f=r&&!e;return e||(e=setTimeout(c,t)),f&&(a=n.apply(i,u),i=u=null),a}},m.wrap=function(n,t){return m.partial(t,n)},m.negate=function(n){return function(){return!n.apply(this,arguments)}},m.compose=function(){var n=arguments,t=n.length-1;return function(){for(var r=t,e=n[t].apply(this,arguments);r--;)e=n[r].call(this,e);return e}},m.after=function(n,t){return function(){return--n<1?t.apply(this,arguments):void 0}},m.before=function(n,t){var r;return function(){return--n>0&&(r=t.apply(this,arguments)),1>=n&&(t=null),r}},m.once=m.partial(m.before,2);var M=!{toString:null}.propertyIsEnumerable("toString"),I=["valueOf","isPrototypeOf","toString","propertyIsEnumerable","hasOwnProperty","toLocaleString"];m.keys=function(n){if(!m.isObject(n))return[];if(v)return v(n);var t=[];for(var r in n)m.has(n,r)&&t.push(r);return M&&e(n,t),t},m.allKeys=function(n){if(!m.isObject(n))return[];var t=[];for(var r in n)t.push(r);return M&&e(n,t),t},m.values=function(n){for(var t=m.keys(n),r=t.length,e=Array(r),u=0;r>u;u++)e[u]=n[t[u]];return e},m.mapObject=function(n,t,r){t=x(t,r);for(var e,u=m.keys(n),i=u.length,o={},a=0;i>a;a++)e=u[a],o[e]=t(n[e],e,n);return o},m.pairs=function(n){for(var t=m.keys(n),r=t.length,e=Array(r),u=0;r>u;u++)e[u]=[t[u],n[t[u]]];return e},m.invert=function(n){for(var t={},r=m.keys(n),e=0,u=r.length;u>e;e++)t[n[r[e]]]=r[e];return t},m.functions=m.methods=function(n){var t=[];for(var r in n)m.isFunction(n[r])&&t.push(r);return t.sort()},m.extend=_(m.allKeys),m.extendOwn=m.assign=_(m.keys),m.findKey=function(n,t,r){t=x(t,r);for(var e,u=m.keys(n),i=0,o=u.length;o>i;i++)if(e=u[i],t(n[e],e,n))return e},m.pick=function(n,t,r){var e,u,i={},o=n;if(null==o)return i;m.isFunction(t)?(u=m.allKeys(o),e=b(t,r)):(u=S(arguments,!1,!1,1),e=function(n,t,r){return t in r},o=Object(o));for(var a=0,c=u.length;c>a;a++){var f=u[a],l=o[f];e(l,f,o)&&(i[f]=l)}return i},m.omit=function(n,t,r){if(m.isFunction(t))t=m.negate(t);else{var e=m.map(S(arguments,!1,!1,1),String);t=function(n,t){return!m.contains(e,t)}}return m.pick(n,t,r)},m.defaults=_(m.allKeys,!0),m.create=function(n,t){var r=j(n);return t&&m.extendOwn(r,t),r},m.clone=function(n){return m.isObject(n)?m.isArray(n)?n.slice():m.extend({},n):n},m.tap=function(n,t){return t(n),n},m.isMatch=function(n,t){var r=m.keys(t),e=r.length;if(null==n)return!e;for(var u=Object(n),i=0;e>i;i++){var o=r[i];if(t[o]!==u[o]||!(o in u))return!1}return!0};var N=function(n,t,r,e){if(n===t)return 0!==n||1/n===1/t;if(null==n||null==t)return n===t;n instanceof m&&(n=n._wrapped),t instanceof m&&(t=t._wrapped);var u=s.call(n);if(u!==s.call(t))return!1;switch(u){case"[object RegExp]":case"[object String]":return""+n==""+t;case"[object Number]":return+n!==+n?+t!==+t:0===+n?1/+n===1/t:+n===+t;case"[object Date]":case"[object Boolean]":return+n===+t}var i="[object Array]"===u;if(!i){if("object"!=typeof n||"object"!=typeof t)return!1;var o=n.constructor,a=t.constructor;if(o!==a&&!(m.isFunction(o)&&o instanceof o&&m.isFunction(a)&&a instanceof a)&&"constructor"in n&&"constructor"in t)return!1}r=r||[],e=e||[];for(var c=r.length;c--;)if(r[c]===n)return e[c]===t;if(r.push(n),e.push(t),i){if(c=n.length,c!==t.length)return!1;for(;c--;)if(!N(n[c],t[c],r,e))return!1}else{var f,l=m.keys(n);if(c=l.length,m.keys(t).length!==c)return!1;for(;c--;)if(f=l[c],!m.has(t,f)||!N(n[f],t[f],r,e))return!1}return r.pop(),e.pop(),!0};m.isEqual=function(n,t){return N(n,t)},m.isEmpty=function(n){return null==n?!0:k(n)&&(m.isArray(n)||m.isString(n)||m.isArguments(n))?0===n.length:0===m.keys(n).length},m.isElement=function(n){return!(!n||1!==n.nodeType)},m.isArray=h||function(n){return"[object Array]"===s.call(n)},m.isObject=function(n){var t=typeof n;return"function"===t||"object"===t&&!!n},m.each(["Arguments","Function","String","Number","Date","RegExp","Error"],function(n){m["is"+n]=function(t){return s.call(t)==="[object "+n+"]"}}),m.isArguments(arguments)||(m.isArguments=function(n){return m.has(n,"callee")}),"function"!=typeof/./&&"object"!=typeof Int8Array&&(m.isFunction=function(n){return"function"==typeof n||!1}),m.isFinite=function(n){return isFinite(n)&&!isNaN(parseFloat(n))},m.isNaN=function(n){return m.isNumber(n)&&n!==+n},m.isBoolean=function(n){return n===!0||n===!1||"[object Boolean]"===s.call(n)},m.isNull=function(n){return null===n},m.isUndefined=function(n){return n===void 0},m.has=function(n,t){return null!=n&&p.call(n,t)},m.noConflict=function(){return u._=i,this},m.identity=function(n){return n},m.constant=function(n){return function(){return n}},m.noop=function(){},m.property=w,m.propertyOf=function(n){return null==n?function(){}:function(t){return n[t]}},m.matcher=m.matches=function(n){return n=m.extendOwn({},n),function(t){return m.isMatch(t,n)}},m.times=function(n,t,r){var e=Array(Math.max(0,n));t=b(t,r,1);for(var u=0;n>u;u++)e[u]=t(u);return e},m.random=function(n,t){return null==t&&(t=n,n=0),n+Math.floor(Math.random()*(t-n+1))},m.now=Date.now||function(){return(new Date).getTime()};var B={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},T=m.invert(B),R=function(n){var t=function(t){return n[t]},r="(?:"+m.keys(n).join("|")+")",e=RegExp(r),u=RegExp(r,"g");return function(n){return n=null==n?"":""+n,e.test(n)?n.replace(u,t):n}};m.escape=R(B),m.unescape=R(T),m.result=function(n,t,r){var e=null==n?void 0:n[t];return e===void 0&&(e=r),m.isFunction(e)?e.call(n):e};var q=0;m.uniqueId=function(n){var t=++q+"";return n?n+t:t},m.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,escape:/<%-([\s\S]+?)%>/g};var K=/(.)^/,z={"'":"'","\\":"\\","\r":"r","\n":"n","\u2028":"u2028","\u2029":"u2029"},D=/\\|'|\r|\n|\u2028|\u2029/g,L=function(n){return"\\"+z[n]};m.template=function(n,t,r){!t&&r&&(t=r),t=m.defaults({},t,m.templateSettings);var e=RegExp([(t.escape||K).source,(t.interpolate||K).source,(t.evaluate||K).source].join("|")+"|$","g"),u=0,i="__p+='";n.replace(e,function(t,r,e,o,a){return i+=n.slice(u,a).replace(D,L),u=a+t.length,r?i+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'":e?i+="'+\n((__t=("+e+"))==null?'':__t)+\n'":o&&(i+="';\n"+o+"\n__p+='"),t}),i+="';\n",t.variable||(i="with(obj||{}){\n"+i+"}\n"),i="var __t,__p='',__j=Array.prototype.join,"+"print=function(){__p+=__j.call(arguments,'');};\n"+i+"return __p;\n";try{var o=new Function(t.variable||"obj","_",i)}catch(a){throw a.source=i,a}var c=function(n){return o.call(this,n,m)},f=t.variable||"obj";return c.source="function("+f+"){\n"+i+"}",c},m.chain=function(n){var t=m(n);return t._chain=!0,t};var P=function(n,t){return n._chain?m(t).chain():t};m.mixin=function(n){m.each(m.functions(n),function(t){var r=m[t]=n[t];m.prototype[t]=function(){var n=[this._wrapped];return f.apply(n,arguments),P(this,r.apply(m,n))}})},m.mixin(m),m.each(["pop","push","reverse","shift","sort","splice","unshift"],function(n){var t=o[n];m.prototype[n]=function(){var r=this._wrapped;return t.apply(r,arguments),"shift"!==n&&"splice"!==n||0!==r.length||delete r[0],P(this,r)}}),m.each(["concat","join","slice"],function(n){var t=o[n];m.prototype[n]=function(){return P(this,t.apply(this._wrapped,arguments))}}),m.prototype.value=function(){return this._wrapped},m.prototype.valueOf=m.prototype.toJSON=m.prototype.value,m.prototype.toString=function(){return""+this._wrapped},"function"==typeof define&&define.amd&&define("underscore",[],function(){return m})}).call(this);
-define('subapp/header/quote',['libs/Class','underscore'],function(Class,_){
-   var Quote = Class.extend({
-       init: function(){
-           this.elements = {
-               BTC: $('#quote_btc'),
-               ETH: $('#quote_eth'),
-               LTC: $('#quote_ltc')
-           }
+define('subapp/header/header_price',['libs/Class','jquery','underscore'],
+function(Class,$,_){
+   var HeaderPrice = Class.extend({
+
+       get_el: function () {
+           return $('#header_price_list');
        },
-       update:function(data){
-           this.data = data;
-           var symbols = ['BTC', 'ETH', 'LTC'];
-           _.map(this.elements, this.handle_element.bind(this));
+       get_template: function () {
+           return _.template($('#header_price_template').html());
+       },
+
+       init:function(option){
+           this.$el = this.get_el();
+           if(!!!this.$el.length) return ;
+
+           this.template = this.get_template();
+
+            if(!option["feed"]){
+                throw Error('can not init a price app without a feed');
+            }
+            this.dataFeed = option["feed"];
+            this.dataFeed.on('data_arrive',this.handle_data.bind(this));
+            this.dataFeed.on('data_fail', this.handle_fail.bind(this));
+
+            if(!option["adapter"]){
+                throw Error('need adapter to goon');
+            }
+            this.adapter = option["adapter"];
+       },
+
+       handle_data: function(data){
+            this.data_list = this.adapter.update(data).spit();
+            this.render();
+        },
+
+       handle_fail:function(error){
+            console.log('price data fail');
+            console.log(error);
+        },
+
+       render: function(){
+            _.map(this.data_list, this._render_item.bind(this));
+        },
+
+       _render_item: function(entry){
+           //console.log('entry');
+           //console.log(entry);
+           var ele = this.$el.find('#'+entry['element_id']);
+           if(ele.length){
+               this.set_price(ele, entry);
+           }else{
+               var ele = this.template(entry);
+               ele = this.$el.append(ele);
+               this.set_price(ele, entry);
+
+           }
+
        },
        set_price:function(elem, quote){
-           var price = Math.round(parseFloat(quote['price_cny'])*100)/100.0;
-           $(elem).find('.price').html(price);
 
            var change = 0
            try{
-                var change = parseFloat(quote['percent_change_1h']);
+                var change = parseFloat(quote['change']);
            }
            catch(error){
 
@@ -339,269 +381,9 @@ define('subapp/header/quote',['libs/Class','underscore'],function(Class,_){
            }
 
            return;
-       },
-       handle_element: function(elem, key){
-            var the_quote = _.filter(this.data, function(item){
-                return item['symbol'] == key
-            })[0];
-            this.set_price(elem, the_quote);
        }
    });
-   return Quote;
-});
-define('subapp/data/datafeed',['libs/Class', 'subapp/header/quote'],function(
-    Class,
-    Quote
-){
-    var DataFeed = Class.extend({
-        can_use_ws: function () {
-            //try {
-            //    this.ws = new WebSocket("wss://api.huobi.pro/ws",)
-            //    this.ws.send({
-            //          "sub": "market.btccny.kline.1min",
-            //          "id": "id1"
-            //    });
-            //}
-            //catch (exp){
-            //    return false;
-            //}
-            return false;
-        },
-        init: function(){
-
-           this.quote = new Quote();
-           if (!this.can_use_ws()){
-                this.update_quote();
-                window.setInterval(this.update_quote.bind(this),30000)
-           }
-        },
-
-        update_quote:function(){
-             $.when($.ajax({
-                url: 'https://api.coinmarketcap.com/v1/ticker/?limit=10&convert=CNY',
-                method:'GET'
-            })
-            ).then(
-                this.get_data_success.bind(this),
-                this.get_data_fail.bind(this)
-            );
-
-        },
-
-        get_data_success:function(data){
-            console.log(data[0]['price_cny']);
-            this.quote.update(data);
-        },
-        get_data_fail:function(){
-            console.log('failed!!!');
-        }
-    });
-    return DataFeed;
-});
-define('libs/event',[], function () {
-
-    var Event = function () {
-    }
-    Event.prototype = {
-        on: function (name, callback, ctx) {
-            var e = this.e || (this.e = {});
-
-            (e[name] || (e[name] = [])).push({
-                fn: callback,
-                ctx: ctx
-            });
-
-            return this;
-        },
-
-        once: function (name, callback, ctx) {
-            var self = this;
-
-            function listener() {
-                self.off(name, listener);
-                callback.apply(ctx, arguments);
-            };
-
-            listener._ = callback
-            return this.on(name, listener, ctx);
-        },
-
-        emit: function (name) {
-            var data = [].slice.call(arguments, 1);
-            var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
-            var i = 0;
-            var len = evtArr.length;
-
-            for (i; i < len; i++) {
-                evtArr[i].fn.apply(evtArr[i].ctx, data);
-            }
-
-            return this;
-        },
-
-        off: function (name, callback) {
-            var e = this.e || (this.e = {});
-            var evts = e[name];
-            var liveEvents = [];
-
-            if (evts && callback) {
-                for (var i = 0, len = evts.length; i < len; i++) {
-                    if (evts[i].fn !== callback && evts[i].fn._ !== callback)
-                        liveEvents.push(evts[i]);
-                }
-            }
-
-            // Remove event from queue to prevent memory leak
-            // Suggested by https://github.com/lazd
-            // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
-
-            (liveEvents.length)
-                ? e[name] = liveEvents
-                : delete e[name];
-
-            return this;
-        }
-    }
-    return Event;
-});
-define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
-
-    var _Feed = Class.extend(Event.prototype);
-    var Feed = _Feed.extend({
-        init: function (options) {
-            this.options = options;
-            this.interval = options.interval || 5000;
-            this._running = false;
-        },
-
-        stop: function(){
-            window.clearInterval(this._rid);
-        },
-
-        run: function(){
-            if(this._running) return ;
-            this._running = true;
-            this._run();
-            if(this.interval>0) {
-                this._rid = window.setInterval(this._run.bind(this), this.interval)
-            }else{
-                this._running = false;
-                return ;
-            }
-        },
-
-        _run: function(){
-            $.when($.ajax(this.options)).then(
-                this.request_success.bind(this),
-                this.request_fail.bind(this)
-            )
-        },
-
-        request_success:function(data){
-            this.emit('data_arrive', data);
-        },
-        request_fail:function(data){
-            this.emit('request_fail',data);
-        },
-
-    });
-
-    return Feed;
-
-});
-define('utils/template',[],function(){
-    var cache = {};
-    function tmpl(str, data){
-    // Figure out if we're getting a template, or if we need to
-    // load the template - and be sure to cache the result.
-    var fn = !/\W/.test(str) ?
-      cache[str] = cache[str] ||
-        tmpl(document.getElementById(str).innerHTML) :
-
-      // Generate a reusable function that will serve as a template
-      // generator (and which will be cached).
-      new Function("obj",
-        "var p=[],print=function(){p.push.apply(p,arguments);};" +
-
-        // Introduce the data as local variables using with(){}
-        "with(obj){p.push('" +
-
-        // Convert the template into pure JavaScript
-        str
-          .replace(/[\r\t\n]/g, " ")
-          .split("<%").join("\t")
-          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
-          .replace(/\t=(.*?)%>/g, "',$1,'")
-          .split("\t").join("');")
-          .split("%>").join("p.push('")
-          .split("\r").join("\\'")
-      + "');}return p.join('');");
-
-    // Provide some basic currying to the user
-    return data ? fn( data ) : fn;
-  }
-
-    return tmpl;
-});
-define('subapp/data/allcoinprice',['libs/Class','utils/template','jquery','underscore'], function(Class,Template,$, _){
-
-    var AllCoinPrice = Class.extend({
-
-        init: function(option){
-            this.$coin_list= $('#coin_list');
-
-            if(!!!this.$coin_list.length) return ;
-
-            this.tempalte = Template($('#coin_template').html())
-            if(!option["feed"]){
-                throw Error('can not init a price app without a feed');
-            }
-            this.dataFeed = option["feed"];
-            this.dataFeed.on('data_arrive',this.handle_data.bind(this));
-            this.dataFeed.on('data_fail', this.handle_fail.bind(this));
-
-            if(!option["adapter"]){
-                throw Error('need adapter to goon');
-            }
-            this.adapter = option["adapter"];
-        },
-
-        handle_data: function(data){
-            this.data_list = this.adapter.update(data).spit();
-            this.render();
-        },
-
-        handle_fail:function(error){
-            console.log('price data fail');
-            console.log(error);
-        },
-
-        render: function(){
-            _.map(this.data_list, this._render_item.bind(this));
-        },
-
-        update_element: function (element, coin_data) {
-            var change_class = coin_data['change_class'];
-            $(element).find('.coin-price').removeClass('fail raise').addClass(change_class).html(coin_data['price_cny']);
-            $(element).find('.coin-change').removeClass('fail raise').addClass(change_class).html(coin_data['change_percent']);
-        },
-
-        create_element: function (coin_data) {
-            this.$coin_list.append($(this.tempalte(coin_data)))
-        },
-
-        _render_item: function(coin_data){
-            //console.log('item_data');
-            //console.log(coin_data);
-            var element = this.$coin_list.find('#'+coin_data['id']);
-            if(element.length){
-                this.update_element(element, coin_data);
-            }else{
-                this.create_element(coin_data);
-            }
-        },
-    });
-    return AllCoinPrice;
+   return HeaderPrice;
 });
 define('subapp/adapters/adapter',['libs/Class','underscore'],function(Class,_){
     var BaseAdapter = Class.extend({
@@ -795,6 +577,444 @@ define('subapp/adapters/coinmarketcapAdapter',[
         });
 
         return CoinMarketAdapter
+});
+define('subapp/dictionaries/header_coin_dic',[],function(){
+var CoinDic = {
+BTC : "比特币BTC",
+ETH : "以太坊ETH",
+LTC : "莱特币LTC",
+};
+return CoinDic;
+});
+
+define('subapp/adapters/HeaderCoinmarketcapAdapter',[
+    'subapp/adapters/coinmarketcapAdapter',
+    'subapp/dictionaries/header_coin_dic',
+    'underscore'],
+    function(AdapterBase, header_coin_dic,_){
+
+        var HeaderCoinmarketcapAdapter = AdapterBase.extend({
+            _filter: function(entry){
+                return  (_.contains(_.keys(header_coin_dic), entry['symbol']))
+            },
+            clean_entry:function(entry){
+                var entry = this._super(entry);
+                entry['element_id'] = 'header' + entry['symbol'];
+                entry['title_text'] = entry['symbol']+'/CNY';
+                return entry;
+            }
+        });
+
+        return HeaderCoinmarketcapAdapter;
+});
+define('subapp/header/header',['libs/Class','subapp/header/header_price', 'subapp/adapters/HeaderCoinmarketcapAdapter'],
+    function(Class, HeaderPrice, HeaderCoinmarketAdapter){
+
+    var HeaderApp = Class.extend({
+        init:function(option){
+            // for header price display;
+            this.header_price = new HeaderPrice({
+                feed: window.app.price_feed,
+                adapter : new HeaderCoinmarketAdapter()
+            });
+
+
+        },
+
+    });
+    return HeaderApp;
+});
+define('libs/event',[], function () {
+
+    var Event = function () {
+    }
+    Event.prototype = {
+        on: function (name, callback, ctx) {
+            var e = this.e || (this.e = {});
+
+            (e[name] || (e[name] = [])).push({
+                fn: callback,
+                ctx: ctx
+            });
+
+            return this;
+        },
+
+        once: function (name, callback, ctx) {
+            var self = this;
+
+            function listener() {
+                self.off(name, listener);
+                callback.apply(ctx, arguments);
+            };
+
+            listener._ = callback
+            return this.on(name, listener, ctx);
+        },
+
+        emit: function (name) {
+            var data = [].slice.call(arguments, 1);
+            var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+            var i = 0;
+            var len = evtArr.length;
+
+            for (i; i < len; i++) {
+                evtArr[i].fn.apply(evtArr[i].ctx, data);
+            }
+
+            return this;
+        },
+
+        off: function (name, callback) {
+            var e = this.e || (this.e = {});
+            var evts = e[name];
+            var liveEvents = [];
+
+            if (evts && callback) {
+                for (var i = 0, len = evts.length; i < len; i++) {
+                    if (evts[i].fn !== callback && evts[i].fn._ !== callback)
+                        liveEvents.push(evts[i]);
+                }
+            }
+
+            // Remove event from queue to prevent memory leak
+            // Suggested by https://github.com/lazd
+            // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
+
+            (liveEvents.length)
+                ? e[name] = liveEvents
+                : delete e[name];
+
+            return this;
+        }
+    }
+    return Event;
+});
+define('subapp/data/feed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
+
+    var _Feed = Class.extend(Event.prototype);
+    var Feed = _Feed.extend({
+        init: function (options) {
+            this.options = options;
+            this.interval = options.interval || 5000;
+            this._running = false;
+        },
+
+        stop: function(){
+            window.clearInterval(this._rid);
+        },
+
+        run: function(){
+            if(this._running) return ;
+            this._running = true;
+            this._run();
+            if(this.interval>0) {
+                this._rid = window.setInterval(this._run.bind(this), this.interval)
+            }else{
+                this._running = false;
+                return ;
+            }
+        },
+
+        _run: function(){
+            $.when($.ajax(this.options)).then(
+                this.request_success.bind(this),
+                this.request_fail.bind(this)
+            )
+        },
+
+        request_success:function(data){
+            this.emit('data_arrive', data);
+        },
+        request_fail:function(data){
+            this.emit('request_fail',data);
+        },
+
+    });
+
+    return Feed;
+
+});
+define('subapp/tracker',['libs/Class', 'jquery'],function(Class, $){
+
+    var Tracker = Class.extend({
+        init: function(){
+            $('a[data-category]').click(this.track_click.bind(this));
+        },
+        track_click_bd: function (e) {
+            var category = $(e.target).attr('data-category');
+            var tag = $(e.target).attr('data-tag');
+            var site = $(e.target).attr('data-site');
+            window._hmt.push(['_trackEvent',
+                              'link', 'click',
+                              'category', category,
+                              'tag', tag,
+                              'site', site
+                            ]);
+
+
+        },
+        track_click_gg: function (e) {
+        //
+            var category = $(e.target).attr('data-category');
+            var tag = $(e.target).attr('data-tag');
+            var site = $(e.target).attr('data-site');
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'off_site_link',
+                eventAction: 'click',
+                eventLabel: site,
+                transport: 'beacon'
+
+            });
+            return ;
+        },
+        track_click:function(e){
+            if(window._hmt){
+                this.track_click_bd(e);
+            }
+            if(window.ga){
+                this.track_click_gg(e);
+            }
+        },
+    });
+
+    return Tracker;
+
+});
+define('subapp/sidebar/news',['libs/Class', 'subapp/data/feed','jquery', 'underscore'],
+    function(Class, Feed, $, _){
+
+        var NewsApp = Class.extend({
+            handle_title_click: function(e) {
+               var $content  = $(e.currentTarget).parent().find('.news-content');
+                   $content.toggleClass('hidden');
+                   return ;
+            },
+
+            setupTitleClick: function () {
+                this.$news_list.on('click', '.news-title', this.handle_title_click.bind(this));
+            },
+
+            init: function(option){
+                this.$news_list = $('.news-list');
+                if(!!!this.$news_list.length) return ;
+
+                this.template =  _.template($('#news_template').html());
+
+                if(!option["feed"]){
+                    throw Error('can not init a price app without a feed');
+                }
+
+                if(!option["adapter"]){
+                    throw Error('need adapter to goon');
+                }
+
+                this.dataFeed = option["feed"];
+                this.dataFeed.on('data_arrive',this.handle_data.bind(this));
+                this.dataFeed.on('data_fail', this.handle_fail.bind(this));
+
+                this.adapter = option["adapter"];
+                this.setupTitleClick();
+            },
+
+            handle_data: function(data){
+                this.data_list = this.adapter.update(data).spit();
+                this.render();
+             },
+            handle_fail: function(data){
+                console.log('news data fail');
+                console.log(data);
+            },
+            render: function(){
+                 _.map(this.data_list, this._render_item.bind(this));
+            },
+
+            _render_item: function(entry){
+                 this.create_element(entry);
+            },
+
+            create_element: function (entry) {
+                this.$news_list.append($(this.template(entry)))
+            },
+
+        });
+        return NewsApp;
+
+});
+define('subapp/data/fakeFeed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
+    //TODO ： baseon interval push event , not use xhr
+    var _Feed = Class.extend(Event.prototype);
+    var FakeFeed = _Feed.extend({
+        init: function (options) {
+            this.options = options;
+            this.interval = options.interval || 5000;
+            this._running = false;
+
+        },
+
+        stop: function(){
+            window.clearInterval(this._rid);
+        },
+
+        run: function(){
+            if(this._running) return ;
+            this._running = true;
+            this._run();
+            if(this.interval>0) {
+                this._rid = window.setInterval(this._run.bind(this), this.interval)
+            }else{
+                this._running = false;
+                return ;
+            }
+        },
+
+        _run: function(){
+            this.data = this.options['data'];
+            this.request_success(this.data);
+        },
+
+        request_success:function(data){
+            this.emit('data_arrive', data);
+        },
+        request_fail:function(data){
+            this.emit('request_fail',data);
+        },
+
+    });
+
+    return FakeFeed;
+
+});
+define('subapp/adapters/coinbeef',[
+    'subapp/adapters/adapter',
+    'underscore'],
+    function(AdapterBase, _){
+
+        var CoinbeefAdapter = AdapterBase.extend({
+
+            is_in_24h: function(entry){
+                var entry_date = this.get_entry_date(entry);
+                return this.first_date - entry_date <= 1000*60*60*16;
+            },
+
+            get_24h_entry: function (results) {
+               this.first_date = this.get_entry_date(results[0]);
+               return _.filter(results, this.is_in_24h.bind(this));
+            },
+
+            get_entry_date: function (entry) {
+                return entry['published_at'] * 1000;
+            },
+
+            spit: function(){
+                var  news_list = this.get_24h_entry(this.data['results']);
+                return _.map(news_list, this.add_formatted_time.bind(this));
+            },
+
+            format_time: function (time_diff) {
+                var sec_diff = Math.ceil(time_diff/1000.0);
+                if(sec_diff <= 60){
+                    return  sec_diff + '秒前';
+                }
+
+                var min_diff = Math.ceil(sec_diff/60.0) - 1;
+                if(sec_diff > 60 && sec_diff <= 3600){
+                    return  min_diff + '分钟前';
+                }
+
+                var hour_diff = Math.ceil(min_diff/60.0) -1;
+                if(hour_diff <= 24){
+                    return hour_diff + '小时前';
+                }
+
+                var day_diff = Math.ceil(hour_diff/24.0) -1;
+                if( day_diff <= 7){
+                    return day_diff + '天前';
+                }
+
+                var week_diff = Math.ceil(day_diff/7.0) ;
+                if(day_diff <= 31){
+                    return week_diff + '周前';
+                }
+
+                var mon_diff = Math.ceil(day_diff/30) ;
+                if(day_diff<=365){
+                    return mon_diff +'月前';
+                }
+
+                var year_diff = Math.ceil(day_diff/365);
+                if(day_diff >=366){
+                    return year_diff + '年前';
+                }
+            },
+            add_formatted_time: function(entry){
+                var utc_fix = new Date().getTimezoneOffset();
+                var time_diff = Date.now() + 1000*60*utc_fix - this.get_entry_date(entry);
+                entry['time_diff'] = this.format_time(time_diff);
+                return entry;
+            }
+        });
+
+        return CoinbeefAdapter
+});
+define('subapp/sidebar/allcoinprice',['libs/Class','jquery','underscore'], function(Class,$, _){
+
+    var AllCoinPrice = Class.extend({
+
+        init: function(option){
+            this.$coin_list= $('#coin_list');
+
+            if(!!!this.$coin_list.length) return ;
+
+            this.tempalte = _.template($('#coin_template').html())
+            if(!option["feed"]){
+                throw Error('can not init a price app without a feed');
+            }
+            this.dataFeed = option["feed"];
+            this.dataFeed.on('data_arrive',this.handle_data.bind(this));
+            this.dataFeed.on('data_fail', this.handle_fail.bind(this));
+
+            if(!option["adapter"]){
+                throw Error('need adapter to goon');
+            }
+            this.adapter = option["adapter"];
+        },
+
+        handle_data: function(data){
+            this.data_list = this.adapter.update(data).spit();
+            this.render();
+        },
+
+        handle_fail:function(error){
+            console.log('price data fail');
+            console.log(error);
+        },
+
+        render: function(){
+            _.map(this.data_list, this._render_item.bind(this));
+        },
+
+        update_element: function (element, coin_data) {
+            var change_class = coin_data['change_class'];
+            $(element).find('.coin-price').removeClass('fail raise').addClass(change_class).html(coin_data['price_cny']);
+            $(element).find('.coin-change').removeClass('fail raise').addClass(change_class).html(coin_data['change_percent']);
+        },
+
+        create_element: function (coin_data) {
+            this.$coin_list.append($(this.tempalte(coin_data)))
+        },
+
+        _render_item: function(coin_data){
+            var element = this.$coin_list.find('#'+coin_data['id']);
+            if(element.length){
+                this.update_element(element, coin_data);
+            }else{
+                this.create_element(coin_data);
+            }
+        },
+    });
+    return AllCoinPrice;
 });
 /**
  * FastDom
@@ -1214,295 +1434,717 @@ define('subapp/adapters/coinmarketcapAdapter',[
 })(window.fastdom);
 
 
-define('subapp/scrollprice',['fastdom', 'jquery','libs/Class', 'underscore'],function(fastdom, $, Class, _){
+define('libs/scroller',['fastdom', 'jquery', 'libs/Class'], function (fastdom, $, Class) {
 
-    var ScrollPriceApp = Class.extend({
-        init: function(){
-            this.price_container = $('#side_column')
+    var Scroller = Class.extend({
+        init: function () {
             this.setupScrollMenu();
         },
-        setupScrollMenu: function(){
+
+        setupScrollMenu: function () {
             $(window).scroll(this.schedulePriceMove.bind(this));
         },
-        schedulePriceMove:function(){
-            var that = this;
 
-            if (!this.read){
-                this.read = fastdom.read(function(){
-                    that.scrollTop = $(window).scrollTop();
-                    if($('#header').length){
-                         //console.log('top: :'+ $('#header')[0].getBoundingClientRect().top);
-                         that.current_move_target = $('#header')[0].getBoundingClientRect().top + 110;
-                         that.css_left_target = $('#main_column')[0].getBoundingClientRect().right;
-
-                    }
-                });
+        schedulePriceMove: function () {
+            if (!this.read) {
+                this.read = fastdom.read(this._read.bind(this));
             }
-
-            if(this.write) {
+            if (this.write) {
                 fastdom.clear(this.write);
             }
-
-            this.write = fastdom.write(this.moveprice.bind(this));
+            this.write = fastdom.write(this._do_write.bind(this));
         },
 
-        moveprice:function(){
-            //console.log('move header');
+        _read: function () {
 
-            if(this.current_move_target>=0 || $(window).width()<=768) {
-                this.read = null;
-                //console.log(this.current_move_target);
-                this.price_container.css({
-                    top:0+'px',
-                    left:0 + 'px',
-                    position:'relative'
-                });
+        },
 
-                return ;
-            }else{
-                this.price_container.css({
-                    top:0+'px' ,
-                    left: this.css_left_target +'px',
-                    position:'fixed',
-                });
-                //console.log(this.current_move_target);
-                this.read = null ;
-                return ;
+        _do_write: function(){
+            this._write();
+            this.write = null ;
+            this.read = null ;
+        },
+        _write: function () {
 
-            }
+        }
+    });
+
+    return Scroller;
+
+});
+define('subapp/sidebar/scrollbox',['libs/scroller', 'jquery', 'underscore'],function(Scroller, $, _){
+
+    var ScrollBoxApp = Scroller.extend({
+        init:function(){
+            this._super();
+            this.origin_width = this.get_box().getBoundingClientRect().width;
+            $(this.get_target()).css({
+                                           width:this.origin_width+'px',
+                                       });
+        },
+        get_footer: function(){
+            return document.getElementById('footer');
+        },
+        get_box: function(){
+            return document.getElementById('side_bar_bottom');
+        },
+
+        get_target:function(){
+            return document.getElementById('scroll_target');
+        },
+
+        get_touch_bottom: function () {
+            var footer = this.get_footer().getBoundingClientRect();
+            var target = this.get_target().getBoundingClientRect();
+            return footer.top <= target.top+target.height+10;
+        },
+        _read: function(){
+                    var box = this.get_box();
+
+                    var rect = box.getBoundingClientRect();
+                    if (!this.target_height){
+                        this.target_height = this.get_target().getBoundingClientRect().height;
+                        console.log(this.target_height);
+                    }
+                    this.top_distance = this.get_footer().getBoundingClientRect().top;
+                    this.top = rect.top+rect.height;
+                    this.touch_bottom = this.get_touch_bottom();
+                    //console.log(this.touch_bottom);
+                },
+
+        _write:function(){
+               if(this.top<0 && this.top_distance > (this.target_height + 20)){
+                    $(this.get_target()).addClass('static-box');
+
+               }else{
+                    $(this.get_target()).removeClass('static-box');
+               }
 
 
         },
     });
 
-    return ScrollPriceApp;
+    return ScrollBoxApp;
 
 });
-define('subapp/tracker',['libs/Class', 'jquery'],function(Class, $){
+/*!
+ * jQCloud 2.0.3
+ * Copyright 2011 Luca Ongaro (http://www.lucaongaro.eu)
+ * Copyright 2013 Daniel White (http://www.developerdan.com)
+ * Copyright 2014-2017 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define('libs/jqcloud',['jquery'], factory);
+    }
+    else if (typeof module === 'object' && module.exports) {
+        module.exports = factory(require('jquery'));
+    }
+    else {
+        factory(root.jQuery);
+    }
+}(this, function($) {
+'use strict';
 
-    var Tracker = Class.extend({
+/*
+ * Plugin class
+ */
+var jQCloud = function(element, word_array, options) {
+    this.$element = $(element);
+
+    this.word_array = word_array || [];
+    this.options = options;
+
+    this.sizeGenerator = null;
+    this.colorGenerator = null;
+
+    // Data used internally
+    this.data = {
+        placed_words: [],
+        timeouts: {},
+        namespace: null,
+        step: null,
+        angle: null,
+        aspect_ratio: null,
+        max_weight: null,
+        min_weight: null,
+        sizes: [],
+        colors: []
+    };
+
+    this.initialize();
+};
+
+jQCloud.DEFAULTS = {
+    width: 100,
+    height: 100,
+    center: { x: 0.5, y: 0.5 },
+    steps: 10,
+    delay: null,
+    shape: 'elliptic',
+    classPattern: 'w{n}',
+    encodeURI: true,
+    removeOverflowing: true,
+    afterCloudRender: null,
+    autoResize: false,
+    colors: null,
+    fontSize: null,
+    template: null
+};
+
+jQCloud.prototype = {
+    initialize: function() {
+        // Set/Get dimensions
+        if (this.options.width) {
+            this.$element.width(this.options.width);
+        }
+        else {
+            this.options.width = this.$element.width();
+        }
+        if (this.options.height) {
+            this.$element.height(this.options.height);
+        }
+        else {
+            this.options.height = this.$element.height();
+        }
+
+        // Default options value
+        this.options = $.extend(true, {}, jQCloud.DEFAULTS, this.options);
+
+        // Ensure delay
+        if (this.options.delay === null) {
+            this.options.delay = this.word_array.length > 50 ? 10 : 0;
+        }
+
+        // Backward compatibility
+        if (this.options.center.x > 1) {
+            this.options.center.x = this.options.center.x / this.options.width;
+            this.options.center.y = this.options.center.y / this.options.height;
+        }
+
+        // Create colorGenerator function from options
+        // Direct function
+        if (typeof this.options.colors == 'function') {
+            this.colorGenerator = this.options.colors;
+        }
+        // Array of sizes
+        else if ($.isArray(this.options.colors)) {
+            var cl = this.options.colors.length;
+            if (cl > 0) {
+                // Fill the sizes array to X items
+                if (cl < this.options.steps) {
+                    for (var i = cl; i < this.options.steps; i++) {
+                        this.options.colors[i] = this.options.colors[cl - 1];
+                    }
+                }
+
+                this.colorGenerator = function(weight) {
+                    return this.options.colors[this.options.steps - weight];
+                };
+            }
+        }
+
+        // Create sizeGenerator function from options
+        // Direct function
+        if (typeof this.options.fontSize == 'function') {
+            this.sizeGenerator = this.options.fontSize;
+        }
+        // Object with 'from' and 'to'
+        else if ($.isPlainObject(this.options.fontSize)) {
+            this.sizeGenerator = function(width, height, weight) {
+                var max = width * this.options.fontSize.from,
+                    min = width * this.options.fontSize.to;
+                return Math.round(min + (max - min) * 1.0 / (this.options.steps - 1) * (weight - 1)) + 'px';
+            };
+        }
+        // Array of sizes
+        else if ($.isArray(this.options.fontSize)) {
+            var sl = this.options.fontSize.length;
+            if (sl > 0) {
+                // Fill the sizes array to X items
+                if (sl < this.options.steps) {
+                    for (var j = sl; j < this.options.steps; j++) {
+                        this.options.fontSize[j] = this.options.fontSize[sl - 1];
+                    }
+                }
+
+                this.sizeGenerator = function(width, height, weight) {
+                    return this.options.fontSize[this.options.steps - weight];
+                };
+            }
+        }
+
+        this.data.angle = Math.random() * 6.28;
+        this.data.step = (this.options.shape === 'rectangular') ? 18.0 : 2.0;
+        this.data.aspect_ratio = this.options.width / this.options.height;
+        this.clearTimeouts();
+
+        // Namespace word ids to avoid collisions between multiple clouds
+        this.data.namespace = (this.$element.attr('id') || Math.floor((Math.random() * 1000000)).toString(36)) + '_word_';
+
+        this.$element.addClass('jqcloud');
+
+        // Container's CSS position cannot be 'static'
+        if (this.$element.css('position') === 'static') {
+            this.$element.css('position', 'relative');
+        }
+
+        // Delay execution so that the browser can render the page before the computatively intensive word cloud drawing
+        this.createTimeout($.proxy(this.drawWordCloud, this), 10);
+
+        // Attach window resize event
+        if (this.options.autoResize) {
+            $(window).on('resize.' + this.data.namespace, throttle(this.resize, 50, this));
+        }
+    },
+
+    // Helper function to keep track of timeouts so they can be destroyed
+    createTimeout: function(callback, time) {
+        var timeout = setTimeout($.proxy(function() {
+            delete this.data.timeouts[timeout];
+            callback();
+        }, this), time);
+        this.data.timeouts[timeout] = true;
+    },
+
+    // Destroy all timeouts
+    clearTimeouts: function() {
+        $.each(this.data.timeouts, function(key) {
+            clearTimeout(key);
+        });
+        this.data.timeouts = {};
+    },
+
+    // Pairwise overlap detection
+    overlapping: function(a, b) {
+        if (Math.abs(2.0 * a.left + a.width - 2.0 * b.left - b.width) < a.width + b.width) {
+            if (Math.abs(2.0 * a.top + a.height - 2.0 * b.top - b.height) < a.height + b.height) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    // Helper function to test if an element overlaps others
+    hitTest: function(elem) {
+        // Check elements for overlap one by one, stop and return false as soon as an overlap is found
+        for (var i = 0, l = this.data.placed_words.length; i < l; i++) {
+            if (this.overlapping(elem, this.data.placed_words[i])) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    // Initialize the drawing of the whole cloud
+    drawWordCloud: function() {
+        var i, l;
+
+        this.$element.children('[id^="' + this.data.namespace + '"]').remove();
+
+        if (this.word_array.length === 0) {
+            return;
+        }
+
+        // Make sure every weight is a number before sorting
+        for (i = 0, l = this.word_array.length; i < l; i++) {
+            this.word_array[i].weight = parseFloat(this.word_array[i].weight, 10);
+        }
+
+        // Sort word_array from the word with the highest weight to the one with the lowest
+        this.word_array.sort(function(a, b) {
+            return b.weight - a.weight;
+        });
+
+        // Kepp trace of bounds
+        this.data.max_weight = this.word_array[0].weight;
+        this.data.min_weight = this.word_array[this.word_array.length - 1].weight;
+
+        // Generate colors
+        this.data.colors = [];
+        if (this.colorGenerator) {
+            for (i = 0; i < this.options.steps; i++) {
+                this.data.colors.push(this.colorGenerator(i + 1));
+            }
+        }
+
+        // Generate font sizes
+        this.data.sizes = [];
+        if (this.sizeGenerator) {
+            for (i = 0; i < this.options.steps; i++) {
+                this.data.sizes.push(this.sizeGenerator(this.options.width, this.options.height, i + 1));
+            }
+        }
+
+        // Iterate drawOneWord on every word, immediately or with delay
+        if (this.options.delay > 0) {
+            this.drawOneWordDelayed();
+        }
+        else {
+            for (i = 0, l = this.word_array.length; i < l; i++) {
+                this.drawOneWord(i, this.word_array[i]);
+            }
+
+            if (typeof this.options.afterCloudRender === 'function') {
+                this.options.afterCloudRender.call(this.$element);
+            }
+        }
+    },
+
+    // Function to draw a word, by moving it in spiral until it finds a suitable empty place
+    drawOneWord: function(index, word) {
+        var word_id = this.data.namespace + index,
+            word_selector = '#' + word_id,
+
+        // option.shape == 'elliptic'
+            angle = this.data.angle,
+            radius = 0.0,
+
+        // option.shape == 'rectangular'
+            steps_in_direction = 0.0,
+            quarter_turns = 0.0,
+
+            weight = Math.floor(this.options.steps / 2),
+            word_span,
+            word_size,
+            word_style;
+
+        // Create word attr object
+        word.attr = $.extend({}, word.html, { id: word_id });
+
+        // Linearly map the original weight to a discrete scale from 1 to 10
+        // Only if weights are different
+        if (this.data.max_weight != this.data.min_weight) {
+            weight = Math.round((word.weight - this.data.min_weight) * 1.0 * (this.options.steps - 1) / (this.data.max_weight - this.data.min_weight)) + 1;
+        }
+        word_span = $('<span>').attr(word.attr);
+
+        word_span.addClass('jqcloud-word');
+
+        // Apply class
+        if (this.options.classPattern) {
+            word_span.addClass(this.options.classPattern.replace('{n}', weight));
+        }
+
+        // Apply color
+        if (this.data.colors.length) {
+            word_span.css('color', this.data.colors[weight - 1]);
+        }
+
+        // Apply color from word property
+        if (word.color) {
+            word_span.css('color', word.color);
+        }
+
+        // Apply size
+        if (this.data.sizes.length) {
+            word_span.css('font-size', this.data.sizes[weight - 1]);
+        }
+
+        //Render using template function if provided.
+        if (this.options.template) {
+            word_span.html(this.options.template(word));
+        } else if (word.link) {
+            // Append link if word.link attribute was set
+            // If link is a string, then use it as the link href
+            if (typeof word.link === 'string') {
+                word.link = { href: word.link };
+            }
+
+            if (this.options.encodeURI) {
+                word.link.href = encodeURI(word.link.href).replace(/'/g, '%27');
+            }
+
+            word_span.append($('<a>').attr(word.link).text(word.text));
+        }
+        else {
+            word_span.text(word.text);
+        }
+
+        // Bind handlers to words
+        if (word.handlers) {
+            word_span.on(word.handlers);
+        }
+
+        this.$element.append(word_span);
+
+        word_size = {
+            width: word_span.outerWidth(),
+            height: word_span.outerHeight()
+        };
+        word_size.left = this.options.center.x * this.options.width - word_size.width / 2.0;
+        word_size.top = this.options.center.y * this.options.height - word_size.height / 2.0;
+
+        // Save a reference to the style property, for better performance
+        word_style = word_span[0].style;
+        word_style.position = 'absolute';
+        word_style.left = word_size.left + 'px';
+        word_style.top = word_size.top + 'px';
+
+        while (this.hitTest(word_size)) {
+            // option shape is 'rectangular' so move the word in a rectangular spiral
+            if (this.options.shape === 'rectangular') {
+                steps_in_direction++;
+
+                if (steps_in_direction * this.data.step > (1 + Math.floor(quarter_turns / 2.0)) * this.data.step * ((quarter_turns % 4 % 2) === 0 ? 1 : this.data.aspect_ratio)) {
+                    steps_in_direction = 0.0;
+                    quarter_turns++;
+                }
+
+                switch (quarter_turns % 4) {
+                    case 1:
+                        word_size.left += this.data.step * this.data.aspect_ratio + Math.random() * 2.0;
+                        break;
+                    case 2:
+                        word_size.top -= this.data.step + Math.random() * 2.0;
+                        break;
+                    case 3:
+                        word_size.left -= this.data.step * this.data.aspect_ratio + Math.random() * 2.0;
+                        break;
+                    case 0:
+                        word_size.top += this.data.step + Math.random() * 2.0;
+                        break;
+                }
+            }
+            // Default settings: elliptic spiral shape
+            else {
+                radius += this.data.step;
+                angle += (index % 2 === 0 ? 1 : -1) * this.data.step;
+
+                word_size.left = this.options.center.x * this.options.width - (word_size.width / 2.0) + (radius * Math.cos(angle)) * this.data.aspect_ratio;
+                word_size.top = this.options.center.y * this.options.height + radius * Math.sin(angle) - (word_size.height / 2.0);
+            }
+            word_style.left = word_size.left + 'px';
+            word_style.top = word_size.top + 'px';
+        }
+
+        // Don't render word if part of it would be outside the container
+        if (this.options.removeOverflowing && (
+                word_size.left < 0 || word_size.top < 0 ||
+                (word_size.left + word_size.width) > this.options.width ||
+                (word_size.top + word_size.height) > this.options.height
+            )
+        ) {
+            word_span.remove();
+            return;
+        }
+
+        // Save position for further usage
+        this.data.placed_words.push(word_size);
+
+        if (typeof word.afterWordRender === 'function') {
+            word.afterWordRender.call(word_span);
+        }
+    },
+
+    // Draw one word then recall the function after a delay
+    drawOneWordDelayed: function(index) {
+        index = index || 0;
+
+        // if not visible then do not attempt to draw
+        if (!this.$element.is(':visible')) {
+            this.createTimeout($.proxy(function() {
+                this.drawOneWordDelayed(index);
+            }, this), 10);
+
+            return;
+        }
+
+        if (index < this.word_array.length) {
+            this.drawOneWord(index, this.word_array[index]);
+
+            this.createTimeout($.proxy(function() {
+                this.drawOneWordDelayed(index + 1);
+            }, this), this.options.delay);
+        }
+        else {
+            if (typeof this.options.afterCloudRender == 'function') {
+                this.options.afterCloudRender.call(this.$element);
+            }
+        }
+    },
+
+    // Destroy any data and objects added by the plugin
+    destroy: function() {
+        if (this.options.autoResize) {
+            $(window).off('resize.' + this.data.namespace);
+        }
+
+        this.clearTimeouts();
+        this.$element.removeClass('jqcloud');
+        this.$element.removeData('jqcloud');
+        this.$element.children('[id^="' + this.data.namespace + '"]').remove();
+    },
+
+    // Update the list of words
+    update: function(word_array) {
+        this.word_array = word_array;
+        this.data.placed_words = [];
+
+        this.clearTimeouts();
+        this.drawWordCloud();
+    },
+
+    resize: function() {
+        var new_size = {
+            width: this.$element.width(),
+            height: this.$element.height()
+        };
+
+        if (new_size.width != this.options.width || new_size.height != this.options.height) {
+            this.options.width = new_size.width;
+            this.options.height = new_size.height;
+            this.data.aspect_ratio = this.options.width / this.options.height;
+
+            this.update(this.word_array);
+        }
+    },
+};
+
+/*
+ * Apply throttling to a callback
+ * @param callback {function}
+ * @param delay {int} milliseconds
+ * @param context {object|null}
+ * @return {function}
+ */
+function throttle(callback, delay, context) {
+    var state = {
+        pid: null,
+        last: 0
+    };
+
+    return function() {
+        var elapsed = new Date().getTime() - state.last,
+            args = arguments,
+            that = this;
+
+        function exec() {
+            state.last = new Date().getTime();
+            return callback.apply(context || that, Array.prototype.slice.call(args));
+        }
+
+        if (elapsed > delay) {
+            return exec();
+        }
+        else {
+            clearTimeout(state.pid);
+            state.pid = setTimeout(exec, delay - elapsed);
+        }
+    };
+}
+
+/*
+ * jQuery plugin
+ */
+$.fn.jQCloud = function(word_array, option) {
+    var args = arguments;
+
+    return this.each(function() {
+        var $this = $(this),
+            data = $this.data('jqcloud');
+
+        if (!data && word_array === 'destroy') {
+            // Don't even try to initialize when called with 'destroy'
+            return;
+        }
+        if (!data) {
+            var options = typeof option === 'object' ? option : {};
+            $this.data('jqcloud', (data = new jQCloud(this, word_array, options)));
+        }
+        else if (typeof word_array === 'string') {
+            data[word_array].apply(data, Array.prototype.slice.call(args, 1));
+        }
+    });
+};
+
+$.fn.jQCloud.defaults = {
+    set: function(options) {
+        $.extend(true, jQCloud.DEFAULTS, options);
+    },
+    get: function(key) {
+        var options = jQCloud.DEFAULTS;
+        if (key) {
+            options = options[key];
+        }
+        return $.extend(true, {}, options);
+    }
+};
+
+}));
+define('subapp/sidebar/tagcloud',['libs/Class','jquery', 'libs/jqcloud', 'underscore'],
+    function(
+    Class,
+    $,
+    jqCloud,
+    _
+){
+    var TagCloud =  Class.extend({
+        _clear_tag: function (tag) {
+            var new_tag = _.clone(tag);
+                new_tag['text'] = tag['name'];
+                new_tag['weight'] = (tag['count'] + 160)/12;
+                new_tag['link'] = '/news/tag/'+ tag['name'] +'/';
+            return new_tag;
+
+        },
+        clear_data: function () {
+            this.tag_list = _.map(this.tag_list, this._clear_tag.bind(this));
+        },
         init: function(){
-            $('a[data-category]').click(this.track_click.bind(this));
-        },
-        track_click_bd: function (e) {
-            var category = $(e.target).attr('data-category');
-            var tag = $(e.target).attr('data-tag');
-            var site = $(e.target).attr('data-site');
-            window._hmt.push(['_trackEvent',
-                              'link', 'click',
-                              'category', category,
-                              'tag', tag,
-                              'site', site
-                            ]);
-
-
-        },
-        track_click_gg: function (e) {
-        //
-            var category = $(e.target).attr('data-category');
-            var tag = $(e.target).attr('data-tag');
-            var site = $(e.target).attr('data-site');
-            ga('send', {
-                hitType: 'event',
-                eventCategory: 'off_site_link',
-                eventAction: 'click',
-                eventLabel: site,
-                transport: 'beacon'
-
-            });
-            return ;
-        },
-        track_click:function(e){
-            if(window._hmt){
-                this.track_click_bd(e);
+            console.log('init tag cloud');
+            this.$el = $('#tag_cloud');
+            this.tag_list = window.tag_list_json;
+            if( !this.tag_list || !this.$el.length){
+                return;
             }
-            if(window.ga){
-                this.track_click_gg(e);
-            }
+
+            this.clear_data();
+            this.render();
+
+        },
+        render: function(){
+            this.$el.jQCloud(this.tag_list);
+            //this.$el.jQCloud(
+            //
+            //)
         },
     });
 
-    return Tracker;
+    return TagCloud;
 
 });
-define('subapp/sidebar/news',['libs/Class', 'subapp/data/feed','utils/template','jquery', 'underscore'],
-    function(Class,Feed,Template , $, _){
+define('subapp/sidebar/sidebar',['libs/Class',
+    'jquery',
+    //for news
+    'subapp/sidebar/news',
+    'subapp/data/fakeFeed',
+    'subapp/adapters/coinbeef',
+    //for price list
+    'subapp/sidebar/allcoinprice',
+    'subapp/adapters/coinmarketcapAdapter',
 
-        var NewsApp = Class.extend({
-            handle_title_click: function(e) {
-               var $content  = $(e.currentTarget).parent().find('.news-content');
-                   $content.toggleClass('hidden');
-                   return ;
-            },
+    //for tag scroll
+    'subapp/sidebar/scrollbox',
+    // tag cloud
+    'subapp/sidebar/tagcloud'
+],
+    function(Class,
+             $,
+             NewsApp,
+             FakeFeed,
+             CoinBeefAdapter,
 
-            setupTitleClick: function () {
-                this.$news_list.on('click', '.news-title', this.handle_title_click.bind(this));
-            },
+             AllCoin,
+             AllCoinAdapter,
 
-            init: function(option){
-                this.$news_list = $('.news-list');
-                if(!!!this.$news_list.length) return ;
+             ScrollBox,
 
-                this.template =  Template($('#news_template').html());
+             TagCloud
 
-                if(!option["feed"]){
-                    throw Error('can not init a price app without a feed');
-                }
 
-                if(!option["adapter"]){
-                    throw Error('need adapter to goon');
-                }
-
-                this.dataFeed = option["feed"];
-                this.dataFeed.on('data_arrive',this.handle_data.bind(this));
-                this.dataFeed.on('data_fail', this.handle_fail.bind(this));
-
-                this.adapter = option["adapter"];
-                this.setupTitleClick();
-            },
-
-            handle_data: function(data){
-                this.data_list = this.adapter.update(data).spit();
-                this.render();
-             },
-            handle_fail: function(data){
-                console.log('news data fail');
-                console.log(data);
-            },
-            render: function(){
-                 _.map(this.data_list, this._render_item.bind(this));
-            },
-
-            _render_item: function(entry){
-                 this.create_element(entry);
-            },
-
-            create_element: function (entry) {
-                this.$news_list.append($(this.template(entry)))
-            },
-
-        });
-        return NewsApp;
-
-});
-define('subapp/data/fakeFeed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
-    //TODO ： baseon interval push event , not use xhr
-    var _Feed = Class.extend(Event.prototype);
-    var FakeFeed = _Feed.extend({
-        init: function (options) {
-            this.options = options;
-            this.interval = options.interval || 5000;
-            this._running = false;
-
-        },
-
-        stop: function(){
-            window.clearInterval(this._rid);
-        },
-
-        run: function(){
-            if(this._running) return ;
-            this._running = true;
-            this._run();
-            if(this.interval>0) {
-                this._rid = window.setInterval(this._run.bind(this), this.interval)
-            }else{
-                this._running = false;
-                return ;
-            }
-        },
-
-        _run: function(){
-            this.data = this.options['data'];
-            this.request_success(this.data);
-        },
-
-        request_success:function(data){
-            this.emit('data_arrive', data);
-        },
-        request_fail:function(data){
-            this.emit('request_fail',data);
-        },
-
-    });
-
-    return FakeFeed;
-
-});
-define('subapp/adapters/coinbeef',[
-    'subapp/adapters/adapter',
-    'underscore'],
-    function(AdapterBase, _){
-
-        var CoinbeefAdapter = AdapterBase.extend({
-
-            is_in_24h: function(entry){
-                var entry_date = this.get_entry_date(entry);
-                return this.first_date - entry_date <= 1000*60*60*16;
-            },
-
-            get_24h_entry: function (results) {
-               this.first_date = this.get_entry_date(results[0]);
-               return _.filter(results, this.is_in_24h.bind(this));
-            },
-
-            get_entry_date: function (entry) {
-                return entry['published_at'] * 1000;
-            },
-
-            spit: function(){
-                var  news_list = this.get_24h_entry(this.data['results']);
-                return _.map(news_list, this.add_formatted_time.bind(this));
-            },
-
-            format_time: function (time_diff) {
-                var sec_diff = Math.ceil(time_diff/1000.0);
-                if(sec_diff <= 60){
-                    return  sec_diff + '秒前';
-                }
-
-                var min_diff = Math.ceil(sec_diff/60.0) - 1;
-                if(sec_diff > 60 && sec_diff <= 3600){
-                    return  min_diff + '分钟前';
-                }
-
-                var hour_diff = Math.ceil(min_diff/60.0) -1;
-                if(hour_diff <= 24){
-                    return hour_diff + '小时前';
-                }
-
-                var day_diff = Math.ceil(hour_diff/24.0) -1;
-                if( day_diff <= 7){
-                    return day_diff + '天前';
-                }
-
-                var week_diff = Math.ceil(day_diff/7.0) ;
-                if(day_diff <= 31){
-                    return week_diff + '周前';
-                }
-
-                var mon_diff = Math.ceil(day_diff/30) ;
-                if(day_diff<=365){
-                    return mon_diff +'月前';
-                }
-
-                var year_diff = Math.ceil(day_diff/365);
-                if(day_diff >=366){
-                    return year_diff + '年前';
-                }
-            },
-            add_formatted_time: function(entry){
-                var utc_fix = new Date().getTimezoneOffset();
-                var time_diff = Date.now() + 1000*60*utc_fix - this.get_entry_date(entry);
-                entry['time_diff'] = this.format_time(time_diff);
-                return entry;
-            }
-        });
-
-        return CoinbeefAdapter
-});
-define('subapp/sidebar',['libs/Class','jquery','subapp/sidebar/news', 'subapp/data/fakeFeed', 'subapp/adapters/coinbeef'],
-    function(Class,$,NewsApp, FakeFeed, CoinBeefAdapter){
+    ){
 
     var SideBarApp = Class.extend({
         init:function(){
@@ -1518,6 +2160,17 @@ define('subapp/sidebar',['libs/Class','jquery','subapp/sidebar/news', 'subapp/da
             // already rendered by server
             // close the feed
             //this.newsFeed.run();
+
+            new AllCoin({
+                    feed: window.app.price_feed,
+                    adapter : new AllCoinAdapter()
+                });
+
+            // for tags list scroll stick
+            new ScrollBox();
+
+            // for tagcloud
+            new TagCloud();
         }
     });
     return SideBarApp;
@@ -1612,8 +2265,8 @@ define('subapp/adapters/coinbeef_all',[
 
         return CoinbeefAdapterAll
 });
-define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all', 'utils/template','underscore'],
-    function(Class,FakeFeed,Feed,CoinBeefAdapter,Template, _){
+define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all','underscore'],
+    function(Class,FakeFeed,Feed,CoinBeefAdapter,_){
 
         var NewsLineApp = Class.extend({
 
@@ -1674,7 +2327,7 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
                 this.$newsline =  $('.newsline');
                 if(!!!this.$newsline.length) return ;
 
-                this.template = Template($('#newsline_template').html());
+                this.template = _.template($('#newsline_template').html());
 
                 //this.dataFeed = this.get_feed({
                 //     url: '/news/json/?page=1',
@@ -2258,13 +2911,10 @@ define('subapp/tools/bookmark',['jquery'], function($){
 require([
         'libs/polyfills',
         'jquery',
-        'subapp/data/datafeed',
+        'subapp/header/header',
         'subapp/data/feed',
-        'subapp/data/allcoinprice',
-        'subapp/adapters/coinmarketcapAdapter',
-        'subapp/scrollprice',
         'subapp/tracker',
-        'subapp/sidebar',
+        'subapp/sidebar/sidebar',
         'subapp/newsline',
         'subapp/gotop',
         'libs/salvattore',
@@ -2273,11 +2923,8 @@ require([
     ],
     function (polyfill,
               $,
-              DataFeed,
+              Header,
               Feed,
-              AllCoin,
-              Adapter,
-              ScrollPrice,
               Tracker,
               SideBar,
               NewsLine,
@@ -2285,28 +2932,22 @@ require([
               Layout,
               BookMark
               ) {
-        var datafeed = new DataFeed();
 
-
-        //var scroll_price = new ScrollPrice();
-        var tracker = new Tracker();
-        //here for side bar price list render
-
-        var sidebar = new SideBar();
-        var newsline = new NewsLine();
-        var gotop = new GoTop();
-        
-        var all_price_feed = new Feed({
+        window.app = {};
+        var all_price_feed = window.app.price_feed = new Feed({
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',
             method: 'GET',
-            interval: 5000
+            interval: 15000
         });
-        var all_coin = new AllCoin({
-            feed: all_price_feed,
-            adapter : new Adapter()
-        });
+
+        new Header();
+        new SideBar();
+        new Tracker();
+        new NewsLine();
+        new GoTop();
+
+
         all_price_feed.run();
-        //
         console.log('finish');
 
     });

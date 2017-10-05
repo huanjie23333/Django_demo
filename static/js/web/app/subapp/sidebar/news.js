@@ -1,5 +1,5 @@
-define(['libs/Class', 'subapp/data/feed','utils/template','jquery', 'underscore'],
-    function(Class,Feed,Template , $, _){
+define(['libs/Class', 'subapp/data/feed','jquery', 'underscore'],
+    function(Class, Feed, $, _){
 
         var NewsApp = Class.extend({
             handle_title_click: function(e) {
@@ -16,7 +16,7 @@ define(['libs/Class', 'subapp/data/feed','utils/template','jquery', 'underscore'
                 this.$news_list = $('.news-list');
                 if(!!!this.$news_list.length) return ;
 
-                this.template =  Template($('#news_template').html());
+                this.template =  _.template($('#news_template').html());
 
                 if(!option["feed"]){
                     throw Error('can not init a price app without a feed');

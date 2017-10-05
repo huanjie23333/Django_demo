@@ -1,13 +1,10 @@
 require([
         'libs/polyfills',
         'jquery',
-        'subapp/data/datafeed',
+        'subapp/header/header',
         'subapp/data/feed',
-        'subapp/data/allcoinprice',
-        'subapp/adapters/coinmarketcapAdapter',
-        'subapp/scrollprice',
         'subapp/tracker',
-        'subapp/sidebar',
+        'subapp/sidebar/sidebar',
         'subapp/newsline',
         'subapp/gotop',
         'libs/salvattore',
@@ -16,11 +13,8 @@ require([
     ],
     function (polyfill,
               $,
-              DataFeed,
+              Header,
               Feed,
-              AllCoin,
-              Adapter,
-              ScrollPrice,
               Tracker,
               SideBar,
               NewsLine,
@@ -28,28 +22,22 @@ require([
               Layout,
               BookMark
               ) {
-        var datafeed = new DataFeed();
 
-
-        //var scroll_price = new ScrollPrice();
-        var tracker = new Tracker();
-        //here for side bar price list render
-
-        var sidebar = new SideBar();
-        var newsline = new NewsLine();
-        var gotop = new GoTop();
-        
-        var all_price_feed = new Feed({
+        window.app = {};
+        var all_price_feed = window.app.price_feed = new Feed({
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',
             method: 'GET',
-            interval: 5000
+            interval: 15000
         });
-        var all_coin = new AllCoin({
-            feed: all_price_feed,
-            adapter : new Adapter()
-        });
+
+        new Header();
+        new SideBar();
+        new Tracker();
+        new NewsLine();
+        new GoTop();
+
+
         all_price_feed.run();
-        //
         console.log('finish');
 
     });
