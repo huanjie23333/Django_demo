@@ -92,7 +92,7 @@
 
     <script language="javascript">
         {% autoescape off %}
-            var news_obj = {{ news_json_str }};
+            var news_obj = {{ news_json_str|safe }};
         {% endautoescape %}
     </script>
 {% endblock %}

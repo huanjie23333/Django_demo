@@ -5,49 +5,29 @@
             <div class="col-sm-2 col-xs-12">
                <span class="main-logo">
                    <a href="{% url 'web_index' %}">
-                    <img src="{% static 'images/chain-dh-header.png' %}">
+                       <img src="{% static 'images/chain-dh-header.png' %}">
                    </a>
                </span>
             </div>
             <div class="col-sm-9 col-xs-12">
-                <ul class="price-list">
-                    <li>
-                        <div class="quote" id="quote_btc">
-                            <div class="quote-head">
-                                BTC/CNY
-                            </div>
-                            <div class="quote-price">
-                               <span class="price">----.--</span>
-                               <i class='fa fa-arrow-up'></i>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="quote" id="quote_eth">
-                            <div class="quote-head">
-                                ETH/CNY
-                            </div>
-                            <div class="quote-price">
-                                <span class="price">----.--</span>
-                                <i class='fa fa-arrow-up'></i>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                         <div class="quote" id="quote_ltc">
-                            <div class="quote-head">
-                                LTC/CNY
-                            </div>
-                            <div class="quote-price">
-                                <span class="price">----.--</span>
-                                <i class='fa fa-arrow-up'></i>
-                            </div>
-                        </div>
-                    </li>
+                <ul class="price-list" id="header_price_list">
                 </ul>
 
             </div>
         </div>
     </div>
     </div>
+    <script id="header_price_template" type="text/template">
+        <li>
+            <div class="quote" id="<%=element_id%>">
+                <div class="quote-head">
+                    <%=title_text%>
+                </div>
+                <div class="quote-price">
+                    <span class="price "><%=price_cny%></span>
+                    <i class='fa fa-arrow-up'></i>
+                </div>
+            </div>
+        </li>
+    </script>
 </section>

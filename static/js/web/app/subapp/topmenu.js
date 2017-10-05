@@ -91,7 +91,7 @@ define(['bootstrap',
 
             this.write = fastdom.write(this.moveHeader.bind(this));
         },
-        moveprice:function(){
+        move_target:function(){
             //console.log('move header');
 
             if (_.isNull(this.scrollTop)) {

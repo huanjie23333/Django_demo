@@ -1,4 +1,4 @@
-define(['libs/Class','utils/template','jquery','underscore'], function(Class,Template,$, _){
+define(['libs/Class','jquery','underscore'], function(Class,$, _){
 
     var AllCoinPrice = Class.extend({
 
@@ -7,7 +7,7 @@ define(['libs/Class','utils/template','jquery','underscore'], function(Class,Tem
 
             if(!!!this.$coin_list.length) return ;
 
-            this.tempalte = Template($('#coin_template').html())
+            this.tempalte = _.template($('#coin_template').html())
             if(!option["feed"]){
                 throw Error('can not init a price app without a feed');
             }
@@ -46,8 +46,6 @@ define(['libs/Class','utils/template','jquery','underscore'], function(Class,Tem
         },
 
         _render_item: function(coin_data){
-            //console.log('item_data');
-            //console.log(coin_data);
             var element = this.$coin_list.find('#'+coin_data['id']);
             if(element.length){
                 this.update_element(element, coin_data);

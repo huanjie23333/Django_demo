@@ -1,5 +1,5 @@
-define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all', 'utils/template','underscore'],
-    function(Class,FakeFeed,Feed,CoinBeefAdapter,Template, _){
+define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all','underscore'],
+    function(Class,FakeFeed,Feed,CoinBeefAdapter,_){
 
         var NewsLineApp = Class.extend({
 
@@ -60,7 +60,7 @@ define(['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/
                 this.$newsline =  $('.newsline');
                 if(!!!this.$newsline.length) return ;
 
-                this.template = Template($('#newsline_template').html());
+                this.template = _.template($('#newsline_template').html());
 
                 //this.dataFeed = this.get_feed({
                 //     url: '/news/json/?page=1',
