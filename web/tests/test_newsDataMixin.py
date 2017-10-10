@@ -16,14 +16,14 @@ class TestNewsDataMixinTestCase(WithDataTestCase):
     def test_get_key_list(self):
         nd = NewsDataMixin()
         nd.add_key_set('test_key')
-        self.assertIn('test_key', nd.get_key_list())
+        self.assertIn('test_key', nd.get_newslist_key_set())
 
     def test_reset_key_list(self):
         nd = NewsDataMixin()
         nd.add_key_set('test_key_2')
-        self.assertIn('test_key_2', nd.get_key_list())
-        nd.reset_key_list()
-        self.assertEqual(set(), nd.get_key_list())
+        self.assertIn('test_key_2', nd.get_newslist_key_set())
+        nd.reset_newslist_key_set()
+        self.assertEqual(set(), nd.get_newslist_key_set())
 
     def test_get_page_data(self):
         nd = NewsDataMixin()
