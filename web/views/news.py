@@ -94,7 +94,7 @@ class NewsDataMixin(object):
 class SideBarDataMixin(NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['sidebar_news_tag_list'] = self.get_news_tag_list()[:20]
+        context['sidebar_news_tag_list'] = self.get_news_tag_list()[:50]
         context['sidebar_news_tag_list_json'] = json.dumps(context['sidebar_news_tag_list'])
         context['sidebar_news_list'] = self.get_news_page_list()
         return context
