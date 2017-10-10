@@ -607,6 +607,28 @@ ul li {
   text-align: left;
   position: relative;
 }
+.entry .year-wrapper {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  text-align: center;
+  border-top: 1px solid #f3f3f3;
+  padding: 2em 0 0 0;
+  margin-bottom: -1em;
+}
+.entry .year-wrapper.shown-year {
+  display: block;
+}
+.entry .year-wrapper .year {
+  background-color: #fff;
+  position: relative;
+  top: -41px;
+  color: #aaa;
+  font-size: 18px;
+  padding: 0 1em;
+}
 .entry .left-content {
   margin-bottom: .5em;
   float: left;

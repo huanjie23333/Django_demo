@@ -1099,9 +1099,14 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
                 this.hide_loading_info();
             },
 
+            remove_first_year: function () {
+                $('.year-wrapper').addClass('shown-year');
+                $('.year-wrapper').first().removeClass('shown-year');
+            },
             render: function(){
-                console.log(this.data_list);
+                //console.log(this.data_list);
                 _.map(this.data_list, this._render_item.bind(this));
+                this.remove_first_year();
             },
             _render_item: function(entry){
                 this.create_element(entry);

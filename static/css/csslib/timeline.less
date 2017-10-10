@@ -37,6 +37,31 @@
   clear: both;
   text-align: left;
   position: relative;
+
+  .year-wrapper{
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    text-align:center;
+    border-top:1px solid @box-header-border-color;
+    padding: 2em 0 0 0;
+    margin-bottom: -1em;
+
+    &.shown-year{
+      display:block;
+    }
+
+    .year{
+      background-color: #fff;
+      position:relative;
+      top: -41px;
+      color: @support-text-color;
+      font-size: 18px;
+      padding: 0 1em;
+    }
+  }
   .left-content {
     margin-bottom: .5em;
     float: left;

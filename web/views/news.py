@@ -29,6 +29,8 @@ class NewsDataMixin(object):
         r = requests.get(url)
         if r.status_code == 200:
             return r.text
+        else:
+            return None
 
     def get_newslist_key_set(self):
         return cache.get(NEWS_LIST_KEY_SET, set())
@@ -85,6 +87,8 @@ class NewsDataMixin(object):
             r = requests.get(NEWS_TAG_API_URL)
             if r.status_code == 200:
                 tag_list = r.json()['tags']
+            else:
+                return None
         except Exception:
             pass
         finally:

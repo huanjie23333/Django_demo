@@ -52,7 +52,13 @@
     </a>
 
     <script id="newsline_template" type="text/template">
+
         <div class="entry">
+             <% if(show_year){ %>
+                    <div class="year-wrapper">
+                        <span class="year"><%=year%></span>
+                    </div>
+             <% } %>
             <div class="left-content">
                 <h3>
                     <% if(show_time){ %>
@@ -65,6 +71,7 @@
                 <p></p>
             </div>
             <div class="body">
+
                 <h1 class="news-title">
                       <%=title%>
                 </h1>

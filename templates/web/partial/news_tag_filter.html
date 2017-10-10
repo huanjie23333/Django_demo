@@ -1,6 +1,12 @@
 <div class="tag-list-filter-wrapper">
     <ul class="tag-list-filter-list">
-        {% for tag in sidebar_news_tag_list|slice:"0:20" %}
+        <li class="tag-filter-item">
+                <a href="/news.htm"  class="{% if not current_tag  %}active{% endif %}">
+                    所有
+                </a>
+        </li>
+        {% for tag in sidebar_news_tag_list|slice:"0:50" %}
+
             <li class="tag-filter-item">
                 <a href="{% url 'news:tag_news' tag.name %}"  class="{% if current_tag == tag.name %}active{% endif %}">
                     {{ tag.name }}
