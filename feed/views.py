@@ -92,9 +92,6 @@ class NewsFeedGenerator(Rss201rev2Feed):
         super().add_item_elements(handler, item)
         if item['content_encoded'] is not None:
             handler.addQuickElement(u'content:encoded', item['content_encoded'], escape=False)
-        if item['digest'] is not None:
-            handler.addQuickElement(u'digest', item['digest'], escape=False)
-
 
 
 class NewsFeed(NewsDataMixin, Feed):
