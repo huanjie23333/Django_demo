@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django_filters',
 
     'web',
-    'nav'
+    'nav',
+    'feed',
 ]
 
 MIDDLEWARE = [
@@ -261,6 +262,3 @@ LOGGING = {
         },
     }
 }
-
-
-NEWS_DETAIL_API = 'http://www.chainscoop.com/api/news/'
