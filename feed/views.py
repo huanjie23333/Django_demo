@@ -5,11 +5,50 @@ from django.contrib.syndication.views import Feed
 from django.utils.encoding import smart_str
 from django.utils.html import strip_tags, escape
 from django.utils.feedgenerator import Rss201rev2Feed
+from django.utils.text import Truncator
 from web.views.news import NewsDataMixin
 
 from xml.sax.saxutils import XMLGenerator
 
+import re
+from django.utils.functional import allow_lazy
 
+def truncate_hanzi(s, num):
+    s = str(s)
+    length = int(num)
+    if length <= 0:
+        return u'...'
+    # Set up regex for alphanumeric characters
+    # \u00c0-\u02af: Latin
+    # \u0370-\u1fff: Greek and alphabet characters in other language
+    re_alnum = re.compile(r'[a-zA-Z0-9_\-\u00c0-\u02af\u0370-\u1fff]', re.U)
+    # Set up regex for hanzi
+    # \u3040-\ufaff: CJK characters
+    re_hanzi = re.compile(r'[\u3040-\ufaff]', re.U)
+    hanzi = u''
+    hanzi_len = 0
+    word_temp = u''
+    for char in s:
+        # Check for alphabet characters
+        if re_alnum.match(char):
+            word_temp += char
+            continue
+        if word_temp:
+            hanzi += word_temp
+            hanzi_len += 1
+            word_temp = ''
+        # Check for length
+        if hanzi_len >= length:
+            if not hanzi.endswith('...'):
+                hanzi += '...'
+                break
+        # Check for hanzi
+        if re_hanzi.match(char):
+            hanzi_len += 1
+        hanzi += char
+    hanzi += word_temp
+    return hanzi
+truncate_hanzi = allow_lazy(truncate_hanzi, str)
 
 class SimplerXMLGenerator(XMLGenerator):
     def addQuickElement(self, name, contents=None, attrs=None, escape=False):
@@ -53,6 +92,8 @@ class NewsFeedGenerator(Rss201rev2Feed):
         super().add_item_elements(handler, item)
         if item['content_encoded'] is not None:
             handler.addQuickElement(u'content:encoded', item['content_encoded'], escape=False)
+        if item['digest'] is not None:
+            handler.addQuickElement(u'digest', item['digest'], escape=False)
 
 
 
@@ -84,5 +125,6 @@ class NewsFeed(NewsDataMixin, Feed):
     def item_extra_kwargs(self, item):
         extra = {
             'content_encoded': ("<![CDATA[%s]]>" % smart_str(item.get('content'))),
+            'digest': truncate_hanzi(item.get('content'),100)
         }
         return extra
