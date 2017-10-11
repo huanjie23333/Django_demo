@@ -120,11 +120,10 @@ class NewsFeed(NewsDataMixin, Feed):
         return datetime.fromtimestamp(item.get('published_at') + 3600*8,pytz.timezone('Asia/Shanghai'))
 
     def item_description(self, item):
-        return item.get('content')
+        return truncate_hanzi(item.get('content'),100)
 
     def item_extra_kwargs(self, item):
         extra = {
             'content_encoded': ("<![CDATA[%s]]>" % smart_str(item.get('content'))),
-            'digest': truncate_hanzi(item.get('content'),100)
         }
         return extra
