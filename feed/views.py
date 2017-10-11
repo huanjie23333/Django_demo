@@ -92,9 +92,6 @@ class NewsFeedGenerator(Rss201rev2Feed):
         super().add_item_elements(handler, item)
         if item['content_encoded'] is not None:
             handler.addQuickElement(u'content:encoded', item['content_encoded'], escape=False)
-        if item['digest'] is not None:
-            handler.addQuickElement(u'digest', item['digest'], escape=False)
-
 
 
 class NewsFeed(NewsDataMixin, Feed):
@@ -120,11 +117,10 @@ class NewsFeed(NewsDataMixin, Feed):
         return datetime.fromtimestamp(item.get('published_at') + 3600*8,pytz.timezone('Asia/Shanghai'))
 
     def item_description(self, item):
-        return item.get('content')
+        return truncate_hanzi(item.get('content'),100)
 
     def item_extra_kwargs(self, item):
         extra = {
             'content_encoded': ("<![CDATA[%s]]>" % smart_str(item.get('content'))),
-            'digest': truncate_hanzi(item.get('content'),100)
         }
         return extra
