@@ -60,6 +60,7 @@ class Project(CachingMixin, models.Model):
     state = fields.CharField(max_length=255, default='')
     name = models.CharField(max_length=128, default='', unique=True)
     description = models.TextField(default='')
+    description_cn = models.TextField(default='')
     founder = models.CharField(max_length=128, default='')
     software_license = models.CharField(max_length=255, default='')
     mainnet_contract_address = models.CharField(max_length=255, null=True)
@@ -73,6 +74,8 @@ class Project(CachingMixin, models.Model):
     reddit = models.URLField(max_length=255, null=True)
 
     origin_link = models.URLField(max_length=255, null=True)
+
+    highlight = models.BooleanField(default=False, db_index=True)
 
     created = models.DateField(default=timezone.now, db_index=True)
     last_updated = models.DateField(default=timezone.now, db_index=True)
