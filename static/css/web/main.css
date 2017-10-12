@@ -1318,7 +1318,6 @@ body a:hover {
 .gotop-wrapper {
   position: fixed;
   display: none;
-  height: 50px;
   width: 50px;
   border: 1px solid #f3f3f3;
   bottom: 84px;
