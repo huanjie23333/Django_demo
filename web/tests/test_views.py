@@ -68,7 +68,7 @@ class TestNewsApiViewTestCase(WithDataTestCase):
     def test_api_get(self):
         resp = self.client.get(reverse('news:json_list'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEqual(resp.status_code, 200)
-        self.assertContains(resp, 'www.chainscoop.com')
+        self.assertContains(resp, 'published_at')
 
 
 

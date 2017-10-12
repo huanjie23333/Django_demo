@@ -19,6 +19,7 @@ from nav.models import Nav, Category
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
 NEWS_TAG_API_URL = 'http://www.chainscoop.com/api/news/tags.json'
+NEWS_DETAIL_API = 'http://www.chainscoop.com/api/news/'
 
 class NewsDataMixin(object):
 
@@ -29,11 +30,13 @@ class NewsDataMixin(object):
         r = requests.get(url)
         if r.status_code == 200:
             return r.text
+        else:
+            return None
 
-    def get_key_list(self):
+    def get_newslist_key_set(self):
         return cache.get(NEWS_LIST_KEY_SET, set())
 
-    def reset_key_list(self):
+    def reset_newslist_key_set(self):
         return cache.delete(NEWS_LIST_KEY_SET)
 
     def add_key_set(self, cache_key):
@@ -74,7 +77,10 @@ class NewsDataMixin(object):
         return self.request.GET.get('tag', None)
 
     def get_news_tag_list(self):
-        return  cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60*30)
+        result = cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60*30)
+        if result is not None and len(result) == 0:
+            cache.delete(NEWS_TAG_LIST_KEY)
+        return result
 
     def _get_news_tag_list(self):
         tag_list = []
@@ -82,16 +88,34 @@ class NewsDataMixin(object):
             r = requests.get(NEWS_TAG_API_URL)
             if r.status_code == 200:
                 tag_list = r.json()['tags']
+            else:
+                return None
         except Exception:
             pass
         finally:
             return tag_list
 
+    def get_news_detail(self, slug):
+        key = self.get_news_detail_key(slug)
+        return cache.get_or_set(key, self._get_news_detail(slug), timeout=60*30 )
+
+    def _get_news_detail(self, slug):
+        r = requests.get("%s%s" % (NEWS_DETAIL_API, slug))
+        if r.status_code == 200:
+            obj = json.loads(r.text)
+            obj['published_time'] = self.format_time(obj['published_at'])
+            return obj
+        else:
+            return None
+
+    def get_news_detail_key(self, slug):
+        return 'news:detail:%s' % slug
+
 
 class SideBarDataMixin(NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['sidebar_news_tag_list'] = self.get_news_tag_list()
+        context['sidebar_news_tag_list'] = self.get_news_tag_list()[:50]
         context['sidebar_news_tag_list_json'] = json.dumps(context['sidebar_news_tag_list'])
         context['sidebar_news_list'] = self.get_news_page_list()
         return context
@@ -141,9 +165,9 @@ class ClearNewsCacheView(StaffuserRequiredMixin, NewsDataMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = {}
-        context['key_list'] = self.get_key_list()
+        context['key_list'] = self.get_newslist_key_set()
         cache.delete_many(context['key_list'])
-        self.reset_key_list()
+        self.reset_newslist_key_set()
         return context
 
 
@@ -156,12 +180,8 @@ class NewsDetailView(SideBarDataMixin, DetailView):
 
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug')
-        r = requests.get("%s%s" % (settings.NEWS_DETAIL_API, slug))
-        if r.status_code == 200:
-            obj = json.loads(r.text)
-            obj['published_time'] = self.format_time(obj['published_at'])
-            return obj
-        else:
-            return None
+        return self.get_news_detail(slug)
+
+
 
 
