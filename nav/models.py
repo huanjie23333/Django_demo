@@ -57,7 +57,7 @@ class Nav(CachingMixin, models.Model):
 
 class Project(CachingMixin, models.Model):
     slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
-    state = fields.CharField(max_length=255, default='')
+    status = fields.CharField(max_length=255, default='')
     name = models.CharField(max_length=128, default='', unique=True)
     description = models.TextField(default='')
     description_cn = models.TextField(default='')
