@@ -13,4 +13,4 @@ class ProjectDetailAPIView(RetrieveUpdateAPIView):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
     model = Project
-    lookup_field = 'name'
+    lookup_field = 'identified_code'

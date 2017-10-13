@@ -43,7 +43,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^api/dapps/', include('nav.urls.api', namespace='dapps')),
+    url(r'^api/dapps/', include('nav.urls.api.dapps', namespace='dapps')),
 ]
 
 urlpatterns += [
