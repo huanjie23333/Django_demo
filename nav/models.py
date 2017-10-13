@@ -73,14 +73,18 @@ class Project(CachingMixin, models.Model):
     gitter = models.URLField(max_length=255, null=True)
     reddit = models.URLField(max_length=255, null=True)
 
+    highlight = models.BooleanField(default=False, db_index=True)
+    whitepaper = models.URLField(_("whitepaper"), default="")
+
     origin_link = models.URLField(max_length=255, null=True)
 
-    highlight = models.BooleanField(default=False, db_index=True)
+
 
     created = models.DateField(default=timezone.now, db_index=True)
     last_updated = models.DateField(default=timezone.now, db_index=True)
 
     tags = TaggableManager()
+    # cn_tags = TaggableManager()
 
     objects = CachingManager()
 
