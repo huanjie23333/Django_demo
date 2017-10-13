@@ -84,7 +84,6 @@ class Project(CachingMixin, models.Model):
     last_updated = models.DateField(default=timezone.now, db_index=True)
 
     tags = TaggableManager()
-    # cn_tags = TaggableManager()
 
     objects = CachingManager()
 
