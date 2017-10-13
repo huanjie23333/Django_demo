@@ -13,6 +13,7 @@ from xml.sax.saxutils import XMLGenerator
 import re
 from django.utils.functional import allow_lazy
 
+
 def truncate_hanzi(s, num):
     s = str(s)
     length = int(num)
@@ -48,7 +49,10 @@ def truncate_hanzi(s, num):
         hanzi += char
     hanzi += word_temp
     return hanzi
+
+
 truncate_hanzi = allow_lazy(truncate_hanzi, str)
+
 
 class SimplerXMLGenerator(XMLGenerator):
     def addQuickElement(self, name, contents=None, attrs=None, escape=False):
@@ -60,10 +64,10 @@ class SimplerXMLGenerator(XMLGenerator):
                 self.characters(contents)
             else:
                 self._write(contents)
-            # else:
-            #     if not isinstance(contents, unicode):
-            #         contents = unicode(contents, self._encoding)
-            #     self._write(contents)
+                # else:
+                #     if not isinstance(contents, unicode):
+                #         contents = unicode(contents, self._encoding)
+                #     self._write(contents)
         self.endElement(name)
 
 
@@ -113,11 +117,10 @@ class NewsFeed(NewsDataMixin, Feed):
         return item.get('url')
 
     def item_pubdate(self, item):
-
-        return datetime.fromtimestamp(item.get('published_at') + 3600*8,pytz.timezone('Asia/Shanghai'))
+        return datetime.fromtimestamp(item.get('published_at') + 3600 * 8, pytz.timezone('Asia/Shanghai'))
 
     def item_description(self, item):
-        return truncate_hanzi(item.get('content'),100)
+        return truncate_hanzi(item.get('content'), 100)
 
     def item_extra_kwargs(self, item):
         extra = {

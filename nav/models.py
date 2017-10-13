@@ -1,3 +1,5 @@
+from hashlib import md5
+
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -73,12 +75,16 @@ class Project(CachingMixin, models.Model):
     gitter = models.URLField(max_length=255, null=True)
     reddit = models.URLField(max_length=255, null=True)
 
-    origin_link = models.URLField(max_length=255, null=True)
-
     highlight = models.BooleanField(default=False, db_index=True)
+    whitepaper = models.URLField(_("whitepaper"), default="")
+
+    origin_link = models.URLField(max_length=255, null=True)
 
     created = models.DateField(default=timezone.now, db_index=True)
     last_updated = models.DateField(default=timezone.now, db_index=True)
+
+    identified_code = models.CharField(max_length=128, unique=True,
+                                       null=True, blank=True, editable=False)
 
     tags = TaggableManager()
 
@@ -92,3 +98,8 @@ class Project(CachingMixin, models.Model):
 
     def tag_list(self):
         return [o.name for o in self.tags.all()]
+
+    def save(self, **kwargs):
+        if self.origin_link.startswith('http') and self.identified_code is None:
+            self.identified_code = md5(self.origin_link.encode('utf-8')).hexdigest()
+        return super().save(**kwargs)

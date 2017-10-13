@@ -10,7 +10,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        fields = '__all__'
+        # fields = '__all__'
+        exclude = ("id",)
 
     def create(self, validated_data):
         tag_list = validated_data.pop('tag_list')
