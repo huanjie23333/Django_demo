@@ -29,7 +29,6 @@ handler500 = page_error
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/dapps/', include('nav.urls.api', namespace='dapps')),
     url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
     url(r'^sitemap\.htm$', SiteMapView.as_view(), name='web_sitemap'),
     url(r'^news\.htm', NewsListView.as_view(), name='web_news'),
@@ -41,9 +40,15 @@ urlpatterns = [
     url(r'^search/', include('web.urls.search', namespace='search')),
     url(r'^feed/', include('feed.urls', namespace='feed')),
 
-    url(r'^$', IndexView.as_view(), name='web_index'),
 ]
 
+urlpatterns += [
+    url(r'^api/dapps/', include('nav.urls.api', namespace='dapps')),
+]
+
+urlpatterns += [
+    url(r'^$', IndexView.as_view(), name='web_index'),
+]
 
 
 from django.conf import settings
