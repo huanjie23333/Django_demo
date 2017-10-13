@@ -13,7 +13,7 @@ class ProjectFactory(DjangoModelFactory):
 
 class TestDappViewTestCase(TestCase):
     def setUp(self):
-        ProjectFactory(slug='slug_1', state='normal', \
+        ProjectFactory(slug='slug_1', status='normal', \
                        name='proj_name_1', founder='fd_1', \
                        software_license = 'GPL', \
                        )
