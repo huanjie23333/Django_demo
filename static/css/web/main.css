@@ -1042,6 +1042,7 @@ body a:hover {
 }
 .news-detail-wrapper .news-title {
   font-size: 1.5em;
+  text-align: left;
 }
 .news-detail-wrapper .news-content {
   text-align: left;
