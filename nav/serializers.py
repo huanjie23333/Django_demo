@@ -1,8 +1,15 @@
 from rest_framework import serializers
-from nav.models import Project
+from nav.models import Project, Nav
 import logging
 
 logger = logging.getLogger(__name__)
+
+
+class NavSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Nav
+        fields = '__all__'
+        # exclude = ("id", )
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -10,7 +17,6 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        # fields = '__all__'
         exclude = ("id",)
 
     def create(self, validated_data):

@@ -31,3 +31,6 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
 
     def get_updated_field(self):
         return 'updated_at'
+
+
+
