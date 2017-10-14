@@ -23,7 +23,10 @@ class FetchDesc(object):
         # self.web_site = web_site
 
     def __call__(self, id, web_site, *args, **kwargs):
-        r = requests.get(web_site, headers=self.headers)
+        try:
+            r = requests.get(web_site, headers=self.headers)
+        except Exception as e:
+            print (e)
         try:
             desc = self.process_text(text=r.content)
 
@@ -60,6 +63,7 @@ def get_url(data):
     for row in data:
         yield row
 
+
 def get_results(s, url):
     res = s.get(url, params={'size': 100}, headers=headers)
     data = res.json()
@@ -69,7 +73,6 @@ def get_results(s, url):
 
 
 def run():
-
     s = requests.session()
     # print(next_url, data)
     api_url = list_url
@@ -88,12 +91,12 @@ def run():
         api_url = next_url
         sleep(1)
 
-    # for row in r["results"]:
-    #     fetch_desc(id=row["id"], web_site=row["web_site"])
-    #     sleep(5)
+        # for row in r["results"]:
+        #     fetch_desc(id=row["id"], web_site=row["web_site"])
+        #     sleep(5)
         # yield process_web_site(row["id"], web_site=row["web_site"])
 
-    # next_url = r
+        # next_url = r
 
 
 if __name__ == '__main__':
