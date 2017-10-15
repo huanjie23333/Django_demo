@@ -1,5 +1,5 @@
 from django.contrib import admin
-from nav.models import Nav, Category, Project
+from nav.models import Nav, Category, Project, Profile
 
 # Register your models here.
 from django.contrib.admin import SimpleListFilter
@@ -20,11 +20,17 @@ class CategoryFilter(SimpleListFilter):
             return queryset
 
 
+class NavProfileStackAdmin(admin.StackedInline):
+    model = Profile
+
+
 class NavAdmin(admin.ModelAdmin):
     list_filter = (CategoryFilter, 'status', 'highlight')
     list_display = ['main_name', 'web_site', 'status', 'cate', 'tag_list', 'highlight', ]
     search_fields = ('cname', 'ename',)
     list_editable = ('status', 'highlight')
+
+    inlines = (NavProfileStackAdmin, )
 
     def get_queryset(self, request):
         return super(NavAdmin, self).get_queryset(request)\
