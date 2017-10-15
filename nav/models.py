@@ -57,6 +57,14 @@ class Nav(CachingMixin, models.Model):
         return self.cname or self.ename
 
 
+class Profile(models.Model):
+    site = models.OneToOneField(Nav, related_name="profile")
+    description = models.TextField(null=True, blank=True)
+
+
+
+
+
 class Project(CachingMixin, models.Model):
     slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
     status = fields.CharField(max_length=255, default='')

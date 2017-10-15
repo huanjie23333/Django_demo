@@ -27,6 +27,7 @@ class FetchDesc(object):
             r = requests.get(web_site, headers=self.headers)
         except Exception as e:
             print (e)
+            return
         try:
             desc = self.process_text(text=r.content)
 
@@ -40,7 +41,10 @@ class FetchDesc(object):
     def process_text(self, text):
         soup = bs4.BeautifulSoup(text, "lxml")
         desc = soup.find("meta", attrs={"name": "description"})
-        return desc["content"]
+        try:
+            return desc["content"]
+        except KeyError:
+            return ""
 
     def update_web_site_desc(self, id, desc):
         url = "{list_url}{id}.json".format(
