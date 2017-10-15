@@ -27,7 +27,7 @@ class NavProfileStackAdmin(admin.StackedInline):
 class NavAdmin(admin.ModelAdmin):
     list_filter = (CategoryFilter, 'status', 'highlight')
     list_display = ['main_name', 'web_site', 'status', 'cate', 'tag_list', 'highlight', ]
-    search_fields = ('cname', 'ename',)
+    search_fields = ('cname', 'ename', 'web_site', )
     list_editable = ('status', 'highlight')
 
     inlines = (NavProfileStackAdmin, )
