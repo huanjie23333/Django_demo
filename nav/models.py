@@ -62,7 +62,6 @@ class Profile(models.Model):
     description = models.TextField(_("description"), null=True, blank=True)
 
 
-
 class Project(CachingMixin, models.Model):
     slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
     status = fields.CharField(max_length=255, default='')

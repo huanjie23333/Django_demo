@@ -26,7 +26,7 @@ class FetchDesc(object):
         try:
             r = requests.get(web_site, headers=self.headers)
         except Exception as e:
-            print (e)
+            print(e)
             return
         try:
             desc = self.process_text(text=r.content)
@@ -69,9 +69,10 @@ def get_url(data):
 
 
 def get_results(s, url):
-    res = s.get(url, params={'size': 100}, headers=headers)
+    res = s.get(url, headers=headers)
     data = res.json()
     next_url = data['next']
+    print(next_url)
     data = res.json().get('results', None)
     return next_url, get_url(data)
 
@@ -85,7 +86,6 @@ def run():
         next_url, data = get_results(s, url=api_url)
 
         for row in data:
-            # print (row["id"], row["web_site"])
             fetch_desc(id=row["id"], web_site=row["web_site"])
             sleep(5)
 
@@ -94,13 +94,6 @@ def run():
 
         api_url = next_url
         sleep(1)
-
-        # for row in r["results"]:
-        #     fetch_desc(id=row["id"], web_site=row["web_site"])
-        #     sleep(5)
-        # yield process_web_site(row["id"], web_site=row["web_site"])
-
-        # next_url = r
 
 
 if __name__ == '__main__':

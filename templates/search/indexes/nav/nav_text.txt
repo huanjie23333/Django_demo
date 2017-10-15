@@ -1,3 +1,4 @@
 {{ object.main_name }}
+{{ object.description }}
 {{ object.alias }}
 
