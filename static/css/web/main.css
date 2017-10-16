@@ -573,6 +573,7 @@ ul li {
   top: 0px;
   position: fixed;
   opacity: 1;
+  diplay: block;
 }
 .box-body.tag-cloud {
   padding: 0 0 20px;
@@ -586,7 +587,7 @@ ul li {
   margin: 10px 0px;
 }
 .category-tag-wrapper .nav-list-item {
-  padding: 10px 0px;
+  padding: 6px 0px;
 }
 .category-tag-wrapper .nav-list-item span {
   margin: 0 1em 0  0 ;
