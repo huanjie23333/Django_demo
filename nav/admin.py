@@ -29,6 +29,7 @@ class NavAdmin(admin.ModelAdmin):
     list_display = ['main_name', 'web_site', 'status', 'cate', 'tag_list', 'highlight', ]
     search_fields = ('cname', 'ename', 'web_site', )
     list_editable = ('status', 'highlight')
+    fields = ('cname', 'ename', 'alias', 'highlight', ('cate','status') ,'location','web_site', 'score','tags' ,'description' ,)
 
     inlines = (NavProfileStackAdmin, )
 
