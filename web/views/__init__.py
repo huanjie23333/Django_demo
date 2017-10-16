@@ -6,6 +6,7 @@ from django.views.generic import TemplateView, View, DetailView, ListView
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 
+from flink.views import FlinkMixin
 from nav.models import Nav, Category
 from web.views.news import SideBarDataMixin
 
@@ -90,7 +91,7 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
 
-class AboutView(TemplateView):
+class AboutView(FlinkMixin, TemplateView):
     template_name = 'web/about.html'
 
 

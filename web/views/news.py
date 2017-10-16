@@ -5,16 +5,12 @@ from datetime import datetime
 import requests
 
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
-from taggit.models import TaggedItem
 
 from django.views.generic import TemplateView, View, DetailView, ListView
-from django.shortcuts import get_object_or_404
 from django.core.cache import cache
-from django.db.models import Count
 from django.http import HttpResponse
-from django.conf import settings
 
-from nav.models import Nav, Category
+from flink.views import FlinkMixin
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
@@ -112,12 +108,18 @@ class NewsDataMixin(object):
         return 'news:detail:%s' % slug
 
 
-class SideBarDataMixin(NewsDataMixin):
+
+
+
+class SideBarDataMixin(FlinkMixin, NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['sidebar_news_tag_list'] = self.get_news_tag_list()[:50]
-        context['sidebar_news_tag_list_json'] = json.dumps(context['sidebar_news_tag_list'])
-        context['sidebar_news_list'] = self.get_news_page_list()
+        sb_t_list = self.get_news_tag_list()[:50]
+        context.update({
+            'sidebar_news_tag_list': sb_t_list,
+            'sidebar_news_tag_list_json': json.dumps(sb_t_list),
+            'sidebar_news_list': self.get_news_page_list(),
+        })
         return context
 
 

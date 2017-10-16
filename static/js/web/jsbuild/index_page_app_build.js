@@ -1484,6 +1484,9 @@ define('subapp/sidebar/scrollbox',['libs/scroller', 'jquery', 'underscore'],func
             $(this.get_target()).addClass('hidden');
         },
         init:function(){
+            if (!this.get_target()){
+                return ;
+            }
             this._super();
             this.origin_width = this.get_box().getBoundingClientRect().width;
             this.get_target_height();
