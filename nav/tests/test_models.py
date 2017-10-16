@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from nav.models import Category, Nav, Project
-from quark.tests.base import WithDataTestCase
+from quark.tests.base import WithDataTestCase, CategoryFactory
+
+from faker import Faker
+
+f = Faker()
 
 
 class CategoryModelTestCase(WithDataTestCase):
@@ -28,22 +32,50 @@ class CategoryModelTestCase(WithDataTestCase):
         cat_1 = Category.objects.create(cname='cname2', order=20)
         cat_2 = Category.objects.create(cname='cname3', order=15)
         c_list = list(Category.objects.all())
-        self.assertEqual(c_list[0].cname , 'cname2')
-
+        self.assertEqual(c_list[0].cname, 'cname2')
 
 
 class NavModelTestCase(WithDataTestCase):
-    def test_nav_creation(self):
-        cate = Category.objects.create(cname='foo', ename='bar')
-        nav = Nav.objects.create(cname='foo', ename='bar', location='china', cate=cate)
-        nav.tags.add('few')
-        nav.tags.add('lot')
-        self.assertEqual(str(nav), 'bar')
-        self.assertEqual(nav.main_name, 'foo')
+
+    def setUp(self):
+        self.category = CategoryFactory()
+
+
+    def test_can_create_a_nav(self):
+        site_count = Nav.objects.count()
+
+        Nav.objects.create(
+            cname=f.name(),
+            ename=f.name(),
+            web_site=f.url(),
+            cate=self.category
+        )
+
+        after_count = Nav.objects.count()
+        self.assertLess(site_count, after_count)
+
+    def test_can_add_tags_to_nav(self):
+        nav = Nav.objects.create(
+            cname=f.name(),
+            ename=f.name(),
+            web_site=f.url(),
+            cate=self.category,
+        )
+        nav.tags.add(f.word())
+        nav.tags.add(f.word())
+
+
+
+    # def test_nav_creation(self):
+    #     cate = Category.objects.create(cname='foo', ename='bar')
+    #     nav = Nav.objects.create(cname='foo', ename='bar', location='china', cate=cate)
+    #     nav.tags.add('few')
+    #     nav.tags.add('lot')
+    #     self.assertEqual(str(nav), 'bar')
+    #     self.assertEqual(nav.main_name, 'foo')
 
 
 class ProjectModelTestCase(WithDataTestCase):
-
     def test_project_creation(self):
         project = Project.objects.create(slug='foo', name='eth_0')
         self.assertEqual(str(project), 'eth_0')
@@ -52,15 +84,3 @@ class ProjectModelTestCase(WithDataTestCase):
         project = Project.objects.create(slug='foo', name='eth_0')
         project.tags.add('TAG', 'WORD', 'THREE')
         self.assertEqual(set(project.tag_list()), set(['THREE', 'TAG', 'WORD', ]))
-
-
-
-
-
-
-
-
-
-
-
-
