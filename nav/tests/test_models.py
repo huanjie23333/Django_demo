@@ -36,10 +36,8 @@ class CategoryModelTestCase(WithDataTestCase):
 
 
 class NavModelTestCase(WithDataTestCase):
-
     def setUp(self):
         self.category = CategoryFactory()
-
 
     def test_can_create_a_nav(self):
         site_count = Nav.objects.count()
@@ -64,15 +62,8 @@ class NavModelTestCase(WithDataTestCase):
         nav.tags.add(f.word())
         nav.tags.add(f.word())
 
-
-
-    # def test_nav_creation(self):
-    #     cate = Category.objects.create(cname='foo', ename='bar')
-    #     nav = Nav.objects.create(cname='foo', ename='bar', location='china', cate=cate)
-    #     nav.tags.add('few')
-    #     nav.tags.add('lot')
-    #     self.assertEqual(str(nav), 'bar')
-    #     self.assertEqual(nav.main_name, 'foo')
+        tags = [t.name for t in nav.tags.all()]
+        self.assertIsInstance(tags, list)
 
 
 class ProjectModelTestCase(WithDataTestCase):
