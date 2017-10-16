@@ -70,20 +70,17 @@ class ProjectModelTestCase(WithDataTestCase):
 
     def test_can_create_a_dapps(self):
         dapps_count = Project.objects.count()
-
         Project.objects.create(
             name=f.name(),
             description=f.text()
         )
         after_count = Project.objects.count()
-
         self.assertLess(dapps_count, after_count)
 
-    # def test_project_creation(self):
-    #     project = Project.objects.create(slug='foo', name='eth_0')
-    #     self.assertEqual(str(project), 'eth_0')
-    #
-    # def test_project_tag_list(self):
-    #     project = Project.objects.create(slug='foo', name='eth_0')
-    #     project.tags.add('TAG', 'WORD', 'THREE')
-    #     self.assertEqual(set(project.tag_list()), set(['THREE', 'TAG', 'WORD', ]))
+    def test_can_add_tags_to_dapps(self):
+        dapp = Project.objects.create(
+            name=f.name(),
+            description=f.text()
+        )
+        dapp.tags.add(f.word())
+        
