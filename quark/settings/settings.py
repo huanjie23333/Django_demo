@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'web',
     'nav',
     'feed',
+    'flink'
 ]
 
 MIDDLEWARE = [
