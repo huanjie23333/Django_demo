@@ -16,11 +16,24 @@
                                     {% for nav in navs %}
                                         <li class="nav-list-item">
                                             <span class="nav-name">
-                                                {{ nav.main_name }}
+                                                <a href="{{ nav.web_site }}" >
+                                                    {{ nav.main_name }}
+                                                </a>
                                             </span>
-                                            <span class="nav-ename">
-                                                {{ nav.ename }}
-                                            </span>
+
+                                                {% if nav.main_name == nav.ename %}
+
+                                                {% else %}
+                                                    <span class="nav-ename">
+                                                    {{  nav.ename }}
+                                                    </span>
+                                                {% endif %}
+                                                {% if nav.location %}
+                                                     <span class="location">
+                                                    {{ nav.location }}
+                                                    </span>
+                                                {% endif %}
+
                                             <span class="nav-desc">
                                                 {{ nav.profile.description }}
                                             </span>
