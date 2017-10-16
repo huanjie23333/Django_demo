@@ -83,7 +83,7 @@ class ProjectModelTestCase(WithDataTestCase):
             description=f.text()
         )
         dapp.tags.add(f.word())
-        dapp.tags.all(f.word())
+        dapp.tags.add(f.word())
 
         tags = [t.name for t in dapp.tags.all()]
         self.assertIsInstance(tags, list)

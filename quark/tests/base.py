@@ -5,19 +5,19 @@ from factory.django import DjangoModelFactory
 from nav.models import Nav, Category
 from faker import Faker
 
-
 # from django_nose import FastFixtureTestCase
 from django.contrib.auth.models import User
 
-
 f = Faker()
-
 
 
 class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
-        django_get_or_create = ('username',)
+        django_get_or_create = ('username', "email")
+
+    username = f.user_name()
+    email = f.email()
 
 
 class CategoryFactory(DjangoModelFactory):
@@ -34,6 +34,7 @@ class NavFactory(DjangoModelFactory):
         django_get_or_create = ('cname',)
 
     cname = f.name()
+
 
 class WithDataTestCase(TestCase):
     def create_user(self):
