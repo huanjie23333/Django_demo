@@ -1,6 +1,6 @@
 # -*- coding: UTF-8  -*-
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
-from taggit.models import TaggedItem
+from taggit.models import TaggedItem, Tag
 
 from django.views.generic import TemplateView, View, DetailView, ListView
 from django.shortcuts import get_object_or_404
@@ -11,6 +11,12 @@ from web.views.news import SideBarDataMixin
 
 
 class CategoryTagDataMixin(object):
+    def get_nav_for_cate_tag(self, category, tag_name):
+        tag = get_object_or_404(Tag, name=tag_name)
+        navs = TaggedItem.objects.filter(tag_id=tag.id, content_type_id=9).values_list('object_id', flat=True)
+        navs = Nav.objects.filter(id__in=navs, cate=category).order_by('-score')
+        return navs
+
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
         nav_ids = list(self.get_nav_ids_by_category(category_id))
         tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
@@ -29,22 +35,36 @@ class CategoryTagDataMixin(object):
 
 
 class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
-    template_name = 'web/category.html'
+
+    def get_template_names(self):
+        if self.tagname:
+            return 'web/category_tag.html'
+        else:
+            return 'web/category.html'
+
     def get_category(self):
         return get_object_or_404(Category, ename=self.ename)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cate = self.get_category()
-        context.update({
-            'category': cate,
-            'cate_ename': cate.ename,
-            "tag_lists": self.get_tag_for_category(cate.id, tag_range=3000, site_range=10000)
-        })
+        if self.tagname:
+            context.update({
+                'cate': cate,
+                'navs': self.get_nav_for_cate_tag(cate, self.tagname),
+                'tag_name': self.tagname
+            })
+        else:
+            context.update({
+                'category': cate,
+                'cate_ename': cate.ename,
+                "tag_lists": self.get_tag_for_category(cate.id, tag_range=3000, site_range=10000)
+            })
         return context
 
     def get(self, request, *args, **kwargs):
         self.ename = kwargs.pop('cate_ename')
+        self.tagname = request.GET.get('t', None)
         return super().get(request, *args, **kwargs)
 
 

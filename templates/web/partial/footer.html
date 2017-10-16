@@ -5,7 +5,9 @@
             <div class="col-sm-10 col-xs-12 ">
                 <ul class="footer-list">
                     <li class="logo">
-                        <img src="{% static 'images/chaindh-dh-bottom.png' %}">
+                        <a href="{% url 'web_index' %}">
+                            <img src="{% static 'images/chaindh-dh-bottom.png' %}">
+                        </a>
                     </li>
                     <li class="about-item hidden-xs"><a href="{% url 'web_about' %}">关于我们</a></li>
                     <li class="sitemap-item hidden-xs"><a href="{% url 'web_sitemap' %}">全站地图</a></li>
