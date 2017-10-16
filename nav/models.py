@@ -59,7 +59,7 @@ class Nav(CachingMixin, models.Model):
 
 class Profile(models.Model):
     site = models.OneToOneField(Nav, related_name="profile")
-    description = models.TextField(_("description"), null=True, blank=True)
+    description = models.TextField(_("中文描述"), null=True, blank=True)
 
 
 class Project(CachingMixin, models.Model):

@@ -1,0 +1,76 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+
+{% block content %}
+    <section id="content" class="category-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12 " id="main_column">
+                        <div class="box">
+                                <div class="box-header">
+                                    {{ cate.cname }}
+                                </div>
+                                <div class="box-body category-tag-wrapper">
+                                    <div class="tag-name">{{ tag_name }}</div>
+                                    <ul class="nav-list">
+                                    {% for nav in navs %}
+                                        <li class="nav-list-item">
+                                            <span class="nav-name">
+                                                <a href="{{ nav.web_site }}" >
+                                                    {{ nav.main_name }}
+                                                </a>
+                                            </span>
+
+                                                {% if nav.main_name == nav.ename %}
+
+                                                {% else %}
+                                                    <span class="nav-ename">
+                                                    {{  nav.ename }}
+                                                    </span>
+                                                {% endif %}
+                                                {% if nav.location %}
+                                                     <span class="location">
+                                                    {{ nav.location }}
+                                                    </span>
+                                                {% endif %}
+
+                                            <span class="nav-desc">
+                                                {{ nav.profile.description }}
+                                            </span>
+                                            <span class="sr-only">
+                                                {{ nav.description }}
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="box-footer"></div>
+                        </div>
+
+                </div>
+               {% include 'web/partial/side_bar.html' %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{##}
+{% block basic_script %}
+    <script id="coin_template" type="text/template">
+     <li id="<%=id%>">
+                                    <span class="coin-name">
+                                        <%=name_cn%>
+                                    </span>
+                                    <span class="coin-price fall">
+                                        <%=price_cny%>
+                                    </span>
+                                    <span class="coin-change fall">
+                                         <%=change_percent%>
+                                    </span>
+                                </li>
+    </script>
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

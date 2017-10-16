@@ -26,7 +26,6 @@ from quark.views import page_error, webpage_not_found
 handler404 = webpage_not_found
 handler500 = page_error
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
@@ -41,6 +40,8 @@ urlpatterns = [
     url(r'^feed/', include('feed.urls', namespace='feed')),
 
 ]
+
+
 
 urlpatterns += [
     url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),

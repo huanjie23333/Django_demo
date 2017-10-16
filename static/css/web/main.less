@@ -7,11 +7,13 @@
 @import "../csslib/jqcloud.less";
 
 
-body.static-body{
-  height:100%;
+html , body{
+  min-height :100vh;
 }
 
 body{
+  position:relative;
+  padding-bottom:@footer-height;
   .seo-only{
     display: none;
   }
@@ -241,9 +243,13 @@ body{
 
 
 #footer{
-  margin-top:0px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  margin-top:30px;
+  height:@footer-height;
   background-color:#fff;
-  height:60px;
+
   .logo{
       img{
             width: 140px;
@@ -251,10 +257,10 @@ body{
   }
 
   .footer-list{
-    margin-bottom:30px;
     .clearfix;
+    padding: 10px 0px;
     li{
-      float:left;
+      display: inline-block;
       height:40px;
       display:inline-block;
       margin-left:40px;

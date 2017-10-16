@@ -571,7 +571,7 @@ define('subapp/adapters/coinmarketcapAdapter',[
                 entry['change_class'] = this.get_change_class(entry);
                 entry['name_cn'] = this.get_cnname(entry);
                 entry['change_percent'] = this.get_change_percent(entry['change']);
-                entry['price_cny'] = Math.round(parseFloat(entry['price_cny'] * 10000))/10000.00;
+                entry['price_cny'] = Math.round(parseFloat(entry['price_cny'] * 100))/100.00;
                 return entry;
             }
         });
@@ -1475,12 +1475,25 @@ define('libs/scroller',['fastdom', 'jquery', 'libs/Class'], function (fastdom, $
 define('subapp/sidebar/scrollbox',['libs/scroller', 'jquery', 'underscore'],function(Scroller, $, _){
 
     var ScrollBoxApp = Scroller.extend({
+        get_target_height: function () {
+            if (!this.target_height) {
+                this.target_height = this.get_target().getBoundingClientRect().height;
+                console.log(this.target_height);
+            }
+        }, hide_target: function () {
+            $(this.get_target()).addClass('hidden');
+        },
         init:function(){
+            if (!this.get_target()){
+                return ;
+            }
             this._super();
             this.origin_width = this.get_box().getBoundingClientRect().width;
+            this.get_target_height();
             $(this.get_target()).css({
                                            width:this.origin_width+'px',
                                        });
+            this.hide_target();
         },
         get_footer: function(){
             return document.getElementById('footer');
@@ -1500,12 +1513,7 @@ define('subapp/sidebar/scrollbox',['libs/scroller', 'jquery', 'underscore'],func
         },
         _read: function(){
                     var box = this.get_box();
-
                     var rect = box.getBoundingClientRect();
-                    if (!this.target_height){
-                        this.target_height = this.get_target().getBoundingClientRect().height;
-                        console.log(this.target_height);
-                    }
                     this.top_distance = this.get_footer().getBoundingClientRect().top;
                     this.top = rect.top+rect.height;
                     this.touch_bottom = this.get_touch_bottom();
@@ -1514,7 +1522,7 @@ define('subapp/sidebar/scrollbox',['libs/scroller', 'jquery', 'underscore'],func
 
         _write:function(){
                if(this.top<0 && this.top_distance > (this.target_height + 20)){
-                    $(this.get_target()).addClass('static-box');
+                    $(this.get_target()).removeClass('hidden').addClass('static-box');
 
                }else{
                     $(this.get_target()).removeClass('static-box');

@@ -211,7 +211,8 @@
 .static-box{
    top: 0px;
    position: fixed;
-  opacity: 1;
+   opacity: 1;
+   diplay: block;
 }
 
 .box-body.tag-cloud{
@@ -219,5 +220,52 @@
   .tag-cloud-wrapper{
     height: 350px;
 
+  }
+}
+
+.category-tag-wrapper{
+    .tag-name{
+       font-weight: 600;
+       color: @common-text-color;
+       margin: 10px 0px;
+    }
+    .nav-list-item{
+       padding:6px 0px;
+        span{
+          margin: 0 1em 0  0 ;
+        }
+       .nav-name>a{
+         .common-link;
+
+       }
+       .nav-ename{
+
+       }
+       .nav-location{
+
+       }
+       .nav-desc{
+          color: @support-text-color;
+       }
+
+    }
+}
+
+.flink-container{
+  text-align:left;
+  .flink-wrapper{
+    margin: 30px 0px 10px 0px ;
+    .clearfix;
+    li{
+       display: inline-block;
+       margin-right:1em;
+       &.flink-head{
+         font-weight: 600;
+       }
+       a{
+          .common-link;
+
+       }
+    }
   }
 }
