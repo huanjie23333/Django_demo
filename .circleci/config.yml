@@ -44,7 +44,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python manage.py test
+            python manage.py test --settings='quark.settings.stage'
 
       - store_artifacts:
           path: test-reports
