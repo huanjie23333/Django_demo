@@ -4,6 +4,7 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
+@import "../csslib/auto-complete.css";
 html {
   -ms-text-size-adjust: 100%;
   /* 2 */
@@ -601,6 +602,9 @@ ul li {
 .category-tag-wrapper .nav-list-item .nav-name > a:focus {
   color: #ff552e;
   text-decoration: none;
+}
+.category-tag-wrapper .nav-list-item .nav-name > a.highlight {
+  color: #ff552e;
 }
 .category-tag-wrapper .nav-list-item .nav-desc {
   color: #aaa;
