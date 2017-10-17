@@ -603,6 +603,9 @@ ul li {
   color: #ff552e;
   text-decoration: none;
 }
+.category-tag-wrapper .nav-list-item .nav-name > a.highlight {
+  color: #ff552e;
+}
 .category-tag-wrapper .nav-list-item .nav-desc {
   color: #aaa;
 }

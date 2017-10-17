@@ -16,7 +16,9 @@
                                     {% for nav in navs %}
                                         <li class="nav-list-item">
                                             <span class="nav-name">
-                                                <a href="{{ nav.web_site }}" rel="nofollow" target="_blank" title="{{ nav.site_name }}" >
+                                                <a
+                                                    class="{% if nav.highlight %} highlight {% endif %}"
+                                                    href="{{ nav.web_site }}" rel="nofollow" target="_blank" title="{{ nav.site_name }}" >
                                                     {{ nav.main_name }}
                                                 </a>
                                             </span>
@@ -24,7 +26,9 @@
                                                 {% if nav.main_name == nav.ename %}
 
                                                 {% else %}
-                                                    <span class="nav-ename">
+                                                    <span
+                                                            class="nav-ename"
+                                                    >
                                                     {{  nav.ename }}
                                                     </span>
                                                 {% endif %}
