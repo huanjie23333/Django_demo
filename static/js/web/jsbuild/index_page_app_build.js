@@ -2372,41 +2372,26 @@ define('subapp/sidebar/tagcloud',['libs/Class','jquery', 'libs/jqcloud', 'unders
 });
 define('subapp/sidebar/clock',['libs/Class', 'jquery'], function (Class, $) {
 
-    function getBlockheight() {
+    var targetblock = 494784; // 2x fork block
+    var interval = 600; // ten minute blocks
+
+
+
+    function getBlockheight(callback) {
         var current_block = 0 ;
         $.ajax({
         url: 'https://blockexplorer.com/api/status?q=getBlockCount',
-            success: function (result) {
-                try {
-                    current_block = result.blockcount;
-                }
-                catch(e){
-
-                }
-            },
-            async: false
+            success: callback
         });
-        return current_block;
-
-        //return 470000 + 600; // testing
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("GET", "https://blockexplorer.com/api/status?q=getBlockCount", false);
-        // xhr.setRequestHeader('Content-Type', 'text/xml');
-        // xhr.send();
-        // response = JSON.parse(xhr.response);
-        // return response.blockcount;
     }
+
+
 
     function getSecondsRemaining(blockheight, targetblock, interval) {
         blocksremaining = targetblock - blockheight;
         secondsremaining = blocksremaining * interval * 1000;
         return secondsremaining
     }
-
-    var blockheight = getBlockheight();
-
-    var targetblock = 494784; // 2x fork block
-    var interval = 600; // ten minute blocks
 
 
     function getTimeRemaining(endtime) {
@@ -2424,7 +2409,7 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery'], function (Class, $) {
         };
     }
 
-    function initializeClock(classname, endtime) {
+    function renderClock(classname, endtime, blockheight) {
         // display block height;
 
         $('.current_block_count').each(function(index,ele){
@@ -2462,11 +2447,18 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery'], function (Class, $) {
         var timeinterval = setInterval(do_update, 1000);
     }
 
-    var deadline = new Date(Date.parse(new Date()) + getSecondsRemaining(blockheight, targetblock, interval));
 
+
+    function initClock(result){
+        var current_block = result.blockcount;
+        var deadline =   new Date(Date.parse(new Date()) + getSecondsRemaining(current_block, targetblock, interval));
+        renderClock('clockdiv', deadline, current_block);
+
+    }
 
     function Run() {
-        initializeClock('clockdiv', deadline);
+        getBlockheight(initClock)
+        // initializeClock('clockdiv', deadline);
     }
 
     return Run
