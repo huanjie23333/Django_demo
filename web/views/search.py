@@ -9,6 +9,7 @@ logger = logging.getLogger("django")
 
 
 class NavSearchView(SearchView):
+    template_name = 'search/search.html'
     pass
 
 

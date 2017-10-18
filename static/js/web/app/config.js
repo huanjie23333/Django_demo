@@ -20,7 +20,8 @@ requirejs.config({
         bootbox: 'libs/bootbox.min',
         Backbone: 'libs/backbone.min',
         snowFall: 'libs/jquery.snow',
-        jqueryeasing:'libs/jqueryeasing'
+        jqueryeasing:'libs/jqueryeasing',
+        auto_complete: 'libs/auto-complete'
     },
 
     shim: {
@@ -55,6 +56,10 @@ requirejs.config({
         'underscore':{
             exports: '_'
         },
+        'auto_complete':{
+            deps:['jquery'],
+            exports: 'auto_complete'
+        }
     }
 });
 

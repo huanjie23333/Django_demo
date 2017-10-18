@@ -1,5 +1,9 @@
-define(['libs/Class','subapp/header/header_price', 'subapp/adapters/HeaderCoinmarketcapAdapter'],
-    function(Class, HeaderPrice, HeaderCoinmarketAdapter){
+define(['libs/Class',
+        'subapp/header/header_price',
+        'subapp/adapters/HeaderCoinmarketcapAdapter',
+        'subapp/header/search'
+    ],
+    function(Class, HeaderPrice, HeaderCoinmarketAdapter,Search){
 
     var HeaderApp = Class.extend({
         init:function(option){
@@ -9,6 +13,7 @@ define(['libs/Class','subapp/header/header_price', 'subapp/adapters/HeaderCoinma
                 adapter : new HeaderCoinmarketAdapter()
             });
 
+            this.search = new Search();
 
         },
 
