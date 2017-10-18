@@ -2370,6 +2370,110 @@ define('subapp/sidebar/tagcloud',['libs/Class','jquery', 'libs/jqcloud', 'unders
     return TagCloud;
 
 });
+define('subapp/sidebar/clock',['libs/Class', 'jquery'], function (Class, $) {
+
+    function getBlockheight() {
+        var current_block = 0 ;
+        $.ajax({
+        url: 'https://blockexplorer.com/api/status?q=getBlockCount',
+            success: function (result) {
+                try {
+                    current_block = result.blockcount;
+                }
+                catch(e){
+
+                }
+            },
+            async: false
+        });
+        return current_block;
+
+        //return 470000 + 600; // testing
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("GET", "https://blockexplorer.com/api/status?q=getBlockCount", false);
+        // xhr.setRequestHeader('Content-Type', 'text/xml');
+        // xhr.send();
+        // response = JSON.parse(xhr.response);
+        // return response.blockcount;
+    }
+
+    function getSecondsRemaining(blockheight, targetblock, interval) {
+        blocksremaining = targetblock - blockheight;
+        secondsremaining = blocksremaining * interval * 1000;
+        return secondsremaining
+    }
+
+    var blockheight = getBlockheight();
+
+    var targetblock = 494784; // 2x fork block
+    var interval = 600; // ten minute blocks
+
+
+    function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClock(classname, endtime) {
+        // display block height;
+
+        $('.current_block_count').each(function(index,ele){
+            $(ele).html(blockheight);
+        });
+
+        function do_update(){
+            var clocks = document.getElementsByClassName(classname);
+            for (var i=0, len=clocks.length ; i<len; i++) {
+                updateClock(clocks[i]);
+            }
+        }
+
+
+        function updateClock(clock) {
+
+            var daysSpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+            var secondsSpan = clock.querySelector('.seconds');
+
+            var t = getTimeRemaining(endtime);
+
+            daysSpan.innerHTML = t.days;
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            if (t.total <= 0) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        do_update();
+        var timeinterval = setInterval(do_update, 1000);
+    }
+
+    var deadline = new Date(Date.parse(new Date()) + getSecondsRemaining(blockheight, targetblock, interval));
+
+
+    function Run() {
+        initializeClock('clockdiv', deadline);
+    }
+
+    return Run
+
+});
+
+
 define('subapp/sidebar/sidebar',['libs/Class',
     'jquery',
     //for news
@@ -2383,7 +2487,8 @@ define('subapp/sidebar/sidebar',['libs/Class',
     //for tag scroll
     'subapp/sidebar/scrollbox',
     // tag cloud
-    'subapp/sidebar/tagcloud'
+    'subapp/sidebar/tagcloud',
+    'subapp/sidebar/clock'
 ],
     function(Class,
              $,
@@ -2396,7 +2501,8 @@ define('subapp/sidebar/sidebar',['libs/Class',
 
              ScrollBox,
 
-             TagCloud
+             TagCloud,
+             Clock
 
 
     ){
@@ -2426,6 +2532,9 @@ define('subapp/sidebar/sidebar',['libs/Class',
 
             // for tagcloud
             new TagCloud();
+
+            // countdown for 2x fork
+            Clock();
         }
     });
     return SideBarApp;
