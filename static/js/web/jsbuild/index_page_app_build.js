@@ -2377,10 +2377,11 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery'], function (Class, $) {
 
 
 
+
     function getBlockheight(callback) {
         var current_block = 0 ;
         $.ajax({
-        url: 'https://blockexplorer.com/api/status?q=getBlockCount',
+        url: 'https://blockchain.info/q/getblockcount',
             success: callback
         });
     }
@@ -2450,7 +2451,7 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery'], function (Class, $) {
 
 
     function initClock(result){
-        var current_block = result.blockcount;
+        var current_block = parseInt(result);
         var deadline =   new Date(Date.parse(new Date()) + getSecondsRemaining(current_block, targetblock, interval));
         renderClock('clockdiv', deadline, current_block);
 

@@ -15,7 +15,7 @@ class CategoryTagDataMixin(object):
     def get_nav_for_cate_tag(self, category, tag_name):
         tag = get_object_or_404(Tag, name=tag_name)
         navs = TaggedItem.objects.filter(tag_id=tag.id, content_type_id=9).values_list('object_id', flat=True)
-        navs = Nav.objects.filter(id__in=navs, cate=category).order_by('-score')
+        navs = Nav.objects.filter(id__in=navs, cate=category, status=Nav.STATUS.published).order_by('-score')
         return navs
 
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
