@@ -19,7 +19,7 @@ NOSE_ARGS = [
 ]
 
 
-INTERNAL_IPS =['127.0.0.1','0.0.0.0','10.0.0.74','192.168.172.192']
+INTERNAL_IPS =['127.0.0.1','0.0.0.0','10.0.0.74','192.168.172.174']
 
 # DEBUG_TOOLBAR_PANELS = [
 #     'debug_toolbar.panels.versions.VersionsPanel',
