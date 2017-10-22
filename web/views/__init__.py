@@ -94,6 +94,9 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
 class AboutView(FlinkMixin, TemplateView):
     template_name = 'web/about.html'
 
+class JobView(FlinkMixin, TemplateView):
+    template_name = 'web/jobs.html'
+
 
 class SiteMapView(SideBarDataMixin, TemplateView):
     template_name = 'web/sitemap.html'

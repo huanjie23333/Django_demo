@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include , handler404, handler500
 from django.contrib import admin
 from web.views import IndexView, CategoryView,\
-                      AboutView, SiteMapView
+                      AboutView, SiteMapView, JobView
 
 from web.views.news import NewsListView
 
@@ -29,6 +29,7 @@ handler500 = page_error
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
+    url(r'^recruit\.htm$', JobView.as_view(), name='web_jobs'),
     url(r'^sitemap\.htm$', SiteMapView.as_view(), name='web_sitemap'),
     url(r'^news\.htm', NewsListView.as_view(), name='web_news'),
     # url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
