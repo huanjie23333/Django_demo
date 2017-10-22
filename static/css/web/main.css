@@ -1345,11 +1345,22 @@ body a:hover {
   min-height: 600px;
   max-width: 900px;
 }
+.static-content ol,
+.static-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+.static-content ol li.list-head,
+.static-content ul li.list-head {
+  font-weight: 600;
+  margin: 1.5rem 0 1rem 0;
+}
 .static-content h1,
 .static-content h2,
 .static-content h3 {
   margin: 30px auto ;
   text-align: left;
+  font-weight: 600;
 }
 .static-content a,
 .static-content a:hover {
