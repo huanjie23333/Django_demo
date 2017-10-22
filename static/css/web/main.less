@@ -6,6 +6,7 @@
 @import "../csslib/bsfix.less";
 @import "../csslib/jqcloud.less";
 @import "../csslib/auto-complete.css";
+@import "../csslib/2xcss.less";
 
 
 html , body{
@@ -307,9 +308,22 @@ body{
    text-align:left;
    min-height: 600px;
    max-width: 900px;
+   ol, ul{
+     list-style: none;
+     padding-left:0;
+     li{
+        &.list-head{
+           font-weight:600;
+          margin:1.5rem 0 1rem 0;
+        }
+     }
+
+
+   }
    h1,h2,h3 {
       margin: 30px auto ;
       text-align: left;
+     font-weight:600;
    }
    a, a:hover{
      color: @site-link-color;
@@ -455,7 +469,7 @@ body{
 }
 
 .test{
-  color:red;
+  color:blue;
 
 }
 

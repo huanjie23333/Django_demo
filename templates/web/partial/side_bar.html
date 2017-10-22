@@ -1,5 +1,11 @@
 <div class="col-sm-4 col-xs-12 news-wrapper" id="side_column">
     <div class="box hidden-xs">
+        <div class="box-header ">
+            比特币硬分叉倒计时
+        </div>
+        {% include 'web/partial/clock.html' %}
+    </div>
+    <div class="box hidden-xs">
         <div class="box-header">
             24h 快讯
         </div>
@@ -23,16 +29,16 @@
         </div>
     </div>
 
-{#    <div class="box">#}
-{#        <div class="box-header">热门标签-云</div>#}
-{#        <div class="box-body tag-cloud" >#}
-{#            <div class="tag-cloud-wrapper" id="tag_cloud">#}
-{##}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{##}
+    {#    <div class="box">#}
+    {#        <div class="box-header">热门标签-云</div>#}
+    {#        <div class="box-body tag-cloud" >#}
+    {#            <div class="tag-cloud-wrapper" id="tag_cloud">#}
+    {##}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {##}
+    {##}
     <div class="box " id="side_bar_bottom">
         <div class="box-header">行情报价</div>
         <div class="box-body">
@@ -118,10 +124,10 @@
                                     <span class="coin-name">
                                         <%=name_cn%>
                                     </span>
-                                    <span class="coin-price fall">
+        <span class="coin-price fall">
                                         <%=price_cny%>
                                     </span>
-                                    <span class="coin-change fall">
+        <span class="coin-change fall">
                                          <%=change_percent%>
                                     </span>
     </li>

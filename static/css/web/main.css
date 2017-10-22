@@ -1017,6 +1017,42 @@ ul li {
 .jqcloud-word a:hover {
   color: #0cf;
 }
+.clockdiv {
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 16px;
+  padding: 20px 0px;
+}
+.clockdiv > div {
+  margin-right: 5px;
+  padding: 10px;
+  border-radius: 2px;
+  background: #00ade7;
+  display: inline-block;
+}
+.clockdiv div > span {
+  padding: 10px;
+  font-size: 26px;
+  border-radius: 0px;
+  font-weight: 600;
+  color: #fff;
+}
+.smalltext {
+  padding-top: 5px;
+  font-size: 16px;
+}
+.count-down-info {
+  padding-left: 20px;
+}
+.count-down-info .info {
+  color: #aaa;
+}
+.count-down-info .info b {
+  color: #434446;
+}
 html,
 body {
   min-height: 100vh;
@@ -1309,11 +1345,22 @@ body a:hover {
   min-height: 600px;
   max-width: 900px;
 }
+.static-content ol,
+.static-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+.static-content ol li.list-head,
+.static-content ul li.list-head {
+  font-weight: 600;
+  margin: 1.5rem 0 1rem 0;
+}
 .static-content h1,
 .static-content h2,
 .static-content h3 {
   margin: 30px auto ;
   text-align: left;
+  font-weight: 600;
 }
 .static-content a,
 .static-content a:hover {
@@ -1433,6 +1480,17 @@ body a:hover {
   #grid[data-columns]::before {
     content: '3 .column.size-1of3';
   }
+  .clockdiv div {
+    padding: 8px;
+  }
+  .clockdiv div .smalltext {
+    padding: 0px;
+  }
+  .clockdiv div > span {
+    padding: 5px;
+    font-size: 22px;
+    border-radius: 0px;
+  }
 }
 @media (max-width: 768px) {
   #grid[data-columns]::before {
@@ -1522,5 +1580,5 @@ body a:hover {
   text-decoration: none;
 }
 .test {
-  color: red;
+  color: blue;
 }

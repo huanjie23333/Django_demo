@@ -5,24 +5,33 @@
     <section id="content">
         <div class="container">
             <div class="row">
-               <div class="hidden-sm hidden-md hidden-lg col-xs-12 news-wrapper ">
-                   <div class="box">
-                       <div class="box-header">
-                          24h 快讯
-                       </div>
-                       <div class="box-body">
-                           <div class="news-list timeline small-line" id="news_list">
-                                               {% include 'web/partial/side_bar_news.html' %}
-                           </div>
-                       </div>
-                       <div class="box-footer">
+                <div class="hidden-sm hidden-md hidden-lg col-xs-12 news-wrapper ">
+                    {#               xs     clock    #}
+                    <div class="box ">
+                        <div class="box-header ">
+                            比特币硬分叉倒计时
+                        </div>
+                        {% include 'web/partial/clock.html' %}
+                    </div>
+
+                    {#               xs     news #}
+                    <div class="box">
+                        <div class="box-header">
+                            24h 快讯
+                        </div>
+                        <div class="box-body">
+                            <div class="news-list timeline small-line" id="news_list">
+                                {% include 'web/partial/side_bar_news.html' %}
+                            </div>
+                        </div>
+                        <div class="box-footer">
                             <div class="middle-wrapper">
                                 <a class="btn white-btn" href="{% url 'web_news' %}">
                                     查看更多
                                 </a>
                             </div>
-                       </div>
-                   </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-sm-8 col-xs-12" id="main_column">
@@ -31,34 +40,34 @@
                         <div class="box-body">
                             <ul class="site-list">
                                 {% for site in recommend %}
-                                   {% with  cate_cname='热门推荐' %}
-                                    {% include 'web/partial/site_list_item.html' %}
-                                   {% endwith %}
+                                    {% with  cate_cname='热门推荐' %}
+                                        {% include 'web/partial/site_list_item.html' %}
+                                    {% endwith %}
                                 {% endfor %}
                             </ul>
                         </div>
                         <div class="box-footer"></div>
                     </div>
-                   {% for cate in categories %}
+                    {% for cate in categories %}
                         <div class="box">
-                                <div class="box-header">
-                                  <a href="{% url 'category_page' cate.category_ename %}">
-                                      {{ cate.category_name }}
-                                  </a>
-                                </div>
-                                <div class="box-body">
+                            <div class="box-header">
+                                <a href="{% url 'category_page' cate.category_ename %}">
+                                    {{ cate.category_name }}
+                                </a>
+                            </div>
+                            <div class="box-body">
 
-                                    {% for tag_list in cate.cate_tags %}
-                                        {% with cate_ename=cate.category_ename cate_cname=cate.category_name %}
+                                {% for tag_list in cate.cate_tags %}
+                                    {% with cate_ename=cate.category_ename cate_cname=cate.category_name %}
                                         <ul class="site-list">
                                             {% include 'web/partial/tag_list.html' %}
                                         </ul>
-                                        {% endwith %}
-                                    {% endfor %}
-                                </div>
-                                <div class="box-footer"></div>
+                                    {% endwith %}
+                                {% endfor %}
+                            </div>
+                            <div class="box-footer"></div>
                         </div>
-                   {% endfor %}
+                    {% endfor %}
 
                 </div>
                 {% include 'web/partial/side_bar.html' %}
@@ -66,16 +75,16 @@
         </div>
     </section>
     <a class="gotop-wrapper">
-{#     <div class="action-wrapper">#}
-{#         <span class="btn-top" id="top_link">#}
-{#            <i class="fa fa-rss"></i>#}
-{#        </span>#}
-{#     </div>#}
-     <div class="action-wrapper">
+        {#     <div class="action-wrapper">#}
+        {#         <span class="btn-top" id="top_link">#}
+        {#            <i class="fa fa-rss"></i>#}
+        {#        </span>#}
+        {#     </div>#}
+        <div class="action-wrapper">
         <span class="btn-top" id="top_link">
             <i class="fa fa-angle-up"></i>
         </span>
-     </div>
+        </div>
     </a>
 {% endblock %}
 {% block basic_script %}
