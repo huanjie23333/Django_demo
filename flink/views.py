@@ -1,5 +1,6 @@
 from flink.models import Flink
 
+
 class FlinkMixin(object):
     def get_flinks(self):
         return Flink.objects.all()
