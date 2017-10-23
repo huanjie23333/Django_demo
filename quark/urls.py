@@ -39,6 +39,7 @@ urlpatterns = [
 
     url(r'^search/', include('web.urls.search', namespace='search')),
     url(r'^feed/', include('feed.urls', namespace='feed')),
+    url(r'^tools/', include('webtools.urls', namespace='tools')),
 
 ]
 

@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+{% block meta %}
+        {% include "web/partial/news_list_meta.html" %}
+{% endblock %}
+{% block title %}
+    常用工具 - 区块链导航
+{% endblock %}
+
+ {% block seo_title %}
+    常用工具 - 区块链导航
+ {% endblock %}
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="seo-only">
+
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+<!-- TradingView Widget BEGIN -->
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script type="text/javascript">
+new TradingView.widget({
+  "autosize": true,
+  "symbol": "OKCOIN:BTCCNY",
+  "interval": "D",
+  "timezone": "Asia/Shanghai",
+  "theme": "Dark",
+  "style": "3",
+  "locale": "zh_CN",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "hideideas": true
+});
+</script>
+<!-- TradingView Widget END -->
+
+                        </div>
+                    </div>
+                </div>
+                {% include 'web/partial/side_bar.html' %}
+            </div>
+        </div>
+    </section>
+
+     <a class="gotop-wrapper">
+        <span class="btn-top" id="top_link">
+            <i class="fa fa-angle-up"></i>
+        </span>
+    </a>
+
+{% endblock %}
+{##}
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

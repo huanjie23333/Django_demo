@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'nav',
     'feed',
     'flink',
+    'webtools',
 ]
 
 MIDDLEWARE = [
