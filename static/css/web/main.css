@@ -900,12 +900,14 @@ ul li {
 .navbar .search-container .search-icon {
   padding-right: 10px;
   padding-left: 10px;
+  color: #2C2F39;
 }
 .navbar .search-container .nav-search {
   background-color: gray;
   border: 0;
   width: 110px;
   margin: 3px 0 0 0 !important;
+  color: #fff;
 }
 .navbar .search-container .nav-search:focus,
 .navbar .search-container .nav-search:hover,
@@ -917,7 +919,7 @@ ul li {
   display: inline-block;
   border: 0;
   background-color: transparent;
-  color: #434446;
+  color: #2C2F39;
   font-family: 'Rajdhani', sans-serif;
   margin: 0;
   padding: 2px 9px 2px 2px;

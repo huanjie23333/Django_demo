@@ -110,3 +110,16 @@ class Project(CachingMixin, models.Model):
         return super().save(**kwargs)
 
 
+
+class SubNav(models.Model):
+    '''
+        User submitted Nav site
+    '''
+
+    cname = models.CharField(max_length=64, null=False, blank=False)
+    ename = models.CharField(max_length=64, null=True, blank=True)
+    description = models.TextField(max_length=256, default='', blank=False, null=False)
+    location = models.CharField(max_length=32, null=True, blank=True)
+    web_site = models.URLField(blank=True, null=True)
+    email = models.EmailField(blank=False, null=False)
+    handeled = models.BooleanField(default=False)
