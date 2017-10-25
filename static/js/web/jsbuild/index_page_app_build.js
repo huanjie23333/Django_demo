@@ -571,7 +571,7 @@ define('subapp/adapters/coinmarketcapAdapter',[
                 entry['change_class'] = this.get_change_class(entry);
                 entry['name_cn'] = this.get_cnname(entry);
                 entry['change_percent'] = this.get_change_percent(entry['change']);
-                entry['price_cny'] = Math.round(parseFloat(entry['price_cny'] * 100))/100.00;
+                entry['price_cny'] = '¥'+(Math.round(parseFloat(entry['price_cny'] * 100))/100.00);
                 return entry;
             }
         });
