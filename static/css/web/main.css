@@ -907,7 +907,7 @@ ul li {
   border: 0;
   width: 110px;
   margin: 3px 0 0 0 !important;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
 }
 .navbar .search-container .nav-search:focus,
 .navbar .search-container .nav-search:hover,

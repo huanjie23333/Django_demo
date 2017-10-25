@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include , handler404, handler500
 from django.contrib import admin
 from web.views import IndexView, CategoryView,\
-                      AboutView, SiteMapView, JobView
+                      AboutView, SiteMapView, JobView,\
+                      SubNavCreateView
 
 from web.views.news import NewsListView
 
@@ -31,9 +32,11 @@ urlpatterns = [
     url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
     url(r'^recruit\.htm$', JobView.as_view(), name='web_jobs'),
     url(r'^sitemap\.htm$', SiteMapView.as_view(), name='web_sitemap'),
+    url(r'^submit\.htm$', SubNavCreateView.as_view(), name='web_submit'),
     url(r'^news\.htm', NewsListView.as_view(), name='web_news'),
     # url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
+
     url(r'^news/', include('web.urls.news', namespace='news')),
     url(r'^dapp/', include('web.urls.dapp', namespace='dapp')),
 
