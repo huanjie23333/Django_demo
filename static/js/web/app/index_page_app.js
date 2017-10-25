@@ -8,8 +8,8 @@ require([
         'subapp/newsline',
         'subapp/gotop',
         'libs/salvattore',
-        'subapp/tools/bookmark'
-
+        'subapp/tools/bookmark',
+        'bootstrap'
     ],
     function (polyfill,
               $,
@@ -23,6 +23,8 @@ require([
               BookMark
               ) {
 
+        jQuery = $;
+        // require('bootstrap');
         window.app = {};
         var all_price_feed = window.app.price_feed = new Feed({
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=40&convert=CNY',

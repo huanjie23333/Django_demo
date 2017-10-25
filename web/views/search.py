@@ -4,11 +4,13 @@ from django.http import JsonResponse
 from haystack.generic_views import SearchView, FacetedSearchView
 from haystack.query import  SearchQuerySet
 from nav.models import Nav
+from web.views.news import SideBarDataMixin
 
 logger = logging.getLogger("django")
 
 
-class NavSearchView(SearchView):
+
+class NavSearchView(SideBarDataMixin, SearchView):
     template_name = 'search/search.html'
     pass
 

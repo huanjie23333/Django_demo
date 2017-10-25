@@ -108,3 +108,5 @@ class Project(CachingMixin, models.Model):
         if self.origin_link and self.origin_link.startswith('http') and self.identified_code is None:
             self.identified_code = md5(self.origin_link.encode('utf-8')).hexdigest()
         return super().save(**kwargs)
+
+
