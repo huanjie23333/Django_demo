@@ -626,17 +626,17 @@ ul li {
   margin-right: 1em;
 }
 .flink-container .flink-wrapper li.flink-head {
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
 }
 .flink-container .flink-wrapper li a {
-  color: #0E8ED8;
-  line-height: 2em;
+  color: rgba(255, 255, 255, 0.3);
 }
 .flink-container .flink-wrapper li a:hover,
 .flink-container .flink-wrapper li a:active,
 .flink-container .flink-wrapper li a:focus {
-  color: #ff552e;
+  color: #ffffff;
   text-decoration: none;
+  background-color: #2C2F39;
 }
 .silent_input:focus,
 .silent_input:hover,
@@ -888,6 +888,10 @@ ul li {
 .navbar .navbar-brand img {
   height: 40px;
   opacity: 0.4;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
 }
 .navbar .navbar-brand img:hover {
   opacity: 1;
@@ -896,6 +900,9 @@ ul li {
   background-color: gray;
   height: 35px;
   line-height: 35px;
+}
+.navbar .search-container input::placeholder {
+  color: #2C2F39;
 }
 .navbar .search-container .search-icon {
   padding-right: 10px;
@@ -907,7 +914,7 @@ ul li {
   border: 0;
   width: 110px;
   margin: 3px 0 0 0 !important;
-  color: rgba(255, 255, 255, 0.8);
+  color: #2C2F39;
 }
 .navbar .search-container .nav-search:focus,
 .navbar .search-container .nav-search:hover,
@@ -1211,6 +1218,7 @@ body a:hover {
 #price_row .price-list {
   margin: 0;
   padding: 0;
+  padding-bottom: 10px;
 }
 #price_row .price-list:after {
   content: " ";
@@ -1222,6 +1230,7 @@ body a:hover {
   float: left;
   display: inline-block;
   text-align: center;
+  line-height: 2em;
 }
 #price_row .price-list > li .quote {
   vertical-align: middle;
@@ -1234,7 +1243,6 @@ body a:hover {
 }
 #price_row .price-list > li .quote .quote-price {
   font-size: 14px;
-  font-weight: 600;
   font-family: DIN, Microsoft YaHei, Helvetica Neue, Helvetica, sans-serif;
   margin-top: -4px;
 }
@@ -1439,10 +1447,10 @@ body a:hover {
   background-color: #2C2F39;
 }
 #footer .logo img {
-  width: 140px;
+  height: 40px;
 }
 #footer .footer-list {
-  padding: 10px 0px;
+  padding: 10px 0px 20px;
 }
 #footer .footer-list:after {
   content: " ";

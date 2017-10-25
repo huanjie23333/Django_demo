@@ -19,6 +19,7 @@
      img{
        height:40px;
        opacity: 0.4;
+       .transition(all 1s);
        &:hover{
          opacity: 1;
        }
@@ -29,6 +30,12 @@
      background-color: @search-background;
      height:35px;
      line-height:35px;
+
+     input::placeholder
+     {
+        color: @nav_background;
+     }
+
      .search-icon{
         padding-right:10px;
         padding-left:10px;
@@ -40,8 +47,7 @@
         width: 110px;
         margin: 3px 0 0 0 !important;
         .silent_input;
-        color: rgba(255,255,255,0.8);
-
+        color: @nav_background;
       }
       .search-button{
         display: inline-block;
