@@ -9,7 +9,7 @@ requirejs.config({
         component:'./component',
         subapp: './subapp',
         jquery: 'libs/jquery-1.11.1.min',
-        bootstrap: 'libs/bootstrap.min',
+        bootstrap: 'libs/bootstrap',
         fastdom: 'libs/fastdom.ant',
         csrf:'libs/csrf',
         underscore:'libs/underscore.ant',

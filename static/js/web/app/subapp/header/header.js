@@ -3,7 +3,12 @@ define(['libs/Class',
         'subapp/adapters/HeaderCoinmarketcapAdapter',
         'subapp/header/search'
     ],
-    function(Class, HeaderPrice, HeaderCoinmarketAdapter,Search){
+    function(
+        Class,
+        HeaderPrice,
+        HeaderCoinmarketAdapter,
+        Search
+    ){
 
     var HeaderApp = Class.extend({
         init:function(option){

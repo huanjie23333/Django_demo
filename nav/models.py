@@ -108,3 +108,18 @@ class Project(CachingMixin, models.Model):
         if self.origin_link and self.origin_link.startswith('http') and self.identified_code is None:
             self.identified_code = md5(self.origin_link.encode('utf-8')).hexdigest()
         return super().save(**kwargs)
+
+
+
+class SubNav(models.Model):
+    '''
+        User submitted Nav site
+    '''
+
+    cname = models.CharField(max_length=64, null=False, blank=False, verbose_name= _('中文名称'), unique=True)
+    ename = models.CharField(max_length=64, null=True, blank=True, verbose_name= _('英文名称，非必填'))
+    description = models.TextField(max_length=256, default='', blank=False, null=False, verbose_name= _('网站描述，一句话'))
+    web_site = models.URLField(blank=False, null=False, verbose_name= _('网址'))
+    email = models.EmailField(blank=True, null=True, verbose_name= _('联系邮箱'))
+    handeled = models.BooleanField(default=False)
+
