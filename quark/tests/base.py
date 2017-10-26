@@ -12,7 +12,6 @@ from django.db import models
 f = Faker()
 
 
-
 class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
