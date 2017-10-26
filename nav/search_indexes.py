@@ -1,5 +1,5 @@
 from haystack import indexes
-from nav.models import Nav
+from nav.models import Nav, Profile
 
 
 class NavIndex(indexes.Indexable, indexes.SearchIndex):
@@ -35,7 +35,10 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
         return 'updated_at'
 
     def prepare_descriptioncn(self, obj):
-        return obj.profile.description
+        try:
+            return obj.profile.description
+        except Profile.DoesNotExist as e:
+            return obj.description
 
 
 
