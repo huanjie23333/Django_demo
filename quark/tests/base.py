@@ -40,7 +40,7 @@ class NavFactory(DjangoModelFactory):
         model = Nav
         django_get_or_create = ('cname',)
     cname = f.name()
-    profile = factory.RelatedFactory(ProfileFactory, 'site', description='lfewfew')
+    profile = factory.RelatedFactory(ProfileFactory,'site' ,description='lfewfew')
 
 
 class WithDataTestCase(TestCase):
