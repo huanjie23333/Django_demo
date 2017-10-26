@@ -14,7 +14,6 @@
                         {% include 'web/partial/clock.html' %}
                     </div>
 
-                    {#               xs     news #}
                     <div class="box">
                         <div class="box-header">
                             24h 快讯
@@ -87,10 +86,9 @@
         </div>
     </a>
 {% endblock %}
+
 {% block basic_script %}
-
     {% compress js %}
-
         <script src="{% static 'js/web/app/require.js' %}"></script>
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
     {% endcompress %}
