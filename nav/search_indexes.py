@@ -14,8 +14,8 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     status = indexes.FacetCharField(model_attr='status')
     alias = indexes.CharField(model_attr='alias', default='')
     cate_id = indexes.FacetIntegerField(model_attr='cate_id')
-    description = indexes.CharField(model_attr='description', default='')
-    descriptioncn = indexes.CharField()
+    description = indexes.CharField(model_attr='get_main_description', default='')
+    # descriptioncn = indexes.CharField()
 
     created_at = indexes.DateTimeField(model_attr='created_at')
     updated_at = indexes.DateTimeField(model_attr='updated_at')
@@ -33,12 +33,12 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
 
     def get_updated_field(self):
         return 'updated_at'
-
-    def prepare_descriptioncn(self, obj):
-        try:
-            return obj.profile.description
-        except Profile.DoesNotExist as e:
-            return obj.description
+    #
+    # def prepare_descriptioncn(self, obj):
+    #     try:
+    #         return obj.profile.description
+    #     except Profile.DoesNotExist as e:
+    #         return obj.description
 
 
 

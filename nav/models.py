@@ -56,10 +56,20 @@ class Nav(CachingMixin, models.Model):
     def main_name(self):
         return self.cname or self.ename
 
+    def get_main_description(self):
+        try:
+            desc = self.profile.description
+        except Profile.DoesNotExist as e:
+            desc = self.description
+        return desc
+
 
 class Profile(models.Model):
     site = models.OneToOneField(Nav, related_name="profile")
     description = models.TextField(_("中文描述"), null=True, blank=True)
+
+    def __str__(self):
+        return self.site.main_name
 
 
 class Project(CachingMixin, models.Model):
