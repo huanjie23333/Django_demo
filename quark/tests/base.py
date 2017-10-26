@@ -29,6 +29,7 @@ class CategoryFactory(DjangoModelFactory):
 
     cname = f.name()
 
+
 class ProfileFactory(DjangoModelFactory):
     class Meta:
         model = Profile
