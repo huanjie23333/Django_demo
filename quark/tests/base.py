@@ -12,7 +12,6 @@ from django.db import models
 f = Faker()
 
 
-
 class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
@@ -29,6 +28,7 @@ class CategoryFactory(DjangoModelFactory):
 
     cname = f.name()
 
+
 class ProfileFactory(DjangoModelFactory):
     class Meta:
         model = Profile
@@ -39,7 +39,7 @@ class NavFactory(DjangoModelFactory):
         model = Nav
         django_get_or_create = ('cname',)
     cname = f.name()
-    profile = factory.RelatedFactory(ProfileFactory, 'site', description='lfewfew')
+    profile = factory.RelatedFactory(ProfileFactory,'site' ,description='lfewfew')
 
 
 class WithDataTestCase(TestCase):

@@ -283,9 +283,17 @@
 
 .nav-common-link{
    color: rgba(255,255,255,0.3);
+   .transition(all 1s);
    &:hover, &:active, &:focus{
        color: rgba(255,255,255,1);
        text-decoration: none;
        background-color: @nav_background;
     }
+}
+
+.search-header{
+   color: @common-text-color!important;
+   .query-word{
+      color: @site-link-highlight-color!important;
+   }
 }
