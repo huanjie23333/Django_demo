@@ -2,13 +2,15 @@
 
 from django.test import TestCase
 from factory.django import DjangoModelFactory
-from nav.models import Nav, Category
+from nav.models import Nav, Category, Profile
 from faker import Faker
-
+import factory
 # from django_nose import FastFixtureTestCase
 from django.contrib.auth.models import User
+from django.db import models
 
 f = Faker()
+
 
 
 class UserFactory(DjangoModelFactory):
@@ -27,16 +29,21 @@ class CategoryFactory(DjangoModelFactory):
 
     cname = f.name()
 
+class ProfileFactory(DjangoModelFactory):
+    class Meta:
+        model = Profile
+
 
 class NavFactory(DjangoModelFactory):
     class Meta:
         model = Nav
         django_get_or_create = ('cname',)
-
     cname = f.name()
+    profile = factory.RelatedFactory(ProfileFactory, 'site', description='lfewfew')
 
 
 class WithDataTestCase(TestCase):
+
     def create_user(self):
         self.username = "test_admin"
         self.password = User.objects.make_random_password()
@@ -58,9 +65,11 @@ class WithDataTestCase(TestCase):
 
         # self.nav = Nav.objects.create(cname='foo', ename='bar', location='china', cate=self.cate1)
         self.nav = NavFactory(cname='foo', ename='bar', location='china', cate=self.cate1)
+        self.nav.save()
 
         # self.nav2 = Nav.objects.create(cname='nav2', ename='enav2', location='china', cate=self.cate2)
         self.nav2 = NavFactory(cname='nav2', ename='enav2', location='china', cate=self.cate2)
+        self.nav2.save()
 
         self.nav.tags.add('tag1', 'tag2')
         self.nav2.tags.add('tag3', 'tag4')

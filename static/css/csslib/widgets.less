@@ -263,12 +263,29 @@
        display: inline-block;
        margin-right:1em;
        &.flink-head{
-         font-weight: 600;
+          color:rgba(255,255,255,0.4)
        }
        a{
-          .common-link;
+          .nav-common-link;
+
 
        }
     }
   }
+}
+
+.silent_input{
+    &:focus, &:hover, &:active{
+      outline: 0;
+      outline-offset: 0;
+    }
+}
+
+.nav-common-link{
+   color: rgba(255,255,255,0.3);
+   &:hover, &:active, &:focus{
+       color: rgba(255,255,255,1);
+       text-decoration: none;
+       background-color: @nav_background;
+    }
 }

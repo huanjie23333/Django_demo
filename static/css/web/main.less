@@ -11,6 +11,7 @@
 
 html , body{
   min-height :100vh;
+  background-color: @nav_background;
 }
 
 body{
@@ -34,37 +35,56 @@ body{
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
-@header_height: 110px;
-@header_bk:#fff;
 #header{
    background: @header_bk;
+   margin-bottom: 20px;
    .main-logo{
          height: @header_height;
      line-height: @header_height;
      img{
        width:200px;
      }
-
    }
-   .price-list{
+   .main-list{
+     .clearfix;
+     margin:0px;
+     padding:0px;
+      li{
+        float: left;
+        display: inline-block;
+        padding-left: 20px;
+        a{
+          .nav-common-link;
+          line-height: @header_height;
+          font-size:16px;
+        }
+      }
+   }
+
+}
+
+#price_row{
+  .price-list{
+       .clearfix;
+       margin:0;
+       padding:0;
+       padding-bottom:10px;
+
        &>li{
           float: left;
-          width:33%;
-          height:@header_height;
+          display:inline-block;
           text-align: center;
+          line-height:2em;
           .quote{
              vertical-align: middle;
-             height:30px;
              text-align: center;
-             padding-top: 35px;
              padding-left:30px;
              .quote-head{
                 font-size:@font-size-normal;
                 font-weight: 700;
              }
              .quote-price{
-                font-size:28px;
-                font-weight:600;
+                font-size:@font-size-normal;
                 font-family:DIN,Microsoft YaHei,Helvetica Neue,Helvetica,sans-serif;
                 margin-top:-4px;
                 .price{
@@ -77,7 +97,7 @@ body{
                   .pricing-ele;
                 }
                 i::before{
-                  font-size:24px;
+                  font-size:@font-size-normal;
                 }
              }
           }
@@ -85,7 +105,6 @@ body{
        }
    }
 }
-
 .news-detail-wrapper{
     padding: 10px 20px;
     .news-title{
@@ -122,8 +141,12 @@ body{
       color: @box-header-font-color;
       font-weight: 700;
       overflow: hidden;
+
       a, a:hover{
          color: @box-header-font-color;
+      }
+      span{
+         color:@site-link-color;
       }
     }
 
@@ -250,17 +273,18 @@ body{
   width: 100%;
   margin-top:30px;
   height:@footer-height;
-  background-color:#fff;
+  background-color:@nav_background;
+
 
   .logo{
       img{
-            width: 140px;
+            height:40px;
       }
   }
 
   .footer-list{
     .clearfix;
-    padding: 10px 0px;
+    padding: 10px 0px 20px;
     li{
       display: inline-block;
       height:40px;
@@ -269,9 +293,8 @@ body{
       line-height: 40px;
       padding-top:15px;
       padding-bottom:10px;
-      a, a:hover{
-         color: @link-color;
-         text-decoration: none;
+      a{
+        .nav-common-link;
       }
     }
     li.logo{

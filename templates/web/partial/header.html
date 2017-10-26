@@ -1,42 +1,53 @@
 {% load static %}
 <section id="header">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-2 col-xs-12">
-               <span class="main-logo">
-                   <a href="{% url 'web_index' %}">
-                       <img src="{% static 'images/chain-dh-header.png' %}">
-                   </a>
-               </span>
-            </div>
-            <div class="col-sm-9 col-xs-12">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <img src="{% static 'images/chaindh-logo-2x2.png' %}" >
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'web_submit' %}">提交网址</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right" action="{% url 'search:nav' %}" method="get">
+
+                        <div class="form-group search-container">
+                            <i class="fa fa-search search-icon"></i>
+                            <input type="text" class="nav-search" autocomplete="off"  placeholder="Search" name="q">
+                            <button type="submit" class="search-button">搜索</button>
+                        </div>
+
+                    </form>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+</section>
+<section id="price_row">
+    <div class="container">
+        <div class="row header-price-row">
+            <div class="col-12">
                 <ul class="price-list" id="header_price_list">
                 </ul>
-
             </div>
+        </div>
+        <script id="header_price_template" type="text/template">
+            <li>
+                <div class="quote" id="<%=element_id%>">
+                    <div class="quote-price">
+                        <%=title_text%>&nbsp;<%=price_cny%>
 
-{#        <div class="row">#}
-{#            <div class="col-sm-8 col-xs-12 col-sm-offset-2">#}
-{#                <div class="middle-wrapper">#}
-{#                    <form method="get" action="/search">#}
-{#                        <input type="text" id="search" name="q">#}
-{#                    </form>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-    </div>
-    </div>
-    <script id="header_price_template" type="text/template">
-        <li>
-            <div class="quote" id="<%=element_id%>">
-                <div class="quote-head">
-                    <%=title_text%>
+                        <span class="price ">&nbsp;<%=change_percent%></span>
+                    </div>
                 </div>
-                <div class="quote-price">
-                    <span class="price "><%=price_cny%></span>
-                    <i class='fa fa-arrow-up'></i>
-                </div>
-            </div>
-        </li>
-    </script>
+            </li>
+        </script>
+    </div>
 </section>

@@ -1,13 +1,14 @@
 # -*- coding: UTF-8  -*-
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
+from django.urls import reverse, reverse_lazy
 from taggit.models import TaggedItem, Tag
 
-from django.views.generic import TemplateView, View, DetailView, ListView
+from django.views.generic import TemplateView, View, DetailView, ListView, CreateView
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 
 from flink.views import FlinkMixin
-from nav.models import Nav, Category
+from nav.models import Nav, Category, SubNav
 from web.views.news import SideBarDataMixin
 
 
@@ -96,6 +97,13 @@ class AboutView(FlinkMixin, TemplateView):
 
 class JobView(FlinkMixin, TemplateView):
     template_name = 'web/jobs.html'
+
+
+class SubNavCreateView(CreateView):
+    template_name = 'web/submit.html'
+    model = SubNav
+    fields = ('cname', 'ename', 'description', 'web_site', 'email')
+    success_url = reverse_lazy('web_index')
 
 
 class SiteMapView(SideBarDataMixin, TemplateView):

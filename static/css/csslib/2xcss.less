@@ -2,7 +2,7 @@
 
 .clockdiv {
   font-family: sans-serif;
-  color: #fff;
+  color: @common-text-color;
   display: inline-block;
   font-weight: 100;
   text-align: center;
@@ -11,28 +11,29 @@
 }
 
 .clockdiv > div {
-  margin-right: 5px;
-  padding: 10px;
+  margin-right: 10px;
   border-radius: 2px;
-  background: #00ade7;
+  background: none;
   display: inline-block;
 }
 
 .clockdiv div > span {
-  padding: 10px;
   font-size: 26px;
   border-radius: 0px;
   font-weight: 600;
-  color: #fff;
+  color: @common-text-color;
+  &.smalltext {
+
+  padding:0 0 0 0;
+  font-size:14px;
+
+  }
 }
 
-.smalltext {
-  padding-top: 5px;
-  font-size: 16px;
-}
+
 
 .count-down-info {
-  padding-left: 20px;
+  margin-bottom:20px;
   .info {
     color: @support-text-color;
     b {
