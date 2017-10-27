@@ -26,7 +26,11 @@ class NavAutoCompleteView(generic.View):
     http_method_names = ['get']
 
     def get(self, request, *args, **kwargs):
+        if request.GET.get("q", "") == "":
+            return JsonResponse({'results': {}})
+
         sqs = SearchQuerySet().autocomplete(main_name_auto=request.GET.get("q", ""))[:10]
+
         suggestions = [result.main_name for result in sqs]
         res = {
             'results': suggestions

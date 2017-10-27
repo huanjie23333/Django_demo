@@ -1278,6 +1278,9 @@ body a:hover {
 #header {
   background: #2C2F39;
   margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 }
 #header .main-logo {
   height: 55px;
@@ -1316,6 +1319,9 @@ body a:hover {
   color: #ffffff;
   text-decoration: none;
   background-color: #2C2F39;
+}
+#search-row {
+  padding-top: 60px;
 }
 .price-row {
   width: 400px;

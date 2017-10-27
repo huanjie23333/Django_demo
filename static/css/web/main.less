@@ -8,6 +8,7 @@
 @import "../csslib/auto-complete.css";
 @import "../csslib/2xcss.less";
 
+
 html, body {
   min-height: 100vh;
   background-color: @nav_background;
@@ -37,6 +38,10 @@ body {
 #header {
   background: @header_bk;
   margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: @zindex-high;
+
   .main-logo {
     height: @header_height;
     line-height: @header_height;
@@ -62,6 +67,9 @@ body {
 
 }
 
+#search-row{
+  padding-top:60px;
+}
 .price-row {
   width: 400px;
   overflow: hidden;
