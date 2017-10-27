@@ -5,6 +5,8 @@
 //for xs screen , and all screen NOT sx
 
 @media (max-width:768px){
+
+
   #grid[data-columns]::before{
   content: '1 .column.size-1of1';
   }
@@ -27,28 +29,21 @@
          margin-top:12px;
        }
     }
-    .price-list{
-      border-top: 1px solid #ddd;
-      margin-top: 10px;
-    }
-    .price-list > li{
-        height: 65px;
-        .quote{
-          padding-top:10px;
-          padding-left:0px;
-          padding-right:0px;
-          .quote-price{
-             font-size:20px;
-             position: relative;
-             i::before{
-               font-size:0.9em;
-               position:relative;
-               top:2px;
-             }
-          }
-        }
-    }
   }
+
+  .main-search-container{
+      input{
+        width:auto;
+      }
+  }
+
+  #search-row{
+         .search-logo{
+            height:40px;
+            margin-bottom:20px;
+         }
+  }
+
   #footer{
      .flink-container{
        text-align:center;
@@ -63,6 +58,9 @@
          padding-bottom: 20px;
        }
 
+  }
+  .static-content{
+      padding:0 15px;
   }
 
 #grid[data-columns]::before{

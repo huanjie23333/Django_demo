@@ -4,54 +4,66 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">
-                        <img src="{% static 'images/chaindh-logo-simple.png' %}" >
-                        <span>区块链导航</span>
-
-                    </a>
-
-
+{#                 <ul class="nav navbar-nav navbar-left">#}
+{#                        <li><a href="{% url 'web_submit' %}">网站收录</a></li>#}
+{#                        <li><a href="">收藏本站</a></li>#}
+{#                 </ul>#}
+                <div class="navbar-header price-row">
+                    <span class="price-list" id="header_price_list">
+                     </span>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'web_submit' %}">提交网址</a></li>
+                        <li><a href="">收藏本站</a></li>
                     </ul>
-                    <form class="navbar-form navbar-right" action="{% url 'search:nav' %}" method="get">
-
-                        <div class="form-group search-container">
-                            <i class="fa fa-search search-icon"></i>
-                            <input type="text" class="nav-search" autocomplete="off"  placeholder="Search" name="q">
-                            <button type="submit" class="search-button">搜索</button>
-                        </div>
-
-                    </form>
+{#                    <form class="navbar-form navbar-right hidden-lg hidden-md hidden-sm" action="{% url 'search:nav' %}" method="get">#}
+{#                        <div class="form-group search-container">#}
+{#                            <i class="fa fa-search search-icon"></i>#}
+{#                            <input type="text" class="nav-search" autocomplete="off"  placeholder="Search" name="q">#}
+{#                            <button type="submit" class="search-button">搜索</button>#}
+{#                        </div>#}
+{#                    </form>#}
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
     </div>
 </section>
-<section id="price_row">
+<script id="header_price_template" type="text/template">
+  <span class="quote" id="<%=element_id%>"  data-symbol="<%=element_id%>">
+      <span class="quote-price">
+          <%=title_text%>&nbsp;
+          <span class="price pricing-ele"><%=price_cny%>&nbsp;<%=change_percent%></span>
+      </span>
+  </span>
+</script>
+
+<section id="search-row">
     <div class="container">
-        <div class="row header-price-row">
-            <div class="col-12">
-                <ul class="price-list" id="header_price_list">
-                </ul>
+        <div class="row middle-wrapper">
+            <div class="">
+
+                <div class="middle-wrapper col-xs-12 hidden-sm hidden-md hidden-lg">
+                     <a href="{% url 'web_index' %}">
+                     <img  src="{% static 'images/chain-dh-header.png' %}" class="search-logo">
+                     </a>
+                </div>
+                <form class="" action="{% url 'search:nav' %}" method="get">
+                     <div class="form-group main-search-container">
+
+                         <span  class="logo-wrapper">
+                            <a href="{% url 'web_index' %}">
+                                <img  src="{% static 'images/chain-dh-header.png' %}" class="search-logo hidden-xs">
+                            </a>
+                            <input type="text" class="nav-search" autocomplete="off"  placeholder="搜索" name="q">
+                            <button type="submit" class="search-button">搜索</button>
+                            <a  href="{% url 'web_submit' %}" type="button" class="search-button site-submit-button hidden-xs">网站收录</a>
+                         </span>
+                     </div>
+                </form>
             </div>
         </div>
-        <script id="header_price_template" type="text/template">
-            <li>
-                <div class="quote" id="<%=element_id%>">
-                    <div class="quote-price">
-                        <%=title_text%>&nbsp;<%=price_cny%>
-
-                        <span class="price ">&nbsp;<%=change_percent%></span>
-                    </div>
-                </div>
-            </li>
-        </script>
     </div>
 </section>
