@@ -1128,15 +1128,8 @@ define('subapp/adapters/HeaderCoinmarketcapAdapter',[
 
         return HeaderCoinmarketcapAdapter;
 });
-/*
-    JavaScript autoComplete v1.0.4
-    Copyright (c) 2014 Simon Steinberger / Pixabay
-    GitHub: https://github.com/Pixabay/JavaScript-autoComplete
-    License: http://www.opensource.org/licenses/mit-license.php
-*/
+define('libs/autocomplete',[],function(){
 
-var autoComplete = (function(){
-    // "use strict";
     function autoComplete(options){
         if (!document.querySelector) return;
 
@@ -1340,40 +1333,36 @@ var autoComplete = (function(){
         };
     }
     return autoComplete;
-})();
-
-(function(){
-    if (typeof define === 'function' && define.amd)
-        define('autoComplete', [],function () { return autoComplete; });
-    else if (typeof module !== 'undefined' && module.exports)
-        module.exports = autoComplete;
-    else
-        window.autoComplete = autoComplete;
-})();
-
-define("auto_complete", ["jquery"], (function (global) {
-    return function () {
-        var ret, fn;
-        return ret || global.auto_complete;
-    };
-}(this)));
-
-define('subapp/header/search',['libs/Class','jquery', 'underscore', 'auto_complete'],
-    function(Class, $, _, auto_complete){
-       var Search = Class.extend({
-           init: function(){
-               console.log('search');
-
-           },
-       });
-
-       return Search;
 
 });
+define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autocomplete'],
+    function (Class, $, _, AutoComplete) {
+        var Search = Class.extend({
+            init: function () {
+                new AutoComplete({
+                    selector: 'input[name="q"]',
+                    source: function (term, response) {
+                        try { xhr.abort(); } catch(e){}
+                        $.getJSON('/search/autocomplete/', {q: term},
+                            function (data) {
+                            response(data['results']);
+                        });
+                    }
+
+                });
+                console.log('search');
+
+            },
+        });
+
+        return Search;
+
+    });
 define('subapp/header/header',['libs/Class',
         'subapp/header/header_price',
         'subapp/adapters/HeaderCoinmarketcapAdapter',
-        'subapp/header/search'
+        'subapp/header/search',
+
     ],
     function(
         Class,

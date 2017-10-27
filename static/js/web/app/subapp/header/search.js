@@ -1,12 +1,23 @@
-define(['libs/Class','jquery', 'underscore', 'auto_complete'],
-    function(Class, $, _, auto_complete){
-       var Search = Class.extend({
-           init: function(){
-               console.log('search');
+define(['libs/Class', 'jquery', 'underscore','libs/autocomplete'],
+    function (Class, $, _, AutoComplete) {
+        var Search = Class.extend({
+            init: function () {
+                new AutoComplete({
+                    selector: 'input[name="q"]',
+                    source: function (term, response) {
+                        try { xhr.abort(); } catch(e){}
+                        $.getJSON('/search/autocomplete/', {q: term},
+                            function (data) {
+                            response(data['results']);
+                        });
+                    }
 
-           },
-       });
+                });
+                console.log('search');
 
-       return Search;
+            },
+        });
 
-});
+        return Search;
+
+    });
