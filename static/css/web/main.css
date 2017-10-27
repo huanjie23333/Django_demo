@@ -567,7 +567,7 @@ ul li {
   opacity: 0;
 }
 .static-box {
-  top: 0px;
+  top: 42px;
   position: fixed;
   opacity: 1;
   diplay: block;
