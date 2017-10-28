@@ -1,7 +1,8 @@
 define(['libs/Class',
         'subapp/header/header_price',
         'subapp/adapters/HeaderCoinmarketcapAdapter',
-        'subapp/header/search'
+        'subapp/header/search',
+
     ],
     function(
         Class,

@@ -12,6 +12,9 @@ define([
                 var entry = this._super(entry);
                 entry['element_id'] = 'header' + entry['symbol'];
                 entry['title_text'] = entry['symbol']+'/CNY';
+                if (entry['symbol'] == 'BCH'){
+                    entry['title_text'] = 'BCC/CNY';
+                }
                 return entry;
             }
         });

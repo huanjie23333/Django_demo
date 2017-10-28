@@ -21,7 +21,7 @@ requirejs.config({
         Backbone: 'libs/backbone.min',
         snowFall: 'libs/jquery.snow',
         jqueryeasing:'libs/jqueryeasing',
-        auto_complete: 'libs/auto-complete'
+        marquee:'libs/marquee'
     },
 
     shim: {
@@ -44,6 +44,9 @@ requirejs.config({
         'cookie':{
             deps:['jquery']
         },
+        'marquee':{
+            deps:['jquery']
+        },
         'csrf':{
             deps:['jquery']
         },
@@ -55,11 +58,8 @@ requirejs.config({
         },
         'underscore':{
             exports: '_'
-        },
-        'auto_complete':{
-            deps:['jquery'],
-            exports: 'auto_complete'
         }
+
     }
 });
 
