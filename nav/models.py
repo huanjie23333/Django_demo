@@ -22,6 +22,8 @@ class Category(CachingMixin, models.Model):
 
     class Meta:
         ordering = ['-order']
+        verbose_name_plural = "分类"
+        verbose_name = "分类"
 
 
 class Nav(CachingMixin, models.Model):
@@ -48,6 +50,8 @@ class Nav(CachingMixin, models.Model):
 
     class Meta:
         ordering = ['-score']
+        verbose_name_plural = "导航站点"
+        verbose_name = "导航站点"
 
     def __str__(self):
         return self.ename or self.cname
