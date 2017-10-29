@@ -43,6 +43,11 @@ class NewsDataMixin(object):
     def get_news_page_data_json(self, page=1, tag=None):
         cache_key = self.get_cache_key(page, tag)
         json_str = cache.get_or_set(cache_key, self._get_newslist_page(page, tag), timeout=60 * 30)
+        try:
+            data = json.loads(json_str)
+        except Exception as e:
+            return json.dumps({})
+
         self.add_key_set(cache_key)
         return json_str
 
@@ -158,7 +163,6 @@ class NewsTagListView(SideBarDataMixin, TemplateView):
         tag = context['current_tag'] = self.get_tag()
         context['news_list'] =  self.get_news_page_list(tag=tag)
         context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)
-
         return context
 
 

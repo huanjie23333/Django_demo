@@ -1387,7 +1387,7 @@ body a:hover {
   font-family: DIN, Microsoft YaHei, Helvetica Neue, Helvetica, sans-serif;
 }
 .price-row .price-list .quote .quote-price .price {
-  color: #434446;
+  color: rbga(255, 255, 255, 0.6);
 }
 .price-row .price-list .quote .quote-price .price.fall {
   color: #db3036;

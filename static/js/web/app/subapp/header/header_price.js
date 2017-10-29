@@ -72,13 +72,13 @@ function(Class,$,_){
        _render_item: function(entry){
            //console.log('entry');
            //console.log(entry);
-           var ele = $("[data-symbol="+ entry['element_id'] +"]");
+           var ele = $("[data-symbol="+ entry['symbol'] +"]");
            if(ele.length){
                this.set_price(ele, entry);
            }else{
-               var ele = this.template(entry);
-               ele = this.$el.append(ele);
-               this.set_price(ele, entry);
+               var ele = $(this.template(entry));
+               this.$el.append(ele);
+               this.set_price($(ele), entry);
            }
        },
 
