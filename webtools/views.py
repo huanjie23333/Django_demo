@@ -1,3 +1,5 @@
+import requests
+from django.core.cache import cache
 from django.shortcuts import render
 
 # Create your views here.
@@ -9,3 +11,64 @@ class ToolsListView(SideBarDataMixin, TemplateView):
     template_name = 'webtools/list.html'
 
     pass
+
+
+
+class ApiCacheMixin(object):
+    def get_api_data(self, url, timeout=5*60):
+        key = 'api:%s:cache'%url
+        res = cache.get_or_set(key, self._get_data(url), timeout=timeout)
+        return res
+
+
+    def _get_data(self, url):
+        try:
+            res = requests.get(url,timeout=10)
+            if res.status_code == 200:
+                return res.json()
+            else:
+                return None
+        except Exception as e:
+            return None
+
+    def format_url(self, fsym, tsym, limit=200, base_url=None):
+        base_url = base_url or self.BASE_URL
+
+
+class CyptoCompareDataMixin(ApiCacheMixin):
+    COIN_LIST_URL = 'https://min-api.cryptocompare.com/data/all/coinlist'
+    BASE_URL = 'https://min-api.cryptocompare.com/data/'
+
+
+
+    def get_coin_list(self):
+        return self.get_api_data(self.COIN_LIST_URL, 24*60*60)
+
+    def get_coin_hour_hist(self, coin_symbol, to_symbol="CNY"):
+        url = '%shistohour?fsym=%s&tsym=%s&limit=60'%(self.BASE_URL, coin_symbol, to_symbol)
+        return self.get_api_data(url, timeout=10*60*60)
+
+    def get_coin_min_hist(self, coin_symbol,to_symbol="CNY"):
+        url = '%shistominute?fsym=%s&tsym=%s&limit=60'%(self.BASE_URL, coin_symbol, to_symbol)
+        return self.get_api_data(url, timeout=30)
+
+    def get_coin_day_hist(self, coin_symbol, to_symbol="CNY"):
+        url = '%shistoday?fsym=%s&tsym=%s&limit=60'%(self.BASE_URL, coin_symbol, to_symbol)
+        return self.get_api_data(url, timeout=12*60*60)
+
+class CoinMarketCapDataMixin(ApiCacheMixin):
+    COIN_LIST_URL = 'https://api.coinmarketcap.com/v1/ticker/?convert=CNY'
+    def get_top_coin_list(self):
+        return self.get_api_data(self.COIN_LIST_URL, 60*60)
+
+
+class CoinHistoryView(CoinMarketCapDataMixin,TemplateView):
+    template_name = 'webtools/coin_history.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CoinHistoryView, self).get_context_data(**kwargs)
+        context.update({
+            'coins':self.get_top_coin_list()[:100]
+        })
+        return context
+

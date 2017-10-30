@@ -21,7 +21,8 @@ requirejs.config({
         Backbone: 'libs/backbone.min',
         snowFall: 'libs/jquery.snow',
         jqueryeasing:'libs/jqueryeasing',
-        marquee:'libs/marquee'
+        marquee:'libs/marquee',
+        datatable:'libs/datatable'
     },
 
     shim: {
@@ -54,11 +55,15 @@ requirejs.config({
             deps:['jquery']
         },
         'jquery':{
-            exports:'jQuery'
+            exports:'$'
         },
         'underscore':{
             exports: '_'
+        },
+        'datatable':{
+            deps:['jquery']
         }
+
 
     }
 });
