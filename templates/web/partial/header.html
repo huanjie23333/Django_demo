@@ -33,10 +33,12 @@
 </section>
 <script id="header_price_template" type="text/template">
   <span class="quote"   data-symbol="<%=symbol%>">
+      <a href="{% url 'tools:coin_list' %}" target="_blank">
       <span class="quote-price">
           <%=title_text%>&nbsp;
           <span class="price"><%=price_cny%>&nbsp;<%=change_percent%></span>
       </span>
+      </a>
   </span>
 </script>
 

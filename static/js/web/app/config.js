@@ -22,7 +22,8 @@ requirejs.config({
         snowFall: 'libs/jquery.snow',
         jqueryeasing:'libs/jqueryeasing',
         marquee:'libs/marquee',
-        datatable:'libs/datatable'
+        datatable:'libs/datatable',
+        highstock:'libs/highstock'
     },
 
     shim: {
@@ -61,6 +62,9 @@ requirejs.config({
             exports: '_'
         },
         'datatable':{
+            deps:['jquery']
+        },
+        'highstock':{
             deps:['jquery']
         }
 

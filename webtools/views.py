@@ -13,7 +13,6 @@ class ToolsListView(SideBarDataMixin, TemplateView):
     pass
 
 
-
 class ApiCacheMixin(object):
     def get_api_data(self, url, timeout=5*60):
         key = 'api:%s:cache'%url
@@ -57,18 +56,26 @@ class CyptoCompareDataMixin(ApiCacheMixin):
         return self.get_api_data(url, timeout=12*60*60)
 
 class CoinMarketCapDataMixin(ApiCacheMixin):
-    COIN_LIST_URL = 'https://api.coinmarketcap.com/v1/ticker/?convert=CNY'
+    COIN_LIST_URL = 'https://api.coinmarketcap.com/v1/ticker/?convert=CNY&limit=100'
     def get_top_coin_list(self):
-        return self.get_api_data(self.COIN_LIST_URL, 60*60)
+        return self.get_api_data(self.COIN_LIST_URL, timeout=60)
 
 
-class CoinHistoryView(CoinMarketCapDataMixin,TemplateView):
-    template_name = 'webtools/coin_history.html'
+class CoinListView(CoinMarketCapDataMixin, TemplateView):
+    template_name = 'webtools/coin_list.html'
 
     def get_context_data(self, **kwargs):
-        context = super(CoinHistoryView, self).get_context_data(**kwargs)
+        context = super(CoinListView, self).get_context_data(**kwargs)
+        c_list = self.get_top_coin_list()[:100]
         context.update({
-            'coins':self.get_top_coin_list()[:100]
+            'coins':c_list,
+            'seo':{
+                'title': '区块链导航 ：加密货币报价列表',
+                'key_words': ','.join([ coin['name'] for coin in c_list]),
+                'description': "区块链导航 ChainDH ：汇集重要加密货币市值和报价。"
+            }
         })
         return context
 
+class CoinChartView(CoinMarketCapDataMixin, TemplateView):
+    template_name = 'webtools/coin_chart.html'

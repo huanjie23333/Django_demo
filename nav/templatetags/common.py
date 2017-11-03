@@ -4,6 +4,11 @@ register = template.Library()
 
 
 def price_class(value):
-    return '' if int(value) == 0 else ( 'raise' if int(value) > 0 else 'fall')
+    try:
+       res = '' if float(value) == 0 else ( 'raise' if float(value) > 0 else 'fall')
+       return res
+    except Exception as e :
+       return 'Not Acceptable Value'
+       pass
 
 register.filter(price_class)

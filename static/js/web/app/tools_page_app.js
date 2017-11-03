@@ -7,6 +7,7 @@ require([
         'subapp/gotop',
         'subapp/tools/bookmark',
         'datatable',
+        'subapp/stockchart',
         'bootstrap'
     ],
     function (polyfill,
@@ -35,20 +36,21 @@ require([
         // header price fetch
         all_price_feed.run();
 
-        // datatable
-
-        // require('libs/datatable', function (){
-        //
-        //
-        //
-        // });
-
-
-        $('#coin_table').DataTable({
-                 stateSave: true
-        });
-
+        if($('#coin_table').length){
+            window.app.table = $('#coin_table').DataTable({
+                 // stateSave: true,
+                 "pageLength": 100,
+                 "lengthChange":true,
+                 "paging": false,
+                 "searching": false,
+                 "info":false,
+                 "language": {
+                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
+                 }
+            });
+        }
 
         console.log('finish');
 
     });
+

@@ -19,37 +19,37 @@
                 <div class="seo-only">
                 </div>
                 <div class="col-sm-12 col-xs-12">
-                    <div class="box">
-                        <table class="table table-striped" id="coin_table">
+                    <div class="box quote-list">
+                        <table class="table dataTable table-striped" id="coin_table">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>名称</th>
+{#                                <th>#</th>#}
+                                <th class="hidden-xs">名称</th>
                                 <th>简称</th>
-                                <th>总市值</th>
-                                <th>24小时成交</th>
+                                <th class="hidden-xs">总市值</th>
+                                <th class="hidden-xs">24小时成交</th>
 {#                                <th>美元价格</th>#}
                                 <th>最新价格</th>
                                 <th>最近一小时</th>
-                                <th>最近一天</th>
-                                <th>最近七天</th>
+                                <th class="hidden-xs">最近一天</th>
+                                <th class="hidden-xs">最近七天</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for coin in coins %}
                                 <tr>
-                                    <th scope="row">
+{#                                    <th scope="row">#}
                                         {# 代币图 #}
-                                    </th>
-                                    <td>{{ coin.name }}</td>
-                                    <td>{{ coin.symbol }}</td>
-                                    <td data-sort="{{ coin.market_cap_usd  }}">${{ coin.market_cap_usd|floatformat:2 |intcomma }}</td>
-                                    <td data-sort="{{ coin.24h_volume_usd }}">${{ coin.24h_volume_usd|floatformat:2|intcomma }}</td>
+{#                                    </th>#}
+                                    <td class="dark hidden-xs">{{ coin.name }}</td>
+                                    <td class="dark" data-sort="{{ coin.symbol }}" ><b>{{ coin.symbol }}</b></td>
+                                    <td data-sort="{{ coin.market_cap_usd  }}" class="hidden-xs">${{ coin.market_cap_usd|floatformat:2 |intcomma }}</td>
+                                    <td data-sort="{{ coin.24h_volume_usd }}" class="hidden-xs">${{ coin.24h_volume_usd|floatformat:2|intcomma }}</td>
 {#                                    <td data-sort="{{  coin.price_usd }}">${{ coin.price_usd|floatformat:2|intcomma }}</td>#}
                                     <td data-sort="{{ coin.price_cny }}">¥{{ coin.price_cny|floatformat:2|intcomma }}</td>
                                     <td data-sort="{{  coin.percent_change_1h }}" class="{{ coin.percent_change_1h|price_class }}">{{ coin.percent_change_1h }}%</td>
-                                    <td data-sort="{{ coin.percent_change_24h }}" class="{{ coin.percent_change_24h|price_class }}" >{{ coin.percent_change_24h }}%</td>
-                                    <td data-sort="{{ coin.percent_change_7d }}" class="{{ coin.percent_change_7d|price_class }}">{{ coin.percent_change_7d }}%</td>
+                                    <td data-sort="{{ coin.percent_change_24h }}" class="{{ coin.percent_change_24h|price_class }} hidden-xs" >{{ coin.percent_change_24h }}%</td>
+                                    <td data-sort="{{ coin.percent_change_7d }}" class="{{ coin.percent_change_7d|price_class }} hidden-xs">{{ coin.percent_change_7d }}%</td>
 
                                 </tr>
                             {% endfor %}
