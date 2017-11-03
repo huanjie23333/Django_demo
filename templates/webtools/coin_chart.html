@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% load humanize common %}
+{% load i18n static compress  %}
+{% block meta %}
+    {% include "webtools/partial/coin_history_meta.html" %}
+{% endblock %}
+{% block title %}
+    常用工具 - 加密货币报价
+{% endblock %}
+
+{% block seo_title %}
+    常用工具 - 加密货币报价
+{% endblock %}
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="seo-only">
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                    <div class="box quote-list">
+                        <table class="table dataTable table-striped" id="coin_table">
+                            <thead>
+                            <tr>
+{#                                <th>#</th>#}
+                                <th class="hidden-xs">名称</th>
+                                <th>简称</th>
+                                <th class="hidden-xs">总市值</th>
+                                <th class="hidden-xs">24小时成交</th>
+{#                                <th>美元价格</th>#}
+                                <th>最新价格</th>
+                                <th>最近一小时</th>
+                                <th class="hidden-xs">最近一天</th>
+                                <th class="hidden-xs">最近七天</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for coin in coins %}
+                                <tr>
+{#                                    <th scope="row">#}
+                                        {# 代币图 #}
+{#                                    </th>#}
+                                    <td class="dark hidden-xs">{{ coin.name }}</td>
+                                    <td class="dark" data-sort="{{ coin.symbol }}" ><b>{{ coin.symbol }}</b></td>
+                                    <td data-sort="{{ coin.market_cap_usd  }}" class="hidden-xs">${{ coin.market_cap_usd|floatformat:2 |intcomma }}</td>
+                                    <td data-sort="{{ coin.24h_volume_usd }}" class="hidden-xs">${{ coin.24h_volume_usd|floatformat:2|intcomma }}</td>
+{#                                    <td data-sort="{{  coin.price_usd }}">${{ coin.price_usd|floatformat:2|intcomma }}</td>#}
+                                    <td data-sort="{{ coin.price_cny }}">¥{{ coin.price_cny|floatformat:2|intcomma }}</td>
+                                    <td data-sort="{{  coin.percent_change_1h }}" class="{{ coin.percent_change_1h|price_class }}">{{ coin.percent_change_1h }}%</td>
+                                    <td data-sort="{{ coin.percent_change_24h }}" class="{{ coin.percent_change_24h|price_class }} hidden-xs" >{{ coin.percent_change_24h }}%</td>
+                                    <td data-sort="{{ coin.percent_change_7d }}" class="{{ coin.percent_change_7d|price_class }} hidden-xs">{{ coin.percent_change_7d }}%</td>
+
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a class="gotop-wrapper">
+        <span class="btn-top" id="top_link">
+            <i class="fa fa-angle-up"></i>
+        </span>
+    </a>
+
+{% endblock %}
+{##}
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/tools_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

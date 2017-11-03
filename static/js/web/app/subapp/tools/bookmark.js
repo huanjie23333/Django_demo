@@ -1,7 +1,7 @@
 define(['jquery'], function($){
 
     $(function() {
-      $('#bookmarkme').click(function() {
+      $('.bookmarkme').click(function() {
         if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
           window.sidebar.addPanel(document.title, window.location.href, '');
         } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite

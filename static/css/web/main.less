@@ -7,6 +7,7 @@
 @import "../csslib/jqcloud.less";
 @import "../csslib/auto-complete.less";
 @import "../csslib/2xcss.less";
+@import "../csslib/datatable.less";
 
 
 html, body {
@@ -68,8 +69,9 @@ body {
 }
 
 #search-row{
-  padding-top:60px;
+  padding: 80px 0px 20px 0px;
 }
+
 .price-row {
   width: 400px;
   overflow: hidden;
@@ -160,7 +162,13 @@ body {
       }
       span {
         color: @site-link-color;
+        &.header-link{
+           a, a:hover{
+               color:@site-link-color;
+           }
+        }
       }
+
     }
 
     .box-body {
@@ -506,8 +514,48 @@ body {
   }
 }
 
+#coin_table{
+  th{
+     color:@common-text-color
+  }
+  td{
+     .pricing-ele;
+     color: @support-text-color
+  }
+  td.dark{
+     color:@common-text-color;
+  }
+
+
+  tr.odd{
+     background-color: transparent!important;
+  }
+}
+
+#chart_container{
+  width:80%;
+  margin: 0 auto ;
+}
+
+.donation{
+   padding: 20px 0px 0px 15px;
+   color:@support-text-color;
+   p{
+     margin-bottom:5px;
+   }
+
+   .cy-name{
+      font-size:14px;
+   }
+   .cy-address{
+      font-size:14px;
+      color:@common-text-color;
+      //text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+   }
+}
+
 .test {
-  color: blue;
+  color: red;
 
 }
 
