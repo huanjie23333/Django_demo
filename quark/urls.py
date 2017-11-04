@@ -17,7 +17,7 @@ from django.conf.urls import url, include , handler404, handler500
 from django.contrib import admin
 from web.views import IndexView, CategoryView,\
                       AboutView, SiteMapView, JobView,\
-                      SubNavCreateView
+                      SubNavCreateView,SubNavSuccessView
 
 from web.views.news import NewsListView
 
@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^recruit\.htm$', JobView.as_view(), name='web_jobs'),
     url(r'^sitemap\.htm$', SiteMapView.as_view(), name='web_sitemap'),
     url(r'^submit\.htm$', SubNavCreateView.as_view(), name='web_submit'),
+    url(r'^submit_suc\.htm$', SubNavSuccessView.as_view(), name='web_submit_done'),
     url(r'^news\.htm', NewsListView.as_view(), name='web_news'),
     # url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
@@ -57,6 +58,11 @@ urlpatterns += [
     url(r'^$', IndexView.as_view(), name='web_index'),
 ]
 
+
+# captcha
+urlpatterns += [
+    url(r'^captcha/', include('captcha.urls')),
+]
 
 from django.conf import settings
 from django.conf.urls.static import static

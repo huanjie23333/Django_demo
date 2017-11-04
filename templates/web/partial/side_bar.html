@@ -141,17 +141,17 @@
 
 <script id="coin_template" type="text/template">
     <li id="<%=id%>">
+        <a href="/tools/coinmarketcap/" class="coin-link" target="_blank">
         <span class="coin-name">
-            <a href="/tools/coin_list/" target="">
             <%=name_cn%>
-            </a>
         </span>
-        <span class="coin-price">
-                                        <%=price_cny%>
-                                    </span>
-        <span class="coin-change">
-                                         <%=change_percent%>
-                                    </span>
+            <span class="coin-price">
+                <%=price_cny%>
+            </span>
+            <span class="coin-change">
+                <%=change_percent%>
+            </span>
+        </a>
     </li>
 </script>
 

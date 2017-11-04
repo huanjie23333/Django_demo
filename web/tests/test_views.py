@@ -13,6 +13,9 @@ class TestCategoryViewTestCase(WithDataTestCase):
         resp = self.client.get(reverse('category_page', args=[self.cate1.ename]))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp ,'web/category.html')
+        print('='*80)
+        print(resp)
+        print('='*80)
         self.assertContains(response=resp, text='foo')
         self.assertContains(response=resp, text='tag1')
         self.assertContains(response=resp, text='tag2')
@@ -43,9 +46,7 @@ class TestNewsListViewTestCase(WithDataTestCase):
         resp = self.client.get(reverse('web_news'))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'web/news_list.html')
-        nd = NewsDataMixin()
-        jsonstr = nd._get_newslist_page(1)
-        self.assertContains(resp, jsonstr)
+        self.assertContains(resp, "news_obj")
 
 
 class TestNewsDetailViewTestCase(TestCase):

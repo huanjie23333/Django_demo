@@ -47,9 +47,9 @@
                                     <td data-sort="{{ coin.24h_volume_usd }}" class="hidden-xs">${{ coin.24h_volume_usd|floatformat:2|intcomma }}</td>
 {#                                    <td data-sort="{{  coin.price_usd }}">${{ coin.price_usd|floatformat:2|intcomma }}</td>#}
                                     <td data-sort="{{ coin.price_cny }}">¥{{ coin.price_cny|floatformat:2|intcomma }}</td>
-                                    <td data-sort="{{  coin.percent_change_1h }}" class="{{ coin.percent_change_1h|price_class }}">{{ coin.percent_change_1h }}%</td>
-                                    <td data-sort="{{ coin.percent_change_24h }}" class="{{ coin.percent_change_24h|price_class }} hidden-xs" >{{ coin.percent_change_24h }}%</td>
-                                    <td data-sort="{{ coin.percent_change_7d }}" class="{{ coin.percent_change_7d|price_class }} hidden-xs">{{ coin.percent_change_7d }}%</td>
+                                    <td data-sort="{{  coin.percent_change_1h }}" class="{{ coin.percent_change_1h|price_class }}">{{ coin.percent_change_1h|price_sign}}{{ coin.percent_change_1h }}%</td>
+                                    <td data-sort="{{ coin.percent_change_24h }}" class="{{ coin.percent_change_24h|price_class }} hidden-xs" >{{ coin.percent_change_24h|price_sign }}{{ coin.percent_change_24h }}%</td>
+                                    <td data-sort="{{ coin.percent_change_7d }}" class="{{ coin.percent_change_7d|price_class }} hidden-xs">{{ coin.percent_change_7d|price_sign }}{{ coin.percent_change_7d }}%</td>
 
                                 </tr>
                             {% endfor %}

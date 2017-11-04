@@ -165,6 +165,8 @@ body {
         &.header-link{
            a, a:hover{
                color:@site-link-color;
+               font-weight:normal;
+               font-size:14px;
            }
         }
       }
@@ -221,6 +223,9 @@ body {
       .coin-list {
 
         li {
+          a{
+            .silent_link;
+          }
           line-height: 30px;
           font-size: @font-size-normal;
           color: @common-text-color;

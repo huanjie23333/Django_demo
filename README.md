@@ -27,13 +27,10 @@ cd /path/to/quark
 pip install -r requirements.txt 
 ```
 
-### test
-1. in python env , run 
-    
-    coverage report 
-    
-2. see .coveragerc for config 
-    
+
+### 安装图形库
+
+apt-get -y install libz-dev libjpeg-dev libfreetype6-dev python-dev
     
      
     

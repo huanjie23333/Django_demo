@@ -1,6 +1,9 @@
 # -*- coding: UTF-8  -*-
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
+from captcha.fields import CaptchaField
+from django.forms import ModelForm
 from django.urls import reverse, reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from taggit.models import TaggedItem, Tag
 
 from django.views.generic import TemplateView, View, DetailView, ListView, CreateView
@@ -10,6 +13,7 @@ from django.db.models import Count
 from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from web.views.news import SideBarDataMixin
+
 
 
 class CategoryTagDataMixin(object):
@@ -99,11 +103,22 @@ class JobView(FlinkMixin, TemplateView):
     template_name = 'web/jobs.html'
 
 
+class SubNavModelForm(ModelForm):
+    captcha = CaptchaField(label= _("验证码"))
+    class Meta:
+        model = SubNav
+        exclude = ['handeled']
+
+
 class SubNavCreateView(CreateView):
     template_name = 'web/submit.html'
     model = SubNav
-    fields = ('cname', 'ename', 'description', 'web_site', 'email')
-    success_url = reverse_lazy('web_index')
+    form_class = SubNavModelForm
+    success_url = reverse_lazy('web_submit_done')
+
+class SubNavSuccessView(TemplateView):
+    template_name = 'web/sub_nav_success.html'
+
 
 
 class SiteMapView(SideBarDataMixin, TemplateView):

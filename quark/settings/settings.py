@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'feed',
     'flink',
     'webtools',
+    'captcha',
 ]
 
 MIDDLEWARE = [
