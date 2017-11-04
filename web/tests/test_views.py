@@ -46,9 +46,7 @@ class TestNewsListViewTestCase(WithDataTestCase):
         resp = self.client.get(reverse('web_news'))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'web/news_list.html')
-        nd = NewsDataMixin()
-        jsonstr = nd._get_newslist_page(1)
-        self.assertContains(resp, jsonstr)
+        self.assertContains(resp, "news_obj")
 
 
 class TestNewsDetailViewTestCase(TestCase):
