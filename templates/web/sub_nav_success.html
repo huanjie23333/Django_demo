@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+
+{% block content %}
+    <section id="content">
+        <div class="container static-content">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h2>我们已经收到您提交的网站</h2>
+                    <p>后台的工作人员审核后， 你的网站会出现在我们的导航站上。</p>
+                    <p>稍后跳转至首页......</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{##}
+{% block basic_script %}
+    {% compress js %}
+        <script language="JavaScript">
+            window.setTimeout(function(){
+                location.href = "/";
+            }, 3000);
+        </script>
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
