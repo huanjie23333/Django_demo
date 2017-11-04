@@ -1,5 +1,6 @@
 # -*- coding: UTF-8  -*-
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
+from django.forms import ModelForm
 from django.urls import reverse, reverse_lazy
 from taggit.models import TaggedItem, Tag
 
@@ -97,6 +98,10 @@ class AboutView(FlinkMixin, TemplateView):
 
 class JobView(FlinkMixin, TemplateView):
     template_name = 'web/jobs.html'
+
+
+class SubNavModelForm(ModelForm):
+    pass
 
 
 class SubNavCreateView(CreateView):
