@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'captcha',
 
     'bootstrap3',
     'compressor',
@@ -54,6 +53,7 @@ INSTALLED_APPS = [
     'feed',
     'flink',
     'webtools',
+    'captcha',
 ]
 
 MIDDLEWARE = [
