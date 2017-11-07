@@ -117,4 +117,3 @@ do_migrate.sh
 # index
 quark/settings/whoosh_index/*
 
-.DS_Store
