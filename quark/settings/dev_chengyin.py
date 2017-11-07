@@ -19,8 +19,7 @@ NOSE_ARGS = [
 ]
 
 
-INTERNAL_IPS =['192.168.192.154']
-ALLOWED_HOSTS=['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192','192.168.192.154']
+INTERNAL_IPS =['127.0.0.1','0.0.0.0','10.0.0.74','192.168.172.174']
 
 # DEBUG_TOOLBAR_PANELS = [
 #     'debug_toolbar.panels.versions.VersionsPanel',
@@ -71,8 +70,9 @@ TEMPLATES = [
 
 
 
+ALLOWED_HOSTS = ['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192']
 STATIC_URL = '/static/'
-STATIC_ROOT = '/mad_sand/quark/static/'
+STATIC_ROOT = '/Users/niseitane/Documents/code/quark/static'
 STATICFILES_DIRS = []
 
 Current_Dbhost = '127.0.0.1'
