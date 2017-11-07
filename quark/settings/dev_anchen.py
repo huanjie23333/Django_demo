@@ -56,7 +56,7 @@ IS_LOCAL_TESTING = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/niseitane/Documents/code/quark/templates'],
+        'DIRS': ['/mad_sand/quark/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'quark',
         'USER': 'root',
-        'PASSWORD': 'mypass',
+        'PASSWORD': 'mypass740323',
         'HOST': Current_Dbhost,
-        'PORT': '3306',
+        'PORT': '6301',
         'OPTIONS': {
             'use_unicode':'utf8mb4',
             'init_command':'SET default_storage_engine=INNODB',
