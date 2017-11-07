@@ -1,6 +1,6 @@
 from .settings import *
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["www.bit03.com", "bit03.com",
                  "chaindh.com", "www.chaindh.com"]
