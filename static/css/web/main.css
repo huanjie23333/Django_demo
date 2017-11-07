@@ -2175,6 +2175,10 @@ body a:hover {
   text-align: left;
   font-weight: 600;
 }
+.static-content h4 {
+  font-weight: 600;
+  font-size: 1em;
+}
 .static-content a,
 .static-content a:hover {
   color: #0E8ED8;
@@ -2409,10 +2413,12 @@ body a:hover {
   color: #aaa;
 }
 .donation p {
-  margin-bottom: 5px;
+  margin: 20px auto ;
 }
 .donation .cy-name {
   font-size: 14px;
+  color: #aaa;
+  margin: 20px auto;
 }
 .donation .cy-address {
   font-size: 14px;
