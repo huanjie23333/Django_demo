@@ -504,6 +504,23 @@ body {
 .news-line-wrapper {
   .tag-list-filter-wrapper {
     padding-left: 27px;
+      .trigger-btn {
+        float: right;
+        height: 2em;
+        width: 2em;
+        color: @support-text-color;
+        cursor: pointer;
+        line-height: 2em;
+        text-align: center;
+        i {
+          .transition(all .5s);
+          .transform(translate(0, -20%));
+          .transform-origin(50%, 60%);
+        }
+        .icon-rotate {
+          .transform(rotate(179deg));
+        }
+      }
       .tag-filter-item {
         margin: 0 0.5em;
         display: inline-block;
@@ -516,9 +533,6 @@ body {
           }
         }
       }
-    .tag-list-filter-bottom {
-      text-align: center;
-    }
     .tag-list-filter-list-hide {
       height: 2em;
       overflow: hidden;

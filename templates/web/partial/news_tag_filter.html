@@ -1,5 +1,8 @@
 <div class="tag-list-filter-wrapper">
     <ul class="tag-list-filter-list">
+        <a class="trigger-btn">
+            <i class="fa fa-sort-down" aria-hidden="true"></i>
+        </a>
         <li class="tag-filter-item">
                 <a href="/news.htm"  class="{% if not current_tag  %}active{% endif %}">
                     所有
@@ -14,8 +17,5 @@
             </li>
         {% endfor %}
     </ul>
-    <div class="tag-list-filter-bottom">
-        <a class="btn white-btn"><i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
-    </div>
 </div>
 

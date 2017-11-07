@@ -2366,6 +2366,35 @@ body a:hover {
 .news-line-wrapper .tag-list-filter-wrapper {
   padding-left: 27px;
 }
+.news-line-wrapper .tag-list-filter-wrapper .trigger-btn {
+  float: right;
+  height: 2em;
+  width: 2em;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 2em;
+  text-align: center;
+}
+.news-line-wrapper .tag-list-filter-wrapper .trigger-btn i {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -webkit-transform: translate(0, -20%);
+  -moz-transform: translate(0, -20%);
+  -ms-transform: translate(0, -20%);
+  -o-transform: translate(0, -20%);
+  -webkit-transform-origin: 50% 60%;
+  -moz-transform-origin: 50% 60%;
+  -ms-transform-origin: 50% 60%;
+  -o-transform-origin: 50% 60%;
+}
+.news-line-wrapper .tag-list-filter-wrapper .trigger-btn .icon-rotate {
+  -webkit-transform: rotate(179deg);
+  -moz-transform: rotate(179deg);
+  -ms-transform: rotate(179deg);
+  -o-transform: rotate(179deg);
+}
 .news-line-wrapper .tag-list-filter-wrapper .tag-filter-item {
   margin: 0 0.5em;
   display: inline-block;
@@ -2380,9 +2409,6 @@ body a:hover {
 .news-line-wrapper .tag-list-filter-wrapper .tag-filter-item a:focus {
   color: #ff552e;
   text-decoration: none;
-}
-.news-line-wrapper .tag-list-filter-wrapper .tag-list-filter-bottom {
-  text-align: center;
 }
 .news-line-wrapper .tag-list-filter-wrapper .tag-list-filter-list-hide {
   height: 2em;
