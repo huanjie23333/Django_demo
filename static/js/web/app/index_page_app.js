@@ -9,6 +9,7 @@ require([
         'subapp/gotop',
         'libs/salvattore',
         'subapp/tools/bookmark',
+        'subapp/news/tagtrigger',
         'bootstrap'
     ],
     function (polyfill,
@@ -20,7 +21,8 @@ require([
               NewsLine,
               GoTop,
               Layout,
-              BookMark
+              BookMark,
+              TagTrigger
               ) {
 
         jQuery = $;
@@ -37,6 +39,9 @@ require([
         new Tracker();
         new NewsLine();
         new GoTop();
+
+        // for news tag trigger ;
+        new TagTrigger();
 
 
         all_price_feed.run();

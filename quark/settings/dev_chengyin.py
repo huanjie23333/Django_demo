@@ -72,7 +72,7 @@ TEMPLATES = [
 
 ALLOWED_HOSTS = ['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192']
 STATIC_URL = '/static/'
-STATIC_ROOT = '/mad_sand/quark/static/'
+STATIC_ROOT = '/Users/niseitane/Documents/code/quark/static'
 STATICFILES_DIRS = []
 
 Current_Dbhost = '127.0.0.1'

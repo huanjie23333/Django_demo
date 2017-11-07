@@ -3785,6 +3785,21 @@ define('subapp/tools/bookmark',['jquery'], function($){
       });
     });
 });
+define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
+   var TagTrigger = Class.extend({
+       init: function(){
+           var $btn = $('.tag-list-filter-bottom a');
+           var $btnIcon = $('.tag-list-filter-bottom i');
+           var $ul = $('ul.tag-list-filter-list');
+           $ul.addClass('tag-list-filter-list-hide');
+           $btn.on('click', function(){
+               $ul.toggleClass('tag-list-filter-list-hide');
+               $btnIcon.toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+           });
+       }
+   });
+   return TagTrigger;
+});
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6176,6 +6191,7 @@ require([
         'subapp/gotop',
         'libs/salvattore',
         'subapp/tools/bookmark',
+        'subapp/news/tagtrigger',
         'bootstrap'
     ],
     function (polyfill,
@@ -6187,7 +6203,8 @@ require([
               NewsLine,
               GoTop,
               Layout,
-              BookMark
+              BookMark,
+              TagTrigger
               ) {
 
         jQuery = $;
@@ -6204,6 +6221,9 @@ require([
         new Tracker();
         new NewsLine();
         new GoTop();
+
+        // for news tag trigger ;
+        new TagTrigger();
 
 
         all_price_feed.run();

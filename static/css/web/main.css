@@ -2381,6 +2381,13 @@ body a:hover {
   color: #ff552e;
   text-decoration: none;
 }
+.news-line-wrapper .tag-list-filter-wrapper .tag-list-filter-bottom {
+  text-align: center;
+}
+.news-line-wrapper .tag-list-filter-wrapper .tag-list-filter-list-hide {
+  height: 2em;
+  overflow: hidden;
+}
 #coin_table th {
   color: #434446;
 }
@@ -2419,5 +2426,5 @@ body a:hover {
   color: #434446;
 }
 .test {
-  color: red;
+  color: red  ;
 }

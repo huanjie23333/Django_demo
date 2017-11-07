@@ -504,17 +504,24 @@ body {
 .news-line-wrapper {
   .tag-list-filter-wrapper {
     padding-left: 27px;
-    .tag-filter-item {
-      margin: 0 0.5em;
-      display: inline-block;
-      a {
-        color: @site-link-color;
-        line-height: 2em;
-        &.active, &:hover, &:active, &:focus {
-          color: @site-link-highlight-color;
-          text-decoration: none;
+      .tag-filter-item {
+        margin: 0 0.5em;
+        display: inline-block;
+        a {
+          color: @site-link-color;
+          line-height: 2em;
+          &.active, &:hover, &:active, &:focus {
+            color: @site-link-highlight-color;
+            text-decoration: none;
+          }
         }
       }
+    .tag-list-filter-bottom {
+      text-align: center;
+    }
+    .tag-list-filter-list-hide {
+      height: 2em;
+      overflow: hidden;
     }
   }
 }
@@ -560,7 +567,7 @@ body {
 }
 
 .test {
-  color: red;
+  color: red  ;
 
 }
 
