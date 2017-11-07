@@ -3791,7 +3791,6 @@ define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
            var $btn = $('.tag-list-filter-list a');
            var $btnIcon = $('.tag-list-filter-list i');
            var $ul = $('ul.tag-list-filter-list');
-           $ul.addClass('tag-list-filter-list-hide');
            $btn.on('click', function(){
                $ul.toggleClass('tag-list-filter-list-hide');
                $btnIcon.toggleClass('icon-rotate');
