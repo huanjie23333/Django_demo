@@ -59,7 +59,7 @@ urlpatterns += [
 ]
 
 
-# captcha
+#captcha
 urlpatterns += [
     url(r'^captcha/', include('captcha.urls')),
 ]

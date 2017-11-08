@@ -1,7 +1,7 @@
 # -*- coding: UTF-8  -*-
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
-from captcha.fields import CaptchaField
-from django.forms import ModelForm
+# from captcha.fields import CaptchaField
+# from django.forms import ModelForm
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from taggit.models import TaggedItem, Tag
@@ -12,8 +12,8 @@ from django.db.models import Count
 
 from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
+from nav.forms import SubNavModelForm
 from web.views.news import SideBarDataMixin
-
 
 
 class CategoryTagDataMixin(object):
@@ -41,7 +41,6 @@ class CategoryTagDataMixin(object):
 
 
 class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
-
     def get_template_names(self):
         if self.tagname:
             return 'web/category_tag.html'
@@ -99,15 +98,17 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
 class AboutView(FlinkMixin, TemplateView):
     template_name = 'web/about.html'
 
+
 class JobView(FlinkMixin, TemplateView):
     template_name = 'web/jobs.html'
 
 
-class SubNavModelForm(ModelForm):
-    captcha = CaptchaField(label= _("验证码"))
-    class Meta:
-        model = SubNav
-        exclude = ['handeled']
+# class SubNavModelForm(ModelForm):
+#     captcha = CaptchaField(label=_("验证码"))
+#
+#     class Meta:
+#         model = SubNav
+#         exclude = ['handeled']
 
 
 class SubNavCreateView(CreateView):
@@ -116,9 +117,9 @@ class SubNavCreateView(CreateView):
     form_class = SubNavModelForm
     success_url = reverse_lazy('web_submit_done')
 
+
 class SubNavSuccessView(TemplateView):
     template_name = 'web/sub_nav_success.html'
-
 
 
 class SiteMapView(SideBarDataMixin, TemplateView):
@@ -152,7 +153,3 @@ class SiteMapView(SideBarDataMixin, TemplateView):
 class ErrorView(StaffuserRequiredMixin, TemplateView):
     def get(self, request):
         raise Exception('error for test')
-
-
-
-
