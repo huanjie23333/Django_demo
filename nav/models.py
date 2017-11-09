@@ -138,3 +138,7 @@ class SubNav(models.Model):
     email = models.EmailField(blank=True, null=True, verbose_name= _('联系邮箱'))
     handeled = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name_plural = "用户提交网址"
+        verbose_name = "用户提交网址"
+
