@@ -17,7 +17,7 @@ class FetchDesc(object):
     def __init__(self):
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
-            'Authorization': 'Token b248833e4b1327fa70824089669860ea93607851',
+            'Authorsization': 'Token b248833e4b1327fa70824089669860ea93607851',
         }
         # self.id = id
         # self.web_site = web_site
