@@ -10,3 +10,10 @@ class Flink(models.Model):
 
     def __str__(self):
         return self.site_name
+
+    class Meta:
+        ordering = ['-score']
+        verbose_name_plural = "友情链接"
+        verbose_name = "友情链接"
+
+
