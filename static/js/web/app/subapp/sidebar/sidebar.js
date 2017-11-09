@@ -12,7 +12,6 @@ define(['libs/Class',
     'subapp/sidebar/scrollbox',
     // tag cloud
     'subapp/sidebar/tagcloud',
-    'subapp/sidebar/clock'
 ],
     function(Class,
              $,
@@ -25,9 +24,7 @@ define(['libs/Class',
 
              ScrollBox,
 
-             TagCloud,
-             Clock
-
+             TagCloud
 
     ){
 
@@ -57,8 +54,6 @@ define(['libs/Class',
             // for tagcloud
             new TagCloud();
 
-            // countdown for 2x fork
-            Clock();
         }
     });
     return SideBarApp;

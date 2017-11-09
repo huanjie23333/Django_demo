@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea
 
 from captcha.fields import CaptchaField, CaptchaTextInput
 
@@ -10,7 +10,7 @@ class SubNavModelForm(ModelForm):
                                 required=True,
                                 # min_length=1,
                                 widget=CaptchaTextInput(attrs={
-                                    'class': u'c-input input_OYyxAV',
+                                    'class': u'c-input input_OYyxAV cap-image',
                                     'placeholder': u'请输入验证码',
                                     'autocapitalize': 'off',
                                     'autocomplete': 'off',
@@ -21,3 +21,4 @@ class SubNavModelForm(ModelForm):
     class Meta:
         model = SubNav
         exclude = ['handeled']
+        widgets = {'description': Textarea(attrs={'rows':6, 'cols':22, 'style':'resize: none'})}
