@@ -118,6 +118,14 @@ class SubNavCreateView(CreateView):
     success_url = reverse_lazy('web_submit_done')
 
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            "request": self.request,
+        })
+        return kwargs
+
+
 class SubNavSuccessView(TemplateView):
     template_name = 'web/sub_nav_success.html'
 
