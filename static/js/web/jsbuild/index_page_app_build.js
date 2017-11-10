@@ -3800,6 +3800,28 @@ define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
    });
    return TagTrigger;
 });
+define('subapp/captcha/captcha',['jquery','libs/Class'],function ($, Class) {
+   var Captcha = Class.extend({
+       init: function(){
+           $('img.c-image').after(
+               $('<a href="javascript:;" class="c-refresh">看不清，换一张</a>')
+           );
+           $('.c-refresh').click(function(){
+               $('img.c-image').remove();
+               var rd = Math.random();
+               $('a.c-refresh').before(
+                   $('<img class="c-image image_VhirG6" src="/captcha/?rd='+ rd +'">')
+               );
+               $('img.c-image').css({
+                   height: '40px',
+                   width: '150px'
+               });
+               return false;
+           });
+       }
+   });
+   return Captcha;
+});
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6192,6 +6214,7 @@ require([
         'libs/salvattore',
         'subapp/tools/bookmark',
         'subapp/news/tagtrigger',
+        'subapp/captcha/captcha',
         'bootstrap'
     ],
     function (polyfill,
@@ -6204,7 +6227,8 @@ require([
               GoTop,
               Layout,
               BookMark,
-              TagTrigger
+              TagTrigger,
+              Captcha
               ) {
 
         jQuery = $;
@@ -6221,9 +6245,11 @@ require([
         new Tracker();
         new NewsLine();
         new GoTop();
+        new Captcha();
 
         // for news tag trigger ;
         new TagTrigger();
+
 
 
         all_price_feed.run();
