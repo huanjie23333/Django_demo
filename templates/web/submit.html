@@ -12,8 +12,8 @@
                     <form action="{% url 'web_submit' %}" method="post" class="form">
                         {% csrf_token %}
                         <fieldset>
-                            {% bootstrap_form form  %}
-                            {% buttons %}<button type="submit" class="btn btn-primary">{% trans '提交' %}</button>{% endbuttons %}
+                            {% bootstrap_form form layout="horizontal" %}
+                            {% buttons %}<button type="submit" class="btn btn-primary">{% trans 'submit' %}</button>{% endbuttons %}
                         </fieldset>
                     </form>
 
