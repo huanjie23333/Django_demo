@@ -1,11 +1,8 @@
 define(['jquery','libs/Class'],function ($, Class) {
    var Captcha = Class.extend({
        init: function(){
-           $('img.c-image').after(
-               $('<a href="javascript:;" class="c-refresh">看不清，换一张</a>')
-           );
-           $('.c-refresh').click(function(){
-               $('img.c-image').remove();
+           var toggleImg = function(){
+               $('img.c-image').detach();
                var rd = Math.random();
                $('a.c-refresh').before(
                    $('<img class="c-image image_VhirG6" src="/captcha/?rd='+ rd +'">')
@@ -14,8 +11,13 @@ define(['jquery','libs/Class'],function ($, Class) {
                    height: '40px',
                    width: '150px'
                });
+               $('img.c-image').click(toggleImg);
                return false;
-           });
+           };
+           $('img.c-image').click(toggleImg).after(
+               $('<a href="javascript:;" class="c-refresh">看不清，换一张</a>')
+           );
+           $('.c-refresh').click(toggleImg);
        }
    });
    return Captcha;
