@@ -103,20 +103,11 @@ class JobView(FlinkMixin, TemplateView):
     template_name = 'web/jobs.html'
 
 
-# class SubNavModelForm(ModelForm):
-#     captcha = CaptchaField(label=_("验证码"))
-#
-#     class Meta:
-#         model = SubNav
-#         exclude = ['handeled']
-
-
 class SubNavCreateView(CreateView):
     template_name = 'web/submit.html'
     model = SubNav
     form_class = SubNavModelForm
     success_url = reverse_lazy('web_submit_done')
-
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
