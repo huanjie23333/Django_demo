@@ -1,0 +1,22 @@
+define(['jquery','libs/Class'],function ($, Class) {
+   var Captcha = Class.extend({
+       init: function(){
+           $('img.c-image').after(
+               $('<a href="javascript:;" class="c-refresh">看不清，换一张</a>')
+           );
+           $('.c-refresh').click(function(){
+               $('img.c-image').remove();
+               var rd = Math.random();
+               $('a.c-refresh').before(
+                   $('<img class="c-image image_VhirG6" src="/captcha/?rd='+ rd +'">')
+               );
+               $('img.c-image').css({
+                   height: '40px',
+                   width: '150px'
+               });
+               return false;
+           });
+       }
+   });
+   return Captcha;
+});
