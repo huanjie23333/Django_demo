@@ -588,6 +588,35 @@ body {
    }
 }
 
+.site-submit-form {
+  h2 {
+    text-align: center;
+    margin-top: 3em;
+  }
+  .form-group {
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    &:last-of-type {
+      text-align: center;
+    }
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      a {
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      input[name="captcha_code"] {
+        max-width: 200px;
+      }
+    }
+  }
+}
+
 .test {
   color: red  ;
 

@@ -10,17 +10,19 @@
     <section id="content">
         <div class="container static-content">
             <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h2>提交网址</h2>
+                <div class="site-submit-form">
+                    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                        <h2>提交网址</h2>
 
-                    <form action="{% url 'web_submit' %}" method="post" class="form">
-                        {% csrf_token %}
-                        <fieldset>
-                            {% bootstrap_form form layout="horizontal" %}
-                            {% buttons %}<button type="submit" class="btn btn-primary">{% trans 'submit' %}</button>{% endbuttons %}
-                        </fieldset>
-                    </form>
+                        <form action="{% url 'web_submit' %}" method="post" class="form">
+                            {% csrf_token %}
+                            <fieldset>
+                                {% bootstrap_form form layout="horizontal" %}
+                                {% buttons %}<button type="submit" class="btn btn-primary">{% trans 'submit' %}</button>{% endbuttons %}
+                            </fieldset>
+                        </form>
 
+                    </div>
                 </div>
             </div>
         </div>

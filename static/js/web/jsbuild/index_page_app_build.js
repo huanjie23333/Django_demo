@@ -3702,7 +3702,7 @@ define('subapp/captcha/captcha',['jquery','libs/Class'],function ($, Class) {
    var Captcha = Class.extend({
        init: function(){
            var toggleImg = function(){
-               $('img.c-image').detach();
+               $('img.c-image').remove();
                var rd = Math.random();
                $('a.c-refresh').before(
                    $('<img class="c-image image_VhirG6" src="/captcha/?rd='+ rd +'">')
@@ -3714,9 +3714,9 @@ define('subapp/captcha/captcha',['jquery','libs/Class'],function ($, Class) {
                $('img.c-image').click(toggleImg);
                return false;
            };
-           $('img.c-image').click(toggleImg).after(
-               $('<a href="javascript:;" class="c-refresh">看不清，换一张</a>')
-           );
+           $('img.c-image').click(toggleImg)
+               .wrap('<div></div>')
+               .after('<a href="javascript:;" class="c-refresh">看不清，换一张</a>');
            $('.c-refresh').click(toggleImg);
        }
    });
