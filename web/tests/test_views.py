@@ -12,14 +12,13 @@ class TestCategoryViewTestCase(WithDataTestCase):
     def test_get_category(self):
         resp = self.client.get(reverse('category_page', args=[self.cate1.ename]))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp ,'web/category.html')
-        print('='*80)
+        self.assertTemplateUsed(resp, 'web/category.html')
+        print('=' * 80)
         print(resp)
-        print('='*80)
+        print('=' * 80)
         self.assertContains(response=resp, text='foo')
         self.assertContains(response=resp, text='tag1')
         self.assertContains(response=resp, text='tag2')
-
 
 
 class TestIndexViewTestCase(WithDataTestCase):
@@ -51,7 +50,7 @@ class TestNewsListViewTestCase(WithDataTestCase):
 
 class TestNewsDetailViewTestCase(TestCase):
     def test_get_newslist(self):
-        resp = self.client.get(reverse('news:detail', args=['647056354412',]), )
+        resp = self.client.get(reverse('news:detail', args=['647056354412', ]), )
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'web/news.html')
 
@@ -70,7 +69,6 @@ class TestNewsApiViewTestCase(WithDataTestCase):
         resp = self.client.get(reverse('news:json_list'), HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'published_at')
-
 
 
 class TestIndexDraftNavTestCase(WithDataTestCase):
@@ -109,9 +107,3 @@ class TestSidebarDataMixin(TestCase):
         tag_list = sd.get_news_tag_list()
         self.assertIsInstance(tag_list, list)
         self.assertNotEqual(len(tag_list), 0)
-
-
-
-
-
-
