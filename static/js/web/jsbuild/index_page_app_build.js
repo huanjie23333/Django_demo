@@ -3686,7 +3686,7 @@ define('subapp/tools/bookmark',['jquery'], function($){
 define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
    var TagTrigger = Class.extend({
        init: function(){
-           var $btn = $('.tag-list-filter-list a');
+           var $btn = $('a.trigger-btn');
            var $btnIcon = $('.tag-list-filter-list i');
            var $ul = $('ul.tag-list-filter-list');
            $btn.on('click', function(){
