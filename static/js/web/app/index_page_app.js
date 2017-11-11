@@ -10,6 +10,7 @@ require([
         'libs/salvattore',
         'subapp/tools/bookmark',
         'subapp/news/tagtrigger',
+        'subapp/captcha/captcha',
         'bootstrap'
     ],
     function (polyfill,
@@ -22,7 +23,8 @@ require([
               GoTop,
               Layout,
               BookMark,
-              TagTrigger
+              TagTrigger,
+              Captcha
               ) {
 
         jQuery = $;
@@ -39,9 +41,11 @@ require([
         new Tracker();
         new NewsLine();
         new GoTop();
+        new Captcha();
 
         // for news tag trigger ;
         new TagTrigger();
+
 
 
         all_price_feed.run();
