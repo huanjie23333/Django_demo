@@ -8,7 +8,7 @@
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12">
                     <h2>我们已经收到您提交的网站</h2>
                     <p>后台的工作人员审核后， 你的网站会出现在我们的导航站上。</p>
-                    <p>稍后跳转至首页......</p>
+                    <p><span class="submit-time">3秒后</span>跳转至首页......</p>
                 </div>
 
             </div>
@@ -19,6 +19,12 @@
 {% block basic_script %}
     {% compress js %}
         <script language="JavaScript">
+            var time = 3;
+            var timer = window.setInterval(function(){
+                time--;
+                $('.submit-time').html(time + '秒后');
+                time === 0 && window.clearInterval(timer);
+            }, 1000);
             window.setTimeout(function(){
                 location.href = "/";
             }, 3000);
