@@ -888,11 +888,13 @@ function(Class,$,_){
            catch(error){
 
            }
+           var price_str = quote['price_cny'] +'&nbsp;'+ quote['change_percent'];
            if (change > 0){
-               $(elem).find('.price').removeClass('fall').addClass('raise');
+
+               $(elem).find('.price').removeClass('fall').addClass('raise').html(price_str);
                $(elem).find('i').removeClass('fall fa-arrow-down').addClass('fa-arrow-up raise');
            }else{
-               $(elem).find('.price').removeClass('raise').addClass('fall');
+               $(elem).find('.price').removeClass('raise').addClass('fall').html(price_str);
                $(elem).find('i').removeClass('fa-arrow-up raise').addClass('fall fa-arrow-down');
            }
 
@@ -3686,7 +3688,7 @@ define('subapp/tools/bookmark',['jquery'], function($){
 define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
    var TagTrigger = Class.extend({
        init: function(){
-           var $btn = $('.tag-list-filter-list a');
+           var $btn = $('a.trigger-btn');
            var $btnIcon = $('.tag-list-filter-list i');
            var $ul = $('ul.tag-list-filter-list');
            $btn.on('click', function(){
