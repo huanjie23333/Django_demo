@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from nav.models import Category
+# from nav.models import Category
 from quark.tests.base import WithDataTestCase
 
 
