@@ -3703,10 +3703,7 @@ define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
 define('subapp/captcha/captcha',['jquery','libs/Class'],function ($, Class) {
    var Captcha = Class.extend({
        init: function(){
-           $('img.c-image').after(
-               $('<a href="javascript:;" class="c-refresh">看不清，换一张</a>')
-           );
-           $('.c-refresh').click(function(){
+           var toggleImg = function(){
                $('img.c-image').remove();
                var rd = Math.random();
                $('a.c-refresh').before(
@@ -3716,8 +3713,13 @@ define('subapp/captcha/captcha',['jquery','libs/Class'],function ($, Class) {
                    height: '40px',
                    width: '150px'
                });
+               $('img.c-image').click(toggleImg);
                return false;
-           });
+           };
+           $('img.c-image').click(toggleImg)
+               .wrap('<div></div>')
+               .after('<a href="javascript:;" class="c-refresh">看不清，换一张</a>');
+           $('.c-refresh').click(toggleImg);
        }
    });
    return Captcha;

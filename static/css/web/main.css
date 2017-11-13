@@ -2464,6 +2464,30 @@ body a:hover {
   font-size: 14px;
   color: #434446;
 }
+.site-submit-form h2 {
+  text-align: center;
+  margin-top: 3em;
+}
+.site-submit-form .form-group::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.site-submit-form .form-group:last-of-type {
+  text-align: center;
+}
+.site-submit-form .form-group div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-submit-form .form-group div a {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.site-submit-form .form-group div input[name="captcha_code"] {
+  max-width: 200px;
+}
 .test {
   color: red  ;
 }
