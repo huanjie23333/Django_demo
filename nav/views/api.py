@@ -26,3 +26,5 @@ class ProjectDetailAPIView(RetrieveUpdateAPIView):
     queryset = Project.objects.all()
     model = Project
     lookup_field = 'identified_code'
+
+

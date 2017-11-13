@@ -1,9 +1,9 @@
 import requests
 from django.core.cache import cache
-from django.shortcuts import render
+from django.views.generic import TemplateView, View
+from braces.views import AjaxResponseMixin, JSONResponseMixin
+from bs4 import BeautifulSoup
 
-# Create your views here.
-from django.views.generic import TemplateView
 
 from web.views.news import SideBarDataMixin
 
@@ -82,4 +82,24 @@ class CoinChartView(CoinMarketCapDataMixin, TemplateView):
     template_name = 'webtools/coin_chart.html'
 
 
+class FetchWebSiteAPIView(JSONResponseMixin, AjaxResponseMixin, View):
+    http_method_names = ['get_ajax', ]
 
+    def get_site(self):
+        data = dict()
+        r = requests.get(self.url)
+        soup = BeautifulSoup(r.content, 'lxml')
+        data.update({
+            "title": soup.title.string,
+            "description": soup.find(attrs={"name": "description"}).get("content"),
+        })
+        return data
+
+    def get(self, request, *args, **kwargs):
+        return self.get_ajax(request, *args, **kwargs)
+
+    def get_ajax(self, request, *args, **kwargs):
+        self.url = request.GET.get('url', None)
+        assert self.url is not None
+        data = self.get_site()
+        return self.render_json_response(context_dict=data)
