@@ -8,7 +8,7 @@ from nav.models import SubNav
 
 
 class SubNavModelForm(ModelForm):
-    captcha_code = CaptchaField(label=u'图片验证码',
+    captcha_code = CaptchaField(label='图片验证码',
                                 required=True,
                                 widget=CaptchaTextInput(attrs={
                                     'class': u'cap-image',
@@ -17,7 +17,6 @@ class SubNavModelForm(ModelForm):
                                     'autocomplete': 'off',
                                     'spellcheck': 'off',
                                 }))
-    # captcha = CaptchaField(label=_("验证码"))
 
     class Meta:
         model = SubNav
@@ -36,11 +35,9 @@ class SubNavModelForm(ModelForm):
     def clean_captcha_code(self):
         _captchat_code = self.cleaned_data.get('captcha_code')
         ca = Captcha()
-        print (_captchat_code)
         checkcode = self.request.session.get(ca.session_key)
         if _captchat_code != checkcode:
             raise ValidationError(u"图片验证码错误")
-
         del self.request.session[ca.session_key]
         return _captchat_code
 

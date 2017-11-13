@@ -1,6 +1,6 @@
 # Quark
+区块链导航站
 
-比特币导航站
 
 ## 准备工作
 
@@ -22,15 +22,19 @@ mkvirtualenv quark
 cd /path/to/quark
 ```
 
+> [python 虚拟环境教程](http://jiaxin.im/blog/ru-he-zheng-que-de-shi-yong-vi/)
+
+### 安装图形库
+```bash
+apt-get -y install libz-dev libjpeg-dev libfreetype6-dev python-dev
+```
+
 ### 安装 python package
 ```bash
 pip install -r requirements.txt 
 ```
 
 
-### 安装图形库
-
-apt-get -y install libz-dev libjpeg-dev libfreetype6-dev python-dev
     
      
     
