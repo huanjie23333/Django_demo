@@ -5,9 +5,7 @@
             <div class="row">
                 <div class="col-sm-10 col-xs-12 flink-container">
                     <ul class="flink-wrapper">
-                        <li class="flink-head">
-                            友情链接
-                        </li>
+                        <li class="flink-head">友情链接</li>
                         {% for flink in flinks %}
                             <li class="flink-item">
                                 <a class="flink" href="{{ flink.link }}" target="_blank" rel="nofollow" title="{{ flink.site_name }}">
@@ -29,16 +27,14 @@
                     </li>
                     <li class="about-item hidden-xs"><a rel="nofollow" title="关于我们" href="{% url 'web_about' %}" >关于我们</a></li>
                     <li class="sitemap-item hidden-xs"><a href="{% url 'web_sitemap' %}">全站地图</a></li>
-                    <li class="sitemap-item hidden-xs"><a title="职位招聘" href="{% url 'web_jobs' %}">职位招聘</a></li>
+                    <li class="sitemap-item hidden-xs"><a rel="nofollow" title="职位招聘" href="{% url 'web_jobs' %}">职位招聘</a></li>
 {#                    <li>备案信息</li>#}
                 </ul>
             </div>
             <div class="col-sm-2  col-xs-4 hidden-xs">
                 <ul class="footer-list">
-                    <li class="action" class="bookmarkme">
-                        <a rel="nofollow">
-                            <i class="fa fa-star"></i>收藏本站
-                        </a>
+                    <li class="action bookmarkme">
+                        <a rel="nofollow"><i class="fa fa-star"></i>收藏本站</a>
                     </li>
                 </ul>
             </div>

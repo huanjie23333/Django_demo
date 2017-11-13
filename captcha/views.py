@@ -9,7 +9,6 @@ class CaptchaCodeView(AjaxResponseMixin, View):
 
     def get(self, request, *args, **kwargs):
         ca = Captcha()
-        # clean sesson
         _result = ca.display()
         request.session[ca.session_key] = ca._get_answer()
         # request.session.set_expiry(180)

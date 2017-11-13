@@ -80,3 +80,6 @@ class CoinListView(CoinMarketCapDataMixin, TemplateView):
 
 class CoinChartView(CoinMarketCapDataMixin, TemplateView):
     template_name = 'webtools/coin_chart.html'
+
+
+
