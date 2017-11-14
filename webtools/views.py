@@ -83,15 +83,20 @@ class CoinChartView(CoinMarketCapDataMixin, TemplateView):
 
 
 class FetchWebSiteAPIView(JSONResponseMixin, AjaxResponseMixin, View):
-    http_method_names = ['get_ajax']
+    http_method_names = ['get_ajax', 'get']
 
     def get_site(self):
         data = dict()
         r = requests.get(self.url)
         soup = BeautifulSoup(r.content, 'lxml')
+
+        try:
+            desc = soup.find(attrs={"name": "description"}).get("content")
+        except AttributeError as e:
+            desc = ""
         data.update({
             "title": soup.title.string,
-            "description": soup.find(attrs={"name": "description"}).get("content"),
+            "description": desc,
         })
         return data
 
