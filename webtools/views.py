@@ -83,7 +83,7 @@ class CoinChartView(CoinMarketCapDataMixin, TemplateView):
 
 
 class FetchWebSiteAPIView(JSONResponseMixin, AjaxResponseMixin, View):
-    http_method_names = ['get_ajax','get' ]
+    http_method_names = ['get_ajax']
 
     def get_site(self):
         data = dict()
