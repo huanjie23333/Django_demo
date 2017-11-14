@@ -2492,6 +2492,12 @@ body a:hover {
 .site-submit-form .form-group div input[name="captcha_code"] {
   max-width: 200px;
 }
+.site-submit-form .url-error {
+  position: absolute;
+  left: 10px;
+  bottom: -1.2em;
+  color: red;
+}
 .test {
   color: red  ;
 }
