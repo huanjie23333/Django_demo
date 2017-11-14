@@ -1832,6 +1832,7 @@ body a:hover {
   position: fixed;
   width: 100%;
   z-index: 100;
+  top: 0;
 }
 #header .main-logo {
   height: 55px;
