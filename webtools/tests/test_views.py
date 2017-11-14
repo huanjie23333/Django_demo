@@ -22,5 +22,5 @@ class TestWebToolsViewsTestCase(TestCase):
     def test_fetch_site_view(self):
         _uri = "{uri}?url={url}".format(uri=reverse('tools:fetch_web_site'), url=self.fetch_url)
         r = self.client.get(_uri, headers=self.headers)
-
         self.assertEqual(r.status_code, 200)
+

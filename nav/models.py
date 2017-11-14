@@ -131,10 +131,10 @@ class SubNav(models.Model):
         User submitted Nav site
     '''
 
+    web_site = models.URLField(blank=False, null=False, verbose_name= _('网址'))
     cname = models.CharField(max_length=64, null=False, blank=False, verbose_name= _('中文名称'), unique=True)
     ename = models.CharField(max_length=64, null=True, blank=True, verbose_name= _('英文名称，非必填'))
     description = models.TextField(max_length=256, default='', blank=False, null=False, verbose_name= _('网站描述，一句话'))
-    web_site = models.URLField(blank=False, null=False, verbose_name= _('网址'))
     email = models.EmailField(blank=True, null=True, verbose_name= _('联系邮箱'))
     handeled = models.BooleanField(default=False)
 

@@ -85,6 +85,13 @@ class CoinChartView(CoinMarketCapDataMixin, TemplateView):
 class FetchWebSiteAPIView(JSONResponseMixin, AjaxResponseMixin, View):
     http_method_names = ['get_ajax', 'get']
 
+    @property
+    def url(self):
+        _url = self._url
+        if not  self._url.startswith("http"):
+            _url = "http://{url}".format(url=self._url)
+        return _url
+
     def get_site(self):
         data = dict()
         r = requests.get(self.url)
@@ -104,7 +111,8 @@ class FetchWebSiteAPIView(JSONResponseMixin, AjaxResponseMixin, View):
         return self.get_ajax(request, *args, **kwargs)
 
     def get_ajax(self, request, *args, **kwargs):
-        self.url = request.GET.get('url', None)
-        assert self.url is not None
+        self._url = request.GET.get('url', None)
+        assert self._url is not None
         data = self.get_site()
         return self.render_json_response(context_dict=data)
+
