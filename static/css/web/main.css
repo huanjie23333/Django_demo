@@ -2081,6 +2081,9 @@ body a:hover {
 #content .box .box-body .coin-list li.list-header .coin-change {
   color: #aaa;
 }
+#content .container.submit-suc .row {
+  margin-top: 200px;
+}
 #content .bar-right {
   height: 10px;
   overflow: visible;
