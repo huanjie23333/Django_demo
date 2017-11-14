@@ -1,19 +1,21 @@
 # -*- coding: UTF-8  -*-
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
-# from captcha.fields import CaptchaField
-# from django.forms import ModelForm
 from django.urls import reverse, reverse_lazy
-from django.utils.translation import gettext_lazy as _
 from taggit.models import TaggedItem, Tag
 
 from django.views.generic import TemplateView, View, DetailView, ListView, CreateView
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
+from django.http import HttpResponseForbidden
 
 from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
 from web.views.news import SideBarDataMixin
+
+import logging
+
+logger = logging.getLogger('django')
 
 
 class CategoryTagDataMixin(object):
@@ -118,7 +120,14 @@ class SubNavCreateView(CreateView):
 
 
 class SubNavSuccessView(TemplateView):
+    http_method_names = ['head', 'get']
     template_name = 'web/sub_nav_success.html'
+
+    def get(self, request, *args, **kwargs):
+        referer = request.META.get('HTTP_REFERER')
+        if not referer:
+            return HttpResponseForbidden()
+        return super().get(request, *args, **kwargs)
 
 
 class SiteMapView(SideBarDataMixin, TemplateView):
@@ -150,5 +159,5 @@ class SiteMapView(SideBarDataMixin, TemplateView):
 
 # view for testing 500 page.
 class ErrorView(StaffuserRequiredMixin, TemplateView):
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         raise Exception('error for test')
