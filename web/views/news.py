@@ -17,12 +17,12 @@ NEWS_TAG_LIST_KEY = 'newslist:tags:list'
 NEWS_TAG_API_URL = 'http://www.chainscoop.com/api/news/tags.json'
 NEWS_DETAIL_API = 'http://www.chainscoop.com/api/news/'
 
-class NewsDataMixin(object):
 
+class NewsDataMixin(object):
     def _get_newslist_page(self, page=1, tag=None):
         url = 'http://www.chainscoop.com/api/news.json?page=%s' % page
         if tag:
-            url = "%s&tag=%s"%(url,tag)
+            url = "%s&tag=%s" % (url, tag)
         r = requests.get(url)
         if r.status_code == 200:
             return r.text
@@ -60,11 +60,10 @@ class NewsDataMixin(object):
         finally:
             return result
 
-
     def get_cache_key(self, page=1, tag=None):
         cache_key = 'newslist:page:%s' % page
         if tag:
-            cache_key = "%s:%s" %(cache_key, tag)
+            cache_key = "%s:%s" % (cache_key, tag)
         return cache_key
 
     def get_page_num(self):
@@ -78,7 +77,7 @@ class NewsDataMixin(object):
         return self.request.GET.get('tag', None)
 
     def get_news_tag_list(self):
-        result = cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60*30)
+        result = cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60 * 30)
         if result is not None and len(result) == 0:
             cache.delete(NEWS_TAG_LIST_KEY)
         return result
@@ -98,7 +97,7 @@ class NewsDataMixin(object):
 
     def get_news_detail(self, slug):
         key = self.get_news_detail_key(slug)
-        return cache.get_or_set(key, self._get_news_detail(slug), timeout=60*30 )
+        return cache.get_or_set(key, self._get_news_detail(slug), timeout=60 * 30)
 
     def _get_news_detail(self, slug):
         r = requests.get("%s%s" % (NEWS_DETAIL_API, slug))
@@ -113,9 +112,6 @@ class NewsDataMixin(object):
         return 'news:detail:%s' % slug
 
 
-
-
-
 class SideBarDataMixin(FlinkMixin, NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -126,7 +122,6 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
             'sidebar_news_list': self.get_news_page_list(),
         })
         return context
-
 
 
 class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
@@ -146,22 +141,24 @@ class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
 class NewsListView(SideBarDataMixin, TemplateView):
     template_name = 'web/news_list.html'
     context_object_name = 'news_list'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['news_list'] =  self.get_news_page_list()
+        context['news_list'] = self.get_news_page_list()
         context['news_json_str'] = self.get_news_page_data_json(1)
         return context
 
 
 class NewsTagListView(SideBarDataMixin, TemplateView):
     template_name = 'web/news_list.html'
+
     def get_tag(self):
         return self.kwargs.get('tag', None)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         tag = context['current_tag'] = self.get_tag()
-        context['news_list'] =  self.get_news_page_list(tag=tag)
+        context['news_list'] = self.get_news_page_list(tag=tag)
         context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)
         return context
 
@@ -187,7 +184,3 @@ class NewsDetailView(SideBarDataMixin, DetailView):
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug')
         return self.get_news_detail(slug)
-
-
-
-
