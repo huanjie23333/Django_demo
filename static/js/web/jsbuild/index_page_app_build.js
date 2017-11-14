@@ -3724,6 +3724,55 @@ define('subapp/captcha/captcha',['jquery','libs/Class'],function ($, Class) {
    });
    return Captcha;
 });
+define('libs/csrf',['jquery'],function($){
+
+    function getCookie(name) {
+    var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+});
+define('subapp/submit/getsitedata',['jquery','libs/Class', 'libs/csrf'], function($, Class, CSRF){
+
+    var GetSiteData = Class.extend({
+        init: function(){
+            $('#id_web_site').on('blur', function(){
+                var url = location.protocol + '//' + location.host + '/tools/site/?url=' + $(this).val();
+                $.getJSON(url, function(data){
+                    $('#id_cname').val(data.title);
+                    $('#id_description').val(data.description);
+                });
+            });
+        }
+    });
+    return GetSiteData;
+});
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6117,6 +6166,7 @@ require([
         'subapp/tools/bookmark',
         'subapp/news/tagtrigger',
         'subapp/captcha/captcha',
+        'subapp/submit/getsitedata',
         'bootstrap'
     ],
     function (polyfill,
@@ -6130,7 +6180,8 @@ require([
               Layout,
               BookMark,
               TagTrigger,
-              Captcha
+              Captcha,
+              GetSiteData
               ) {
 
         jQuery = $;
@@ -6148,6 +6199,8 @@ require([
         new NewsLine();
         new GoTop();
         new Captcha();
+
+        new GetSiteData();
 
         // for news tag trigger ;
         new TagTrigger();

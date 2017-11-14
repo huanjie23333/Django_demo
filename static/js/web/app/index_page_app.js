@@ -11,6 +11,7 @@ require([
         'subapp/tools/bookmark',
         'subapp/news/tagtrigger',
         'subapp/captcha/captcha',
+        'subapp/submit/getsitedata',
         'bootstrap'
     ],
     function (polyfill,
@@ -24,7 +25,8 @@ require([
               Layout,
               BookMark,
               TagTrigger,
-              Captcha
+              Captcha,
+              GetSiteData
               ) {
 
         jQuery = $;
@@ -42,6 +44,8 @@ require([
         new NewsLine();
         new GoTop();
         new Captcha();
+
+        new GetSiteData();
 
         // for news tag trigger ;
         new TagTrigger();
