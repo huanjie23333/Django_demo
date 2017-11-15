@@ -18,7 +18,7 @@
         <div class="container dapp-container">
             <div class="row" id="grid" data-columns>
                 {% for project in projects %}
-                <div class="box project-wrapper">
+                <div class="box project-wrapper" data-slug="{{ project.slug }}">
                     <div class="box-body {{ project.state }}" >
                         <div class="p-title">{{ project.name }}</div>
 {#                        <div class="p-founder">{{ project.founder }}</div>#}
@@ -36,7 +36,6 @@
                                 {% if project.ropsten %}<li><a href="{{ project.ropsten }}"><i class="fa fa-bug"></i></a></li>{% endif %}
                                 {% if project.gitter %}<li><a href="{{ project.gitter }}"><i class="fa fa-comments"></i></a></li>{% endif %}
                                 {% if project.mainnet_contract_address %}<li><a href="{{ project.mainnet_contract_address }}"><i class="fa fa-cogs"></i></a></li>{% endif %}
-
                             </ul>
                         </div>
                         <div class="tag-list-wrapper">

@@ -514,13 +514,26 @@ ul li {
 .project-wrapper .p-title {
   font-size: 1.5em;
   line-height: 3em;
+  height: 3em;
+  min-height: 3em;
+  max-height: 3em;
+  overflow: hidden;
 }
 .project-wrapper .p-founder {
   font-weight: 600;
 }
 .project-wrapper .p-bio {
   height: 3em;
+  min-height: 3em;
   max-height: 3em;
+  overflow: hidden;
+}
+.project-wrapper .p-social-wrapper {
+  cursor: pointer;
+  height: 1.5em;
+  min-height: 1.5em;
+  max-height: 1.5em;
+  overflow: hidden;
 }
 .project-wrapper .p-social-wrapper:after {
   content: " ";
@@ -532,6 +545,7 @@ ul li {
   display: inline-block;
   margin-right: 3px;
   font-size: 1.2em;
+  line-height: 1.5em ;
 }
 .project-wrapper .p-tags-wrapper:after {
   content: " ";
@@ -545,6 +559,8 @@ ul li {
 .project-wrapper .tag-list-wrapper {
   line-height: 1.5em;
   height: 3em;
+  min-height: 3em;
+  max-height: 3em;
   overflow: hidden;
   float: none;
 }
