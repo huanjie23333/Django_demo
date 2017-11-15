@@ -2097,6 +2097,13 @@ body a:hover {
 #content .box .box-body .coin-list li.list-header .coin-change {
   color: #aaa;
 }
+#content .container.submit-suc .row {
+  margin-top: 200px;
+}
+#content .breadcrumb {
+  background-color: #e9ecef;
+  padding-left: 20px;
+}
 #content .bar-right {
   height: 10px;
   overflow: visible;
@@ -2504,6 +2511,12 @@ body a:hover {
 }
 .site-submit-form .form-group div input[name="captcha_code"] {
   max-width: 200px;
+}
+.site-submit-form .url-error {
+  position: absolute;
+  left: 10px;
+  bottom: -1.2em;
+  color: red;
 }
 .test {
   color: red  ;
