@@ -3782,6 +3782,56 @@ define('subapp/submit/getsitedata',['jquery','libs/Class', 'libs/csrf'], functio
     });
     return GetSiteData;
 });
+define('subapp/header/search_news',['libs/Class', 'jquery'], function(Class, $){
+    var SearchNews = Class.extend({
+        init: function(){
+
+            $('#search-news-btn').click(function(ev){
+                ev.preventDefault();
+                var searchVal = $('.main-search-container .nav-search').val().trim();
+                $.ajax({
+                    method: 'GET',
+                    url: 'http://www.chainscoop.com/api/news/search.json?q=' + searchVal,
+                    data: {},
+                    jsonp: 'true',
+                    success: function(data){
+                        var temp = '<div class="col-sm-8 col-xs-12"><div class="box"><div class="box-body">';
+                        for(var i = 0; i < data.count; i++){
+                            temp += '<div class="body"><h1 class="news-title">'
+                                + data.results[i].title
+                                + '</h1><ul><li class="news-content">'
+                                + data.results[i].content;
+                            if(data.results[i].origin_link){
+                                temp += '<a href="'
+                                    + data.results[i].origin_link
+                                    + '" rel="nofollow" target="_blank">「原文链接」</a>'
+                            }
+                            temp += '</li><li class="news-info"><span>'
+                                + data.results[i].pub_time
+                                + '</span><span class="tag-list-wrapper"><ul class="tag-list">'
+                                + '<li class="tag-list-head"><i class="fa fa-tag"></i></li>';
+                            for(var j = 0; j < data.results[i].tag_list.length; j++){
+                                temp += '<li class="tag-item"><a href="/news/tag/'
+                                    + data.results[i].tag_list[j]
+                                    + '/" target="_blank">'
+                                    + data.results[i].tag_list[j]
+                                    + '</a></li>';
+                            }
+                            temp += '</ul></span></li></ul></div>';
+                        }
+                        temp += '</div></div></div>';
+                        $('#side_column').prev().replaceWith(temp);
+                        var url = location.protocol + '//' + location.host + '/search/news/';
+                        window.history.replaceState(null, '', url);
+                    }
+                });
+            });
+        }
+    });
+    return SearchNews;
+});
+
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6176,6 +6226,7 @@ require([
         'subapp/news/tagtrigger',
         'subapp/captcha/captcha',
         'subapp/submit/getsitedata',
+        'subapp/header/search_news',
         'bootstrap'
     ],
     function (polyfill,
@@ -6190,7 +6241,8 @@ require([
               BookMark,
               TagTrigger,
               Captcha,
-              GetSiteData
+              GetSiteData,
+              SearchNews
               ) {
 
         jQuery = $;
@@ -6210,6 +6262,8 @@ require([
         new Captcha();
 
         new GetSiteData();
+
+        new SearchNews();
 
         // for news tag trigger ;
         new TagTrigger();
