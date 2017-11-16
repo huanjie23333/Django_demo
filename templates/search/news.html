@@ -1,0 +1,77 @@
+{% extends "base/base.html" %}
+{% load static compress %}
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12" id="ajax-news-content">
+
+                    <div class="box">
+                        <div class="box-header search-header">含「<span class="query-word">{{ query }}</span>」的搜索结果约 {{ object_list|length }} 条</div>
+                        <div class="box-body category-tag-wrapper">
+                        </div>
+                        <div class="box-footer"></div>
+                    </div>
+                </div>
+                {% include 'web/partial/side_bar.html' %}
+            </div>
+        </div>
+
+    </section>
+
+
+{% endblock %}
+
+
+{% block basic_script %}
+
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+    <script>
+        var searchVal = location.href.replace(/^http:\/\/.*?q=/, '');
+        $.ajax({
+             method: 'GET',
+             url: 'http://www.chainscoop.com/api/news/search.json?q=' + searchVal,
+             data: {},
+             jsonp: 'true',
+             success: function(data){
+                 var temp = '';
+                 for(var i = 0; i < data.count; i++){
+                     temp += '<div class="entry"><div class="body"><h1 class="news-title">'
+                         + data.results[i].title
+                         + '</h1><ul><li class="news-content">'
+                         + data.results[i].content;
+                     if(data.results[i].origin_link){
+                         temp += '<a href="'
+                             + data.results[i].origin_link
+                             + '" rel="nofollow" target="_blank">「原文链接」</a>'
+                     }
+                     temp += '</li><li class="news-info"><span>'
+                         + data.results[i].pub_time
+                         + '</span><span class="tag-list-wrapper"><ul class="tag-list">'
+                         + '<li class="tag-list-head"><i class="fa fa-tag"></i></li>';
+                     for(var j = 0; j < data.results[i].tag_list.length; j++){
+                         temp += '<li class="tag-item"><a href="/news/tag/'
+                             + data.results[i].tag_list[j]
+                             + '/" target="_blank">'
+                             + data.results[i].tag_list[j]
+                             + '</a></li>';
+                     }
+                     temp += '</ul></span></li></ul></div></div>';
+                 }
+                 $('#ajax-news-content .box-body').html(temp);
+                 $('#ajax-news-content .box-header').html(
+                     '含「<span class="query-word">'
+                     + searchVal
+                     + '</span>」的搜索结果约'
+                     + data.count + ' 条'
+                 );
+             }
+        });
+    </script>
+
+
+{% endblock %}

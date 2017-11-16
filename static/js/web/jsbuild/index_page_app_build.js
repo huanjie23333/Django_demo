@@ -3791,6 +3791,21 @@ define('subapp/submit/getsitedata',['jquery','libs/Class', 'libs/csrf'], functio
     });
     return GetSiteData;
 });
+define('subapp/header/search_news',['libs/Class', 'jquery'], function(Class, $){
+    var SearchNews = Class.extend({
+        init: function(){
+
+            $('#search-news-btn').click(function(){
+                var q = $('input[name="q"]').val().trim();
+                window.location.href = '/search/news/?q=' + q;
+                return false;
+            });
+        }
+    });
+    return SearchNews;
+});
+
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6185,6 +6200,7 @@ require([
         'subapp/news/tagtrigger',
         'subapp/captcha/captcha',
         'subapp/submit/getsitedata',
+        'subapp/header/search_news',
         'bootstrap'
     ],
     function (polyfill,
@@ -6199,7 +6215,8 @@ require([
               BookMark,
               TagTrigger,
               Captcha,
-              GetSiteData
+              GetSiteData,
+              SearchNews
               ) {
 
         jQuery = $;
@@ -6219,6 +6236,8 @@ require([
         new Captcha();
 
         new GetSiteData();
+
+        new SearchNews();
 
         // for news tag trigger ;
         new TagTrigger();

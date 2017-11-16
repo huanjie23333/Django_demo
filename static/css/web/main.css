@@ -2525,6 +2525,11 @@ body a:hover {
   bottom: -1.2em;
   color: red;
 }
+#ajax-news-content .body {
+  float: none;
+  margin: auto;
+  padding-left: 0;
+}
 .test {
   color: red  ;
 }
