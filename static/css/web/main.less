@@ -124,6 +124,11 @@ body {
 
 .news-detail-wrapper {
   padding: 10px 20px;
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
   .news-title {
     font-size: 1.5em;
     text-align: left;
