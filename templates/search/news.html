@@ -41,9 +41,9 @@
                  var temp = '';
                  for(var i = 0; i < data.count; i++){
                      temp += '<div class="entry"><div class="body"><h1 class="news-title">'
-                         + data.results[i].title
+                         + data.results[i].title.replace(new RegExp('(' + searchVal + ')', 'gi'), '<span class="search-light">$1</span>')
                          + '</h1><ul><li class="news-content">'
-                         + data.results[i].content;
+                         + data.results[i].content.replace(new RegExp('(' + searchVal + ')', 'gi'), '<span class="search-light">$1</span>');
                      if(data.results[i].origin_link){
                          temp += '<a href="'
                              + data.results[i].origin_link

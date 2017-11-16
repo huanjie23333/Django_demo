@@ -2530,6 +2530,10 @@ body a:hover {
   margin: auto;
   padding-left: 0;
 }
+#ajax-news-content .body .search-light {
+  color: #000;
+  background-color: yellow;
+}
 .test {
   color: red  ;
 }
