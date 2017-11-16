@@ -1933,6 +1933,11 @@ body a:hover {
 .news-detail-wrapper {
   padding: 10px 20px;
 }
+.news-detail-wrapper::after {
+  content: '';
+  display: block;
+  clear: both;
+}
 .news-detail-wrapper .news-title {
   font-size: 1.5em;
   text-align: left;
@@ -2094,6 +2099,24 @@ body a:hover {
 }
 #content .price_container {
   position: relative;
+}
+#content #follow-us-box {
+  position: relative;
+}
+#content #follow-us-box .box-header {
+  border-bottom: 0px;
+}
+#content #follow-us-box .box-body {
+  position: absolute;
+  right: 3em;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+}
+#content #follow-us-box .box-body a {
+  margin-right: 1.5em;
 }
 .category-content .tag-list-tail {
   display: none !important;
