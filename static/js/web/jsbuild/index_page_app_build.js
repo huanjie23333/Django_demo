@@ -3789,9 +3789,9 @@ define('subapp/header/search_news',['libs/Class', 'jquery'], function(Class, $){
     var SearchNews = Class.extend({
         init: function(){
 
-            $('#search-news-btn').click(function(ev){
-                ev.stopPropagation();
-                ev.preventDefault();
+            $('#search-news-btn').click(function(){
+                var q = $('input[name="q"]').val().trim();
+                window.location.href = '/search/news/?q=' + q;
                 return false;
                 var searchVal = $('.main-search-container .nav-search').val().trim();
                 // $.ajax({
@@ -6265,7 +6265,7 @@ require([
 
         new GetSiteData();
 
-        // new SearchNews();
+        new SearchNews();
 
         // for news tag trigger ;
         new TagTrigger();

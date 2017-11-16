@@ -49,7 +49,7 @@ require([
 
         new GetSiteData();
 
-        // new SearchNews();
+        new SearchNews();
 
         // for news tag trigger ;
         new TagTrigger();
