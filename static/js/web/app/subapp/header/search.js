@@ -8,7 +8,6 @@ define(['libs/Class', 'jquery', 'underscore','libs/autocomplete'],
                         try { xhr.abort(); } catch(e){}
                         $.getJSON('/search/autocomplete/', {q: term},
                             function(data){
-                            // response(data['results']);
                                 $.ajax('http://www.chainscoop.com/api/news/autocomplete/', {
                                     jsonp: true,
                                     success: function(data2){
@@ -21,7 +20,6 @@ define(['libs/Class', 'jquery', 'underscore','libs/autocomplete'],
                         })
                     }
                 });
-                console.log('search');
 
             },
         });
