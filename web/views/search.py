@@ -56,5 +56,5 @@ class NavFacetedSearchView(FacetedSearchView):
         return context
 
 
-class NewsSearchView(TemplateView):
+class NewsSearchView(SideBarDataMixin, TemplateView):
     template_name = 'search/news.html'
