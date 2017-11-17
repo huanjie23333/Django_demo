@@ -10,6 +10,9 @@
                     <div class="box">
                         <div class="box-header search-header">含「<span class="query-word">{{ query }}</span>」的搜索结果约 {{ object_list|length }} 条</div>
                         <div class="box-body category-tag-wrapper">
+                            <div class="loading-box">
+                                <i class="fa fa-spinner" aria-hidden="true"></i>&nbsp;&nbsp;加载中
+                            </div>
                         </div>
                         <div class="box-footer">
                             <button class="btn white-btn prev-btn">上一页</button>
@@ -71,7 +74,9 @@
                  + '</span>」的搜索结果约'
                  + data.count + ' 条'
              );
-             $(document).scrollTop(0); //加动画
+             $("html, body").animate(
+                    {scrollTop: 0}, 500
+                );
              if(data.next || data.prev){
                  $('#ajax-news-content .box-footer').css('display', 'block');
                  nextURL = data.next;

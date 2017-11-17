@@ -8,6 +8,7 @@
 @import "../csslib/auto-complete.less";
 @import "../csslib/2xcss.less";
 @import "../csslib/datatable.less";
+@import "../csslib/animate.less";
 
 
 html, body {
@@ -680,7 +681,19 @@ body {
       }
     }
   }
+  .loading-box {
+    line-height:80px;
+    text-align: center;
+    font-color: @support-text-color;
+    i {
+      -webkit-animation: 1s linear infinite loading-icon-rotate;
+      -moz-animation: 1s linear infinite loading-icon-rotate;
+      -o-animation: 1s linear infinite loading-icon-rotate;
+    }
+  }
 }
+
+
 
 
 .test {

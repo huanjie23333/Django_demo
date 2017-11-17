@@ -1810,6 +1810,27 @@ table.dataTable tbody tr {
 .quote-list thead th {
   font-size: 16px;
 }
+@keyframes loading-icon-rotate {
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
 html,
 body {
   min-height: 100vh;
@@ -2554,6 +2575,16 @@ body a:hover {
 }
 #ajax-news-content .box-footer .btn.prev-btn {
   margin-right: 30px;
+}
+#ajax-news-content .loading-box {
+  line-height: 80px;
+  text-align: center;
+  font-color: #aaa;
+}
+#ajax-news-content .loading-box i {
+  -webkit-animation: 1s linear infinite loading-icon-rotate;
+  -moz-animation: 1s linear infinite loading-icon-rotate;
+  -o-animation: 1s linear infinite loading-icon-rotate;
 }
 .test {
   color: red  ;
