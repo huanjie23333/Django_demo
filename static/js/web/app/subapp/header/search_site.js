@@ -1,8 +1,8 @@
 define(['libs/Class', 'jquery'], function(Class, $){
-    var SearchNews = Class.extend({
+    var SearchSite = Class.extend({
         init: function(){
 
-            $('#search-news-btn').click(function(){
+            $('#search-site-btn').click(function(){
                 var q = $('input[name="q"]').val().trim();
                 if(q === ''){
                     if(location.pathname === '/'){
@@ -12,12 +12,9 @@ define(['libs/Class', 'jquery'], function(Class, $){
                         return false;
                     }
                 }
-                window.location.href = '/search/news/?q=' + q;
-                return false;
             });
 
         }
     });
-    return SearchNews;
+    return SearchSite;
 });
-

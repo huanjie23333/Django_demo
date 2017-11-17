@@ -1360,7 +1360,7 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
                     }
                 });
 
-            },
+            }
         });
 
         return Search;
@@ -3797,15 +3797,44 @@ define('subapp/header/search_news',['libs/Class', 'jquery'], function(Class, $){
 
             $('#search-news-btn').click(function(){
                 var q = $('input[name="q"]').val().trim();
+                if(q === ''){
+                    if(location.pathname === '/'){
+                        return false;
+                    } else {
+                        location.href = '/';
+                        return false;
+                    }
+                }
                 window.location.href = '/search/news/?q=' + q;
                 return false;
             });
+
         }
     });
     return SearchNews;
 });
 
 
+define('subapp/header/search_site',['libs/Class', 'jquery'], function(Class, $){
+    var SearchSite = Class.extend({
+        init: function(){
+
+            $('#search-site-btn').click(function(){
+                var q = $('input[name="q"]').val().trim();
+                if(q === ''){
+                    if(location.pathname === '/'){
+                        return false;
+                    } else {
+                        location.href = '/';
+                        return false;
+                    }
+                }
+            });
+
+        }
+    });
+    return SearchSite;
+});
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6201,6 +6230,7 @@ require([
         'subapp/captcha/captcha',
         'subapp/submit/getsitedata',
         'subapp/header/search_news',
+        'subapp/header/search_site',
         'bootstrap'
     ],
     function (polyfill,
@@ -6216,7 +6246,8 @@ require([
               TagTrigger,
               Captcha,
               GetSiteData,
-              SearchNews
+              SearchNews,
+              SearchSite
               ) {
 
         jQuery = $;
@@ -6238,6 +6269,7 @@ require([
         new GetSiteData();
 
         new SearchNews();
+        new SearchSite();
 
         // for news tag trigger ;
         new TagTrigger();

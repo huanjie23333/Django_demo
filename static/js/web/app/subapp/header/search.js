@@ -21,7 +21,7 @@ define(['libs/Class', 'jquery', 'underscore','libs/autocomplete'],
                     }
                 });
 
-            },
+            }
         });
 
         return Search;
