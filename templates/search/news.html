@@ -74,7 +74,9 @@
                  + '</span>」的搜索结果约'
                  + data.count + ' 条'
              );
-             $(document).scrollTop(0); //加动画
+             $("html, body").animate(
+                    {scrollTop: 0}, 500
+                );
              if(data.next || data.prev){
                  $('#ajax-news-content .box-footer').css('display', 'block');
                  nextURL = data.next;
