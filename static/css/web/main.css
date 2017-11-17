@@ -952,6 +952,15 @@ ul li {
   right: -108px;
   top: -13px;
 }
+.main-search-container #search-news-btn {
+  color: #0E8ED8;
+  background-color: #fff;
+  border: solid 1px #0E8ED8;
+  line-height: 36px;
+}
+.main-search-container #search-site-btn {
+  margin-left: 0;
+}
 .navbar {
   min-height: 40px;
   -webkit-border-radius: 0;
@@ -2533,6 +2542,18 @@ body a:hover {
 #ajax-news-content .body .search-light {
   color: #000;
   background-color: yellow;
+}
+#ajax-news-content .box-footer {
+  text-align: center;
+  line-height: 60px;
+  clear: both;
+  display: none;
+}
+#ajax-news-content .box-footer .btn {
+  outline: none;
+}
+#ajax-news-content .box-footer .btn.prev-btn {
+  margin-right: 30px;
 }
 .test {
   color: red  ;

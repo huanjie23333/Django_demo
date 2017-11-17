@@ -12,8 +12,8 @@
                         <div class="box-body category-tag-wrapper">
                         </div>
                         <div class="box-footer">
-{#                            <button class="btn white-btn prev-btn">上一页</button>#}
-{#                            <button class="btn white-btn next-btn">下一页</button>#}
+                            <button class="btn white-btn prev-btn">上一页</button>
+                            <button class="btn white-btn next-btn">下一页</button>
                         </div>
                     </div>
                 </div>
@@ -34,48 +34,67 @@
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
     {% endcompress %}
     <script>
-        var searchVal = decodeURI(location.href.replace(/^http:\/\/.*?q=/, ''));
-        $.ajax({
+         var searchVal = decodeURI(location.href.replace(/^http:\/\/.*?q=/, ''));
+         var nextURL = '';
+         var prevURL = '';
+         var ajaxCallback = function(data){
+             var temp = '';
+             for(var i = 0; i < data.results.length; i++){
+                 temp += '<div class="entry"><div class="body"><h1 class="news-title">'
+                     + data.results[i].title
+                         .replace(new RegExp('(' + searchVal + ')', 'gi'), '<span class="search-light">$1</span>')
+                     + '</h1><ul><li class="news-content">'
+                     + data.results[i].content
+                         .replace(new RegExp('(' + searchVal + ')', 'gi'), '<span class="search-light">$1</span>');
+                 if(data.results[i].origin_link){
+                     temp += '<a href="'
+                         + data.results[i].origin_link
+                         + '" rel="nofollow" target="_blank">「原文链接」</a>'
+                 }
+                 temp += '</li><li class="news-info"><span>'
+                     + data.results[i].pub_time
+                     + '</span><span class="tag-list-wrapper"><ul class="tag-list">'
+                     + '<li class="tag-list-head"><i class="fa fa-tag"></i></li>';
+                 for(var j = 0; j < data.results[i].tag_list.length; j++){
+                     temp += '<li class="tag-item"><a href="/news/tag/'
+                         + data.results[i].tag_list[j]
+                         + '/" target="_blank">'
+                         + data.results[i].tag_list[j]
+                         + '</a></li>';
+                 }
+                 temp += '</ul></span></li></ul></div></div>';
+             }
+             $('#ajax-news-content .box-body').html(temp);
+             $('#ajax-news-content .box-header').html(
+                 '含「<span class="query-word">'
+                 + searchVal
+                 + '</span>」的搜索结果约'
+                 + data.count + ' 条'
+             );
+             $(document).scrollTop(0); //加动画
+             if(data.next || data.prev){
+                 $('#ajax-news-content .box-footer').css('display', 'block');
+                 nextURL = data.next;
+                 prevURL = data.previous;
+             }
+         };
+         $('#ajax-news-content .box-footer button').click(function(){
+             var ajaxURL = $(this).hasClass('prev-btn') ? prevURL : nextURL;
+             if(!ajaxURL) return false;
+             $.ajax({
+                 method: 'GET',
+                 url: ajaxURL,
+                 jsonp: true,
+                 success: ajaxCallback
+             });
+         });
+         $.ajax({
              method: 'GET',
              url: 'http://www.chainscoop.com/api/news/search.json?q=' + searchVal,
              data: {},
              jsonp: 'true',
-             success: function(data){
-                 var temp = '';
-                 for(var i = 0; i < data.results.length; i++){
-                     temp += '<div class="entry"><div class="body"><h1 class="news-title">'
-                         + data.results[i].title
-                             .replace(new RegExp('(' + searchVal + ')', 'gi'), '<span class="search-light">$1</span>')
-                         + '</h1><ul><li class="news-content">'
-                         + data.results[i].content
-                             .replace(new RegExp('(' + searchVal + ')', 'gi'), '<span class="search-light">$1</span>');
-                     if(data.results[i].origin_link){
-                         temp += '<a href="'
-                             + data.results[i].origin_link
-                             + '" rel="nofollow" target="_blank">「原文链接」</a>'
-                     }
-                     temp += '</li><li class="news-info"><span>'
-                         + data.results[i].pub_time
-                         + '</span><span class="tag-list-wrapper"><ul class="tag-list">'
-                         + '<li class="tag-list-head"><i class="fa fa-tag"></i></li>';
-                     for(var j = 0; j < data.results[i].tag_list.length; j++){
-                         temp += '<li class="tag-item"><a href="/news/tag/'
-                             + data.results[i].tag_list[j]
-                             + '/" target="_blank">'
-                             + data.results[i].tag_list[j]
-                             + '</a></li>';
-                     }
-                     temp += '</ul></span></li></ul></div></div>';
-                 }
-                 $('#ajax-news-content .box-body').html(temp);
-                 $('#ajax-news-content .box-header').html(
-                     '含「<span class="query-word">'
-                     + searchVal
-                     + '</span>」的搜索结果约'
-                     + data.count + ' 条'
-                 );
-             }
-        });
+             success: ajaxCallback
+         });
     </script>
 
 
