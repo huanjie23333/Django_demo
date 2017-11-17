@@ -1360,7 +1360,7 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
                     }
                 });
 
-            },
+            }
         });
 
         return Search;

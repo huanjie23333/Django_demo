@@ -11,7 +11,10 @@
                         <div class="box-header search-header">含「<span class="query-word">{{ query }}</span>」的搜索结果约 {{ object_list|length }} 条</div>
                         <div class="box-body category-tag-wrapper">
                         </div>
-                        <div class="box-footer"></div>
+                        <div class="box-footer">
+{#                            <button class="btn white-btn prev-btn">上一页</button>#}
+{#                            <button class="btn white-btn next-btn">下一页</button>#}
+                        </div>
                     </div>
                 </div>
                 {% include 'web/partial/side_bar.html' %}
