@@ -2543,6 +2543,18 @@ body a:hover {
   color: #000;
   background-color: yellow;
 }
+#ajax-news-content .box-footer {
+  text-align: center;
+  line-height: 60px;
+  clear: both;
+  display: none;
+}
+#ajax-news-content .box-footer .btn {
+  outline: none;
+}
+#ajax-news-content .box-footer .btn.prev-btn {
+  margin-right: 30px;
+}
 .test {
   color: red  ;
 }
