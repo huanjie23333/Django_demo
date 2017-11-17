@@ -2555,12 +2555,15 @@ body a:hover {
   bottom: -1.2em;
   color: red;
 }
-#ajax-news-content .body {
+#ajax-news-content .box-body {
+  padding-top: 20px;
+}
+#ajax-news-content .box-body .body {
   float: none;
   margin: auto;
   padding-left: 0;
 }
-#ajax-news-content .body .search-light {
+#ajax-news-content .box-body .body .search-light {
   color: #000;
   background-color: yellow;
 }

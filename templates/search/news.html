@@ -71,13 +71,13 @@
              $('#ajax-news-content .box-header').html(
                  '含「<span class="query-word">'
                  + searchVal
-                 + '</span>」的搜索结果约'
+                 + '</span>」的搜索结果约 '
                  + data.count + ' 条'
              );
              $("html, body").animate(
                     {scrollTop: 0}, 500
                 );
-             if(data.next || data.prev){
+             if(data.next || data.previous){
                  $('#ajax-news-content .box-footer').css('display', 'block');
                  nextURL = data.next;
                  prevURL = data.previous;
