@@ -9,7 +9,6 @@ require([
         'libs/salvattore',
         'subapp/tools/bookmark',
         'subapp/dapp/app'
-
     ],
     function (polyfill,
               $,

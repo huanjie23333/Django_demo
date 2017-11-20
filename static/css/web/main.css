@@ -497,6 +497,7 @@ ul li {
   text-decoration: none;
 }
 .project-wrapper {
+  cursor: pointer;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -ms-transition: all 1s;
