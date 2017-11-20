@@ -2032,8 +2032,8 @@ define('subapp/gotop',['jquery', 'libs/underscore', 'libs/Class', 'libs/fastdom'
                 }
             },
             show_top_link:function(){
-                var item_left = this.content_rect.left + this.content_rect.width - 50;
-                this.topLinkWrapper.css({left:item_left}).show();
+                var item_left = this.content_rect.left + this.content_rect.width;
+                this.topLinkWrapper.show();
             },
 
             hide_top_link:function(){

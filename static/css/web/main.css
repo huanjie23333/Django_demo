@@ -2315,7 +2315,8 @@ body a:hover {
   display: none;
   width: 50px;
   border: 1px solid #f3f3f3;
-  bottom: 84px;
+  bottom: 0px;
+  right: 0px;
   background: #fff;
   text-align: center;
   opacity: 0.4;
