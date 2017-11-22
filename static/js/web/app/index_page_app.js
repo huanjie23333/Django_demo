@@ -14,6 +14,7 @@ require([
         'subapp/submit/getsitedata',
         'subapp/header/search_news',
         'subapp/header/search_site',
+        'subapp/search/search_news_ajax',
         'bootstrap'
     ],
     function (polyfill,
@@ -30,7 +31,8 @@ require([
               Captcha,
               GetSiteData,
               SearchNews,
-              SearchSite
+              SearchSite,
+              SearchNewsAjax
               ) {
 
         jQuery = $;
@@ -53,6 +55,7 @@ require([
 
         new SearchNews();
         new SearchSite();
+        new SearchNewsAjax();
 
         // for news tag trigger ;
         new TagTrigger();
