@@ -451,7 +451,6 @@ ul li {
   margin-right: 5px;
 }
 .tag-list-wrapper .tag-list .tag-item {
-  margin: 0 0 0 0;
   color: #aaa;
   line-height: 1.5em;
   font-weight: 400;
@@ -459,6 +458,7 @@ ul li {
 .tag-list-wrapper .tag-list .tag-item::after {
   content: '·';
   margin-left: 3px;
+  display: inline-block;
 }
 .tag-list-wrapper .tag-list .tag-item:last-child {
   margin: 0 0;
@@ -2588,5 +2588,5 @@ body a:hover {
   -o-animation: 1s linear infinite loading-icon-rotate;
 }
 .test {
-  color: red  ;
+  color: black  ;
 }
