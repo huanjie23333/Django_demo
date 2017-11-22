@@ -2576,15 +2576,12 @@ body a:hover {
 #ajax-news-content .box-footer .btn {
   outline: none;
 }
-#ajax-news-content .box-footer .btn.prev-btn {
-  margin-right: 30px;
-}
 #ajax-news-content .loading-box {
   line-height: 80px;
   text-align: center;
   font-color: #aaa;
 }
-#ajax-news-content .loading-box i {
+#ajax-news-content i.fa-spinner {
   -webkit-animation: 1s linear infinite loading-icon-rotate;
   -moz-animation: 1s linear infinite loading-icon-rotate;
   -o-animation: 1s linear infinite loading-icon-rotate;

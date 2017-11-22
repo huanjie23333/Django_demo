@@ -28,10 +28,13 @@
     <% for(var j = 0; j < results.length; j++){ %>
         <div class="entry">
             <div class="body">
-                <h1 class="news-title"><%= results[j].title %></h1>
+                <h1 class="news-title"><% print(results[j].title.replace(new RegExp('('
+                    + decodeURI(location.href.replace(/^http:\/\/.*?q=/, ''))
+                    + ')', 'gi'), '<span class="search-light">$1</span>')); %>
+                </h1>
                 <ul>
                     <li class="news-content">
-                        <%= results[j].content %>
+                        <% print(results[j].content.replace(new RegExp('(' + decodeURI(location.href.replace(/^http:\/\/.*?q=/, '')) + ')', 'gi'), '<span class="search-light">$1</span>')); %>
                         <% if(results[j].origin_link){ %>
                             <a href="<%= results[j].origin_link %>" rel="nofollow" target="_blank">原文链接</a>
                         <% } %>
