@@ -68,7 +68,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 if settings.IS_LOCAL_TESTING:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+    # for local testing 500 page
     from web.views import ErrorView
     urlpatterns = urlpatterns + [
          url(r'^error\.htm$', ErrorView.as_view(), name='web_error_testing'),

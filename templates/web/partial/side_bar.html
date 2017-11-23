@@ -1,11 +1,17 @@
 {% load i18n %}
-<div class="col-sm-4 col-xs-12 news-wrapper" id="side_column">
+{% load static %}
+<div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
 {#    <div class="box hidden-xs">#}
 {#        <div class="box-header ">#}
 {#            比特币硬分叉倒计时#}
 {#        </div>#}
 {#        {% include 'web/partial/clock.html' %}#}
 {#    </div>#}
+    <a class="" href="http://www.chainscoop.com/articles/180408894702.htm" target="_blank">
+        <div class="ad-block" style="background-image: url('{% static "images/ad1.png" %}')" >
+        </div>
+    </a>
+
     <div class="box hidden-xs">
         <div class="box-header">
             24h 快讯
