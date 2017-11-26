@@ -1,6 +1,6 @@
 from .settings import *
 
-DEBUG = False
+DEBUG = True
 
 SESSION_ENGINE  = 'django.contrib.sessions.backends.cache'
 
