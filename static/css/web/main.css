@@ -2550,6 +2550,9 @@ body a:hover {
 .site-submit-form .form-group div input[name="captcha_code"] {
   max-width: 200px;
 }
+.site-submit-form .return-home {
+  text-align: center;
+}
 .site-submit-form .url-error {
   position: absolute;
   left: 10px;
