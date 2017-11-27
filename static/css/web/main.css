@@ -497,6 +497,7 @@ ul li {
   text-decoration: none;
 }
 .project-wrapper {
+  display: block;
   cursor: pointer;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
@@ -2618,5 +2619,5 @@ body a:hover {
   margin-top: 10px;
 }
 .test {
-  color: black  ;
+  color: red;
 }

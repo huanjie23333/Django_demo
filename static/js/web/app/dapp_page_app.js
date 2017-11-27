@@ -6,7 +6,6 @@ require([
         'subapp/tracker',
         'subapp/newsline',
         'subapp/gotop',
-        'libs/salvattore',
         'subapp/tools/bookmark',
         'subapp/dapp/app'
     ],
@@ -17,7 +16,6 @@ require([
               Tracker,
               NewsLine,
               GoTop,
-              Layout,
               BookMark
               ) {
 

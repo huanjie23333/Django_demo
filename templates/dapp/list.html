@@ -16,13 +16,12 @@
 {% block content %}
     <section id="content">
         <div class="container dapp-container">
-            <div class="row" id="grid" data-columns>
+            <div class="row" id="grid">
                 {% for project in projects %}
-                    <a href="{% url 'dapp:detail' project.slug %}"  target="_blank">
-                        <div class="box project-wrapper" >
+                        <div class="box project-wrapper col-lg-3 col-md-3 col-sm-3" >
                             <div class="box-body {{ project.state }}">
                                 <div class="p-title">{{ project.name }}</div>
-                                {#                        <div class="p-founder">{{ project.founder }}</div>#}
+                                <div class="p-founder">{{ project.founder }}</div>
                                 <div class="p-bio">{{ project.enbio }}</div>
                                 <div class="p-social-wrapper">
                                     <ul class="social-list">
@@ -78,7 +77,6 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
                 {% endfor %}
             </div>
         </div>
