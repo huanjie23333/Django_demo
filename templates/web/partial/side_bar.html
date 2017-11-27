@@ -1,11 +1,15 @@
 {% load i18n %}
-<div class="col-sm-4 col-xs-12 news-wrapper" id="side_column">
+{% load static %}
+<div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
 {#    <div class="box hidden-xs">#}
 {#        <div class="box-header ">#}
 {#            比特币硬分叉倒计时#}
 {#        </div>#}
 {#        {% include 'web/partial/clock.html' %}#}
 {#    </div>#}
+
+{% include 'web/partial/ad_block.html' %}
+
     <div class="box hidden-xs">
         <div class="box-header">
             24h 快讯
@@ -55,6 +59,14 @@
             </ul>
         </div>
     </div>
+    <div class="box" id="follow-us-box">
+        <div class="box-header">关注我们</div>
+        <div class="box-body">
+            <a href="https://www.facebook.com/ChainDHcom" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/chaindh" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://t.me/laoliange" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+        </div>
+    </div>
     <div id="scroll_target" class="inv-element">
         {#        <div class="box hidden-xs">#}
         {#            <div class="box-header">#}
@@ -96,7 +108,14 @@
 
             </div>
         </div>
-
+        <div class="box" id="follow-us-box">
+            <div class="box-header">关注我们</div>
+            <div class="box-body">
+                <a href="https://www.facebook.com/ChainDHcom" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/chaindh" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://t.me/laoliange" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+            </div>
+        </div>
 
     </div>
 </div>

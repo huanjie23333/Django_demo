@@ -1346,15 +1346,21 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
                     source: function (term, response) {
                         try { xhr.abort(); } catch(e){}
                         $.getJSON('/search/autocomplete/', {q: term},
-                            function (data) {
-                            response(data['results']);
-                        });
+                            function(data){
+                                $.ajax('http://www.chainscoop.com/api/news/autocomplete/', {
+                                    jsonp: true,
+                                    success: function(data2){
+                                        var results = data.results.concat(data2.results);
+                                        response(results);
+                                    },
+                                    method: 'GET',
+                                    data: {q: term}
+                                });
+                        })
                     }
-
                 });
-                console.log('search');
 
-            },
+            }
         });
 
         return Search;
@@ -3649,8 +3655,8 @@ define('subapp/gotop',['jquery', 'libs/underscore', 'libs/Class', 'libs/fastdom'
                 }
             },
             show_top_link:function(){
-                var item_left = this.content_rect.left + this.content_rect.width - 50;
-                this.topLinkWrapper.css({left:item_left}).show();
+                var item_left = this.content_rect.left + this.content_rect.width;
+                this.topLinkWrapper.show();
             },
 
             hide_top_link:function(){
@@ -3688,9 +3694,12 @@ define('subapp/tools/bookmark',['jquery'], function($){
 define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
    var TagTrigger = Class.extend({
        init: function(){
+           $('.news-line-wrapper .tag-list-filter-list').prepend(
+               '<a class="trigger-btn"><i class="fa fa-sort-down" aria-hidden="true"></i></a>'
+           );
            var $btn = $('a.trigger-btn');
-           var $btnIcon = $('.tag-list-filter-list i');
-           var $ul = $('ul.tag-list-filter-list');
+           var $btnIcon = $('.news-line-wrapper .tag-list-filter-list i');
+           var $ul = $('.news-line-wrapper ul.tag-list-filter-list');
            $btn.on('click', function(){
                $ul.toggleClass('tag-list-filter-list-hide');
                $btnIcon.toggleClass('icon-rotate');
@@ -3782,6 +3791,114 @@ define('subapp/submit/getsitedata',['jquery','libs/Class', 'libs/csrf'], functio
     });
     return GetSiteData;
 });
+define('subapp/header/search_news',['libs/Class', 'jquery'], function(Class, $){
+    var SearchNews = Class.extend({
+        init: function(){
+
+            $('#search-news-btn').click(function(){
+                var q = $('input[name="q"]').val().trim();
+                if(q === ''){
+                    if(location.pathname === '/'){
+                        return false;
+                    } else {
+                        location.href = '/';
+                        return false;
+                    }
+                }
+                window.location.href = '/search/news/?q=' + q;
+                return false;
+            });
+
+        }
+    });
+    return SearchNews;
+});
+
+
+define('subapp/header/search_site',['libs/Class', 'jquery'], function(Class, $){
+    var SearchSite = Class.extend({
+        init: function(){
+
+            $('#search-site-btn').click(function(){
+                var q = $('input[name="q"]').val().trim();
+                if(q === ''){
+                    if(location.pathname === '/'){
+                        return false;
+                    } else {
+                        location.href = '/';
+                        return false;
+                    }
+                }
+            });
+
+        }
+    });
+    return SearchSite;
+});
+define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
+    var SearchNewsAjax = Class.extend({
+        init: function(){
+
+            var $ajaxContent = $('#ajax-news-content');
+            if(!!!$ajaxContent.length) return;
+
+            var searchVal = '',
+                tpl = '',
+                nextURL = '';
+
+            var compiled = _.template($('#search_news_template').html());
+
+            var ajaxCallback = function(data){
+                tpl += compiled(data);
+                $('#ajax-news-content .box-body').html(tpl);
+                $('#ajax-news-content .box-header').html(
+                     '含「<span class="query-word">'
+                     + searchVal
+                     + '</span>」的搜索结果约 '
+                     + data.count + ' 条'
+                );
+                if(data.next){
+                     $('#ajax-news-content .box-footer').css('display', 'block');
+                     nextURL = data.next;
+                }
+            };
+
+            searchVal = decodeURI(location.href.replace(/^http:\/\/.*?q=/, ''));
+            $('#ajax-news-content .box-header').html(
+                     '含「<span class="query-word">'
+                     + searchVal
+                     + '</span>」的搜索结果约 '
+                     + ' 条'
+            );
+            $('#ajax-news-content .box-footer button').click(function(){
+                 var ajaxURL = nextURL;
+                 if(!ajaxURL) return false;
+                 var $that = $(this);
+                 $that.html('<i class="fa fa-spinner" aria-hidden="true"></i>');
+                 $.ajax({
+                     method: 'GET',
+                     url: ajaxURL,
+                     jsonp: true,
+                     success: function(data){
+                         ajaxCallback(data);
+                         $that.html('加载更多').trigger('blur');
+                     }
+                 });
+            });
+            $.ajax({
+                 method: 'GET',
+                 url: 'http://www.chainscoop.com/api/news/search.json?q=' + searchVal,
+                 data: {},
+                 jsonp: 'true',
+                 success: ajaxCallback
+            });
+
+        }
+    });
+    return SearchNewsAjax;
+});
+
+//todo: bug*2 加载更多样式;
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6176,6 +6293,9 @@ require([
         'subapp/news/tagtrigger',
         'subapp/captcha/captcha',
         'subapp/submit/getsitedata',
+        'subapp/header/search_news',
+        'subapp/header/search_site',
+        'subapp/search/search_news_ajax',
         'bootstrap'
     ],
     function (polyfill,
@@ -6190,7 +6310,10 @@ require([
               BookMark,
               TagTrigger,
               Captcha,
-              GetSiteData
+              GetSiteData,
+              SearchNews,
+              SearchSite,
+              SearchNewsAjax
               ) {
 
         jQuery = $;
@@ -6210,6 +6333,10 @@ require([
         new Captcha();
 
         new GetSiteData();
+
+        new SearchNews();
+        new SearchSite();
+        new SearchNewsAjax();
 
         // for news tag trigger ;
         new TagTrigger();

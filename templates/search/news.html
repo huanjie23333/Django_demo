@@ -1,0 +1,74 @@
+{% extends "base/base.html" %}
+{% load static compress %}
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12" id="ajax-news-content">
+
+                    <div class="box">
+                        <div class="box-header search-header">含「<span class="query-word">{{ query }}</span>」的搜索结果约 {{ object_list|length }} 条</div>
+                        <div class="box-body category-tag-wrapper">
+                            <div class="loading-box">
+                                <i class="fa fa-spinner" aria-hidden="true"></i>&nbsp;&nbsp;加载中
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button class="btn white-btn">加载更多</button>
+                        </div>
+                    </div>
+                </div>
+                {% include 'web/partial/side_bar.html' %}
+            </div>
+        </div>
+
+    </section>
+    <script id="search_news_template" type="text/template">
+    <% for(var j = 0; j < results.length; j++){ %>
+        <div class="entry">
+            <div class="body">
+                <h1 class="news-title"><% print(results[j].title.replace(new RegExp('('
+                    + decodeURI(location.href.replace(/^http:\/\/.*?q=/, ''))
+                    + ')', 'gi'), '<span class="search-light">$1</span>')); %>
+                </h1>
+                <ul>
+                    <li class="news-content">
+                        <% print(results[j].content.replace(new RegExp('(' + decodeURI(location.href.replace(/^http:\/\/.*?q=/, '')) + ')', 'gi'), '<span class="search-light">$1</span>')); %>
+                        <% if(results[j].origin_link){ %>
+                            <a href="<%= results[j].origin_link %>" rel="nofollow" target="_blank">原文链接</a>
+                        <% } %>
+                    </li>
+                    <li class="news-info">
+                        <span><%= results[j].pub_time %></span>
+                        <span class="tag-list-wrapper">
+                            <ul class="tag-list">
+                                <li class="tag-list-head"><i class="fa fa-tag"></i></li>
+                                <% for(var i = 0; i < results[j].tag_list.length; i++){ %>
+                                    <li class="tag-item">
+                                        <a href="/news/tag/<%= results[j].tag_list[i] %>" target="_blank"><%= results[j].tag_list[i] %></a>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    <% } %>
+    </script>
+
+
+{% endblock %}
+
+
+{% block basic_script %}
+
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+
+
+{% endblock %}
