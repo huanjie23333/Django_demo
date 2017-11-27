@@ -69,8 +69,6 @@ TEMPLATES = [
     },
 ]
 
-
-
 STATIC_URL = '/static/'
 STATIC_ROOT = '/mad_sand/quark/static/'
 STATICFILES_DIRS = []
@@ -81,9 +79,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'quark',
         'USER': 'root',
-        'PASSWORD': 'mypass740323',
+        'PASSWORD': 'mypass',
         'HOST': Current_Dbhost,
-        'PORT': '6301',
+        'PORT': '3306',
         'OPTIONS': {
             'use_unicode':'utf8mb4',
             'init_command':'SET default_storage_engine=INNODB',

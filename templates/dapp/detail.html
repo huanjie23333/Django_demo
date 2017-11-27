@@ -4,6 +4,13 @@
 {% block meta %}
         {% include "dapp/partial/dapp_detail_meta.html" %}
 {% endblock %}
+
+{#remove search row here#}
+{% block search_row %}
+
+{% endblock %}
+
+
 {% block title %}
     {{ project.name }} - 以太坊应用 | 区块链导航 | chaindh.com
 {% endblock %}
@@ -14,37 +21,15 @@
 
 {% block content %}
     <section id="content">
-        <div class="container">
+        <div class="container dapp-detail-container">
             <div class="row">
-                <div class="col-sm-8 col-xs-12">
+                <div class="col-sm-4">
                     <div class="box">
-                        <div class="box-body middle-wrapper news-detail-wrapper">
-                            <div class="news-title">
-                                    {{ project.name }}
-                            </div>
-                            <div class="news-content">
-                                  {{ project.enbio}}
-                            </div>
-                            <div class="news-info">
-                                  <span>{{ project.last_updated }}</span>
-                                   <span class="tag-list-wrapper">
-                                        <ul class="tag-list">
-                                            <li class="tag-list-head">
-                                                <i class="fa fa-tag"></i>
-                                            </li>
-                                             {% for tag in project.tag_list %}
-                                               <li class="tag-item">{{ tag }}</li>
-                                             {% endfor %}
-                                        </ul>
-                                    </span>
-
-                            </div>
-
-
-                        </div>
+                        <div class="logo"></div>
+                        <div class="title"></div>
+                        <div class=""></div>
                     </div>
                 </div>
-                {% include 'web/partial/side_bar.html' %}
             </div>
         </div>
     </section>
