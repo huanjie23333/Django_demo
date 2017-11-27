@@ -499,11 +499,16 @@ ul li {
 .project-wrapper {
   display: block;
   cursor: pointer;
+  background-color: #F7F6F2;
+  padding: 2px 4px 2px 4px;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -ms-transition: all 1s;
   -o-transition: all 1s;
   text-align: center;
+}
+.project-wrapper .box-body {
+  background-color: #fff;
 }
 .project-wrapper:hover {
   background-color: #b8e0ff !important;

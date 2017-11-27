@@ -947,7 +947,7 @@ define('subapp/dictionaries/coinmarketcap',[],function(){
         'percent_change_1h':'percent_change_1h',
         'last_updated':'last_updated',
         'id':'id',
-        'percent_change_1h':'change'
+        'percent_change_24h':'change'
     }
 });
 define('subapp/dictionaries/coin_dic',[],function(){
