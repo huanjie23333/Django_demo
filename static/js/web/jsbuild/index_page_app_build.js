@@ -3694,6 +3694,8 @@ define('subapp/tools/bookmark',['jquery'], function($){
 define('subapp/news/tagtrigger',['jquery','libs/Class'],function ($, Class) {
    var TagTrigger = Class.extend({
        init: function(){
+           if(!!!$('.news-line-wrapper .tag-list-filter-list').length) return;
+
            $('.news-line-wrapper .tag-list-filter-list').prepend(
                '<a class="trigger-btn"><i class="fa fa-sort-down" aria-hidden="true"></i></a>'
            );
@@ -3887,7 +3889,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
             });
             $.ajax({
                  method: 'GET',
-                 url: 'http://www.chainscoop.com/api/news/search.json?q=' + searchVal,
+                 url: 'http://api.chainnews.com/api/news/search.json?q=' + searchVal,
                  data: {},
                  jsonp: 'true',
                  success: ajaxCallback
@@ -3898,7 +3900,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
     return SearchNewsAjax;
 });
 
-//todo: bug*2 加载更多样式;
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.

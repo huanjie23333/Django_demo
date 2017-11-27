@@ -1,6 +1,8 @@
 define(['jquery','libs/Class'],function ($, Class) {
    var TagTrigger = Class.extend({
        init: function(){
+           if(!!!$('.news-line-wrapper .tag-list-filter-list').length) return;
+
            $('.news-line-wrapper .tag-list-filter-list').prepend(
                '<a class="trigger-btn"><i class="fa fa-sort-down" aria-hidden="true"></i></a>'
            );
