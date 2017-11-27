@@ -1,11 +1,15 @@
 {% load i18n %}
-<div class="col-sm-4 col-xs-12 news-wrapper" id="side_column">
+{% load static %}
+<div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
 {#    <div class="box hidden-xs">#}
 {#        <div class="box-header ">#}
 {#            比特币硬分叉倒计时#}
 {#        </div>#}
 {#        {% include 'web/partial/clock.html' %}#}
 {#    </div>#}
+
+{% include 'web/partial/ad_block.html' %}
+
     <div class="box hidden-xs">
         <div class="box-header">
             24h 快讯

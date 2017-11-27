@@ -2,7 +2,7 @@ from .settings import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["www.bit03.com", "bit03.com",
+ALLOWED_HOSTS = ["api.block123.com", "www.block123.com", "block123.com",
                  "chaindh.com", "www.chaindh.com"]
 
 '''session

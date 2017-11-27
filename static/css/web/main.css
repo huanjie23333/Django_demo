@@ -2587,6 +2587,19 @@ body a:hover {
   -moz-animation: 1s linear infinite loading-icon-rotate;
   -o-animation: 1s linear infinite loading-icon-rotate;
 }
+.sidebar .ad-block,
+.news-wrapper .ad-block {
+  background-image: url(http://ow1wrzsju.bkt.clouddn.com/material/images/a100eec9-7d69-5d32-972a-715f059dbc4a_aubVRis.png);
+  height: 0px;
+  width: 100%;
+  padding-bottom: 62.5%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-repeat-x: no-repeat;
+  background-repeat-y: no-repeat;
+  margin-top: 10px;
+}
 .test {
   color: black  ;
 }
