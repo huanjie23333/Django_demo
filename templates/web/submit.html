@@ -9,16 +9,7 @@
 {% block content %}
     <section id="content">
         <div class="container static-content">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="/" title="首页"><i class="fa fa-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item active">{% trans '提交网址' %}</li>
-                    </ol>
-                </div>
-            </div>
+
             <div class="row site-submit-form">
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12">
                     <h2>提交网址</h2>
@@ -29,6 +20,7 @@
                         </fieldset>
                         {% buttons %}<button type="submit" class="btn btn-primary">{% trans 'submit' %}</button>{% endbuttons %}
                     </form>
+                    <div class="return-home"><a href="/">返回首页</a></div>
                 </div>
             </div>
         </div>
