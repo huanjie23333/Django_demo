@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ["api.block123.com", "www.block123.com", "block123.com",
 '''session
 '''
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-SESSION_COOKIE_DOMAIN = ".chaindh.com"
+SESSION_COOKIE_DOMAIN = ".block123.com"
 
 CACHES = {
     'default': {
