@@ -39,6 +39,7 @@ DATABASES = {
 
 # STATIC_URL = '//static.bit03.com/static/'
 STATIC_URL = '//static.chaindh.com/static/'
+# STATIC_URL = '//static.block123.com/static/'
 STATIC_ROOT = '/data/www/static/'
 
 COMPRESS_ENABLED = True
