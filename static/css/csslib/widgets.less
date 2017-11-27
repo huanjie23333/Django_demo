@@ -140,6 +140,15 @@
 }
 
 .project-wrapper{
+   display:block;
+    cursor:pointer;
+    background-color: @default-background;
+    padding:2px 4px 2px 4px;
+    .box-body{
+      background-color: #fff;
+    }
+
+
    .transition(all 1s);
    &:hover{
      background-color: @lighten-site-link-color!important;
@@ -151,22 +160,28 @@
   .p-title{
      font-size: 1.5em;
      line-height: 3em;
-
+     .fix-height(3em);
+     overflow: hidden;
   }
   .p-founder{
      font-weight:600;
+     
   }
   .p-bio{
-     height: 3em;
-     max-height: 3em;
+      overflow: hidden;
+      .fix-height(3em);
   }
   .p-social-wrapper{
+     cursor: pointer;
      .clearfix;
+     .fix-height(1.5em);
      li{
         display: inline-block;
         margin-right:3px;
         font-size:1.2em;
+        line-height: 1.5em ;
      }
+      overflow:hidden;
   }
 
   .p-tags-wrapper{
@@ -179,7 +194,7 @@
 
   .tag-list-wrapper{
      line-height: 1.5em;
-     height: 3em;
+     .fix-height(3em);
      overflow: hidden;
      float:none;
      .tag-list-head{

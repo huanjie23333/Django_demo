@@ -117,4 +117,7 @@ do_migrate.sh
 # index
 quark/settings/whoosh_index/*
 
+# design document
+design_document/*
+
 .DS_Store

@@ -497,11 +497,18 @@ ul li {
   text-decoration: none;
 }
 .project-wrapper {
+  display: block;
+  cursor: pointer;
+  background-color: #F7F6F2;
+  padding: 2px 4px 2px 4px;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -ms-transition: all 1s;
   -o-transition: all 1s;
   text-align: center;
+}
+.project-wrapper .box-body {
+  background-color: #fff;
 }
 .project-wrapper:hover {
   background-color: #b8e0ff !important;
@@ -514,13 +521,26 @@ ul li {
 .project-wrapper .p-title {
   font-size: 1.5em;
   line-height: 3em;
+  height: 3em;
+  min-height: 3em;
+  max-height: 3em;
+  overflow: hidden;
 }
 .project-wrapper .p-founder {
   font-weight: 600;
 }
 .project-wrapper .p-bio {
   height: 3em;
+  min-height: 3em;
   max-height: 3em;
+  overflow: hidden;
+}
+.project-wrapper .p-social-wrapper {
+  cursor: pointer;
+  height: 1.5em;
+  min-height: 1.5em;
+  max-height: 1.5em;
+  overflow: hidden;
 }
 .project-wrapper .p-social-wrapper:after {
   content: " ";
@@ -532,6 +552,7 @@ ul li {
   display: inline-block;
   margin-right: 3px;
   font-size: 1.2em;
+  line-height: 1.5em ;
 }
 .project-wrapper .p-tags-wrapper:after {
   content: " ";
@@ -545,6 +566,8 @@ ul li {
 .project-wrapper .tag-list-wrapper {
   line-height: 1.5em;
   height: 3em;
+  min-height: 3em;
+  max-height: 3em;
   overflow: hidden;
   float: none;
 }
@@ -1903,7 +1926,7 @@ body a:hover {
   background-color: #2C2F39;
 }
 #search-row {
-  padding: 80px 0px 20px 0px;
+  padding: 65px 0px 20px 0px;
 }
 .price-row {
   width: 400px;
@@ -2550,6 +2573,9 @@ body a:hover {
 .site-submit-form .form-group div input[name="captcha_code"] {
   max-width: 200px;
 }
+.site-submit-form .return-home {
+  text-align: center;
+}
 .site-submit-form .url-error {
   position: absolute;
   left: 10px;
@@ -2601,5 +2627,5 @@ body a:hover {
   margin-top: 10px;
 }
 .test {
-  color: black  ;
+  color: red;
 }

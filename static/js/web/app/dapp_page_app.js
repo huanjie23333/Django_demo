@@ -6,9 +6,8 @@ require([
         'subapp/tracker',
         'subapp/newsline',
         'subapp/gotop',
-        'libs/salvattore',
-        'subapp/tools/bookmark'
-
+        'subapp/tools/bookmark',
+        'subapp/dapp/app'
     ],
     function (polyfill,
               $,
@@ -17,7 +16,6 @@ require([
               Tracker,
               NewsLine,
               GoTop,
-              Layout,
               BookMark
               ) {
 
