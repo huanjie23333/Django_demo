@@ -90,14 +90,17 @@
 {% endblock %}
 {# footer ends --------#}
 {% block basic_script %}
-    {% compress js %}
+{#    {% compress js %}#}
         {#       <script data-main="{% static 'js/web/jsbuild/index_page_app_build.js' %}" src="{% static 'js/web/app/require.js' %}"></script>#}
-    {% endcompress %}
+{#    {% endcompress %}#}
 {% endblock %}
 
 {% block trackers %}
     {# 这里是统计代码 #}
     {% if not debug %}
+{#        {% compress js %}#}
+        <script async src="{% static 'js/web/app/libs/autotrack.js' %}"></script>
+{#        {% endcompress %}#}
 
         <script>
             window.ga = window.ga || function () {
@@ -113,9 +116,6 @@
             ga('send', 'pageview');
         </script>
         <script async src="https://www.google-analytics.com/analytics.js"></script>
-        {% compress js %}
-            <script async src="{% static 'js/web/app/libs/autotrack.js' %}"></script>
-        {% endcompress %}
         <script>
             (function () {
                 var hm = document.createElement("script");
