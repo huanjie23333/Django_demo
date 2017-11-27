@@ -50,7 +50,7 @@ define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
             });
             $.ajax({
                  method: 'GET',
-                 url: 'http://www.chainscoop.com/api/news/search.json?q=' + searchVal,
+                 url: 'http://api.chainnews.com/api/news/search.json?q=' + searchVal,
                  data: {},
                  jsonp: 'true',
                  success: ajaxCallback
@@ -61,4 +61,3 @@ define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
     return SearchNewsAjax;
 });
 
-//todo: bug*2 加载更多样式
