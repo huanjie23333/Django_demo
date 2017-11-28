@@ -11,6 +11,7 @@ from django.core.cache import cache
 from django.http import HttpResponse
 
 from flink.views import FlinkMixin
+from nav.models import Nav
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
@@ -112,6 +113,7 @@ class NewsDataMixin(object):
         return 'news:detail:%s' % slug
 
 
+from nav.block_chain_browsers import block_chain_browsers
 class SideBarDataMixin(FlinkMixin, NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -120,8 +122,20 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
             'sidebar_news_tag_list': sb_t_list,
             'sidebar_news_tag_list_json': json.dumps(sb_t_list),
             'sidebar_news_list': self.get_news_page_list(),
+            'sidebar_bcinfo_list': self.get_bc_info_list(),
         })
         return context
+
+    def get_bc_info_list(self):
+        bc_info_list ={}
+        for name , id in block_chain_browsers.items():
+            try:
+                bc_info_list[name] = Nav.objects.get(pk=id)
+            except Nav.DoesNotExist as e:
+                pass
+        return bc_info_list
+
+
 
 
 class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
