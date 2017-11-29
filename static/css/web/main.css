@@ -650,7 +650,7 @@ ul li {
   margin-right: 1em;
 }
 .flink-container .flink-wrapper li.flink-head {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
 }
 .flink-container .flink-wrapper li a {
   color: rgba(255, 255, 255, 0.3);
@@ -658,6 +658,7 @@ ul li {
   -moz-transition: all 1s;
   -ms-transition: all 1s;
   -o-transition: all 1s;
+  line-height: 30px;
 }
 .flink-container .flink-wrapper li a:hover,
 .flink-container .flink-wrapper li a:active,
