@@ -2626,6 +2626,19 @@ body a:hover {
   background-repeat-y: no-repeat;
   margin-top: 10px;
 }
+.bc-info ul {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.bc-info ul .bc-name {
+  line-height: 2em;
+  display: inline-block;
+  width: 30%;
+  font-weight: 500;
+}
+.bc-info ul a {
+  color: #0E8ED8;
+}
 .test {
   color: red;
 }
