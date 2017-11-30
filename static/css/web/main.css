@@ -2628,18 +2628,24 @@ body a:hover {
   margin-top: 10px;
 }
 .bc-info ul {
-  margin-top: 10px;
   margin-bottom: 20px;
 }
-.bc-info ul .bc-name {
+.bc-info ul li {
+  padding-top: 10px;
+  line-height: 30px;
+}
+.bc-info ul li .bc-name {
   line-height: 2em;
   display: inline-block;
-  width: 30%;
+  width: 90px;
   font-weight: 500;
 }
-.bc-info ul a {
+.bc-info ul li .bc-link {
+  padding-left: 20px;
+}
+.bc-info ul li .bc-link a {
   color: #0E8ED8;
 }
 .test {
-  color: red;
+  color: black;
 }
