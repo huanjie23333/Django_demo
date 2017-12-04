@@ -1356,9 +1356,36 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
                                     method: 'GET',
                                     data: {q: term}
                                 });
-                        })
+                            }
+                        );
                     }
                 });
+
+                // 搜索框内删除输入按钮
+                var $cancel = $('.input-cancel-btn');
+                $cancel.click(function(){
+                    $('input[name="q"]').val('');
+                    $cancel.css({
+                        display: 'none'
+                    });
+                });
+                var input = document.querySelector('input[name="q"]');
+                var parent = document.querySelector('.logo-wrapper');
+                $('input[name="q"]').keyup(function(){
+                    if(this.value == '') {
+                        $cancel.css({
+                            display: 'none'
+                        });
+                    } else {
+                        var left = input.getBoundingClientRect().right - parent.getBoundingClientRect().left;
+                        $cancel.css({
+                            display: 'block',
+                            left: left - 20,
+                            top: 0
+                        });
+                    }
+                });
+
 
             }
         });
