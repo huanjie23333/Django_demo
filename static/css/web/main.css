@@ -2646,6 +2646,9 @@ body a:hover {
 .bc-info ul li .bc-link a {
   color: #0E8ED8;
 }
+.bc-info ul li .bc-link a:hover {
+  color: #ff552e;
+}
 .test {
   color: black;
 }
