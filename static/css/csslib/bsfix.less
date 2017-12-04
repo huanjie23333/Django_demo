@@ -20,7 +20,6 @@
      }
      input{
          font-size: 16px;
-         line-height: 25px;
          border:1px solid @box-header-border-color;
          line-height: 38px;
 
@@ -59,6 +58,18 @@
     #search-site-btn {
         margin-left: 0;
     }
+    a.input-cancel-btn {
+      position: absolute;
+      display: none;
+      i {
+        color: rgba(170, 170, 170, .4);
+        font-size: 16px;
+        &:hover {
+          color: rgba(170, 170, 170, .6);
+        }
+      }
+    }
+
 }
 
 .navbar{

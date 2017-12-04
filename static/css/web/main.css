@@ -934,7 +934,6 @@ ul li {
 }
 .main-search-container input {
   font-size: 16px;
-  line-height: 25px;
   border: 1px solid #f3f3f3;
   line-height: 38px;
   width: 400px;
@@ -984,6 +983,17 @@ ul li {
 }
 .main-search-container #search-site-btn {
   margin-left: 0;
+}
+.main-search-container a.input-cancel-btn {
+  position: absolute;
+  display: none;
+}
+.main-search-container a.input-cancel-btn i {
+  color: rgba(170, 170, 170, 0.4);
+  font-size: 16px;
+}
+.main-search-container a.input-cancel-btn i:hover {
+  color: rgba(170, 170, 170, 0.6);
 }
 .navbar {
   min-height: 40px;
@@ -2650,5 +2660,5 @@ body a:hover {
   color: #ff552e;
 }
 .test {
-  color: black;
+  color: red;
 }
