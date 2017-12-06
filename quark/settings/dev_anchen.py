@@ -148,7 +148,7 @@ LOGGING = {
         'django': {
             'handlers': ['file', 'console'],
             'propagate': True,
-            'level': 'INFO',
+            'level': 'CRITICAL',
         },
         'django.request': {
             'handlers': ['file', ],
