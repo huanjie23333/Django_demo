@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-
+import taggit
 from django.test import TestCase
+from django.utils.text import slugify
 from factory.django import DjangoModelFactory
 from nav.models import Nav, Category, Profile
 from faker import Faker
@@ -34,11 +35,35 @@ class ProfileFactory(DjangoModelFactory):
         model = Profile
 
 
+
+# FOR SUB FACTORY
+# https://github.com/jetpackjoust/jetpackjoust/blob/master/apps/articles/test_articles/test_models.py
+
+class TagFactory(factory.django.DjangoModelFactory):
+    """Factory for taggit.models Tag.
+    """
+    FACTORY_FOR = taggit.models.Tag
+
+    name = factory.Sequence(lambda n: "Test tag {0}".format(n))
+    slug = factory.LazyAttribute(lambda n: slugify(n.name))
+
+
+class TagFactory(factory.django.DjangoModelFactory):
+    """Factory for taggit.models Tag.
+    """
+    FACTORY_FOR = taggit.models.Tag
+
+
 class NavFactory(DjangoModelFactory):
     class Meta:
         model = Nav
         django_get_or_create = ('cname',)
     cname = f.name()
+
+
+
+        # self.tags.add('tag1', 'tag2', 'tag3','tag4')
+
     # profile = factory.RelatedFactory(ProfileFactory,'site' ,description='lfewfew')
 
 
@@ -73,3 +98,5 @@ class WithDataTestCase(TestCase):
 
         self.nav.tags.add('tag1', 'tag2')
         self.nav2.tags.add('tag3', 'tag4')
+        self.nav.save()
+        self.nav2.save()
