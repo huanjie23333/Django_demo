@@ -30,6 +30,10 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
+LOCALE_PATHS = (
+    os.path.join(os.getcwd(), 'conf/locale'),
+)
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +55,6 @@ INSTALLED_APPS = [
     'django_filters',
     'django_markdown',
     'simplemde',
-
 
     'web',
     'nav',
