@@ -54,15 +54,19 @@ urlpatterns += [
     url(r'^api/dapps/', include('nav.urls.api.dapps', namespace='api_dapps')),
 ]
 
-urlpatterns += [
-    url(r'^$', IndexView.as_view(), name='web_index'),
-]
-
-
 #captcha
 urlpatterns += [
     url(r'^captcha/', include('captcha.urls')),
 ]
+
+from django.views.decorators.cache import cache_page
+
+urlpatterns += [
+    url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
+]
+
+
+
 
 
 from django.contrib.flatpages import views
