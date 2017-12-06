@@ -30,8 +30,6 @@ class Category(CachingMixin, models.Model):
         verbose_name = "分类"
 
 
-
-
 class Nav(CachingMixin, models.Model):
     STATUS = Choices('remove', 'draft', 'published')
     cname = models.CharField(max_length=64, null=True, blank=True)
