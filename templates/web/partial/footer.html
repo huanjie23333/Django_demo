@@ -27,9 +27,12 @@
                             <img alt="区块链导航" src="{% static 'images/chaindh-logo-simple.png' %}">
                         </a>
                     </li>
-                    <li class="about-item hidden-xs"><a rel="nofollow" title="{% trans 'about' %}" href="/pages/about/" >{% trans 'about' %}</a></li>
-                    <li class="sitemap-item hidden-xs"><a href="{% url 'web_sitemap' %}">全站地图</a></li>
-                    <li class="sitemap-item hidden-xs"><a rel="nofollow" title="{% trans 'jobs' %}" href="{% url 'web_jobs' %}">{% trans 'jobs' %}</a></li>
+                    <li class="about-item hidden-xs">
+                        <a target="_blank" rel="nofollow" title="{% trans 'about' %}" href="/pages/about/" >{% trans 'about' %}</a></li>
+                    <li class="sitemap-item hidden-xs">
+                        <a target="_blank" title="全站地图" href="{% url 'web_sitemap' %}">全站地图</a></li>
+                    <li class="sitemap-item hidden-xs">
+                        <a rel="nofollow" target="_blank" title="{% trans 'jobs' %}" href="{% url 'web_jobs' %}">{% trans 'jobs' %}</a></li>
 {#                    <li>备案信息</li>#}
                 </ul>
             </div>
