@@ -116,6 +116,7 @@ do_migrate.sh
 
 # index
 quark/settings/whoosh_index/*
+quark/settings/production.py
 
 # design document
 design_document/*
