@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-06 11:21+0800\n"
+"POT-Creation-Date: 2017-12-06 15:57+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,36 +17,49 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: nav/models.py:44
+#: nav/models.py:42
 msgid "status"
 msgstr ""
 
-#: nav/models.py:83
+#: nav/models.py:81
 msgid "中文描述"
 msgstr ""
 
-#: nav/models.py:108
+#: nav/models.py:106
 msgid "whitepaper"
 msgstr ""
 
-#: nav/models.py:142
+#: nav/models.py:140
 msgid "网址"
 msgstr ""
 
-#: nav/models.py:143
+#: nav/models.py:141
 msgid "中文名称"
 msgstr ""
 
-#: nav/models.py:144
+#: nav/models.py:142
 msgid "英文名称，非必填"
 msgstr ""
 
-#: nav/models.py:147
+#: nav/models.py:145
 msgid "网站描述，一句话"
 msgstr ""
 
-#: nav/models.py:148
+#: nav/models.py:146
 msgid "联系邮箱"
+msgstr ""
+
+#: templates/web/partial/footer.html:33
+msgid "about"
+msgstr ""
+
+#: templates/web/partial/footer.html:37
+msgid "jobs"
+msgstr ""
+
+#: templates/web/partial/search_row.html:21
+#: templates/web/partial/search_row.html:22
+msgid "search"
 msgstr ""
 
 #: templates/web/partial/side_bar.html:52
