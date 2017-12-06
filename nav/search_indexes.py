@@ -29,7 +29,10 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
         return self.get_model().objects.all()
 
     def prepare_tags(self, obj):
-        return [o.name for o in obj.tags.all()]
+        try:
+            return [o.name for o in obj.tags.all()]
+        except AttributeError as e:
+            return []
 
     def get_updated_field(self):
         return 'updated_at'
