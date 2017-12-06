@@ -29,7 +29,7 @@ class Category(CachingMixin, models.Model):
         verbose_name_plural = "分类"
         verbose_name = "分类"
 
-    
+
 
 
 class Nav(CachingMixin, models.Model):

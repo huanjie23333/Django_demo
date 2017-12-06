@@ -52,7 +52,7 @@
                     {% for cate in categories %}
                         <div class="box">
                             <div class="box-header">
-                                <a href="{% url 'category_page' cate.category_ename %}">
+                                <a href="{% url 'category_page' cate.category_ename %}" target="_blank" title="{{ cate.category_name }}">
                                     {{ cate.category_name }}
                                 </a>
                             </div>
