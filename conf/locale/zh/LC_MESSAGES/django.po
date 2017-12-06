@@ -106,7 +106,7 @@ msgstr "您沒有權限訪問此功能"
 
 #: templates/web/403.html:31
 msgid "返回"
-msgstr ""
+msgstr "返回"
 
 #: templates/web/403.html:31
 msgid "首页"
@@ -216,7 +216,7 @@ msgstr "網站收錄"
 #: templates/web/partial/search_row.html:21
 #: templates/web/partial/search_row.html:22
 msgid "search"
-msgstr ""
+msgstr "搜索"
 
 #: templates/web/partial/search_row.html:26
 msgid "搜站点"
