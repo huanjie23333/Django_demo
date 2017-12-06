@@ -29,6 +29,8 @@ class Category(CachingMixin, models.Model):
         verbose_name_plural = "分类"
         verbose_name = "分类"
 
+    
+
 
 class Nav(CachingMixin, models.Model):
     STATUS = Choices('remove', 'draft', 'published')
@@ -61,12 +63,12 @@ class Nav(CachingMixin, models.Model):
         return self.ename or self.cname
 
     @cached_property
-    def main_name(self):
-        return self.cname or self.ename
+    def zh_hant_main_name(self):
+        return opencc.convert(self.main_name, config='s2t.json')
 
     @cached_property
-    def zh_hant_name(self):
-        return opencc.convert(self.main_name, config='s2t.json')
+    def main_name(self):
+        return self.cname or self.ename
 
     def get_main_description(self):
         try:
