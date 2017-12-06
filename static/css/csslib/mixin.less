@@ -144,7 +144,12 @@
   user-select: @value;
 }
 
-
+.fix-height(@value:auto){
+	height: @value;
+	min-height: @value;
+	max-height: @value;
+	overflow: hidden;
+}
 
 //solve several lines'texts overflow
 //only support webkit browser

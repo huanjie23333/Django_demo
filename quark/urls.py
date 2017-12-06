@@ -64,6 +64,13 @@ urlpatterns += [
     url(r'^captcha/', include('captcha.urls')),
 ]
 
+
+from django.contrib.flatpages import views
+
+urlpatterns += [
+    url(r'^pages/(?P<url>.*/?)$', views.flatpage),
+]
+
 from django.conf import settings
 from django.conf.urls.static import static
 if settings.IS_LOCAL_TESTING:

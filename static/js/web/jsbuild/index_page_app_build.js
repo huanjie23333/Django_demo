@@ -947,7 +947,7 @@ define('subapp/dictionaries/coinmarketcap',[],function(){
         'percent_change_1h':'percent_change_1h',
         'last_updated':'last_updated',
         'id':'id',
-        'percent_change_1h':'change'
+        'percent_change_24h':'change'
     }
 });
 define('subapp/dictionaries/coin_dic',[],function(){
@@ -1356,9 +1356,36 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
                                     method: 'GET',
                                     data: {q: term}
                                 });
-                        })
+                            }
+                        );
                     }
                 });
+
+                // 搜索框内删除输入按钮
+                var $cancel = $('.input-cancel-btn');
+                $cancel.click(function(){
+                    $('input[name="q"]').val('');
+                    $cancel.css({
+                        display: 'none'
+                    });
+                });
+                var input = document.querySelector('input[name="q"]');
+                var parent = document.querySelector('.logo-wrapper');
+                $('input[name="q"]').keyup(function(){
+                    if(this.value == '') {
+                        $cancel.css({
+                            display: 'none'
+                        });
+                    } else {
+                        var left = input.getBoundingClientRect().right - parent.getBoundingClientRect().left;
+                        $cancel.css({
+                            display: 'block',
+                            left: left - 20,
+                            top: 0
+                        });
+                    }
+                });
+
 
             }
         });

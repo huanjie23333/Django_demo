@@ -1,0 +1,29 @@
+<div class="box bc-info">
+    <div class="box-header">
+        区块查询
+        <span class="pull-right header-link">
+            <a href="/category/financial.htm?t=区块查询" target="_blank">更多</a>
+        </span>
+    </div>
+    <div class="box-body">
+        <ul>
+        {% for name, nav in sidebar_bcinfo_list.items  %}
+                <li>
+                    <span class="bc-name">{{ name }}</span>
+                    <span class="bc-link">
+                        <a href="{{ nav.web_site }}" target="_blank">
+                            {{ nav.main_name }}
+                        </a>
+                    </span>
+                </li>
+        {% endfor %}
+        </ul>
+    </div>
+{#    <div class="box-footer">#}
+{#        <div class="middle-wrapper">#}
+{#            <a class="btn white-btn" href="/category/financial.htm?t=区块查询">#}
+{#                查看更多#}
+{#            </a>#}
+{#        </div>#}
+{#    </div>#}
+</div>

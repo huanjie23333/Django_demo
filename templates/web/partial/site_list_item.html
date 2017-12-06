@@ -3,7 +3,7 @@
        class="{% if site.highlight %} highlight {% endif %}"
        target=_blank
        title="{{ site.main_name }}"
-       rel="nofollow"
+       {% if not site.highlight %} rel="nofollow" {% endif %}
        data-category="{{ cate_cname }}"
        data-tag="{{ tag_list.tagname }}"
        data-site="{{ site.main_name }}"

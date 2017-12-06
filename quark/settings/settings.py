@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     # 'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'django.contrib.humanize',
 
     'bootstrap3',
@@ -47,6 +49,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'django_markdown',
+    'simplemde',
+
 
     'web',
     'nav',

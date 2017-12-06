@@ -69,8 +69,6 @@ TEMPLATES = [
     },
 ]
 
-
-
 STATIC_URL = '/static/'
 STATIC_ROOT = '/mad_sand/quark/static/'
 STATICFILES_DIRS = []
