@@ -1,7 +1,9 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
+{% load web_extras %}
+
 {% block meta %}
-        {% include "web/partial/news_list_meta.html" %}
+    {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
 {% block title %}
     新闻快讯 - 区块链导航
@@ -18,10 +20,8 @@
                 <div class="seo-only">
                     {% for news in sidebar_news_list %}
                         <div class="entry">
-                                <h1 class="news-title">{{ news.title }}</h1>
-                                <p class="news-content">
-                                        {{ news.content }}
-                                </p>
+                            <h1 class="news-title">{{ news.title|cc }}</h1>
+                            <p class="news-content">{{ news.content|cc }}</p>
                         </div>
                     {% endfor %}
                 </div>

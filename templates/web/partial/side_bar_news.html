@@ -1,14 +1,15 @@
+{% load web_extras %}
+
 {% for news in sidebar_news_list|slice:':5' %}
     <div class="entry">
         <div class="left-content">
-            <h3>
-            </h3>
+            <h3></h3>
             <p></p>
         </div>
         <div class="body">
-            <p class="news-title">{{ news.title }}</p>
+            <p class="news-title">{{ news.title|cc }}</p>
             <ul>
-                <li class="news-content hidden">{{ news.content }}
+                <li class="news-content hidden">{{ news.content|cc }}
                     {% if news.origin_link %}
                         <a href="{{ news.origin_link }}" rel="nofollow" target="_blank">「原文链接」</a>
                     {% endif %}

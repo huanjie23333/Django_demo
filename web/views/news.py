@@ -114,6 +114,8 @@ class NewsDataMixin(object):
 
 
 from nav.block_chain_browsers import block_chain_browsers
+
+
 class SideBarDataMixin(FlinkMixin, NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -127,15 +129,13 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
         return context
 
     def get_bc_info_list(self):
-        bc_info_list ={}
-        for name , id in block_chain_browsers.items():
+        bc_info_list = {}
+        for name, id in block_chain_browsers.items():
             try:
                 bc_info_list[name] = Nav.objects.get(pk=id)
             except Nav.DoesNotExist as e:
                 pass
         return bc_info_list
-
-
 
 
 class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
