@@ -1,3 +1,4 @@
+{% load i18n %}
   <div class="box-body middle-wrapper">
             <span class="clockdiv">
                 <div>
@@ -19,11 +20,11 @@
             </span>
             <div class="count-down-info">
                 <div class="info">
-                    这是基于当前块高度的时间预估，<br>
-                    平均出块时间为十分钟。<br><br>
+                    {% trans '这是基于当前块高度的时间预估' %}，<br>
+                    {% trans '平均出块时间为十分钟' %}。<br><br>
                     <span >
-                        分叉区块高度 <span class="block-count">494784</span><br>
-                    目前区块高度 <span class="current_block_count block-count"></span>
+                        {% trans '分叉区块高度' %} <span class="block-count">494784</span><br>
+                    {% trans '目前区块高度' %} <span class="current_block_count block-count"></span>
                     </span>
                 </div>
             </div>

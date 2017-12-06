@@ -28,6 +28,13 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: install opencc-dev
+          command: |
+            echo "deb http://ftp.de.debian.org/debian stretch main" | sudo tee --append /etc/apt/sources.list
+            sudo apt update
+            sudo apt install libopencc-dev
+
+      - run:
           name: install dependencies
           command: |
             python3 -m venv venv

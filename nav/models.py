@@ -3,12 +3,15 @@ from hashlib import md5
 
 from django.db import models
 from django.utils import timezone
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db import fields
+# from django.utils.
 from taggit.managers import TaggableManager
 from model_utils.fields import StatusField
 from model_utils import Choices
 from caching.base import CachingManager, CachingMixin
+import opencc
 
 
 class Category(CachingMixin, models.Model):
@@ -57,7 +60,11 @@ class Nav(CachingMixin, models.Model):
     def __str__(self):
         return self.ename or self.cname
 
-    @property
+    @cached_property
+    def zh_hant_main_name(self):
+        return opencc.convert(self.main_name, config='s2t.json')
+
+    @cached_property
     def main_name(self):
         return self.cname or self.ename
 

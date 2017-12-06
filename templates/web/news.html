@@ -5,10 +5,10 @@
         {% include "web/partial/news_meta.html" %}
 {% endblock %}
 {% block title %}
-    {{ news.title }} | 区块链导航
+    {{ news.title }} | {% trans '区块链导航' %}
 {% endblock %}
  {% block seo_title %}
-    {{ news.title }} | 区块链导航
+    {{ news.title }} | {% trans '区块链导航' %}
  {% endblock %}
 {% block content %}
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59c89b30b1eb72c4"></script>
@@ -74,7 +74,7 @@
                     </a>
                 </p>
                 <ul>
-                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「原文链接」</a>
+                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「{% trans '原文链接' %}」</a>
                         <% }%>
                     </li>
                     <li class="news-info"><span><%=time_diff%></span>
