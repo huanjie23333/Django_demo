@@ -18,7 +18,7 @@
 
                     <div class="box">
                         <div class="box-header">
-                            24h 快讯
+                            24h {% trans '快讯' %}
                         </div>
                         <div class="box-body">
                             <div class="news-list timeline small-line" id="news_list">
@@ -28,7 +28,7 @@
                         <div class="box-footer">
                             <div class="middle-wrapper">
                                 <a class="btn white-btn" href="{% url 'web_news' %}">
-                                    查看更多
+                                    {% trans '查看更多' %}
                                 </a>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-sm-8 col-xs-12" id="main_column">
                     <div class="box">
-                        <div class="box-header">热门推荐</div>
+                        <div class="box-header">{% trans '热门推荐' %}</div>
                         <div class="box-body">
                             <ul class="site-list">
                                 {% for site in recommend %}

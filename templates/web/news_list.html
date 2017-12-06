@@ -5,7 +5,7 @@
 {% block meta %}
     {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
-{% block title %}新闻快讯 - 区块链导航{% endblock %}
+{% block title %}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
 
 {# {% block seo_title %}#}
 {#    新闻快讯 - 区块链导航#}
@@ -34,7 +34,7 @@
 
                             </div>
                             <div class="middle-wrapper">
-                                <a class="btn white-btn btn-load-news">加载更多</a>
+                                <a class="btn white-btn btn-load-news">{% trans '加载更多' %}</a>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                       <%=title%>
                 </h1>
                 <ul>
-                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「原文链接」</a>
+                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「{% trans '原文链接' %}」</a>
                         <% }%>
 
                     </li>

@@ -1,5 +1,5 @@
 {% extends "base/base.html" %}
-{% load static compress %}
+{% load static compress i18n %}
 
 {% block content %}
     <section id="content">
@@ -8,14 +8,14 @@
                 <div class="col-sm-8 col-xs-12" id="ajax-news-content">
 
                     <div class="box">
-                        <div class="box-header search-header">含「<span class="query-word">{{ query }}</span>」的搜索结果约 {{ object_list|length }} 条</div>
+                        <div class="box-header search-header">{% trans '含' %}「<span class="query-word">{{ query }}</span>」{% trans '的搜索结果约' %} {{ object_list|length }} {% trans '条' %}</div>
                         <div class="box-body category-tag-wrapper">
                             <div class="loading-box">
-                                <i class="fa fa-spinner" aria-hidden="true"></i>&nbsp;&nbsp;加载中
+                                <i class="fa fa-spinner" aria-hidden="true"></i>&nbsp;&nbsp;{% trans '加载中' %}
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button class="btn white-btn">加载更多</button>
+                            <button class="btn white-btn">{% trans '加载更多' %}</button>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <li class="news-content">
                         <% print(results[j].content.replace(new RegExp('(' + decodeURI(location.href.replace(/^http:\/\/.*?q=/, '')) + ')', 'gi'), '<span class="search-light">$1</span>')); %>
                         <% if(results[j].origin_link){ %>
-                            <a href="<%= results[j].origin_link %>" rel="nofollow" target="_blank">原文链接</a>
+                            <a href="<%= results[j].origin_link %>" rel="nofollow" target="_blank">{% trans '原文链接' %}</a>
                         <% } %>
                     </li>
                     <li class="news-info">

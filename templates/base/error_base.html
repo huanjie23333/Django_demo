@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 {% load compress bootstrap3 %}
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@
     <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
     <title>
     {% block title %}
-        区块链导航 - 从这里学习区块链
+        {% trans '区块链导航' %} - {% trans '从这里学习区块链' %}
     {% endblock %}
     </title>
     <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
@@ -51,7 +51,7 @@ var _hmt = _hmt || [];
 <div class="seo-only">
     <h1>
         {% block seo_title %}
-            区块链导航 - 从这里学习区块链
+            {% trans '区块链导航' %} - {% trans '从这里学习区块链' %}
         {% endblock %}
     </h1>
 </div>

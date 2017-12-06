@@ -10,10 +10,10 @@
         <div class="container static-content submit-suc">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h2>我们已经收到您提交的网站</h2>
-                    <p>后台的工作人员审核后， 你的网站会出现在我们的导航站上。</p>
-                    <p class="page-jump"><span class="submit-time">3 秒后</span>跳转至首页......</p>
-                    <a class="page-jump-btn" href="/">立即跳转</a>
+                    <h2>{% trans '我们已经收到您提交的网站' %}</h2>
+                    <p>{% trans '后台的工作人员审核后， 你的网站会出现在我们的导航站上。' %}</p>
+                    <p class="page-jump"><span class="submit-time">3 {% trans '秒后' %}</span>{% trans '跳转至首页' %}......</p>
+                    <a class="page-jump-btn" href="/">{% trans '立即跳转' %}</a>
                 </div>
 
             </div>
@@ -29,11 +29,11 @@
             var time = 3;
             var timer = window.setInterval(function(){
                 time--;
-                $('.submit-time').html(time + ' 秒后');
-                time === 0 && $('p.page-jump').html('正在跳转......');
+                $('.submit-time').html(time + ' {% trans "秒后" %}');
+                time === 0 && $('p.page-jump').html('{% trans "正在跳转" %}......');
             }, 1000);
             $('.page-jump-btn').on('click', function(){
-                $('p.page-jump').html('正在跳转......');
+                $('p.page-jump').html('{% trans "正在跳转" %}......');
             });
             window.setTimeout(function(){
                 location.href = "/";
