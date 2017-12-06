@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <section id="search-row">
     <div class="container">
         <div class="row middle-wrapper">
@@ -16,8 +18,8 @@
                             <a href="{% url 'web_index' %}">
                                 <img  alt="区块链导航" src="{% static 'images/chain-dh-header.png' %}" class="search-logo hidden-xs">
                             </a>
-                            <label class="sr-only">搜索</label>
-                            <input type="text" class="nav-search" autocomplete="off"  placeholder="搜索" name="q">
+                            <label class="sr-only">{% trans 'search' %}</label>
+                            <input type="text" class="nav-search" autocomplete="off"  placeholder="{% trans 'search' %}" name="q">
                              <a href="##" class="input-cancel-btn">
                                  <i class="fa fa-times-circle" aria-hidden="true"></i>
                              </a>
