@@ -2219,6 +2219,9 @@ body a:hover {
 #footer .footer-list .action i {
   margin-right: 5px;
 }
+#footer .footer-list .company-name {
+  color: rgba(255, 255, 255, 0.3);
+}
 .static-content {
   padding-top: 30px;
   text-align: left;
