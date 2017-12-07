@@ -141,7 +141,7 @@ class SiteMapView(SideBarDataMixin, TemplateView):
     def get_all_tag_list(self):
         categories = Category.objects.all()
         return [{
-            'catename': cate.cname,
+            'catename': cate.zh_hant_cname,
             'cateename': cate.ename,
             'tag_list': self.get_cate_tag_list(cate.id)
         } for cate in categories]
