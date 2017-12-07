@@ -1,25 +1,45 @@
 import logging
+
+import opencc
 from django.views import generic
 from django.http import JsonResponse
 from django.views.generic import TemplateView, ListView
+from haystack.forms import ModelSearchForm
 from haystack.generic_views import SearchView, FacetedSearchView
 from haystack.inputs import AutoQuery
-from haystack.query import  SearchQuerySet
+from haystack.query import SearchQuerySet
 from nav.models import Nav
 from web.views.news import SideBarDataMixin
 
 logger = logging.getLogger("django")
 
 
+class NavModelSearchForm(ModelSearchForm):
+
+    def search(self):
+        if not self.is_valid():
+            return self.no_query_found()
+
+        if not self.cleaned_data.get('q'):
+            return self.no_query_found()
+
+        q = self.cleaned_data['q']
+        sqs = self.searchqueryset.auto_query(opencc.convert(q, config='t2s.json'))
+
+        if self.load_all:
+            sqs = sqs.load_all()
+
+        return sqs
+
 
 class NavSearchView(SideBarDataMixin, SearchView):
     template_name = 'search/search.html'
     context_object_name = 'nav_list'
+    form_class = NavModelSearchForm
 
-    def get_context_data(self,*args, **kwargs):
+    def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         return context
-
 
 
 class NavAutoCompleteView(generic.View):

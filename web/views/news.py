@@ -21,7 +21,7 @@ NEWS_DETAIL_API = 'http://www.chainscoop.com/api/news/'
 
 class NewsDataMixin(object):
     def _get_newslist_page(self, page=1, tag=None):
-        url = 'http://www.chainscoop.com/api/news.json?page=%s' % page
+        url = 'http://www.chainscoop.com/api/news.json?page={page}'.format(page=page)
         if tag:
             url = "%s&tag=%s" % (url, tag)
         r = requests.get(url)
