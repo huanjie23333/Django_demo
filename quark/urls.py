@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
     # url(r'^recruit\.htm$', JobView.as_view(), name='web_jobs'),
-    url(r'^sitemap\.htm$', SiteMapView.as_view(), name='web_sitemap'),
+    url(r'^sitemap\.htm$', cache_page(86400)(SiteMapView.as_view()), name='web_sitemap'),
     url(r'^submit\.htm$', SubNavCreateView.as_view(), name='web_submit'),
     url(r'^submit_suc\.htm$', SubNavSuccessView.as_view(), name='web_submit_done'),
     url(r'^news\.htm', NewsListView.as_view(), name='web_news'),
