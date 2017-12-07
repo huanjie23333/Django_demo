@@ -15,13 +15,13 @@ from nav.models import Nav
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
-NEWS_TAG_API_URL = 'http://www.chainscoop.com/api/news/tags.json'
-NEWS_DETAIL_API = 'http://www.chainscoop.com/api/news/'
+NEWS_TAG_API_URL = 'http://www.chainnews.com/api/news/tags.json'
+NEWS_DETAIL_API = 'http://www.chainnews.com/api/news/'
 
 
 class NewsDataMixin(object):
     def _get_newslist_page(self, page=1, tag=None):
-        url = 'http://www.chainscoop.com/api/news.json?page={page}'.format(page=page)
+        url = 'http://www.chainnews.com/api/news.json?page={page}'.format(page=page)
         if tag:
             url = "%s&tag=%s" % (url, tag)
         r = requests.get(url)
