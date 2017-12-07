@@ -199,7 +199,7 @@ msgstr "全站地圖"
 
 #: templates/web/partial/footer.html:37
 msgid "jobs"
-msgstr ""
+msgstr "職位招聘"
 
 #: templates/web/partial/footer.html:44 templates/web/partial/header.html:21
 msgid "收藏本站"
