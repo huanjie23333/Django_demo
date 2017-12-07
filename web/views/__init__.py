@@ -102,7 +102,7 @@ class AboutView(FlinkMixin, TemplateView):
 
 
 class JobView(FlinkMixin, TemplateView):
-    template_name = 'web/jobs.html'
+    template_name = 'web/jobs.html.bk'
 
 
 class SubNavCreateView(CreateView):

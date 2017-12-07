@@ -19,9 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.decorators.cache import cache_page
 
-from web.views import IndexView, CategoryView, \
-    AboutView, SiteMapView, JobView, \
-    SubNavCreateView, SubNavSuccessView
+from web.views import (IndexView, CategoryView,  SiteMapView,
+    SubNavCreateView, SubNavSuccessView)
 
 from web.views.news import NewsListView
 
@@ -32,8 +31,8 @@ handler500 = page_error
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
-    url(r'^recruit\.htm$', JobView.as_view(), name='web_jobs'),
+    # url(r'^about\.htm$', AboutView.as_view(), name='web_about'),
+    # url(r'^recruit\.htm$', JobView.as_view(), name='web_jobs'),
     url(r'^sitemap\.htm$', SiteMapView.as_view(), name='web_sitemap'),
     url(r'^submit\.htm$', SubNavCreateView.as_view(), name='web_submit'),
     url(r'^submit_suc\.htm$', SubNavSuccessView.as_view(), name='web_submit_done'),
