@@ -19,7 +19,7 @@ msgstr ""
 
 #: nav/models.py:42
 msgid "status"
-msgstr ""
+msgstr "状态"
 
 #: nav/models.py:81
 msgid "中文描述"
