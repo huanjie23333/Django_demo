@@ -29,12 +29,8 @@
                                                 {% else %}
                                                     <span class="nav-ename">{{ nav.ename }}</span>
                                                 {% endif %}
-                                                {% if nav.location %}
-                                                     <span class="location">
-                                                    {{ nav.location }}
-                                                    </span>
-                                                {% endif %}
 
+                                                {% if nav.location %}<span class="location">{{ nav.zh_hant_location }}</span>{% endif %}
                                             <span class="nav-desc">
                                                 {{ nav.profile.description }}
                                             </span>
