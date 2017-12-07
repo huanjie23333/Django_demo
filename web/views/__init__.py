@@ -85,7 +85,7 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         categories = list(Category.objects.all())
 
         context['categories'] = [{
-            'category_name': cate.cname,
+            'category_name': cate.zh_hant_cname,
             'category_ename': cate.ename,
             'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20)
         }
@@ -97,12 +97,12 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
 
-class AboutView(FlinkMixin, TemplateView):
-    template_name = 'web/about.html'
-
-
-class JobView(FlinkMixin, TemplateView):
-    template_name = 'web/jobs.html'
+# class AboutView(FlinkMixin, TemplateView):
+#     template_name = 'web/about.html'
+#
+#
+# class JobView(FlinkMixin, TemplateView):
+#     template_name = 'web/jobs.html.bk'
 
 
 class SubNavCreateView(CreateView):

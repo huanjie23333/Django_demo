@@ -11,8 +11,8 @@
                         <li class="flink-head">{% trans '友情链接' %}</li>
                         {% for flink in flinks %}
                             <li class="flink-item">
-                                <a class="flink" href="{{ flink.link }}" target="_blank" rel="nofollow" title="{{ flink.site_name }}">
-                                    {{ flink.site_name|cc }}
+                                <a class="flink" href="{{ flink.link }}" target="_blank" rel="nofollow" title="{{ flink.zh_hant_site_name }}">
+                                    {{ flink.zh_hant_site_name }}
                                 </a>
                             </li>
                         {% endfor %}
@@ -34,7 +34,7 @@
                     <li class="sitemap-item hidden-xs">
                         <a target="_blank" title="{% trans '全站地图' %}" href="{% url 'web_sitemap' %}">{% trans '全站地图' %}</a></li>
                     <li class="sitemap-item hidden-xs">
-                        <a rel="nofollow" target="_blank" title="{% trans 'jobs' %}" href="{% url 'web_jobs' %}">{% trans 'jobs' %}</a></li>
+                        <a rel="nofollow" target="_blank" title="{% trans 'jobs' %}" href="/pages/recruit/">{% trans 'jobs' %}</a></li>
 {#                    <li>备案信息</li>#}
                 </ul>
             </div>

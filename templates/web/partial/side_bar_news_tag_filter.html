@@ -4,8 +4,8 @@
     <ul class="tag-list-filter-list">
         {% for tag in sidebar_news_tag_list|slice:"0:50" %}
             <li class="tag-filter-item">
-                <a href="{% url 'news:tag_news' tag.name %}"  title="{{ tag.name|cc }}" target="_blank" class="{% if current_tag == tag.name %}active{% endif %}">
-                    {{ tag.name|cc }}
+                <a href="{% url 'news:tag_news' tag.name %}" title="{{ tag.name }}" target="_blank" class="{% if current_tag == tag.name %}active{% endif %}">
+                    {{ tag.name }}
                 </a>
             </li>
         {% endfor %}
