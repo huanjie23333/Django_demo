@@ -29,12 +29,7 @@ class TestIndexViewTestCase(WithDataTestCase):
     def test_get_index(self):
         resp = self.client.get(reverse('web_index'))
         self.assertEqual(resp.status_code, 200)
-        # print (dir(resp))
-        self.assertTemplateUsed(resp, 'web/index.html')
-
-        # print('*'*90)
-        # print(resp.context_data)
-        # print('*'*90)
+        # self.assertTemplateUsed(resp, 'web/index.html')
 
         # self.assertContains(resp, text='tag1')
         # self.assertContains(resp, text='tag2')

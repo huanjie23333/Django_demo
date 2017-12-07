@@ -60,16 +60,9 @@ urlpatterns += [
     url(r'^captcha/', include('captcha.urls')),
 ]
 
-
-if settings.DEBUG:
-    urlpatterns += [
-        url(r'^$', IndexView.as_view(), name='web_index'),
-        # url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
-    ]
-else:
-    urlpatterns += [
-        url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
-    ]
+urlpatterns += [
+    url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
+]
 
 from django.contrib.flatpages import views
 

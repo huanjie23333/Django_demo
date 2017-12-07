@@ -29,6 +29,10 @@ class Category(CachingMixin, models.Model):
         verbose_name_plural = "分类"
         verbose_name = "分类"
 
+    @cached_property
+    def zh_hant_cname(self):
+        return opencc.convert(self.cname, config="s2t.json")
+
 
 class Nav(CachingMixin, models.Model):
     STATUS = Choices('remove', 'draft', 'published')
