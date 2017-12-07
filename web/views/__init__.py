@@ -97,12 +97,12 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
 
-class AboutView(FlinkMixin, TemplateView):
-    template_name = 'web/about.html'
-
-
-class JobView(FlinkMixin, TemplateView):
-    template_name = 'web/jobs.html.bk'
+# class AboutView(FlinkMixin, TemplateView):
+#     template_name = 'web/about.html'
+#
+#
+# class JobView(FlinkMixin, TemplateView):
+#     template_name = 'web/jobs.html.bk'
 
 
 class SubNavCreateView(CreateView):
