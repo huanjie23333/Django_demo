@@ -13,7 +13,7 @@
 {#                <img class="img-responsive" src="{% static 'images/404.png' %}" style="margin-top: 80px">#}
 {#            </div>#}
             <div class="col-sm-12">
-                <p class="text-center" style="font-size: 32px; color: #414243; margin-top: 70px;">403 - 您没有权限访问此功能</p>
+                <p class="text-center" style="font-size: 32px; color: #414243; margin-top: 70px;">403 - {% trans '您没有权限访问此功能' %}</p>
             </div>
             <div class="col-sm-12" style="font-size: 16px; color: #9D9E9F;">
                 <p class="text-center">The Master said: "Isn't it also great when friends visit from distant places?"</p>
@@ -28,7 +28,7 @@
             </div>
 {#            <br /><br />#}
             <div class="col-sm-12">
-                <p class="text-center" style="font-size: 16px;color: #414243; margin-top:40px">返回 <a href="{% url 'web_index' %}" style="color: #427ec0">首页</a>，或报告问题到 hi@guoku.com</p>
+                <p class="text-center" style="font-size: 16px;color: #414243; margin-top:40px">{% trans '返回' %} <a href="{% url 'web_index' %}" style="color: #427ec0">{% trans '首页' %}</a>，{% trans '或报告问题到' %} hi@guoku.com</p>
             </div>
         </div>
     </div>

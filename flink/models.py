@@ -1,4 +1,7 @@
+import opencc
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+from django.utils.functional import cached_property
 
 
 # Create your models here.
@@ -13,7 +16,9 @@ class Flink(models.Model):
 
     class Meta:
         ordering = ['-score']
-        verbose_name_plural = "友情链接"
-        verbose_name = "友情链接"
+        verbose_name_plural = _("友情链接")
+        verbose_name = _("友情链接")
 
-
+    @cached_property
+    def zh_hant_site_name(self):
+        return opencc.convert(self.site_name, config='s2t.json')

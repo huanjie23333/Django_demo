@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 {% load static compress %}
+{% load web_extras %}
 
 {% block content %}
     <section id="content">
@@ -14,29 +15,22 @@
                             {% for obj in nav_list %}
                                     <li class="nav-list-item">
                                             <span class="nav-name">
-                                                <a
-                                                        class="{% if obj.highlight %} highlight {% endif %}"
+                                                <a class="{% if obj.highlight %} highlight {% endif %}"
                                                         href="{{ obj.web_site }}" rel="nofollow" target="_blank"
                                                         title="{{ obj.main_name }}">
-                                                    {{ obj.main_name }}
+                                                    {{ obj.main_name|cc }}
                                                 </a>
                                             </span>
 
                                         {% if obj.main_name == obj.ename or obj.ename == None %}
 
                                         {% else %}
-                                            <span class="nav-ename" >
-                                                    {{ obj.ename }}</span>
+                                            <span class="nav-ename" >{{ obj.ename }}</span>
                                         {% endif %}
                                         {% if obj.location %}
-                                            <span class="location">
-                                                    {{ obj.location }}
-                                                    </span>
+                                            <span class="location">{{ obj.location|cc }}</span>
                                         {% endif %}
-                                        <span class="nav-desc">{{ obj.description }}</span>
-{#                                        <span class="sr-only">#}
-{#                                                {{ obj.description }}#}
-{#                                            </span>#}
+                                        <span class="nav-desc">{{ obj.description|cc }}</span>
                                     </li>
                             {% endfor %}
                             </ul>
