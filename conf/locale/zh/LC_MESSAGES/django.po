@@ -191,7 +191,7 @@ msgstr "北京區塊科技有限公司"
 
 #: templates/web/partial/footer.html:33
 msgid "about"
-msgstr ""
+msgstr "關於我們"
 
 #: templates/web/partial/footer.html:35 templates/web/sitemap.html:9
 msgid "全站地图"
