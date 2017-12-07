@@ -1347,7 +1347,7 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
                         try { xhr.abort(); } catch(e){}
                         $.getJSON('/search/autocomplete/', {q: term},
                             function(data){
-                                $.ajax('http://www.chainscoop.com/api/news/autocomplete/', {
+                                $.ajax('http://www.chainnews.com/api/news/autocomplete/', {
                                     jsonp: true,
                                     success: function(data2){
                                         var results = data.results.concat(data2.results);
@@ -1717,12 +1717,12 @@ define('subapp/adapters/coinbeef',[
 
                 var min_diff = Math.ceil(sec_diff/60.0) - 1;
                 if(sec_diff > 60 && sec_diff <= 3600){
-                    return  min_diff + '分钟前';
+                    return  min_diff + '分鐘前';
                 }
 
                 var hour_diff = Math.ceil(min_diff/60.0) -1;
                 if(hour_diff <= 24){
-                    return hour_diff + '小时前';
+                    return hour_diff + '小時前';
                 }
 
                 var day_diff = Math.ceil(hour_diff/24.0) -1;
