@@ -29,6 +29,10 @@ class Category(CachingMixin, models.Model):
         verbose_name_plural = "分类"
         verbose_name = "分类"
 
+    @cached_property
+    def zh_hant_cname(self):
+        return opencc.convert(self.cname, config="s2t.json")
+
 
 class Nav(CachingMixin, models.Model):
     STATUS = Choices('remove', 'draft', 'published')
@@ -63,6 +67,14 @@ class Nav(CachingMixin, models.Model):
     @cached_property
     def zh_hant_main_name(self):
         return opencc.convert(self.main_name, config='s2t.json')
+
+    @cached_property
+    def zh_hant_location(self):
+        return opencc.convert(self.location, config='s2t.json')
+
+    @cached_property
+    def zh_hant_main_description(self):
+        return opencc.convert(self.get_main_description(), config='s2t.json')
 
     @cached_property
     def main_name(self):
