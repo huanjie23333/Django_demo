@@ -22,7 +22,7 @@
                                 {% for tag in cate.tag_list %}
                                      <li class="tag-item">
                                          <a href="{% url 'category_page' cate.cateename %}">
-                                            {{ tag.tag__name }}
+                                            {{ tag.tag__name|cc }}
                                          </a>
                                      </li>
                                 {% endfor  %}
