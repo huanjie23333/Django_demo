@@ -1,10 +1,10 @@
 define([],function(){
 var CoinDic = {
-BTC : "比特币BTC",
+BTC : "比特幣BTC",
 ETH : "以太坊ETH",
-LTC : "莱特币LTC",
-BCH : "比特现金BCC",
-XRP : "瑞波币XRP"
+LTC : "萊特幣LTC",
+BCH : "比特現金BCC",
+XRP : "瑞波幣XRP"
 };
 return CoinDic;
 });
