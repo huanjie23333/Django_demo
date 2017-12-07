@@ -69,6 +69,10 @@ class Nav(CachingMixin, models.Model):
         return opencc.convert(self.main_name, config='s2t.json')
 
     @cached_property
+    def zh_hant_main_description(self):
+        return opencc.convert(self.get_main_description(), config='s2t.json')
+
+    @cached_property
     def main_name(self):
         return self.cname or self.ename
 
