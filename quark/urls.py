@@ -13,16 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include , handler404, handler500
+from django.conf.urls import url, include, handler404, handler500
 from django.contrib import admin
-from web.views import IndexView, CategoryView,\
-                      AboutView, SiteMapView, JobView,\
-                      SubNavCreateView,SubNavSuccessView
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.decorators.cache import cache_page
+
+from web.views import IndexView, CategoryView, \
+    AboutView, SiteMapView, JobView, \
+    SubNavCreateView, SubNavSuccessView
 
 from web.views.news import NewsListView
 
 from quark.views import page_error, webpage_not_found
-
 
 handler404 = webpage_not_found
 handler500 = page_error
@@ -47,23 +50,26 @@ urlpatterns = [
 
 ]
 
-
-
 urlpatterns += [
     url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
     url(r'^api/dapps/', include('nav.urls.api.dapps', namespace='api_dapps')),
 ]
 
-urlpatterns += [
-    url(r'^$', IndexView.as_view(), name='web_index'),
-]
-
-
-#captcha
+# captcha
 urlpatterns += [
     url(r'^captcha/', include('captcha.urls')),
 ]
 
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^$', IndexView.as_view(), name='web_index'),
+        # url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
+    ]
+else:
+    urlpatterns += [
+        url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
+    ]
 
 from django.contrib.flatpages import views
 
@@ -71,18 +77,18 @@ urlpatterns += [
     url(r'^pages/(?P<url>.*/?)$', views.flatpage),
 ]
 
-from django.conf import settings
-from django.conf.urls.static import static
 if settings.IS_LOCAL_TESTING:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     # for local testing 500 page
     from web.views import ErrorView
+
     urlpatterns = urlpatterns + [
-         url(r'^error\.htm$', ErrorView.as_view(), name='web_error_testing'),
+        url(r'^error\.htm$', ErrorView.as_view(), name='web_error_testing'),
     ]
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
+                      url(r'^__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns
