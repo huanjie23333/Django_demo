@@ -1,68 +1,8 @@
-{% extends 'base/base.html' %}
-{% load i18n static compress %}
-{% load web_extras %}
-
-{#{% block meta %}#}
-{#    {% include "web/partial/news_list_meta.html" %}#}
-{#{% endblock %}#}
-{#{% block title %}{% trans 'BTC 分叉倒计时' %} - {% trans '区块链导航' %}{% endblock %}#}
-
-{# {% block seo_title %}#}
-{#    新闻快讯 - 区块链导航#}
-{# {% endblock %}#}
-
-{% block content %}
-    <section id="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-xs-12 news-line-wrapper" id="btc-countdown">
-                </div>
-                {% include 'web/partial/side_bar.html' %}
-            </div>
-        </div>
-    </section>
-
-     <a class="gotop-wrapper">
-        <span class="btn-top" id="top_link">
-            <i class="fa fa-angle-up"></i>
-        </span>
-    </a>
-
-
-    <script type="text/template" id="btc-countdown-tpl">
-        <% for(var i = 0; i < fork_list.length; i++){ %>
-            <div class="box">
-                <div class="box-header"><%= fork_list[i].name %>分叉倒计时</div>
-                <div class="box-body">
-                    <span class="clockdiv">
-                        <div><span class="days"></span><span>天</span></div>
-                        <div><span class="hours"></span><span>时</span></div>
-                        <div><span class="minutes"></span><span>分</span></div>
-                        <div><span class="seconds"></span><span>秒</span></div>
-                    </span>
-                    <div class="count-down-info">
-                        <div class="info">
-                            {% trans '这是基于当前块高度的时间预估' %}，{% trans '平均出块时间为十分钟' %}。<br><br>
-                            <span>
-                                {% trans '分叉区块高度' %}
-                                <span class="block-count"><%= fork_list[i].height %></span><br>
-                                {% trans '目前区块高度' %}
-                                <span class="current_block_count block-count"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% } %>
-    </script>
-{% endblock %}
-{##}
-{% block basic_script %}
-    {% compress js %}
-        <script src="{% static 'js/web/app/require.js' %}"></script>
-        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
-        <script>
-                    var fork_list =[
+define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
+    var BtcCountdown = Class.extend({
+        init: function(){
+            if(!$('#btc-countdown-tpl').length) return ;
+            var fork_list =[
                 {
                     'name': '比特幣上帝',
                     'ename': 'Bitcoin God ',
@@ -89,6 +29,8 @@
             $('#btc-countdown').html(html);
             var interval = 600;
             getBlockHeight(initClock);
+
+
 
             function getBlockHeight(callback){
                 $.ajax({
@@ -168,6 +110,8 @@
                 do_update();
                 var timeinterval = setInterval(do_update, 1000);
             }
-        </script>
-    {% endcompress %}
-{% endblock %}
+        }
+    });
+
+    return BtcCountdown;
+});
