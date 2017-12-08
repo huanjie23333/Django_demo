@@ -1320,11 +1320,17 @@ ul li {
 .clockdiv {
   font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   color: #434446;
-  display: inline-block;
+  display: block;
   font-weight: 100;
   text-align: center;
   font-size: 16px;
   padding: 20px 0px;
+  margin: 0 auto;
+}
+.clockdiv .days {
+  width: 60px;
+  display: inline-block;
+  text-align: right;
 }
 .clockdiv > div {
   margin-right: 10px;
@@ -1344,6 +1350,7 @@ ul li {
 }
 .count-down-info {
   margin-bottom: 20px;
+  text-align: center;
 }
 .count-down-info .info {
   color: #aaa;

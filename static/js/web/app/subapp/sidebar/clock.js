@@ -1,4 +1,4 @@
-define(['libs/Class', 'jquery'], function (Class, $) {
+define(['libs/Class', 'jquery', 'underscore'], function (Class, $, _) {
 
     var targetblock = 494784; // 2x fork block
     var interval = 600; // ten minute blocks
@@ -9,7 +9,7 @@ define(['libs/Class', 'jquery'], function (Class, $) {
     function getBlockheight(callback) {
         var current_block = 0 ;
         $.ajax({
-        url: 'https://blockchain.info/q/getblockcount',
+            url: 'https://blockchain.info/q/getblockcount',
             success: callback
         });
     }
