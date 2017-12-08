@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+{% load web_extras %}
+
+{% block meta %}
+    {% include "web/partial/news_list_meta.html" %}
+{% endblock %}
+{% block title %}{% trans 'BTC 分叉倒计时' %} - {% trans '区块链导航' %}{% endblock %}
+
+{# {% block seo_title %}#}
+{#    新闻快讯 - 区块链导航#}
+{# {% endblock %}#}
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12 news-line-wrapper">
+                </div>
+                {% include 'web/partial/side_bar.html' %}
+            </div>
+        </div>
+    </section>
+
+     <a class="gotop-wrapper">
+        <span class="btn-top" id="top_link">
+            <i class="fa fa-angle-up"></i>
+        </span>
+    </a>
+
+    <script language="JavaScript">
+        var fork_list =[
+            {
+                'name': '比特幣上帝',
+                'ename': 'Bitcoin God ',
+                'hight': 501225,
+            },
+            {
+                'name': '比特幣王者',
+                'ename': 'BTC King ',
+                'height':499999,
+            }
+        ];
+    </script>
+{% endblock %}
+{##}
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
