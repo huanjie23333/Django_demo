@@ -1,13 +1,21 @@
 {% load i18n %}
 {% load static %}
 <div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
-{#    <div class="box hidden-xs">#}
-{#        <div class="box-header ">#}
-{#            比特币硬分叉倒计时#}
-{#        </div>#}
-{#        {% include 'web/partial/clock.html' %}#}
-{#    </div>#}
-
+{#    分叉倒计时 开始 -------#}
+    <div class="box hidden-xs">
+        <div class="box-header ">
+            <span class="main-fork_name">
+            </span>
+            分叉倒计时
+            <span class="pull-right header-link">
+                <a href="{% url 'web_btc_countdown' %}" target="_blank">
+                    {% trans '更多' %}
+                </a>
+            </span>
+        </div>
+        {% include 'web/partial/clock.html' %}
+    </div>
+{#   分叉倒计时 结束 --------#}
 {% include 'web/partial/ad_block.html' %}
 
 

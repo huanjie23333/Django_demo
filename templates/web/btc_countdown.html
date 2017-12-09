@@ -63,10 +63,15 @@
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
         <script>
                     var fork_list =[
-                {
-                    'name': '比特幣上帝',
-                    'ename': 'Bitcoin God ',
-                    'height': 501225
+                 {
+                    'name': '比特幣白金',
+                    'ename': 'Bitcoin Platinum',
+                    'height':498533
+                },
+               {
+                    'name': '超级比特币',
+                    'ename': 'Bitcoin Platinum',
+                    'height':498888
                 },
                 {
                     'name': '比特幣王者',
@@ -74,16 +79,13 @@
                     'height':499999
                 },
                 {
-                    'name': '超级比特币',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498888
+                    'name': '比特幣上帝',
+                    'ename': 'Bitcoin God ',
+                    'height': 501225
                 },
-                {
-                    'name': '比特幣白金',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498533
-                }
+
             ];
+
             var compiled = _.template($('#btc-countdown-tpl').html());
             var html = compiled(fork_list);
             $('#btc-countdown').html(html);

@@ -1317,7 +1317,8 @@ ul li {
 .autocomplete-suggestion.selected {
   background: #f0f0f0;
 }
-.clockdiv {
+.clockdiv,
+.top_clockdiv {
   font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   color: #434446;
   display: block;
@@ -1327,24 +1328,28 @@ ul li {
   padding: 20px 0px;
   margin: 0 auto;
 }
-.clockdiv .days {
+.clockdiv .days,
+.top_clockdiv .days {
   width: 60px;
   display: inline-block;
   text-align: right;
 }
-.clockdiv > div {
+.clockdiv > div,
+.top_clockdiv > div {
   margin-right: 10px;
   border-radius: 2px;
   background: none;
   display: inline-block;
 }
-.clockdiv div > span {
+.clockdiv div > span,
+.top_clockdiv div > span {
   font-size: 26px;
   border-radius: 0px;
   font-weight: 600;
   color: #434446;
 }
-.clockdiv div > span.smalltext {
+.clockdiv div > span.smalltext,
+.top_clockdiv div > span.smalltext {
   padding: 0 0 0 0;
   font-size: 14px;
 }
@@ -2042,6 +2047,9 @@ body a:hover {
   color: #ff552e;
   font-weight: 700;
   overflow: hidden;
+}
+#content .box .box-header .main-fork_name {
+  color: #ff552e;
 }
 #content .box .box-header a,
 #content .box .box-header a:hover {
