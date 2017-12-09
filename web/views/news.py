@@ -163,6 +163,9 @@ class NewsListView(SideBarDataMixin, TemplateView):
         return context
 
 
+class CountDownList(SideBarDataMixin, TemplateView):
+    template_name = 'web/btc_countdown.html'
+
 class NewsTagListView(SideBarDataMixin, TemplateView):
     template_name = 'web/news_list.html'
 

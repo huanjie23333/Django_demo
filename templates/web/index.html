@@ -6,14 +6,16 @@
         <div class="container">
             <div class="row">
                 <div class="hidden-sm hidden-md hidden-lg col-xs-12 news-wrapper ">
-                    {#               xs     clock    #}
-                    {#                    <div class="box ">#}
-                    {#                        <div class="box-header ">#}
-                    {#                            比特币硬分叉倒计时#}
-                    {#                        </div>#}
-                    {#                        {% include 'web/partial/clock.html' %}#}
-                    {#                    </div>#}
-
+ {#                          分叉倒计时 开始             #}
+                                        <div class="box ">
+                                            <div class="box-header ">
+                                               <span class="main-fork_name">
+                                                </span>
+                                                分叉倒计时
+                                            </div>
+                                            {% include 'web/partial/clock.html' %}
+                                        </div>
+{#                          分叉倒计时 结束 -----#}
                    {% include 'web/partial/ad_block.html' %}
 
                     <div class="box">

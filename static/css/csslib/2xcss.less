@@ -1,23 +1,32 @@
 @import "../csslib/var.less";
 
-.clockdiv {
+.clockdiv, .top_clockdiv {
+
+
   font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   color: @common-text-color;
-  display: inline-block;
+  display: block;
   font-weight: 100;
   text-align: center;
   font-size: 16px;
   padding: 20px 0px;
-}
+  margin: 0 auto;
+  .days {
+    width: 60px;
+    display: inline-block;
+    text-align: right;
+  }
 
-.clockdiv > div {
+  & > div {
   margin-right: 10px;
   border-radius: 2px;
   background: none;
   display: inline-block;
+  }
 }
 
-.clockdiv div > span {
+
+.clockdiv div > span, .top_clockdiv div > span  {
   font-size: 26px;
   border-radius: 0px;
   font-weight: 600;
@@ -32,6 +41,7 @@
 
 .count-down-info {
   margin-bottom:20px;
+  text-align: center;
   .info {
     color: @support-text-color;
 

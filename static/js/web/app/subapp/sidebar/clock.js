@@ -1,6 +1,10 @@
-define(['libs/Class', 'jquery'], function (Class, $) {
+define(['libs/Class', 'jquery', 'underscore','subapp/data/btc_forks'], function (Class, $, _, ForkList) {
 
-    var targetblock = 494784; // 2x fork block
+    var sorted_fork_list = _.sortBy(ForkList, function(fork){
+        return fork['height'];
+    });
+    var targetblock = sorted_fork_list[0]['height']; // 2x fork block
+    var target_fork_name = sorted_fork_list[0]['name'];
     var interval = 600; // ten minute blocks
 
 
@@ -9,7 +13,7 @@ define(['libs/Class', 'jquery'], function (Class, $) {
     function getBlockheight(callback) {
         var current_block = 0 ;
         $.ajax({
-        url: 'https://blockchain.info/q/getblockcount',
+            url: 'https://blockchain.info/q/getblockcount',
             success: callback
         });
     }
@@ -41,9 +45,20 @@ define(['libs/Class', 'jquery'], function (Class, $) {
     function renderClock(classname, endtime, blockheight) {
         // display block height;
 
-        $('.current_block_count').each(function(index,ele){
+        $(".top_clockdiv")
+            .parent()
+            .find('.current_block_count')
+            .each(function(index,ele){
             $(ele).html(blockheight);
         });
+
+         $(".top_clockdiv")
+            .parent()
+            .find('.target_block_count')
+            .each(function(index,ele){
+            $(ele).html(targetblock);
+        });
+
 
         function do_update(){
             var clocks = document.getElementsByClassName(classname);
@@ -79,14 +94,23 @@ define(['libs/Class', 'jquery'], function (Class, $) {
 
 
     function initClock(result){
+
         var current_block = parseInt(result);
+        if(current_block > targetblock){
+            sorted_fork_list = sorted_fork_list.slice(1);
+            return Run();
+        }
+
         var deadline =   new Date(Date.parse(new Date()) + getSecondsRemaining(current_block, targetblock, interval));
-        renderClock('clockdiv', deadline, current_block);
+
+        renderClock('top_clockdiv', deadline, current_block);
 
     }
 
     function Run() {
+        $('.main-fork_name').html(target_fork_name);
         getBlockheight(initClock)
+
         // initializeClock('clockdiv', deadline);
     }
 
