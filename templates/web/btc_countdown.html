@@ -34,7 +34,7 @@
             <div class="box">
                 <div class="box-header"><%= fork_list[i].name %>分叉倒计时</div>
                 <div class="box-body">
-                    <span class="clockdiv">
+                    <span class="clockdiv clock-count">
                         <div><span class="days"></span><span>天</span></div>
                         <div><span class="hours"></span><span>时</span></div>
                         <div><span class="minutes"></span><span>分</span></div>
@@ -69,7 +69,7 @@
                     'height':498533
                 },
                {
-                    'name': '超级比特币',
+                    'name': '超级比特幣',
                     'ename': 'Bitcoin Platinum',
                     'height':498888
                 },
@@ -106,7 +106,7 @@
                     deadline.push(new Date(Date.parse(new Date())
                         + getSecondsRemaining(current_block, targetblock, interval)));
                 }
-                renderClock('clockdiv', deadline, current_block);
+                renderClock('clock-count', deadline, current_block);
             }
             function getSecondsRemaining(blockheight, targetblock, interval) {
                 var blocksremaining = targetblock - blockheight;
@@ -137,19 +137,19 @@
                 function do_update(){
                     var clocks = document.getElementsByClassName(classname);
                     for (var i=0, len=clocks.length ; i<len; i++) {
-                        updateClock(clocks[i], endtime[i]);
+                        updateClock(clocks[i], endtime, i);
                     }
                 }
 
 
-                function updateClock(clock, endtime) {
+                function updateClock(clock, endtime, i) {
 
                     var daysSpan = clock.querySelector('.days');
                     var hoursSpan = clock.querySelector('.hours');
                     var minutesSpan = clock.querySelector('.minutes');
                     var secondsSpan = clock.querySelector('.seconds');
 
-                    var t = getTimeRemaining(endtime);
+                    var t = getTimeRemaining(endtime[i]);
 
                     if (t.total <= 0) {
                         clock.classList.remove(classname);
@@ -158,13 +158,12 @@
                         hoursSpan.innerHTML = '00';
                         minutesSpan.innerHTML = '00';
                         secondsSpan.innerHTML = '00';
-                        return ;
+                    } else {
+                        daysSpan.innerHTML = t.days;
+                        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
                     }
-
-                    daysSpan.innerHTML = t.days;
-                    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-                    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-                    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
                 }
 
                 do_update();

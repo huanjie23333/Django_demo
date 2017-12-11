@@ -1,7 +1,7 @@
-define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
+define(['libs/Class', 'underscore', 'jquery'], function(Class, _, $){
     var BtcCountdown = Class.extend({
         init: function(){
-            if(!$('#btc-countdown-tpl').length) return ;
+            // if(!$('#btc-countdown-tpl').length) return ;
             var fork_list =[
                 {
                     'name': '比特幣上帝',
@@ -46,7 +46,7 @@ define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
                     deadline.push(new Date(Date.parse(new Date())
                         + getSecondsRemaining(current_block, targetblock, interval)));
                 }
-                renderClock('clockdiv', deadline, current_block);
+                renderClock('clock-count', deadline, current_block);
             }
             function getSecondsRemaining(blockheight, targetblock, interval) {
                 var blocksremaining = targetblock - blockheight;
