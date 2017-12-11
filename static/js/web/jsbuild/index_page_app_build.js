@@ -2924,17 +2924,17 @@ define('subapp/data/btc_forks',[],function () {
 
     var fork_list =[
                 {
-                    'name': '比特幣上帝',
+                    'name': '比特幣上帝分叉倒计时',
                     'ename': 'Bitcoin God ',
                     'height': 501225
                 },
                 {
-                    'name': '比特幣王者',
+                    'name': '比特幣王者分叉倒计时',
                     'ename': 'BTC King ',
                     'height':499999
                 },
                 {
-                    'name': '超级比特币',
+                    'name': '超级比特币分叉倒计时',
                     'ename': 'Bitcoin Platinum',
                     'height':498888
                 },
@@ -3023,9 +3023,9 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery', 'underscore','subapp/data
             var t = getTimeRemaining(endtime);
 
             daysSpan.innerHTML = t.days;
-            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+            hoursSpan.innerHTML = (t.hours);
+            minutesSpan.innerHTML = (t.minutes);
+            secondsSpan.innerHTML = (t.seconds);
 
             if (t.total <= 0) {
                 clearInterval(timeinterval);

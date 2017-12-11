@@ -62,7 +62,6 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    # url(r'^$', IndexView.as_view(), name='web_index'),
     url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
 ]
 

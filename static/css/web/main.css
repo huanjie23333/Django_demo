@@ -1336,7 +1336,7 @@ ul li {
 }
 .clockdiv > div,
 .top_clockdiv > div {
-  margin-right: 10px;
+  margin-right: 5px;
   border-radius: 2px;
   background: none;
   display: inline-block;
@@ -1347,11 +1347,17 @@ ul li {
   border-radius: 0px;
   font-weight: 600;
   color: #434446;
+  margin-left: 5px;
 }
 .clockdiv div > span.smalltext,
 .top_clockdiv div > span.smalltext {
   padding: 0 0 0 0;
   font-size: 14px;
+}
+.clockdiv div > span.middletext,
+.top_clockdiv div > span.middletext {
+  padding: 0 0 0 0;
+  font-size: 16px;
 }
 .count-down-info {
   margin-bottom: 20px;
