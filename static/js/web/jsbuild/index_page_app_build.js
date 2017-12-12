@@ -4084,12 +4084,16 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
 define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery'], function(Class, _, $){
     var BtcCountdown = Class.extend({
         init: function(){
-            // if(!$('#btc-countdown-tpl').length) return ;
             var fork_list =[
-                {
-                    'name': '比特幣上帝',
-                    'ename': 'Bitcoin God ',
-                    'height': 501225
+                 {
+                    'name': '比特幣白金',
+                    'ename': 'Bitcoin Platinum',
+                    'height':498533
+                },
+               {
+                    'name': '超级比特幣',
+                    'ename': 'Bitcoin Platinum',
+                    'height':498888
                 },
                 {
                     'name': '比特幣王者',
@@ -4097,23 +4101,19 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery'], 
                     'height':499999
                 },
                 {
-                    'name': '超级比特币',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498888
-                },
-                {
-                    'name': '比特幣白金',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498533
+                    'name': '比特幣上帝',
+                    'ename': 'Bitcoin God ',
+                    'height': 501225
                 }
             ];
+
             var compiled = _.template($('#btc-countdown-tpl').html());
-            var html = compiled(fork_list);
+            var html = compiled({list:fork_list});
             $('#btc-countdown').html(html);
+
+
             var interval = 600;
             getBlockHeight(initClock);
-
-
 
             function getBlockHeight(callback){
                 $.ajax({
@@ -4129,7 +4129,15 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery'], 
                     deadline.push(new Date(Date.parse(new Date())
                         + getSecondsRemaining(current_block, targetblock, interval)));
                 }
-                renderClock('clock-count', deadline, current_block);
+                if($('.clockdiv').length) {
+                    renderClock('clockdiv', deadline, current_block);
+                }
+                if($('.top_clockdiv').length) {
+                    renderClock('top_clockdiv', deadline, current_block);
+                    $('.top_clockdiv .target_block_count').html(fork_list[0].height);
+
+                }
+
             }
             function getSecondsRemaining(blockheight, targetblock, interval) {
                 var blocksremaining = targetblock - blockheight;
@@ -4160,34 +4168,28 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery'], 
                 function do_update(){
                     var clocks = document.getElementsByClassName(classname);
                     for (var i=0, len=clocks.length ; i<len; i++) {
-                        updateClock(clocks[i], endtime[i]);
+                        updateClock(clocks[i], endtime, i);
                     }
                 }
 
 
-                function updateClock(clock, endtime) {
+                function updateClock(clock, endtime, i) {
 
                     var daysSpan = clock.querySelector('.days');
                     var hoursSpan = clock.querySelector('.hours');
                     var minutesSpan = clock.querySelector('.minutes');
                     var secondsSpan = clock.querySelector('.seconds');
 
-                    var t = getTimeRemaining(endtime);
-
-                    if (t.total <= 0) {
-                        clock.classList.remove(classname);
-                        endtime.splice(i, 1);
-                        daysSpan.innerHTML = '0';
-                        hoursSpan.innerHTML = '00';
-                        minutesSpan.innerHTML = '00';
-                        secondsSpan.innerHTML = '00';
-                        return ;
+                    var t = getTimeRemaining(endtime[i]);
+                    if(t.total <= 0) {
+                        clock.innerHTML = fork_list[i].name + '已成功分叉！';
+                    } else {
+                        daysSpan.innerHTML = t.days;
+                        hoursSpan.innerHTML = ('' + t.hours).slice(-2);
+                        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
                     }
 
-                    daysSpan.innerHTML = t.days;
-                    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-                    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-                    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
                 }
 
                 do_update();
@@ -6641,7 +6643,7 @@ require([
 
         // for news tag trigger ;
         new TagTrigger();
-        // new BtcCountdown();
+        new BtcCountdown();
 
 
 

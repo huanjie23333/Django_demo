@@ -1322,15 +1322,21 @@ ul li {
   font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   color: #434446;
   display: block;
-  font-weight: 100;
+  font-weight: 300;
   text-align: center;
-  font-size: 16px;
+  font-size: 26px;
   padding: 20px 0px;
   margin: 0 auto;
 }
 .clockdiv .days,
-.top_clockdiv .days {
-  width: 60px;
+.top_clockdiv .days,
+.clockdiv .hours,
+.top_clockdiv .hours,
+.clockdiv .minutes,
+.top_clockdiv .minutes,
+.clockdiv .seconds,
+.top_clockdiv .seconds {
+  width: 30px;
   display: inline-block;
   text-align: right;
 }
@@ -1340,6 +1346,11 @@ ul li {
   border-radius: 2px;
   background: none;
   display: inline-block;
+}
+.coin-name {
+  text-align: center;
+  font-size: 16px;
+  margin: 40px auto 0 auto;
 }
 .clockdiv div > span,
 .top_clockdiv div > span {
@@ -1365,6 +1376,10 @@ ul li {
 }
 .count-down-info .info span .block-count {
   color: #0E8ED8;
+}
+#btc-countdown .box-body {
+  padding-bottom: 30px;
+  border-bottom: #f3f3f3 1px solid;
 }
 /*
  * Table styles
