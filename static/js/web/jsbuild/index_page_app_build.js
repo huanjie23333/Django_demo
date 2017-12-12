@@ -4080,14 +4080,14 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', '
     var BtcCountdown = Class.extend({
         init: function(){
             if(!$('.coin-name-sidebar').length) return;
-            if($('#btc-countdown-tpl').length){
-                var compiled = _.template($('#btc-countdown-tpl').html());
-                var html = compiled({list:fork_list});
-                $('#btc-countdown').html(html);
-            }
+
+
+            fork_list.sort(function (a, b) {
+                return a.height - b.height;
+            });
 
             var interval = 600;
-            getBlockHeight(initClock);
+            render();
 
             function getBlockHeight(callback){
                 $.ajax({
@@ -4156,7 +4156,9 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', '
 
                     var t = getTimeRemaining(endtime[i]);
                     if(t.total <= 0) {
-                        clock.innerHTML = fork_list[i].name + '已分叉！';
+                        fork_list.splice(i, 1);
+                        clearInterval(timeinterval);
+                        render();
                     } else {
                         daysSpan.innerHTML = t.days;
                         hoursSpan.innerHTML = ('' + t.hours).slice(-2);
@@ -4168,6 +4170,14 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', '
 
                 do_update();
                 var timeinterval = setInterval(do_update, 1000);
+            }
+            function render(){
+                if($('#btc-countdown-tpl').length){
+                    var compiled = _.template($('#btc-countdown-tpl').html());
+                    var html = compiled({list:fork_list});
+                    $('#btc-countdown').html(html);
+                }
+                getBlockHeight(initClock);
             }
         }
     });
