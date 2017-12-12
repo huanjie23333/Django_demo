@@ -161,3 +161,13 @@ class SiteMapView(SideBarDataMixin, TemplateView):
 class ErrorView(StaffuserRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         raise Exception('error for test')
+
+
+
+class CountDownList(SideBarDataMixin, TemplateView):
+    template_name = 'web/btc_countdown.html'
+
+
+class ForkListView(TemplateView):
+    template_name = 'web/fork_list.html'
+
