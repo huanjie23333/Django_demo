@@ -11,9 +11,9 @@ class CoinFork(models.Model):
 
     coin_name = models.CharField(max_length=64, null=False, blank=False)
     coin_ename = models.CharField(max_length=64,null=True, blank=True)
-    fork_name = models.CharField(max_length=64, null=False, blank=False)
+    fork_name = models.CharField(max_length=64, null=False, blank=False, unique=True)
     fork_ename = models.CharField(max_length=64, null=True, blank=True)
-    fork_alias = models.CharField(max_length=32, null=True, blank=True)
+    fork_alias = models.CharField(max_length=32, null=True, blank=True, unique=True)
 
     status = StatusField(_('status'), choices_name='STATUS', default=STATUS.incoming)
 

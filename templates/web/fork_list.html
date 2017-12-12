@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+{% load web_extras %}
+
+{% block meta %}
+    {% include "web/partial/fork_meta.html" %}
+{% endblock %}
+{% block title %}{% trans 'BTC 分叉倒计时' %} - {% trans '区块链导航' %}{% endblock %}
+
+ {% block seo_title %}
+    BTC 硬分叉 倒计时
+ {% endblock %}
+
+{% block content %}
+
+    <div class="container content-container">
+        <div class="row">
+            <div class="tab-wrapper">
+                <div class="tab">全部</div>
+                <div class="tab">即将分叉</div>
+                <div class="tab">已经分叉</div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for i in "333333333333" %}
+            <div class="col-sm-4 col-xs-12 fork-item" data-fork-height="52999">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="fork-alias">BTH</div>
+                        <div class="fork-name">
+                            <span>超级比特币</span>
+                            <span>Super Bitcoin</span>
+                        </div>
+                        <div class="count-down">
+                            <span class="clockdiv">
+                                <div><span class="days ">22</span><span class="middletext">天</span></div>
+                                <div><span class="hours ">33</span><span class="middletext">时</span></div>
+                                <div><span class="minutes ">44</span><span class="middletext">分</span></div>
+                                <div><span class="seconds ">55</span><span class="middletext">秒</span></div>
+                            </span>
+                        </div>
+                        <div class="desc">
+                            这是本次分叉的描述
+                        </div>
+                        <div class="block-height">
+                            <span>分叉高度</span>
+                            <span>588332</span>
+                        </div>
+                    </div>
+                    <div class="fork-state fork-incoming">即将分叉</div>
+                    <div class="fork-state fork-passed">分叉完成</div>
+                </div>
+            </div>
+    {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+{##}
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
