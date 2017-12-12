@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.http import HttpResponseForbidden
 
+from coinfork.models import CoinFork
 from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
@@ -168,6 +169,15 @@ class CountDownList(SideBarDataMixin, TemplateView):
     template_name = 'web/btc_countdown.html'
 
 
-class ForkListView(TemplateView):
+class ForkListView(ListView):
+    http_method_names = ['get','head']
     template_name = 'web/fork_list.html'
+    model = CoinFork
+    queryset = CoinFork.objects.all()
+    paginate_by = 30
+    context_object_name = 'fork_list'
+
+
+
+
 
