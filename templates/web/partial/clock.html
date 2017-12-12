@@ -1,21 +1,22 @@
 {% load i18n %}
   <div class="box-body middle-wrapper">
-            <span class="top_clockdiv clock-count">
+            <div class="coin-name coin-name-sidebar"></div>
+            <span class="top_clockdiv">
                 <div>
                     <span class="days"></span>
-                    <span class="smalltext">天</span>
+                    <span class="smalltext">{% trans '天' %}</span>
                 </div>
                 <div>
                     <span class="hours"></span>
-                    <span class="smalltext">时</span>
+                    <span class="smalltext">{% trans '时' %}</span>
                 </div>
                 <div>
                     <span class="minutes"></span>
-                    <span class="smalltext">分</span>
+                    <span class="smalltext">{% trans '分' %}</span>
                 </div>
                 <div>
                     <span class="seconds"></span>
-                    <span class="smalltext">秒</span>
+                    <span class="smalltext">{% trans '秒' %}</span>
                 </div>
             </span>
             <div class="count-down-info">

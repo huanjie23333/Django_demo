@@ -56,7 +56,7 @@ define(['libs/Class',
             // for tagcloud
             new TagCloud();
 
-            ForkClock();
+            // ForkClock();
 
         }
     });

@@ -3127,7 +3127,7 @@ define('subapp/sidebar/sidebar',['libs/Class',
             // for tagcloud
             new TagCloud();
 
-            ForkClock();
+            // ForkClock();
 
         }
     });
@@ -4081,36 +4081,15 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
 });
 
 
-define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery'], function(Class, _, $){
+define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function(Class, _, $, fork_list){
     var BtcCountdown = Class.extend({
         init: function(){
-            var fork_list =[
-                 {
-                    'name': '比特幣白金',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498533
-                },
-               {
-                    'name': '超级比特幣',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498888
-                },
-                {
-                    'name': '比特幣王者',
-                    'ename': 'BTC King ',
-                    'height':499999
-                },
-                {
-                    'name': '比特幣上帝',
-                    'ename': 'Bitcoin God ',
-                    'height': 501225
-                }
-            ];
-
-            var compiled = _.template($('#btc-countdown-tpl').html());
-            var html = compiled({list:fork_list});
-            $('#btc-countdown').html(html);
-
+            if(!$('.coin-name-sidebar').length) return;
+            if($('#btc-countdown-tpl').length){
+                var compiled = _.template($('#btc-countdown-tpl').html());
+                var html = compiled({list:fork_list});
+                $('#btc-countdown').html(html);
+            }
 
             var interval = 600;
             getBlockHeight(initClock);
@@ -4135,7 +4114,7 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery'], 
                 if($('.top_clockdiv').length) {
                     renderClock('top_clockdiv', deadline, current_block);
                     $('.top_clockdiv .target_block_count').html(fork_list[0].height);
-
+                    $('.coin-name-sidebar').html(fork_list[0].name + '&nbsp;' + fork_list[0].ename)
                 }
 
             }
@@ -4182,7 +4161,7 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery'], 
 
                     var t = getTimeRemaining(endtime[i]);
                     if(t.total <= 0) {
-                        clock.innerHTML = fork_list[i].name + '已成功分叉！';
+                        clock.innerHTML = fork_list[i].name + '已分叉！';
                     } else {
                         daysSpan.innerHTML = t.days;
                         hoursSpan.innerHTML = ('' + t.hours).slice(-2);
