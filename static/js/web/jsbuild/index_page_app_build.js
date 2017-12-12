@@ -2934,15 +2934,16 @@ define('subapp/data/btc_forks',[],function () {
                     'height':499999
                 },
                 {
-                    'name': '超级比特币',
+                    'name': '超級比特幣',
                     'ename': 'Bitcoin Platinum',
                     'height':498888
                 },
                 {
-                    'name': '比特幣白金',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498533
+                    'name': 'test',
+                    'ename': 'test',
+                    'height': 490000
                 }
+
             ];
 
     return fork_list;
@@ -3028,9 +3029,9 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery', 'underscore','subapp/data
             var t = getTimeRemaining(endtime);
 
             daysSpan.innerHTML = t.days;
-            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+            hoursSpan.innerHTML = (t.hours);
+            minutesSpan.innerHTML = (t.minutes);
+            secondsSpan.innerHTML = (t.seconds);
 
             if (t.total <= 0) {
                 clearInterval(timeinterval);
@@ -4091,6 +4092,10 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', '
                 $('#btc-countdown').html(html);
             }
 
+            fork_list.sort(function(a, b){
+                return a.height - b.height;
+            });
+
             var interval = 600;
             getBlockHeight(initClock);
 
@@ -4161,7 +4166,8 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', '
 
                     var t = getTimeRemaining(endtime[i]);
                     if(t.total <= 0) {
-                        clock.innerHTML = fork_list[i].name + '已分叉！';
+                        // clock.innerHTML = fork_list[i].name + '已分叉！';
+                        clock.parentElement.style.display = 'none';
                     } else {
                         daysSpan.innerHTML = t.days;
                         hoursSpan.innerHTML = ('' + t.hours).slice(-2);

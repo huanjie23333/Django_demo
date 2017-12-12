@@ -1,4 +1,4 @@
-define(['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function(Class, _, $, fork_list){
+define(['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function(Class, _, $, _fork_list){
     var BtcCountdown = Class.extend({
         init: function(){
             if(!$('.coin-name-sidebar').length) return;
@@ -6,6 +6,10 @@ define(['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function
                 var compiled = _.template($('#btc-countdown-tpl').html());
                 var html = compiled({list:fork_list});
                 $('#btc-countdown').html(html);
+            }
+
+            for(var i = 0; i < _fork_list; i++){
+
             }
 
             var interval = 600;
@@ -79,6 +83,7 @@ define(['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function
                     var t = getTimeRemaining(endtime[i]);
                     if(t.total <= 0) {
                         clock.innerHTML = fork_list[i].name + '已分叉！';
+                        // clock.parentElement.style.display = 'none';
                     } else {
                         daysSpan.innerHTML = t.days;
                         hoursSpan.innerHTML = ('' + t.hours).slice(-2);
