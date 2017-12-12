@@ -2934,14 +2934,9 @@ define('subapp/data/btc_forks',[],function () {
                     'height':499999
                 },
                 {
-                    'name': '超级比特币',
+                    'name': '超級比特幣',
                     'ename': 'Bitcoin Platinum',
                     'height':498888
-                },
-                {
-                    'name': '比特幣白金',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498533
                 }
             ];
 
@@ -3028,9 +3023,9 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery', 'underscore','subapp/data
             var t = getTimeRemaining(endtime);
 
             daysSpan.innerHTML = t.days;
-            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+            hoursSpan.innerHTML = (t.hours);
+            minutesSpan.innerHTML = (t.minutes);
+            secondsSpan.innerHTML = (t.seconds);
 
             if (t.total <= 0) {
                 clearInterval(timeinterval);
