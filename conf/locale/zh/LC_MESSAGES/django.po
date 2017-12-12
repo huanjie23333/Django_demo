@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-06 18:59+0800\n"
+"POT-Creation-Date: 2017-12-12 15:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: nav/models.py:42
+#: flink/models.py:19 flink/models.py:20 templates/web/partial/footer.html:11
+msgid "友情链接"
+msgstr "友情鏈接"
+
+#: nav/models.py:46
 msgid "status"
 msgstr "状态"
 
-#: nav/models.py:81
+#: nav/models.py:93
 msgid "中文描述"
 msgstr ""
 
-#: nav/models.py:106
+#: nav/models.py:118
 msgid "whitepaper"
 msgstr ""
 
-#: nav/models.py:140
+#: nav/models.py:152
 msgid "网址"
 msgstr "網址"
 
-#: nav/models.py:141
+#: nav/models.py:153
 msgid "中文名称"
 msgstr "中文名稱"
 
-#: nav/models.py:142
+#: nav/models.py:154
 msgid "英文名称，非必填"
 msgstr "英文名稱，非必填"
 
-#: nav/models.py:145
+#: nav/models.py:157
 msgid "网站描述，一句话"
 msgstr "網站描述，一句話"
 
-#: nav/models.py:146
+#: nav/models.py:158
 msgid "联系邮箱"
 msgstr "聯系郵箱"
 
@@ -71,7 +75,7 @@ msgstr "以太坊應用"
 
 #: templates/dapp/detail.html:63 templates/search/news.html:39
 #: templates/web/news.html:77 templates/web/news_list.html:78
-#: templates/web/partial/side_bar.html:145
+#: templates/web/partial/side_bar.html:152
 #: templates/web/partial/side_bar_news.html:15
 msgid "原文链接"
 msgstr "原文鏈接"
@@ -79,6 +83,43 @@ msgstr "原文鏈接"
 #: templates/dapp/list.html:9 templates/dapp/list.html:13
 msgid "以太坊应用列表"
 msgstr "以太坊應用列表"
+
+#: templates/errors/403.html:16
+msgid "您没有权限访问此功能"
+msgstr "您沒有權限訪問此功能"
+
+#: templates/errors/403.html:31
+msgid "返回"
+msgstr "返回"
+
+#: templates/errors/403.html:31
+msgid "首页"
+msgstr "首頁"
+
+#: templates/errors/403.html:31
+msgid "或报告问题到"
+msgstr "或報告問題到"
+
+#: templates/errors/404.html:12
+msgid "找不到页面"
+msgstr "找不到頁面"
+
+#: templates/errors/404.html:15 templates/errors/500.html:15
+#: templates/web/submit.html:23
+msgid "返回首页"
+msgstr "返回首頁"
+
+#: templates/errors/404.html:19
+msgid "有谣言买入，有新闻卖出。"
+msgstr "有謠言買入，有新聞賣出。"
+
+#: templates/errors/500.html:12
+msgid "内部服务器错误"
+msgstr "內部服務器錯誤"
+
+#: templates/errors/500.html:19
+msgid "坚信密码学"
+msgstr "堅信密碼學"
 
 #: templates/search/news.html:11
 msgid "含"
@@ -100,52 +141,57 @@ msgstr "加載中"
 msgid "加载更多"
 msgstr "加載更多"
 
-#: templates/web/403.html:16
-msgid "您没有权限访问此功能"
-msgstr "您沒有權限訪問此功能"
+#: templates/web/btc_countdown.html:34
+msgid "比特币"
+msgstr "比特幣"
 
-#: templates/web/403.html:31
-msgid "返回"
-msgstr "返回"
+#: templates/web/btc_countdown.html:34
+msgid "分叉倒计时"
+msgstr "分叉倒計時"
 
-#: templates/web/403.html:31
-msgid "首页"
-msgstr "首頁"
+#: templates/web/btc_countdown.html:39
+msgid "天"
+msgstr ""
 
-#: templates/web/403.html:31
-msgid "或报告问题到"
-msgstr "或報告問題到"
+#: templates/web/btc_countdown.html:40
+msgid "时"
+msgstr "時"
 
-#: templates/web/404.html:12
-msgid "找不到页面"
-msgstr "找不到頁面"
+#: templates/web/btc_countdown.html:41
+msgid "分"
+msgstr ""
 
-#: templates/web/404.html:15 templates/web/500.html:15
-#: templates/web/submit.html:23
-msgid "返回首页"
-msgstr "返回首頁"
+#: templates/web/btc_countdown.html:42
+#, fuzzy
+#| msgid "秒后"
+msgid "秒"
+msgstr "秒後"
 
-#: templates/web/404.html:19
-msgid "有谣言买入，有新闻卖出。"
-msgstr "有謠言買入，有新聞賣出。"
+#: templates/web/btc_countdown.html:46 templates/web/partial/clock.html:23
+msgid "这是基于当前块高度的时间预估"
+msgstr "這是基于當前塊高度的時間預估"
 
-#: templates/web/500.html:12
-msgid "内部服务器错误"
-msgstr "內部服務器錯誤"
+#: templates/web/btc_countdown.html:46 templates/web/partial/clock.html:24
+msgid "平均出块时间为十分钟"
+msgstr "平均出塊時間爲十分鍾"
 
-#: templates/web/500.html:19
-msgid "坚信密码学"
-msgstr "堅信密碼學"
+#: templates/web/btc_countdown.html:48 templates/web/partial/clock.html:26
+msgid "分叉区块高度"
+msgstr "分叉區塊高度"
 
-#: templates/web/index.html:21 templates/web/partial/side_bar.html:16
+#: templates/web/btc_countdown.html:50 templates/web/partial/clock.html:27
+msgid "目前区块高度"
+msgstr "目前區塊高度"
+
+#: templates/web/index.html:23 templates/web/partial/side_bar.html:23
 msgid "快讯"
 msgstr "快訊"
 
-#: templates/web/index.html:31
+#: templates/web/index.html:33
 msgid "查看更多"
 msgstr ""
 
-#: templates/web/index.html:40
+#: templates/web/index.html:42
 msgid "热门推荐"
 msgstr "熱門推薦"
 
@@ -153,56 +199,36 @@ msgstr "熱門推薦"
 msgid "新闻快讯"
 msgstr "新聞快訊"
 
+#: templates/web/news_list.html:65
+msgid "月"
+msgstr ""
+
 #: templates/web/partial/bc_info.html:4
 msgid "区块查询"
 msgstr "區塊查詢"
 
-#: templates/web/partial/bc_info.html:6 templates/web/partial/side_bar.html:55
+#: templates/web/partial/bc_info.html:6 templates/web/partial/side_bar.html:11
+#: templates/web/partial/side_bar.html:62
 msgid "更多"
 msgstr ""
 
-#: templates/web/partial/clock.html:23
-msgid "这是基于当前块高度的时间预估"
-msgstr "這是基于當前塊高度的時間預估"
-
-#: templates/web/partial/clock.html:24
-msgid "平均出块时间为十分钟"
-msgstr "平均出塊時間爲十分鍾"
-
-#: templates/web/partial/clock.html:26
-msgid "分叉区块高度"
-msgstr "分叉區塊高度"
-
-#: templates/web/partial/clock.html:27
-msgid "目前区块高度"
-msgstr "目前區塊高度"
-
-#: templates/web/partial/footer.html:11
-msgid "友情链接"
-msgstr "友情鏈接"
-
-#: templates/web/partial/footer.html:31
+#: templates/web/partial/footer.html:32
 msgid "版权所有"
 msgstr "版權所有"
 
-#: templates/web/partial/footer.html:31
-msgid "北京区块科技有限公司"
-msgstr "北京區塊科技有限公司"
-
-#: templates/web/partial/footer.html:33
+#: templates/web/partial/footer.html:34
 msgid "about"
 msgstr "關于我們"
 
-
-#: templates/web/partial/footer.html:35 templates/web/sitemap.html:9
+#: templates/web/partial/footer.html:36 templates/web/sitemap.html:10
 msgid "全站地图"
 msgstr "全站地圖"
 
-#: templates/web/partial/footer.html:37
+#: templates/web/partial/footer.html:38
 msgid "jobs"
 msgstr "職位招聘"
 
-#: templates/web/partial/footer.html:44 templates/web/partial/header.html:21
+#: templates/web/partial/footer.html:45 templates/web/partial/header.html:21
 msgid "收藏本站"
 msgstr ""
 
@@ -227,25 +253,25 @@ msgstr "搜站點"
 msgid "搜快讯"
 msgstr "搜快訊"
 
-#: templates/web/partial/side_bar.html:32
-#: templates/web/partial/side_bar.html:92
+#: templates/web/partial/side_bar.html:39
+#: templates/web/partial/side_bar.html:99
 msgid "热门标签"
 msgstr "熱門標簽"
 
-#: templates/web/partial/side_bar.html:52
+#: templates/web/partial/side_bar.html:59
 msgid "行情报价"
 msgstr "行情報價"
 
-#: templates/web/partial/side_bar.html:66
-#: templates/web/partial/side_bar.html:115
+#: templates/web/partial/side_bar.html:73
+#: templates/web/partial/side_bar.html:122
 msgid "关注我们"
 msgstr "關注我們"
 
-#: templates/web/partial/side_bar.html:100
+#: templates/web/partial/side_bar.html:107
 msgid "捐赠地址"
 msgstr "捐贈地址"
 
-#: templates/web/sitemap.html:37
+#: templates/web/sitemap.html:38
 msgid "最新快讯"
 msgstr "最新快訊"
 
@@ -323,3 +349,6 @@ msgstr ""
 #: templates/webtools/coin_chart.html:35 templates/webtools/coin_list.html:35
 msgid "最近七天"
 msgstr ""
+
+#~ msgid "北京区块科技有限公司"
+#~ msgstr "北京區塊科技有限公司"

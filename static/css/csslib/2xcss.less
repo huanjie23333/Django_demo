@@ -6,13 +6,14 @@
   font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   color: @common-text-color;
   display: block;
-  font-weight: 100;
+  font-weight: 300;
   text-align: center;
-  font-size: 16px;
+  font-size: 26px;
   padding: 20px 0px;
   margin: 0 auto;
-  .days {
-    width: 60px;
+
+  .days, .hours, .minutes, .seconds {
+    width: 30px;
     display: inline-block;
     text-align: right;
   }
@@ -24,7 +25,11 @@
   display: inline-block;
   }
 }
-
+.coin-name {
+  text-align: center;
+  font-size: 16px;
+  margin: 40px auto 0 auto;
+}
 
 .clockdiv div > span, .top_clockdiv div > span  {
   font-size: 26px;
@@ -58,4 +63,7 @@
   }
 }
 
-
+#btc-countdown .box-body {
+  padding-bottom: 30px;
+  border-bottom: #f3f3f3 1px solid;
+}

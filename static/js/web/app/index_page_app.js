@@ -61,7 +61,7 @@ require([
 
         // for news tag trigger ;
         new TagTrigger();
-        // new BtcCountdown();
+        new BtcCountdown();
 
 
 
