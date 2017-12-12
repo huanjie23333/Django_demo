@@ -24,6 +24,8 @@ class CoinFork(models.Model):
     official_site = models.URLField(blank=True, null=True)
     related_article = models.URLField(blank=True, null=True)
 
+    class Meta:
+        ordering = ['fork_height']
 
 
 
