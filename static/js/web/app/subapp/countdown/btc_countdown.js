@@ -64,7 +64,9 @@ define(['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function
                 function do_update(){
                     var clocks = document.getElementsByClassName(classname);
                     for (var i=0, len=clocks.length ; i<len; i++) {
-                        updateClock(clocks[i], endtime, i);
+                        if(!updateClock(clocks[i], endtime, i)){
+                            return ;
+                        }
                     }
                 }
 
@@ -81,11 +83,13 @@ define(['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function
                         fork_list.splice(i, 1);
                         clearInterval(timeinterval);
                         render();
+                        return false;
                     } else {
                         daysSpan.innerHTML = t.days;
                         hoursSpan.innerHTML = ('' + t.hours).slice(-2);
                         minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
                         secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+                        return true;
                     }
 
                 }
