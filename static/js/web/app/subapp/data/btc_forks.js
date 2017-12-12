@@ -15,13 +15,7 @@ define([],function () {
                     'name': '超級比特幣',
                     'ename': 'Bitcoin Platinum',
                     'height':498888
-                },
-                {
-                    'name': 'test',
-                    'ename': 'test',
-                    'height': 490000
                 }
-
             ];
 
     return fork_list;
