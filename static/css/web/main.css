@@ -2793,6 +2793,10 @@ body a:hover {
   line-height: 1.5;
   font-size: 12px;
 }
+#fork-list-page .fork-item .block-height span:last-child,
+#fork-list-page .fork-item .current-block-height span:last-child {
+  color: #0E8ED8;
+}
 .test {
   color: red;
 }
