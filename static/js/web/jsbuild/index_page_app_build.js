@@ -4188,6 +4188,49 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', '
 
     return BtcCountdown;
 });
+define('subapp/fork_list/fork_list',['libs/Class', 'jquery'],function(Class, $){
+    var ForkListApp = Class.extend({
+        draw_current_block: function (current_block_height) {
+            $('.current-block-height .height-number').html(current_block_height);
+        },
+        draw_count_down: function() {
+
+            var $fork_list = $('.fork-item');
+            $fork_list.each(this.draw_single_fork_item.bind(this));
+        },
+        draw_single_fork_item: function(index, element){
+            console.log("index of item"+ index);
+            console.log("item" + element);
+        },
+        draw_clocks: function (current_block_height) {
+            this.current_block_height = current_block_height;
+            this.draw_current_block(current_block_height);
+            this.draw_count_down()
+
+        },
+        get_current_block: function () {
+            return $.when($.ajax({'url': 'https://blockchain.info/q/getblockcount'
+            }));
+        },
+        get_block_fail: function () {
+            console.log('fail getting block height');
+        },
+        init: function () {
+
+            var _container = $('#fork-list-page');
+            if (!_container.length){
+                return ;
+            }
+
+            this.get_current_block().then(
+                this.draw_clocks.bind(this),
+                this.get_block_fail.bind(this)
+                );
+        }
+    });
+
+    return ForkListApp;
+});
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6586,6 +6629,7 @@ require([
         'subapp/header/search_site',
         'subapp/search/search_news_ajax',
         'subapp/countdown/btc_countdown',
+        'subapp/fork_list/fork_list',
         'bootstrap'
     ],
     function (polyfill,
@@ -6604,7 +6648,8 @@ require([
               SearchNews,
               SearchSite,
               SearchNewsAjax,
-              BtcCountdown
+              BtcCountdown,
+              ForkListApp
               ) {
 
         jQuery = $;
@@ -6632,6 +6677,10 @@ require([
         // for news tag trigger ;
         new TagTrigger();
         new BtcCountdown();
+
+        // fork list page
+
+        new ForkListApp();
 
 
 
