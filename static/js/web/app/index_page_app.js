@@ -16,6 +16,7 @@ require([
         'subapp/header/search_site',
         'subapp/search/search_news_ajax',
         'subapp/countdown/btc_countdown',
+        'subapp/fork_list/fork_list',
         'bootstrap'
     ],
     function (polyfill,
@@ -34,7 +35,8 @@ require([
               SearchNews,
               SearchSite,
               SearchNewsAjax,
-              BtcCountdown
+              BtcCountdown,
+              ForkListApp
               ) {
 
         jQuery = $;
@@ -62,6 +64,10 @@ require([
         // for news tag trigger ;
         new TagTrigger();
         new BtcCountdown();
+
+        // fork list page
+
+        new ForkListApp();
 
 
 
