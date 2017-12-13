@@ -16,9 +16,9 @@
     <div class="container content-container" id="fork-list-page">
         <div class="row">
             <div class="tab-wrapper">
-                <div class="tab active">全部</div>
-                <div class="tab">即将分叉</div>
-                <div class="tab">已经分叉</div>
+                <div class="tab active"><a href="{% url 'web_fork_list' %}">全部</a></div>
+                <div class="tab"><a href="{% url 'web_fork_list' %}?status=incoming">即将分叉</a> </div>
+                <div class="tab"><a href="{% url 'web_fork_list' %}?status=done">已经分叉</a></div>
             </div>
         </div>
 
