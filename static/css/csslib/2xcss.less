@@ -6,7 +6,7 @@
   font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   color: @common-text-color;
   display: block;
-  font-weight: 400;
+  font-weight: 300;
   text-align: center;
   font-size: 26px;
   padding: 20px 0px;
@@ -80,6 +80,9 @@
     padding-left: 10px;
     .tab {
       margin-right: 20px;
+      a:focus {
+        text-decoration: none;
+      }
       &.active {
         font-weight: bold;
       }
