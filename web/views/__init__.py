@@ -179,9 +179,9 @@ class ForkListView(ListView):
 
     def get_queryset(self):
         if self.fork_status:
-            return CoinFork.objects.filter(status=self.fork_status)
+            return CoinFork.objects.filter(status=self.fork_status, coin_ename='bitcoin').exclude(status='removed')
         else:
-            return super().get_queryset()
+            return CoinFork.objects.filter(coin_ename='bitcoin').exclude(status='removed')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
