@@ -12,9 +12,6 @@ define([],function () {
                     'height':499999
                 },
                 // {
-                //     'name': '超級比特幣',
-                //     'ename': 'Bitcoin Platinum',
-                //     'height':498888
                 // }
             ];
 
