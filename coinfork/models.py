@@ -25,7 +25,7 @@ class CoinFork(models.Model):
     related_article = models.URLField(blank=True, null=True)
 
     class Meta:
-        ordering = ['-status','fork_height']
+        ordering = ['-status','fork_height',]
 
 
 
