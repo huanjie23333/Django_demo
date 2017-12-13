@@ -9,13 +9,14 @@ define(['libs/Class', 'jquery'],function(Class, $){
             $fork_list.each(this.draw_single_fork_item.bind(this));
         },
         draw_single_fork_item: function(index, element){
+            var dead_line = $(element).data("dead_line") -1;
+            $(element).data({"dead_line":  dead_line});
 
-            this.deadline[index]--;
-            var done = this.deadline[index] < 0;
-            var days = Math.floor(this.deadline[index] / (24 * 60 * 60));
-            var hours = Math.floor(this.deadline[index] / (60 * 60)) % 24;
-            var minutes = Math.floor(this.deadline[index] / 60) % 60;
-            var seconds = this.deadline[index] % 60;
+            var done = dead_line < 0;
+            var days = Math.floor(dead_line / (24 * 60 * 60));
+            var hours = Math.floor(dead_line / (60 * 60)) % 24;
+            var minutes = Math.floor(dead_line / 60) % 60;
+            var seconds = dead_line % 60;
 
             if(!done){
                 $('.days', $(element)).html(days);
@@ -32,7 +33,8 @@ define(['libs/Class', 'jquery'],function(Class, $){
 
         },
         get_deadline: function(index, el) {
-            this.deadline[index] = (el.dataset.forkHeight - this.current_block_height) * 600;
+            $(el).data({'dead_line':(el.dataset.forkHeight - this.current_block_height) * 600});
+            // this.deadline[index] = (el.dataset.forkHeight - this.current_block_height) * 600;
         },
         draw_clocks: function (current_block_height) {
             this.current_block_height = current_block_height;
