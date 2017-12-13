@@ -4215,7 +4215,7 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery'],function(Class, $){
                 $('.seconds', $(element)).html(seconds);
             } else {
                 //完成分叉
-                $('.clockdiv', $(element)).html('完成分叉');
+                $('.clockdiv', $(element)).html('分叉完成');
                 $('.fork-state', $(element)).removeClass('fork-incoming')
                     .addClass('fork-passed').html('分叉完成');
             }
