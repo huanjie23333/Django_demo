@@ -1327,6 +1327,7 @@ ul li {
   font-size: 26px;
   padding: 20px 0px;
   margin: 0 auto;
+  height: 85px;
 }
 .clockdiv .days,
 .top_clockdiv .days,
@@ -1386,6 +1387,66 @@ ul li {
 #btc-countdown .box-body {
   padding-bottom: 30px;
   border-bottom: #f3f3f3 1px solid;
+}
+#fork-list-page .tab-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  height: 2em;
+  font-size: 14px;
+  padding-left: 10px;
+}
+#fork-list-page .tab-wrapper .tab {
+  margin-right: 20px;
+}
+#fork-list-page .tab-wrapper .tab.active {
+  font-weight: bold;
+}
+#fork-list-page .fork-item {
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+}
+#fork-list-page .fork-item .fork-alias {
+  font-weight: 400;
+}
+#fork-list-page .fork-item .fork-name a {
+  color: #0E8ED8;
+}
+#fork-list-page .fork-item .fork-name a:hover,
+#fork-list-page .fork-item .fork-name a:focus {
+  text-decoration: none;
+}
+#fork-list-page .fork-item .desc {
+  font-size: 12px;
+  line-height: 1.5em;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+#fork-list-page .fork-item .fork-state {
+  font-size: 14px;
+  color: #fff;
+  line-height: 1;
+  padding: 6px 10px 6px 9px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  position: absolute;
+  left: 10px;
+  top: 28px;
+}
+#fork-list-page .fork-item .fork-incoming {
+  background-color: #ff552e;
+}
+#fork-list-page .fork-item .fork-passed {
+  background-color: #25a85e;
+}
+#fork-list-page .fork-item .block-height,
+#fork-list-page .fork-item .current-block-height {
+  line-height: 1.5;
+  font-size: 12px;
+}
+#fork-list-page .fork-item .block-height .height-number,
+#fork-list-page .fork-item .current-block-height .height-number {
+  color: #0E8ED8;
 }
 /*
  * Table styles
@@ -2741,61 +2802,6 @@ body a:hover {
 }
 .bc-info ul li .bc-link a:hover {
   color: #ff552e;
-}
-#fork-list-page .tab-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  height: 2em;
-  font-size: 14px;
-  padding-left: 10px;
-}
-#fork-list-page .tab-wrapper .tab {
-  margin-right: 20px;
-}
-#fork-list-page .tab-wrapper .tab.active {
-  font-weight: bold;
-}
-#fork-list-page .fork-item {
-  text-align: center;
-  line-height: 3em;
-  position: relative;
-}
-#fork-list-page .fork-item .fork-alias {
-  font-weight: 400;
-}
-#fork-list-page .fork-item .fork-name a {
-  color: #0E8ED8;
-}
-#fork-list-page .fork-item .fork-name a:hover,
-#fork-list-page .fork-item .fork-name a:focus {
-  text-decoration: none;
-}
-#fork-list-page .fork-item .desc {
-  font-size: 12px;
-  line-height: 1.5em;
-  color: #aaa;
-  margin-bottom: 20px;
-}
-#fork-list-page .fork-item .fork-state {
-  font-size: 14px;
-  background-color: #ff552e;
-  color: #fff;
-  line-height: 1;
-  padding: 6px 10px 6px 9px;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  position: absolute;
-  left: 10px;
-  top: 28px;
-}
-#fork-list-page .fork-item .block-height,
-#fork-list-page .fork-item .current-block-height {
-  line-height: 1.5;
-  font-size: 12px;
-}
-#fork-list-page .fork-item .block-height span:last-child,
-#fork-list-page .fork-item .current-block-height span:last-child {
-  color: #0E8ED8;
 }
 .test {
   color: red;

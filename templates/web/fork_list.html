@@ -42,10 +42,10 @@
                         </div>
                         <div class="count-down">
                             <span class="clockdiv">
-                                <div><span class="days ">1</span><span class="middletext">天</span></div>
-                                <div><span class="hours ">2</span><span class="middletext">时</span></div>
-                                <div><span class="minutes ">3</span><span class="middletext">分</span></div>
-                                <div><span class="seconds ">4</span><span class="middletext">秒</span></div>
+                                <div><span class="days "></span><span class="middletext">天</span></div>
+                                <div><span class="hours "></span><span class="middletext">时</span></div>
+                                <div><span class="minutes "></span><span class="middletext">分</span></div>
+                                <div><span class="seconds "></span><span class="middletext">秒</span></div>
                             </span>
                         </div>
                         <div class="desc">
@@ -77,15 +77,5 @@
     {% compress js %}
         <script src="{% static 'js/web/app/require.js' %}"></script>
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
-        <script>
-            //desc 文本溢出隐藏
-            $('.desc').each(function(){
-                var height = 36;  //3倍字体
-                while($(this).height() > height) {
-                    $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, '...'));
-                }
-                $(this).height(height);
-            });
-        </script>
     {% endcompress %}
 {% endblock %}
