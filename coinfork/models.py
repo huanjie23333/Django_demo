@@ -17,8 +17,8 @@ class CoinFork(models.Model):
 
     status = StatusField(_('status'), choices_name='STATUS', default=STATUS.incoming)
 
-    block_mining_time = models.IntegerField(help_text=_("平均出块时间, mint"), default=10)
-    fork_height = models.FloatField(help_text=_("分叉高度"))
+    block_mining_time = models.FloatField(help_text=_("平均出块时间, mint"), default=10)
+    fork_height = models.IntegerField(help_text=_("分叉高度"))
     current_height_api = models.URLField(help_text=_("当前区块高度API"), default='https://blockchain.info/q/getblockcount')
     description = models.TextField(default='', blank=True)
     official_site = models.URLField(blank=True, null=True)
