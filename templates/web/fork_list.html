@@ -24,7 +24,11 @@
 
         <div class="row">
             {% for item in fork_list %}
-            <div class="col-sm-4 col-xs-12 fork-item" data-fork-height="{{ item.fork_height }}">
+            <div class="col-sm-4 col-xs-12 fork-item"
+                 data-fork-height="{{ item.fork_height }}"
+                 data-block-intervel="{{ item.block_mining_time }}"
+                 data-block-height-api="{{ item.current_height_api }}"
+            >
                 <div class="box">
                     <div class="box-body">
                         <div class="fork-alias">{{ item.fork_alias }}</div>

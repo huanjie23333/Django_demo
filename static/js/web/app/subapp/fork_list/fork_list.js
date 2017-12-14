@@ -62,12 +62,20 @@ define(['libs/Class', 'jquery'],function(Class, $){
                 $(this).height(height);
             });
         },
+        collect_api: function () {
+            
+        },
         init: function () {
 
             var _container = $('#fork-list-page');
             if (!_container.length){
                 return ;
             }
+            
+            this._api_list = this.collect_api();
+            _.each(this._api_list, function () {
+                
+            })
 
             this.hide_text();
 
