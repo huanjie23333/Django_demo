@@ -1340,6 +1340,8 @@ ul li {
   width: 30px;
   display: inline-block;
   text-align: right;
+  margin-right: 5px;
+  margin-left: 3px;
 }
 .clockdiv > div,
 .top_clockdiv > div {
@@ -1359,7 +1361,6 @@ ul li {
   border-radius: 0px;
   font-weight: 600;
   color: #434446;
-  margin-left: 5px;
 }
 .clockdiv div > span.smalltext,
 .top_clockdiv div > span.smalltext {
@@ -1398,6 +1399,9 @@ ul li {
 #fork-list-page .tab-wrapper .tab {
   margin-right: 20px;
 }
+#fork-list-page .tab-wrapper .tab a:focus {
+  text-decoration: none;
+}
 #fork-list-page .tab-wrapper .tab.active {
   font-weight: bold;
 }
@@ -1417,8 +1421,10 @@ ul li {
   text-decoration: none;
 }
 #fork-list-page .fork-item .desc {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5em;
+  padding-left: 15px;
+  padding-right: 15px;
   color: #aaa;
   margin-bottom: 20px;
 }
@@ -1442,11 +1448,17 @@ ul li {
 #fork-list-page .fork-item .block-height,
 #fork-list-page .fork-item .current-block-height {
   line-height: 1.5;
-  font-size: 12px;
+  font-size: 14px;
 }
 #fork-list-page .fork-item .block-height .height-number,
 #fork-list-page .fork-item .current-block-height .height-number {
+  display: inline-block;
   color: #0E8ED8;
+  width: 60px;
+  text-align: left;
+}
+#fork-list-page .fork-item .current-block-height {
+  padding-bottom: 10px;
 }
 /*
  * Table styles

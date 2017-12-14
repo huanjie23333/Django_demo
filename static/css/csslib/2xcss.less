@@ -17,6 +17,8 @@
     width: 30px;
     display: inline-block;
     text-align: right;
+    margin-right: 5px;
+    margin-left: 3px;
   }
 
   & > div {
@@ -37,7 +39,6 @@
   border-radius: 0px;
   font-weight: 600;
   color: @common-text-color;
-  margin-left:5px;
   &.smalltext {
   padding:0 0 0 0;
   font-size:14px;
@@ -79,6 +80,9 @@
     padding-left: 10px;
     .tab {
       margin-right: 20px;
+      a:focus {
+        text-decoration: none;
+      }
       &.active {
         font-weight: bold;
       }
@@ -100,10 +104,10 @@
       }
     }
     .desc {
-      font-size: @font-size-small;
+      font-size: @font-size-normal;
       line-height: 1.5em;
-      //height: 3em;
-      //overflow: hidden;
+      padding-left: 15px;
+      padding-right: 15px;
       color: @support-text-color;
       margin-bottom: 20px;
     }
@@ -127,10 +131,16 @@
     }
     .block-height, .current-block-height {
       line-height: 1.5;
-      font-size: @font-size-small;
+      font-size: @font-size-normal;
       .height-number {
+        display: inline-block;
         color: @site-link-color;
+        width: 60px;
+        text-align: left;
       }
+    }
+    .current-block-height {
+      padding-bottom: 10px;
     }
   }
 }
