@@ -165,27 +165,27 @@ msgstr ""
 #, fuzzy
 #| msgid "秒后"
 msgid "秒"
-msgstr "秒後"
+msgstr "秒后"
 
 #: templates/web/btc_countdown.html:46 templates/web/partial/clock.html:23
 msgid "这是基于当前块高度的时间预估"
-msgstr "這是基于當前塊高度的時間預估"
+msgstr "这是基于当前块高度的时间预估"
 
 #: templates/web/btc_countdown.html:46 templates/web/partial/clock.html:24
 msgid "平均出块时间为十分钟"
-msgstr "平均出塊時間爲十分鍾"
+msgstr "平均出块时间爲十分锺"
 
 #: templates/web/btc_countdown.html:48 templates/web/partial/clock.html:26
 msgid "分叉区块高度"
-msgstr "分叉區塊高度"
+msgstr "分叉区块高度"
 
 #: templates/web/btc_countdown.html:50 templates/web/partial/clock.html:27
 msgid "目前区块高度"
-msgstr "目前區塊高度"
+msgstr "目前区块高度"
 
 #: templates/web/index.html:23 templates/web/partial/side_bar.html:23
 msgid "快讯"
-msgstr "快訊"
+msgstr "快讯"
 
 #: templates/web/index.html:33
 msgid "查看更多"
@@ -193,11 +193,11 @@ msgstr ""
 
 #: templates/web/index.html:42
 msgid "热门推荐"
-msgstr "熱門推薦"
+msgstr "热门推荐"
 
 #: templates/web/news_list.html:8
 msgid "新闻快讯"
-msgstr "新聞快訊"
+msgstr "新闻快讯"
 
 #: templates/web/news_list.html:65
 msgid "月"
@@ -205,7 +205,7 @@ msgstr ""
 
 #: templates/web/partial/bc_info.html:4
 msgid "区块查询"
-msgstr "區塊查詢"
+msgstr "区块查询"
 
 #: templates/web/partial/bc_info.html:6 templates/web/partial/side_bar.html:11
 #: templates/web/partial/side_bar.html:62
@@ -214,19 +214,19 @@ msgstr ""
 
 #: templates/web/partial/footer.html:32
 msgid "版权所有"
-msgstr "版權所有"
+msgstr "版权所有"
 
 #: templates/web/partial/footer.html:34
 msgid "about"
-msgstr "關于我們"
+msgstr "关于我们"
 
 #: templates/web/partial/footer.html:36 templates/web/sitemap.html:10
 msgid "全站地图"
-msgstr "全站地圖"
+msgstr "全站地图"
 
 #: templates/web/partial/footer.html:38
 msgid "jobs"
-msgstr "職位招聘"
+msgstr "职位招聘"
 
 #: templates/web/partial/footer.html:45 templates/web/partial/header.html:21
 msgid "收藏本站"
@@ -234,11 +234,11 @@ msgstr ""
 
 #: templates/web/partial/header.html:20
 msgid "向我们提交"
-msgstr "向我們提交"
+msgstr "向我们提交"
 
 #: templates/web/partial/header.html:20
 msgid "网站收录"
-msgstr "網站收錄"
+msgstr "网站收录"
 
 #: templates/web/partial/search_row.html:21
 #: templates/web/partial/search_row.html:22
@@ -247,61 +247,61 @@ msgstr "搜索"
 
 #: templates/web/partial/search_row.html:26
 msgid "搜站点"
-msgstr "搜站點"
+msgstr "搜站点"
 
 #: templates/web/partial/search_row.html:27
 msgid "搜快讯"
-msgstr "搜快訊"
+msgstr "搜快讯"
 
 #: templates/web/partial/side_bar.html:39
 #: templates/web/partial/side_bar.html:99
 msgid "热门标签"
-msgstr "熱門標簽"
+msgstr "热门标签"
 
 #: templates/web/partial/side_bar.html:59
 msgid "行情报价"
-msgstr "行情報價"
+msgstr "行情报价"
 
 #: templates/web/partial/side_bar.html:73
 #: templates/web/partial/side_bar.html:122
 msgid "关注我们"
-msgstr "關注我們"
+msgstr "关注我们"
 
 #: templates/web/partial/side_bar.html:107
 msgid "捐赠地址"
-msgstr "捐贈地址"
+msgstr "捐赠地址"
 
 #: templates/web/sitemap.html:38
 msgid "最新快讯"
-msgstr "最新快訊"
+msgstr "最新快讯"
 
 #: templates/web/sub_nav_success.html:13
 msgid "我们已经收到您提交的网站"
-msgstr "我們已經收到您提交的網站"
+msgstr "我们已经收到您提交的网站"
 
 #: templates/web/sub_nav_success.html:14
 msgid "后台的工作人员审核后， 你的网站会出现在我们的导航站上。"
-msgstr "後台的工作人員審核後， 你的網站會出現在我們的導航站上。"
+msgstr "后台的工作人员审核后， 你的网站会出现在我们的导航站上。"
 
 #: templates/web/sub_nav_success.html:15 templates/web/sub_nav_success.html:32
 msgid "秒后"
-msgstr "秒後"
+msgstr "秒后"
 
 #: templates/web/sub_nav_success.html:15
 msgid "跳转至首页"
-msgstr "跳轉至首頁"
+msgstr "跳转至首页"
 
 #: templates/web/sub_nav_success.html:16
 msgid "立即跳转"
-msgstr "立即跳轉"
+msgstr "立即跳转"
 
 #: templates/web/sub_nav_success.html:33 templates/web/sub_nav_success.html:36
 msgid "正在跳转"
-msgstr "正在跳轉"
+msgstr "正在跳转"
 
 #: templates/web/submit.html:15
 msgid "提交网址"
-msgstr "提交網址"
+msgstr "提交网址"
 
 #: templates/web/submit.html:21
 msgid "submit"
@@ -316,39 +316,39 @@ msgstr ""
 #: templates/webtools/coin_chart.html:8 templates/webtools/coin_chart.html:12
 #: templates/webtools/coin_list.html:8 templates/webtools/coin_list.html:12
 msgid "加密货币报价"
-msgstr "加密貨幣報價"
+msgstr "加密货币报价"
 
 #: templates/webtools/coin_chart.html:27 templates/webtools/coin_list.html:27
 msgid "名称"
-msgstr "名稱"
+msgstr "名称"
 
 #: templates/webtools/coin_chart.html:28 templates/webtools/coin_list.html:28
 msgid "简称"
-msgstr "簡稱"
+msgstr "简称"
 
 #: templates/webtools/coin_chart.html:29 templates/webtools/coin_list.html:29
 msgid "总市值"
-msgstr "總市值"
+msgstr "总市值"
 
 #: templates/webtools/coin_chart.html:30 templates/webtools/coin_list.html:30
 msgid "24小时成交"
-msgstr "24小時成交"
+msgstr "24小时成交"
 
 #: templates/webtools/coin_chart.html:32 templates/webtools/coin_list.html:32
 msgid "最新价格"
-msgstr "最新價格"
+msgstr "最新价格"
 
 #: templates/webtools/coin_chart.html:33
 msgid "最近一小时"
-msgstr "最近一小時"
+msgstr "最近一小时"
 
 #: templates/webtools/coin_chart.html:34 templates/webtools/coin_list.html:34
 msgid "最近一天"
-msgstr ""
+msgstr "最近一天"
 
 #: templates/webtools/coin_chart.html:35 templates/webtools/coin_list.html:35
 msgid "最近七天"
-msgstr ""
+msgstr "最近七天"
 
 #~ msgid "北京区块科技有限公司"
-#~ msgstr "北京區塊科技有限公司"
+#~ msgstr "北京区块科技有限公司"
