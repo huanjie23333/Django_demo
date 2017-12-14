@@ -4215,9 +4215,9 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery'],function(Class, $){
                 $('.seconds', $(element)).html(seconds);
             } else {
                 //完成分叉
-                $('.clockdiv', $(element)).html('分叉完成');
+                $('.clockdiv', $(element)).html('完成分叉');
                 $('.fork-state', $(element)).removeClass('fork-incoming')
-                    .addClass('fork-passed').html('分叉完成');
+                    .addClass('fork-passed').html('完成分叉');
             }
 
 
@@ -4245,7 +4245,7 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery'],function(Class, $){
         hide_text: function(){
             //desc 文本溢出隐藏
             $('.desc').each(function(){
-                var height = 36;  //3倍字体
+                var height = 42;  //3倍字体
                 while($(this).height() > height) {
                     $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, '...'));
                 }
