@@ -104,7 +104,7 @@
       }
     }
     .desc {
-      font-size: @font-size-small;
+      font-size: @font-size-normal;
       line-height: 1.5em;
       padding-left: 15px;
       padding-right: 15px;
@@ -131,9 +131,12 @@
     }
     .block-height, .current-block-height {
       line-height: 1.5;
-      font-size: @font-size-small;
+      font-size: @font-size-normal;
       .height-number {
+        display: inline-block;
         color: @site-link-color;
+        width: 60px;
+        text-align: left;
       }
     }
     .current-block-height {
