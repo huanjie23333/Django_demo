@@ -159,5 +159,5 @@ class SubNav(models.Model):
     handeled = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name_plural = "用户提交网址"
-        verbose_name = "用户提交网址"
+        verbose_name_plural = _("用户提交网址")
+        verbose_name = _("用户提交网址")
