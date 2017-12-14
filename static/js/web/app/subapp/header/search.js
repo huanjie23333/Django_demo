@@ -8,7 +8,7 @@ define(['libs/Class', 'jquery', 'underscore','libs/autocomplete'],
                         try { xhr.abort(); } catch(e){}
                         $.getJSON('/search/autocomplete/', {q: term},
                             function(data){
-                                $.ajax('http://www.chainscoop.com/api/news/autocomplete/', {
+                                $.ajax('http://www.chainnews.com/api/news/autocomplete/', {
                                     jsonp: true,
                                     success: function(data2){
                                         var results = data.results.concat(data2.results);

@@ -1,9 +1,10 @@
+{#{% load web_extras %}#}
+{% load i18n %}
+
 <div class="tag-list-filter-wrapper">
     <ul class="tag-list-filter-list tag-list-filter-list-hide">
         <li class="tag-filter-item">
-                <a href="/news.htm"  class="{% if not current_tag  %}active{% endif %}">
-                    所有
-                </a>
+            <a href="{% url 'web_news' %}" title="{% trans 'news' %}"  class="{% if not current_tag  %}active{% endif %}">所有</a>
         </li>
         {% for tag in sidebar_news_tag_list|slice:"0:50" %}
 

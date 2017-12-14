@@ -11,8 +11,6 @@ from web.views.news import SideBarDataMixin
 class ToolsListView(SideBarDataMixin, TemplateView):
     template_name = 'webtools/list.html'
 
-    pass
-
 
 class ApiCacheMixin(object):
     def get_api_data(self, url, timeout=5 * 60):

@@ -1,4 +1,4 @@
-@import "../csslib/var.less";
+ @import "../csslib/var.less";
 @import "../csslib/mixin.less";
 @import "../csslib/normal.less";
 @import "../csslib/widgets.less";
@@ -9,6 +9,7 @@
 @import "../csslib/2xcss.less";
 @import "../csslib/datatable.less";
 @import "../csslib/animate.less";
+@import "../csslib/fork_item.less";
 
 
 html, body {
@@ -146,7 +147,7 @@ body {
   }
 }
 
-#content {
+#content,.content-container {
   background-color: @default-content-background;
   padding-bottom: @gutter-size * 3;
   .box {
@@ -164,6 +165,9 @@ body {
       font-weight: 700;
       overflow: hidden;
 
+      .main-fork_name{
+         color:@box-header-font-color;
+      }
       a, a:hover {
         color: @box-header-font-color;
       }
@@ -369,6 +373,9 @@ body {
       i {
         margin-right: 5px;
       }
+    }
+    .company-name{
+      color: rgba(255,255,255,0.3);
     }
   }
 
@@ -650,9 +657,6 @@ body {
       }
     }
   }
-  .return-home {
-    text-align: center;
-  }
 
   // url 验证
   .url-error {
@@ -742,6 +746,7 @@ body {
     }
   }
 }
+
 
 
 .test {

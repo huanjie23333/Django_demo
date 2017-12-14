@@ -1,15 +1,11 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
-{% block meta %}
-        {% include "web/partial/news_list_meta.html" %}
-{% endblock %}
-{% block title %}
-    新闻快讯 - 区块链导航
-{% endblock %}
+{#{% load web_extras %}#}
 
-{# {% block seo_title %}#}
-{#    新闻快讯 - 区块链导航#}
-{# {% endblock %}#}
+{% block meta %}
+    {% include "web/partial/news_list_meta.html" %}
+{% endblock %}
+{% block title %}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
 
 {% block content %}
     <section id="content">
@@ -18,10 +14,8 @@
                 <div class="seo-only">
                     {% for news in sidebar_news_list %}
                         <div class="entry">
-                                <h1 class="news-title">{{ news.title }}</h1>
-                                <p class="news-content">
-                                        {{ news.content }}
-                                </p>
+                            <h1 class="news-title">{{ news.title }}</h1>
+                            <p class="news-content">{{ news.content }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -32,11 +26,10 @@
 {#                            <div class="tag_switch">#}
 {#                                <i class="fa fa-download"></i>#}
 {#                            </div>#}
-                            <div class="timeline newsline">
+                            <div class="timeline newsline"></div>
 
-                            </div>
                             <div class="middle-wrapper">
-                                <a class="btn white-btn btn-load-news">加载更多</a>
+                                <a class="btn white-btn btn-load-news">{% trans '加载更多' %}</a>
                             </div>
                         </div>
                     </div>
@@ -64,7 +57,7 @@
                 <h3>
                     <% if(show_time){ %>
                       <div class="show-time">
-                       <span class="month"><%=month%>月</span>
+                       <span class="month"><%=month%>{% trans '月' %}</span>
                        <span class="date"><%=date%></span>
                       </div>
                     <% } %>
@@ -74,10 +67,10 @@
             <div class="body">
 
                 <h1 class="news-title">
-                      <%=title%>
+                      <%=zh_hant_title%>
                 </h1>
                 <ul>
-                    <li class="news-content"><%=content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「原文链接」</a>
+                    <li class="news-content"><%=zh_hant_content%><% if(origin_link){ %><a href="<%=origin_link%>" rel="nofollow" target="_blank">「{% trans '原文链接' %}」</a>
                         <% }%>
 
                     </li>
@@ -87,8 +80,8 @@
                                 <li class="tag-list-head">
                                     <i class="fa fa-tag"></i>
                                 </li>
-                                <% for( var i = 0; i < tag_list.length; i++ ) { %>
-                                <li class="tag-item"><a href="/news/tag/<%=tag_list[i]%>/" target="_blank"><%=tag_list[i]%></a></li>
+                                <% for( var i = 0; i < zh_hant_tag_list.length; i++ ) { %>
+                                <li class="tag-item"><a href="/news/tag/<%=zh_hant_tag_list[i]%>/" target="_blank"><%=zh_hant_tag_list[i]%></a></li>
                                 <% } %>
                             </ul>
                         </span>

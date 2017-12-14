@@ -1,11 +1,16 @@
+{% load cache %}
+{#{% load web_extras %}#}
+
+{% cache 86400 tags_sidebar %}
 <div class="tag-list-filter-wrapper">
     <ul class="tag-list-filter-list">
         {% for tag in sidebar_news_tag_list|slice:"0:50" %}
             <li class="tag-filter-item">
-                <a href="{% url 'news:tag_news' tag.name %}"  class="{% if current_tag == tag.name %}active{% endif %}">
+                <a href="{% url 'news:tag_news' tag.name %}" title="{{ tag.name }}" target="_blank" class="{% if current_tag == tag.name %}active{% endif %}">
                     {{ tag.name }}
                 </a>
             </li>
         {% endfor %}
     </ul>
 </div>
+{% endcache %}

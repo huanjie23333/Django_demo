@@ -1,37 +1,57 @@
 @import "../csslib/var.less";
 
-.clockdiv {
+.clockdiv, .top_clockdiv {
+
+
   font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   color: @common-text-color;
-  display: inline-block;
-  font-weight: 100;
+  display: block;
+  font-weight: 300;
   text-align: center;
-  font-size: 16px;
+  font-size: 26px;
   padding: 20px 0px;
-}
+  margin: 0 auto;
+  height: 85px;
 
-.clockdiv > div {
-  margin-right: 10px;
+  .days, .hours, .minutes, .seconds {
+    width: 30px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 5px;
+    margin-left: 3px;
+  }
+
+  & > div {
+  margin-right: 5px;
   border-radius: 2px;
   background: none;
   display: inline-block;
+  }
+}
+.count-coin-name {
+  text-align: center;
+  font-size: 16px;
+  margin: 40px auto 0 auto;
 }
 
-.clockdiv div > span {
+.clockdiv div > span, .top_clockdiv div > span  {
   font-size: 26px;
   border-radius: 0px;
   font-weight: 600;
   color: @common-text-color;
   &.smalltext {
-
   padding:0 0 0 0;
   font-size:14px;
-
+  }
+  &.middletext{
+    padding:0 0 0 0;
+    font-size:16px;
   }
 }
 
 .count-down-info {
   margin-bottom:20px;
+  text-align: center;
   .info {
     color: @support-text-color;
 
@@ -45,4 +65,82 @@
   }
 }
 
+#btc-countdown .box-body {
+  padding-bottom: 30px;
+  border-bottom: #f3f3f3 1px solid;
+}
 
+
+#fork-list-page {
+  .tab-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    height: 2em;
+    font-size: @font-size-normal;
+    padding-left: 10px;
+    .tab {
+      margin-right: 20px;
+      a:focus {
+        text-decoration: none;
+      }
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+  .fork-item {
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    .fork-alias {
+      font-weight: 400;
+    }
+    .fork-name {
+      a {
+        color: @site-link-color;
+        &:hover, &:focus {
+          text-decoration: none;
+        }
+      }
+    }
+    .desc {
+      font-size: @font-size-normal;
+      line-height: 1.5em;
+      padding-left: 15px;
+      padding-right: 15px;
+      color: @support-text-color;
+      margin-bottom: 20px;
+    }
+    .fork-state {
+      font-size: @font-size-normal;
+      color: #fff;
+      line-height: 1;
+      padding: 6px 10px 6px 9px;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+
+      position: absolute;
+      left: 10px;
+      top: 28px;
+    }
+    .fork-incoming {
+      background-color: @box-header-font-color;
+    }
+    .fork-passed {
+      background-color: @raising-color;
+    }
+    .block-height, .current-block-height {
+      line-height: 1.5;
+      font-size: @font-size-normal;
+      .height-number {
+        display: inline-block;
+        color: @site-link-color;
+        width: 60px;
+        text-align: left;
+      }
+    }
+    .current-block-height {
+      padding-bottom: 10px;
+    }
+  }
+}

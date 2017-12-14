@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 {% load compress bootstrap3 %}
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
         {% include "base/snippets/meta.html" %}
     {% endblock %}
 
-    <meta property="og:image" content="{% static 'images/chaindh-400.jpg' %}" />
+    <meta property="og:image" content="{% static 'images/block123-seo.png' %}" />
     <meta property="og:url"   content="{{ request.build_absolute_uri }}" >
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
@@ -23,9 +23,9 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/icon_144.png' %}"/>
 
 
-    <link rel="icon" type="image/ico" href="/static/images/favicon.ico?v=5">
+    <link rel="icon" type="image/ico" href="{% static '/static/images/favicon.ico?v=5' %}">
     <title>
-        {% block title %}区块链导航 - 从这里学习区块链{% endblock %}
+        {% block title %}{% trans '区块链导航' %} - {% trans '从这里学习区块链' %}{% endblock %}
     </title>
 
     {% bootstrap_css %}
@@ -58,15 +58,6 @@
 </head>
 
 <body class="{% block body_class %} {% endblock %}">
-{#   seo header here#}
-<div class="seo-only">
-    <h1>
-        {% block seo_title %}
-            区块链导航 - 从这里学习区块链
-        {% endblock %}
-    </h1>
-</div>
-{#    seo header end------------ #}
 
 {# header ----------- #}
 {% block header %}

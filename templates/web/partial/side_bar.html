@@ -1,19 +1,26 @@
 {% load i18n %}
 {% load static %}
+
 <div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
-{#    <div class="box hidden-xs">#}
-{#        <div class="box-header ">#}
-{#            比特币硬分叉倒计时#}
-{#        </div>#}
-{#        {% include 'web/partial/clock.html' %}#}
-{#    </div>#}
-
+{#    分叉倒计时 开始 -------#}
+    <div class="box hidden-xs">
+        <div class="box-header ">
+{#            <span class="main-fork_name">{% trans '比特币' %}</span>#}
+            {% trans '分叉倒计时' %}
+            <span class="pull-right header-link">
+                <a href="{% url 'web_fork_list' %}" target="_blank">
+                    {% trans '更多' %}
+                </a>
+            </span>
+        </div>
+        {% include 'web/partial/clock.html' %}
+    </div>
+{#   分叉倒计时 结束 --------#}
 {% include 'web/partial/ad_block.html' %}
-
 
     <div class="box hidden-xs">
         <div class="box-header">
-            24h 快讯
+            24h {% trans '快讯' %}
         </div>
         <div class="box-body">
             <div class="news-list timeline small-line">
@@ -29,7 +36,7 @@
         </div>
     </div>
     <div class="box">
-        <div class="box-header">热门标签</div>
+        <div class="box-header">{% trans '热门标签' %}</div>
         <div class="box-body">
             {% include 'web/partial/side_bar_news_tag_filter.html' %}
         </div>
@@ -63,9 +70,9 @@
         </div>
     </div>
     <div class="box" id="follow-us-box">
-        <div class="box-header">关注我们</div>
+        <div class="box-header">{% trans '关注我们' %}</div>
         <div class="box-body">
-            <a href="https://www.facebook.com/block123com" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/ChainNewscom/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
             <a href="https://twitter.com/block123com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             <a href="https://t.me/Block123com" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
         </div>
@@ -89,7 +96,7 @@
         {#            </div>#}
         {#        </div>#}
         <div class="box hidden-xs">
-            <div class="box-header">热门标签</div>
+            <div class="box-header">{% trans '热门标签' %}</div>
             <div class="box-body">
                 {% include 'web/partial/news_tag_filter.html' %}
             </div>
@@ -112,9 +119,9 @@
             </div>
         </div>
         <div class="box" id="follow-us-box">
-            <div class="box-header">关注我们</div>
+            <div class="box-header">{% trans '关注我们' %}</div>
             <div class="box-body">
-                <a href="https://www.facebook.com/block123com" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/ChainNewscom/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                 <a href="https://twitter.com/block123com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                 <a href="https://t.me/Block123com" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
             </div>
@@ -142,7 +149,7 @@
             <ul>
                 <li class="news-content hidden"><%=content%>
                     <% if(origin_link) { %>
-                    <a href="<%=origin_link%>" target="_blank">「原文链接」</a>
+                    <a href="<%=origin_link%>" target="_blank">「{% trans '原文链接' %}」</a>
                     <% }%>
 
                 </li>
@@ -185,5 +192,3 @@
 <script type="application/javascript">
     var tag_list_json = {{ sidebar_news_tag_list_json|safe }};
 </script>
-
-

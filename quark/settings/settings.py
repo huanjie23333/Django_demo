@@ -30,6 +30,10 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
+LOCALE_PATHS = (
+    os.path.join(os.getcwd(), 'conf/locale'),
+)
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +41,8 @@ INSTALLED_APPS = [
     # 'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'django.contrib.humanize',
 
     'bootstrap3',
@@ -47,12 +53,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'django_markdown',
+    'simplemde',
 
     'web',
     'nav',
     'feed',
     'flink',
     'webtools',
+    'coinfork',
     # 'captcha',
 ]
 

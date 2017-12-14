@@ -5,12 +5,12 @@
     {% include "webtools/partial/coin_history_meta.html" %}
 {% endblock %}
 {% block title %}
-    常用工具 - 加密货币报价
+    {% trans '常用工具' %} - {% trans '加密货币报价' %}
 {% endblock %}
 
-{% block seo_title %}
-    常用工具 - 加密货币报价
-{% endblock %}
+{#{% block seo_title %}#}
+{#    {% trans '常用工具' %} - {% trans '加密货币报价' %}#}
+{#{% endblock %}#}
 
 {% block content %}
     <section id="content">
@@ -24,15 +24,15 @@
                             <thead>
                             <tr>
 {#                                <th>#</th>#}
-                                <th class="hidden-xs">名称</th>
-                                <th>简称</th>
-                                <th class="hidden-xs">总市值</th>
-                                <th class="hidden-xs">24小时成交</th>
+                                <th class="hidden-xs">{% trans '名称' %}</th>
+                                <th>{% trans '简称' %}</th>
+                                <th class="hidden-xs">{% trans '总市值' %}</th>
+                                <th class="hidden-xs">{% trans '24小时成交' %}</th>
 {#                                <th>美元价格</th>#}
-                                <th>最新价格</th>
-                                <th>最近一小时</th>
-                                <th class="hidden-xs">最近一天</th>
-                                <th class="hidden-xs">最近七天</th>
+                                <th>{% trans '最新价格' %}</th>
+                                <th>{% trans '最近一小时' %}</th>
+                                <th class="hidden-xs">{% trans '最近一天' %}</th>
+                                <th class="hidden-xs">{% trans '最近七天' %}</th>
                             </tr>
                             </thead>
                             <tbody>

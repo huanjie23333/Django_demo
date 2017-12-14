@@ -1,12 +1,13 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
+{#{% load web_extras %}#}
 
 {% block content %}
     <section id="content">
         <div class="container static-content">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h2>全站地图</h2>
+                    <h2>{% trans '全站地图' %}</h2>
                     {% for cate in category_tag_list %}
                         <div class="cate-tag-wrapper">
                             <div class="cate-name">
@@ -34,7 +35,7 @@
                             <div class="cate-name">
                                 <h3>
                                     <a href="{% url 'web_news' %}">
-                                      最新快讯
+                                      {% trans '最新快讯' %}
                                     </a>
                                 </h3>
                             </div>
@@ -51,7 +52,7 @@
                             </div>
                         </div>
 
-            </div>
+                </div>
             </div>
         </div>
     </section>

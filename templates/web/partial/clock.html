@@ -1,29 +1,31 @@
+{% load i18n %}
   <div class="box-body middle-wrapper">
-            <span class="clockdiv">
+            <div class="count-coin-name coin-name-sidebar"></div>
+            <span class="top_clockdiv">
                 <div>
                     <span class="days"></span>
-                    <span class="smalltext">天</span>
+                    <span class="smalltext">{% trans '天' %}</span>
                 </div>
                 <div>
                     <span class="hours"></span>
-                    <span class="smalltext">时</span>
+                    <span class="smalltext">{% trans '时' %}</span>
                 </div>
                 <div>
                     <span class="minutes"></span>
-                    <span class="smalltext">分</span>
+                    <span class="smalltext">{% trans '分' %}</span>
                 </div>
                 <div>
                     <span class="seconds"></span>
-                    <span class="smalltext">秒</span>
+                    <span class="smalltext">{% trans '秒' %}</span>
                 </div>
             </span>
             <div class="count-down-info">
                 <div class="info">
-                    这是基于当前块高度的时间预估，<br>
-                    平均出块时间为十分钟。<br><br>
+                    {% trans '这是基于当前块高度的时间预估' %}，<br>
+                    {% trans '平均出块时间为十分钟' %}。<br><br>
                     <span >
-                        分叉区块高度 <span class="block-count">494784</span><br>
-                    目前区块高度 <span class="current_block_count block-count"></span>
+                        {% trans '分叉区块高度' %} <span class="target_block_count block-count">498533</span><br>
+                    {% trans '目前区块高度' %} <span class="current_block_count block-count"></span>
                     </span>
                 </div>
             </div>

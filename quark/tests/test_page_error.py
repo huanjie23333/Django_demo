@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.urls import reverse
+# from django.urls import reverse
 from django.contrib.auth.models import User
 
 
@@ -16,13 +16,11 @@ class TestPageErrorTestCase(TestCase):
         user.save()
         self.user = user
 
-
     def test_page_404_error(self):
         page_404 = '/not_exist_page/'
         resp = self.client.get(page_404)
         self.assertEqual(resp.status_code, 404)
-        self.assertTemplateUsed(resp, 'web/404.html')
-
+        self.assertTemplateUsed(resp, 'errors/404.html')
 
     # def test_page_500_error(self):
     #     self.create_user()

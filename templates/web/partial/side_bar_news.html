@@ -1,8 +1,10 @@
+{#{% load web_extras %}#}
+{% load i18n %}
+
 {% for news in sidebar_news_list|slice:':5' %}
     <div class="entry">
         <div class="left-content">
-            <h3>
-            </h3>
+            <h3></h3>
             <p></p>
         </div>
         <div class="body">
@@ -10,7 +12,7 @@
             <ul>
                 <li class="news-content hidden">{{ news.content }}
                     {% if news.origin_link %}
-                        <a href="{{ news.origin_link }}" rel="nofollow" target="_blank">「原文链接」</a>
+                        <a href="{{ news.origin_link }}" rel="nofollow" target="_blank">「{% trans '原文链接' %}」</a>
                     {% endif %}
                 </li>
             </ul>

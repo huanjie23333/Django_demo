@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
+{#{% load web_extras %}#}
 
 {% block content %}
     <section id="content" class="category-content">
@@ -8,7 +9,7 @@
                 <div class="col-sm-8 col-xs-12 " id="main_column">
                         <div class="box">
                                 <div class="box-header">
-                                    {{ cate.cname }}
+                                    {{ cate.zh_hant_cname }}
                                 </div>
                                 <div class="box-body category-tag-wrapper">
                                     <div class="tag-name">{{ tag_name }}</div>
@@ -19,31 +20,23 @@
                                                 <a
                                                     class="{% if nav.highlight %} highlight {% endif %}"
                                                     href="{{ nav.web_site }}" rel="nofollow" target="_blank" title="{{ nav.site_name }}" >
-                                                    {{ nav.main_name }}
+                                                    {{ nav.zh_hant_main_name }}
                                                 </a>
                                             </span>
 
                                                 {% if nav.main_name == nav.ename or nav.ename == None %}
 
                                                 {% else %}
-                                                    <span
-                                                            class="nav-ename"
-                                                    >
-                                                    {{  nav.ename }}
-                                                    </span>
-                                                {% endif %}
-                                                {% if nav.location %}
-                                                     <span class="location">
-                                                    {{ nav.location }}
-                                                    </span>
+                                                    <span class="nav-ename">{{ nav.ename }}</span>
                                                 {% endif %}
 
+                                                {% if nav.location %}<span class="location">{{ nav.zh_hant_location }}</span>{% endif %}
                                             <span class="nav-desc">
-                                                {{ nav.profile.description }}
+                                                {{ nav.zh_hant_main_description }}
                                             </span>
-                                            <span class="sr-only">
-                                                {{ nav.description }}
-                                            </span>
+{#                                            <span class="sr-only">#}
+{#                                                {{ nav.zh_hant_main_description }}#}
+{#                                            </span>#}
                                         </li>
                                     {% endfor %}
                                     </ul>

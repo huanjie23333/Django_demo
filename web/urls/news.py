@@ -6,5 +6,4 @@ urlpatterns = [
         url(r'^tag/(?P<tag>.*)/$', NewsTagListView.as_view(), name='tag_news'),
         url(r'^clear_news_cache/', ClearNewsCacheView.as_view(), name='clear'),
         url(r'^(?P<slug>\d+).htm$', NewsDetailView.as_view(), name='detail'),
-
 ]

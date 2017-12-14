@@ -12,7 +12,7 @@
 
             <div class="row site-submit-form">
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h2>提交网址</h2>
+                    <h2>{% trans '提交网址' %}</h2>
                     <form action="{% url 'web_submit' %}" method="post" class="form-horizontal" role="form">
                         {% csrf_token %}
                         <fieldset>
@@ -20,7 +20,7 @@
                         </fieldset>
                         {% buttons %}<button type="submit" class="btn btn-primary">{% trans 'submit' %}</button>{% endbuttons %}
                     </form>
-                    <div class="return-home"><a href="/">返回首页</a></div>
+                    <div class="return-home"><a href="/">{% trans '返回首页' %}</a></div>
                 </div>
             </div>
         </div>

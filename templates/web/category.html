@@ -29,19 +29,15 @@
 {% endblock %}
 {##}
 {% block basic_script %}
+
     <script id="coin_template" type="text/template">
-     <li id="<%=id%>">
-                                    <span class="coin-name">
-                                        <%=name_cn%>
-                                    </span>
-                                    <span class="coin-price fall">
-                                        <%=price_cny%>
-                                    </span>
-                                    <span class="coin-change fall">
-                                         <%=change_percent%>
-                                    </span>
-                                </li>
+        <li id="<%=id%>">
+            <span class="coin-name"><%=name_cn%></span>
+            <span class="coin-price fall"><%=price_cny%></span>
+            <span class="coin-change fall"><%=change_percent%></span>
+        </li>
     </script>
+
     {% compress js %}
         <script src="{% static 'js/web/app/require.js' %}"></script>
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>

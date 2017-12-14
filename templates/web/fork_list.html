@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+{% load i18n static compress %}
+{% load web_extras %}
+
+{% block meta %}
+    {% include "web/partial/fork_meta.html" %}
+{% endblock %}
+{% block title %}{% trans 'BTC 分叉倒计时' %} - {% trans '区块链导航' %}{% endblock %}
+
+ {% block seo_title %}
+    BTC 硬分叉 倒计时
+ {% endblock %}
+
+{% block content %}
+
+    <div class="container content-container" id="fork-list-page">
+        <div class="row">
+            <div class="tab-wrapper">
+                <div class="tab {% if not status %}active{% endif  %}"><a href="{% url 'web_fork_list' %}">全部</a></div>
+                <div class="tab {% if status == 'incoming' %}active{% endif %}"><a href="{% url 'web_fork_list' %}?status=incoming">即将分叉</a> </div>
+                <div class="tab {% if status == 'done' %}active{% endif %}"><a href="{% url 'web_fork_list' %}?status=done">完成分叉</a></div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for item in fork_list %}
+            <div class="col-sm-4 col-xs-12 fork-item"
+                 data-fork-height="{{ item.fork_height }}"
+                 data-block-intervel="{{ item.block_mining_time }}"
+                 data-block-height-api="{{ item.current_height_api }}"
+            >
+                <div class="box">
+                    <div class="box-body">
+                        <div class="fork-alias">{{ item.fork_alias }}</div>
+                        <div class="fork-name">
+                            {% if item.official_site %}
+                                <a href="{{ item.official_site }}" target="_blank">
+                                    <span>{{ item.fork_name }}</span>
+                                    <span>{{ item.fork_ename }}</span>
+                                </a>
+                            {% else %}
+                                 <span>{{ item.fork_name }}</span>
+                                 <span>{{ item.fork_ename }}</span>
+                            {% endif %}
+
+                        </div>
+                        <div class="count-down">
+                            <span class="clockdiv">
+                                <div><span class="days "></span><span class="middletext">天</span></div>
+                                <div><span class="hours "></span><span class="middletext">时</span></div>
+                                <div><span class="minutes "></span><span class="middletext">分</span></div>
+                                <div><span class="seconds "></span><span class="middletext">秒</span></div>
+                            </span>
+                        </div>
+                        <div class="desc">
+                            {{ item.description }}
+                        </div>
+                        <div class="block-height">
+                            <span>分叉区块高度</span>
+                            <span class="height-number">{{ item.fork_height }}</span>
+                        </div>
+                        <div class="current-block-height">
+                            <span>当前区块高度 </span>
+                            <span class="height-number"></span>
+                        </div>
+                    </div>
+                    {% if item.status == 'done' %}
+                         <div class="fork-state fork-passed">完成分叉</div>
+                    {% elif item.status == 'incoming' %}
+                        <div class="fork-state fork-incoming">即将分叉</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+{##}
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

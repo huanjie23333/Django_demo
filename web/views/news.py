@@ -15,13 +15,13 @@ from nav.models import Nav
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
-NEWS_TAG_API_URL = 'http://www.chainscoop.com/api/news/tags.json'
-NEWS_DETAIL_API = 'http://www.chainscoop.com/api/news/'
+NEWS_TAG_API_URL = 'http://www.chainnews.com/api/news/tags.json'
+NEWS_DETAIL_API = 'http://www.chainnews.com/api/news/'
 
 
 class NewsDataMixin(object):
     def _get_newslist_page(self, page=1, tag=None):
-        url = 'http://www.chainscoop.com/api/news.json?page=%s' % page
+        url = 'http://www.chainnews.com/api/news.json?page={page}'.format(page=page)
         if tag:
             url = "%s&tag=%s" % (url, tag)
         r = requests.get(url)
@@ -114,6 +114,8 @@ class NewsDataMixin(object):
 
 
 from nav.block_chain_browsers import block_chain_browsers
+
+
 class SideBarDataMixin(FlinkMixin, NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -127,15 +129,13 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
         return context
 
     def get_bc_info_list(self):
-        bc_info_list ={}
-        for name , id in block_chain_browsers.items():
+        bc_info_list = {}
+        for name, id in block_chain_browsers.items():
             try:
                 bc_info_list[name] = Nav.objects.get(pk=id)
             except Nav.DoesNotExist as e:
                 pass
         return bc_info_list
-
-
 
 
 class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <section id="header">
     <div class="container">
         <nav class="navbar">
@@ -17,8 +17,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a rel="nofollow" title="向我们提交" href="{% url 'web_submit' %}" type="button">网站收录</a></li>
-                        <li><a href="" class="bookmarkme">收藏本站</a></li>
+                        <li><a rel="nofollow" title="{% trans '向我们提交' %}" href="{% url 'web_submit' %}" type="button">{% trans '网站收录' %}</a></li>
+                        <li><a href="" class="bookmarkme">{% trans '收藏本站' %}</a></li>
                     </ul>
 {#                    <form class="navbar-form navbar-right hidden-lg hidden-md hidden-sm" action="{% url 'search:nav' %}" method="get">#}
 {#                        <div class="form-group search-container">#}
