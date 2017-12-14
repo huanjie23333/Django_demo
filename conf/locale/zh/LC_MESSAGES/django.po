@@ -19,7 +19,7 @@ msgstr ""
 
 #: flink/models.py:19 flink/models.py:20 templates/web/partial/footer.html:11
 msgid "友情链接"
-msgstr "友情鏈接"
+msgstr "友情链接"
 
 #: nav/models.py:46
 msgid "status"
@@ -35,23 +35,23 @@ msgstr ""
 
 #: nav/models.py:152
 msgid "网址"
-msgstr "網址"
+msgstr "网址"
 
 #: nav/models.py:153
 msgid "中文名称"
-msgstr "中文名稱"
+msgstr "中文名称"
 
 #: nav/models.py:154
 msgid "英文名称，非必填"
-msgstr "英文名稱，非必填"
+msgstr "英文名称，非必填"
 
 #: nav/models.py:157
 msgid "网站描述，一句话"
-msgstr "網站描述，一句話"
+msgstr "网站描述，一句话"
 
 #: nav/models.py:158
 msgid "联系邮箱"
-msgstr "聯系郵箱"
+msgstr "联系邮箱"
 
 #: templates/base/base.html:28 templates/base/base.html:65
 #: templates/base/error_base.html:15 templates/base/error_base.html:54
@@ -62,31 +62,31 @@ msgstr "聯系郵箱"
 #: templates/web/partial/search_row.html:19 templates/webtools/list.html:7
 #: templates/webtools/list.html:11
 msgid "区块链导航"
-msgstr "區塊鏈導航"
+msgstr "区块链导航"
 
 #: templates/base/base.html:28 templates/base/base.html:65
 #: templates/base/error_base.html:15 templates/base/error_base.html:54
 msgid "从这里学习区块链"
-msgstr "從這裏學習區塊鏈"
+msgstr "从这里学习区块链"
 
 #: templates/dapp/detail.html:15 templates/dapp/detail.html:19
 msgid "以太坊应用"
-msgstr "以太坊應用"
+msgstr "以太坊应用"
 
 #: templates/dapp/detail.html:63 templates/search/news.html:39
 #: templates/web/news.html:77 templates/web/news_list.html:78
 #: templates/web/partial/side_bar.html:152
 #: templates/web/partial/side_bar_news.html:15
 msgid "原文链接"
-msgstr "原文鏈接"
+msgstr "原文链接"
 
 #: templates/dapp/list.html:9 templates/dapp/list.html:13
 msgid "以太坊应用列表"
-msgstr "以太坊應用列表"
+msgstr "以太坊应用列表"
 
 #: templates/errors/403.html:16
 msgid "您没有权限访问此功能"
-msgstr "您沒有權限訪問此功能"
+msgstr "您没有权限访问此功能"
 
 #: templates/errors/403.html:31
 msgid "返回"
@@ -94,32 +94,32 @@ msgstr "返回"
 
 #: templates/errors/403.html:31
 msgid "首页"
-msgstr "首頁"
+msgstr "首页"
 
 #: templates/errors/403.html:31
 msgid "或报告问题到"
-msgstr "或報告問題到"
+msgstr "或报告问题到"
 
 #: templates/errors/404.html:12
 msgid "找不到页面"
-msgstr "找不到頁面"
+msgstr "找不到页面"
 
 #: templates/errors/404.html:15 templates/errors/500.html:15
 #: templates/web/submit.html:23
 msgid "返回首页"
-msgstr "返回首頁"
+msgstr "返回首页"
 
 #: templates/errors/404.html:19
 msgid "有谣言买入，有新闻卖出。"
-msgstr "有謠言買入，有新聞賣出。"
+msgstr "有谣言买入，有新闻卖出。"
 
 #: templates/errors/500.html:12
 msgid "内部服务器错误"
-msgstr "內部服務器錯誤"
+msgstr "内部服务器错误"
 
 #: templates/errors/500.html:19
 msgid "坚信密码学"
-msgstr "堅信密碼學"
+msgstr "坚信密码学"
 
 #: templates/search/news.html:11
 msgid "含"
@@ -127,27 +127,27 @@ msgstr ""
 
 #: templates/search/news.html:11
 msgid "的搜索结果约"
-msgstr "的搜索結果約"
+msgstr "的搜索结果约"
 
 #: templates/search/news.html:11
 msgid "条"
-msgstr "條"
+msgstr "条"
 
 #: templates/search/news.html:14
 msgid "加载中"
-msgstr "加載中"
+msgstr "加载中"
 
 #: templates/search/news.html:18 templates/web/news_list.html:37
 msgid "加载更多"
-msgstr "加載更多"
+msgstr "加载更多"
 
 #: templates/web/btc_countdown.html:34
 msgid "比特币"
-msgstr "比特幣"
+msgstr "比特币"
 
 #: templates/web/btc_countdown.html:34
 msgid "分叉倒计时"
-msgstr "分叉倒計時"
+msgstr "分叉倒计时"
 
 #: templates/web/btc_countdown.html:39
 msgid "天"
@@ -155,7 +155,7 @@ msgstr ""
 
 #: templates/web/btc_countdown.html:40
 msgid "时"
-msgstr "時"
+msgstr "时"
 
 #: templates/web/btc_countdown.html:41
 msgid "分"
