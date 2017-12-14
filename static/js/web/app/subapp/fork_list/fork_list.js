@@ -1,4 +1,4 @@
-define(['libs/Class', 'jquery'],function(Class, $){
+define(['libs/Class', 'jquery', 'libs/bluebird'],function(Class, $, Promise){
     var ForkListApp = Class.extend({
         draw_current_block: function (current_block_height) {
             $('.current-block-height .height-number').html(current_block_height);
@@ -62,8 +62,32 @@ define(['libs/Class', 'jquery'],function(Class, $){
                 $(this).height(height);
             });
         },
-        collect_api: function () {
+        get_api_list: function () {
+            var _api_list = [];
+            $('.fork-item').each(function (index, item) {
+                _api_list.push($(item).attr('data-block-height-api'));
+            });
+            return _.set(_api_list);
+        },
+        init_item_current_block: function () {
+            var _api_list = this.get_api_list();
+            // get a clean api list;
+
+            this.api_block_height = {};
+
+            Promise.all(
+                _.each(_api_list, function(api){
+                    return $.ajax({
+                        url : api,
+                        method: 'GET',
+                    });
+                })
+            ).spread(this.handle_api_done.bind(this));
+
             
+        },
+        handle_api_done: function () {
+            console.log(arguments);
         },
         init: function () {
 
@@ -71,11 +95,13 @@ define(['libs/Class', 'jquery'],function(Class, $){
             if (!_container.length){
                 return ;
             }
-            
-            this._api_list = this.collect_api();
+            this.fork_container = _container;
+
+            this.init_item_current_block();
+
             _.each(this._api_list, function () {
-                
-            })
+
+            });
 
             this.hide_text();
 
