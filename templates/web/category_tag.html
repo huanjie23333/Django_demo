@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
-{% load web_extras %}
+{#{% load web_extras %}#}
 
 {% block content %}
     <section id="content" class="category-content">
@@ -12,7 +12,7 @@
                                     {{ cate.zh_hant_cname }}
                                 </div>
                                 <div class="box-body category-tag-wrapper">
-                                    <div class="tag-name">{{ tag_name|cc }}</div>
+                                    <div class="tag-name">{{ tag_name }}</div>
                                     <ul class="nav-list">
                                     {% for nav in navs %}
                                         <li class="nav-list-item">
