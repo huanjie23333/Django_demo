@@ -2,28 +2,38 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
-            "title": "Home"
+            "text": "\u6b22\u8fce\u6765\u5230 block123.com\n\n\n\u5f00\u53d1\u73af\u5883\n\n\n\n\nPython3\n\n\nDjango-1.11\n\n\nbootstrap-3.7\n\n\n\n\n\u670d\u52a1\u5668\u73af\u5883\n\n\n\n\nUbuntu 16.04 LTS\n\n\nMySQL 5.6 (Percona Server)\n\n\nNginx 1.12.1\n\n\n\n\n\u5b89\u88c5\u865a\u62df\u73af\u5883\n\n\npip install virtualenv\npip install virtualenvwrapper\n\n\n\n\n\u521b\u5efa\u4e00\u4e2a\u865a\u62df\u73af\u5883\n\n\nmkvirtualenv quark\ncd /path/to/quark\n\n\n\n\n\n\npython \u865a\u62df\u73af\u5883\u6559\u7a0b", 
+            "title": "\u4e3b\u9875"
         }, 
         {
-            "location": "/#welcome-to-mkdocs", 
-            "text": "For full documentation visit  mkdocs.org .", 
-            "title": "Welcome to MkDocs"
+            "location": "/#block123com", 
+            "text": "", 
+            "title": "\u6b22\u8fce\u6765\u5230 block123.com"
         }, 
         {
-            "location": "/#commands", 
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
-            "title": "Commands"
+            "location": "/#_1", 
+            "text": "Python3  Django-1.11  bootstrap-3.7", 
+            "title": "\u5f00\u53d1\u73af\u5883"
         }, 
         {
-            "location": "/#project-layout", 
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
-            "title": "Project layout"
+            "location": "/#_2", 
+            "text": "Ubuntu 16.04 LTS  MySQL 5.6 (Percona Server)  Nginx 1.12.1", 
+            "title": "\u670d\u52a1\u5668\u73af\u5883"
+        }, 
+        {
+            "location": "/#_3", 
+            "text": "pip install virtualenv\npip install virtualenvwrapper", 
+            "title": "\u5b89\u88c5\u865a\u62df\u73af\u5883"
+        }, 
+        {
+            "location": "/#_4", 
+            "text": "mkvirtualenv quark\ncd /path/to/quark   python \u865a\u62df\u73af\u5883\u6559\u7a0b", 
+            "title": "\u521b\u5efa\u4e00\u4e2a\u865a\u62df\u73af\u5883"
         }, 
         {
             "location": "/about/", 
             "text": "", 
-            "title": "About"
+            "title": "\u5173\u4e8e"
         }
     ]
 }
