@@ -20,9 +20,9 @@ from django.conf.urls.static import static
 from django.views.decorators.cache import cache_page
 
 from web.views import (IndexView, CategoryView,  SiteMapView,
-    SubNavCreateView, SubNavSuccessView)
+    SubNavCreateView, SubNavSuccessView, CountDownList, ForkListView)
 
-from web.views.news import NewsListView, CountDownList
+from web.views.news import NewsListView
 
 from quark.views import page_error, webpage_not_found
 
@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^submit_suc\.htm$', SubNavSuccessView.as_view(), name='web_submit_done'),
     url(r'^news\.htm', NewsListView.as_view(), name='web_news'),
     url(r'^countdown\.htm', CountDownList.as_view(), name='web_btc_countdown'),
+    url(r'^fork_list\.htm', ForkListView.as_view(), name='web_fork_list'),
     # url(r'^category/(?P<cate_ename>[a-zA-Z_]+)\.htm$', CategoryView.as_view(), name='category_page'),
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
 

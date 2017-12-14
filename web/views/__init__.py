@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.http import HttpResponseForbidden
 
+from coinfork.models import CoinFork
 from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
@@ -161,3 +162,41 @@ class SiteMapView(SideBarDataMixin, TemplateView):
 class ErrorView(StaffuserRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         raise Exception('error for test')
+
+
+
+class CountDownList(SideBarDataMixin, TemplateView):
+    template_name = 'web/btc_countdown.html'
+
+
+class ForkListView(ListView):
+    http_method_names = ['get','head']
+    template_name = 'web/fork_list.html'
+    model = CoinFork
+    queryset = CoinFork.objects.all()
+    paginate_by = 30
+    context_object_name = 'fork_list'
+
+    def get_queryset(self):
+        if self.fork_status:
+            return CoinFork.objects.filter(status=self.fork_status, coin_ename='bitcoin').exclude(status='removed')
+        else:
+            return CoinFork.objects.filter(coin_ename='bitcoin').exclude(status='removed')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        if self.fork_status:
+            context['status'] = self.fork_status
+        return context
+
+    def get(self, request, *args, **kwargs):
+        self.fork_status = request.GET.get('status', None)
+        if self.fork_status:
+            assert(self.fork_status in ['incoming', 'done'])
+        return super().get(request, *args, **kwargs)
+
+
+
+
+
+

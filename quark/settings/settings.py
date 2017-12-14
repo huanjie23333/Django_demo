@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'feed',
     'flink',
     'webtools',
+    'coinfork',
     # 'captcha',
 ]
 

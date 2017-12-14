@@ -2933,11 +2933,11 @@ define('subapp/data/btc_forks',[],function () {
                     'ename': 'BTC King ',
                     'height':499999
                 },
-                {
-                    'name': '超级比特币',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498888
-                },
+                // {
+                //     'name': '超級比特幣',
+                //     'ename': 'Bitcoin Platinum',
+                //     'height':498888
+                // }
             ];
 
     return fork_list;
@@ -3023,9 +3023,9 @@ define('subapp/sidebar/clock',['libs/Class', 'jquery', 'underscore','subapp/data
             var t = getTimeRemaining(endtime);
 
             daysSpan.innerHTML = t.days;
-            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+            hoursSpan.innerHTML = (t.hours);
+            minutesSpan.innerHTML = (t.minutes);
+            secondsSpan.innerHTML = (t.seconds);
 
             if (t.total <= 0) {
                 clearInterval(timeinterval);
@@ -3122,7 +3122,7 @@ define('subapp/sidebar/sidebar',['libs/Class',
             // for tagcloud
             new TagCloud();
 
-            ForkClock();
+            // ForkClock();
 
         }
     });
@@ -4076,39 +4076,18 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
 });
 
 
-define('subapp/countdown/btc_countdown',['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
+define('subapp/countdown/btc_countdown',['libs/Class', 'underscore', 'jquery', 'subapp/data/btc_forks'], function(Class, _, $, fork_list){
     var BtcCountdown = Class.extend({
         init: function(){
-            if(!$('#btc-countdown-tpl').length) return ;
-            var fork_list =[
-                {
-                    'name': '比特幣上帝',
-                    'ename': 'Bitcoin God ',
-                    'height': 501225
-                },
-                {
-                    'name': '比特幣王者',
-                    'ename': 'BTC King ',
-                    'height':499999
-                },
-                {
-                    'name': '超级比特币',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498888
-                },
-                {
-                    'name': '比特幣白金',
-                    'ename': 'Bitcoin Platinum',
-                    'height':498533
-                }
-            ];
-            var compiled = _.template($('#btc-countdown-tpl').html());
-            var html = compiled(fork_list);
-            $('#btc-countdown').html(html);
+            if(!$('.coin-name-sidebar').length) return;
+
+
+            fork_list.sort(function (a, b) {
+                return a.height - b.height;
+            });
+
             var interval = 600;
-            getBlockHeight(initClock);
-
-
+            render();
 
             function getBlockHeight(callback){
                 $.ajax({
@@ -4124,7 +4103,15 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'jquery', 'underscore'], 
                     deadline.push(new Date(Date.parse(new Date())
                         + getSecondsRemaining(current_block, targetblock, interval)));
                 }
-                renderClock('clockdiv', deadline, current_block);
+                if($('.clockdiv').length) {
+                    renderClock('clockdiv', deadline, current_block);
+                }
+                if($('.top_clockdiv').length) {
+                    renderClock('top_clockdiv', deadline, current_block);
+                    $('.top_clockdiv .target_block_count').html(fork_list[0].height);
+                    $('.coin-name-sidebar').html(fork_list[0].name + '&nbsp;' + fork_list[0].ename)
+                }
+
             }
             function getSecondsRemaining(blockheight, targetblock, interval) {
                 var blocksremaining = targetblock - blockheight;
@@ -4155,43 +4142,133 @@ define('subapp/countdown/btc_countdown',['libs/Class', 'jquery', 'underscore'], 
                 function do_update(){
                     var clocks = document.getElementsByClassName(classname);
                     for (var i=0, len=clocks.length ; i<len; i++) {
-                        updateClock(clocks[i], endtime[i]);
+                        if(!updateClock(clocks[i], endtime, i)){
+                            return ;
+                        }
                     }
                 }
 
 
-                function updateClock(clock, endtime) {
+                function updateClock(clock, endtime, i) {
 
                     var daysSpan = clock.querySelector('.days');
                     var hoursSpan = clock.querySelector('.hours');
                     var minutesSpan = clock.querySelector('.minutes');
                     var secondsSpan = clock.querySelector('.seconds');
 
-                    var t = getTimeRemaining(endtime);
-
-                    if (t.total <= 0) {
-                        clock.classList.remove(classname);
-                        endtime.splice(i, 1);
-                        daysSpan.innerHTML = '0';
-                        hoursSpan.innerHTML = '00';
-                        minutesSpan.innerHTML = '00';
-                        secondsSpan.innerHTML = '00';
-                        return ;
+                    var t = getTimeRemaining(endtime[i]);
+                    if(t.total <= 0) {
+                        fork_list.splice(i, 1);
+                        clearInterval(timeinterval);
+                        render();
+                        return false;
+                    } else {
+                        daysSpan.innerHTML = t.days;
+                        hoursSpan.innerHTML = ('' + t.hours).slice(-2);
+                        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+                        return true;
                     }
 
-                    daysSpan.innerHTML = t.days;
-                    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-                    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-                    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
                 }
 
                 do_update();
                 var timeinterval = setInterval(do_update, 1000);
             }
+            function render(){
+                if($('#btc-countdown-tpl').length){
+                    var compiled = _.template($('#btc-countdown-tpl').html());
+                    var html = compiled({list:fork_list});
+                    $('#btc-countdown').html(html);
+                }
+                getBlockHeight(initClock);
+            }
         }
     });
 
     return BtcCountdown;
+});
+define('subapp/fork_list/fork_list',['libs/Class', 'jquery'],function(Class, $){
+    var ForkListApp = Class.extend({
+        draw_current_block: function (current_block_height) {
+            $('.current-block-height .height-number').html(current_block_height);
+        },
+        draw_count_down: function() {
+
+            var $fork_list = $('.fork-item');
+            $fork_list.each(this.draw_single_fork_item.bind(this));
+        },
+        draw_single_fork_item: function(index, element){
+            var dead_line = $(element).data("dead_line") -1;
+            $(element).data({"dead_line":  dead_line});
+
+            var done = dead_line < 0;
+            var days = Math.floor(dead_line / (24 * 60 * 60));
+            var hours = Math.floor(dead_line / (60 * 60)) % 24;
+            var minutes = Math.floor(dead_line / 60) % 60;
+            var seconds = dead_line % 60;
+
+            if(!done){
+                $('.days', $(element)).html(days);
+                $('.hours', $(element)).html(hours);
+                $('.minutes', $(element)).html(minutes);
+                $('.seconds', $(element)).html(seconds);
+            } else {
+                //完成分叉
+                $('.clockdiv', $(element)).html('完成分叉');
+                $('.fork-state', $(element)).removeClass('fork-incoming')
+                    .addClass('fork-passed').html('完成分叉');
+            }
+
+
+        },
+        get_deadline: function(index, el) {
+            $(el).data({'dead_line':(el.dataset.forkHeight - this.current_block_height) * 600});
+            // this.deadline[index] = (el.dataset.forkHeight - this.current_block_height) * 600;
+        },
+        draw_clocks: function (current_block_height) {
+            this.current_block_height = current_block_height;
+            this.draw_current_block(current_block_height);
+            this.deadline = [];
+            $('.fork-item').each(this.get_deadline.bind(this));
+            setInterval(this.draw_count_down.bind(this), 1000);
+
+        },
+        get_current_block: function () {
+            return $.when(
+                $.ajax({'url': 'https://blockchain.info/q/getblockcount'})
+            );
+        },
+        get_block_fail: function () {
+            console.log('fail getting block height');
+        },
+        hide_text: function(){
+            //desc 文本溢出隐藏
+            $('.desc').each(function(){
+                var height = 42;  //3倍字体
+                while($(this).height() > height) {
+                    $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, '...'));
+                }
+                $(this).height(height);
+            });
+        },
+        init: function () {
+
+            var _container = $('#fork-list-page');
+            if (!_container.length){
+                return ;
+            }
+
+            this.hide_text();
+
+            this.get_current_block().then(
+                this.draw_clocks.bind(this),
+                this.get_block_fail.bind(this)
+            );
+        }
+    });
+
+    return ForkListApp;
 });
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -6591,6 +6668,7 @@ require([
         'subapp/header/search_site',
         'subapp/search/search_news_ajax',
         'subapp/countdown/btc_countdown',
+        'subapp/fork_list/fork_list',
         'bootstrap'
     ],
     function (polyfill,
@@ -6609,7 +6687,8 @@ require([
               SearchNews,
               SearchSite,
               SearchNewsAjax,
-              BtcCountdown
+              BtcCountdown,
+              ForkListApp
               ) {
 
         jQuery = $;
@@ -6636,7 +6715,11 @@ require([
 
         // for news tag trigger ;
         new TagTrigger();
-        // new BtcCountdown();
+        new BtcCountdown();
+
+        // fork list page
+
+        new ForkListApp();
 
 
 
