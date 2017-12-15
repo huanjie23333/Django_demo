@@ -10,6 +10,7 @@ from django.views.generic import TemplateView, View, DetailView, ListView
 from django.core.cache import cache
 from django.http import HttpResponse
 
+from coinfork.models import CoinFork
 from flink.views import FlinkMixin
 from nav.models import Nav
 
@@ -125,8 +126,15 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
             'sidebar_news_tag_list_json': json.dumps(sb_t_list),
             'sidebar_news_list': self.get_news_page_list(),
             'sidebar_bcinfo_list': self.get_bc_info_list(),
+            'sidebar_fork': self.get_sidebar_fork()
         })
         return context
+
+    def get_sidebar_fork(self):
+        try:
+            return CoinFork.objects.filter(status='incoming', fork_height__gt=1).order_by('fork_height')[0]
+        except IndexError as e:
+            return []
 
     def get_bc_info_list(self):
         bc_info_list = {}

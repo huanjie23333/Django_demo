@@ -71,7 +71,7 @@
 }
 
 
-#fork-list-page {
+#fork-list-page, #sidebar_fork, #index_fork{
   .tab-wrapper {
     display: flex;
     justify-content: flex-start;
@@ -129,6 +129,9 @@
     .fork-passed {
       background-color: @raising-color;
     }
+    .fork-unknown {
+      background-color: #666;
+    }
     .block-height, .current-block-height {
       line-height: 1.5;
       font-size: @font-size-normal;
@@ -143,4 +146,10 @@
       padding-bottom: 10px;
     }
   }
+}
+
+#sidebar_fork, #index_fork{
+ .fork-state{
+   display:none;
+ }
 }
