@@ -169,7 +169,7 @@ class CountDownList(SideBarDataMixin, TemplateView):
     template_name = 'web/btc_countdown.html'
 
 
-class ForkListView(ListView):
+class ForkListView(FlinkMixin, ListView):
     http_method_names = ['get','head']
     template_name = 'web/fork_list.html'
     model = CoinFork
