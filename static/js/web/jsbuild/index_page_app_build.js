@@ -4295,7 +4295,7 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
                 var api = $(item).attr('data-block-height-api');
                 $(item).data({'current_block': this.current_blocks[api]});
                 var dead_line, target_block, block_intervel, current_block;
-                block_intervel = parseInt($(item).attr('data-block-intervel')) * 60;
+                block_intervel = parseFloat($(item).attr('data-block-intervel')) * 60;
                 target_block = parseInt($(item).attr('data-fork-height'));
                 current_block = $(item).data('current_block');
                 dead_line = (target_block - current_block) * block_intervel ;
