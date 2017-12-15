@@ -26,6 +26,8 @@ class CoinFork(models.Model):
 
     class Meta:
         ordering = ['-status','fork_height',]
+        verbose_name_plural = "加密货币分叉"
+        verbose_name = "加密货币分叉"
 
 
 
