@@ -2556,9 +2556,6 @@ body a:hover {
   #grid[data-columns]::before {
     content: '3 .column.size-1of3';
   }
-  .clockdiv div {
-    padding: 8px;
-  }
   .clockdiv div .smalltext {
     padding: 0px;
   }

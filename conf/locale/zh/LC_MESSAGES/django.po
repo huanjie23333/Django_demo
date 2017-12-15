@@ -173,7 +173,7 @@ msgstr "这是基于当前块高度的时间预估"
 
 #: templates/web/btc_countdown.html:46 templates/web/partial/clock.html:24
 msgid "平均出块时间为十分钟"
-msgstr "平均出块时间爲十分锺"
+msgstr "平均出块时间为十分钟"
 
 #: templates/web/btc_countdown.html:48 templates/web/partial/clock.html:26
 msgid "分叉区块高度"
