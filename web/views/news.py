@@ -131,8 +131,10 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
         return context
 
     def get_sidebar_fork(self):
-        return CoinFork.objects.filter(status='incoming', fork_height__gt=1).order_by('fork_height')[0]
-
+        try:
+            return CoinFork.objects.filter(status='incoming', fork_height__gt=1).order_by('fork_height')[0]
+        except IndexError as e:
+            return []
 
     def get_bc_info_list(self):
         bc_info_list = {}
