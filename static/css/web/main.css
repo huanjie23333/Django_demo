@@ -1481,6 +1481,9 @@ ul li {
 #index_fork .fork-item .fork-passed {
   background-color: #25a85e;
 }
+#fork-list-page .fork-item .fork-unknown {
+  background-color: #666;
+}
 #fork-list-page .fork-item .block-height,
 #sidebar_fork .fork-item .block-height,
 #index_fork .fork-item .block-height,

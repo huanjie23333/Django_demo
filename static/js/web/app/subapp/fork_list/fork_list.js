@@ -1,10 +1,6 @@
-define(['libs/Class', 'jquery'],function(Class, $){
+define(['libs/Class', 'jquery', 'libs/bluebird'],function(Class, $, Promise){
     var ForkListApp = Class.extend({
-        draw_current_block: function (current_block_height) {
-            $('.current-block-height .height-number').html(current_block_height);
-        },
         draw_count_down: function() {
-
             var $fork_list = $('.fork-item');
             $fork_list.each(this.draw_single_fork_item.bind(this));
         },
@@ -24,30 +20,30 @@ define(['libs/Class', 'jquery'],function(Class, $){
                 $('.minutes', $(element)).html(minutes);
                 $('.seconds', $(element)).html(seconds);
             } else {
-                //完成分叉
-                $('.clockdiv', $(element)).html('完成分叉');
-                $('.fork-state', $(element)).removeClass('fork-incoming')
-                    .addClass('fork-passed').html('完成分叉');
+                if($(element).attr("data-fork-height") == '0'){
+                    //高度未确定
+                    $('.clockdiv', $(element)).html('分叉时间未定');
+                    $('.fork-state', $(element)).removeClass('fork-incoming')
+                        .removeClass('fork-passed').addClass('fork-unknown').html('时间未定');
+                    $('.block-height .height-number', $(element)).html('未知');
+                } else {
+                    //完成分叉
+                    $('.clockdiv', $(element)).html('完成分叉');
+                    $('.fork-state', $(element)).removeClass('fork-incoming')
+                        .addClass('fork-passed').html('完成分叉');
+                }
             }
 
 
         },
         get_deadline: function(index, el) {
-            $(el).data({'dead_line':(el.dataset.forkHeight - this.current_block_height) * 600});
-            // this.deadline[index] = (el.dataset.forkHeight - this.current_block_height) * 600;
-        },
-        draw_clocks: function (current_block_height) {
-            this.current_block_height = current_block_height;
-            this.draw_current_block(current_block_height);
-            this.deadline = [];
-            $('.fork-item').each(this.get_deadline.bind(this));
-            setInterval(this.draw_count_down.bind(this), 1000);
+            var current_height = $(el).data('current_block');
+            var block_interval = parseFloat($(el).attr('data-block-intervel'))*60;
 
+            $(el).data({'dead_line':(el.dataset.forkHeight - current_height) * block_intervall});
         },
-        get_current_block: function () {
-            return $.when(
-                $.ajax({'url': 'https://blockchain.info/q/getblockcount'})
-            );
+        draw_clocks: function () {
+            setInterval(this.draw_count_down.bind(this), 1000);
         },
         get_block_fail: function () {
             console.log('fail getting block height');
@@ -62,8 +58,59 @@ define(['libs/Class', 'jquery'],function(Class, $){
                 $(this).height(height);
             });
         },
-        collect_api: function () {
-            
+        get_api_list: function () {
+            var _api_list = [];
+            $('.fork-item').each(function (index, item) {
+                _api_list.push($(item).attr('data-block-height-api'));
+            });
+            return _.uniq(_api_list);
+        },
+        init_item_current_block: function () {
+            this._api_list = this.get_api_list();
+            // get a clean api list;
+
+            return Promise.all(
+                _.map(this._api_list, function(api){
+                    return new Promise(function (resolve, reject){
+                        $.ajax({
+                            url: api,
+                            method: 'GET'
+                        }).done(resolve).fail(reject);
+                    });
+                })
+            );
+        },
+        handle_error: function(error){
+            console.log(error);
+        },
+        set_item_current_block: function (index, item) {
+                var api = $(item).attr('data-block-height-api');
+                $(item).data({'current_block': this.current_blocks[api]});
+                var dead_line, target_block, block_intervel, current_block;
+                block_intervel = parseFloat($(item).attr('data-block-intervel')) * 60;
+                target_block = parseInt($(item).attr('data-fork-height'));
+                current_block = $(item).data('current_block');
+                dead_line = (target_block - current_block) * block_intervel ;
+                $(item).data({'dead_line': dead_line});
+                $(item).find('.current-block-height .height-number').html(current_block);
+
+                return this;
+        },
+        set_current_blocks: function (){
+            $('.fork-item').each(this.set_item_current_block.bind(this));
+            return this;
+        },
+        handle_api_done: function (results) {
+            var _result_list = [].slice.call(arguments);
+            var _result_list = _.map(_result_list, function(item){
+                if(_.isObject(item)){
+                    return parseInt(item['count']);
+                }else{
+                    return parseInt(item);
+                }
+            });
+            return  this.current_blocks = _.object(this._api_list, _result_list);
+
         },
         init: function () {
 
@@ -71,18 +118,15 @@ define(['libs/Class', 'jquery'],function(Class, $){
             if (!_container.length){
                 return ;
             }
-            
-            this._api_list = this.collect_api();
-            _.each(this._api_list, function () {
-                
-            })
-
+            this.fork_container = _container;
             this.hide_text();
 
-            this.get_current_block().then(
-                this.draw_clocks.bind(this),
-                this.get_block_fail.bind(this)
-            );
+            this.init_item_current_block()
+             .spread(this.handle_api_done.bind(this))
+             .then(this.set_current_blocks.bind(this))
+             .then(this.draw_count_down.bind(this))
+             .then(this.draw_clocks.bind(this))
+             .catch(this.handle_error.bind(this));
         }
     });
 
