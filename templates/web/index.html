@@ -10,7 +10,14 @@
                                         <div class="box ">
                                             <div class="box-header ">
                                                <span class="main-fork_name">
+                                                   分叉倒计时
                                                 </span>
+                                                <span class="pull-right header-link">
+                                                <a href="{% url 'web_fork_list' %}" target="_blank">
+                                                    {% trans '更多' %}
+                                                </a>
+                                            </span>
+
                                             </div>
                                             <div class="box-body" id="index_fork">
                                         {% with item=sidebar_fork %}

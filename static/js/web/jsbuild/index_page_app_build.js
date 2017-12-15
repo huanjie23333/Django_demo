@@ -4330,11 +4330,10 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
         },
         init: function () {
 
-            var _container = $('#fork-list-page');
+            var _container = $('.fork-item');
             if (!_container.length){
                 return ;
             }
-            this.fork_container = _container;
             this.hide_text();
 
             this.init_item_current_block()
