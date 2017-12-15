@@ -86,7 +86,7 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         categories = list(Category.objects.all())
 
         context['categories'] = [{
-            'category_name': cate.zh_hant_cname,
+            'category_name': cate.cname,
             'category_ename': cate.ename,
             'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20)
         }
@@ -176,6 +176,25 @@ class ForkListView(ListView):
     queryset = CoinFork.objects.all()
     paginate_by = 30
     context_object_name = 'fork_list'
+
+    def get_queryset(self):
+        if self.fork_status:
+            return CoinFork.objects.filter(status=self.fork_status, coin_ename='bitcoin').exclude(status='removed')
+        else:
+            return CoinFork.objects.filter(coin_ename='bitcoin').exclude(status='removed')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        if self.fork_status:
+            context['status'] = self.fork_status
+        return context
+
+    def get(self, request, *args, **kwargs):
+        self.fork_status = request.GET.get('status', None)
+        if self.fork_status:
+            assert(self.fork_status in ['incoming', 'done'])
+        return super().get(request, *args, **kwargs)
+
 
 
 

@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-{% load web_extras %}
+{#{% load web_extras %}#}
 
 <section id="footer">
     <div class="container">
@@ -12,7 +12,7 @@
                         {% for flink in flinks %}
                             <li class="flink-item">
                                 <a class="flink" href="{{ flink.link }}" target="_blank" rel="nofollow" title="{{ flink.zh_hant_site_name }}">
-                                    {{ flink.zh_hant_site_name }}
+                                    {{ flink.site_name }}
                                 </a>
                             </li>
                         {% endfor %}

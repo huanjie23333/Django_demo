@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
-{% load web_extras %}
+{#{% load web_extras %}#}
 
 {% block content %}
     <section id="content">
@@ -22,7 +22,7 @@
                                 {% for tag in cate.tag_list %}
                                      <li class="tag-item">
                                          <a href="{% url 'category_page' cate.cateename %}">
-                                            {{ tag.tag__name|cc }}
+                                            {{ tag.tag__name }}
                                          </a>
                                      </li>
                                 {% endfor  %}
@@ -44,7 +44,7 @@
                                 {% for tag in sidebar_news_tag_list %}
                                      <li class="tag-item">
                                          <a href="{% url 'news:tag_news' tag.name %}">
-                                            {{ tag.name|cc }}
+                                            {{ tag.name }}
                                          </a>
                                      </li>
                                 {% endfor  %}

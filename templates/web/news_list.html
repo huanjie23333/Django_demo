@@ -1,15 +1,11 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
-{% load web_extras %}
+{#{% load web_extras %}#}
 
 {% block meta %}
     {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
 {% block title %}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
-
-{# {% block seo_title %}#}
-{#    新闻快讯 - 区块链导航#}
-{# {% endblock %}#}
 
 {% block content %}
     <section id="content">
@@ -18,8 +14,8 @@
                 <div class="seo-only">
                     {% for news in sidebar_news_list %}
                         <div class="entry">
-                            <h1 class="news-title">{{ news.title|cc }}</h1>
-                            <p class="news-content">{{ news.content|cc }}</p>
+                            <h1 class="news-title">{{ news.title }}</h1>
+                            <p class="news-content">{{ news.content }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -30,9 +26,8 @@
 {#                            <div class="tag_switch">#}
 {#                                <i class="fa fa-download"></i>#}
 {#                            </div>#}
-                            <div class="timeline newsline">
+                            <div class="timeline newsline"></div>
 
-                            </div>
                             <div class="middle-wrapper">
                                 <a class="btn white-btn btn-load-news">{% trans '加载更多' %}</a>
                             </div>
