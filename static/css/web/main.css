@@ -833,6 +833,16 @@ ul li {
 .entry .body .news-info {
   padding: 10px 0px 0px;
 }
+.entry .body .news-info li {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.entry .body .news-info .tag-list-wrapper {
+  -webkit-transform: translate(0, -3px);
+  -moz-transform: translate(0, -3px);
+  -ms-transform: translate(0, -3px);
+  -o-transform: translate(0, -3px);
+}
 .entry .body .news-info .tag-item a {
   color: #0E8ED8;
   line-height: 2em;
