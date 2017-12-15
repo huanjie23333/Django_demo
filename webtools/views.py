@@ -70,7 +70,7 @@ class CoinListView(CoinMarketCapDataMixin, TemplateView):
             'seo': {
                 'title': '区块链导航 ：加密货币报价列表',
                 'key_words': ','.join([coin['name'] for coin in c_list]),
-                'description': "区块链导航 ChainDH ：汇集重要加密货币市值和报价。"
+                'description': "区块链导航 Block123.com ：汇集重要加密货币市值和报价。"
             }
         })
         return context

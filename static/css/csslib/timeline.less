@@ -1,4 +1,6 @@
 @import "../csslib/var.less";
+@import "../csslib/mixin.less";
+@import "../csslib/widgets.less";
 
 @container-shadow: 0.5rem 0.5rem 2rem 0 rgba(0,0,0, 0.2);
 @gutter:30px;
@@ -127,6 +129,13 @@
     padding-left: @gutter;
     .news-info{
       padding:10px 0px 0px;
+      li {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .tag-list-wrapper {
+        .translate(0, -3px); //修正标签与时间错位，找不到原因:(
+      }
       .tag-item{
          a{
            .common-link;

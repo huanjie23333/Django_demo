@@ -8,7 +8,7 @@ import requests
 
 # from nav.models import Nav
 
-list_url = "http://www.chaindh.com/api/nav/"
+list_url = "http://www.block123.com/api/nav/"
 
 headers = {'Authorization': 'Token b248833e4b1327fa70824089669860ea93607851'}
 
