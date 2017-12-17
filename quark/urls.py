@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.views.decorators.cache import cache_page
 
 from web.views import (IndexView, CategoryView,  SiteMapView,
-    SubNavCreateView, SubNavSuccessView, CountDownList, ForkListView)
+    SubNavCreateView, SubNavSuccessView, CountDownList, ForkListView, D3TestView)
 
 from web.views.news import NewsListView
 
@@ -48,6 +48,7 @@ urlpatterns = [
     url(r'^search/', include('web.urls.search', namespace='search')),
     url(r'^feed/', include('feed.urls', namespace='feed')),
     url(r'^tools/', include('webtools.urls', namespace='tools')),
+    url(r'^d3_test/', D3TestView.as_view(), name='d3_test'),
 
 
 ]
