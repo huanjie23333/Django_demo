@@ -596,8 +596,6 @@
         left: 20
     };
 
-
-
     var width = 1300 - margin.left - margin.right,
         height = 700 - margin.bottom - margin.top,
         padding = 3, //6,//3, // separation between same-color nodes
