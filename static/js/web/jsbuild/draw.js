@@ -744,8 +744,8 @@
 
     //svg.append("text").text("Four Years of Initial Coin Offerings").attr("class","titletext tt ttop").attr("x",width/2 - margin.left/2 + margin.right/2 + 10).attr("y",adjDownText-30).style("fill","white").style("font-size","30px").style("font-weight","200");
 
-    svg.append("text").text("Total fundraising").attr("class","tt titletext").attr("x",130+adjRightText).attr("y",adjDownText-16).style("fill","white");
-    var rtotal = svg.append("text").text("$0").attr("class","tt rtotal").attr("x",130+adjRightText).attr("y",adjDownText+20).style("fill","white");
+    svg.append("text").text("Total fundraising").attr("class","tt titletext").attr("x",130+adjRightText).attr("y",adjDownText-16).style("fill","gray");
+    var rtotal = svg.append("text").text("$0").attr("class","tt rtotal").attr("x",130+adjRightText).attr("y",adjDownText+20).style("fill","gray");
 
     node
         /*
