@@ -197,6 +197,8 @@ class ForkListView(FlinkMixin, ListView):
 
 
 
+class D3TestView(TemplateView):
+    template_name = 'web/tools/d3_test.html'
 
 
 
