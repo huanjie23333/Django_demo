@@ -1,8 +1,7 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
 
-{% block header %}
-{% endblock %}
+
 {% block search_row %}
 {% endblock %}
 
@@ -22,19 +21,18 @@
 {% block basic_script %}
       <style>
         body, html {
-            background-color: black/*rgb(20,20,20)*/;
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
         svg {
-            background-color: black;
+            background-color: transparent;
         }
         text {
             display: block;
             white-space: nowrap;
             text-anchor: middle;
-            fill: white;
+            fill: gray;
             font-family: 'Arial Narrow', Arial, sans-serif;
             /*pointer-events: none;*/
         }
@@ -42,41 +40,43 @@
             white-space: inherit;
         }
         .tokenname {
+            fill: white;
             font-weight: 300;
         }
         .tokenprice {
+            fill:white;
             font-weight: 500;
         }
         .domain {
-            fill: white;
+            fill: black;
         }
         .axis {
-            fill: white;
+            fill:black;
             -webkit-user-select: none;
             -moz-user-select: none;
             user-select: none;
         }
 
         .axis .halo {
-            stroke: white;
+            stroke: black;
             stroke-width: 1px;
             stroke-linecap: round;
         }
 
         .slider .handle path {
-            stroke: white;
+            stroke: black;
             stroke-width: 3px;
             stroke-linecap: round;
             pointer-events: none;
         }
 
         .slider .handle text {
-            fill: white;
+            fill: black;
             text-align: center;
             font-size: 22px;
         }
         path {
-            fill: white;
+            fill: black;
         }
         .legend text {
             font-size: 20px;
@@ -91,8 +91,8 @@
 
         .svgoutercontainer {
             width: 185vh;
-            height: 100vh;
             max-width: 100vw;
+            height:70vh;
             top: 0;
             bottom: 0;
             left: 0;
@@ -168,7 +168,7 @@
 
         .resp-sharing-button__link {
             text-decoration: none;
-            color: #fff;
+            color: blue;
             margin: 0.5em
         }
 
@@ -248,14 +248,14 @@
             fill: transparent;
             transition: all 0.5s;
             transform-origin: 50% 50%;
-            stroke: white;
+            stroke: black;
             stroke-width: 2px;
         }
         .pathfb {
-            fill: white;
+            fill: black;
         }
         .pathtwitter {
-            fill: white;
+            fill: black;
         }
 
         .sharefb:hover {
@@ -279,7 +279,7 @@
         }
         .sharepath {
             pointer-events: none;
-            fill: white;
+            fill: black;
         }
         #moreinfo {
             font-size: 24px;
@@ -292,15 +292,18 @@
         }
         .bub:hover {
             stroke-width:1px;
-            stroke:white;
+            stroke:black;
         }
 
     </style>
 
 
 <script language="JavaScript" src="{% static 'js/web/jsbuild/draw.js' %}">
-
 </script>
+<script src="{% static 'js/web/app/require.js' %}"></script>
+<script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+
 {% endblock %}
-{% block footer %}
-{% endblock %}
+
+
+
