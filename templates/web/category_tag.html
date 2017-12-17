@@ -9,7 +9,7 @@
                 <div class="col-sm-8 col-xs-12 " id="main_column">
                         <div class="box">
                                 <div class="box-header">
-                                    {{ cate.zh_hant_cname }}
+                                    {{ cate.cname }}
                                 </div>
                                 <div class="box-body category-tag-wrapper">
                                     <div class="tag-name">{{ tag_name }}</div>
@@ -20,7 +20,7 @@
                                                 <a
                                                     class="{% if nav.highlight %} highlight {% endif %}"
                                                     href="{{ nav.web_site }}" rel="nofollow" target="_blank" title="{{ nav.site_name }}" >
-                                                    {{ nav.zh_hant_main_name }}
+                                                    {{ nav.main_name }}
                                                 </a>
                                             </span>
 
@@ -30,9 +30,9 @@
                                                     <span class="nav-ename">{{ nav.ename }}</span>
                                                 {% endif %}
 
-                                                {% if nav.location %}<span class="location">{{ nav.zh_hant_location }}</span>{% endif %}
+                                                {% if nav.location %}<span class="location">{{ nav.location }}</span>{% endif %}
                                             <span class="nav-desc">
-                                                {{ nav.zh_hant_main_description }}
+                                                {{ nav.get_main_description }}
                                             </span>
 {#                                            <span class="sr-only">#}
 {#                                                {{ nav.zh_hant_main_description }}#}
