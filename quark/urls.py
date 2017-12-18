@@ -64,8 +64,8 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^$', IndexView.as_view(), name='web_index'),
-    # url(r'^$', cache_page(3600)(IndexView.as_view()), name='web_index'),
+    # url(r'^$', IndexView.as_view(), name='web_index'),
+    url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
 
 from django.contrib.flatpages import views
