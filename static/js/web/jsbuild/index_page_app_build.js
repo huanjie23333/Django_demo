@@ -1717,12 +1717,12 @@ define('subapp/adapters/coinbeef',[
 
                 var min_diff = Math.ceil(sec_diff/60.0) - 1;
                 if(sec_diff > 60 && sec_diff <= 3600){
-                    return  min_diff + '分鐘前';
+                    return  min_diff + '分钟前';
                 }
 
                 var hour_diff = Math.ceil(min_diff/60.0) -1;
                 if(hour_diff <= 24){
-                    return hour_diff + '小時前';
+                    return hour_diff + '小时前';
                 }
 
                 var day_diff = Math.ceil(hour_diff/24.0) -1;
