@@ -615,7 +615,7 @@
     var n = icodata.length, // total number of nodes
         m = 9; // number of distinct clusters
 
-    var barcolor = "rgb(160,160,160)";
+    var barcolor = "#0E8ED8";
 
 
     var startdate = 41640; //42370;
@@ -742,8 +742,8 @@
 
     //svg.append("text").text("Four Years of Initial Coin Offerings").attr("class","titletext tt ttop").attr("x",width/2 - margin.left/2 + margin.right/2 + 10).attr("y",adjDownText-30).style("fill","white").style("font-size","30px").style("font-weight","200");
 
-    svg.append("text").text("Total fundraising").attr("class","tt titletext").attr("x",130+adjRightText).attr("y",adjDownText-16).style("fill","gray");
-    var rtotal = svg.append("text").text("$0").attr("class","tt rtotal").attr("x",130+adjRightText).attr("y",adjDownText+20).style("fill","gray");
+    svg.append("text").text("总募资额").attr("class","tt titletext").attr("x",130+adjRightText).attr("y",adjDownText-16).style("fill","#666").style("font-size","16px").style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif');
+    var rtotal = svg.append("text").text("$0").attr("class","tt rtotal").attr("x",130+adjRightText).attr("y",adjDownText+20).style("fill","#666").style("font-size","16px").style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif');
 
     node
         /*
@@ -1296,7 +1296,8 @@
             })
             .tickSize(0)
             .tickPadding(12)
-            .tickValues([timeScale.domain()[0], new Date(2015,0,1), new Date(2016,0,1), new Date(2017,0,1), new Date(2017,10,30)])) //timeScale.domain()[1]
+            .tickValues([timeScale.domain()[0], new Date(2015,0,1), new Date(2016,0,1), new Date(2017,0,1), new Date(2017,10,30)])
+        ) //timeScale.domain()[1]
         .select(".domain")
         .select(function() {
             return this.parentNode.appendChild(this.cloneNode(true));
@@ -1486,15 +1487,15 @@
     }
 
     var ldata = [
-        {n:0,region:"Europe"},
-        {n:1,region:"North America"},
-        {n:2,region:"Asia"},
-        {n:3,region:"Caribbean"},
-        {n:8,region:"South America"},
-        {n:9,region:"Oceania"},
-        {n:5,region:"Middle East"},
-        {n:4,region:"Africa"},
-        {n:6,region:"Stateless/Unknown"}
+        {n:0,region:"欧洲"},
+        {n:1,region:"北美洲"},
+        {n:2,region:"亚洲"},
+        {n:3,region:"加勒比地区"},
+        {n:8,region:"南美洲"},
+        {n:9,region:"大洋洲"},
+        {n:5,region:"中东"},
+        {n:4,region:"非洲"},
+        {n:6,region:"未知"}
     ];
 
     var cr = 9;
@@ -1525,6 +1526,9 @@
             return (2*cr+4)*i + 6;
         })
         .style("text-anchor","start")
+        .style("font-size","14px")
+        .style("fill","#666")
+        .style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif')
         .text(function(d){
             return d.region;
         });
@@ -1655,6 +1659,7 @@
         .style("fill","white")
         .style("text-anchor","middle")
         .style("font-size","20px")
+        .style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif')
         .text("Restart");
 
     //pause=true;
