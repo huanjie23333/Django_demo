@@ -1515,6 +1515,16 @@ ul li {
 #index_fork .fork-state {
   display: none;
 }
+#sidebar_fork .fork-item,
+#index_fork .fork-item {
+  line-height: 2;
+}
+#sidebar_fork .fork-item .clockdiv,
+#index_fork .fork-item .clockdiv {
+  padding: 10px 0;
+  height: 65px;
+  line-height: 45px;
+}
 /*
  * Table styles
  */
