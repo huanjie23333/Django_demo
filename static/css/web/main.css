@@ -2177,6 +2177,19 @@ body a:hover {
   margin-top: 20px;
   color: #aaa;
 }
+.news-detail-wrapper .news-share {
+  text-align: start;
+  line-height: 36px;
+  color: #aaa;
+}
+.news-detail-wrapper .news-share a {
+  color: #aaa;
+}
+.news-detail-wrapper .news-share::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 #content,
 .content-container {
   background-color: #F7F6F2;
