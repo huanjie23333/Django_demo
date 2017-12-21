@@ -2,8 +2,6 @@
 {% load i18n static compress %}
 
 
-{% block search_row %}
-{% endblock %}
 
 {% block content %}
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -20,11 +18,7 @@
 
 {% block basic_script %}
       <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+
         svg {
             background-color: transparent;
         }
@@ -32,8 +26,8 @@
             display: block;
             white-space: nowrap;
             text-anchor: middle;
-            fill: gray;
-            font-family: 'Arial Narrow', Arial, sans-serif;
+            fill: #666;
+            font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
             /*pointer-events: none;*/
         }
         tspan {
@@ -71,9 +65,9 @@
         }
 
         .slider .handle text {
-            fill: black;
+            fill: #666;
             text-align: center;
-            font-size: 22px;
+            font-size: 14px;
         }
         path {
             fill: black;
@@ -82,7 +76,8 @@
             font-size: 20px;
         }
         .tick text {
-            font-size: 18px;
+            font-size: 14px;
+            font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
         }
 
         .background {
@@ -90,23 +85,21 @@
         }
 
         .svgoutercontainer {
-            width: 185vh;
-            max-width: 100vw;
-            height:70vh;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            line-height: 80vh;
+{#            width: 185vh;#}
+{#            max-width: 100vw;#}
+{#            top: 0;#}
+{#            bottom: 0;#}
+{#            left: 0;#}
+{#            right: 0;#}
+{#            line-height: 80vh;#}
         }
         .svgcontainer {
-            display: inline-block;
-            position: relative;
-            width: 100%;
-            padding-bottom: 53.8%;
-            vertical-align: middle;
-            overflow: hidden;
+{#            display: inline-block;#}
+{#            position: relative;#}
+{#            width: 100%;#}
+{#            padding-bottom: 53.8%;#}
+{#            vertical-align: middle;#}
+{#            overflow: hidden;#}
         }
 
         .svgcontainerX {
@@ -122,9 +115,10 @@
         }
         .svgcontent {
             display: inline-block;
-            position: absolute;
-            top: 0;
-            left: 0;
+{#            position: absolute;#}
+            width: 100vw;
+{#            top: 0;#}
+{#            left: 0;#}
         }
         .svgcontentX {
             height: 100%;
@@ -133,7 +127,8 @@
             font-size: 32px;
         }
         .titletext {
-            font-size: 24px;
+            font-size: 16px;
+            font-weight: bold;
         }
         .eleme path {
             fill: transparent;
