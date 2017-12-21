@@ -944,7 +944,7 @@ ul li {
 }
 .main-search-container input {
   font-size: 16px;
-  border: 1px solid #f3f3f3;
+  border: 1px solid transparent;
   line-height: 38px;
   width: 400px;
   padding-left: 15px;
@@ -961,7 +961,7 @@ ul li {
   color: #fff;
   margin: 0;
   margin-left: 15px;
-  line-height: 38px;
+  line-height: 42px;
   font-size: 16px;
   padding: 0px 15px;
   -webkit-border-radius: 0;
@@ -971,8 +971,6 @@ ul li {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   border: none;
-  position: relative;
-  top: -1px;
 }
 .main-search-container .search-button:focus,
 .main-search-container .search-button:hover,
@@ -989,7 +987,7 @@ ul li {
   color: #0E8ED8;
   background-color: #fff;
   border: solid 1px #0E8ED8;
-  line-height: 36px;
+  line-height: 40px;
 }
 .main-search-container #search-site-btn {
   margin-left: 0;
