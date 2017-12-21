@@ -2108,7 +2108,38 @@ body a:hover {
   background-color: #2C2F39;
 }
 #search-row {
-  padding: 65px 0px 20px 0px;
+  padding: 50px 0px 5px 0px;
+}
+#search-row .promo-text-wrapper {
+  margin-left: 20px;
+  position: absolute;
+  width: 150px;
+  overflow: hidden;
+}
+#search-row .promo-text-wrapper .promo-text-list {
+  width: 600px;
+  position: relative;
+}
+#search-row .promo-text-wrapper li {
+  width: 150px;
+  display: inline-block;
+  line-height: 40px;
+}
+#search-row .promo-text-wrapper li a {
+  color: #aaa;
+}
+#search-row .promo-text-wrapper li a:hover {
+  color: #0E8ED8;
+}
+@media (max-width: 768px) {
+  #search-row .promo-text-wrapper {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin-top: 20px;
+    height: 30px;
+  }
 }
 .price-row {
   width: 400px;
