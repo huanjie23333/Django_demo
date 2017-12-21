@@ -833,6 +833,10 @@ ul li {
 .entry .body .news-info {
   padding: 10px 0px 0px;
 }
+.entry .body .news-info .shareimg {
+  margin-left: 5px;
+  color: #aaa;
+}
 .entry .body .news-info li {
   margin-top: 0;
   margin-bottom: 0;
@@ -944,7 +948,7 @@ ul li {
 }
 .main-search-container input {
   font-size: 16px;
-  border: 1px solid #f3f3f3;
+  border: 1px solid transparent;
   line-height: 38px;
   width: 400px;
   padding-left: 15px;
@@ -961,7 +965,7 @@ ul li {
   color: #fff;
   margin: 0;
   margin-left: 15px;
-  line-height: 38px;
+  line-height: 42px;
   font-size: 16px;
   padding: 0px 15px;
   -webkit-border-radius: 0;
@@ -971,8 +975,6 @@ ul li {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   border: none;
-  position: relative;
-  top: -1px;
 }
 .main-search-container .search-button:focus,
 .main-search-container .search-button:hover,
@@ -989,7 +991,7 @@ ul li {
   color: #0E8ED8;
   background-color: #fff;
   border: solid 1px #0E8ED8;
-  line-height: 36px;
+  line-height: 40px;
 }
 .main-search-container #search-site-btn {
   margin-left: 0;
@@ -2217,6 +2219,19 @@ body a:hover {
   text-align: left;
   margin-top: 20px;
   color: #aaa;
+}
+.news-detail-wrapper .news-share {
+  text-align: start;
+  line-height: 36px;
+  color: #aaa;
+}
+.news-detail-wrapper .news-share a {
+  color: #aaa;
+}
+.news-detail-wrapper .news-share::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 #content,
 .content-container {

@@ -742,8 +742,8 @@
 
     //svg.append("text").text("Four Years of Initial Coin Offerings").attr("class","titletext tt ttop").attr("x",width/2 - margin.left/2 + margin.right/2 + 10).attr("y",adjDownText-30).style("fill","white").style("font-size","30px").style("font-weight","200");
 
-    svg.append("text").text("总募资额").attr("class","tt titletext").attr("x",80+adjRightText).attr("y",adjDownText-16).style("fill","#666").style("font-size","16px").style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif');
-    var rtotal = svg.append("text").text("$0").attr("class","tt rtotal").attr("x",80+adjRightText).attr("y",adjDownText+20).style("fill","#666").style("font-size","16px").style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif');
+    svg.append("text").text("总募资额").attr("class","tt titletext").attr("x",70+adjRightText).attr("y",adjDownText-16+220).style("font-size","16px").style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif');
+    var rtotal = svg.append("text").text("$0").attr("class","tt rtotal").attr("x",70+adjRightText).attr("y",adjDownText+20+210).style("font-size","16px").style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif');
 
     node
         /*
@@ -1527,7 +1527,6 @@
         })
         .style("text-anchor","start")
         .style("font-size","14px")
-        .style("fill","#666")
         .style("font-family",'"Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif')
         .text(function(d){
             return d.region;
