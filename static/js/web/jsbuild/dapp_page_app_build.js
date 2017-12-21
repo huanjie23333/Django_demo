@@ -1432,8 +1432,8 @@ define('subapp/header/promo_text',['libs/Class','jquery', 'underscore'], functio
                 this.$ele_wrapper.css({left: -this.element_width * 1});
                 this.current_ele_index = 2;
             }
-            console.log('current ele index : ' + this.current_ele_index);
-            console.log('move : ' + this.element_width * (this.current_ele_index-1));
+            // console.log('current ele index : ' + this.current_ele_index);
+            // console.log('move : ' + this.element_width * (this.current_ele_index-1));
             this.current_ele_index += 1;
             this.$ele_wrapper.animate({left: -this.element_width * (this.current_ele_index-1)}, 500);
         }
