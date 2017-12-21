@@ -833,6 +833,10 @@ ul li {
 .entry .body .news-info {
   padding: 10px 0px 0px;
 }
+.entry .body .news-info .shareimg {
+  margin-left: 5px;
+  color: #aaa;
+}
 .entry .body .news-info li {
   margin-top: 0;
   margin-bottom: 0;

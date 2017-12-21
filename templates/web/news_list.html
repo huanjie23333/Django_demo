@@ -8,6 +8,7 @@
 {% block title %}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
 
 {% block content %}
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59c89b30b1eb72c4"></script>
     <section id="content">
         <div class="container">
             <div class="row">
@@ -48,6 +49,7 @@
     <script id="newsline_template" type="text/template">
 
         <div class="entry">
+            <div class="shareimg-content-wrapper">
              <% if(show_year){ %>
                     <div class="year-wrapper">
                         <span class="year"><%=year%></span>
@@ -65,7 +67,12 @@
                 <p></p>
             </div>
             <div class="body">
-
+                <div class="shareimg-title" style="display:none">
+                    <img src="{% static 'images/shareimg-title.jpeg' %}">
+                    <div class="shareimg-title-text">{% trans '区块链导航' %}<br>
+                        <span>Block123.com</span>
+                    </div>
+                </div>
                 <h1 class="news-title">
                       <%=title%>
                 </h1>
@@ -75,6 +82,13 @@
 
                     </li>
                     <li class="news-info"><span><%=time_diff%></span>
+{#                        <span class="addthis_inline_share_toolbox"></span>#}
+                        {% if request.user.is_staff %}
+                            <span>
+                                <a class="shareimg" href="javascript:;">下载图片</a>
+                                <i class="fa fa-spinner shareimg-loading" style="display:none"></i>
+                            </span>
+                        {% endif %}
                         <span class="tag-list-wrapper">
                             <ul class="tag-list">
                                 <li class="tag-list-head">
@@ -88,7 +102,89 @@
                     </li>
                 </ul>
             </div>
-        </div>
+            <div class="shareimg-qr-code" style="display:none">
+                <img src="{% static 'images/block123-qr-code.png' %}"><br>
+                {% trans '访问' %}&nbsp;Block123&nbsp;{% trans '获得更多快讯' %}
+            </div>
+            </div>
+    </div>
+    </script>
+        <script id="rasterize-style" type="text/template">
+        <style>
+.shareimg-content-wrapper {
+  width: 720px;
+  padding: 60px 35px 40px 35px;
+  background-color: #fafafa;
+  color: #999;
+}
+.body {
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+.news-info, .origin-link, .left-content, .year-wrapper {
+  display: none;
+}
+.news-title {
+  font-size: 36px;
+  color: #262626;
+  font-weight: 400;
+  line-height: 2;
+  margin: 20px 0;
+}
+.news-content {
+  font-size: 28px;
+  color: #262626;
+  line-height: 2;
+  font-weight: 300;
+}
+.news-info {
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 300;
+}
+.shareimg-logo {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 22px;
+  line-height: 2em;
+    font-weight: 200;
+}
+.shareimg-qr-code {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 22px;
+  line-height: 2em;
+  font-weight: 200;
+}
+.shareimg-qr-code img {
+  width: 120px;
+}
+.shareimg-title img {
+  width: 720px;
+  margin: -50px 0 20px -50px;
+}
+.shareimg-title-text {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 400;
+}
+.shareimg-title-text span {
+  font-size: 30px;
+  display: inline-block;
+  margin-top: 10px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+        </style>
+
     </script>
 
     <script language="javascript">

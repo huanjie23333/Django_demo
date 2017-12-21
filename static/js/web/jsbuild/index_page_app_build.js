@@ -4365,11 +4365,13 @@ default:return b}}c.match=d,c.parse=e;var i=/(?:(only|not)?\s*([^\s\(\)]+)(?:\s*
 define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery'], function(Class, rasterizeHTML, $){
     var ShareImg = Class.extend({
         init: function(){
-            if(!$('#shareimg').length) return ;
-            $('#shareimg').click(function(){
-                var html = $('.shareimg-wrapper').html().replace(/style="display:none"/g, '');
+            if(!$('.shareimg').length) return ;
+            $('.shareimg').click(function(){
+                var tar = $(this).parents('.entry');
+                var html = tar.html().replace(/style="display:none"/g, '');
                 html += $('#rasterize-style').html();
-                $('.shareimg-loading').css('display', 'inline-block');
+
+                tar.find('i.shareimg-loading').css('display', 'inline-block');
                 rasterizeHTML.drawHTML(html).then(function(data){
 
                     svgString2Image(data.image, 'png', downloadPng);
@@ -4391,13 +4393,13 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery'], fu
                     }
 
                     function downloadPng(dataURL){
-                        var title = $('.news-title').html();
+                        var title = $('.news-title', tar).html().trim();
                         $('<a class="download-img"></a>').attr('href', dataURL).attr('download', title)
-                            .appendTo('.news-share');
+                            .appendTo('.news-info', tar);
                         var download = document.querySelector('.download-img');
                         download.click();
                         $(download).remove();
-                        $('.shareimg-loading').css('display', 'none');
+                        tar.find('i.shareimg-loading').css('display', 'none');
                     }
 
                 });
