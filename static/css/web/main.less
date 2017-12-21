@@ -72,7 +72,43 @@ body {
 }
 
 #search-row{
-  padding: 65px 0px 20px 0px;
+  padding: 50px 0px 5px 0px;
+  .promo-text-wrapper{
+     margin-left: 20px;
+     position: absolute;
+     width: 150px;
+     overflow: hidden;
+     .promo-text-list{
+        width: 600px;
+        position:relative;
+     }
+     li{
+        width: 150px;
+        display: inline-block;
+       line-height: 40px;
+        a{
+           color: @support-text-color;
+           &:hover{
+             color: @site-link-color;
+           }
+        }
+
+     }
+
+  }
+
+  @media (max-width:768px){
+    .promo-text-wrapper{
+       display: block;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        margin-top: 20px;
+        height: 30px;
+
+    }
+  }
+
 }
 
 .price-row {

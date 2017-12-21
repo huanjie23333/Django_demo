@@ -2,13 +2,14 @@ define(['libs/Class',
         'subapp/header/header_price',
         'subapp/adapters/HeaderCoinmarketcapAdapter',
         'subapp/header/search',
-
+        'subapp/header/promo_text',
     ],
     function(
         Class,
         HeaderPrice,
         HeaderCoinmarketAdapter,
-        Search
+        Search,
+        PromoText
     ){
 
     var HeaderApp = Class.extend({
@@ -20,6 +21,8 @@ define(['libs/Class',
             });
 
             this.search = new Search();
+            // for promo text
+            new PromoText();
 
         },
 
