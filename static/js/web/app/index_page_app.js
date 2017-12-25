@@ -17,6 +17,7 @@ require([
         'subapp/search/search_news_ajax',
         'subapp/countdown/btc_countdown',
         'subapp/fork_list/fork_list',
+        'subapp/news/shareimg',
         'bootstrap'
     ],
     function (polyfill,
@@ -36,7 +37,8 @@ require([
               SearchSite,
               SearchNewsAjax,
               BtcCountdown,
-              ForkListApp
+              ForkListApp,
+              ShareImgApp
               ) {
 
         jQuery = $;
@@ -68,6 +70,7 @@ require([
         // fork list page
 
         new ForkListApp();
+        new ShareImgApp();
 
 
 
