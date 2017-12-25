@@ -1,5 +1,7 @@
 # -*- coding: UTF-8  -*-
+import requests
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
+from django.core.cache import cache
 from django.urls import reverse, reverse_lazy
 from taggit.models import TaggedItem, Tag
 
@@ -200,8 +202,29 @@ class ForkListView(FlinkMixin, ListView):
 class D3TestView(FlinkMixin, TemplateView):
     template_name = 'web/tools/d3_test.html'
 
-class CryptoindexView(FlinkMixin, TemplateView):
-    template_name = 'web/tools/d3_test.html'
+
+class APIDataCacheMixin(object):
+    def get_api_url(self):
+        return self.api_url
+
+    def get_api_data(self):
+        key = "api:data:%s"%self.get_api_url()
+        return cache.get_or_set(key, self._get_api_data(), timeout=3600)
+
+    def _get_api_data(self):
+        return requests.get(self.get_api_url()).text
+
+
+class CryptoindexView(APIDataCacheMixin, FlinkMixin, TemplateView):
+    template_name = 'web/tools/crypto_Index.html'
+    api_url = 'http://crix.hu-berlin.de/data/crix.json'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'crypto_index': self.get_api_data()
+        })
+        return context
 
 
 
