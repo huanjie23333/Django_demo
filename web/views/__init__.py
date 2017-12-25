@@ -200,5 +200,8 @@ class ForkListView(FlinkMixin, ListView):
 class D3TestView(FlinkMixin, TemplateView):
     template_name = 'web/tools/d3_test.html'
 
+class CryptoindexView(FlinkMixin, TemplateView):
+    template_name = 'web/tools/crypto_index.html'
+
 
 
