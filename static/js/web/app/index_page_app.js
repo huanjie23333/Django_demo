@@ -19,7 +19,7 @@ require([
         'subapp/fork_list/fork_list',
         'subapp/news/shareimg',
         'bootstrap',
-        'subapp/tools/chart'
+        'subapp/tools/create_chart'
     ],
     function (polyfill,
               $,
@@ -40,6 +40,7 @@ require([
               BtcCountdown,
               ForkListApp,
               ShareImgApp,
+              bootstrap,
               Chart
               ) {
 

@@ -12,7 +12,7 @@ define(['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,hi
                 arr.push(crypto_index[i].price);
                 data.push(arr);
             }
-            $('#container').highcharts('StockChart', {
+            $('#chart_container').highcharts('StockChart', {
                     rangeSelector: {
                         selected: 1,
                         enabled:true
@@ -42,7 +42,6 @@ define(['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,hi
                     }]
                 });
             }
-
         });
     return Chart;
 
