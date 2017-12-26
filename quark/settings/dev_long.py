@@ -55,7 +55,7 @@ IS_LOCAL_TESTING = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/niseitane/Documents/code/quark/templates'],
+        'DIRS': ['/data/source/quark/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +72,7 @@ TEMPLATES = [
 
 ALLOWED_HOSTS = ['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192']
 STATIC_URL = '/static/'
-STATIC_ROOT = '/Users/niseitane/Documents/code/quark/static'
+STATIC_ROOT = '/data/source/quark/static'
 STATICFILES_DIRS = []
 
 Current_Dbhost = '127.0.0.1'

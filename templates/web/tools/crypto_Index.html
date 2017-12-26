@@ -13,8 +13,8 @@
     <section id="content">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 col-xs-12">
-                    crypto index
+                <div class="col-sm-8 col-xs-12 col-sm-offset-2">
+                    <div id="chart_container" style="min-width:400px;height:400px"></div>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
     <script language="JavaScript">
       {% autoescape off %}
             var crypto_index = {{ crypto_index }};
-        {% endautoescape %}
+      {% endautoescape %}
     </script>
 {% endblock %}
 {##}
@@ -38,3 +38,4 @@
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
     {% endcompress %}
 {% endblock %}
+
