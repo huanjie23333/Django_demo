@@ -4,6 +4,7 @@ define(['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,hi
             if($('.crypto-index').length <= 0){
                 return ;
             }
+
             this.get_chart();
         },
         get_chart:function(){
@@ -47,5 +48,4 @@ define(['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,hi
             }
         });
     return Chart;
-
 });

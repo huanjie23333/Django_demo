@@ -7371,6 +7371,7 @@ define('subapp/tools/create_chart',['libs/Class','jquery','highstock','highchart
             if($('.crypto-index').length <= 0){
                 return ;
             }
+
             this.get_chart();
         },
         get_chart:function(){
@@ -7414,7 +7415,6 @@ define('subapp/tools/create_chart',['libs/Class','jquery','highstock','highchart
             }
         });
     return Chart;
-
 });
 require([
         'libs/polyfills',
