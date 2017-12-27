@@ -33,6 +33,7 @@ require([
         new Header();
         new Tracker();
         new GoTop();
+
         // header price fetch
         all_price_feed.run();
 
