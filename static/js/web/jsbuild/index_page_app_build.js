@@ -4082,6 +4082,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
             };
 
             var recommendNews = function(){
+                console.log('recommendation');
                 $.getJSON('http://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
             };
 

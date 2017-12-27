@@ -20,6 +20,7 @@ define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
             };
 
             var recommendNews = function(){
+                console.log('recommendation');
                 $.getJSON('http://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
             };
 
