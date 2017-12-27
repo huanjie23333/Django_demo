@@ -70,7 +70,8 @@
                 <div class="shareimg-title" style="display:none">
                     <img src="{% static 'images/shareimg-title.jpeg' %}">
                     <div class="shareimg-title-text">{% trans '区块链导航' %}<br>
-                        <span>Block123.com</span>
+                        <span>Block123.com</span><br>
+                        <span class="time"><%=year%>-<%=month%>-<%=date%></span>
                     </div>
                 </div>
                 <h1 class="news-title">
@@ -181,6 +182,13 @@
   font-size: 30px;
   display: inline-block;
   margin-top: 10px;
+  margin-left: 4px;
+}
+.shareimg-title-text .time {
+  font-size: 20px;
+  display: inline-block;
+  margin-top: 40px;
+  font-weight: 300;
 }
 ul {
   list-style: none;
