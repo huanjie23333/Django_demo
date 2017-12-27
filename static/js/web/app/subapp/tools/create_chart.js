@@ -1,6 +1,9 @@
 define(['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,highstock,highcharts_lang){
     var Chart = Class.extend({
         init:function(){
+            if($('.crypto-index').length <= 0){
+                return ;
+            }
             this.get_chart();
         },
         get_chart:function(){
