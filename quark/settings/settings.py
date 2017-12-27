@@ -280,3 +280,5 @@ LOGGING = {
 # local and data format
 
 # USE_L10N = True
+
+TAGGIT_CASE_INSENSITIVE = True

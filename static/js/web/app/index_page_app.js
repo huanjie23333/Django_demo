@@ -18,7 +18,8 @@ require([
         'subapp/countdown/btc_countdown',
         'subapp/fork_list/fork_list',
         'subapp/news/shareimg',
-        'bootstrap'
+        'bootstrap',
+        'subapp/tools/create_chart'
     ],
     function (polyfill,
               $,
@@ -38,7 +39,9 @@ require([
               SearchNewsAjax,
               BtcCountdown,
               ForkListApp,
-              ShareImgApp
+              ShareImgApp,
+              bootstrap,
+              Chart
               ) {
 
         jQuery = $;
@@ -71,8 +74,7 @@ require([
 
         new ForkListApp();
         new ShareImgApp();
-
-
+        new Chart();
 
         all_price_feed.run();
         console.log('finish');

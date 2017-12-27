@@ -2038,6 +2038,9 @@ table.dataTable tbody tr {
     -o-transform: rotate(360deg);
   }
 }
+#content .highcharts-input-group {
+  display: none;
+}
 html,
 body {
   min-height: 100vh;
