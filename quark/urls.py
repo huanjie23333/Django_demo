@@ -51,7 +51,6 @@ urlpatterns = [
     url(r'^token_sale_history/', D3TestView.as_view(), name='d3_test'),
     url(r'^crypto_index/', CryptoindexView.as_view(), name='crypto_index'),
 
-
 ]
 
 urlpatterns += [
@@ -65,8 +64,8 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    # url(r'^$', IndexView.as_view(), name='web_index'),
-    url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
+    url(r'^$', IndexView.as_view(), name='web_index'),
+    # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
 
 from django.contrib.flatpages import views
