@@ -74,7 +74,12 @@ require([
 
         new ForkListApp();
         new ShareImgApp();
-        new Chart();
+
+
+        if($('#chart_container').length){
+            new Chart();
+        }
+
 
         all_price_feed.run();
         console.log('finish');
