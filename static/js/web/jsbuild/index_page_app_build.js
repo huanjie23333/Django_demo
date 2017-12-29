@@ -4074,6 +4074,19 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
             var compiled = _.template($('#search_news_template').html());
 
             var ajaxCallback = function(data){
+                if(data.count == 0) {
+                    recommendNews();
+                } else {
+                    renderTemplate(data);
+                }
+            };
+
+            var recommendNews = function(){
+                console.log('recommendation');
+                $.getJSON('http://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
+            };
+
+            var renderTemplate = function (data) {
                 tpl += compiled(data);
                 $('#ajax-news-content .box-body').html(tpl);
                 $('#ajax-news-content .box-header').html(
@@ -4095,6 +4108,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
                      + '</span>」的搜索结果约 '
                      + ' 条'
             );
+            $('input[name="q"]').attr('value', searchVal);
             $('#ajax-news-content .box-footer button').click(function(){
                  var ajaxURL = nextURL;
                  if(!ajaxURL) return false;
@@ -4115,7 +4129,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
                  url: 'http://api.chainnews.com/api/news/search.json?q=' + searchVal,
                  data: {},
                  jsonp: 'true',
-                 success: ajaxCallback
+                 success: ajaxCallback.bind(this)
             });
 
         }
