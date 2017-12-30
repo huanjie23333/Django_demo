@@ -27,7 +27,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
         return Nav
 
     def index_queryset(self, using=None):
-        return self.get_model().objects.all()
+        return self.get_model().objects.filter(status=Nav.STATUS.published)
 
     def prepare_tags(self, obj):
         try:
