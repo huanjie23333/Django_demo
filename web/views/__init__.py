@@ -22,7 +22,22 @@ import logging
 
 logger = logging.getLogger('django')
 
+
 class SqsCategoryTagDataMixin(object):
+    def _get_category_list(self):
+        categories = list(Category.objects.all())
+        return [{
+            'category_name': cate.cname,
+            'category_ename': cate.ename,
+            'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20),
+        }
+            for cate in categories
+        ]
+
+    def get_category_list(self):
+        key = "category:tag:nav:list"
+        return cache.get_or_set(key, self._get_category_list, 5 * 60)
+
     def get_cate_tag_navs(self, cate_id, tag_name):
         return SearchQuerySet().filter(cate_id=cate_id, tags=tag_name).order_by("-rank")[:20]
 
@@ -118,6 +133,7 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
     def get_recommend_nav(self):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
+
 class TestIndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
     template_name = 'web/index.html'
     def get_context_data(self, **kwargs):
@@ -126,21 +142,8 @@ class TestIndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
         context['categories'] = self.get_category_list()
         return context
 
-    def get_category_list(self):
-        categories = list(Category.objects.all())
-        return         [{
-            'category_name': cate.cname,
-            'category_ename': cate.ename,
-            'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20),
-            }
-            for cate in categories
-        ]
-
-
     def get_recommend_nav(self):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
-
-
 
 
 class SubNavCreateView(CreateView):
@@ -179,7 +182,7 @@ class SiteMapView(SideBarDataMixin, TemplateView):
     def get_all_tag_list(self):
         categories = Category.objects.all()
         return [{
-            'catename': cate.zh_hant_cname,
+            'catename': cate.cname,
             'cateename': cate.ename,
             'tag_list': self.get_cate_tag_list(cate.id)
         } for cate in categories]
@@ -199,7 +202,6 @@ class SiteMapView(SideBarDataMixin, TemplateView):
 class ErrorView(StaffuserRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         raise Exception('error for test')
-
 
 
 class CountDownList(SideBarDataMixin, TemplateView):
@@ -231,7 +233,6 @@ class ForkListView(FlinkMixin, ListView):
         if self.fork_status:
             assert(self.fork_status in ['incoming', 'done'])
         return super().get(request, *args, **kwargs)
-
 
 
 class D3TestView(FlinkMixin, TemplateView):
