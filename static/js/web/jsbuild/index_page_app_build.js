@@ -4074,6 +4074,19 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
             var compiled = _.template($('#search_news_template').html());
 
             var ajaxCallback = function(data){
+                if(data.count == 0) {
+                    recommendNews();
+                } else {
+                    renderTemplate(data);
+                }
+            };
+
+            var recommendNews = function(){
+                console.log('recommendation');
+                $.getJSON('http://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
+            };
+
+            var renderTemplate = function (data) {
                 tpl += compiled(data);
                 $('#ajax-news-content .box-body').html(tpl);
                 $('#ajax-news-content .box-header').html(
@@ -4095,6 +4108,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
                      + '</span>」的搜索结果约 '
                      + ' 条'
             );
+            $('input[name="q"]').attr('value', searchVal);
             $('#ajax-news-content .box-footer button').click(function(){
                  var ajaxURL = nextURL;
                  if(!ajaxURL) return false;
@@ -4115,7 +4129,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
                  url: 'http://api.chainnews.com/api/news/search.json?q=' + searchVal,
                  data: {},
                  jsonp: 'true',
-                 success: ajaxCallback
+                 success: ajaxCallback.bind(this)
             });
 
         }
@@ -7368,33 +7382,37 @@ define("highcharts_lang", ["highstock"], function(){});
 define('subapp/tools/create_chart',['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,highstock,highcharts_lang){
     var Chart = Class.extend({
         init:function(){
+            if($('.crypto-index').length <= 0){
+                return ;
+            }
+
             this.get_chart();
         },
-        get_chart:function(){
-            var data = [];
-            for(var i=0; i < crypto_index.length ; i++){
-                var arr = [];
-                var time = new Date(crypto_index[i].date);
-                arr.push(time.getTime());
-                arr.push(crypto_index[i].price);
-                data.push(arr);
-            }
-            $('#chart_container').highcharts('StockChart', {
+        get_chart:function() {
+                var data = [];
+                for (var i = 0; i < crypto_index.length; i++) {
+                    var arr = [];
+                    var time = new Date(crypto_index[i].date);
+                    arr.push(time.getTime());
+                    arr.push(crypto_index[i].price);
+                    data.push(arr);
+                }
+                $('#chart_container').highcharts('StockChart', {
                     rangeSelector: {
                         selected: 1,
-                        enabled:true
+                        enabled: true
                     },
-                    navigator:{
-                        enabled:false
+                    navigator: {
+                        enabled: false
                     },
-                    scrollbar:{
-                        enabled:false
+                    scrollbar: {
+                        enabled: false
                     },
-                    exporting:{
-                        enabled:false
+                    exporting: {
+                        enabled: false
                     },
-                    credits:{
-                        enabled:false
+                    credits: {
+                        enabled: false
                     },
                     title: {
                         text: 'BTC'
@@ -7408,10 +7426,9 @@ define('subapp/tools/create_chart',['libs/Class','jquery','highstock','highchart
                         }
                     }]
                 });
-            }
+             }
         });
     return Chart;
-
 });
 require([
         'libs/polyfills',
@@ -7489,7 +7506,12 @@ require([
 
         new ForkListApp();
         new ShareImgApp();
-        new Chart();
+
+
+        if($('#chart_container').length){
+            new Chart();
+        }
+
 
         all_price_feed.run();
         console.log('finish');

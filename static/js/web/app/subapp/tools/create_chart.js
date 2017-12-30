@@ -1,33 +1,37 @@
 define(['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,highstock,highcharts_lang){
     var Chart = Class.extend({
         init:function(){
+            if($('.crypto-index').length <= 0){
+                return ;
+            }
+
             this.get_chart();
         },
-        get_chart:function(){
-            var data = [];
-            for(var i=0; i < crypto_index.length ; i++){
-                var arr = [];
-                var time = new Date(crypto_index[i].date);
-                arr.push(time.getTime());
-                arr.push(crypto_index[i].price);
-                data.push(arr);
-            }
-            $('#chart_container').highcharts('StockChart', {
+        get_chart:function() {
+                var data = [];
+                for (var i = 0; i < crypto_index.length; i++) {
+                    var arr = [];
+                    var time = new Date(crypto_index[i].date);
+                    arr.push(time.getTime());
+                    arr.push(crypto_index[i].price);
+                    data.push(arr);
+                }
+                $('#chart_container').highcharts('StockChart', {
                     rangeSelector: {
                         selected: 1,
-                        enabled:true
+                        enabled: true
                     },
-                    navigator:{
-                        enabled:false
+                    navigator: {
+                        enabled: false
                     },
-                    scrollbar:{
-                        enabled:false
+                    scrollbar: {
+                        enabled: false
                     },
-                    exporting:{
-                        enabled:false
+                    exporting: {
+                        enabled: false
                     },
-                    credits:{
-                        enabled:false
+                    credits: {
+                        enabled: false
                     },
                     title: {
                         text: 'BTC'
@@ -41,8 +45,7 @@ define(['libs/Class','jquery','highstock','highcharts_lang'],function(Class,$,hi
                         }
                     }]
                 });
-            }
+             }
         });
     return Chart;
-
 });
