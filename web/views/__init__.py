@@ -15,13 +15,47 @@ from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
 from web.views.news import SideBarDataMixin
+from haystack.query import SearchQuerySet
+
 
 import logging
 
 logger = logging.getLogger('django')
 
 
+class SqsCategoryTagDataMixin(object):
+    def _get_category_list(self):
+        categories = list(Category.objects.all())
+        return [{
+            'category_name': cate.cname,
+            'category_ename': cate.ename,
+            'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20),
+        }
+            for cate in categories
+        ]
+
+    def get_category_list(self):
+        key = "category:tag:nav:list"
+        return cache.get_or_set(key, self._get_category_list, 5 * 60)
+
+    def get_cate_tag_navs(self, cate_id, tag_name):
+        return SearchQuerySet().filter(cate_id=cate_id, tags=tag_name).order_by("-rank")[:20]
+
+    def get_tag_for_category(self, cate_id, tag_range=20, site_range=50):
+        sqs = SearchQuerySet().filter(cate_id=cate_id).facet("tags")
+        tags = sqs.facet_counts()["fields"]["tags"][:tag_range]
+        tag_nav_list = []
+        for (tag, count) in tags:
+            tag_nav_list.append({
+                'tagname': tag,
+                'navs': self.get_cate_tag_navs(cate_id, tag)
+            })
+        return tag_nav_list
+
+
+
 class CategoryTagDataMixin(object):
+
     def get_nav_for_cate_tag(self, category, tag_name):
         tag = get_object_or_404(Tag, name=tag_name)
         navs = TaggedItem.objects.filter(tag_id=tag.id, content_type_id=9).values_list('object_id', flat=True)
@@ -100,12 +134,16 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
 
-# class AboutView(FlinkMixin, TemplateView):
-#     template_name = 'web/about.html'
-#
-#
-# class JobView(FlinkMixin, TemplateView):
-#     template_name = 'web/jobs.html.bk'
+class TestIndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
+    template_name = 'web/index.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recommend'] = self.get_recommend_nav()
+        context['categories'] = self.get_category_list()
+        return context
+
+    def get_recommend_nav(self):
+        return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
 
 class SubNavCreateView(CreateView):
@@ -144,7 +182,7 @@ class SiteMapView(SideBarDataMixin, TemplateView):
     def get_all_tag_list(self):
         categories = Category.objects.all()
         return [{
-            'catename': cate.zh_hant_cname,
+            'catename': cate.cname,
             'cateename': cate.ename,
             'tag_list': self.get_cate_tag_list(cate.id)
         } for cate in categories]
@@ -164,7 +202,6 @@ class SiteMapView(SideBarDataMixin, TemplateView):
 class ErrorView(StaffuserRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         raise Exception('error for test')
-
 
 
 class CountDownList(SideBarDataMixin, TemplateView):
@@ -196,7 +233,6 @@ class ForkListView(FlinkMixin, ListView):
         if self.fork_status:
             assert(self.fork_status in ['incoming', 'done'])
         return super().get(request, *args, **kwargs)
-
 
 
 class D3TestView(FlinkMixin, TemplateView):
