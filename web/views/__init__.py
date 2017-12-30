@@ -22,6 +22,13 @@ import logging
 
 logger = logging.getLogger('django')
 
+class SqsCategoryTagDataMixin(object):
+    def get_tag_for_category(self, cat_id, tag_range=20, site_range=50):
+        sqs = SearchQuerySet().models(Nav).filter(cat_id=cat_id).facet("tags", limit=tag_range)
+        tags = sqs.facet_counts()
+        return tags
+
+
 
 class CategoryTagDataMixin(object):
 
@@ -102,7 +109,7 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
     def get_recommend_nav(self):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
-class TestIndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
+class TestIndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
     template_name = 'web/index.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
