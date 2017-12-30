@@ -123,17 +123,19 @@ class TestIndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
+        context['categories'] = self.get_category_list()
+        return context
 
+    def get_category_list(self):
         categories = list(Category.objects.all())
-
-        context['categories'] = [{
+        return         [{
             'category_name': cate.cname,
             'category_ename': cate.ename,
             'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20),
-        }
+            }
             for cate in categories
         ]
-        return context
+
 
     def get_recommend_nav(self):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
