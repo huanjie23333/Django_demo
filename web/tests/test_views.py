@@ -25,7 +25,7 @@ class TestCategoryViewTestCase(WithDataTestCase):
         # self.assertContains(response=resp, text='tag1')
         # self.assertContains(response=resp, text='tag2')
 
-
+@skip("ci use woosh , not support facet")
 class TestIndexViewTestCase(WithDataTestCase):
     pass
     '''
