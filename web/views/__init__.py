@@ -23,10 +23,19 @@ import logging
 logger = logging.getLogger('django')
 
 class SqsCategoryTagDataMixin(object):
-    def get_tag_for_category(self, cat_id, tag_range=20, site_range=50):
-        sqs = SearchQuerySet().models(Nav).filter(cat_id=cat_id).facet("tags", limit=tag_range)
-        tags = sqs.facet_counts()
-        return tags
+    def get_cate_tag_navs(self, cate_id, tag_name):
+        return SearchQuerySet().filter(cate_id=cate_id, tags=tag_name).order_by("-rank")[:20]
+
+    def get_tag_for_category(self, cate_id, tag_range=20, site_range=50):
+        sqs = SearchQuerySet().filter(cate_id=cate_id).facet("tags")
+        tags = sqs.facet_counts()["fields"]["tags"][:tag_range]
+        tag_nav_list = []
+        for (tag, count) in tags:
+            tag_nav_list.append({
+                'tagname': tag,
+                'navs': self.get_cate_tag_navs(cate_id, tag)
+            })
+        return tag_nav_list
 
 
 
