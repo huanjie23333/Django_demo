@@ -15,6 +15,8 @@ from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
 from web.views.news import SideBarDataMixin
+from haystack.query import SearchQuerySet
+
 
 import logging
 
@@ -22,6 +24,7 @@ logger = logging.getLogger('django')
 
 
 class CategoryTagDataMixin(object):
+
     def get_nav_for_cate_tag(self, category, tag_name):
         tag = get_object_or_404(Tag, name=tag_name)
         navs = TaggedItem.objects.filter(tag_id=tag.id, content_type_id=9).values_list('object_id', flat=True)
@@ -99,13 +102,27 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
     def get_recommend_nav(self):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
 
+class TestIndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
+    template_name = 'web/index.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recommend'] = self.get_recommend_nav()
 
-# class AboutView(FlinkMixin, TemplateView):
-#     template_name = 'web/about.html'
-#
-#
-# class JobView(FlinkMixin, TemplateView):
-#     template_name = 'web/jobs.html.bk'
+        categories = list(Category.objects.all())
+
+        context['categories'] = [{
+            'category_name': cate.cname,
+            'category_ename': cate.ename,
+            'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20),
+        }
+            for cate in categories
+        ]
+        return context
+
+    def get_recommend_nav(self):
+        return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
+
+
 
 
 class SubNavCreateView(CreateView):
