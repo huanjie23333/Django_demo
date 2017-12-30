@@ -2,6 +2,7 @@ import logging
 
 from django.test import TestCase
 from django.urls import reverse
+from unittest import skip
 
 from nav.models import Nav
 from quark.tests.base import WithDataTestCase
@@ -31,23 +32,23 @@ class TestIndexViewTestCase(WithDataTestCase):
     use sqs to pull nav data ,
     so this test method is deprecated 
     '''
-    # def test_get_index(self):
-    #     resp = self.client.get(reverse('web_index'))
-    #     self.assertEqual(resp.status_code, 200)
-    #     # self.assertTemplateUsed(resp, 'web/index.html')
-    #
-    #     # self.assertContains(resp, text='tag1')
-    #     # self.assertContains(resp, text='tag2')
-    #     # self.assertContains(resp, text='tag4')
-    #     # self.assertContains(resp, text='tag3')
-    #
-    #     self.assertContains(resp, text='finance_cname')
-    #     self.assertContains(resp, text='media_cname')
-    #
-    #     # self.assertContains(resp, 'foo')
-    #     # self.assertContains(resp, 'nav2')
-    #
-    #     self.assertContains(resp, '/category/finance.htm')
+    def test_get_index(self):
+        resp = self.client.get(reverse('web_index'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'web/index.html')
+
+        # self.assertContains(resp, text='tag1')
+        # self.assertContains(resp, text='tag2')
+        # self.assertContains(resp, text='tag4')
+        # self.assertContains(resp, text='tag3')
+
+        self.assertContains(resp, text='finance_cname')
+        self.assertContains(resp, text='media_cname')
+
+        # self.assertContains(resp, 'foo')
+        # self.assertContains(resp, 'nav2')
+
+        self.assertContains(resp, '/category/finance.htm')
 
 
 class TestNewsListViewTestCase(WithDataTestCase):
@@ -80,7 +81,7 @@ class TestNewsApiViewTestCase(WithDataTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'published_at')
 
-
+@skip("ci use woosh , not support facet")
 class TestIndexDraftNavTestCase(WithDataTestCase):
     def test_draf_nav_not_shown(self):
         d_nav = Nav.objects.create(cname='draft_nav_cn',
