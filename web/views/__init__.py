@@ -213,7 +213,7 @@ class ForkListView(FlinkMixin, ListView):
     template_name = 'web/fork_list.html'
     model = CoinFork
     queryset = CoinFork.objects.all()
-    paginate_by = 30
+    paginate_by = 100
     context_object_name = 'fork_list'
 
     def get_queryset(self):
