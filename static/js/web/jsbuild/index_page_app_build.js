@@ -4395,6 +4395,19 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
             return  this.current_blocks = _.object(this._api_list, _result_list);
 
         },
+        move_undecided_forks: function () {
+            var $undecided_list = $("[data-fork-height='0']");
+            var $incoming_list = $("[data-fork-status='incoming']");
+            if($undecided_list.length<=0 ||$incoming_list.length <=0 ){
+                return
+            }
+            $last_incoming = $incoming_list[$incoming_list.length-1];
+            $undecided_list.each(function(index, item){
+                $(item).insertAfter($($last_incoming));
+            });
+            return ;
+
+        },
         init: function () {
 
             var _container = $('.fork-item');
@@ -4402,6 +4415,7 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
                 return ;
             }
             this.hide_text();
+            this.move_undecided_forks();
 
             this.init_item_current_block()
              .spread(this.handle_api_done.bind(this))
