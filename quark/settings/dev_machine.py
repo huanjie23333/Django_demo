@@ -56,7 +56,7 @@ IS_LOCAL_TESTING = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/mad_sand/quark/templates'],
+        'DIRS': [os.path.join(BASE_DIR, '../templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +71,10 @@ TEMPLATES = [
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/mad_sand/quark/static/'
-STATICFILES_DIRS = []
+
+STATICFILES_DIRS = (
+    os.path.join(os.getcwd(), 'static'),
+)
 
 Current_Dbhost = '127.0.0.1'
 DATABASES = {
