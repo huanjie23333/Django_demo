@@ -71,7 +71,6 @@ require([
         new BtcCountdown();
 
         // fork list page
-
         new ForkListApp();
         new ShareImgApp();
 
