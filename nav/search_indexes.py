@@ -15,6 +15,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     alias = indexes.CharField(model_attr='alias', default='')
     cate_id = indexes.FacetIntegerField(model_attr='cate_id')
     description = indexes.CharField(model_attr='get_main_description', default='')
+    highlight = indexes.BooleanField(model_attr='highlight', default='false')
     # descriptioncn = indexes.CharField()
 
     created_at = indexes.DateTimeField(model_attr='created_at')
@@ -26,7 +27,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
         return Nav
 
     def index_queryset(self, using=None):
-        return self.get_model().objects.all()
+        return self.get_model().objects.filter(status=Nav.STATUS.published)
 
     def prepare_tags(self, obj):
         try:
