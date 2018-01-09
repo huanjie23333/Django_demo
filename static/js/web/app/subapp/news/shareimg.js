@@ -2,8 +2,9 @@ define(['libs/Class', 'libs/rasterizehtml', 'jquery'], function(Class, rasterize
     var ShareImg = Class.extend({
         init: function(){
             if(!$('.shareimg').length) return ;
-            $('.shareimg').click(function(){
-                var tar = $(this).parents('.entry');
+
+            $('.newsline').on('click', '.shareimg', function(event){
+                var tar = $(event.currentTarget).parents('.entry');
                 var html = tar.html().replace(/style="display:none"/g, '');
                 html += $('#rasterize-style').html();
 
