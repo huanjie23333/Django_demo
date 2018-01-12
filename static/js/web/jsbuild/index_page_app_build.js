@@ -4336,7 +4336,7 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
             $('.desc').each(function(){
                 var height = 42;  //3倍字体
                 while($(this).height() > height) {
-                    $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, '...'));
+                    $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9_]+|\W)(\.\.\.)?$/, '...'));
                 }
                 $(this).height(height);
             });
@@ -4365,6 +4365,22 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
         },
         handle_error: function(error){
             console.log(error);
+        },
+        sort_incoming_forks: function(){
+            //  倒计时排序
+            var list = [].slice.call($('[data-fork-status="incoming"]'));
+            list.sort(function(a, b){
+                var aForkHeight = +$(a).attr('data-fork-height');
+                var aHeight = $(a).data('current_block');
+                var aInterval = +$(a).attr('data-block-intervel');
+                var aTime = (aHeight - aForkHeight) * aInterval;
+                var bForkHeight = +$(b).attr('data-fork-height');
+                var bHeight = $(b).data('current_block');
+                var bInterval = +$(b).attr('data-block-intervel');
+                var bTime = (bHeight - bForkHeight) * bInterval;
+                return bTime - aTime;
+            });
+            $(list).prependTo($('.fork-item').eq(0).parent());
         },
         set_item_current_block: function (index, item) {
                 var api = $(item).attr('data-block-height-api');
@@ -4420,6 +4436,7 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
             this.init_item_current_block()
              .spread(this.handle_api_done.bind(this))
              .then(this.set_current_blocks.bind(this))
+             .then(this.sort_incoming_forks.bind(this))
              .then(this.draw_count_down.bind(this))
              .then(this.draw_clocks.bind(this))
              .catch(this.handle_error.bind(this));
