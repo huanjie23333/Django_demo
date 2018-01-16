@@ -58,7 +58,7 @@ class DappsAdmin(admin.ModelAdmin):
 
 
 class SubNavAdmin(admin.ModelAdmin):
-    list_display = ('cname', 'ename','description','web_site', 'email', 'handeled')
+    list_display = ('cname', 'ename','description','web_site', 'email','created', 'handeled')
     list_editable = ('handeled',)
 
 admin.site.register(SubNav, SubNavAdmin)

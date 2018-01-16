@@ -157,7 +157,10 @@ class SubNav(models.Model):
                                    verbose_name=_('网站描述，一句话'))
     email = models.EmailField(blank=True, null=True, verbose_name=_('联系邮箱'))
     handeled = models.BooleanField(default=False)
+    created = models.DateTimeField(default=timezone.now, editable=False)
+
 
     class Meta:
         verbose_name_plural = _("用户提交网址")
         verbose_name = _("用户提交网址")
+        ordering = ["-created"]
