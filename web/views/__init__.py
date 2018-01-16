@@ -16,6 +16,7 @@ from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
 from web.views.news import SideBarDataMixin
 from haystack.query import SearchQuerySet
+from django.shortcuts import redirect
 
 import logging
 
@@ -203,8 +204,6 @@ class ErrorView(StaffuserRequiredMixin, TemplateView):
         raise Exception('error for test')
 
 
-class CountDownList(SideBarDataMixin, TemplateView):
-    template_name = 'web/btc_countdown.html'
 
 
 class ForkListView(FlinkMixin, ListView):
@@ -232,6 +231,10 @@ class ForkListView(FlinkMixin, ListView):
         if self.fork_status:
             assert (self.fork_status in ['incoming', 'done'])
         return super().get(request, *args, **kwargs)
+
+class CountDownList(View):
+    def get(self,request):
+        return redirect('web_fork_list', permanent=True)
 
 
 class D3TestView(FlinkMixin, TemplateView):
