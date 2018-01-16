@@ -20,7 +20,7 @@ class SubNavModelForm(ModelForm):
 
     class Meta:
         model = SubNav
-        exclude = ['handeled']
+        exclude = ['handeled', 'created']
         widgets = {
             'description':  Textarea(attrs={'rows':6,
                                             'cols':22,
