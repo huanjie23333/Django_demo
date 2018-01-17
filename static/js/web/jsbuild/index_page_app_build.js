@@ -4314,6 +4314,7 @@ define('subapp/fork_list/fork_list',['libs/Class', 'jquery', 'libs/bluebird'],fu
                     $('.clockdiv', $(element)).html('完成分叉');
                     $('.fork-state', $(element)).removeClass('fork-incoming')
                         .addClass('fork-passed').html('完成分叉');
+                    $(element).attr('data-fork-status', 'done');
                 }
             }
 
