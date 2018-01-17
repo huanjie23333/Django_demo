@@ -1460,14 +1460,14 @@ define('subapp/header/header',['libs/Class',
     var HeaderApp = Class.extend({
         init:function(option){
             // for header price display;
-            this.header_price = new HeaderPrice({
-                feed: window.app.price_feed,
-                adapter : new HeaderCoinmarketAdapter()
-            });
+            // this.header_price = new HeaderPrice({
+            //     feed: window.app.price_feed,
+            //     adapter : new HeaderCoinmarketAdapter()
+            // });
 
             this.search = new Search();
             // for promo text
-            new PromoText();
+            // new PromoText();
 
         },
 
