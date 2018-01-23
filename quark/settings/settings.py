@@ -347,4 +347,4 @@ TAGGIT_CASE_INSENSITIVE = True
 ###
 # bot url
 ###
-BOT_URL = "https://9s.coinbeef.com/website/"
+BOT_URL = "https://9s.coinbeef.com/"
