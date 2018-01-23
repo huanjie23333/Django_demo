@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from nav.models import Category, Nav, Project
+from nav.models import Category, Nav
 from quark.tests.base import WithDataTestCase, CategoryFactory
 
 from faker import Faker
@@ -66,24 +66,24 @@ class NavModelTestCase(WithDataTestCase):
         self.assertIsInstance(tags, list)
 
 
-class ProjectModelTestCase(WithDataTestCase):
-
-    def test_can_create_a_dapps(self):
-        dapps_count = Project.objects.count()
-        Project.objects.create(
-            name=f.name(),
-            description=f.text()
-        )
-        after_count = Project.objects.count()
-        self.assertLess(dapps_count, after_count)
-
-    def test_can_add_tags_to_dapps(self):
-        dapp = Project.objects.create(
-            name=f.name(),
-            description=f.text()
-        )
-        dapp.tags.add(f.word())
-        dapp.tags.add(f.word())
-
-        tags = [t.name for t in dapp.tags.all()]
-        self.assertIsInstance(tags, list)
+# class ProjectModelTestCase(WithDataTestCase):
+#
+#     def test_can_create_a_dapps(self):
+#         dapps_count = Project.objects.count()
+#         Project.objects.create(
+#             name=f.name(),
+#             description=f.text()
+#         )
+#         after_count = Project.objects.count()
+#         self.assertLess(dapps_count, after_count)
+#
+#     def test_can_add_tags_to_dapps(self):
+#         dapp = Project.objects.create(
+#             name=f.name(),
+#             description=f.text()
+#         )
+#         dapp.tags.add(f.word())
+#         dapp.tags.add(f.word())
+#
+#         tags = [t.name for t in dapp.tags.all()]
+#         self.assertIsInstance(tags, list)
