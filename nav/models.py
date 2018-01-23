@@ -64,6 +64,9 @@ class Nav(CachingMixin, models.Model):
     def __str__(self):
         return self.ename or self.cname
 
+    ###
+    # begin 繁体中文
+    ##
     @cached_property
     def zh_hant_main_name(self):
         return opencc.convert(self.main_name, config='s2t.json')
@@ -75,6 +78,9 @@ class Nav(CachingMixin, models.Model):
     @cached_property
     def zh_hant_main_description(self):
         return opencc.convert(self.get_main_description(), config='s2t.json')
+    ###
+    # end
+    ###
 
     @cached_property
     def main_name(self):
@@ -96,52 +102,52 @@ class Profile(models.Model):
         return self.site.main_name
 
 
-class Project(CachingMixin, models.Model):
-    slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
-    status = fields.CharField(max_length=255, default='')
-    name = models.CharField(max_length=128, default='', unique=True)
-    description = models.TextField(default='')
-    description_cn = models.TextField(default='')
-    founder = models.CharField(max_length=128, default='')
-    software_license = models.CharField(max_length=255, default='')
-    mainnet_contract_address = models.CharField(max_length=255, null=True)
-    ropsten = models.URLField(max_length=255, null=True)
-    site = models.URLField(max_length=255, null=True)
-    github = models.URLField(max_length=255, null=True)
-    blog = models.URLField(max_length=255, null=True)
-    wiki = models.URLField(max_length=255, null=True)
-    slack = models.URLField(max_length=255, null=True)
-    gitter = models.URLField(max_length=255, null=True)
-    reddit = models.URLField(max_length=255, null=True)
-
-    highlight = models.BooleanField(default=False, db_index=True)
-    whitepaper = models.URLField(_("whitepaper"), default="")
-
-    origin_link = models.URLField(max_length=255, null=True)
-
-    created = models.DateField(default=timezone.now, db_index=True)
-    last_updated = models.DateField(default=timezone.now, db_index=True)
-
-    identified_code = models.CharField(max_length=128, unique=True,
-                                       null=True, blank=True, editable=False)
-
-    tags = TaggableManager()
-
-    objects = CachingManager()
-
-    class Meta:
-        ordering = ["-last_updated"]
-
-    def __str__(self):
-        return self.name
-
-    def tag_list(self):
-        return [o.name for o in self.tags.all()]
-
-    def save(self, **kwargs):
-        if self.origin_link and self.origin_link.startswith('http') and self.identified_code is None:
-            self.identified_code = md5(self.origin_link.encode('utf-8')).hexdigest()
-        return super().save(**kwargs)
+# class Project(CachingMixin, models.Model):
+#     slug = fields.RandomCharField(length=12, unique=True, include_alpha=False)
+#     status = fields.CharField(max_length=255, default='')
+#     name = models.CharField(max_length=128, default='', unique=True)
+#     description = models.TextField(default='')
+#     description_cn = models.TextField(default='')
+#     founder = models.CharField(max_length=128, default='')
+#     software_license = models.CharField(max_length=255, default='')
+#     mainnet_contract_address = models.CharField(max_length=255, null=True)
+#     ropsten = models.URLField(max_length=255, null=True)
+#     site = models.URLField(max_length=255, null=True)
+#     github = models.URLField(max_length=255, null=True)
+#     blog = models.URLField(max_length=255, null=True)
+#     wiki = models.URLField(max_length=255, null=True)
+#     slack = models.URLField(max_length=255, null=True)
+#     gitter = models.URLField(max_length=255, null=True)
+#     reddit = models.URLField(max_length=255, null=True)
+#
+#     highlight = models.BooleanField(default=False, db_index=True)
+#     whitepaper = models.URLField(_("whitepaper"), default="")
+#
+#     origin_link = models.URLField(max_length=255, null=True)
+#
+#     created = models.DateField(default=timezone.now, db_index=True)
+#     last_updated = models.DateField(default=timezone.now, db_index=True)
+#
+#     identified_code = models.CharField(max_length=128, unique=True,
+#                                        null=True, blank=True, editable=False)
+#
+#     tags = TaggableManager()
+#
+#     objects = CachingManager()
+#
+#     class Meta:
+#         ordering = ["-last_updated"]
+#
+#     def __str__(self):
+#         return self.name
+#
+#     def tag_list(self):
+#         return [o.name for o in self.tags.all()]
+#
+#     def save(self, **kwargs):
+#         if self.origin_link and self.origin_link.startswith('http') and self.identified_code is None:
+#             self.identified_code = md5(self.origin_link.encode('utf-8')).hexdigest()
+#         return super().save(**kwargs)
 
 
 class SubNav(models.Model):
@@ -159,8 +165,10 @@ class SubNav(models.Model):
     handeled = models.BooleanField(default=False)
     created = models.DateTimeField(default=timezone.now, editable=False)
 
-
     class Meta:
         verbose_name_plural = _("用户提交网址")
         verbose_name = _("用户提交网址")
         ordering = ["-created"]
+
+    def __str__(self):
+        return self.web_site
