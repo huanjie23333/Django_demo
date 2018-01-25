@@ -44,7 +44,7 @@ ntlm-auth==1.0.5
 olefile==0.44
 OpenCC==0.2
 ordereddict==1.1
-Pillow==4.3.0
+Pillow==5.0.0
 prompt-toolkit==1.0.15
 ptpython==0.41
 Pygments==2.2.0
