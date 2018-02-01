@@ -43,7 +43,7 @@ urlpatterns = [
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
 
     url(r'^news/', include('web.urls.news', namespace='news')),
-    url(r'^dapp/', include('web.urls.dapp', namespace='dapp')),
+    # url(r'^dapp/', include('web.urls.dapp', namespace='dapp')),
 
     url(r'^search/', include('web.urls.search', namespace='search')),
     url(r'^feed/', include('feed.urls', namespace='feed')),
@@ -55,7 +55,6 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
-    url(r'^api/dapps/', include('nav.urls.api.dapps', namespace='api_dapps')),
 ]
 
 # captcha

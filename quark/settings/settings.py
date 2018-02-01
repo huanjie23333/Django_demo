@@ -189,7 +189,6 @@ COMPRESS_OFFLINE = True
 
 IS_LOCAL_TESTING = False
 
-
 ##
 # rest framework
 ##
@@ -206,7 +205,6 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'PAGE_SIZE': 20,
 }
-
 
 ##
 # django haystack
@@ -227,7 +225,6 @@ HAYSTACK_CONNECTIONS = {
 # }
 HAYSTACK_DEFAULT_OPERATOR = 'AND'
 HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
-
 
 ##
 # logging
@@ -275,7 +272,6 @@ LOGGING = {
         },
     }
 }
-
 
 ##
 # django bootstrap3
@@ -330,7 +326,7 @@ BOOTSTRAP3 = {
     'success_css_class': 'has-success',
 
     # Renderers (only set these if you have studied the source and understand the inner workings)
-    'formset_renderers':{
+    'formset_renderers': {
         'default': 'bootstrap3.renderers.FormsetRenderer',
     },
     'form_renderers': {
@@ -348,3 +344,7 @@ BOOTSTRAP3 = {
 
 TAGGIT_CASE_INSENSITIVE = True
 
+###
+# bot url
+###
+BOT_URL = "https://9s.coinbeef.com/"

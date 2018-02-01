@@ -53,7 +53,6 @@ class SqsCategoryTagDataMixin(object):
         return tag_nav_list
 
 
-
 class CategoryTagDataMixin(object):
 
     def get_nav_for_cate_tag(self, category, tag_name):
@@ -136,6 +135,7 @@ class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
 
 class TestIndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
     template_name = 'web/index.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
@@ -207,7 +207,7 @@ class ErrorView(StaffuserRequiredMixin, TemplateView):
 
 
 class ForkListView(FlinkMixin, ListView):
-    http_method_names = ['get','head']
+    http_method_names = ['get', 'head']
     template_name = 'web/fork_list.html'
     model = CoinFork
     queryset = CoinFork.objects.all()
@@ -229,7 +229,7 @@ class ForkListView(FlinkMixin, ListView):
     def get(self, request, *args, **kwargs):
         self.fork_status = request.GET.get('status', None)
         if self.fork_status:
-            assert(self.fork_status in ['incoming', 'done'])
+            assert (self.fork_status in ['incoming', 'done'])
         return super().get(request, *args, **kwargs)
 
 class CountDownList(View):
@@ -246,7 +246,7 @@ class APIDataCacheMixin(object):
         return self.api_url
 
     def get_api_data(self):
-        key = "api:data:%s"%self.get_api_url()
+        key = "api:data:%s" % self.get_api_url()
         return cache.get_or_set(key, self._get_api_data(), timeout=3600)
 
     def _get_api_data(self):
@@ -263,6 +263,3 @@ class CryptoindexView(APIDataCacheMixin, FlinkMixin, TemplateView):
             'crypto_index': self.get_api_data()
         })
         return context
-
-
-
