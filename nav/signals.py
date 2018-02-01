@@ -20,9 +20,3 @@ def notify_bot(sender, instance, created, **kwargs):
         res = requests.post(post_url, json=data)
         if res.status_code == 200:
             return "OK"
-
-
-
-
-
-

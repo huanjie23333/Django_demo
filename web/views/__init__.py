@@ -43,8 +43,13 @@ class SqsCategoryTagDataMixin(object):
 
     def get_tag_for_category(self, cate_id, tag_range=20, site_range=50):
         sqs = SearchQuerySet().filter(cate_id=cate_id).facet("tags")
-        tags = sqs.facet_counts()["fields"]["tags"][:tag_range]
-        tag_nav_list = []
+        tag_nav_list = list()
+        try:
+            tags = sqs.facet_counts()["fields"]["tags"][:tag_range]
+        except KeyError as e:
+            return tag_nav_list
+
+            # logger.info(e.message)
         for (tag, count) in tags:
             tag_nav_list.append({
                 'tagname': tag,
