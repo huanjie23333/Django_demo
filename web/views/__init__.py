@@ -1,11 +1,11 @@
 # -*- coding: UTF-8  -*-
 import requests
-from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
+from braces.views import StaffuserRequiredMixin
 from django.core.cache import cache
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from taggit.models import TaggedItem, Tag
 
-from django.views.generic import TemplateView, View, DetailView, ListView, CreateView
+from django.views.generic import TemplateView, View, ListView, CreateView
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.http import HttpResponseForbidden
