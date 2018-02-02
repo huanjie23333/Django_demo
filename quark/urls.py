@@ -17,7 +17,7 @@ from django.conf.urls import url, include, handler404, handler500
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.decorators.cache import cache_page
+# from django.views.decorators.cache import cache_page
 
 from web.views import (IndexView, CategoryView,  SiteMapView, TestIndexView,
     SubNavCreateView, SubNavSuccessView, CountDownList, ForkListView, D3TestView, CryptoindexView)

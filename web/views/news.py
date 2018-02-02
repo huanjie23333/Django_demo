@@ -6,26 +6,33 @@ import requests
 
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
 
-from django.views.generic import TemplateView, View, DetailView, ListView
+from django.views.generic import TemplateView, View, DetailView
 from django.core.cache import cache
 from django.http import HttpResponse
+from django.conf import settings
 
 from coinfork.models import CoinFork
 from flink.views import FlinkMixin
 from nav.models import Nav
 
+
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
-NEWS_TAG_API_URL = 'http://www.chainnews.com/api/news/tags.json'
-NEWS_DETAIL_API = 'http://www.chainnews.com/api/news/'
+
+news_tag_api_url = getattr(settings, "NEWS_TAG_API_URL")
+news_detail_api = getattr(settings, "NEWS_DETAIL_API")
 
 
 class NewsDataMixin(object):
     def _get_newslist_page(self, page=1, tag=None):
-        url = 'http://www.chainnews.com/api/news.json?page={page}'.format(page=page)
+        _url = "{base_url}?page={page}".format(
+            base_url=news_detail_api,
+            page=page
+        )
+        # url = 'https://api.chainnews.com/api/news.json?page={page}'.format(page=page)
         if tag:
-            url = "%s&tag=%s" % (url, tag)
-        r = requests.get(url)
+            _url = "{url}&tag={tag}".format(url=_url, tag=tag)
+        r = requests.get(_url, timeout=5)
         if r.status_code == 200:
             return r.text
         else:
@@ -87,7 +94,7 @@ class NewsDataMixin(object):
     def _get_news_tag_list(self):
         tag_list = []
         try:
-            r = requests.get(NEWS_TAG_API_URL)
+            r = requests.get(news_tag_api_url, timeout=5)
             if r.status_code == 200:
                 tag_list = r.json()['tags']
             else:
@@ -102,9 +109,15 @@ class NewsDataMixin(object):
         return cache.get_or_set(key, self._get_news_detail(slug), timeout=60 * 30)
 
     def _get_news_detail(self, slug):
-        r = requests.get("%s%s" % (NEWS_DETAIL_API, slug))
+        _url = "{base_url}{slug}".format(
+            base_url=news_detail_api,
+            slug=slug,
+        )
+        r = requests.get(_url, timeout=5)
+        # r = requests.get("%s%s" % (NEWS_DETAIL_API, slug))
         if r.status_code == 200:
-            obj = json.loads(r.text)
+            # obj = json.loads(r.text)
+            obj = r.json()
             obj['published_time'] = self.format_time(obj['published_at'])
             return obj
         else:
@@ -132,7 +145,8 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
 
     def get_sidebar_fork(self):
         try:
-            return CoinFork.objects.filter(status='incoming', fork_height__gt=1).order_by('fork_height')[0]
+            return CoinFork.objects.filter(status='incoming',
+                                           fork_height__gt=1).order_by('fork_height')[0]
         except IndexError as e:
             return []
 
@@ -147,8 +161,6 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
 
 
 class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
-    # def get(self,request):
-    #     return self.get_ajax(request)
 
     def get_ajax(self, request, *args, **kwargs):
         page = self.get_page_num()
