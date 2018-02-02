@@ -19,8 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.decorators.cache import cache_page
 
-from web.views import (IndexView, CategoryView,  SiteMapView, TestIndexView,
-    SubNavCreateView, SubNavSuccessView, CountDownList, ForkListView, D3TestView, CryptoindexView)
+from web.views import ( CategoryView, SiteMapView, IndexView,
+                        SubNavCreateView, SubNavSuccessView, CountDownList,
+                        ForkListView, D3TestView, CryptoindexView)
 
 from web.views.news import NewsListView
 
@@ -63,8 +64,8 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^$', TestIndexView.as_view(), name='web_index'),
-    url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
+    url(r'^$', IndexView.as_view(), name='web_index'),
+    # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
     # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
 

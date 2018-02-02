@@ -2,6 +2,8 @@ from .settings import *
 
 INSTALLED_APPS += [
     'django_nose',
+    'debug_toolbar',
+    'template_profiler_panel',
 ]
 
 # Use nose to run all tests
@@ -47,6 +49,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
+    'template_profiler_panel.panels.template.TemplateProfilerPanel',
 ]
 
 INTERNAL_IPS = [

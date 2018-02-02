@@ -1,11 +1,9 @@
 # -*- coding: UTF-8  -*-
 import json
+import requests
 from datetime import datetime
 
-import requests
-
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
-
 from django.views.generic import TemplateView, View, DetailView
 from django.core.cache import cache
 from django.http import HttpResponse
@@ -14,6 +12,10 @@ from django.conf import settings
 from coinfork.models import CoinFork
 from flink.views import FlinkMixin
 from nav.models import Nav
+
+import logging
+
+logger = logging.getLogger("django")
 
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
@@ -86,7 +88,9 @@ class NewsDataMixin(object):
         return self.request.GET.get('tag', None)
 
     def get_news_tag_list(self):
-        result = cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60 * 120)
+        result = cache.get_or_set(NEWS_TAG_LIST_KEY,
+                                  self._get_news_tag_list(),
+                                  timeout=60 * 120)
         if result is not None and len(result) == 0:
             cache.delete(NEWS_TAG_LIST_KEY)
         return result
@@ -144,19 +148,24 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
         return context
 
     def get_sidebar_fork(self):
-        try:
-            return CoinFork.objects.filter(status='incoming',
-                                           fork_height__gt=1).order_by('fork_height')[0]
-        except IndexError as e:
-            return []
+        return CoinFork.objects.filter(status='incoming',
+                                       fork_height__gt=1).order_by('fork_height').first()
+        # try:
+        #     return CoinFork.objects.filter(status='incoming',
+        #                                    fork_height__gt=1).order_by('fork_height')[0]
+        # except IndexError as e:
+        #     return []
 
     def get_bc_info_list(self):
-        bc_info_list = {}
+        bc_info_list = dict()
+        ids = block_chain_browsers.values()
+        d = dict()
+        [ d.update({row.id: row}) for row in Nav.objects.filter(pk__in=ids)]
         for name, id in block_chain_browsers.items():
             try:
-                bc_info_list[name] = Nav.objects.get(pk=id)
-            except Nav.DoesNotExist as e:
-                pass
+                bc_info_list[name] = d[id]
+            except KeyError as e:
+                continue
         return bc_info_list
 
 

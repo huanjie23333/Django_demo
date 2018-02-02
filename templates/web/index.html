@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="hidden-sm hidden-md hidden-lg col-xs-12 news-wrapper ">
- {#                          分叉倒计时 开始             #}
+                           分叉倒计时 开始
                     <div class="box">
                         <div class="box-header ">
                             <span class="main-fork_name">分叉倒计时</span>
@@ -50,29 +50,30 @@
                                                 </span>
                                             </div>
 
-                                                    <div class="desc">
-                                                        {{ item.description }}
-                                                    </div>
-                                                    <div class="block-height">
-                                                        <span>分叉区块高度</span>
-                                                        <span class="height-number">{{ item.fork_height }}</span>
-                                                    </div>
-                                                    <div class="current-block-height">
-                                                        <span>当前区块高度 </span>
-                                                        <span class="height-number"></span>
-                                                    </div>
-                                                </div>
-                                                {% if item.status == 'done' %}
-                                                     <div class="fork-state fork-passed">完成分叉</div>
-                                                {% elif item.status == 'incoming' %}
-                                                    <div class="fork-state fork-incoming">即将分叉</div>
-                                                {% endif %}
+                                            <div class="desc">{{ item.description }}</div>
+
+                                            <div class="block-height">
+                                                <span>分叉区块高度</span>
+                                                <span class="height-number">{{ item.fork_height }}</span>
+                                            </div>
+
+                                            <div class="current-block-height">
+                                                <span>当前区块高度 </span>
+                                                <span class="height-number"></span>
                                             </div>
                                         </div>
-                                    {% endwith %}
+
+                                        {% if item.status == 'done' %}
+                                            <div class="fork-state fork-passed">完成分叉</div>
+                                        {% elif item.status == 'incoming' %}
+                                            <div class="fork-state fork-incoming">即将分叉</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endwith %}
                         </div>
                     </div>
-{#                          分叉倒计时 结束 -----#}
+                          分叉倒计时 结束 -----
                    {% include 'web/partial/ad_block.html' %}
 
                     <div class="box">
@@ -94,7 +95,7 @@
                     </div>
                 </div>
 
-            {% cache 7200 web_site %}
+                {% cache 7200 web_site %}
                 <div class="col-sm-8 col-xs-12" id="main_column">
                     <div class="box">
                         <div class="box-header">{% trans '热门推荐' %}</div>
@@ -131,17 +132,19 @@
                         </div>
                     {% endfor %}
                 </div>
-            {% endcache %}
+                {% endcache %}
+
                 {% include 'web/partial/side_bar.html' %}
             </div>
         </div>
     </section>
+
     <a class="gotop-wrapper">
-        {#     <div class="action-wrapper">#}
-        {#         <span class="btn-top" id="top_link">#}
-        {#            <i class="fa fa-rss"></i>#}
-        {#        </span>#}
-        {#     </div>#}
+             <div class="action-wrapper">
+                 <span class="btn-top" id="top_link">
+                    <i class="fa fa-rss"></i>
+                </span>
+             </div>
         <div class="action-wrapper">
         <span class="btn-top" id="top_link">
             <i class="fa fa-angle-up"></i>

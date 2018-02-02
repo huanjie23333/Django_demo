@@ -364,3 +364,10 @@ BOT_URL = "https://9s.coinbeef.com/"
 ###
 NEWS_TAG_API_URL = 'https://api.chainnews.com/api/news/tags.json'
 NEWS_DETAIL_API = 'https://api.chainnews.com/api/news.json'
+
+
+
+###
+# import logging config
+###
+from quark.settings.quark_logging import *
