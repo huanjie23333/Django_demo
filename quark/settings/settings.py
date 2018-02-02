@@ -28,6 +28,15 @@ SITE_ID = 1
 
 ALLOWED_HOSTS = ["*"]
 
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
+
+QINIU_ACCESS_KEY = "9NHBMtlIls6lauJB-Uootml3Wt6vZ4n5_HL0uyxh"
+QINIU_SECRET_KEY = "PgOR8T7rlBfh1igNJz-bEg_WA_ju3KmnwrFnIjUP"
+QINIU_BUCKET_NAME = "coinbeef"
+
+QINIU_BUCKET_DOMAIN = 'ow1wrzsju.bkt.clouddn.com'
+QINIU_SECURE_URL = False
+
 # Application definition
 
 LOCALE_PATHS = (
@@ -62,6 +71,8 @@ INSTALLED_APPS = [
     'flink',
     'webtools',
     'coinfork',
+    'advert',
+    'utils'
     # 'captcha',
 ]
 

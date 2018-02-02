@@ -122,3 +122,7 @@ quark/settings/production.py
 design_document/*
 
 .DS_Store
+
+.qiniu_pythonsdk_hostscache.json
+
+ad/images

@@ -63,3 +63,5 @@ Whoosh==2.7.4
 ws4py==0.4.2
 xmltodict==0.11.0
 yarl==0.13.0
+django-qiniu-storage==2.3.1
+
