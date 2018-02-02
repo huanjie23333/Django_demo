@@ -86,7 +86,7 @@ class NewsDataMixin(object):
         return self.request.GET.get('tag', None)
 
     def get_news_tag_list(self):
-        result = cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60 * 30)
+        result = cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60 * 120)
         if result is not None and len(result) == 0:
             cache.delete(NEWS_TAG_LIST_KEY)
         return result
