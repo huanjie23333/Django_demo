@@ -36,5 +36,5 @@ def show_sidebar_news_tags():
         # sidebar_tag_jsonstr
     return {
         "tag_list": tags,
-        "": tags_json_string
+        "sidebar_tag_jsonstr": tags_json_string
     }
