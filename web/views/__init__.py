@@ -73,7 +73,9 @@ class CategoryTagDataMixin(object):
                       .order_by('-tagCount'))[:tag_range]
         tag_nav_list = [{
             'tagname': obj['tag__name'],
-            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id, status=Nav.STATUS.published)[
+            'navs': Nav.objects.filter(tags__id=obj['tag_id'],
+                                       cate=category_id,
+                                       status=Nav.STATUS.published)[
                     :site_range]
         }
             for obj in tagids]
