@@ -1,0 +1,8 @@
+{% load i18n cache %}
+
+{% cache 7200 sidebar_tags %}
+<div class="box-header">{% trans '热门标签' %}</div>
+<div class="box-body">
+    {% include 'web/partial/side_bar_news_tag_filter.html' with sidebar_news_tag_list=tag_list %}
+</div>
+{% endcache %}

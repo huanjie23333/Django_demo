@@ -1,0 +1,21 @@
+{% load i18n cache %}
+
+{% cache 1800 sidebar_news %}
+<div class="box-header">
+    24h {% trans 'news' %}
+</div>
+
+<div class="box-body">
+    <div class="news-list timeline small-line" id="news_list">
+        {% include 'web/partial/side_bar_news.html' with sidebar_news_list=news_list %}
+    </div>
+</div>
+
+<div class="box-footer">
+    <div class="middle-wrapper">
+        <a class="btn white-btn" href="{% url 'web_news' %}">
+            {% trans '查看更多' %}
+        </a>
+    </div>
+</div>
+{% endcache %}

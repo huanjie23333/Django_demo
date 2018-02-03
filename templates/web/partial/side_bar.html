@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% load news %}
 
 <div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
 {#    分叉倒计时 开始 -------#}
@@ -74,30 +75,32 @@
 {% include 'web/partial/ad_block.html' %}
 
     <div class="box hidden-xs">
-        <div class="box-header">
-            24h {% trans '快讯' %}
-        </div>
-        <div class="box-body">
-            <div class="news-list timeline small-line">
-                {% include 'web/partial/side_bar_news.html' %}
-            </div>
-        </div>
-        <div class="box-footer">
-            <div class="middle-wrapper">
-                <a class="btn white-btn" href="{% url 'web_news' %}">
-                    查看更多
-                </a>
-            </div>
-        </div>
+        {% show_sidebar_news %}
+{#        <div class="box-header">#}
+{#            24h {% trans '快讯' %}#}
+{#        </div>#}
+{#        <div class="box-body">#}
+{#            <div class="news-list timeline small-line">#}
+{#                {% include 'web/partial/side_bar_news.html' %}#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="box-footer">#}
+{#            <div class="middle-wrapper">#}
+{#                <a class="btn white-btn" href="{% url 'web_news' %}">#}
+{#                    查看更多#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
     </div>
     <div class="box">
-        <div class="box-header">{% trans '热门标签' %}</div>
-        <div class="box-body">
-            {% include 'web/partial/side_bar_news_tag_filter.html' %}
-        </div>
+        {% show_sidebar_news_tags %}
+{#        <div class="box-header">{% trans '热门标签' %}</div>#}
+{#        <div class="box-body">#}
+{#            {% include 'web/partial/side_bar_news_tag_filter.html' %}#}
+{#        </div>#}
     </div>
 
-{% include 'web/partial/bc_info.html' %}
+    {% include 'web/partial/bc_info.html' %}
 
     {#    <div class="box">#}
     {#        <div class="box-header">热门标签-云</div>#}
@@ -244,6 +247,6 @@
     </li>
 </script>
 
-<script type="application/javascript">
-    var tag_list_json = {{ sidebar_news_tag_list_json|safe }};
-</script>
+{#<script type="application/javascript">#}
+{#    var tag_list_json = {{ sidebar_news_tag_list_json|safe }};#}
+{#</script>#}

@@ -363,7 +363,7 @@ BOT_URL = "https://9s.coinbeef.com/"
 # chainnews api
 ###
 NEWS_TAG_API_URL = 'https://api.chainnews.com/api/news/tags.json'
-NEWS_DETAIL_API = 'https://api.chainnews.com/api/news.json'
+NEWS_DETAIL_API = 'https://api.chainnews.com/api/news/'
 
 
 
