@@ -28,13 +28,12 @@ def show_sidebar_news():
 @register.inclusion_tag("web/snippets/sidebar_news_tags.html")
 def show_sidebar_news_tags():
     tags = list()
-    tags_json_string = ""
     res = requests.get(news_tag_api_url, timeout=5)
     if res.status_code == 200:
         tags = res.json()['tags']
-        tags_json_string = json.dumps(tags)
+        # tags_json_string = json.dumps(tags)
         # sidebar_tag_jsonstr
     return {
         "tag_list": tags,
-        "sidebar_tag_jsonstr": tags_json_string
+        # "sidebar_tag_jsonstr": tags_json_string
     }

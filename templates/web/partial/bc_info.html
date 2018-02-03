@@ -1,4 +1,7 @@
 {% load i18n %}
+{% load cache %}
+
+{% cache 7200 bc_info %}
 <div class="box bc-info">
     <div class="box-header">
         {% trans '区块查询' %}
@@ -20,11 +23,5 @@
         {% endfor %}
         </ul>
     </div>
-{#    <div class="box-footer">#}
-{#        <div class="middle-wrapper">#}
-{#            <a class="btn white-btn" href="/category/financial.htm?t=区块查询">#}
-{#                查看更多#}
-{#            </a>#}
-{#        </div>#}
-{#    </div>#}
 </div>
+{% endcache %}
