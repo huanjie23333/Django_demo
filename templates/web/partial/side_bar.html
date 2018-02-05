@@ -76,42 +76,13 @@
 
     <div class="box hidden-xs">
         {% show_sidebar_news %}
-{#        <div class="box-header">#}
-{#            24h {% trans '快讯' %}#}
-{#        </div>#}
-{#        <div class="box-body">#}
-{#            <div class="news-list timeline small-line">#}
-{#                {% include 'web/partial/side_bar_news.html' %}#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="box-footer">#}
-{#            <div class="middle-wrapper">#}
-{#                <a class="btn white-btn" href="{% url 'web_news' %}">#}
-{#                    查看更多#}
-{#                </a>#}
-{#            </div>#}
-{#        </div>#}
     </div>
     <div class="box">
         {% show_sidebar_news_tags %}
-{#        <div class="box-header">{% trans '热门标签' %}</div>#}
-{#        <div class="box-body">#}
-{#            {% include 'web/partial/side_bar_news_tag_filter.html' %}#}
-{#        </div>#}
     </div>
 
     {% include 'web/partial/bc_info.html' %}
 
-    {#    <div class="box">#}
-    {#        <div class="box-header">热门标签-云</div>#}
-    {#        <div class="box-body tag-cloud" >#}
-    {#            <div class="tag-cloud-wrapper" id="tag_cloud">#}
-    {##}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-    {##}
-    {##}
     <div class="box " id="side_bar_bottom">
         <div class="box-header">
             {% trans "行情报价" %}
