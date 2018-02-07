@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.decorators.cache import cache_page
+from dquote.views import DQuoteListView
 
 from web.views import ( CategoryView, SiteMapView, IndexView,
                         SubNavCreateView, SubNavSuccessView, CountDownList,
@@ -51,6 +52,8 @@ urlpatterns = [
     url(r'^tools/', include('webtools.urls', namespace='tools')),
     url(r'^token_sale_history/', D3TestView.as_view(), name='d3_test'),
     url(r'^crypto_index/', CryptoindexView.as_view(), name='crypto_index'),
+    url(r'^daily_quote/', DQuoteListView.as_view(), name='dquote_list'),
+
 
 ]
 
