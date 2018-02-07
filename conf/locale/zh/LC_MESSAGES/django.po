@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-12 15:16+0800\n"
+"POT-Creation-Date: 2018-02-07 14:50+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,55 +17,105 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: advert/models.py:35
+msgid "顶部主广告"
+msgstr ""
+
+#: advert/models.py:36
+msgid "页中长广告"
+msgstr ""
+
+#: advert/models.py:37
+msgid "页中第二长广告"
+msgstr ""
+
+#: advert/models.py:38
+msgid "侧边顶"
+msgstr ""
+
+#: advert/models.py:39
+msgid "侧边栏中"
+msgstr ""
+
+#: advert/models.py:40
+msgid "侧边栏下"
+msgstr ""
+
+#: advert/models.py:58 advert/models.py:59
+msgid "advertisement"
+msgstr ""
+
+#: coinfork/models.py:18 nav/models.py:46
+msgid "status"
+msgstr "状态"
+
+#: coinfork/models.py:20
+#, fuzzy
+#| msgid "平均出块时间为十分钟"
+msgid "平均出块时间, mint"
+msgstr "平均出块时间为十分钟"
+
+#: coinfork/models.py:21
+msgid "分叉高度"
+msgstr ""
+
+#: coinfork/models.py:22
+#, fuzzy
+#| msgid "目前区块高度"
+msgid "当前区块高度API"
+msgstr "目前区块高度"
+
 #: flink/models.py:19 flink/models.py:20 templates/web/partial/footer.html:11
 msgid "友情链接"
 msgstr "友情链接"
 
-#: nav/models.py:46
-msgid "status"
-msgstr "状态"
-
-#: nav/models.py:93
+#: nav/models.py:99
 msgid "中文描述"
 msgstr ""
 
-#: nav/models.py:118
-msgid "whitepaper"
-msgstr ""
-
-#: nav/models.py:152
+#: nav/models.py:158
 msgid "网址"
 msgstr "网址"
 
-#: nav/models.py:153
+#: nav/models.py:159
 msgid "中文名称"
 msgstr "中文名称"
 
-#: nav/models.py:154
+#: nav/models.py:160
 msgid "英文名称，非必填"
 msgstr "英文名称，非必填"
 
-#: nav/models.py:157
+#: nav/models.py:163
 msgid "网站描述，一句话"
 msgstr "网站描述，一句话"
 
-#: nav/models.py:158
+#: nav/models.py:164
 msgid "联系邮箱"
 msgstr "联系邮箱"
 
-#: templates/base/base.html:28 templates/base/base.html:65
-#: templates/base/error_base.html:15 templates/base/error_base.html:54
-#: templates/dapp/detail.html:15 templates/dapp/detail.html:19
-#: templates/dapp/list.html:9 templates/dapp/list.html:13
-#: templates/web/news.html:8 templates/web/news.html:11
-#: templates/web/news_list.html:8 templates/web/partial/footer.html:28
-#: templates/web/partial/search_row.html:19 templates/webtools/list.html:7
+#: nav/models.py:169 nav/models.py:170
+#, fuzzy
+#| msgid "提交网址"
+msgid "用户提交网址"
+msgstr "提交网址"
+
+#: templates/base/base.html:18 templates/base/error_base.html:15
+#: templates/base/error_base.html:54 templates/dapp/detail.html:15
+#: templates/dapp/detail.html:19 templates/dapp/list.html:9
+#: templates/dapp/list.html:13 templates/web/btc_countdown.html:8
+#: templates/web/fork_list.html:8 templates/web/news.html:8
+#: templates/web/news.html:11 templates/web/news.html:24
+#: templates/web/news_list.html:8 templates/web/news_list.html:72
+#: templates/web/partial/footer.html:28
+#: templates/web/partial/search_row.html:19
+#: templates/web/tools/crypto_Index.html:5
+#: templates/web/tools/crypto_Index.html:9 templates/webtools/list.html:7
 #: templates/webtools/list.html:11
 msgid "区块链导航"
 msgstr "区块链导航"
 
-#: templates/base/base.html:28 templates/base/base.html:65
-#: templates/base/error_base.html:15 templates/base/error_base.html:54
+#: templates/base/base.html:18 templates/base/error_base.html:15
+#: templates/base/error_base.html:54
 msgid "从这里学习区块链"
 msgstr "从这里学习区块链"
 
@@ -74,8 +124,8 @@ msgid "以太坊应用"
 msgstr "以太坊应用"
 
 #: templates/dapp/detail.html:63 templates/search/news.html:39
-#: templates/web/news.html:77 templates/web/news_list.html:78
-#: templates/web/partial/side_bar.html:152
+#: templates/web/news.html:168 templates/web/news_list.html:81
+#: templates/web/partial/side_bar.html:164
 #: templates/web/partial/side_bar_news.html:15
 msgid "原文链接"
 msgstr "原文链接"
@@ -84,19 +134,19 @@ msgstr "原文链接"
 msgid "以太坊应用列表"
 msgstr "以太坊应用列表"
 
-#: templates/errors/403.html:16
+#: templates/errors/403.html:17
 msgid "您没有权限访问此功能"
 msgstr "您没有权限访问此功能"
 
-#: templates/errors/403.html:31
+#: templates/errors/403.html:32
 msgid "返回"
 msgstr "返回"
 
-#: templates/errors/403.html:31
+#: templates/errors/403.html:32
 msgid "首页"
 msgstr "首页"
 
-#: templates/errors/403.html:31
+#: templates/errors/403.html:32
 msgid "或报告问题到"
 msgstr "或报告问题到"
 
@@ -137,78 +187,85 @@ msgstr "条"
 msgid "加载中"
 msgstr "加载中"
 
-#: templates/search/news.html:18 templates/web/news_list.html:37
+#: templates/search/news.html:18 templates/web/news_list.html:33
 msgid "加载更多"
 msgstr "加载更多"
+
+#: templates/web/btc_countdown.html:8
+#, fuzzy
+#| msgid "分叉倒计时"
+msgid "BTC 分叉倒计时"
+msgstr "分叉倒计时"
 
 #: templates/web/btc_countdown.html:34
 msgid "比特币"
 msgstr "比特币"
 
-#: templates/web/btc_countdown.html:34
+#: templates/web/btc_countdown.html:34 templates/web/fork_list.html:8
+#: templates/web/partial/side_bar.html:10
 msgid "分叉倒计时"
 msgstr "分叉倒计时"
 
-#: templates/web/btc_countdown.html:39
+#: templates/web/btc_countdown.html:39 templates/web/partial/clock.html:7
 msgid "天"
 msgstr ""
 
-#: templates/web/btc_countdown.html:40
+#: templates/web/btc_countdown.html:40 templates/web/partial/clock.html:11
 msgid "时"
 msgstr "时"
 
-#: templates/web/btc_countdown.html:41
+#: templates/web/btc_countdown.html:41 templates/web/partial/clock.html:15
 msgid "分"
 msgstr ""
 
-#: templates/web/btc_countdown.html:42
+#: templates/web/btc_countdown.html:42 templates/web/partial/clock.html:19
 #, fuzzy
 #| msgid "秒后"
 msgid "秒"
 msgstr "秒后"
 
-#: templates/web/btc_countdown.html:46 templates/web/partial/clock.html:23
+#: templates/web/btc_countdown.html:46
 msgid "这是基于当前块高度的时间预估"
 msgstr "这是基于当前块高度的时间预估"
 
-#: templates/web/btc_countdown.html:46 templates/web/partial/clock.html:24
+#: templates/web/btc_countdown.html:46
 msgid "平均出块时间为十分钟"
 msgstr "平均出块时间为十分钟"
 
-#: templates/web/btc_countdown.html:48 templates/web/partial/clock.html:26
+#: templates/web/btc_countdown.html:48 templates/web/partial/clock.html:27
 msgid "分叉区块高度"
 msgstr "分叉区块高度"
 
-#: templates/web/btc_countdown.html:50 templates/web/partial/clock.html:27
+#: templates/web/btc_countdown.html:50 templates/web/partial/clock.html:28
 msgid "目前区块高度"
 msgstr "目前区块高度"
 
-#: templates/web/index.html:23 templates/web/partial/side_bar.html:23
-msgid "快讯"
-msgstr "快讯"
-
-#: templates/web/index.html:33
-msgid "查看更多"
-msgstr ""
-
-#: templates/web/index.html:42
+#: templates/web/index.html:14
 msgid "热门推荐"
 msgstr "热门推荐"
+
+#: templates/web/news.html:51 templates/web/news_list.html:108
+msgid "访问"
+msgstr ""
+
+#: templates/web/news.html:51 templates/web/news_list.html:108
+msgid "获得更多快讯"
+msgstr ""
 
 #: templates/web/news_list.html:8
 msgid "新闻快讯"
 msgstr "新闻快讯"
 
-#: templates/web/news_list.html:65
+#: templates/web/news_list.html:62
 msgid "月"
 msgstr ""
 
-#: templates/web/partial/bc_info.html:4
+#: templates/web/partial/bc_info.html:7
 msgid "区块查询"
 msgstr "区块查询"
 
-#: templates/web/partial/bc_info.html:6 templates/web/partial/side_bar.html:11
-#: templates/web/partial/side_bar.html:62
+#: templates/web/partial/bc_info.html:9 templates/web/partial/side_bar.html:13
+#: templates/web/partial/side_bar.html:91
 msgid "更多"
 msgstr ""
 
@@ -240,6 +297,10 @@ msgstr "向我们提交"
 msgid "网站收录"
 msgstr "网站收录"
 
+#: templates/web/partial/news_tag_filter.html:7
+msgid "news"
+msgstr ""
+
 #: templates/web/partial/search_row.html:21
 #: templates/web/partial/search_row.html:22
 msgid "search"
@@ -253,27 +314,35 @@ msgstr "搜站点"
 msgid "搜快讯"
 msgstr "搜快讯"
 
-#: templates/web/partial/side_bar.html:39
-#: templates/web/partial/side_bar.html:99
-msgid "热门标签"
-msgstr "热门标签"
-
-#: templates/web/partial/side_bar.html:59
+#: templates/web/partial/side_bar.html:88
 msgid "行情报价"
 msgstr "行情报价"
 
-#: templates/web/partial/side_bar.html:73
-#: templates/web/partial/side_bar.html:122
+#: templates/web/partial/side_bar.html:102
+#: templates/web/partial/side_bar.html:134
 msgid "关注我们"
 msgstr "关注我们"
 
-#: templates/web/partial/side_bar.html:107
+#: templates/web/partial/side_bar.html:111
+#: templates/web/snippets/sidebar_news_tags.html:4
+msgid "热门标签"
+msgstr "热门标签"
+
+#: templates/web/partial/side_bar.html:119
 msgid "捐赠地址"
 msgstr "捐赠地址"
 
 #: templates/web/sitemap.html:38
 msgid "最新快讯"
 msgstr "最新快讯"
+
+#: templates/web/snippets/sidebar_news.html:5
+msgid "News"
+msgstr "快讯"
+
+#: templates/web/snippets/sidebar_news.html:17
+msgid "查看更多"
+msgstr ""
 
 #: templates/web/sub_nav_success.html:13
 msgid "我们已经收到您提交的网站"
@@ -307,34 +376,32 @@ msgstr "提交网址"
 msgid "submit"
 msgstr "提交"
 
-#: templates/webtools/coin_chart.html:8 templates/webtools/coin_chart.html:12
-#: templates/webtools/coin_list.html:8 templates/webtools/coin_list.html:12
+#: templates/webtools/coin_chart.html:8 templates/webtools/coin_list.html:8
 #: templates/webtools/list.html:7 templates/webtools/list.html:11
 msgid "常用工具"
 msgstr ""
 
-#: templates/webtools/coin_chart.html:8 templates/webtools/coin_chart.html:12
-#: templates/webtools/coin_list.html:8 templates/webtools/coin_list.html:12
+#: templates/webtools/coin_chart.html:8 templates/webtools/coin_list.html:8
 msgid "加密货币报价"
 msgstr "加密货币报价"
 
-#: templates/webtools/coin_chart.html:27 templates/webtools/coin_list.html:27
+#: templates/webtools/coin_chart.html:27 templates/webtools/coin_list.html:22
 msgid "名称"
 msgstr "名称"
 
-#: templates/webtools/coin_chart.html:28 templates/webtools/coin_list.html:28
+#: templates/webtools/coin_chart.html:28 templates/webtools/coin_list.html:23
 msgid "简称"
 msgstr "简称"
 
-#: templates/webtools/coin_chart.html:29 templates/webtools/coin_list.html:29
+#: templates/webtools/coin_chart.html:29 templates/webtools/coin_list.html:24
 msgid "总市值"
 msgstr "总市值"
 
-#: templates/webtools/coin_chart.html:30 templates/webtools/coin_list.html:30
+#: templates/webtools/coin_chart.html:30 templates/webtools/coin_list.html:25
 msgid "24小时成交"
 msgstr "24小时成交"
 
-#: templates/webtools/coin_chart.html:32 templates/webtools/coin_list.html:32
+#: templates/webtools/coin_chart.html:32 templates/webtools/coin_list.html:27
 msgid "最新价格"
 msgstr "最新价格"
 
@@ -342,13 +409,16 @@ msgstr "最新价格"
 msgid "最近一小时"
 msgstr "最近一小时"
 
-#: templates/webtools/coin_chart.html:34 templates/webtools/coin_list.html:34
+#: templates/webtools/coin_chart.html:34 templates/webtools/coin_list.html:29
 msgid "最近一天"
 msgstr "最近一天"
 
-#: templates/webtools/coin_chart.html:35 templates/webtools/coin_list.html:35
+#: templates/webtools/coin_chart.html:35 templates/webtools/coin_list.html:30
 msgid "最近七天"
 msgstr "最近七天"
+
+#~ msgid "快讯"
+#~ msgstr "快讯"
 
 #~ msgid "北京区块科技有限公司"
 #~ msgstr "北京区块科技有限公司"
