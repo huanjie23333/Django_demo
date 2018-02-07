@@ -2,6 +2,7 @@
 import json
 import requests
 from datetime import datetime
+from functools import partial
 
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
 from django.views.generic import TemplateView, View, DetailView
@@ -53,7 +54,10 @@ class NewsDataMixin(object):
 
     def get_news_page_data_json(self, page=1, tag=None):
         cache_key = self.get_cache_key(page, tag)
-        json_str = cache.get_or_set(cache_key, self._get_newslist_page(page, tag), timeout=60 * 30)
+
+        get_news_fn = partial(self._get_newslist_page, page=page, tag=tag)
+
+        json_str = cache.get_or_set(cache_key, get_news_fn, timeout=60 * 30)
         try:
             data = json.loads(json_str)
         except Exception as e:
@@ -89,7 +93,7 @@ class NewsDataMixin(object):
 
     def get_news_tag_list(self):
         result = cache.get_or_set(NEWS_TAG_LIST_KEY,
-                                  self._get_news_tag_list(),
+                                  self._get_news_tag_list,
                                   timeout=60 * 120)
         if result is not None and len(result) == 0:
             cache.delete(NEWS_TAG_LIST_KEY)
