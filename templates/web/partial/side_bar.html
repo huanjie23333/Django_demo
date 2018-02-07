@@ -108,10 +108,7 @@
     </div>
     <div id="scroll_target" class="inv-element">
         <div class="box hidden-xs">
-            <div class="box-header">{% trans '热门标签' %}</div>
-            <div class="box-body">
-                {% include 'web/partial/news_tag_filter.html' %}
-            </div>
+            {% show_sidebar_news_tags %}
         </div>
 
         <div class="box donation " id="donation-box">
