@@ -11,13 +11,14 @@
 {% block content %}
 
     <section id="content">
-        <div class="container">
+        <div class="container daily-quote">
             <div class="row">
                 <table class="table">
                     <tr>
                         <td>日期</td>
                         <td>作者</td>
                         <td>金句</td>
+                        <td>#</td>
                     </tr>
 
                     {% for quote in quotes %}
@@ -31,6 +32,7 @@
                             <td class="quote">
                             {{ quote.quote }}
                             </td>
+                            <td><a href="javascript:;">下载图片</a></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -38,6 +40,38 @@
                 {% bootstrap_pagination page_obj %}
 
             </div>
+        <div class="pic">
+            <div class="head">
+                <div class="left">
+                    <div class="top">
+                        <div class="top-left">
+                            <div class="month">02</div>
+                            <div class="en-day">WED</div>
+                        </div>
+                        <div class="top-right">07</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="zh-day">星期三</div>
+                        <div class="zh-date">农历腊月廿二</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="date">今天是2018年 <br>第<span>0</span><span>3</span><span>8</span>天</div>
+                    <div class="info">种一棵树最好的时机是十年前，<br>其次是现在</div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="desc">人类一思考，上帝就发笑</div>
+                <div class="author">--米兰昆德拉</div>
+            </div>
+            <div class="foot">
+                <div class="wx-qr-code"></div>
+                <div class="">
+                    <div class="logo"></div>
+                    <div class="slogan">关注 ChainNews，<br>尽早成为区块链行家</div>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 
