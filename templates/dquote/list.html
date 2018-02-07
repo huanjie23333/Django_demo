@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+
+{% load static compress i18n bootstrap3 %}
+{% block meta %}
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block search_row %}
+{% endblock %}
+
+{% block content %}
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <table class="table">
+                    <tr>
+                        <td>日期</td>
+                        <td>作者</td>
+                        <td>金句</td>
+                    </tr>
+
+                    {% for quote in quotes %}
+                        <tr>
+                            <td class="date" data-date="{{ quote.target_date|date:"Y-m-d" }}">
+                            {{ quote.target_date }}
+                            </td>
+                            <td class="person">
+                            {{ quote.person }}
+                            </td>
+                            <td class="quote">
+                            {{ quote.quote }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                {% bootstrap_pagination page_obj %}
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
