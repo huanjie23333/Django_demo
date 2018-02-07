@@ -14,7 +14,6 @@ news_detail_api = getattr(settings, "NEWS_DETAIL_API")
 
 logger = logging.getLogger('django')
 
-
 def _get_news_list():
     news = list()
     res = requests.get(news_detail_api, timeout=5)
@@ -30,14 +29,12 @@ def show_sidebar_news():
         "news_list": news_list
     }
 
-
 def _get_tag_list():
     tags = list()
     res = requests.get(news_tag_api_url, timeout=5)
     if res.status_code == 200:
         tags = res.json()['tags']
     return tags
-
 
 @register.inclusion_tag("web/snippets/sidebar_news_tags.html")
 def show_sidebar_news_tags():
