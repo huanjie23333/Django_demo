@@ -4126,7 +4126,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
             });
             $.ajax({
                  method: 'GET',
-                 url: 'http://api.chainnews.com/api/news/search.json?q=' + searchVal,
+                 url: 'https://api.chainnews.com/api/news/search.json?q=' + searchVal,
                  data: {},
                  jsonp: 'true',
                  success: ajaxCallback.bind(this)
