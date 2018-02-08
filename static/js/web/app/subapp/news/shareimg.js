@@ -1,19 +1,25 @@
 define(['libs/Class', 'libs/rasterizehtml', 'jquery'], function(Class, rasterizeHTML, $){
     var ShareImg = Class.extend({
         init: function(){
-            if(!$('.shareimg').length) return ;
+            if($('.shareimg').length){
+                $('.newsline').on('click', '.shareimg', function(event){
+                    var tar = $(event.currentTarget).parents('.entry');
+                    var html = tar.html().replace(/style="display:none"/g, '');
+                    html += $('#rasterize-style').html();
 
-            $('.newsline').on('click', '.shareimg', function(event){
-                var tar = $(event.currentTarget).parents('.entry');
-                var html = tar.html().replace(/style="display:none"/g, '');
-                html += $('#rasterize-style').html();
+                    tar.find('i.shareimg-loading').css('display', 'inline-block');
+                    rasterizeHTML.drawHTML(html).then(function(data){
 
-                tar.find('i.shareimg-loading').css('display', 'inline-block');
-                rasterizeHTML.drawHTML(html).then(function(data){
+                        svgString2Image(data.image, 'png', downloadPng);
 
-                    svgString2Image(data.image, 'png', downloadPng);
 
-                    function svgString2Image(svgData, format, callback) {
+
+                    });
+                });
+            }
+
+
+            function svgString2Image(svgData, format, callback) {
                         format = format ? format : 'png';
                         var canvas = document.createElement('canvas');
                         var context = canvas.getContext('2d');
@@ -38,9 +44,6 @@ define(['libs/Class', 'libs/rasterizehtml', 'jquery'], function(Class, rasterize
                         $(download).remove();
                         tar.find('i.shareimg-loading').css('display', 'none');
                     }
-
-                });
-            });
         }
     });
     return ShareImg;
