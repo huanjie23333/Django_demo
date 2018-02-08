@@ -9,13 +9,12 @@ define(['libs/Class', 'libs/rasterizehtml', 'jquery'], function(Class, rasterize
 
                     tar.find('i.shareimg-loading').css('display', 'inline-block');
                     rasterizeHTML.drawHTML(html).then(function(data){
-
                         svgString2Image(data.image, 'png', downloadPng);
-
-
-
                     });
                 });
+            }
+            if($('.daily-quote').length){
+
             }
 
 

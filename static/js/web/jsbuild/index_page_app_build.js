@@ -4472,14 +4472,11 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery'], fu
 
                     tar.find('i.shareimg-loading').css('display', 'inline-block');
                     rasterizeHTML.drawHTML(html).then(function(data){
-
                         svgString2Image(data.image, 'png', downloadPng);
-
-
-
                     });
                 });
             }
+            if($())
 
 
             function svgString2Image(svgData, format, callback) {
