@@ -1838,8 +1838,8 @@ define('subapp/adapters/coinbeef_all',[
 
         return CoinbeefAdapterAll
 });
-define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all','underscore'],
-    function(Class,FakeFeed,Feed,CoinBeefAdapter,_){
+define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all','underscore','jquery'],
+    function(Class,FakeFeed,Feed,CoinBeefAdapter,_,$){
 
         var NewsLineApp = Class.extend({
 
