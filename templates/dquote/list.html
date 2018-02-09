@@ -88,7 +88,10 @@
                             <img src="{% static 'images/wx-qr-code.png' %}" alt="">
                             <div class="text">长按扫描<br>关注我们</div>
                         </div>
-                        <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
+                        <div class="geek">
+                            <img src="{% static 'images/geek.png' %}" alt=""> <br>
+                            <span>ChainNews.com</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,7 +144,10 @@
                             <img src="{% static 'images/wx-qr-code.png' %}" alt="">
                             <div class="text">长按扫描<br>关注我们</div>
                         </div>
-                        <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
+                        <div class="geek">
+                            <img src="{% static 'images/geek.png' %}" alt=""> <br>
+                            <span>ChainNews.com</span>
+                        </div>
                     </div>
                 </div>
     </div>
@@ -242,8 +248,13 @@
     float: right;
     margin-right: 10px;
   }
+  .geek span {
+    text-align: right;
+      position: absolute;
+    bottom: 8px;
+  }
   .geek img {
-    width: 110px;
+    width: 115px;
   }
   .right .date {
     font-size: 23px;
