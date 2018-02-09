@@ -141,11 +141,11 @@ from nav.block_chain_browsers import block_chain_browsers
 class SideBarDataMixin(FlinkMixin, NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        sb_t_list = self.get_news_tag_list()[:50]
+        # sb_t_list = self.get_news_tag_list()[:50]
         context.update({
-            'sidebar_news_tag_list': sb_t_list,
-            'sidebar_news_tag_list_json': json.dumps(sb_t_list),
-            # 'sidebar_news_list': self.get_news_page_list(),
+            # 'sidebar_news_tag_list': sb_t_list,
+            # 'sidebar_news_tag_list_json': json.dumps(sb_t_list),
+            # 'sidebar_news_list: self.get_news_page_list(),
             'sidebar_bcinfo_list': self.get_bc_info_list(),
             'sidebar_fork': self.get_sidebar_fork()
         })
