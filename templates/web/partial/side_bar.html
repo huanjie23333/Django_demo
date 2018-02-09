@@ -1,7 +1,9 @@
 {% load i18n %}
 {% load static %}
 {% load news %}
+{% load cache %}
 
+{%  cache 600 sidebar %}
 <div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
 {#    分叉倒计时 开始 -------#}
     <div class="box hidden-xs">
@@ -71,10 +73,11 @@
 {% include 'web/partial/ad_block.html' %}
 
     <div class="box hidden-xs" id="sidebar_news">
-        {% show_sidebar_news %}
+        {% include 'web/snippets/sidebar_news.html' %}
+
     </div>
     <div class="box" id="sidebar_tags">
-        {% show_sidebar_news_tags %}
+        {% include 'web/snippets/sidebar_news_tags.html' %}
     </div>
 
     {% include 'web/partial/bc_info.html' %}
@@ -104,7 +107,7 @@
     </div>
     <div id="scroll_target" class="inv-element">
         <div class="box hidden-xs">
-            {% show_sidebar_news_tags %}
+            {% include 'web/snippets/sidebar_news.html' %}
         </div>
 
         <div class="box donation " id="donation-box">
@@ -134,6 +137,7 @@
 
     </div>
 </div>
+{% endcache %}
 
 <script id="news_tag_template" type="text/template">
         <% _.each(tags, function(tag, key, arr){ %>
