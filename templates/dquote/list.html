@@ -32,7 +32,7 @@
                             <td class="quote">
                             {{ quote.quote }}
                             </td>
-                            <td><a href="javascript:;">下载图片</a></td>
+                            <td><a href="javascript:;" class="render-img">下载图片</a></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -40,46 +40,323 @@
                 {% bootstrap_pagination page_obj %}
 
             </div>
-        <div class="pic">
-            <div class="head">
-                <div class="left">
-                    <div class="top">
-                        <div class="top-left">
-                            <div class="month">02</div>
-                            <div class="en-day">WED</div>
+            <div class="pic">
+{#                <div class="bgi">#}
+{#                    <img src="{% static '/images/dq-bg-3.jpeg' %}" alt="">#}
+{#                    <img src="{% static '/images/dq-bg-3.jpeg' %}" alt="">#}
+{#                    <img src="{% static '/images/dq-bg-3.jpeg' %}" alt="">#}
+{#                </div>#}
+                <div class="wrapper">
+                    <div class="head">
+                        <div class="left">
+                            <div class="top">
+                                <div class="top-left">
+                                    <div class="month num">02</div>
+                                    <div class="en-day">WED</div>
+                                </div>
+                                <div class="top-right num"><span class="split-line"></span>07</div>
+                            </div>
+                            <div class="bottom">
+                                <div class="zh-day">星期三</div>
+                                <div class="zh-date">农历腊月廿二</div>
+                            </div>
                         </div>
-                        <div class="top-right">07</div>
+                        <div class="right">
+                            <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
+                            <div class="date">
+                                今天是<span class="num">&nbsp;2018&nbsp;</span>年<br>第
+                                <span class="num square">0</span>
+                                <span class="num square">3</span>
+                                <span class="num square">8</span> 天
+                            </div>
+{#                            <div class="info">种一棵树最好的时机是十年前<br>其次是现在</div>#}
+                        </div>
                     </div>
-                    <div class="bottom">
-                        <div class="zh-day">星期三</div>
-                        <div class="zh-date">农历腊月廿二</div>
+                    <div class="body">
+                        <div class="desc">
+                            <span class="left"></span>
+                            人类一思考上帝就发笑就发笑上帝就发笑就发笑
+                            <span class="right"></span>
+                        </div>
+                        <div class="author">米兰∙昆德拉</div>
+                    </div>
+                    <div class="foot">
+                        <div class="wx-qr-code">
+                            <img src="{% static 'images/wx-qr-code.png' %}" alt="">
+                            <div class="text">长按扫描<br>关注我们</div>
+                        </div>
+                        <div class="follow-us">
+                            <div class="logo"><img src="{% static 'images/daily-quote-logo.png' %}" alt=""></div>
+                            <div class="slogan">ChainNews.com</div>
+                        </div>
                     </div>
                 </div>
-                <div class="right">
-                    <div class="date">今天是2018年<br>第<span>0</span><span>3</span><span>8</span>天</div>
-                    <div class="info">种一棵树最好的时机是十年前<br>其次是现在</div>
-                </div>
             </div>
-            <div class="body">
-                <div class="desc">
-                    <span class="left">“</span>
-                    人类一思考上帝就发笑就发笑
-                    <span class="right">”</span></div>
-                <div class="author">—— 米兰∙昆德拉</div>
-            </div>
-            <div class="foot">
-                <div class="wx-qr-code">
-                    <img src="{% static 'images/wx-qr-code.jpeg' %}" alt="">
-                    <div class="text">长按扫描<br>关注我们</div>
-                </div>
-                <div class="follow-us">
-                    <div class="logo"></div>
-                    <div class="slogan">关注 ChainNews<br>尽早成为区块链行家</div>
-                </div>
-            </div>
-        </div>
         </div>
     </section>
+    <script type="text/template" id="daily-quote-template">
+    <div class="pic">
+{#                <div class="bgi">#}
+{#                    <img src="{% static '/images/dq-bg-1.jpeg' %}" alt="">#}
+{#                    <img src="{% static '/images/dq-bg-1.jpeg' %}" alt="">#}
+{#                    <img src="{% static '/images/dq-bg-1.jpeg' %}" alt="">#}
+{#                </div>#}
+                <div class="wrapper">
+                    <div class="head">
+                        <div class="left">
+                            <div class="top">
+                                <div class="top-left">
+                                    <div class="month num"><%= data.month %></div>
+                                    <div class="en-day num"><%= data.enday %></div>
+                                </div>
+                                <div class="top-right num"><span class="split-line"></span><%= data.date %></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="zh-day">星期<%= data.zhday %></div>
+                                <div class="zh-date">农历<%= data.zhdate %></div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
+                            <div class="date">今天是<span class="num">&nbsp;<%= data.year %>&nbsp;</span>年<br>第
+                                <span class="num square"><%= data.a %></span>
+                                <span class="num square"><%= data.b %></span>
+                                <span class="num square"><%= data.c %></span> 天
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="desc">
+                            <span class="left"></span>
+                            <%= data.desc %>
+                            <span class="right"></span>
+                        </div>
+                        <div class="author"><%= data.author %></div>
+                    </div>
+                    <div class="foot">
+                        <div class="wx-qr-code">
+                            <img src="{% static 'images/wx-qr-code.png' %}" alt="">
+                            <div class="text">长按扫描<br>关注我们</div>
+                        </div>
+                        <div class="follow-us">
+                            <div class="logo"><img src="{% static 'images/daily-quote-logo.png' %}" alt=""></div>
+                            <div class="slogan">ChainNews.com</div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <style>
+{#        .pic{#}
+{#            box-sizing: content-box;#}
+{#            padding: 8px;#}
+{#            border: 4px solid #ccc;#}
+{#            width: 754px;#}
+{#            background-color: #fffaf3;#}
+{#        }#}
+  .wrapper {
+    width: 690px;
+    box-sizing: content-box;
+    border: 2px solid #ccc;
+    padding: 30px;
+    font-family: "PingFangSC-Regular", "Lantinghei SC", Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+    background-color: #fffaf3;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+  }
+  .bgi {
+    position: absolute;
+    width: 750px;
+    z-index: 0;
+    left: 0px;
+    top: 0px;
+  }
+  .bgi img {
+    width: 750px;
+      display: block;
+  }
+  .wrapper {
+    position: relative;
+    z-index: 1;
+  }
+  .head::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .head .left {
+    width: 190px;
+    float: left;
+  }
+  .head .right {
+    float: right;
+    text-align: right;
+  }
+  .top {
+    margin-bottom: 20px;
+    height: 80px;
+  }
+  .top::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .top-left {
+    width: 70px;
+    float: left;
+  }
+  .top-left .month {
+    font-size: 50px;
+    line-height: 55px;
+    font-weight: 600;
+    color: #333;
+  }
+  .top-left .en-day {
+    font-size: 20px;
+    line-height: 25px;
+    color: #0052ff;
+    font-weight: 600;
+  }
+  .top-right {
+    font-size: 70px;
+    line-height: 80px;
+    color: #0052ff;
+    float: right;
+    font-weight: 600;
+  }
+  .top-right .split-line {
+    background-color: #333;
+    width: 3px;
+    height: 65px;
+    display: inline-block;
+    transform: translate(-14px,14px) skew(-20deg);
+  }
+  .bottom {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .bottom .zh-day {
+    color: #0052ff;
+  }
+  .right .geek img {
+    width: 78px;
+  }
+  .right .date {
+    font-size: 23px;
+    color: #333;
+    line-height: 34px;
+  }
+  .right .date .square {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    background-color: #333;
+    color: #fffaf3;
+    font-size: 16px;
+    text-align: center;
+  }
+  .right .info {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  .body {
+    background-color: #0052ff;
+    box-sizing: content-box;
+    width: 485px;
+    padding: 80px 80px 40px 125px;
+    margin-top: 10px;
+  }
+  .body::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .desc {
+    font-size: 45px;
+    line-height: 1.5;
+    color: #fff;
+    position: relative;
+    font-weight: 400;
+  }
+  .desc .left {
+    display: block;
+    position: absolute;
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
+    height: 35px;
+    width: 35px;
+    left: -30px;
+    top: -15px;
+  }
+  .desc .right {
+    display: block;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    bottom: -10px;
+    right: 5px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+  }
+  .author {
+    float: right;
+    font-size: 20px;
+    color: #fff;
+    margin-top: 45px;
+  }
+  .foot {
+    margin-top: 10px;
+  }
+  .foot::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .wx-qr-code {
+    float: left;
+    position: relative;
+  }
+  .wx-qr-code .text {
+    position: absolute;
+    left: 130px;
+    top: 40px;
+    width: 80px;
+  }
+  .wx-qr-code img {
+    width: 110px;
+  }
+  .follow-us {
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: right;
+    line-height: 1.8;
+    height: 110px;
+  }
+  .logo {
+    margin-top: 21px;
+  }
+  .logo img {
+    width: 65px;
+  }
+  .slogan {
+    margin-top: 3px;
+  }
+  .num {
+    font-family: Georgia;
+  }
+    </style>
+    </script>
+        <script src="http://www.miaoqiyuan.cn/products/lunar/lunar.min.js"></script>
 
 
+{% endblock %}
+
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
 {% endblock %}

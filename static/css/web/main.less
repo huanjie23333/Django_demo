@@ -801,13 +801,31 @@ body {
 日签 临时样式
  */
 .daily-quote {
-  .pic {
-    width: 800px;
-    box-sizing: border-box;
-    border: 25px solid #999;
+  .wrapper {
+    width: 690px;
+    box-sizing: content-box;
+    border: 2px solid #ccc;
     padding: 30px;
     font-family: "PingFangSC-Regular", "Lantinghei SC", Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-    background-color: #fff;
+    background-color: #fffaf3;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+  }
+  .bgi {
+    position: absolute;
+    width: 750px;
+    z-index: 0;
+    left: 0px;
+    top: 0px;
+  }
+  .bgi img {
+    width: 750px;
+      display: block;
+  }
+  .wrapper {
+    position: relative;
+    z-index: 1;
   }
   .head::after {
     content: "";
@@ -815,7 +833,7 @@ body {
     clear: both;
   }
   .head .left {
-    width: 180px;
+    width: 190px;
     float: left;
   }
   .head .right {
@@ -823,7 +841,7 @@ body {
     text-align: right;
   }
   .top {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     height: 80px;
   }
   .top::after {
@@ -832,60 +850,69 @@ body {
     clear: both;
   }
   .top-left {
-    width: 80px;
-    border-right: 3px solid #666;
+    width: 70px;
     float: left;
   }
   .top-left .month {
     font-size: 50px;
     line-height: 55px;
-    color: #1B1B35;
+    font-weight: 600;
+    color: #333;
   }
   .top-left .en-day {
     font-size: 20px;
     line-height: 25px;
     color: #0052ff;
+    font-weight: 600;
   }
   .top-right {
     font-size: 70px;
     line-height: 80px;
     color: #0052ff;
     float: right;
+    font-weight: 600;
+  }
+  .top-right .split-line {
+    background-color: #333;
+    width: 3px;
+    height: 65px;
+    display: inline-block;
+    transform: translate(-14px,14px) skew(-20deg);
   }
   .bottom {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 16px;
+    line-height: 1.5;
   }
   .bottom .zh-day {
     color: #0052ff;
   }
+  .right .geek img {
+    width: 78px;
+  }
   .right .date {
     font-size: 23px;
-    color: #666;
+    color: #333;
     line-height: 34px;
-    margin-bottom: 20px;
   }
-  .right .date span {
+  .right .date .square {
     display: inline-block;
     height: 25px;
     width: 25px;
-    border-radius: 13px;
     line-height: 25px;
-    background-color: #666;
-    color: #fafafa;
-    font-size: 18px;
+    background-color: #333;
+    color: #fffaf3;
+    font-size: 16px;
     text-align: center;
-    margin-right: 4px;
-    margin-left: 3px;
   }
   .right .info {
-    font-size: 14px;
-    line-height: 16px;
-    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
   }
   .body {
     background-color: #0052ff;
-    width: 690px;
+    box-sizing: content-box;
+    width: 485px;
     padding: 80px 80px 40px 125px;
     margin-top: 10px;
   }
@@ -896,32 +923,36 @@ body {
   }
   .desc {
     font-size: 45px;
-    line-height: 40px;
-    color: #fafafa;
+    line-height: 1.5;
+    color: #fff;
     position: relative;
     font-weight: 400;
   }
   .desc .left {
-    //content: "“";
-    display: inline-block;
-    //position: absolute;
-    color: #fafafa;
-    font-size: 120px;
-    //left: -85px;
-    //top: 25px;
-    transform: skew(-30deg) translate(0, 50px);
-    margin-left: -78px;
+    display: block;
+    position: absolute;
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
+    height: 35px;
+    width: 35px;
+    left: -30px;
+    top: -15px;
   }
   .desc .right {
-    display: inline-block;
-    font-size: 120px;
-    transform: skew(-30deg) translate(35px, 85px);
+    display: block;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    bottom: -10px;
+    right: 5px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
   }
   .author {
     float: right;
-    font-size: 16px;
-    color: #fafafa;
-    margin-top: 35px;
+    font-size: 20px;
+    color: #fff;
+    margin-top: 45px;
   }
   .foot {
     margin-top: 10px;
@@ -946,6 +977,23 @@ body {
   }
   .follow-us {
     float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: right;
+    line-height: 1.8;
+    height: 110px;
+  }
+  .logo {
+    margin-top: 21px;
+  }
+  .logo img {
+    width: 65px;
+  }
+  .slogan {
+    margin-top: 3px;
+  }
+  .num {
+    font-family: Georgia;
   }
 }
 /**
