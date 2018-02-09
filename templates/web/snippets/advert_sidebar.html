@@ -1,0 +1,12 @@
+{% load static %}
+
+{#  ---- ad block   #}
+   {% for advert in adverts %}
+    <a class="advert-block" href="{{ advert.link }}" target="_blank">
+        <div class="ad-block" style="background-image: url('{{ advert.image.url }}')" >
+            <div class="ad-sign">AD</div>
+        </div>
+
+    </a>
+    {% endfor %}
+{# --- ad block end  #}
