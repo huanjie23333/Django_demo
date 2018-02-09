@@ -185,12 +185,14 @@ class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
                             status=200)
 
 
-class NewsListView(SideBarDataMixin, TemplateView):
+class NewsListView(SideBarDataMixin,NewsDataMixin, TemplateView):
     template_name = 'web/news_list.html'
     context_object_name = 'news_list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        sb_t_list = self.get_news_tag_list()[:50]
+        context['sidebar_news_tag_list']= sb_t_list
         context['news_list'] = self.get_news_page_list()
         context['news_json_str'] = self.get_news_page_data_json(1)
         return context
