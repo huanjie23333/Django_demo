@@ -3014,13 +3014,18 @@ body a:hover {
 .daily-quote .bottom .zh-day {
   color: #0052ff;
 }
-.daily-quote .right .geek img {
-  width: 78px;
+.daily-quote .geek {
+  float: right;
+  margin-right: 10px;
+}
+.daily-quote .geek img {
+  width: 110px;
 }
 .daily-quote .right .date {
   font-size: 23px;
   color: #333;
   line-height: 34px;
+  margin-top: 10px;
 }
 .daily-quote .right .date .square {
   display: inline-block;
@@ -3104,18 +3109,14 @@ body a:hover {
   width: 110px;
 }
 .daily-quote .follow-us {
-  float: right;
   margin-right: 10px;
-  margin-top: 10px;
   text-align: right;
   line-height: 1.8;
-  height: 110px;
-}
-.daily-quote .logo {
-  margin-top: 21px;
+  height: 59px;
+  margin-top: 8px;
 }
 .daily-quote .logo img {
-  width: 65px;
+  width: 110px;
 }
 .daily-quote .slogan {
   margin-top: 3px;

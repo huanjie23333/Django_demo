@@ -62,7 +62,10 @@
                             </div>
                         </div>
                         <div class="right">
-                            <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
+                            <div class="follow-us">
+                                <div class="logo"><img src="{% static 'images/daily-quote-logo.png' %}" alt=""></div>
+{#                                <div class="slogan">ChainNews.com</div>#}
+                            </div>
                             <div class="date">
                                 今天是<span class="num">&nbsp;2018&nbsp;</span>年<br>第
                                 <span class="num square">0</span>
@@ -85,10 +88,7 @@
                             <img src="{% static 'images/wx-qr-code.png' %}" alt="">
                             <div class="text">长按扫描<br>关注我们</div>
                         </div>
-                        <div class="follow-us">
-                            <div class="logo"><img src="{% static 'images/daily-quote-logo.png' %}" alt=""></div>
-                            <div class="slogan">ChainNews.com</div>
-                        </div>
+                        <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,10 @@
                             </div>
                         </div>
                         <div class="right">
-                            <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
+                            <div class="follow-us">
+                                <div class="logo"><img src="{% static 'images/daily-quote-logo.png' %}" alt=""></div>
+{#                                <div class="slogan">ChainNews.com</div>#}
+                            </div>
                             <div class="date">今天是<span class="num">&nbsp;<%= data.year %>&nbsp;</span>年<br>第
                                 <span class="num square"><%= data.a %></span>
                                 <span class="num square"><%= data.b %></span>
@@ -138,10 +141,7 @@
                             <img src="{% static 'images/wx-qr-code.png' %}" alt="">
                             <div class="text">长按扫描<br>关注我们</div>
                         </div>
-                        <div class="follow-us">
-                            <div class="logo"><img src="{% static 'images/daily-quote-logo.png' %}" alt=""></div>
-                            <div class="slogan">ChainNews.com</div>
-                        </div>
+                        <div class="geek"><img src="{% static 'images/geek.png' %}" alt=""></div>
                     </div>
                 </div>
     </div>
@@ -238,13 +238,18 @@
   .bottom .zh-day {
     color: #0052ff;
   }
-  .right .geek img {
-    width: 78px;
+  .geek {
+    float: right;
+    margin-right: 10px;
+  }
+  .geek img {
+    width: 110px;
   }
   .right .date {
     font-size: 23px;
     color: #333;
     line-height: 34px;
+    margin-top: 10px;
   }
   .right .date .square {
     display: inline-block;
@@ -328,18 +333,17 @@
     width: 110px;
   }
   .follow-us {
-    float: right;
     margin-right: 10px;
-    margin-top: 10px;
     text-align: right;
     line-height: 1.8;
-    height: 110px;
+    height: 59px;
+    margin-top: 8px;
   }
   .logo {
-    margin-top: 21px;
+    //margin-top: 21px;
   }
   .logo img {
-    width: 65px;
+    width: 110px;
   }
   .slogan {
     margin-top: 3px;
