@@ -3,32 +3,18 @@
     <div class="container">
         <nav class="navbar">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-{#                 <ul class="nav navbar-nav navbar-left">#}
-{#                        <li><a href="{% url 'web_submit' %}">网站收录</a></li>#}
-{#                        <li><a href="">收藏本站</a></li>#}
-{#                 </ul>#}
                 <div class="navbar-header price-row">
                     <span class="price-list" id="header_price_list">
                      </span>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a rel="nofollow" title="{% trans '向我们提交' %}" href="{% url 'web_submit' %}" type="button">{% trans '网站收录' %}</a></li>
                         <li><a href="" class="bookmarkme">{% trans '收藏本站' %}</a></li>
                     </ul>
-{#                    <form class="navbar-form navbar-right hidden-lg hidden-md hidden-sm" action="{% url 'search:nav' %}" method="get">#}
-{#                        <div class="form-group search-container">#}
-{#                            <i class="fa fa-search search-icon"></i>#}
-{#                            <input type="text" class="nav-search" autocomplete="off"  placeholder="Search" name="q">#}
-{#                            <button type="submit" class="search-button">搜索</button>#}
-{#                        </div>#}
-{#                    </form>#}
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
     </div>
 </section>

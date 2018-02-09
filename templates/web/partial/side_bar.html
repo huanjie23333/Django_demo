@@ -6,7 +6,6 @@
 {#    分叉倒计时 开始 -------#}
     <div class="box hidden-xs">
         <div class="box-header ">
-{#            <span class="main-fork_name">{% trans '比特币' %}</span>#}
             {% trans '分叉倒计时' %}
             <span class="pull-right header-link">
                 <a href="{% url 'web_fork_list' %}" target="_blank">
@@ -68,9 +67,6 @@
 
         </div>
     </div>
-
-
-
 {#   分叉倒计时 结束 --------#}
 {% include 'web/partial/ad_block.html' %}
 
@@ -150,16 +146,9 @@
 </script>
 
 <script id="news_template" type="text/template">
-
     <div class="entry">
         <div class="left-content">
             <h3>
-                {#                    <% if(show_time){ %>#}
-                {#                      <div class="show-time">#}
-                {#                       <span class="month"><%=month%>月</span>#}
-                {#                       <span class="date"><%=date%></span>#}
-                {#                      </div>#}
-                {#                    <% } %>#}
             </h3>
             <p></p>
         </div>
@@ -172,24 +161,9 @@
                     <% }%>
 
                 </li>
-                {#                    <li><%=time_diff%></li>#}
             </ul>
         </div>
     </div>
-
-    {#    <li>#}
-    {#        <div class="news-title">#}
-    {#                                       <span href="">#}
-    {#                                       <%=title%>#}
-    {#                                        </span>#}
-    {#        </div>#}
-    {#        <div class="news-content hidden">#}
-    {#            <%=content%>#}
-    {#        </div>#}
-    {#        <div class="pub-time">#}
-    {#            <%=time_diff%>#}
-    {#        </div>#}
-{#    </li>#}
 </script>
 
 <script id="coin_template" type="text/template">
@@ -207,7 +181,3 @@
         </a>
     </li>
 </script>
-
-{#<script type="application/javascript">#}
-{#    var tag_list_json = {{ sidebar_news_tag_list_json|safe }};#}
-{#</script>#}
