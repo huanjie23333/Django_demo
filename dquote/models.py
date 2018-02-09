@@ -15,7 +15,6 @@ class DQoute(models.Model):
     quote_en = models.CharField(max_length=1024, null=True, blank=True, verbose_name=_("英文名言"))
 
 
-
     class Meta:
         ordering = ['-target_date']
         verbose_name_plural = _("日签")

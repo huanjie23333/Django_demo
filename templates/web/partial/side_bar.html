@@ -74,10 +74,10 @@
 {#   分叉倒计时 结束 --------#}
 {% include 'web/partial/ad_block.html' %}
 
-    <div class="box hidden-xs">
+    <div class="box hidden-xs" id="sidebar_news">
         {% show_sidebar_news %}
     </div>
-    <div class="box">
+    <div class="box" id="sidebar_tags">
         {% show_sidebar_news_tags %}
     </div>
 
@@ -138,6 +138,16 @@
 
     </div>
 </div>
+
+<script id="news_tag_template" type="text/template">
+        <% _.each(tags, function(tag, key, arr){ %>
+            <li class="tag-filter-item">
+                <a href="/news/tag/<%=tag.name%>/" title="<%=tag.name%>" target="_blank" >
+                    <%=tag.name%>
+                </a>
+            </li>
+        <% }); %>
+</script>
 
 <script id="news_template" type="text/template">
 

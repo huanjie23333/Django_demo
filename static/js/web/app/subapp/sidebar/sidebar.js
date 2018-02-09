@@ -2,7 +2,7 @@ define(['libs/Class',
     'jquery',
     //for news
     'subapp/sidebar/news',
-    'subapp/data/fakeFeed',
+    'subapp/data/feed',
     'subapp/adapters/coinbeef',
     //for price list
     'subapp/sidebar/allcoinprice',
@@ -12,12 +12,12 @@ define(['libs/Class',
     'subapp/sidebar/scrollbox',
     // tag cloud
     'subapp/sidebar/tagcloud',
-    'subapp/sidebar/clock'
+    'subapp/sidebar/clock',
 ],
     function(Class,
              $,
              NewsApp,
-             FakeFeed,
+             NewsFeed,
              CoinBeefAdapter,
 
              AllCoin,
@@ -33,9 +33,11 @@ define(['libs/Class',
     var SideBarApp = Class.extend({
         init:function(){
 
-            this.newsFeed = new FakeFeed({
-                data:window.news_obj,
-                interval:-1, // no repeat
+            this.newsFeed = new NewsFeed({
+                url: 'https://api.chainnews.com/api/news.json',
+                method: 'GET',
+
+                interval: -1
             });
             this.news =new NewsApp({
                 feed:  this.newsFeed,
@@ -43,7 +45,7 @@ define(['libs/Class',
             });
             // already rendered by server
             // close the feed
-            //this.newsFeed.run();
+            this.newsFeed.run();
 
             new AllCoin({
                     feed: window.app.price_feed,
@@ -57,6 +59,7 @@ define(['libs/Class',
             new TagCloud();
 
             // ForkClock();
+
 
         }
     });
