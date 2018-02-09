@@ -2048,7 +2048,7 @@ body {
 }
 body {
   position: relative;
-  padding-bottom: 75px;
+  padding-bottom: 185px;
   color: #434446;
   font-size: 14px;
   background-color: #F7F6F2;
@@ -2475,9 +2475,16 @@ body a:hover {
   position: absolute;
   bottom: 0px;
   width: 100%;
+  min-height: 185px;
+  height: 185px;
   margin-top: 30px;
-  height: 75px;
   background-color: #2C2F39;
+}
+#footer:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
 }
 #footer .logo img {
   height: 40px;

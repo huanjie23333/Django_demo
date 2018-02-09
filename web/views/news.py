@@ -206,6 +206,8 @@ class NewsTagListView(SideBarDataMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        sb_t_list = self.get_news_tag_list()[:50]
+        context['sidebar_news_tag_list'] = sb_t_list
         tag = context['current_tag'] = self.get_tag()
         context['news_list'] = self.get_news_page_list(tag=tag)
         context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)
