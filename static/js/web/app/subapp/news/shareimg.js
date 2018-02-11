@@ -53,7 +53,6 @@ define(['libs/Class', 'libs/rasterizehtml', 'jquery', 'underscore'], function(Cl
                     var enday = endays[d.getDay()];
                     var counts = getCounts(d);
                     var lunarDate = getLunar(d);
-                    console.log(lunarDate);
                     return {
                         year: d.getFullYear(),
                         month: month,

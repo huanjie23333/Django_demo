@@ -4537,7 +4537,6 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery', 'un
                     var enday = endays[d.getDay()];
                     var counts = getCounts(d);
                     var lunarDate = getLunar(d);
-                    console.log(lunarDate);
                     return {
                         year: d.getFullYear(),
                         month: month,
