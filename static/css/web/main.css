@@ -2929,31 +2929,20 @@ body a:hover {
 /**
 日签 临时样式
  */
-.daily-quote .wrapper {
-  width: 690px;
+.daily-quote .pic {
   box-sizing: content-box;
-  border: 2px solid #ccc;
-  padding: 30px;
+  border: 5px solid #ccc;
+  width: 770px;
+}
+.daily-quote .wrapper {
+  width: 650px;
+  box-sizing: content-box;
+  padding: 40px 60px;
   font-family: "PingFangSC-Regular", "Lantinghei SC", Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-  background-color: #fffaf3;
+  background-color: #f4f5f1;
   color: #333;
   position: relative;
   overflow: hidden;
-}
-.daily-quote .bgi {
-  position: absolute;
-  width: 750px;
-  z-index: 0;
-  left: 0px;
-  top: 0px;
-}
-.daily-quote .bgi img {
-  width: 750px;
-  display: block;
-}
-.daily-quote .wrapper {
-  position: relative;
-  z-index: 1;
 }
 .daily-quote .head::after {
   content: "";
@@ -2961,98 +2950,96 @@ body a:hover {
   clear: both;
 }
 .daily-quote .head .left {
-  width: 190px;
   float: left;
+  transform: translate(0, 5px);
+}
+.daily-quote .head .c-logo {
+  width: 70px;
+  display: block;
+  margin-bottom: 10px;
+}
+.daily-quote .head .e-logo {
+  width: 150px;
 }
 .daily-quote .head .right {
   float: right;
   text-align: right;
 }
-.daily-quote .top {
-  margin-bottom: 20px;
-  height: 80px;
+.daily-quote .body .date {
+  float: left;
 }
-.daily-quote .top::after {
+.daily-quote .body .date .top {
+  margin-bottom: 10px;
+  height: 70px;
+}
+.daily-quote .body .date .top::after {
   content: "";
   display: block;
   clear: both;
 }
-.daily-quote .top-left {
-  width: 70px;
+.daily-quote .body .date .top-left {
+  width: 65px;
   float: left;
 }
-.daily-quote .top-left .month {
-  font-size: 50px;
-  line-height: 55px;
+.daily-quote .body .date .top-left .month {
+  font-size: 30px;
+  line-height: 45px;
   font-weight: 600;
   color: #333;
+  width: 40px;
+  text-align: center;
 }
-.daily-quote .top-left .en-day {
+.daily-quote .body .date .top-left .en-day {
   font-size: 20px;
-  line-height: 25px;
+  line-height: 20px;
   color: #0052ff;
   font-weight: 600;
 }
-.daily-quote .top-right {
-  font-size: 70px;
-  line-height: 80px;
-  color: #0052ff;
+.daily-quote .body .date .top-right {
+  font-size: 50px;
+  line-height: 60px;
+  color: #333;
   float: right;
   font-weight: 600;
 }
-.daily-quote .top-right .split-line {
-  background-color: #333;
+.daily-quote .body .date .top-right .split-line {
+  background-color: #ccc;
   width: 3px;
-  height: 65px;
+  height: 30px;
   display: inline-block;
-  transform: translate(-14px, 14px) skew(-20deg);
+  transform: translate(-13px, -3px) skew(-20deg);
 }
-.daily-quote .bottom {
-  font-size: 16px;
+.daily-quote .body .date .bottom {
+  font-size: 14px;
   line-height: 1.5;
 }
-.daily-quote .bottom .zh-day {
+.daily-quote .body .date .bottom .zh-day {
   color: #0052ff;
 }
-.daily-quote .geek {
-  float: right;
-  margin-right: 10px;
-}
-.daily-quote .geek span {
-  text-align: right;
-  position: absolute;
-  bottom: 8px;
-}
-.daily-quote .geek img {
-  width: 115px;
-}
-.daily-quote .right .date {
-  font-size: 23px;
+.daily-quote .head .right .date {
+  font-size: 18px;
   color: #333;
   line-height: 34px;
   margin-top: 10px;
 }
-.daily-quote .right .date .square {
+.daily-quote .head .right .date .square {
   display: inline-block;
-  height: 25px;
-  width: 25px;
-  line-height: 25px;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
   background-color: #333;
   color: #fffaf3;
   font-size: 16px;
   text-align: center;
 }
-.daily-quote .right .info {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-}
 .daily-quote .body {
-  background-color: #0052ff;
   box-sizing: content-box;
-  width: 485px;
-  padding: 80px 80px 40px 125px;
-  margin-top: 10px;
+  width: 568px;
+  margin-top: 40px;
+  border: 1px solid #ccc;
+  padding: 40px;
+  border-radius: 5px;
+  background-color: #f9f9f7;
 }
 .daily-quote .body::after {
   content: "";
@@ -3060,17 +3047,18 @@ body a:hover {
   clear: both;
 }
 .daily-quote .desc {
-  font-size: 45px;
+  font-size: 30px;
   line-height: 1.5;
-  color: #fff;
+  color: #333;
   position: relative;
-  font-weight: 400;
+  font-weight: 600;
+  margin-left: 250px;
 }
 .daily-quote .desc .left {
   display: block;
   position: absolute;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
+  border-top: 2px solid #ccc;
+  border-left: 2px solid #ccc;
   height: 35px;
   width: 35px;
   left: -30px;
@@ -3083,17 +3071,19 @@ body a:hover {
   width: 35px;
   bottom: -10px;
   right: 5px;
-  border-bottom: 2px solid #fff;
-  border-right: 2px solid #fff;
+  border-bottom: 2px solid #ccc;
+  border-right: 2px solid #ccc;
 }
 .daily-quote .author {
   float: right;
-  font-size: 20px;
-  color: #fff;
-  margin-top: 45px;
+  font-size: 18px;
+  color: #999;
+  margin-top: 75px;
 }
 .daily-quote .foot {
-  margin-top: 10px;
+  margin-top: 40px;
+  height: 110px;
+  position: relative;
 }
 .daily-quote .foot::after {
   content: "";
@@ -3101,33 +3091,28 @@ body a:hover {
   clear: both;
 }
 .daily-quote .wx-qr-code {
-  float: left;
+  float: right;
   position: relative;
 }
 .daily-quote .wx-qr-code .text {
   position: absolute;
-  left: 130px;
-  top: 40px;
+  right: 100px;
+  bottom: 5px;
   width: 80px;
 }
 .daily-quote .wx-qr-code img {
   width: 110px;
 }
-.daily-quote .follow-us {
-  margin-right: 10px;
-  text-align: right;
-  line-height: 1.8;
-  height: 59px;
-  margin-top: 8px;
-}
-.daily-quote .logo img {
-  width: 110px;
-}
-.daily-quote .slogan {
-  margin-top: 3px;
-}
 .daily-quote .num {
   font-family: Georgia;
+}
+.daily-quote .site {
+  font-size: 16px;
+  position: absolute;
+  bottom: 0;
+}
+.daily-quote .site span {
+  font-variant: small-caps;
 }
 /**
 日签 结束

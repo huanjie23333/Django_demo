@@ -801,31 +801,20 @@ body {
 日签 临时样式
  */
 .daily-quote {
-  .wrapper {
-    width: 690px;
+  .pic {
     box-sizing: content-box;
-    border: 2px solid #ccc;
-    padding: 30px;
+    border: 5px solid #ccc;
+    width: 770px;
+  }
+  .wrapper {
+    width: 650px;
+    box-sizing: content-box;
+    padding: 40px 60px;
     font-family: "PingFangSC-Regular", "Lantinghei SC", Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-    background-color: #fffaf3;
+    background-color: #f4f5f1;
     color: #333;
     position: relative;
     overflow: hidden;
-  }
-  .bgi {
-    position: absolute;
-    width: 750px;
-    z-index: 0;
-    left: 0px;
-    top: 0px;
-  }
-  .bgi img {
-    width: 750px;
-      display: block;
-  }
-  .wrapper {
-    position: relative;
-    z-index: 1;
   }
   .head::after {
     content: "";
@@ -833,98 +822,97 @@ body {
     clear: both;
   }
   .head .left {
-    width: 190px;
     float: left;
+    transform: translate(0, 5px);
+  }
+  .head .c-logo {
+    width: 70px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .head .e-logo {
+    width: 150px;
   }
   .head .right {
     float: right;
     text-align: right;
+
   }
-  .top {
-    margin-bottom: 20px;
-    height: 80px;
+  .body .date {
+    float: left;
   }
-  .top::after {
+  .body .date .top {
+    margin-bottom: 10px;
+    height: 70px;
+  }
+  .body .date .top::after {
     content: "";
     display: block;
     clear: both;
   }
-  .top-left {
-    width: 70px;
+  .body .date .top-left {
+    width: 65px;
     float: left;
   }
-  .top-left .month {
-    font-size: 50px;
-    line-height: 55px;
+  .body .date .top-left .month {
+    font-size: 30px;
+    line-height: 45px;
     font-weight: 600;
     color: #333;
+    width: 40px;
+    text-align: center;
   }
-  .top-left .en-day {
+  .body .date .top-left .en-day {
     font-size: 20px;
-    line-height: 25px;
+    line-height: 20px;
     color: #0052ff;
     font-weight: 600;
   }
-  .top-right {
-    font-size: 70px;
-    line-height: 80px;
-    color: #0052ff;
+  .body .date .top-right {
+    font-size: 50px;
+    line-height: 60px;
+    color: #333;
     float: right;
     font-weight: 600;
   }
-  .top-right .split-line {
-    background-color: #333;
+  .body .date .top-right .split-line {
+    background-color: #ccc;
     width: 3px;
-    height: 65px;
+    height: 30px;
     display: inline-block;
-    transform: translate(-14px,14px) skew(-20deg);
+    transform: translate(-13px,-3px) skew(-20deg);
   }
-  .bottom {
-    font-size: 16px;
+  .body .date .bottom {
+    font-size: 14px;
     line-height: 1.5;
   }
-  .bottom .zh-day {
+  .body .date .bottom .zh-day {
     color: #0052ff;
   }
-  .geek {
-    float: right;
-    margin-right: 10px;
-  }
-  .geek span {
-    text-align: right;
-    position: absolute;
-    bottom: 8px;
-  }
-  .geek img {
-    width: 115px;
-  }
-  .right .date {
-    font-size: 23px;
+  .head .right .date {
+    font-size: 18px;
     color: #333;
     line-height: 34px;
     margin-top: 10px;
   }
-  .right .date .square {
+  .head .right .date .square {
     display: inline-block;
-    height: 25px;
-    width: 25px;
-    line-height: 25px;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
     background-color: #333;
     color: #fffaf3;
     font-size: 16px;
     text-align: center;
   }
-  .right .info {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-  }
   .body {
-    background-color: #0052ff;
     box-sizing: content-box;
-    width: 485px;
-    padding: 80px 80px 40px 125px;
-    margin-top: 10px;
+    width: 568px;
+    margin-top: 40px;
+    border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 5px;
+    background-color: #f9f9f7;
   }
   .body::after {
     content: "";
@@ -932,17 +920,18 @@ body {
     clear: both;
   }
   .desc {
-    font-size: 45px;
+    font-size: 30px;
     line-height: 1.5;
-    color: #fff;
+    color: #333;
     position: relative;
-    font-weight: 400;
+    font-weight: 600;
+    margin-left: 250px;
   }
   .desc .left {
     display: block;
     position: absolute;
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
+    border-top:2px solid #ccc;
+    border-left:2px solid #ccc;
     height: 35px;
     width: 35px;
     left: -30px;
@@ -955,17 +944,19 @@ body {
     width: 35px;
     bottom: -10px;
     right: 5px;
-    border-bottom: 2px solid #fff;
-    border-right: 2px solid #fff;
+    border-bottom: 2px solid #ccc;
+    border-right: 2px solid #ccc;
   }
   .author {
     float: right;
-    font-size: 20px;
-    color: #fff;
-    margin-top: 45px;
+    font-size: 18px;
+    color: #999;
+    margin-top: 75px;
   }
   .foot {
-    margin-top: 10px;
+    margin-top: 40px;
+    height: 110px;
+    position: relative;
   }
   .foot::after {
     content: "";
@@ -973,36 +964,28 @@ body {
     clear: both;
   }
   .wx-qr-code {
-    float: left;
+    float: right;
     position: relative;
   }
   .wx-qr-code .text {
     position: absolute;
-    left: 130px;
-    top: 40px;
+    right: 100px;
+    bottom: 5px;
     width: 80px;
   }
   .wx-qr-code img {
     width: 110px;
   }
-  .follow-us {
-    margin-right: 10px;
-    text-align: right;
-    line-height: 1.8;
-    height: 59px;
-    margin-top: 8px;
-  }
-  .logo {
-    //margin-top: 21px;
-  }
-  .logo img {
-    width: 110px;
-  }
-  .slogan {
-    margin-top: 3px;
-  }
   .num {
     font-family: Georgia;
+  }
+  .site {
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+  }
+  .site span{
+    font-variant: small-caps;
   }
 }
 /**

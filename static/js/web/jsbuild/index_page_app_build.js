@@ -4509,9 +4509,9 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery', 'un
                 });
                 function getTime(){
                     var days = ['日', '一', '二', '三', '四', '五', '六'];
-                    var endays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                    var endays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
                     var d = new Date();
-                    var month = ('0' + (d.getMonth() + 1)).slice(-2);
+                    var month = d.getMonth() + 1;
                     var zhday = days[d.getDay()];
                     var enday = endays[d.getDay()];
                     var counts = getCounts(d);
