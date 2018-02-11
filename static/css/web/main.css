@@ -2948,6 +2948,206 @@ body a:hover {
 .bc-info ul li .bc-link a:hover {
   color: #ff552e;
 }
+/**
+日签 临时样式
+ */
+.daily-quote .pic {
+  box-sizing: content-box;
+  border: 5px solid #ccc;
+  width: 770px;
+}
+.daily-quote .wrapper {
+  width: 650px;
+  box-sizing: content-box;
+  padding: 40px 60px;
+  font-family: "PingFangSC-Regular", "Lantinghei SC", Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  background-color: #f4f5f1;
+  color: #333;
+  position: relative;
+  overflow: hidden;
+}
+.daily-quote .head::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.daily-quote .head .left {
+  float: left;
+  transform: translate(0, 5px);
+}
+.daily-quote .head .c-logo {
+  width: 70px;
+  display: block;
+  margin-bottom: 10px;
+}
+.daily-quote .head .e-logo {
+  width: 150px;
+}
+.daily-quote .head .right {
+  float: right;
+  text-align: right;
+}
+.daily-quote .date-block::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.daily-quote .date-block .top {
+  margin-right: 20px;
+  height: 50px;
+  float: left;
+}
+.daily-quote .date-block .top::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.daily-quote .date-block .top-left {
+  width: 50px;
+  float: left;
+}
+.daily-quote .date-block .top-left .month {
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 600;
+  color: #333;
+  width: 40px;
+  text-align: center;
+}
+.daily-quote .date-block .top-left .en-day {
+  font-size: 20px;
+  line-height: 20px;
+  color: #0052ff;
+  font-weight: 600;
+}
+.daily-quote .date-block .top-right {
+  font-size: 30px;
+  color: #333;
+  float: right;
+  font-weight: 600;
+  line-height: 45px;
+}
+.daily-quote .date-block .top-right .split-line {
+  background-color: #ccc;
+  width: 3px;
+  height: 30px;
+  display: inline-block;
+  transform: translate(-8px, 7px) skew(-20deg);
+}
+.daily-quote .date-block .bottom {
+  font-size: 14px;
+  line-height: 1.5;
+  float: left;
+}
+.daily-quote .date-block .bottom .zh-day {
+  color: #0052ff;
+}
+.daily-quote .head .right .date {
+  font-size: 14px;
+  color: #333;
+  line-height: 34px;
+}
+.daily-quote .head .right .date .sub-text {
+  color: #999;
+}
+.daily-quote .head .right .date .square {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  background-color: #333;
+  color: #fffaf3;
+  font-size: 14px;
+  text-align: center;
+}
+.daily-quote .body {
+  box-sizing: content-box;
+  width: 568px;
+  margin-top: 40px;
+  padding: 40px;
+  border-radius: 5px;
+  background-color: transparent;
+  position: relative;
+}
+.daily-quote .body::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.daily-quote .desc {
+  font-size: 45px;
+  line-height: 1.5;
+  color: #333;
+  font-weight: 600;
+}
+.daily-quote .desc .left {
+  display: block;
+  position: absolute;
+  border-top: 2px solid #ccc;
+  border-left: 2px solid #ccc;
+  height: 35px;
+  width: 35px;
+  left: 0px;
+  top: 0px;
+}
+.daily-quote .desc .right {
+  display: block;
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  bottom: 100px;
+  right: 0px;
+  border-bottom: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+}
+.daily-quote .author {
+  float: right;
+  font-size: 18px;
+  color: #999;
+  margin-top: 75px;
+}
+.daily-quote .foot {
+  margin-top: 40px;
+  height: 110px;
+  position: relative;
+}
+.daily-quote .foot::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.daily-quote .wx-qr-code {
+  float: right;
+  position: relative;
+}
+.daily-quote .wx-qr-code .text {
+  position: absolute;
+  right: 110px;
+  bottom: 5px;
+  width: 80px;
+  color: #999;
+  font-size: 14px;
+}
+.daily-quote .wx-qr-code img {
+  width: 110px;
+}
+.daily-quote .num {
+  font-family: Georgia;
+}
+.daily-quote .site {
+  font-size: 16px;
+  position: absolute;
+  bottom: 0;
+  color: #999;
+  font-family: "SimHei";
+  letter-spacing: 2px;
+}
+.daily-quote .site span {
+  font-variant: small-caps;
+}
+/**
+日签 结束
+ */
 .test {
   color: red;
 }
