@@ -3140,6 +3140,7 @@ body a:hover {
   bottom: 0;
   color: #999;
   font-family: "SimHei";
+  letter-spacing: 2px;
 }
 .daily-quote .site span {
   font-variant: small-caps;
