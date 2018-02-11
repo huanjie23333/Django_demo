@@ -48,34 +48,34 @@
                             <img src="{% static 'images/daily-quote-e-logo.png' %}" alt="" class="e-logo">
                         </div>
                         <div class="right">
+                            <div class="date-block">
+                                <div class="top">
+                                    <div class="top-left">
+                                        <div class="month num">2</div>
+{#                                        <div class="en-day">WED</div>#}
+                                    </div>
+                                    <div class="top-right num"><span class="split-line"></span>11</div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="zh-day">星期三</div>
+                                    <div class="zh-date">农历腊月廿二</div>
+                                </div>
+                            </div>
                             <div class="date">
-                                今天是<span class="num">&nbsp;2018&nbsp;</span>年<br>第
+                                今天是<span class="num">&nbsp;2018&nbsp;</span><span class="sub-text">第</span>
                                 <span class="num square">0</span>
                                 <span class="num square">3</span>
-                                <span class="num square">8</span> 天
+                                <span class="num square">8</span> <span class="sub-text">天</span>
                             </div>
                         </div>
                     </div>
                     <div class="body">
-                        <div class="date">
-                            <div class="top">
-                                <div class="top-left">
-                                    <div class="month num">2</div>
-                                    <div class="en-day">WED</div>
-                                </div>
-                                <div class="top-right num"><span class="split-line"></span>07</div>
-                            </div>
-                            <div class="bottom">
-                                <div class="zh-day">星期三</div>
-                                <div class="zh-date">农历腊月廿二</div>
-                            </div>
-                        </div>
                         <div class="desc">
                             <span class="left"></span>
-                            人类一思考，上帝就发笑。
+                            落霞与孤鹜齐飞，秋水共长天一色。
                             <span class="right"></span>
                         </div>
-                        <div class="author">— 米兰∙昆德拉</div>
+                        <div class="author">— 王勃</div>
                     </div>
                     <div class="foot">
                         <div class="wx-qr-code">
@@ -106,27 +106,28 @@
                             <img src="{% static 'images/daily-quote-e-logo.png' %}" alt="" class="e-logo">
                         </div>
                         <div class="right">
-                            <div class="date">今天是<span class="num">&nbsp;<%= data.year %>&nbsp;</span>年<br>第
+                            <div class="date-block">
+                                <div class="top">
+                                    <div class="top-left">
+                                        <div class="month num"><%= data.month %></div>
+{#                                        <div class="en-day num"><%= data.enday %></div>#}
+                                    </div>
+                                    <div class="top-right num"><span class="split-line"></span><%= data.date %></div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="zh-day">星期<%= data.zhday %></div>
+                                    <div class="zh-date">农历<%= data.zhdate %></div>
+                                </div>
+                            </div>
+                            <div class="date">
+                                <span class="sub-text">今天是</span><span class="num">&nbsp;<%= data.year %>&nbsp;</span><span class="sub-text">第</span>
                                 <span class="num square"><%= data.a %></span>
                                 <span class="num square"><%= data.b %></span>
-                                <span class="num square"><%= data.c %></span> 天
+                                <span class="num square"><%= data.c %></span> <span class="sub-text">天</span>
                             </div>
                         </div>
                     </div>
                     <div class="body">
-                        <div class="date">
-                            <div class="top">
-                                <div class="top-left">
-                                    <div class="month num"><%= data.month %></div>
-                                    <div class="en-day num"><%= data.enday %></div>
-                                </div>
-                                <div class="top-right num"><span class="split-line"></span><%= data.date %></div>
-                            </div>
-                            <div class="bottom">
-                                <div class="zh-day">星期<%= data.zhday %></div>
-                                <div class="zh-date">农历<%= data.zhdate %></div>
-                            </div>
-                        </div>
                         <div class="desc">
                             <span class="left"></span>
                             <%= data.desc %>
@@ -186,23 +187,26 @@
     text-align: right;
 
   }
-  .body .date {
-    float: left;
-  }
-  .body .date .top {
-    margin-bottom: 10px;
-    height: 70px;
-  }
-  .body .date .top::after {
+  .date-block::after {
     content: "";
     display: block;
     clear: both;
   }
-  .body .date .top-left {
-    width: 65px;
+  .date-block .top {
+    margin-right: 20px;
+    height: 50px;
     float: left;
   }
-  .body .date .top-left .month {
+  .date-block .top::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .date-block .top-left {
+    width: 50px;
+    float: left;
+  }
+  .date-block .top-left .month {
     font-size: 30px;
     line-height: 45px;
     font-weight: 600;
@@ -210,57 +214,61 @@
     width: 40px;
     text-align: center;
   }
-  .body .date .top-left .en-day {
+  .date-block .top-left .en-day {
     font-size: 20px;
     line-height: 20px;
     color: #0052ff;
     font-weight: 600;
   }
-  .body .date .top-right {
-    font-size: 50px;
-    line-height: 60px;
+  .date-block .top-right {
+    font-size: 30px;
     color: #333;
     float: right;
     font-weight: 600;
+    line-height: 45px;
   }
-  .body .date .top-right .split-line {
+  .date-block .top-right .split-line {
     background-color: #ccc;
     width: 3px;
     height: 30px;
     display: inline-block;
-    transform: translate(-13px,-3px) skew(-20deg);
+    transform: translate(-8px,7px) skew(-20deg);
   }
-  .body .date .bottom {
+  .date-block .bottom {
     font-size: 14px;
     line-height: 1.5;
+    float: left;
   }
-  .body .date .bottom .zh-day {
+  .date-block .bottom .zh-day {
     color: #0052ff;
   }
   .head .right .date {
-    font-size: 18px;
+    font-size: 14px;
     color: #333;
     line-height: 34px;
-    margin-top: 10px;
+  }
+  .head .right .date .sub-text {
+    color: #999;
   }
   .head .right .date .square {
     display: inline-block;
-    height: 20px;
-    width: 20px;
-    line-height: 20px;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
     background-color: #333;
     color: #fffaf3;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
   }
   .body {
     box-sizing: content-box;
     width: 568px;
     margin-top: 40px;
-    border: 1px solid #ccc;
+    //border: 1px solid #ccc;
     padding: 40px;
     border-radius: 5px;
-    background-color: #f9f9f7;
+    background-color: transparent;
+    position: relative;
   }
   .body::after {
     content: "";
@@ -268,12 +276,10 @@
     clear: both;
   }
   .desc {
-    font-size: 30px;
+    font-size: 45px;
     line-height: 1.5;
     color: #333;
-    position: relative;
     font-weight: 600;
-    margin-left: 250px;
   }
   .desc .left {
     display: block;
@@ -282,16 +288,16 @@
     border-left:2px solid #ccc;
     height: 35px;
     width: 35px;
-    left: -30px;
-    top: -15px;
+    left: 0px;
+    top: 0px;
   }
   .desc .right {
     display: block;
     position: absolute;
     height: 35px;
     width: 35px;
-    bottom: -10px;
-    right: 5px;
+    bottom: 100px;
+    right: 0px;
     border-bottom: 2px solid #ccc;
     border-right: 2px solid #ccc;
   }
@@ -300,6 +306,7 @@
     font-size: 18px;
     color: #999;
     margin-top: 75px;
+{#    margin-right: -40px;#}
   }
   .foot {
     margin-top: 40px;
@@ -317,9 +324,11 @@
   }
   .wx-qr-code .text {
     position: absolute;
-    right: 100px;
+    right: 110px;
     bottom: 5px;
     width: 80px;
+    color: #999;
+    font-size: 14px;
   }
   .wx-qr-code img {
     width: 110px;
@@ -331,6 +340,8 @@
     font-size: 16px;
     position: absolute;
     bottom: 0;
+    color: #999;
+    font-family: "SimHei";
   }
   .site span{
     font-variant: small-caps;
