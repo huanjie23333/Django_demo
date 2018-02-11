@@ -40,56 +40,56 @@
                 {% bootstrap_pagination page_obj %}
 
             </div>
-            <div class="pic">
-                <div class="wrapper">
-                    <div class="head">
-                        <div class="left">
-                            <img src="{% static 'images/daily-quote-logo.png' %}" alt="" class="c-logo">
-                            <img src="{% static 'images/daily-quote-e-logo.png' %}" alt="" class="e-logo">
-                        </div>
-                        <div class="right">
-                            <div class="date-block">
-                                <div class="top">
-                                    <div class="top-left">
-                                        <div class="month num">2</div>
+{#            <div class="pic">#}
+{#                <div class="wrapper">#}
+{#                    <div class="head">#}
+{#                        <div class="left">#}
+{#                            <img src="{% static 'images/daily-quote-logo.png' %}" alt="" class="c-logo">#}
+{#                            <img src="{% static 'images/daily-quote-e-logo.png' %}" alt="" class="e-logo">#}
+{#                        </div>#}
+{#                        <div class="right">#}
+{#                            <div class="date-block">#}
+{#                                <div class="top">#}
+{#                                    <div class="top-left">#}
+{#                                        <div class="month num">2</div>#}
 {#                                        <div class="en-day">WED</div>#}
-                                    </div>
-                                    <div class="top-right num"><span class="split-line"></span>11</div>
-                                </div>
-                                <div class="bottom">
-                                    <div class="zh-day">星期三</div>
-                                    <div class="zh-date">农历腊月廿二</div>
-                                </div>
-                            </div>
-                            <div class="date">
-                                <span class="sub-text">今天是</span><span class="num">&nbsp;2018&nbsp;</span><span class="sub-text">第</span>
-                                <span class="num square">0</span>
-                                <span class="num square">3</span>
-                                <span class="num square">8</span> <span class="sub-text">天</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <div class="desc">
-                            <span class="left"></span>
-                            落霞与孤鹜齐飞，秋水共长天一色。
-                            <span class="right"></span>
-                        </div>
-                        <div class="author">— 王勃</div>
-                    </div>
-                    <div class="foot">
-                        <div class="wx-qr-code">
-                            <img src="{% static 'images/wx-qr-code.png' %}" alt="">
-                            <div class="text">长按扫描<br>关注我们</div>
-                        </div>
-                        <div class="left">
-                            <div class="daily-logo"><img src="{% static 'images/daily-intelligencer-logo.png' %}"
-                                                         alt=""></div>
-                            <div class="site">C<span>hain</span>N<span>ews.com</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{#                                    </div>#}
+{#                                    <div class="top-right num"><span class="split-line"></span>11</div>#}
+{#                                </div>#}
+{#                                <div class="bottom">#}
+{#                                    <div class="zh-day">星期三</div>#}
+{#                                    <div class="zh-date">农历腊月廿二</div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="date">#}
+{#                                <span class="sub-text">今天是</span><span class="num">&nbsp;2018&nbsp;</span><span class="sub-text">第</span>#}
+{#                                <span class="num square">0</span>#}
+{#                                <span class="num square">3</span>#}
+{#                                <span class="num square">8</span> <span class="sub-text">天</span>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="body">#}
+{#                        <div class="desc">#}
+{#                            <span class="left"></span>#}
+{#                            落霞与孤鹜齐飞，秋水共长天一色。#}
+{#                            <span class="right"></span>#}
+{#                        </div>#}
+{#                        <div class="author">— 王勃</div>#}
+{#                    </div>#}
+{#                    <div class="foot">#}
+{#                        <div class="wx-qr-code">#}
+{#                            <img src="{% static 'images/wx-qr-code.png' %}" alt="">#}
+{#                            <div class="text">长按扫描<br>关注我们</div>#}
+{#                        </div>#}
+{#                        <div class="left">#}
+{#                            <div class="daily-logo"><img src="{% static 'images/daily-intelligencer-logo.png' %}"#}
+{#                                                         alt=""></div>#}
+{#                            <div class="site">C<span>hain</span>N<span>ews.com</span></div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </section>
     <script type="text/template" id="daily-quote-template">
@@ -351,8 +351,7 @@
 
     </style>
     </script>
-        <script src="http://www.miaoqiyuan.cn/products/lunar/lunar.min.js"></script>
-
+    <script src="{% static 'js/web/app/libs/lunar.js' %}"></script>
 
 {% endblock %}
 
