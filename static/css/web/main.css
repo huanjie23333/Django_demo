@@ -2048,7 +2048,7 @@ body {
 }
 body {
   position: relative;
-  padding-bottom: 75px;
+  padding-bottom: 185px;
   color: #434446;
   font-size: 14px;
   background-color: #F7F6F2;
@@ -2475,9 +2475,16 @@ body a:hover {
   position: absolute;
   bottom: 0px;
   width: 100%;
+  min-height: 185px;
+  height: 185px;
   margin-top: 30px;
-  height: 75px;
   background-color: #2C2F39;
+}
+#footer:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
 }
 #footer .logo img {
   height: 40px;
@@ -2891,11 +2898,15 @@ body a:hover {
   -moz-animation: 1s linear infinite loading-icon-rotate;
   -o-animation: 1s linear infinite loading-icon-rotate;
 }
+.sidebar .advert-block,
+.news-wrapper .advert-block {
+  position: relative;
+}
 .sidebar .ad-block,
 .news-wrapper .ad-block {
-  background-image: url(http://ow1wrzsju.bkt.clouddn.com/material/images/a100eec9-7d69-5d32-972a-715f059dbc4a_aubVRis.png);
   height: 0px;
   width: 100%;
+  position: relative;
   padding-bottom: 62.5%;
   background-size: cover;
   background-position: center center;
@@ -2903,6 +2914,17 @@ body a:hover {
   background-repeat-x: no-repeat;
   background-repeat-y: no-repeat;
   margin-top: 10px;
+  margin-bottom: 10px;
+}
+.sidebar .ad-sign,
+.news-wrapper .ad-sign {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
 }
 .bc-info ul {
   margin-bottom: 20px;

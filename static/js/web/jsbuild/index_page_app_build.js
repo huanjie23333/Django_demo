@@ -1669,6 +1669,7 @@ define('subapp/sidebar/news',['libs/Class', 'subapp/data/feed','jquery', 'unders
             },
 
             handle_data: function(data){
+                data['results'] = data['results'].slice(0,6);
                 this.data_list = this.adapter.update(data).spit();
                 this.render();
              },
@@ -1690,50 +1691,6 @@ define('subapp/sidebar/news',['libs/Class', 'subapp/data/feed','jquery', 'unders
 
         });
         return NewsApp;
-
-});
-define('subapp/data/fakeFeed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
-    //TODO ： baseon interval push event , not use xhr
-    var _Feed = Class.extend(Event.prototype);
-    var FakeFeed = _Feed.extend({
-        init: function (options) {
-            this.options = options;
-            this.interval = options.interval || 5000;
-            this._running = false;
-
-        },
-
-        stop: function(){
-            window.clearInterval(this._rid);
-        },
-
-        run: function(){
-            if(this._running) return ;
-            this._running = true;
-            this._run();
-            if(this.interval>0) {
-                this._rid = window.setInterval(this._run.bind(this), this.interval)
-            }else{
-                this._running = false;
-                return ;
-            }
-        },
-
-        _run: function(){
-            this.data = this.options['data'];
-            this.request_success(this.data);
-        },
-
-        request_success:function(data){
-            this.emit('data_arrive', data);
-        },
-        request_fail:function(data){
-            this.emit('request_fail',data);
-        },
-
-    });
-
-    return FakeFeed;
 
 });
 define('subapp/adapters/coinbeef',[
@@ -2950,16 +2907,33 @@ define('subapp/sidebar/tagcloud',['libs/Class','jquery', 'libs/jqcloud', 'unders
         clear_data: function () {
             this.tag_list = _.map(this.tag_list, this._clear_tag.bind(this));
         },
+        handle_data: function(data){
+            data['tags'] = data['tags'].slice(0,40);
+            this.$el.append($(this._template(data)));
+        },
+        init_tag_request: function(){
+            $.when($.ajax(
+                {
+                    url: 'https://api.chainnews.com/api/news/tags/',
+                    method: 'GET'
+                }
+            )).then(this.handle_data.bind(this))
+        },
         init: function(){
             console.log('init tag cloud');
-            this.$el = $('#tag_cloud');
-            this.tag_list = window.tag_list_json;
-            if( !this.tag_list || !this.$el.length){
-                return;
+            this.$el = $('.sidebar-tag-list-wrapper');
+            if (!$('#news_tag_template').length || !this.$el.length){
+                return ;
             }
-
-            this.clear_data();
-            this.render();
+            this._template = _.template($('#news_tag_template').html());
+            this.init_tag_request();
+            this.tag_list = null
+            // if( !this.tag_list || !this.$el.length){
+            //     return;
+            // }
+            //
+            // this.clear_data();
+            // this.render();
 
         },
         render: function(){
@@ -3116,7 +3090,7 @@ define('subapp/sidebar/sidebar',['libs/Class',
     'jquery',
     //for news
     'subapp/sidebar/news',
-    'subapp/data/fakeFeed',
+    'subapp/data/feed',
     'subapp/adapters/coinbeef',
     //for price list
     'subapp/sidebar/allcoinprice',
@@ -3126,12 +3100,12 @@ define('subapp/sidebar/sidebar',['libs/Class',
     'subapp/sidebar/scrollbox',
     // tag cloud
     'subapp/sidebar/tagcloud',
-    'subapp/sidebar/clock'
+    'subapp/sidebar/clock',
 ],
     function(Class,
              $,
              NewsApp,
-             FakeFeed,
+             NewsFeed,
              CoinBeefAdapter,
 
              AllCoin,
@@ -3147,9 +3121,11 @@ define('subapp/sidebar/sidebar',['libs/Class',
     var SideBarApp = Class.extend({
         init:function(){
 
-            this.newsFeed = new FakeFeed({
-                data:window.news_obj,
-                interval:-1, // no repeat
+            this.newsFeed = new NewsFeed({
+                url: 'https://api.chainnews.com/api/news.json',
+                method: 'GET',
+
+                interval: -1
             });
             this.news =new NewsApp({
                 feed:  this.newsFeed,
@@ -3157,7 +3133,7 @@ define('subapp/sidebar/sidebar',['libs/Class',
             });
             // already rendered by server
             // close the feed
-            //this.newsFeed.run();
+            this.newsFeed.run();
 
             new AllCoin({
                     feed: window.app.price_feed,
@@ -3172,9 +3148,54 @@ define('subapp/sidebar/sidebar',['libs/Class',
 
             // ForkClock();
 
+
         }
     });
     return SideBarApp;
+});
+define('subapp/data/fakeFeed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
+    //TODO ： baseon interval push event , not use xhr
+    var _Feed = Class.extend(Event.prototype);
+    var FakeFeed = _Feed.extend({
+        init: function (options) {
+            this.options = options;
+            this.interval = options.interval || 5000;
+            this._running = false;
+
+        },
+
+        stop: function(){
+            window.clearInterval(this._rid);
+        },
+
+        run: function(){
+            if(this._running) return ;
+            this._running = true;
+            this._run();
+            if(this.interval>0) {
+                this._rid = window.setInterval(this._run.bind(this), this.interval)
+            }else{
+                this._running = false;
+                return ;
+            }
+        },
+
+        _run: function(){
+            this.data = this.options['data'];
+            this.request_success(this.data);
+        },
+
+        request_success:function(data){
+            this.emit('data_arrive', data);
+        },
+        request_fail:function(data){
+            this.emit('request_fail',data);
+        },
+
+    });
+
+    return FakeFeed;
+
 });
 define('subapp/data/Feed',['libs/Class', 'libs/event', 'jquery'],function(Class, Event , $){
 
@@ -3266,8 +3287,8 @@ define('subapp/adapters/coinbeef_all',[
 
         return CoinbeefAdapterAll
 });
-define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all','underscore'],
-    function(Class,FakeFeed,Feed,CoinBeefAdapter,_){
+define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed','subapp/adapters/coinbeef_all','underscore','jquery'],
+    function(Class,FakeFeed,Feed,CoinBeefAdapter,_,$){
 
         var NewsLineApp = Class.extend({
 
@@ -3965,7 +3986,7 @@ define('libs/csrf',['jquery'],function($){
         if (document.cookie && document.cookie != '') {
             var cookies = document.cookie.split(';');
             for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
+                var cookie = $.trim(cookies[i]);
                 // Does this cookie string begin with the name we want?
                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -7615,12 +7636,9 @@ require([
         new ForkListApp();
         new ShareImgApp();
 
-
         if($('#chart_container').length){
             new Chart();
         }
-
-
         all_price_feed.run();
         console.log('finish');
 

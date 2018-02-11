@@ -9,23 +9,27 @@ from utils.image.handlers import UUIDFilename
 upload_dir = UUIDFilename('ad/images/')
 
 class Advertisement_Manager(models.Manager):
+    def active(self):
+        the_now = timezone.now()
+        return self.get_queryset().filter(enable=True, start_at__lt=the_now, end_at__gt=the_now)
+
     def adverts_left_top(self):
-        return self.get_queryset().filter(position=Advertisement.Left_Top, enable=True)
+        return self.active().filter(position=Advertisement.Left_Top)
 
     def adverts_left_middle(self):
-        return self.get_queryset().filter(position=Advertisement.Left_Middle, enable=True)
+        return self.active().filter(position=Advertisement.Left_Middle)
 
     def adverts_left_bottom(self):
-        return self.get_queryset().filter(position=Advertisement.Left_Bottom, enable=True)
+        return self.active().filter(position=Advertisement.Left_Bottom)
 
     def adverts_right_top(self):
-        return self.get_queryset().filter(position=Advertisement.Right_Top, enable=True)
+        return self.active().filter(position=Advertisement.Right_Top)
 
     def adverts_right_middle(self):
-        return self.get_queryset().filter(position=Advertisement.Right_Middle, enable=True)
+        return self.active().filter(position=Advertisement.Right_Middle)
 
     def adverts_right_bottom(self):
-        return self.get_queryset().filter(position=Advertisement.Right_Bottom, enable=True)
+        return self.active().filter(position=Advertisement.Right_Bottom)
 
 
 class Advertisement(models.Model):
@@ -43,10 +47,14 @@ class Advertisement(models.Model):
     title = models.CharField(max_length=255,)
     image = models.ImageField(upload_to=upload_dir, default='')
     link = models.URLField(max_length=255,)
-    enable = models.BooleanField(default=False, )
     position = models.PositiveSmallIntegerField(default=Left_Top, choices=POSITION_CHOICES)
     created_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, db_index=True, editable=False)
+
+    # control the advert status and display time
+    start_at = models.DateTimeField(default=timezone.now, db_index=True, editable=True)
+    end_at = models.DateTimeField(default=timezone.now, db_index=True, editable=True)
+    enable = models.BooleanField(default=False, )
 
     objects = Advertisement_Manager()
 

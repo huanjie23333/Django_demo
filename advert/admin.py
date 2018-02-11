@@ -11,7 +11,7 @@ class AdvertAdmin(admin.ModelAdmin):
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
 
-    list_display = ['title','image_tag', 'link', 'enable', 'position', 'created_at']
+    list_display = ['title','image_tag', 'link', 'enable', 'position', 'created_at', 'start_at', 'end_at']
     readonly_fields = ('image_tag', )
     list_filter = ('position',)
 
