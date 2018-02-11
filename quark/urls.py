@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_page
+
 from dquote.views import DQuoteListView
 
 from web.views import ( CategoryView, SiteMapView, IndexView,
@@ -67,7 +69,7 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^$', IndexView.as_view(), name='web_index'),
+    url(r'^$', cache_page(60*30)(IndexView.as_view()), name='web_index'),
     # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
     # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
