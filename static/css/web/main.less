@@ -387,12 +387,16 @@ body {
 }
 
 #footer {
+  .clearfix;
   position: absolute;
   bottom: 0px;
   width: 100%;
+  min-height: @footer-height;
+  height: 185px;
   margin-top: 30px;
-  height: @footer-height;
   background-color: @nav_background;
+
+
 
   .logo {
     img {
@@ -756,11 +760,13 @@ body {
 
 
 .sidebar, .news-wrapper{
-
+  .advert-block{
+      position: relative;
+  }
   .ad-block{
-    background-image: url(http://ow1wrzsju.bkt.clouddn.com/material/images/a100eec9-7d69-5d32-972a-715f059dbc4a_aubVRis.png);
     height: 0px;
     width: 100%;
+    position:relative;
     padding-bottom: 62.5%;
     background-size: cover;
     background-position: center center;
@@ -768,6 +774,17 @@ body {
     background-repeat-x: no-repeat;
     background-repeat-y: no-repeat;
     margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .ad-sign{
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    background: rgba(0,0,0,.5);
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+
   }
 }
 
@@ -797,8 +814,211 @@ body {
   }
 }
 
+/**
+日签 临时样式
+ */
+.daily-quote {
+  .pic {
+    box-sizing: content-box;
+    border: 5px solid #ccc;
+    width: 770px;
+  }
+  .wrapper {
+    width: 650px;
+    box-sizing: content-box;
+    padding: 40px 60px;
+    font-family: "PingFangSC-Regular", "Lantinghei SC", Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+    background-color: #f4f5f1;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+  }
+  .head::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .head .left {
+    float: left;
+    transform: translate(0, 5px);
+  }
+  .head .c-logo {
+    width: 70px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .head .e-logo {
+    width: 150px;
+  }
+  .head .right {
+    float: right;
+    text-align: right;
 
-
+  }
+  .date-block::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .date-block .top {
+    margin-right: 20px;
+    height: 50px;
+    float: left;
+  }
+  .date-block .top::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .date-block .top-left {
+    width: 50px;
+    float: left;
+  }
+  .date-block .top-left .month {
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 600;
+    color: #333;
+    width: 40px;
+    text-align: center;
+  }
+  .date-block .top-left .en-day {
+    font-size: 20px;
+    line-height: 20px;
+    color: #0052ff;
+    font-weight: 600;
+  }
+  .date-block .top-right {
+    font-size: 30px;
+    color: #333;
+    float: right;
+    font-weight: 600;
+    line-height: 45px;
+  }
+  .date-block .top-right .split-line {
+    background-color: #ccc;
+    width: 3px;
+    height: 30px;
+    display: inline-block;
+    transform: translate(-8px,7px) skew(-20deg);
+  }
+  .date-block .bottom {
+    font-size: 14px;
+    line-height: 1.5;
+    float: left;
+  }
+  .date-block .bottom .zh-day {
+    color: #0052ff;
+  }
+  .head .right .date {
+    font-size: 14px;
+    color: #333;
+    line-height: 34px;
+  }
+  .head .right .date .sub-text {
+    color: #999;
+  }
+  .head .right .date .square {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    background-color: #333;
+    color: #fffaf3;
+    font-size: 14px;
+    text-align: center;
+  }
+  .body {
+    box-sizing: content-box;
+    width: 568px;
+    margin-top: 40px;
+    //border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 5px;
+    background-color: transparent;
+    position: relative;
+  }
+  .body::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .desc {
+    font-size: 45px;
+    line-height: 1.5;
+    color: #333;
+    font-weight: 600;
+  }
+  .desc .left {
+    display: block;
+    position: absolute;
+    border-top:2px solid #ccc;
+    border-left:2px solid #ccc;
+    height: 35px;
+    width: 35px;
+    left: 0px;
+    top: 0px;
+  }
+  .desc .right {
+    display: block;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    bottom: 100px;
+    right: 0px;
+    border-bottom: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+  }
+  .author {
+    float: right;
+    font-size: 18px;
+    color: #999;
+    margin-top: 75px;
+    //margin-right: -40px;
+  }
+  .foot {
+    margin-top: 40px;
+    height: 110px;
+    position: relative;
+  }
+  .foot::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .wx-qr-code {
+    float: right;
+    position: relative;
+  }
+  .wx-qr-code .text {
+    position: absolute;
+    right: 110px;
+    bottom: 5px;
+    width: 80px;
+    color: #999;
+    font-size: 14px;
+  }
+  .wx-qr-code img {
+    width: 110px;
+  }
+  .num {
+    font-family: Georgia;
+  }
+  .site {
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    color: #999;
+    font-family: "SimHei";
+    letter-spacing: 2px;
+  }
+  .site span{
+    font-variant: small-caps;
+  }
+}
+/**
+日签 结束
+ */
 .test {
   color: red;
 

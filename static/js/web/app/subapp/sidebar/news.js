@@ -35,6 +35,7 @@ define(['libs/Class', 'subapp/data/feed','jquery', 'underscore'],
             },
 
             handle_data: function(data){
+                data['results'] = data['results'].slice(0,6);
                 this.data_list = this.adapter.update(data).spit();
                 this.render();
              },

@@ -1,11 +1,12 @@
 # -*- coding: UTF-8  -*-
 import requests
-from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
+from braces.views import StaffuserRequiredMixin
 from django.core.cache import cache
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
+from django.utils.cache import patch_response_headers
 from taggit.models import TaggedItem, Tag
 
-from django.views.generic import TemplateView, View, DetailView, ListView, CreateView
+from django.views.generic import TemplateView, View, ListView, CreateView
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.http import HttpResponseForbidden
@@ -16,7 +17,7 @@ from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
 from web.views.news import SideBarDataMixin
 from haystack.query import SearchQuerySet
-
+from django.shortcuts import redirect
 
 import logging
 
@@ -43,15 +44,19 @@ class SqsCategoryTagDataMixin(object):
 
     def get_tag_for_category(self, cate_id, tag_range=20, site_range=50):
         sqs = SearchQuerySet().filter(cate_id=cate_id).facet("tags")
-        tags = sqs.facet_counts()["fields"]["tags"][:tag_range]
-        tag_nav_list = []
+        tag_nav_list = list()
+        try:
+            tags = sqs.facet_counts()["fields"]["tags"][:tag_range]
+        except KeyError as e:
+            return tag_nav_list
+
+            # logger.info(e.message)
         for (tag, count) in tags:
             tag_nav_list.append({
                 'tagname': tag,
                 'navs': self.get_cate_tag_navs(cate_id, tag)
             })
         return tag_nav_list
-
 
 
 class CategoryTagDataMixin(object):
@@ -63,20 +68,23 @@ class CategoryTagDataMixin(object):
         return navs
 
     def get_tag_for_category(self, category_id, tag_range=3000, site_range=10000):
-        nav_ids = list(self.get_nav_ids_by_category(category_id))
+        nav_ids = self.get_nav_ids_by_category(category_id)
         tagids = list(TaggedItem.objects.filter(object_id__in=nav_ids, content_type_id=9) \
                       .values('tag_id', 'tag__name').annotate(tagCount=Count('tag_id')) \
                       .order_by('-tagCount'))[:tag_range]
         tag_nav_list = [{
             'tagname': obj['tag__name'],
-            'navs': Nav.objects.filter(tags__id=obj['tag_id'], cate=category_id, status=Nav.STATUS.published)[
+            'navs': Nav.objects.filter(tags__id=obj['tag_id'],
+                                       cate=category_id,
+                                       status=Nav.STATUS.published)[
                     :site_range]
         }
             for obj in tagids]
         return tag_nav_list
 
     def get_nav_ids_by_category(self, category_id):
-        return Nav.objects.filter(cate_id=category_id, status=Nav.STATUS.published).values_list('id', flat=True)
+        return Nav.objects.filter(cate_id=category_id,
+                                  status=Nav.STATUS.published).values_list('id', flat=True)
 
 
 class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
@@ -112,30 +120,15 @@ class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         return super().get(request, *args, **kwargs)
 
 
-class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
+
+class IndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
     template_name = 'web/index.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['recommend'] = self.get_recommend_nav()
+    def get(self, request, **kwargs):
+        resp = super().get(request, **kwargs)
+        patch_response_headers(resp, cache_timeout=300)
+        return resp
 
-        categories = list(Category.objects.all())
-
-        context['categories'] = [{
-            'category_name': cate.cname,
-            'category_ename': cate.ename,
-            'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20),
-        }
-            for cate in categories
-        ]
-        return context
-
-    def get_recommend_nav(self):
-        return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
-
-
-class TestIndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
-    template_name = 'web/index.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
@@ -204,12 +197,10 @@ class ErrorView(StaffuserRequiredMixin, TemplateView):
         raise Exception('error for test')
 
 
-class CountDownList(SideBarDataMixin, TemplateView):
-    template_name = 'web/btc_countdown.html'
 
 
 class ForkListView(FlinkMixin, ListView):
-    http_method_names = ['get','head']
+    http_method_names = ['get', 'head']
     template_name = 'web/fork_list.html'
     model = CoinFork
     queryset = CoinFork.objects.all()
@@ -231,8 +222,12 @@ class ForkListView(FlinkMixin, ListView):
     def get(self, request, *args, **kwargs):
         self.fork_status = request.GET.get('status', None)
         if self.fork_status:
-            assert(self.fork_status in ['incoming', 'done'])
+            assert (self.fork_status in ['incoming', 'done'])
         return super().get(request, *args, **kwargs)
+
+class CountDownList(View):
+    def get(self,request):
+        return redirect('web_fork_list', permanent=True)
 
 
 class D3TestView(FlinkMixin, TemplateView):
@@ -244,7 +239,7 @@ class APIDataCacheMixin(object):
         return self.api_url
 
     def get_api_data(self):
-        key = "api:data:%s"%self.get_api_url()
+        key = "api:data:%s" % self.get_api_url()
         return cache.get_or_set(key, self._get_api_data(), timeout=3600)
 
     def _get_api_data(self):
@@ -261,6 +256,3 @@ class CryptoindexView(APIDataCacheMixin, FlinkMixin, TemplateView):
             'crypto_index': self.get_api_data()
         })
         return context
-
-
-

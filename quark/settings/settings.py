@@ -28,6 +28,15 @@ SITE_ID = 1
 
 ALLOWED_HOSTS = ["*"]
 
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
+
+QINIU_ACCESS_KEY = "9NHBMtlIls6lauJB-Uootml3Wt6vZ4n5_HL0uyxh"
+QINIU_SECRET_KEY = "PgOR8T7rlBfh1igNJz-bEg_WA_ju3KmnwrFnIjUP"
+QINIU_BUCKET_NAME = "coinbeef"
+
+QINIU_BUCKET_DOMAIN = 'ow1wrzsju.bkt.clouddn.com'
+QINIU_SECURE_URL = False
+
 # Application definition
 
 LOCALE_PATHS = (
@@ -62,6 +71,9 @@ INSTALLED_APPS = [
     'flink',
     'webtools',
     'coinfork',
+    'advert',
+    'dquote',
+    'utils'
     # 'captcha',
 ]
 
@@ -161,7 +173,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'compressor.finders.CompressorFinder',
 )
 
@@ -189,7 +200,6 @@ COMPRESS_OFFLINE = True
 
 IS_LOCAL_TESTING = False
 
-
 ##
 # rest framework
 ##
@@ -206,7 +216,6 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'PAGE_SIZE': 20,
 }
-
 
 ##
 # django haystack
@@ -227,7 +236,6 @@ HAYSTACK_CONNECTIONS = {
 # }
 HAYSTACK_DEFAULT_OPERATOR = 'AND'
 HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
-
 
 ##
 # logging
@@ -275,7 +283,6 @@ LOGGING = {
         },
     }
 }
-
 
 ##
 # django bootstrap3
@@ -330,7 +337,7 @@ BOOTSTRAP3 = {
     'success_css_class': 'has-success',
 
     # Renderers (only set these if you have studied the source and understand the inner workings)
-    'formset_renderers':{
+    'formset_renderers': {
         'default': 'bootstrap3.renderers.FormsetRenderer',
     },
     'form_renderers': {
@@ -348,3 +355,20 @@ BOOTSTRAP3 = {
 
 TAGGIT_CASE_INSENSITIVE = True
 
+###
+# bot url
+###
+BOT_URL = "https://9s.coinbeef.com/"
+
+###
+# chainnews api
+###
+NEWS_TAG_API_URL = 'https://api.chainnews.com/api/news/tags.json'
+NEWS_DETAIL_API = 'https://api.chainnews.com/api/news/'
+
+
+
+###
+# import logging config
+###
+from quark.settings.quark_logging import *

@@ -17,10 +17,14 @@ from django.conf.urls import url, include, handler404, handler500
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+# from django.views.decorators.cache import cache_page
 from django.views.decorators.cache import cache_page
 
-from web.views import (IndexView, CategoryView,  SiteMapView, TestIndexView,
-    SubNavCreateView, SubNavSuccessView, CountDownList, ForkListView, D3TestView, CryptoindexView)
+from dquote.views import DQuoteListView
+
+from web.views import ( CategoryView, SiteMapView, IndexView,
+                        SubNavCreateView, SubNavSuccessView, CountDownList,
+                        ForkListView, D3TestView, CryptoindexView)
 
 from web.views.news import NewsListView
 
@@ -43,19 +47,20 @@ urlpatterns = [
     url(r'^category/(?P<cate_ename>\w+)\.htm$', CategoryView.as_view(), name='category_page'),
 
     url(r'^news/', include('web.urls.news', namespace='news')),
-    url(r'^dapp/', include('web.urls.dapp', namespace='dapp')),
+    # url(r'^dapp/', include('web.urls.dapp', namespace='dapp')),
 
     url(r'^search/', include('web.urls.search', namespace='search')),
     url(r'^feed/', include('feed.urls', namespace='feed')),
     url(r'^tools/', include('webtools.urls', namespace='tools')),
     url(r'^token_sale_history/', D3TestView.as_view(), name='d3_test'),
     url(r'^crypto_index/', CryptoindexView.as_view(), name='crypto_index'),
+    url(r'^daily_quote/', DQuoteListView.as_view(), name='dquote_list'),
+
 
 ]
 
 urlpatterns += [
     url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
-    url(r'^api/dapps/', include('nav.urls.api.dapps', namespace='api_dapps')),
 ]
 
 # captcha
@@ -64,8 +69,8 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^$', TestIndexView.as_view(), name='web_index'),
-    url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
+    url(r'^$', cache_page(60*30)(IndexView.as_view()), name='web_index'),
+    # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
     # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
 
@@ -86,7 +91,6 @@ if settings.IS_LOCAL_TESTING:
 
 if settings.DEBUG:
     import debug_toolbar
-
     urlpatterns = [
                       url(r'^__debug__/', include(debug_toolbar.urls)),
                   ] + urlpatterns

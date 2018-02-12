@@ -1,11 +1,14 @@
 {% load i18n %}
 {% load static %}
+{% load news advert %}
+{% load cache %}
 
+{%  cache 600 sidebar_3 %}
 <div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
 {#    分叉倒计时 开始 -------#}
+    {% advert_sidebar_top %}
     <div class="box hidden-xs">
         <div class="box-header ">
-{#            <span class="main-fork_name">{% trans '比特币' %}</span>#}
             {% trans '分叉倒计时' %}
             <span class="pull-right header-link">
                 <a href="{% url 'web_fork_list' %}" target="_blank">
@@ -67,48 +70,18 @@
 
         </div>
     </div>
-
-
-
 {#   分叉倒计时 结束 --------#}
-{% include 'web/partial/ad_block.html' %}
 
-    <div class="box hidden-xs">
-        <div class="box-header">
-            24h {% trans '快讯' %}
-        </div>
-        <div class="box-body">
-            <div class="news-list timeline small-line">
-                {% include 'web/partial/side_bar_news.html' %}
-            </div>
-        </div>
-        <div class="box-footer">
-            <div class="middle-wrapper">
-                <a class="btn white-btn" href="{% url 'web_news' %}">
-                    查看更多
-                </a>
-            </div>
-        </div>
+    <div class="box hidden-xs" id="sidebar_news">
+        {% include 'web/snippets/sidebar_news.html' %}
+
     </div>
-    <div class="box">
-        <div class="box-header">{% trans '热门标签' %}</div>
-        <div class="box-body">
-            {% include 'web/partial/side_bar_news_tag_filter.html' %}
-        </div>
+    <div class="box" id="sidebar_tags">
+        {% include 'web/snippets/sidebar_news_tags.html' %}
     </div>
 
-{% include 'web/partial/bc_info.html' %}
+    {% include 'web/partial/bc_info.html' %}
 
-    {#    <div class="box">#}
-    {#        <div class="box-header">热门标签-云</div>#}
-    {#        <div class="box-body tag-cloud" >#}
-    {#            <div class="tag-cloud-wrapper" id="tag_cloud">#}
-    {##}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-    {##}
-    {##}
     <div class="box " id="side_bar_bottom">
         <div class="box-header">
             {% trans "行情报价" %}
@@ -127,34 +100,14 @@
     <div class="box" id="follow-us-box">
         <div class="box-header">{% trans '关注我们' %}</div>
         <div class="box-body">
-            <a href="https://www.facebook.com/ChainNewscom/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://twitter.com/block123com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://t.me/Block123com" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/ChainNewscom/" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/block123com" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://t.me/Block123com" rel="nofollow" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
         </div>
     </div>
     <div id="scroll_target" class="inv-element">
-        {#        <div class="box hidden-xs">#}
-        {#            <div class="box-header">#}
-        {#                24h 快讯#}
-        {#            </div>#}
-        {#            <div class="box-body">#}
-        {#                <div class="news-list timeline small-line">#}
-        {#                    {% include 'web/partial/side_bar_news.html' %}#}
-        {#                </div>#}
-        {#            </div>#}
-        {#            <div class="box-footer">#}
-        {#                <div class="middle-wrapper">#}
-        {#                    <a class="btn white-btn" href="{% url 'web_news' %}">#}
-        {#                        查看更多#}
-        {#                    </a>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
         <div class="box hidden-xs">
-            <div class="box-header">{% trans '热门标签' %}</div>
-            <div class="box-body">
-                {% include 'web/partial/news_tag_filter.html' %}
-            </div>
+            {% include 'web/snippets/sidebar_news.html' %}
         </div>
 
         <div class="box donation " id="donation-box">
@@ -176,26 +129,30 @@
         <div class="box" id="follow-us-box">
             <div class="box-header">{% trans '关注我们' %}</div>
             <div class="box-body">
-                <a href="https://www.facebook.com/ChainNewscom/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="https://twitter.com/block123com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="https://t.me/Block123com" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/ChainNewscom/" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/block123com" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://t.me/Block123com" rel="nofollow" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
             </div>
         </div>
 
     </div>
 </div>
+{% endcache %}
+
+<script id="news_tag_template" type="text/template">
+        <% _.each(tags, function(tag, key, arr){ %>
+            <li class="tag-filter-item">
+                <a href="/news/tag/<%=tag.name%>/" title="<%=tag.name%>" target="_blank" >
+                    <%=tag.name%>
+                </a>
+            </li>
+        <% }); %>
+</script>
 
 <script id="news_template" type="text/template">
-
     <div class="entry">
         <div class="left-content">
             <h3>
-                {#                    <% if(show_time){ %>#}
-                {#                      <div class="show-time">#}
-                {#                       <span class="month"><%=month%>月</span>#}
-                {#                       <span class="date"><%=date%></span>#}
-                {#                      </div>#}
-                {#                    <% } %>#}
             </h3>
             <p></p>
         </div>
@@ -208,24 +165,9 @@
                     <% }%>
 
                 </li>
-                {#                    <li><%=time_diff%></li>#}
             </ul>
         </div>
     </div>
-
-    {#    <li>#}
-    {#        <div class="news-title">#}
-    {#                                       <span href="">#}
-    {#                                       <%=title%>#}
-    {#                                        </span>#}
-    {#        </div>#}
-    {#        <div class="news-content hidden">#}
-    {#            <%=content%>#}
-    {#        </div>#}
-    {#        <div class="pub-time">#}
-    {#            <%=time_diff%>#}
-    {#        </div>#}
-    </li>
 </script>
 
 <script id="coin_template" type="text/template">
@@ -242,8 +184,4 @@
             </span>
         </a>
     </li>
-</script>
-
-<script type="application/javascript">
-    var tag_list_json = {{ sidebar_news_tag_list_json|safe }};
 </script>

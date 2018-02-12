@@ -1,5 +1,5 @@
 from django.contrib import admin
-from nav.models import Nav, Category, Project, Profile, SubNav
+from nav.models import Nav, Category, Profile, SubNav
 
 # Register your models here.
 from django.contrib.admin import SimpleListFilter
@@ -49,19 +49,19 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('cname', 'ename', 'order')
 
 
-class DappsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'founder', 'site', 'created', 'last_updated']
-    search_fields = ['name', ]
-
-    def tag_list(self, obj):
-        return u", ".join(o.name for o in obj.tags.all())
+# class DappsAdmin(admin.ModelAdmin):
+#     list_display = ['name', 'founder', 'site', 'created', 'last_updated']
+#     search_fields = ['name', ]
+#
+#     def tag_list(self, obj):
+#         return u", ".join(o.name for o in obj.tags.all())
 
 
 class SubNavAdmin(admin.ModelAdmin):
-    list_display = ('cname', 'ename','description','web_site', 'email', 'handeled')
+    list_display = ('cname', 'ename','description','web_site', 'email','created', 'handeled')
     list_editable = ('handeled',)
 
 admin.site.register(SubNav, SubNavAdmin)
 admin.site.register(Nav, NavAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Project, DappsAdmin)
+# admin.site.register(Project, DappsAdmin)

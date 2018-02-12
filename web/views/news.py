@@ -1,31 +1,41 @@
 # -*- coding: UTF-8  -*-
 import json
-from datetime import datetime
-
 import requests
+from datetime import datetime
+from functools import partial
 
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
-
-from django.views.generic import TemplateView, View, DetailView, ListView
+from django.views.generic import TemplateView, View, DetailView
 from django.core.cache import cache
 from django.http import HttpResponse
+from django.conf import settings
 
 from coinfork.models import CoinFork
 from flink.views import FlinkMixin
 from nav.models import Nav
 
+import logging
+
+logger = logging.getLogger("django")
+
+
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
-NEWS_TAG_API_URL = 'http://www.chainnews.com/api/news/tags.json'
-NEWS_DETAIL_API = 'http://www.chainnews.com/api/news/'
+
+news_tag_api_url = getattr(settings, "NEWS_TAG_API_URL")
+news_detail_api = getattr(settings, "NEWS_DETAIL_API")
 
 
 class NewsDataMixin(object):
     def _get_newslist_page(self, page=1, tag=None):
-        url = 'http://www.chainnews.com/api/news.json?page={page}'.format(page=page)
+        _url = "{base_url}?page={page}".format(
+            base_url=news_detail_api,
+            page=page
+        )
+        # url = 'https://api.chainnews.com/api/news.json?page={page}'.format(page=page)
         if tag:
-            url = "%s&tag=%s" % (url, tag)
-        r = requests.get(url)
+            _url = "{url}&tag={tag}".format(url=_url, tag=tag)
+        r = requests.get(_url, timeout=5)
         if r.status_code == 200:
             return r.text
         else:
@@ -44,7 +54,10 @@ class NewsDataMixin(object):
 
     def get_news_page_data_json(self, page=1, tag=None):
         cache_key = self.get_cache_key(page, tag)
-        json_str = cache.get_or_set(cache_key, self._get_newslist_page(page, tag), timeout=60 * 30)
+
+        get_news_fn = partial(self._get_newslist_page, page=page, tag=tag)
+
+        json_str = cache.get_or_set(cache_key, get_news_fn, timeout=60 * 30)
         try:
             data = json.loads(json_str)
         except Exception as e:
@@ -79,7 +92,9 @@ class NewsDataMixin(object):
         return self.request.GET.get('tag', None)
 
     def get_news_tag_list(self):
-        result = cache.get_or_set(NEWS_TAG_LIST_KEY, self._get_news_tag_list(), timeout=60 * 30)
+        result = cache.get_or_set(NEWS_TAG_LIST_KEY,
+                                  self._get_news_tag_list,
+                                  timeout=60 * 120)
         if result is not None and len(result) == 0:
             cache.delete(NEWS_TAG_LIST_KEY)
         return result
@@ -87,7 +102,7 @@ class NewsDataMixin(object):
     def _get_news_tag_list(self):
         tag_list = []
         try:
-            r = requests.get(NEWS_TAG_API_URL)
+            r = requests.get(news_tag_api_url, timeout=5)
             if r.status_code == 200:
                 tag_list = r.json()['tags']
             else:
@@ -102,9 +117,15 @@ class NewsDataMixin(object):
         return cache.get_or_set(key, self._get_news_detail(slug), timeout=60 * 30)
 
     def _get_news_detail(self, slug):
-        r = requests.get("%s%s" % (NEWS_DETAIL_API, slug))
+        _url = "{base_url}{slug}".format(
+            base_url=news_detail_api,
+            slug=slug,
+        )
+        r = requests.get(_url, timeout=5)
+        # r = requests.get("%s%s" % (NEWS_DETAIL_API, slug))
         if r.status_code == 200:
-            obj = json.loads(r.text)
+            # obj = json.loads(r.text)
+            obj = r.json()
             obj['published_time'] = self.format_time(obj['published_at'])
             return obj
         else:
@@ -120,35 +141,39 @@ from nav.block_chain_browsers import block_chain_browsers
 class SideBarDataMixin(FlinkMixin, NewsDataMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        sb_t_list = self.get_news_tag_list()[:50]
+        # sb_t_list = self.get_news_tag_list()[:50]
         context.update({
-            'sidebar_news_tag_list': sb_t_list,
-            'sidebar_news_tag_list_json': json.dumps(sb_t_list),
-            'sidebar_news_list': self.get_news_page_list(),
+            # 'sidebar_news_tag_list': sb_t_list,
+            # 'sidebar_news_tag_list_json': json.dumps(sb_t_list),
+            # 'sidebar_news_list: self.get_news_page_list(),
             'sidebar_bcinfo_list': self.get_bc_info_list(),
             'sidebar_fork': self.get_sidebar_fork()
         })
         return context
 
     def get_sidebar_fork(self):
-        try:
-            return CoinFork.objects.filter(status='incoming', fork_height__gt=1).order_by('fork_height')[0]
-        except IndexError as e:
-            return []
+        return CoinFork.objects.filter(status='incoming',
+                                       fork_height__gt=1).order_by('fork_height').first()
+        # try:
+        #     return CoinFork.objects.filter(status='incoming',
+        #                                    fork_height__gt=1).order_by('fork_height')[0]
+        # except IndexError as e:
+        #     return []
 
     def get_bc_info_list(self):
-        bc_info_list = {}
+        bc_info_list = dict()
+        ids = block_chain_browsers.values()
+        d = dict()
+        [ d.update({row.id: row}) for row in Nav.objects.filter(pk__in=ids)]
         for name, id in block_chain_browsers.items():
             try:
-                bc_info_list[name] = Nav.objects.get(pk=id)
-            except Nav.DoesNotExist as e:
-                pass
+                bc_info_list[name] = d[id]
+            except KeyError as e:
+                continue
         return bc_info_list
 
 
 class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
-    # def get(self,request):
-    #     return self.get_ajax(request)
 
     def get_ajax(self, request, *args, **kwargs):
         page = self.get_page_num()
@@ -160,12 +185,14 @@ class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
                             status=200)
 
 
-class NewsListView(SideBarDataMixin, TemplateView):
+class NewsListView(SideBarDataMixin,NewsDataMixin, TemplateView):
     template_name = 'web/news_list.html'
     context_object_name = 'news_list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        sb_t_list = self.get_news_tag_list()[:50]
+        context['sidebar_news_tag_list']= sb_t_list
         context['news_list'] = self.get_news_page_list()
         context['news_json_str'] = self.get_news_page_data_json(1)
         return context
@@ -179,6 +206,8 @@ class NewsTagListView(SideBarDataMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        sb_t_list = self.get_news_tag_list()[:50]
+        context['sidebar_news_tag_list'] = sb_t_list
         tag = context['current_tag'] = self.get_tag()
         context['news_list'] = self.get_news_page_list(tag=tag)
         context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)
