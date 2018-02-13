@@ -3148,6 +3148,18 @@ body a:hover {
 /**
 日签 结束
  */
+/*
+flaepage-markdown
+ */
+@media screen and (max-width: 768px) {
+  .markdown-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/*
+flaepage-markdown end
+ */
 .test {
   color: red;
 }
