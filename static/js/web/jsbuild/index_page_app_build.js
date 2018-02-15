@@ -4581,6 +4581,13 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery', 'un
                         } else {
                             m = month[l.lunarMonth] + '月';
                         }
+
+                        // fix bug at 大年三十
+                        if(l.lunarDay === 0){
+                            m = month[l.lunarMonth-1] + '月';
+                            s = '三十';
+                        }
+                        
                         return m + s;
                     }
                 }
