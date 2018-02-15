@@ -4556,7 +4556,7 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery', 'un
                     }
 
                     function getLunar(d){
-                        var month = ['', '正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '冬', '腊'];
+                        var month = ['腊', '正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '冬', '腊'];
                         var zhDate = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
                         var l = lunar.toLunar(d);
                         var s;
@@ -4581,6 +4581,13 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery', 'un
                         } else {
                             m = month[l.lunarMonth] + '月';
                         }
+
+                        // fix bug at 大年三十
+                        if(l.lunarDay === 0){
+                            m = month[l.lunarMonth-1] + '月';
+                            s = '三十';
+                        }
+                        
                         return m + s;
                     }
                 }
