@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'webtools',
     'coinfork',
     'advert',
+    'dquote',
     'utils'
     # 'captcha',
 ]

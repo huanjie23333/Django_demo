@@ -31,9 +31,9 @@
     {% endblock %}
 
     {% block browser_compat %}
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -44,7 +44,7 @@
         var _hmt = _hmt || [];
     </script>
 
-   {% include 'web/partial/facebook.html' %}
+    {% include 'web/partial/facebook.html' %}
 </head>
 
 <body class="{% block body_class %} {% endblock %}">
@@ -75,14 +75,14 @@
 {% block trackers %}
     {# 这里是统计代码 #}
     {% if not debug %}
-{#        {% compress js %}#}
+        {#        {% compress js %}#}
         <script async src="{% static 'js/web/app/libs/autotrack.js' %}"></script>
-{#        {% endcompress %}#}
+        {#        {% endcompress %}#}
 
         <script>
             window.ga = window.ga || function () {
-                        (ga.q = ga.q || []).push(arguments)
-                    };
+                (ga.q = ga.q || []).push(arguments)
+            };
             ga.l = +new Date;
             ga('create', 'UA-105874577-1', 'auto');
 
@@ -106,3 +106,4 @@
 {% endblock %}
 </body>
 </html>
+

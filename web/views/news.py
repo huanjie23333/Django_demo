@@ -2,6 +2,7 @@
 import json
 import requests
 from datetime import datetime
+from functools import partial
 
 from braces.views import StaffuserRequiredMixin, AjaxResponseMixin, JSONResponseMixin
 from django.views.generic import TemplateView, View, DetailView
@@ -53,7 +54,10 @@ class NewsDataMixin(object):
 
     def get_news_page_data_json(self, page=1, tag=None):
         cache_key = self.get_cache_key(page, tag)
-        json_str = cache.get_or_set(cache_key, self._get_newslist_page(page, tag), timeout=60 * 30)
+
+        get_news_fn = partial(self._get_newslist_page, page=page, tag=tag)
+
+        json_str = cache.get_or_set(cache_key, get_news_fn, timeout=60 * 30)
         try:
             data = json.loads(json_str)
         except Exception as e:
@@ -89,7 +93,7 @@ class NewsDataMixin(object):
 
     def get_news_tag_list(self):
         result = cache.get_or_set(NEWS_TAG_LIST_KEY,
-                                  self._get_news_tag_list(),
+                                  self._get_news_tag_list,
                                   timeout=60 * 120)
         if result is not None and len(result) == 0:
             cache.delete(NEWS_TAG_LIST_KEY)
@@ -141,7 +145,7 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
         context.update({
             # 'sidebar_news_tag_list': sb_t_list,
             # 'sidebar_news_tag_list_json': json.dumps(sb_t_list),
-            # 'sidebar_news_list': self.get_news_page_list(),
+            # 'sidebar_news_list: self.get_news_page_list(),
             'sidebar_bcinfo_list': self.get_bc_info_list(),
             'sidebar_fork': self.get_sidebar_fork()
         })
@@ -181,12 +185,14 @@ class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
                             status=200)
 
 
-class NewsListView(SideBarDataMixin, TemplateView):
+class NewsListView(SideBarDataMixin,NewsDataMixin, TemplateView):
     template_name = 'web/news_list.html'
     context_object_name = 'news_list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        sb_t_list = self.get_news_tag_list()[:50]
+        context['sidebar_news_tag_list']= sb_t_list
         context['news_list'] = self.get_news_page_list()
         context['news_json_str'] = self.get_news_page_data_json(1)
         return context
@@ -200,6 +206,8 @@ class NewsTagListView(SideBarDataMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        sb_t_list = self.get_news_tag_list()[:50]
+        context['sidebar_news_tag_list'] = sb_t_list
         tag = context['current_tag'] = self.get_tag()
         context['news_list'] = self.get_news_page_list(tag=tag)
         context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)

@@ -3,6 +3,7 @@ import requests
 from braces.views import StaffuserRequiredMixin
 from django.core.cache import cache
 from django.urls import reverse_lazy
+from django.utils.cache import patch_response_headers
 from taggit.models import TaggedItem, Tag
 
 from django.views.generic import TemplateView, View, ListView, CreateView
@@ -119,30 +120,14 @@ class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
         return super().get(request, *args, **kwargs)
 
 
-# class IndexView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
-#     template_name = 'web/index.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['recommend'] = self.get_recommend_nav()
-#
-#         # categories = list(Category.objects.all())
-#
-#         context['categories'] = [{
-#             'category_name': cate.cname,
-#             'category_ename': cate.ename,
-#             'cate_tags': self.get_tag_for_category(cate.id, tag_range=50, site_range=20),
-#         }
-#             for cate in Category.objects.all()
-#         ]
-#         return context
-#
-#     def get_recommend_nav(self):
-#         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
-
 
 class IndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
     template_name = 'web/index.html'
+
+    def get(self, request, **kwargs):
+        resp = super().get(request, **kwargs)
+        patch_response_headers(resp, cache_timeout=300)
+        return resp
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

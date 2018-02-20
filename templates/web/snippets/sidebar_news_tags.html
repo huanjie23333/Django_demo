@@ -1,12 +1,22 @@
 {% load i18n cache %}
 
-{% cache 7200 sidebar_tags %}
+{#{% cache 7200 sidebar_tags %}#}
 <div class="box-header">{% trans '热门标签' %}</div>
 <div class="box-body">
-    {% include 'web/partial/side_bar_news_tag_filter.html' with sidebar_news_tag_list=tag_list %}
+    <div class="tag-list-filter-wrapper">
+    <ul class="tag-list-filter-list sidebar-tag-list-wrapper" >
+{#        {% for tag in sidebar_news_tag_list|slice:"0:50" %}#}
+{#            <li class="tag-filter-item">#}
+{#                <a href="{% url 'news:tag_news' tag.name %}" title="{{ tag.name }}" target="_blank" class="{% if current_tag == tag.name %}active{% endif %}">#}
+{#                    {{ tag.name }}#}
+{#                </a>#}
+{#            </li>#}
+{#        {% endfor %}#}
+    </ul>
+</div>
 </div>
 
-    <script type="application/javascript">
-        var tag_list_json = {{ sidebar_tag_jsonstr|safe }};
-    </script>
-{% endcache %}
+{#    <script type="application/javascript">#}
+{#        var tag_list_json = {{ sidebar_tag_jsonstr|safe }};#}
+{#    </script>#}
+{#{% endcache %}#}
