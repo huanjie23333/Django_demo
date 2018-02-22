@@ -358,7 +358,7 @@ TAGGIT_CASE_INSENSITIVE = True
 ###
 # bot url
 ###
-BOT_URL = "https://9s.coinbeef.com/"
+BOT_URL = "https://9s.block123.com/"
 
 ###
 # chainnews api

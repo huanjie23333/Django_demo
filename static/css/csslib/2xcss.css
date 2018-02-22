@@ -1,0 +1,198 @@
+.clockdiv,
+.top_clockdiv {
+  font-family: DIN, "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
+  color: #434446;
+  display: block;
+  font-weight: 300;
+  text-align: center;
+  font-size: 26px;
+  padding: 20px 0px;
+  margin: 0 auto;
+  height: 85px;
+}
+.clockdiv .days,
+.top_clockdiv .days,
+.clockdiv .hours,
+.top_clockdiv .hours,
+.clockdiv .minutes,
+.top_clockdiv .minutes,
+.clockdiv .seconds,
+.top_clockdiv .seconds {
+  width: 30px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 5px;
+  margin-left: 3px;
+}
+.clockdiv > div,
+.top_clockdiv > div {
+  margin-right: 5px;
+  border-radius: 2px;
+  background: none;
+  display: inline-block;
+}
+.count-coin-name {
+  text-align: center;
+  font-size: 16px;
+  margin: 40px auto 0 auto;
+}
+.clockdiv div > span,
+.top_clockdiv div > span {
+  font-size: 26px;
+  border-radius: 0px;
+  font-weight: 600;
+  color: #434446;
+}
+.clockdiv div > span.smalltext,
+.top_clockdiv div > span.smalltext {
+  padding: 0 0 0 0;
+  font-size: 14px;
+}
+.clockdiv div > span.middletext,
+.top_clockdiv div > span.middletext {
+  padding: 0 0 0 0;
+  font-size: 16px;
+}
+.count-down-info {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.count-down-info .info {
+  color: #aaa;
+}
+.count-down-info .info span {
+  color: #434446;
+}
+.count-down-info .info span .block-count {
+  color: #0E8ED8;
+}
+#btc-countdown .box-body {
+  padding-bottom: 30px;
+  border-bottom: #f3f3f3 1px solid;
+}
+#fork-list-page .tab-wrapper,
+#sidebar_fork .tab-wrapper,
+#index_fork .tab-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  height: 2em;
+  font-size: 14px;
+  padding-left: 10px;
+}
+#fork-list-page .tab-wrapper .tab,
+#sidebar_fork .tab-wrapper .tab,
+#index_fork .tab-wrapper .tab {
+  margin-right: 20px;
+}
+#fork-list-page .tab-wrapper .tab a:focus,
+#sidebar_fork .tab-wrapper .tab a:focus,
+#index_fork .tab-wrapper .tab a:focus {
+  text-decoration: none;
+}
+#fork-list-page .tab-wrapper .tab.active,
+#sidebar_fork .tab-wrapper .tab.active,
+#index_fork .tab-wrapper .tab.active {
+  font-weight: bold;
+}
+#fork-list-page .fork-item,
+#sidebar_fork .fork-item,
+#index_fork .fork-item {
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+}
+#fork-list-page .fork-item .fork-alias,
+#sidebar_fork .fork-item .fork-alias,
+#index_fork .fork-item .fork-alias {
+  font-weight: 400;
+}
+#fork-list-page .fork-item .fork-name a,
+#sidebar_fork .fork-item .fork-name a,
+#index_fork .fork-item .fork-name a {
+  color: #0E8ED8;
+}
+#fork-list-page .fork-item .fork-name a:hover,
+#sidebar_fork .fork-item .fork-name a:hover,
+#index_fork .fork-item .fork-name a:hover,
+#fork-list-page .fork-item .fork-name a:focus,
+#sidebar_fork .fork-item .fork-name a:focus,
+#index_fork .fork-item .fork-name a:focus {
+  text-decoration: none;
+}
+#fork-list-page .fork-item .desc,
+#sidebar_fork .fork-item .desc,
+#index_fork .fork-item .desc {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+#fork-list-page .fork-item .fork-state,
+#sidebar_fork .fork-item .fork-state,
+#index_fork .fork-item .fork-state {
+  font-size: 14px;
+  color: #fff;
+  line-height: 1;
+  padding: 6px 10px 6px 9px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  position: absolute;
+  left: 10px;
+  top: 28px;
+}
+#fork-list-page .fork-item .fork-incoming,
+#sidebar_fork .fork-item .fork-incoming,
+#index_fork .fork-item .fork-incoming {
+  background-color: #ff552e;
+}
+#fork-list-page .fork-item .fork-passed,
+#sidebar_fork .fork-item .fork-passed,
+#index_fork .fork-item .fork-passed {
+  background-color: #25a85e;
+}
+#fork-list-page .fork-item .fork-unknown,
+#sidebar_fork .fork-item .fork-unknown,
+#index_fork .fork-item .fork-unknown {
+  background-color: #666;
+}
+#fork-list-page .fork-item .block-height,
+#sidebar_fork .fork-item .block-height,
+#index_fork .fork-item .block-height,
+#fork-list-page .fork-item .current-block-height,
+#sidebar_fork .fork-item .current-block-height,
+#index_fork .fork-item .current-block-height {
+  line-height: 1.5;
+  font-size: 14px;
+}
+#fork-list-page .fork-item .block-height .height-number,
+#sidebar_fork .fork-item .block-height .height-number,
+#index_fork .fork-item .block-height .height-number,
+#fork-list-page .fork-item .current-block-height .height-number,
+#sidebar_fork .fork-item .current-block-height .height-number,
+#index_fork .fork-item .current-block-height .height-number {
+  display: inline-block;
+  color: #0E8ED8;
+  width: 60px;
+  text-align: left;
+}
+#fork-list-page .fork-item .current-block-height,
+#sidebar_fork .fork-item .current-block-height,
+#index_fork .fork-item .current-block-height {
+  padding-bottom: 10px;
+}
+#sidebar_fork .fork-state,
+#index_fork .fork-state {
+  display: none;
+}
+#sidebar_fork .fork-item,
+#index_fork .fork-item {
+  line-height: 2;
+}
+#sidebar_fork .fork-item .clockdiv,
+#index_fork .fork-item .clockdiv {
+  padding: 10px 0;
+  height: 65px;
+  line-height: 45px;
+}

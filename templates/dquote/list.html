@@ -11,13 +11,14 @@
 {% block content %}
 
     <section id="content">
-        <div class="container">
+        <div class="container daily-quote">
             <div class="row">
                 <table class="table">
                     <tr>
                         <td>日期</td>
                         <td>作者</td>
                         <td>金句</td>
+                        <td>#</td>
                     </tr>
 
                     {% for quote in quotes %}
@@ -31,6 +32,7 @@
                             <td class="quote">
                             {{ quote.quote }}
                             </td>
+                            <td><a href="javascript:;" class="render-img">下载图片</a></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -38,8 +40,324 @@
                 {% bootstrap_pagination page_obj %}
 
             </div>
+{#            <div class="pic">#}
+{#                <div class="wrapper">#}
+{#                    <div class="head">#}
+{#                        <div class="left">#}
+{#                            <img src="{% static 'images/daily-quote-logo.png' %}" alt="" class="c-logo">#}
+{#                            <img src="{% static 'images/daily-quote-e-logo.png' %}" alt="" class="e-logo">#}
+{#                        </div>#}
+{#                        <div class="right">#}
+{#                            <div class="date-block">#}
+{#                                <div class="top">#}
+{#                                    <div class="top-left">#}
+{#                                        <div class="month num">2</div>#}
+{#                                        <div class="en-day">WED</div>#}
+{#                                    </div>#}
+{#                                    <div class="top-right num"><span class="split-line"></span>11</div>#}
+{#                                </div>#}
+{#                                <div class="bottom">#}
+{#                                    <div class="zh-day">星期三</div>#}
+{#                                    <div class="zh-date">农历腊月廿二</div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="date">#}
+{#                                <span class="sub-text">今天是</span><span class="num">&nbsp;2018&nbsp;</span><span class="sub-text">第</span>#}
+{#                                <span class="num square">0</span>#}
+{#                                <span class="num square">3</span>#}
+{#                                <span class="num square">8</span> <span class="sub-text">天</span>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="body">#}
+{#                        <div class="desc">#}
+{#                            <span class="left"></span>#}
+{#                            落霞与孤鹜齐飞，秋水共长天一色。#}
+{#                            <span class="right"></span>#}
+{#                        </div>#}
+{#                        <div class="author">— 王勃</div>#}
+{#                    </div>#}
+{#                    <div class="foot">#}
+{#                        <div class="wx-qr-code">#}
+{#                            <img src="{% static 'images/wx-qr-code.png' %}" alt="">#}
+{#                            <div class="text">长按扫描<br>关注我们</div>#}
+{#                        </div>#}
+{#                        <div class="left">#}
+{#                            <div class="daily-logo"><img src="{% static 'images/daily-intelligencer-logo.png' %}"#}
+{#                                                         alt=""></div>#}
+{#                            <div class="site">C<span>hain</span>N<span>ews.com</span></div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </section>
+    <script type="text/template" id="daily-quote-template">
+    <div class="pic">
+{#                <div class="bgi">#}
+{#                    <img src="{% static '/images/dq-bg-1.jpeg' %}" alt="">#}
+{#                    <img src="{% static '/images/dq-bg-1.jpeg' %}" alt="">#}
+{#                    <img src="{% static '/images/dq-bg-1.jpeg' %}" alt="">#}
+{#                </div>#}
+                <div class="wrapper">
+                    <div class="head">
+                        <div class="left">
+                            <img src="{% static 'images/daily-quote-logo.png' %}" alt="" class="c-logo">
+                            <img src="{% static 'images/daily-quote-e-logo.png' %}" alt="" class="e-logo">
+                        </div>
+                        <div class="right">
+                            <div class="date-block">
+                                <div class="top">
+                                    <div class="top-left">
+                                        <div class="month num"><%= data.month %></div>
+{#                                        <div class="en-day num"><%= data.enday %></div>#}
+                                    </div>
+                                    <div class="top-right num"><span class="split-line"></span><%= data.date %></div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="zh-day">星期<%= data.zhday %></div>
+                                    <div class="zh-date">农历<%= data.zhdate %></div>
+                                </div>
+                            </div>
+                            <div class="date">
+                                <span class="sub-text">今天是</span><span class="num">&nbsp;<%= data.year %>&nbsp;</span><span class="sub-text">第</span>
+                                <span class="num square"><%= data.a %></span>
+                                <span class="num square"><%= data.b %></span>
+                                <span class="num square"><%= data.c %></span> <span class="sub-text">天</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="desc">
+                            <span class="left"></span>
+                            <%= data.desc %>
+                            <span class="right"></span>
+                        </div>
+                        <div class="author">— <%= data.author %></div>
+                    </div>
+                    <div class="foot">
+                        <div class="wx-qr-code">
+                            <img src="{% static 'images/wx-qr-code.png' %}" alt="">
+                            <div class="text">长按扫描<br>关注我们</div>
+                        </div>
+                        <div class="left">
+                            <div class="daily-logo">
+                                <img src="{% static 'images/daily-intelligencer-logo.png' %}" alt="">
+                            </div>
+                            <div class="site">C<span>hain</span>N<span>ews.com</span></div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <style>
+  .pic {
+    box-sizing: content-box;
+    border: 5px solid #ccc;
+    width: 770px;
+  }
+  .wrapper {
+    width: 650px;
+    box-sizing: content-box;
+    padding: 40px 60px;
+    font-family: "PingFangSC-Regular", "Lantinghei SC", Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+    background-color: #f4f5f1;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+  }
+  .head::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .head .left {
+    float: left;
+    transform: translate(0, 5px);
+  }
+  .head .c-logo {
+    width: 70px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .head .e-logo {
+    width: 150px;
+  }
+  .head .right {
+    float: right;
+    text-align: right;
 
+  }
+  .date-block::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .date-block .top {
+    margin-right: 20px;
+    height: 50px;
+    float: left;
+  }
+  .date-block .top::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .date-block .top-left {
+    width: 50px;
+    float: left;
+  }
+  .date-block .top-left .month {
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 600;
+    color: #333;
+    width: 40px;
+    text-align: center;
+  }
+  .date-block .top-left .en-day {
+    font-size: 20px;
+    line-height: 20px;
+    color: #0052ff;
+    font-weight: 600;
+  }
+  .date-block .top-right {
+    font-size: 30px;
+    color: #333;
+    float: right;
+    font-weight: 600;
+    line-height: 45px;
+  }
+  .date-block .top-right .split-line {
+    background-color: #ccc;
+    width: 3px;
+    height: 30px;
+    display: inline-block;
+    transform: translate(-8px,7px) skew(-20deg);
+  }
+  .date-block .bottom {
+    font-size: 14px;
+    line-height: 1.5;
+    float: left;
+  }
+  .date-block .bottom .zh-day {
+    color: #0052ff;
+  }
+  .head .right .date {
+    font-size: 14px;
+    color: #333;
+    line-height: 34px;
+  }
+  .head .right .date .sub-text {
+    color: #999;
+  }
+  .head .right .date .square {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    background-color: #333;
+    color: #fffaf3;
+    font-size: 14px;
+    text-align: center;
+  }
+  .body {
+    box-sizing: content-box;
+    width: 568px;
+    margin-top: 40px;
+    //border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 5px;
+    background-color: transparent;
+    position: relative;
+  }
+  .body::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .desc {
+    font-size: 45px;
+    line-height: 1.5;
+    color: #333;
+    font-weight: 600;
+  }
+  .desc .left {
+    display: block;
+    position: absolute;
+    border-top:2px solid #ccc;
+    border-left:2px solid #ccc;
+    height: 35px;
+    width: 35px;
+    left: 0px;
+    top: 0px;
+  }
+  .desc .right {
+    display: block;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    bottom: 100px;
+    right: 0px;
+    border-bottom: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+  }
+  .author {
+    float: right;
+    font-size: 18px;
+    color: #999;
+    margin-top: 75px;
+{#    margin-right: -40px;#}
+  }
+  .foot {
+    margin-top: 40px;
+    height: 110px;
+    position: relative;
+  }
+  .foot::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .wx-qr-code {
+    float: right;
+    position: relative;
+  }
+  .wx-qr-code .text {
+    position: absolute;
+    right: 110px;
+    bottom: 5px;
+    width: 80px;
+    color: #999;
+    font-size: 14px;
+  }
+  .wx-qr-code img {
+    width: 110px;
+  }
+  .num {
+    font-family: Georgia;
+  }
+  .site {
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    color: #999;
+    font-family: "SimHei";
+    letter-spacing: 2px;
 
+  }
+  .site span{
+    font-variant: small-caps;
+  }
+
+    </style>
+    </script>
+    <script src="{% static 'js/web/app/libs/lunar.js' %}"></script>
+
+{% endblock %}
+
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
