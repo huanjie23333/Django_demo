@@ -55,8 +55,6 @@ urlpatterns = [
     url(r'^token_sale_history/', D3TestView.as_view(), name='d3_test'),
     url(r'^crypto_index/', CryptoindexView.as_view(), name='crypto_index'),
     url(r'^daily_quote/', DQuoteListView.as_view(), name='dquote_list'),
-
-
 ]
 
 urlpatterns += [
