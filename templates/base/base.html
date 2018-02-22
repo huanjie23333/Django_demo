@@ -44,7 +44,6 @@
         var _hmt = _hmt || [];
     </script>
 
-    {% include 'web/partial/facebook.html' %}
 </head>
 
 <body class="{% block body_class %} {% endblock %}">
@@ -102,7 +101,12 @@
                 s.parentNode.insertBefore(hm, s);
             })();
         </script>
+
+       {% include 'web/partial/facebook.html' %}
+
     {% endif %}
+
+
 {% endblock %}
 </body>
 </html>
