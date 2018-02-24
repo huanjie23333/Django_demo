@@ -935,6 +935,9 @@ ul li {
   background-color: #2C2F39;
   border: none;
 }
+.main-search-container {
+  margin-top: 65px;
+}
 .main-search-container input::placeholder {
   color: #aaa;
 }
@@ -2113,7 +2116,7 @@ body a:hover {
   background-color: #2C2F39;
 }
 #search-row {
-  padding: 50px 0px 5px 0px;
+  padding: 0;
 }
 #search-row .promo-text-wrapper {
   margin-left: 20px;
