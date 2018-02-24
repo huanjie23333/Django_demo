@@ -4587,7 +4587,7 @@ define('subapp/news/shareimg',['libs/Class', 'libs/rasterizehtml', 'jquery', 'un
                             m = month[l.lunarMonth-1] + '月';
                             s = '三十';
                         }
-                        
+
                         return m + s;
                     }
                 }
