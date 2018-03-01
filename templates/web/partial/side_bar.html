@@ -142,7 +142,7 @@
 <script id="news_tag_template" type="text/template">
         <% _.each(tags, function(tag, key, arr){ %>
             <li class="tag-filter-item">
-                <a href="/news/tag/<%=tag.name%>/" title="<%=tag.name%>" target="_blank" >
+                <a href="/news/tag<%=tag.name%>/" title="<%=tag.name%>" target="_blank" >
                     <%=tag.name%>
                 </a>
             </li>
