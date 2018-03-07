@@ -9,7 +9,7 @@ from taggit.models import TaggedItem, Tag
 from django.views.generic import TemplateView, View, ListView, CreateView
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponse
 
 from coinfork.models import CoinFork
 from flink.views import FlinkMixin
@@ -256,3 +256,6 @@ class CryptoindexView(APIDataCacheMixin, FlinkMixin, TemplateView):
             'crypto_index': self.get_api_data()
         })
         return context
+
+def bd_verify_view(request):
+        return HttpResponse('gpRRnqH8nr')
