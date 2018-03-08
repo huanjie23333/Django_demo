@@ -24,7 +24,7 @@ from dquote.views import DQuoteListView
 
 from web.views import ( CategoryView, SiteMapView, IndexView,
                         SubNavCreateView, SubNavSuccessView, CountDownList,
-                        ForkListView, D3TestView, CryptoindexView)
+                        ForkListView, D3TestView, CryptoindexView, bd_verify_view)
 
 from web.views.news import NewsListView
 
@@ -55,6 +55,8 @@ urlpatterns = [
     url(r'^token_sale_history/', D3TestView.as_view(), name='d3_test'),
     url(r'^crypto_index/', CryptoindexView.as_view(), name='crypto_index'),
     url(r'^daily_quote/', DQuoteListView.as_view(), name='dquote_list'),
+    url(r'^baidu_verify_gpRRnqH8nr\.html$', bd_verify_view, name='veri_bd'),
+
 ]
 
 urlpatterns += [

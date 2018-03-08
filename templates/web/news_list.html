@@ -5,7 +5,7 @@
 {% block meta %}
     {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
-{% block title %}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
+{% block title %}{{ tag }}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
 
 {% block content %}
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59c89b30b1eb72c4"></script>
@@ -96,7 +96,7 @@
                                     <i class="fa fa-tag"></i>
                                 </li>
                                 <% for( var i = 0; i < tag_list.length; i++ ) { %>
-                                <li class="tag-item"><a href="/news/tag/<%=tag_list[i]%>/" target="_blank"><%=tag_list[i]%></a></li>
+                                <li class="tag-item"><a href="/news/tag<%=tag_list[i]%>/" target="_blank"><%=tag_list[i]%></a></li>
                                 <% } %>
                             </ul>
                         </span>

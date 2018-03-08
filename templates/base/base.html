@@ -13,9 +13,10 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/icon_114.png' %}"/>
     <link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/icon_144.png' %}"/>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
     <title>
-        {% block title %}{% trans '区块链导航' %} - {% trans '从这里学习区块链' %}{% endblock %}
+{#        {% block title %}{% trans '区块链导航' %} - {% trans '从这里学习区块链' %}{% endblock %}#}
+        {% block title %}区块链上网门户导航, 以太坊比特币数字货币资产网址大全-区块链导航{% endblock %}
     </title>
 
     {% bootstrap_css %}
@@ -38,7 +39,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% endblock %}
-
 
     <script>
         var _hmt = _hmt || [];
