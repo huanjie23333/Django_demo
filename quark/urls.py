@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.decorators.cache import cache_page
+from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
 
 from dquote.views import DQuoteListView
@@ -56,6 +57,7 @@ urlpatterns = [
     url(r'^crypto_index/', CryptoindexView.as_view(), name='crypto_index'),
     url(r'^daily_quote/', DQuoteListView.as_view(), name='dquote_list'),
     url(r'^baidu_verify_gpRRnqH8nr\.html$', bd_verify_view, name='veri_bd'),
+    url(r'^MP_verify_PcarGCDPGnDXv4Wx.txt$', lambda r: HttpResponse("PcarGCDPGnDXv4Wx", content_type="text/plain")),
 
 ]
 
