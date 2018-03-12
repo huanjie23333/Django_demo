@@ -199,9 +199,9 @@ body {
 
 #content,.content-container {
   background-color: @default-content-background;
-  padding-bottom: @gutter-size * 3;
+  margin-bottom: @gutter-size * 3;
   .box {
-    margin-top: @gutter-size;
+    margin-bottom: @gutter-size;
     background-color: @box-bg-color;
     width: 100%;
     padding: 10px 20px 10px 20px;
@@ -757,9 +757,26 @@ body {
 
 }
 
-
-
+.sidebar{
+ /* hook sticky sidebar */
+ &__hook{
+  position: relative;
+  margin-left: @gutter-size * -1;
+ }
+ .box{
+   margin-left: @gutter-size;
+ }
+ /* hook-end sticky sidebar */
+}
+.sidebar_default_sticky_hook{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
 .sidebar, .news-wrapper{
+  padding-bottom: @gutter-size;
+
   .advert-block{
       position: relative;
   }
