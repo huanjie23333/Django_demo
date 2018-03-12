@@ -5,133 +5,141 @@
 
 {%  cache 600 sidebar_3 %}
 <div class="col-sm-4 col-xs-12 sidebar news-wrapper" id="side_column">
-{#    分叉倒计时 开始 -------#}
-{#    {% advert_sidebar_top %}#}
-{#    <div class="box hidden-xs">#}
-{#        <div class="box-header ">#}
-{#            {% trans '分叉倒计时' %}#}
-{#            <span class="pull-right header-link">#}
-{#                <a href="{% url 'web_fork_list' %}" target="_blank">#}
-{#                    {% trans '更多' %}#}
-{#                </a>#}
-{#            </span>#}
-{##}
-{#        </div>#}
-{#        <div class="box-body" id="sidebar_fork">#}
-{#            {% with item=sidebar_fork %}#}
-{#            <div class="fork-item"#}
-{#                 data-fork-height="{{ item.fork_height }}"#}
-{#                 data-block-intervel="{{ item.block_mining_time }}"#}
-{#                 data-block-height-api="{{ item.current_height_api }}"#}
-{#            >#}
-{#                <div class="box">#}
-{#                    <div class="box-body">#}
-{#                        <div class="fork-alias">{{ item.fork_alias }}</div>#}
-{#                        <div class="fork-name">#}
-{#                            {% if item.official_site %}#}
-{#                                <a href="{{ item.official_site }}" target="_blank">#}
-{#                                    <span>{{ item.fork_name }}</span>#}
-{#                                    <span>{{ item.fork_ename }}</span>#}
-{#                                </a>#}
-{#                            {% else %}#}
-{#                                 <span>{{ item.fork_name }}</span>#}
-{#                                 <span>{{ item.fork_ename }}</span>#}
-{#                            {% endif %}#}
-{##}
-{#                        </div>#}
-{#                        <div class="count-down">#}
-{#                            <span class="clockdiv">#}
-{#                                <div><span class="days "></span><span class="middletext">天</span></div>#}
-{#                                <div><span class="hours "></span><span class="middletext">时</span></div>#}
-{#                                <div><span class="minutes "></span><span class="middletext">分</span></div>#}
-{#                                <div><span class="seconds "></span><span class="middletext">秒</span></div>#}
-{#                            </span>#}
-{#                        </div>#}
-{#                        <div class="desc">#}
-{#                            {{ item.description }}#}
-{#                        </div>#}
-{#                        <div class="block-height">#}
-{#                            <span>分叉区块高度</span>#}
-{#                            <span class="height-number">{{ item.fork_height }}</span>#}
-{#                        </div>#}
-{#                        <div class="current-block-height">#}
-{#                            <span>当前区块高度 </span>#}
-{#                            <span class="height-number"></span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    {% if item.status == 'done' %}#}
-{#                         <div class="fork-state fork-passed">完成分叉</div>#}
-{#                    {% elif item.status == 'incoming' %}#}
-{#                        <div class="fork-state fork-incoming">即将分叉</div>#}
-{#                    {% endif %}#}
-{#                </div>#}
-{#            </div>#}
-{#        {% endwith %}#}
-{##}
-{#        </div>#}
-{#    </div>#}
-{#   分叉倒计时 结束 --------#}
+    <div class="sidebar__hook">
+        <div id="sidebar_default">
+        {#    分叉倒计时 开始 -------#}
+        {#    {% advert_sidebar_top %}#}
+        {#    <div class="box hidden-xs">#}
+        {#        <div class="box-header ">#}
+        {#            {% trans '分叉倒计时' %}#}
+        {#            <span class="pull-right header-link">#}
+        {#                <a href="{% url 'web_fork_list' %}" target="_blank">#}
+        {#                    {% trans '更多' %}#}
+        {#                </a>#}
+        {#            </span>#}
+        {##}
+        {#        </div>#}
+        {#        <div class="box-body" id="sidebar_fork">#}
+        {#            {% with item=sidebar_fork %}#}
+        {#            <div class="fork-item"#}
+        {#                 data-fork-height="{{ item.fork_height }}"#}
+        {#                 data-block-intervel="{{ item.block_mining_time }}"#}
+        {#                 data-block-height-api="{{ item.current_height_api }}"#}
+        {#            >#}
+        {#                <div class="box">#}
+        {#                    <div class="box-body">#}
+        {#                        <div class="fork-alias">{{ item.fork_alias }}</div>#}
+        {#                        <div class="fork-name">#}
+        {#                            {% if item.official_site %}#}
+        {#                                <a href="{{ item.official_site }}" target="_blank">#}
+        {#                                    <span>{{ item.fork_name }}</span>#}
+        {#                                    <span>{{ item.fork_ename }}</span>#}
+        {#                                </a>#}
+        {#                            {% else %}#}
+        {#                                 <span>{{ item.fork_name }}</span>#}
+        {#                                 <span>{{ item.fork_ename }}</span>#}
+        {#                            {% endif %}#}
+        {##}
+        {#                        </div>#}
+        {#                        <div class="count-down">#}
+        {#                            <span class="clockdiv">#}
+        {#                                <div><span class="days "></span><span class="middletext">天</span></div>#}
+        {#                                <div><span class="hours "></span><span class="middletext">时</span></div>#}
+        {#                                <div><span class="minutes "></span><span class="middletext">分</span></div>#}
+        {#                                <div><span class="seconds "></span><span class="middletext">秒</span></div>#}
+        {#                            </span>#}
+        {#                        </div>#}
+        {#                        <div class="desc">#}
+        {#                            {{ item.description }}#}
+        {#                        </div>#}
+        {#                        <div class="block-height">#}
+        {#                            <span>分叉区块高度</span>#}
+        {#                            <span class="height-number">{{ item.fork_height }}</span>#}
+        {#                        </div>#}
+        {#                        <div class="current-block-height">#}
+        {#                            <span>当前区块高度 </span>#}
+        {#                            <span class="height-number"></span>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                    {% if item.status == 'done' %}#}
+        {#                         <div class="fork-state fork-passed">完成分叉</div>#}
+        {#                    {% elif item.status == 'incoming' %}#}
+        {#                        <div class="fork-state fork-incoming">即将分叉</div>#}
+        {#                    {% endif %}#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        {% endwith %}#}
+        {##}
+        {#        </div>#}
+        {#    </div>#}
+        {#   分叉倒计时 结束 --------#}
 
-    <div class="box hidden-xs" id="sidebar_news">
-        {% include 'web/snippets/sidebar_news.html' %}
-
-    </div>
-    <div class="box" id="sidebar_tags">
-        {% include 'web/snippets/sidebar_news_tags.html' %}
-    </div>
-
-    {% include 'web/partial/bc_info.html' %}
-
-    <div class="box " id="side_bar_bottom">
-        <div class="box-header">
-            {% trans "行情报价" %}
-            <span class="pull-right header-link">
-                <a href="{% url 'tools:coin_list' %}" target="_blank">
-                    {% trans '更多' %}
-                </a>
-            </span>
-        </div>
-        <div class="box-body">
-            <ul class="coin-list" id="coin_list">
-
-            </ul>
-        </div>
-    </div>
-    <div class="box" id="follow-us-box">
-        <div class="box-header">{% trans '关注我们' %}</div>
-        <div class="box-body">
-            <a href="https://www.facebook.com/ChainNewscom/" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://twitter.com/block123com" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://t.me/Block123com" rel="nofollow" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
-        </div>
-    </div>
-    <div id="scroll_target" class="inv-element">
-        <div class="box hidden-xs">
-            {% include 'web/snippets/sidebar_news.html' %}
-        </div>
-
-        <div class="box donation " id="donation-box">
-            <div class="box-header">
-                {% trans "捐赠地址" %}
-            </div>
-            <div class="box-body" class="middle-wrapper ">
-                <p class="">
-                <span class="cy-name">BTC</span><br>
-                <span class="cy-address">127X8Pzvmf9eUJVVV8ZFXMn6DKeQmWLy3y</span>
-                </p>
-                <p class="">
-                <span class="cy-name">ETH</span><br>
-                <span class="cy-address">0x0EFE3c5924d0b73c9B61D427065461795d3090Ec</span>
-            </p>
+            <div class="box hidden-xs" id="sidebar_news">
+                {% include 'web/snippets/sidebar_news.html' %}
 
             </div>
+            <div class="box" id="sidebar_tags">
+                {% include 'web/snippets/sidebar_news_tags.html' %}
+            </div>
+
+            {% include 'web/partial/bc_info.html' %}
+
+            <div class="box " id="side_bar_bottom">
+                <div class="box-header">
+                    {% trans "行情报价" %}
+                    <span class="pull-right header-link">
+                        <a href="{% url 'tools:coin_list' %}" target="_blank">
+                            {% trans '更多' %}
+                        </a>
+                    </span>
+                </div>
+                <div class="box-body">
+                    <ul class="coin-list" id="coin_list">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="box" id="follow-us-box">
+                <div class="box-header">{% trans '关注我们' %}</div>
+                <div class="box-body">
+                    <a href="https://www.facebook.com/ChainNewscom/" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/block123com" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://t.me/Block123com" rel="nofollow" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="box" id="follow-us-box">
-            <div class="box-header">{% trans '关注我们' %}</div>
-            <div class="box-body">
-                <a href="https://www.facebook.com/ChainNewscom/" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="https://twitter.com/block123com" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="https://t.me/Block123com" rel="nofollow" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+
+        <div id="sidebar_sticky_area">
+            <div id="scroll_target" class="inv-element">
+                <div class="box hidden-xs">
+                    {% include 'web/snippets/sidebar_news.html' %}
+                </div>
+
+                <div class="box donation " id="donation-box">
+                    <div class="box-header">
+                        {% trans "捐赠地址" %}
+                    </div>
+                    <div class="box-body" class="middle-wrapper ">
+                        <p class="">
+                        <span class="cy-name">BTC</span><br>
+                        <span class="cy-address">127X8Pzvmf9eUJVVV8ZFXMn6DKeQmWLy3y</span>
+                        </p>
+                        <p class="">
+                        <span class="cy-name">ETH</span><br>
+                        <span class="cy-address">0x0EFE3c5924d0b73c9B61D427065461795d3090Ec</span>
+                    </p>
+
+                    </div>
+                </div>
+                <div class="box" id="follow-us-box">
+                    <div class="box-header">{% trans '关注我们' %}</div>
+                    <div class="box-body">
+                        <a href="https://www.facebook.com/ChainNewscom/" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/block123com" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://t.me/Block123com" rel="nofollow" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            
             </div>
         </div>
 
