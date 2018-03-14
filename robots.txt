@@ -1,4 +1,6 @@
 User-agent: *
-Crawl-delay: 30
 Disallow: /admin/
 Disallow: /news.htm
+Disallow: /search/?q=*
+Disallow: /pages/about/
+Disallow:/pages/recruit/

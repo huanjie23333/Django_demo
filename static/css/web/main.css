@@ -593,12 +593,11 @@ ul li {
 }
 .inv-element {
   opacity: 0;
+  overflow: hidden;
 }
 .static-box {
-  top: 42px;
-  position: fixed;
   opacity: 1;
-  diplay: block;
+  z-index: 99;
 }
 .box-body.tag-cloud {
   padding: 0 0 20px;
@@ -2242,11 +2241,11 @@ body a:hover {
 #content,
 .content-container {
   background-color: #F7F6F2;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 #content .box,
 .content-container .box {
-  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: #fff;
   width: 100%;
   padding: 10px 20px 10px 20px;
@@ -2900,6 +2899,27 @@ body a:hover {
   -webkit-animation: 1s linear infinite loading-icon-rotate;
   -moz-animation: 1s linear infinite loading-icon-rotate;
   -o-animation: 1s linear infinite loading-icon-rotate;
+}
+.sidebar {
+  /* hook sticky sidebar */
+  /* hook-end sticky sidebar */
+}
+.sidebar__hook {
+  position: relative;
+  margin-left: -10px;
+}
+.sidebar .box {
+  margin-left: 10px;
+}
+.sidebar_default_sticky_hook {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.sidebar,
+.news-wrapper {
+  padding-bottom: 10px;
 }
 .sidebar .advert-block,
 .news-wrapper .advert-block {
