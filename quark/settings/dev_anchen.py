@@ -157,3 +157,7 @@ LOGGING = {
         },
     }
 }
+
+
+NEWS_TAG_API_URL = 'https://127.0.0.1:7000/api/news/tags.json'
+NEWS_DETAIL_API = 'https://127.0.0.1:7000/api/news/'
