@@ -34,7 +34,7 @@ class NewsDataMixin(object):
         )
         # url = 'https://api.chainnews.com/api/news.json?page={page}'.format(page=page)
         if tag:
-            _url = "{url}&tag={tag}".format(url=_url, tag=tag)
+            _url = "{url}&tid={tag}".format(url=_url, tag=tag)
         r = requests.get(_url, timeout=5)
         if r.status_code == 200:
             return r.text
@@ -90,6 +90,9 @@ class NewsDataMixin(object):
 
     def get_tag(self):
         return self.request.GET.get('tag', None)
+
+    def get_tag_id(self):
+        return self.request.GET.get('tid', None)
 
     def get_news_tag_list(self):
         result = cache.get_or_set(NEWS_TAG_LIST_KEY,
@@ -202,7 +205,7 @@ class NewsTagListView(SideBarDataMixin, TemplateView):
     template_name = 'web/news_list.html'
 
     def get_tag(self):
-        return self.kwargs.get('tag', None)
+        return self.kwargs.get('tag_id', None)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -210,6 +213,7 @@ class NewsTagListView(SideBarDataMixin, TemplateView):
         context['sidebar_news_tag_list'] = sb_t_list
         tag = context['current_tag'] = self.get_tag()
         context['news_list'] = self.get_news_page_list(tag=tag)
+
         context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)
         return context
 
