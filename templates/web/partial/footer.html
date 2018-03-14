@@ -2,7 +2,7 @@
 {% load i18n %}
 <section id="footer">
     <div class="container">
-        {% if flinks %}
+        {% if flinks and request.path == '/' %}
             <div class="row">
                 <div class="col-sm-10 col-xs-12 flink-container">
                     <ul class="flink-wrapper">
