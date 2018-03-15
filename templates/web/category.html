@@ -1,6 +1,10 @@
 {% extends 'base/base.html' %}
 {% load i18n static compress %}
 
+{% block title %}
+    {{ category.cname }} - {% trans '区块链导航' %}
+{% endblock %}
+
 {% block content %}
     <section id="content" class="category-content">
         <div class="container">
