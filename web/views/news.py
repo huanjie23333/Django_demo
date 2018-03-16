@@ -18,7 +18,6 @@ import logging
 
 logger = logging.getLogger("django")
 
-
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
 NEWS_TAG_LIST_KEY = 'newslist:tags:list'
 
@@ -167,7 +166,7 @@ class SideBarDataMixin(FlinkMixin, NewsDataMixin):
         bc_info_list = dict()
         ids = block_chain_browsers.values()
         d = dict()
-        [ d.update({row.id: row}) for row in Nav.objects.filter(pk__in=ids)]
+        [d.update({row.id: row}) for row in Nav.objects.filter(pk__in=ids)]
         for name, id in block_chain_browsers.items():
             try:
                 bc_info_list[name] = d[id]
@@ -188,16 +187,17 @@ class NewsApiView(AjaxResponseMixin, JSONResponseMixin, NewsDataMixin, View):
                             status=200)
 
 
-class NewsListView(SideBarDataMixin,NewsDataMixin, TemplateView):
+class NewsListView(SideBarDataMixin, NewsDataMixin, TemplateView):
     template_name = 'web/news_list.html'
     context_object_name = 'news_list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         sb_t_list = self.get_news_tag_list()[:50]
-        context['sidebar_news_tag_list']= sb_t_list
+        context['sidebar_news_tag_list'] = sb_t_list
         context['news_list'] = self.get_news_page_list()
         context['news_json_str'] = self.get_news_page_data_json(1)
+        # context['tag_name'] = json.loads(context['news_json_str']).get('tag_name')
         return context
 
 
@@ -213,8 +213,8 @@ class NewsTagListView(SideBarDataMixin, TemplateView):
         context['sidebar_news_tag_list'] = sb_t_list
         tag = context['current_tag'] = self.get_tag()
         context['news_list'] = self.get_news_page_list(tag=tag)
-
         context['news_json_str'] = self.get_news_page_data_json(1, tag=tag)
+        context['tag_name'] = json.loads(context['news_json_str']).get('tag_name')
         return context
 
 
