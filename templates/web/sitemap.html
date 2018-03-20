@@ -17,7 +17,7 @@
                             <div class="cate-name">
                                 <h3>
                                     <a href="{% url 'category_page' cate.cateename %}">
-                                    {{ cate.catename }}
+                                    {{ cate.catename }} - {% trans '区块链导航' %}
                                     </a>
                                 </h3>
                             </div>
@@ -39,7 +39,7 @@
                             <div class="cate-name">
                                 <h3>
                                     <a href="{% url 'web_news' %}">
-                                      {% trans '最新快讯' %}
+                                      {% trans '最新快讯' %} - {% trans '区块链导航' %}
                                     </a>
                                 </h3>
                             </div>
