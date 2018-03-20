@@ -25,7 +25,7 @@
                                 <ul>
                                 {% for tag in cate.tag_list %}
                                      <li class="tag-item">
-                                         <a href="{% url 'category_page' cate.cateename %}">
+                                         <a href="{% url 'category_page' cate.cateename %}?t={{ tag.tag__name }}">
                                             {{ tag.tag__name }}
                                          </a>
                                      </li>
