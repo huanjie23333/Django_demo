@@ -2,6 +2,10 @@
 {% load i18n static compress %}
 {#{% load web_extras %}#}
 
+{% block title %}
+    {{ tag_name }} - {% trans '区块链导航' %}
+{% endblock %}
+
 {% block content %}
     <section id="content" class="category-content">
         <div class="container">

@@ -2,6 +2,10 @@
 {% load i18n static compress %}
 {#{% load web_extras %}#}
 
+{% block title %}
+    {% trans '全站地图' %} - {% trans '区块链导航' %}
+{% endblock %}
+
 {% block content %}
     <section id="content">
         <div class="container static-content">
@@ -13,7 +17,7 @@
                             <div class="cate-name">
                                 <h3>
                                     <a href="{% url 'category_page' cate.cateename %}">
-                                    {{ cate.catename }}
+                                    {{ cate.catename }} - {% trans '区块链导航' %}
                                     </a>
                                 </h3>
                             </div>
@@ -21,7 +25,7 @@
                                 <ul>
                                 {% for tag in cate.tag_list %}
                                      <li class="tag-item">
-                                         <a href="{% url 'category_page' cate.cateename %}">
+                                         <a href="{% url 'category_page' cate.cateename %}?t={{ tag.tag__name }}">
                                             {{ tag.tag__name }}
                                          </a>
                                      </li>
@@ -35,7 +39,7 @@
                             <div class="cate-name">
                                 <h3>
                                     <a href="{% url 'web_news' %}">
-                                      {% trans '最新快讯' %}
+                                      {% trans '最新快讯' %} - {% trans '区块链导航' %}
                                     </a>
                                 </h3>
                             </div>

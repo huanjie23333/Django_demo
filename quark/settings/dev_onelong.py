@@ -56,7 +56,7 @@ IS_LOCAL_TESTING = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/mad_sand/quark/templates'],
+        'DIRS': ['/Data/work/quark/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,7 +70,7 @@ TEMPLATES = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/mad_sand/quark/static/'
+STATIC_ROOT = '/Data/work/quark/static/'
 STATICFILES_DIRS = []
 
 Current_Dbhost = '127.0.0.1'
@@ -157,7 +157,3 @@ LOGGING = {
         },
     }
 }
-
-
-NEWS_TAG_API_URL = 'http://127.0.0.1:7000/api/news/tags.json'
-NEWS_DETAIL_API = 'http://127.0.0.1:7000/api/news/'
