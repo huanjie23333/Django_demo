@@ -24,7 +24,8 @@ requirejs.config({
         marquee:'libs/marquee',
         datatable:'libs/datatable',
         highstock:'libs/highstock',
-        highcharts_lang:'libs/highcharts-zh_CN'
+        highcharts_lang:'libs/highcharts-zh_CN',
+        highcharts:'libs/highcharts'
     },
 
     shim: {
@@ -70,6 +71,9 @@ requirejs.config({
         },
         'highcharts_lang':{
             deps:['highstock']
+        },
+        'highcharts':{
+            deps:['jquery']
         }
 
 
