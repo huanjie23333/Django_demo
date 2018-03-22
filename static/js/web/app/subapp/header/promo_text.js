@@ -19,7 +19,7 @@ define(['libs/Class','jquery', 'underscore'], function(Class, $, _){
             //      }
             //
             // }, 1000);
-            this.element_count = 6 ;
+            this.element_count = 4 ;
             this.current_ele_index = 1 ;
             this.element_width = 150;
             this.$ele_wrapper = $('.promo-text-list');
@@ -34,8 +34,8 @@ define(['libs/Class','jquery', 'underscore'], function(Class, $, _){
         },
         marquee: function () {
             if(this.current_ele_index == this.element_count){
-                this.$ele_wrapper.css({left: -this.element_width * 2});
-                this.current_ele_index = 3;
+                this.$ele_wrapper.css({left: -this.element_width * 1});
+                this.current_ele_index = 2;
             }
             // console.log('current ele index : ' + this.current_ele_index);
             // console.log('move : ' + this.element_width * (this.current_ele_index-1));
