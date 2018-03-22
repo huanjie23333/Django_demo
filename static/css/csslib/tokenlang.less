@@ -1,0 +1,94 @@
+@import "var";
+@import "mixin";
+@import "widgets";
+
+.tokenlang-search-wrapper{
+  width: 80%;
+  margin: 0 auto;
+  height: 46px;
+  line-height: 44px;
+  font-size: 24px;
+  border: 1px solid @common-border-color;
+  .border-radius(4px);
+  position: relative;
+  overflow: hidden;
+  .tokenlang-search-input{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    outline-style: none;
+    border:none;
+    &::-webkit-input-placeholder{
+      color: @support-text-color;
+    }    /* 使用webkit内核的浏览器 */
+    &:-moz-placeholder{
+      color: @support-text-color;
+    }                  /* Firefox版本4-18 */
+    &::-moz-placeholder{
+      color: @support-text-color;
+    }                  /* Firefox版本19+ */
+    &:-ms-input-placeholder{
+      color: @support-text-color;
+    }           /* IE浏览器 */
+  }
+  .tokenlang-search-button{
+    width: 76px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border:none;
+    border-left:1px solid @common-border-color;
+    outline-style:none;
+    background: @site-link-color;
+    color: #fff;
+  }
+}
+.tokenlang-charts-wrapper{
+  margin-top:30px;
+  color: @common-text-color;
+  .charts-title{
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .charts-desc{
+    margin-top:10px;
+    font-size: @font-size-normal;
+  }
+  .loading-wrapper{
+    margin-top: 10px;
+  }
+  .tokenlang-charts{
+    margin-top: 10px;
+  }
+}
+
+
+.tokenlang-container{
+  @media screen and (max-width:768px){
+    background: #fff;
+    padding: 14px 20px 10px;
+    margin-bottom: 10px;
+    .tokenlang-search-wrapper{
+      width: 100%;
+      height: 36px;
+      line-height: 34px;
+      font-size: 18px;
+      .tokenlang-search-input{
+        padding: 16px;
+      }
+      .tokenlang-search-button{
+        width: 56px;
+      }
+    }
+    .tokenlang-charts-wrapper{
+      margin-top:24px;
+      .charts-title{
+        font-size: 24px;
+      }
+      .tokenlang-charts{
+        margin-top: 10px;
+      }
+    }
+  }
+}

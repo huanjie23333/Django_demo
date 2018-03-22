@@ -11,6 +11,7 @@
 @import "../csslib/animate.less";
 @import "../csslib/fork_item.less";
 @import "../csslib/create_chart.less";
+@import "../csslib/tokenlang.less";
 
 
 html, body {
@@ -80,7 +81,7 @@ body {
      width: 150px;
      overflow: hidden;
      .promo-text-list{
-        width: 600px;
+        width: 900px;
         position:relative;
      }
      li{
@@ -765,6 +766,9 @@ body {
  }
  .box{
    margin-left: @gutter-size;
+   //@media screen and (max-width:768px){
+   //  margin-left: 0;
+   //}
  }
  /* hook-end sticky sidebar */
 }
@@ -775,13 +779,14 @@ body {
   left: 0;
 }
 .sidebar, .news-wrapper{
+  overflow: hidden;
   padding-bottom: @gutter-size;
 
   .advert-block{
       position: relative;
   }
   .ad-block{
-    height: 0px;
+    height: 0;
     width: 100%;
     position:relative;
     padding-bottom: 62.5%;
