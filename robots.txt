@@ -4,3 +4,4 @@ Disallow: /news.htm
 Disallow: /search/?q=*
 Disallow: /pages/about/
 Disallow:/pages/recruit/
+https://www.block123.com/sitemap.htm
