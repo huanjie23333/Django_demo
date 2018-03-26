@@ -667,7 +667,7 @@ ul li {
   background-color: #2C2F39;
 }
 .silent_link:hover,
-.silent_link:hover,
+.silent_link:focus,
 .silent_link:active {
   color: #434446;
   text-decoration: none;
@@ -2454,8 +2454,8 @@ body a:hover {
 }
 #content .box .box-body .coin-list li a:hover,
 .content-container .box .box-body .coin-list li a:hover,
-#content .box .box-body .coin-list li a:hover,
-.content-container .box .box-body .coin-list li a:hover,
+#content .box .box-body .coin-list li a:focus,
+.content-container .box .box-body .coin-list li a:focus,
 #content .box .box-body .coin-list li a:active,
 .content-container .box .box-body .coin-list li a:active {
   color: #434446;
