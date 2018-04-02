@@ -3034,7 +3034,6 @@ body a:hover {
   background-repeat: no-repeat;
   background-repeat-x: no-repeat;
   background-repeat-y: no-repeat;
-  margin-top: 10px;
   margin-bottom: 10px;
 }
 .sidebar .ad-sign,
@@ -3046,6 +3045,10 @@ body a:hover {
   padding: 5px 10px;
   color: #fff;
   border-radius: 5px;
+}
+#content .box.index-ad-box {
+  padding: 0;
+  width: auto;
 }
 .bc-info ul {
   margin-bottom: 20px;

@@ -307,7 +307,7 @@
   background-color: #2C2F39;
 }
 .silent_link:hover,
-.silent_link:hover,
+.silent_link:focus,
 .silent_link:active {
   color: #434446;
   text-decoration: none;
