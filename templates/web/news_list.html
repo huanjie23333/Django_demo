@@ -90,16 +90,16 @@
                                 <i class="fa fa-spinner shareimg-loading" style="display:none"></i>
                             </span>
                         {% endif %}
-                        <span class="tag-list-wrapper">
-                            <ul class="tag-list">
-                                <li class="tag-list-head">
-                                    <i class="fa fa-tag"></i>
-                                </li>
-                                <% for( var i = 0; i < tag_list.length; i++ ) { %>
-                                <li class="tag-item"><a href="/news/tag_<%=tag_list[i].id%>/" target="_blank"><%=tag_list[i].name%></a></li>
-                                <% } %>
-                            </ul>
-                        </span>
+                            <span class="tag-list-wrapper">
+                                <ul class="tag-list">
+                                    <li class="tag-list-head">
+                                        <i class="fa fa-tag"></i>
+                                    </li>
+                                    <% for( var i = 0; i < tag_list.length; i++ ) { %>
+                                    <li class="tag-item"><a href="/news/tag_<%=tag_list[i].id%>/" target="_blank"><%=tag_list[i].name%></a></li>
+                                    <% } %>
+                                </ul>
+                            </span>
                     </li>
                 </ul>
             </div>
