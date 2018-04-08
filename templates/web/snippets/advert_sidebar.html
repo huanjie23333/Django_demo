@@ -1,6 +1,8 @@
 {% load static %}
 
 {#  ---- ad block   #}
+{% if adverts %}
+<div class="box hidden-xs index-ad-box">
    {% for advert in adverts %}
     <a class="advert-block" href="{{ advert.link }}" target="_blank">
         <div class="ad-block" style="background-image: url('{{ advert.image.url }}')" >
@@ -9,4 +11,6 @@
 
     </a>
     {% endfor %}
+</div>
+{% endif %}
 {# --- ad block end  #}
