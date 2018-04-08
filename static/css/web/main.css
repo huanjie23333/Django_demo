@@ -2936,6 +2936,11 @@ body a:hover {
   font-size: 14px;
   color: #434446;
 }
+@media screen and (max-width: 768px) {
+  .amazon-ad {
+    display: none;
+  }
+}
 .site-submit-form h2 {
   text-align: center;
   margin-top: 3em;
