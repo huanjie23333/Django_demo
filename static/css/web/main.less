@@ -684,6 +684,11 @@ body {
       //text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
    }
 }
+.amazon-ad{
+  @media screen and (max-width:768px){
+    display: none;
+  }
+}
 
 .site-submit-form {
   h2 {
@@ -773,10 +778,10 @@ body {
  /* hook-end sticky sidebar */
 }
 .sidebar_default_sticky_hook{
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  //position: absolute;
+  //z-index: 1;
+  //top: 0;
+  //left: 0;
 }
 .sidebar, .news-wrapper{
   overflow: hidden;
@@ -813,6 +818,11 @@ body {
   .box.index-ad-box{
     padding: 0;
     width: auto;
+  }
+}
+.ft_cnt{
+  &>a:not(:last-child){
+    display: none;
   }
 }
 
