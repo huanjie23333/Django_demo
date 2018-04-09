@@ -3013,12 +3013,6 @@ body a:hover {
 .sidebar .box {
   margin-left: 10px;
 }
-.sidebar_default_sticky_hook {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-}
 .sidebar,
 .news-wrapper {
   overflow: hidden;
@@ -3050,6 +3044,13 @@ body a:hover {
   padding: 5px 10px;
   color: #fff;
   border-radius: 5px;
+}
+#content .box.index-ad-box {
+  padding: 0;
+  width: auto;
+}
+.ft_cnt > a:not(:last-child) {
+  display: none;
 }
 .bc-info ul {
   margin-bottom: 20px;

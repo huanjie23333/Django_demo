@@ -778,10 +778,10 @@ body {
  /* hook-end sticky sidebar */
 }
 .sidebar_default_sticky_hook{
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  //position: absolute;
+  //z-index: 1;
+  //top: 0;
+  //left: 0;
 }
 .sidebar, .news-wrapper{
   overflow: hidden;
@@ -814,12 +814,17 @@ body {
 
   }
 }
-//#content{
-//  .box.index-ad-box{
-//    padding: 0;
-//    width: auto;
-//  }
-//}
+#content{
+  .box.index-ad-box{
+    padding: 0;
+    width: auto;
+  }
+}
+.ft_cnt{
+  &>a:not(:last-child){
+    display: none;
+  }
+}
 
 .bc-info {
   ul {
