@@ -1,5 +1,7 @@
 {% load static %}
-{% load i18n %}
+{% load i18n cache %}
+
+{% cache 1800 foot_ver_1 %}
 <section id="footer">
     <div class="container">
         {% if flinks and request.path == '/' %}
@@ -48,3 +50,4 @@
         </div>
     </div>
 </section>
+{% endcache %}
