@@ -38,13 +38,12 @@ class SqsCategoryTagDataMixin(object):
         ]
 
     def get_category_list(self):
-        start = timeit.timeit()
+        # start = timeit.timeit()
         key = "category:tag:nav:list"
         res = cache.get_or_set(key, self._get_category_list, 5 * 60)
-        end = timeit.timeit()
-        spend = end - start
-
-        print('get_category_list time : %s'%spend)
+        # end = timeit.timeit()
+        # spend = end - start
+        # print('get_category_list time : %s'%spend)
         return res
 
     def get_cate_tag_navs(self, cate_id, tag_name):
@@ -138,12 +137,12 @@ class IndexView(SqsCategoryTagDataMixin, TemplateView):
         return resp
 
     def get_context_data(self, **kwargs):
-        start  = timeit.timeit()
+        # start  = timeit.timeit()
         context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
         context['categories'] = self.get_category_list()
-        end = timeit.timeit()
-        print('get_context spend time : %s ' %(end-start))
+        # end = timeit.timeit()
+        # print('get_context spend time : %s ' %(end-start))
         return context
 
     def get_recommend_nav(self):
