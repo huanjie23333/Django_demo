@@ -73,9 +73,9 @@
 {% block trackers %}
     {# 这里是统计代码 #}
     {% if not debug %}
-                {% compress js %}
+{#                {% compress js %}#}
         <script async src="{% static 'js/web/app/libs/autotrack.js' %}"></script>
-                {% endcompress %}
+{#                {% endcompress %}#}
 
         <script>
             window.ga = window.ga || function () {
