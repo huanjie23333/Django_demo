@@ -121,7 +121,7 @@ class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
 
 
 
-class IndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
+class IndexView(SqsCategoryTagDataMixin, TemplateView):
     template_name = 'web/index.html'
 
     def get(self, request, **kwargs):
