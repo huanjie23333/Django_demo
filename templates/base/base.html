@@ -2,7 +2,6 @@
 {% load compress bootstrap3 %}
 <!DOCTYPE html>
 
-
 <html{% if LANGUAGE_CODE %} lang="{{ LANGUAGE_CODE }}"{% endif %}>
 <head>
 
@@ -66,7 +65,7 @@
 
 {# footer -------#}
 {% block footer %}
-    {% include 'web/partial/footer.html' %}
+{#    {% include 'web/partial/footer.html' %}#}
 {% endblock %}
 {# footer ends --------#}
 {% block basic_script %}{% endblock %}
