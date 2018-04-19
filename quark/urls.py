@@ -74,7 +74,7 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^$', cache_page(60*30)(IndexView.as_view()), name='web_index'),
+    url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
     # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
     # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
