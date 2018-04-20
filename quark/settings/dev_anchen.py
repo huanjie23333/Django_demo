@@ -19,7 +19,7 @@ NOSE_ARGS = [
 ]
 
 
-# INTERNAL_IPS =['127.0.0.1']
+INTERNAL_IPS =['127.0.0.1']
 ALLOWED_HOSTS=['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192','192.168.192.154']
 
 DEBUG_TOOLBAR_PANELS = [
@@ -59,6 +59,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['/god_sand/quark/templates'],
         'APP_DIRS': True,
+
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

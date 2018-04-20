@@ -14,6 +14,7 @@ from django.db.models import Count
 from django.http import HttpResponseForbidden, HttpResponse
 
 from coinfork.models import CoinFork
+from flink.models import Flink
 from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
@@ -25,6 +26,7 @@ import logging
 
 logger = logging.getLogger('django')
 
+from nav.block_chain_browsers import block_chain_browsers
 
 class SqsCategoryTagDataMixin(object):
     def _get_category_list(self):
@@ -141,12 +143,29 @@ class IndexView(SqsCategoryTagDataMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
         context['categories'] = self.get_category_list()
+        context['sidebar_bcinfo_list'] = self.get_bc_info_list()
+        context['flinks'] = self.get_flinks()
         # end = timeit.timeit()
         # print('get_context spend time : %s ' %(end-start))
         return context
 
     def get_recommend_nav(self):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
+
+    def get_flinks(self):
+        return Flink.objects.all()[:30]
+
+    def get_bc_info_list(self):
+        bc_info_list = dict()
+        ids = block_chain_browsers.values()
+        d = dict()
+        [d.update({row.id: row}) for row in Nav.objects.filter(pk__in=ids)]
+        for name, id in block_chain_browsers.items():
+            try:
+                bc_info_list[name] = d[id]
+            except KeyError as e:
+                continue
+        return bc_info_list
 
 
 class SubNavCreateView(CreateView):

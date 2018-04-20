@@ -16,6 +16,7 @@ from nav.models import Nav
 
 import logging
 
+
 logger = logging.getLogger("django")
 
 NEWS_LIST_KEY_SET = 'newslist:cache_key_set'
