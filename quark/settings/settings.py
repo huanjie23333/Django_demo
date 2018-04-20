@@ -73,12 +73,14 @@ INSTALLED_APPS = [
     'coinfork',
     'advert',
     'dquote',
-    'utils'
+    'utils',
+    'silk',
     # 'captcha',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'silk.middleware.SilkyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -372,3 +374,13 @@ NEWS_DETAIL_API = 'https://api.chainnews.com/api/news/'
 # import logging config
 ###
 from quark.settings.quark_logging import *
+
+
+## for silk permission
+
+SILKY_AUTHENTICATION = True  # User must login
+SILKY_AUTHORISATION = True  #
+
+SILKY_META = True
+
+SILKY_INTERCEPT_PERCENT = 20
