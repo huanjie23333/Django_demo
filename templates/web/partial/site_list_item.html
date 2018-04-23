@@ -1,12 +1,12 @@
 
 <li><a href="{{ site.web_site }}"
-       class="{% if site.highlight %} highlight {% endif %}"
+       {% if site.highlight %} class="highlight" {% endif %}
        target=_blank
        title="{{ site.main_name }}"
        {% if not site.highlight %} rel="nofollow" {% endif %}
-       data-category="{{ cate_cname }}"
-       data-tag="{{ tag_list.tagname }}"
-       data-site="{{ site.main_name }}"
+{#       data-category="{{ cate_cname }}"#}
+{#       data-tag="{{ tag_list.tagname }}"#}
+{#       data-site="{{ site.main_name }}"#}
     >
     {{ site.main_name }}
 {#    {{ site.zh_hant_main_name }}#}

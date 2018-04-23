@@ -56,8 +56,9 @@ require([
         });
 
         new Header();
-        new SideBar();
-        new Tracker();
+        new SideBar()
+
+        // new Tracker();
         new NewsLine();
         new GoTop();
         new Captcha();
