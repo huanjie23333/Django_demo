@@ -2226,8 +2226,13 @@ body a:hover {
 }
 #search-row .promo-text-wrapper li {
   width: 150px;
-  display: inline-block;
   line-height: 40px;
+  float: left;
+}
+#search-row .promo-text-wrapper li::after {
+  display: block;
+  content: '';
+  clear: both;
 }
 #search-row .promo-text-wrapper li a {
   color: #aaa;

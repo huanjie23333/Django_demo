@@ -86,8 +86,14 @@ body {
      }
      li{
         width: 150px;
-        display: inline-block;
+        //display: inline-block;
        line-height: 40px;
+       float: left;
+       &::after {
+         display: block;
+         content: '';
+         clear: both;
+       }
         a{
            color: @support-text-color;
            &:hover{
