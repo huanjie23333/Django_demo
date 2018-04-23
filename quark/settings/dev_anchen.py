@@ -18,8 +18,8 @@ NOSE_ARGS = [
     '--cover-package=web,nav,quark,feed',
 ]
 
-
-INTERNAL_IPS =['127.0.0.1']
+# disable / enable debug toolbar
+# INTERNAL_IPS =['127.0.0.1']
 ALLOWED_HOSTS=['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192','192.168.192.154']
 
 DEBUG_TOOLBAR_PANELS = [
