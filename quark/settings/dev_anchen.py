@@ -72,7 +72,7 @@ TEMPLATES = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/mad_sand/quark/static/'
+STATIC_ROOT = '/god_sand/quark/static/'
 STATICFILES_DIRS = []
 
 Current_Dbhost = '127.0.0.1'
