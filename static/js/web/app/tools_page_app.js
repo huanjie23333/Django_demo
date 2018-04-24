@@ -51,7 +51,8 @@ require([
                  "language": {
                      "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
                  },
-                 "order": [[ 2, "desc" ]]
+                 "order": [[ 2, "desc" ]],
+                "columns": [{"width": '150px'},null,null,null,null,null]
             });
         }
 

@@ -61,10 +61,10 @@
             <tr>
                 <td class="dark hidden-xs"><%= coins[i].en_name %></td>
                 <td class="dark" data-sort="<%= coins[i].symbol %>" ><b><%= coins[i].symbol %></b></td>
-                <td data-sort="<%= coins[i].attach.total_market_cap_usd %>" class="hidden-xs">$<%= coins[i].attach.total_market_cap_usd %></td>
-                <td data-sort="<%= coins[i].attach.volume_usd_statistic.of24h %>" class="hidden-xs">$<%= coins[i].attach.volume_usd_statistic.of24h %></td>
-                <td data-sort="<%= coins[i].attach.price_cny %>">¥<%= coins[i].attach.price_cny %></td>
-                <td data-sort="<%= coins[i].attach.increase_rate %>" class="<%= coins[i].priceClass%> hidden-xs"><%= coins[i].attach.format_increase_rate %>%</td>
+                <td data-sort="<%= coins[i].attach.total_market_cap_usd %>" class="hidden-xs">$<%= coins[i].attach.total_market_cap_usd_f %></td>
+                <td data-sort="<%= coins[i].attach.volume_usd_statistic.of24h %>" class="hidden-xs">$<%= coins[i].attach.volume_usd_statistic.of24h_f %></td>
+                <td data-sort="<%= coins[i].attach.price_cny %>">¥<%= coins[i].attach.price_cny_f %></td>
+                <td data-sort="<%= coins[i].attach.increase_rate %>" class="<%= coins[i].priceClass%> hidden-xs"><%= coins[i].attach.increase_rate_f %>%</td>
             </tr>
         <% } %>
     </script>
