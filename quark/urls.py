@@ -74,9 +74,9 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^$', IndexView.as_view(), name='web_index'),
+    # url(r'^$', IndexView.as_view(), name='web_index'),
     # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
-    # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
+    url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
 
 from django.contrib.flatpages import views
@@ -86,7 +86,7 @@ urlpatterns += [
 ]
 
 # for silk
-urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
+# urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
 
 if settings.IS_LOCAL_TESTING:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

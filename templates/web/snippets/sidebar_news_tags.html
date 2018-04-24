@@ -5,18 +5,6 @@
 <div class="box-body">
     <div class="tag-list-filter-wrapper">
     <ul class="tag-list-filter-list sidebar-tag-list-wrapper" >
-{#        {% for tag in sidebar_news_tag_list|slice:"0:50" %}#}
-{#            <li class="tag-filter-item">#}
-{#                <a href="{% url 'news:tag_news' tag.name %}" title="{{ tag.name }}" target="_blank" class="{% if current_tag == tag.name %}active{% endif %}">#}
-{#                    {{ tag.name }}#}
-{#                </a>#}
-{#            </li>#}
-{#        {% endfor %}#}
     </ul>
 </div>
 </div>
-
-{#    <script type="application/javascript">#}
-{#        var tag_list_json = {{ sidebar_tag_jsonstr|safe }};#}
-{#    </script>#}
-{#{% endcache %}#}
