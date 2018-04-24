@@ -74,20 +74,20 @@ INSTALLED_APPS = [
     'advert',
     'dquote',
     'utils',
-    'silk',
+    # 'silk',
     # 'captcha',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'silk.middleware.SilkyMiddleware',
+    # 'silk.middleware.SilkyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    #
     # 'htmlmin.middleware.HtmlMinifyMiddleware',
     # 'htmlmin.middleware.MarkRequestMiddleware',
 ]

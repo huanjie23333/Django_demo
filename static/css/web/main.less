@@ -85,9 +85,14 @@ body {
         position:relative;
      }
      li{
-        width: 150px;
-        display: inline-block;
+       width: 150px;
        line-height: 40px;
+       float: left;
+       &::after {
+         display: block;
+         content: '';
+         clear: both;
+       }
         a{
            color: @support-text-color;
            &:hover{
@@ -1073,7 +1078,7 @@ flaepage-markdown end
 
 
 .test {
-  color: red;
+  color: black;
 
 }
 
