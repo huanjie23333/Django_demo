@@ -86,7 +86,7 @@ urlpatterns += [
 ]
 
 # for silk
-urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
+# urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
 
 if settings.IS_LOCAL_TESTING:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
