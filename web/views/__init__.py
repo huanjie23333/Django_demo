@@ -139,14 +139,11 @@ class IndexView(SqsCategoryTagDataMixin, TemplateView):
         return resp
 
     def get_context_data(self, **kwargs):
-        # start  = timeit.timeit()
         context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
         context['categories'] = self.get_category_list()
         context['sidebar_bcinfo_list'] = self.get_bc_info_list()
         context['flinks'] = self.get_flinks()
-        # end = timeit.timeit()
-        # print('get_context spend time : %s ' %(end-start))
         return context
 
     def get_recommend_nav(self):
@@ -255,7 +252,7 @@ class ForkListView(FlinkMixin, ListView):
         return super().get(request, *args, **kwargs)
 
 class CountDownList(View):
-    def get(self,request):
+    def get(self):
         return redirect('web_fork_list', permanent=True)
 
 
