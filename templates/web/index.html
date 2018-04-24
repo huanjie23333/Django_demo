@@ -6,7 +6,7 @@
     <section id="content">
         <div class="container">
             <div class="row">
-               {% cache 1800 main_list_12 %}
+                {% cache 1800 main_list_12 %}
                     <div class="col-sm-8 col-xs-12" id="main_column">
                         <div class="box">
                             <div class="box-header">{% trans '热门推荐' %}</div>
@@ -43,12 +43,11 @@
                             </div>
                         {% endfor %}
                     </div>
-               {% endcache %}
-               {% include 'web/partial/side_bar.html' %}
+                {% endcache %}
+                {% include 'web/partial/side_bar.html' %}
             </div>
         </div>
     </section>
-
     <a class="gotop-wrapper">
         <div class="action-wrapper">
         <span class="btn-top" id="top_link">
