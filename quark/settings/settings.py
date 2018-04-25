@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'django_markdown',
     'simplemde',
 

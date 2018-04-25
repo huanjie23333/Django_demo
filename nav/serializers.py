@@ -11,6 +11,18 @@ class NavSerializer(serializers.ModelSerializer):
         fields = '__all__'
         # exclude = ("id", )
 
+class NavDetailSerializer(serializers.ModelSerializer):
+    tags = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='name'
+    )
+    class Meta:
+        model = Nav
+        fields = '__all__'
+
+
+
 
 class SubNavSerializer(serializers.ModelSerializer):
     class Meta:
