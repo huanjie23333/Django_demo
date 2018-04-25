@@ -7,6 +7,7 @@ require([
         'subapp/gotop',
         'subapp/tools/bookmark',
         'datatable',
+        'subapp/render_coins_rank',
         'subapp/stockchart',
         'bootstrap'
     ],
@@ -17,7 +18,8 @@ require([
               Tracker,
               GoTop,
               DataTable,
-              BookMark
+              BookMark,
+              RenderCoinsRank
               ) {
 
         jQuery = $;
@@ -33,6 +35,7 @@ require([
         new Header();
         new Tracker();
         new GoTop();
+        new RenderCoinsRank();
 
         // header price fetch
         all_price_feed.run();
@@ -48,7 +51,8 @@ require([
                  "language": {
                      "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
                  },
-                 "order": [[ 2, "desc" ]]
+                 "order": [[ 2, "desc" ]],
+                "columns": [{"width": '150px'},null,null,null,null,null]
             });
         }
 

@@ -25,29 +25,29 @@
                                 <th class="hidden-xs">{% trans '24小时成交' %}</th>
 {#                                <th>美元价格</th>#}
                                 <th>{% trans '最新价格' %}</th>
-                                <th>最近一小时</th>
+{#                                <th>最近一小时</th>#}
                                 <th class="hidden-xs">{% trans '最近一天' %}</th>
-                                <th class="hidden-xs">{% trans '最近七天' %}</th>
+{#                                <th class="hidden-xs">{% trans '最近七天' %}</th>#}
                             </tr>
                             </thead>
                             <tbody>
-                            {% for coin in coins %}
-                                <tr>
+{#                            {% for coin in coins %}#}
+{#                                <tr>#}
 {#                                    <th scope="row">#}
                                         {# 代币图 #}
 {#                                    </th>#}
-                                    <td class="dark hidden-xs">{{ coin.name }}</td>
-                                    <td class="dark" data-sort="{{ coin.symbol }}" ><b>{{ coin.symbol }}</b></td>
-                                    <td data-sort="{{ coin.market_cap_usd  }}" class="hidden-xs">${{ coin.market_cap_usd|floatformat:2 |intcomma }}</td>
-                                    <td data-sort="{{ coin.24h_volume_usd }}" class="hidden-xs">${{ coin.24h_volume_usd|floatformat:2|intcomma }}</td>
+{#                                    <td class="dark hidden-xs">{{ coin.name }}</td>#}
+{#                                    <td class="dark" data-sort="{{ coin.symbol }}" ><b>{{ coin.symbol }}</b></td>#}
+{#                                    <td data-sort="{{ coin.market_cap_usd  }}" class="hidden-xs">${{ coin.market_cap_usd|floatformat:2 |intcomma }}</td>#}
+{#                                    <td data-sort="{{ coin.24h_volume_usd }}" class="hidden-xs">${{ coin.24h_volume_usd|floatformat:2|intcomma }}</td>#}
 {#                                    <td data-sort="{{  coin.price_usd }}">${{ coin.price_usd|floatformat:2|intcomma }}</td>#}
-                                    <td data-sort="{{ coin.price_cny }}">¥{{ coin.price_cny|floatformat:2|intcomma }}</td>
-                                    <td data-sort="{{  coin.percent_change_1h }}" class="{{ coin.percent_change_1h|price_class }}">{{ coin.percent_change_1h|price_sign}}{{ coin.percent_change_1h }}%</td>
-                                    <td data-sort="{{ coin.percent_change_24h }}" class="{{ coin.percent_change_24h|price_class }} hidden-xs" >{{ coin.percent_change_24h|price_sign }}{{ coin.percent_change_24h }}%</td>
-                                    <td data-sort="{{ coin.percent_change_7d }}" class="{{ coin.percent_change_7d|price_class }} hidden-xs">{{ coin.percent_change_7d|price_sign }}{{ coin.percent_change_7d }}%</td>
-
-                                </tr>
-                            {% endfor %}
+{#                                    <td data-sort="{{ coin.price_cny }}">¥{{ coin.price_cny|floatformat:2|intcomma }}</td>#}
+{#                                    <td data-sort="{{  coin.percent_change_1h }}" class="{{ coin.percent_change_1h|price_class }}">{{ coin.percent_change_1h|price_sign}}{{ coin.percent_change_1h }}%</td>#}
+{#                                    <td data-sort="{{ coin.percent_change_24h }}" class="{{ coin.percent_change_24h|price_class }} hidden-xs" >{{ coin.percent_change_24h|price_sign }}{{ coin.percent_change_24h }}%</td>#}
+{#                                    <td data-sort="{{ coin.percent_change_7d }}" class="{{ coin.percent_change_7d|price_class }} hidden-xs">{{ coin.percent_change_7d|price_sign }}{{ coin.percent_change_7d }}%</td>#}
+{##}
+{#                                </tr>#}
+{#                            {% endfor %}#}
 
                             </tbody>
                         </table>
@@ -56,7 +56,18 @@
             </div>
         </div>
     </section>
-
+    <script type="text/template" id="coins-rank-table">
+        <% for(var i = 0; i < coins.length; i++){ %>
+            <tr>
+                <td class="dark hidden-xs"><%= coins[i].en_name %></td>
+                <td class="dark" data-sort="<%= coins[i].symbol %>" ><b><%= coins[i].symbol %></b></td>
+                <td data-sort="<%= coins[i].attach.total_market_cap_usd %>" class="hidden-xs">$<%= coins[i].attach.total_market_cap_usd_f %></td>
+                <td data-sort="<%= coins[i].attach.volume_usd_statistic.of24h %>" class="hidden-xs">$<%= coins[i].attach.volume_usd_statistic.of24h_f %></td>
+                <td data-sort="<%= coins[i].attach.price_cny %>">¥<%= coins[i].attach.price_cny_f %></td>
+                <td data-sort="<%= coins[i].attach.increase_rate %>" class="<%= coins[i].priceClass%> hidden-xs"><%= coins[i].attach.increase_rate_f %>%</td>
+            </tr>
+        <% } %>
+    </script>
     <a class="gotop-wrapper">
         <span class="btn-top" id="top_link">
             <i class="fa fa-angle-up"></i>
