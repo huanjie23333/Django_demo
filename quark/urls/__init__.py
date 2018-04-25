@@ -68,10 +68,10 @@ urlpatterns = [
 
 ]
 
-# leave it here in case some service use this
-urlpatterns += [
-    url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
-]
+# # leave it here in case some service use this
+# urlpatterns += [
+#     url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
+# ]
 
 urlpatterns += [
     url(r'^api/', include('quark.urls.api', namespace='api')),

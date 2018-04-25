@@ -8,7 +8,7 @@ schema_view = get_schema_view(title='ChainNews API')
 
 # web api
 urlpatterns = [
-    url(r'^nav_list/?$', CommonNavListAPIView.as_view(), name='navs'),
+    url(r'^nav/?$', CommonNavListAPIView.as_view(), name='navs'),
     # api docs
     url(r'^schema/$', schema_view),
 ]
