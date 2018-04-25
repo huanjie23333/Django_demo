@@ -17,6 +17,14 @@ class NavDetailSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='name'
     )
+
+    def create(self, validated_data):
+        logger.info('begin create Nav through DRF')
+        logger.info(validated_data)
+        res = super().create(validated_data)
+        return res
+
+
     class Meta:
         model = Nav
         fields = '__all__'
