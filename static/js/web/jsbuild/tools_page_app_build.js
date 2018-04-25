@@ -17397,7 +17397,6 @@ define('subapp/render_coins_rank',['libs/Class', 'jquery', 'underscore', 'libs/n
         init: function(){
             var compiled = _.template($('#coins-rank-table').html());
             $.when($.ajax('https://api.blockinner.com/api/coin/getList?limit=100&skip=0')).then(function(res){
-                console.log(res.data.data);
                 res.data.data.forEach(function(item, idx){
                     item.attach.total_market_cap_usd_f = numeral(item.attach.total_market_cap_usd).format('0,0.00');
                     item.attach.volume_usd_statistic.of24h_f = numeral(item.attach.volume_usd_statistic.of24h).format('0,0.00');
