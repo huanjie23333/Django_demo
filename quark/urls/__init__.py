@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 # from django.views.decorators.cache import cache_page
 from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
+from rest_framework import permissions
 
 from dquote.views import DQuoteListView
 
@@ -32,6 +33,9 @@ from web.views.news import NewsListView
 from quark.views import page_error, webpage_not_found
 
 from django.views.generic import TemplateView
+
+from rest_framework.documentation import include_docs_urls
+
 
 handler404 = webpage_not_found
 handler500 = page_error
@@ -64,8 +68,19 @@ urlpatterns = [
 
 ]
 
+# # leave it here in case some service use this
+# urlpatterns += [
+#     url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
+# ]
+
 urlpatterns += [
-    url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
+    url(r'^api/', include('quark.urls.api', namespace='api')),
+    url(r'^docs/', include_docs_urls(title='Quark API Docs',
+                                     public=False,
+                                     permission_classes=[
+                                         permissions.IsAdminUser,
+                                     ])
+        ),
 ]
 
 # captcha
@@ -78,6 +93,9 @@ urlpatterns += [
     # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
     # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
+
+
+
 
 from django.contrib.flatpages import views
 
