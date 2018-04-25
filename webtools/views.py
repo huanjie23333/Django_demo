@@ -59,17 +59,15 @@ class CoinMarketCapDataMixin(ApiCacheMixin):
         return self.get_api_data(self.COIN_LIST_URL, timeout=60)
 
 
-class CoinListView(CoinMarketCapDataMixin, TemplateView):
+class CoinListView(TemplateView):
     template_name = 'webtools/coin_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(CoinListView, self).get_context_data(**kwargs)
-        c_list = self.get_top_coin_list()[:100]
         context.update({
-            'coins': c_list,
             'seo': {
                 'title': '区块链导航 ：加密货币报价列表',
-                'key_words': ','.join([coin['name'] for coin in c_list]),
+                'key_words': 'BTC报价，ETH报价，加密货币报价',
                 'description': "区块链导航 Block123.com ：汇集重要加密货币市值和报价。"
             }
         })
