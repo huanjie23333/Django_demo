@@ -69,3 +69,4 @@ xmltodict==0.11.0
 yarl==0.13.0
 django-silk==2.0.0
 coreapi==2.3.3
+django-taggit-serializer==0.1.5

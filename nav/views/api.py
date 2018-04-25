@@ -16,9 +16,9 @@ class NavListAPIView(generics.ListAPIView):
     model = Nav
 
 
-class CommonNavListAPIView(generics.ListAPIView):
+class CommonNavListAPIView(generics.ListCreateAPIView):
     serializer_class = NavDetailSerializer
-    queryset = Nav.objects.all()
+    queryset = Nav.objects.all().order_by('-id')
     model = Nav
     pagination_class = StandardResultsSetPagination
 
