@@ -2997,15 +2997,16 @@ body a:hover {
 #ajax-news-content .box-footer .btn {
   outline: none;
 }
-#ajax-news-content .loading-box {
+.loading-box {
   line-height: 80px;
   text-align: center;
   font-color: #aaa;
 }
-#ajax-news-content i.fa-spinner {
+.loading-box i.fa-spinner {
   -webkit-animation: 1s linear infinite loading-icon-rotate;
   -moz-animation: 1s linear infinite loading-icon-rotate;
   -o-animation: 1s linear infinite loading-icon-rotate;
+  animation: 1s linear infinite loading-icon-rotate;
 }
 .sidebar {
   /* hook sticky sidebar */
@@ -3291,6 +3292,9 @@ flaepage-markdown
 /*
 flaepage-markdown end
  */
+.hidden-box {
+  display: none;
+}
 .test {
   color: black;
 }
