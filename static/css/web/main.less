@@ -755,18 +755,20 @@ body {
       outline: none;
     }
   }
-  .loading-box {
-    line-height:80px;
-    text-align: center;
-    font-color: @support-text-color;
-  }
+}
+
+.loading-box {
+  line-height:80px;
+  text-align: center;
+  font-color: @support-text-color;
   i.fa-spinner {
     -webkit-animation: 1s linear infinite loading-icon-rotate;
     -moz-animation: 1s linear infinite loading-icon-rotate;
     -o-animation: 1s linear infinite loading-icon-rotate;
+    animation: 1s linear infinite loading-icon-rotate;
   }
-
 }
+
 
 .sidebar{
  /* hook sticky sidebar */
@@ -1075,6 +1077,10 @@ flaepage-markdown
 /*
 flaepage-markdown end
  */
+
+.hidden-box {
+  display: none;
+}
 
 
 .test {

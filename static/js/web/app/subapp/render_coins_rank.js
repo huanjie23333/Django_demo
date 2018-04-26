@@ -1,6 +1,7 @@
 define(['libs/Class', 'jquery', 'underscore', 'libs/numeral.min'], function(Class, $, _, numeral){
     var renderCoinsRank = Class.extend({
         init: function(){
+            if(!$('#coin_table').length) return;
             var compiled = _.template($('#coins-rank-table').html());
             $.when($.ajax('https://www.chainnews.com/api/tokenlist?limit=100&skip=0')).then(function(res){
                 res.data.data.forEach(function(item, idx){
@@ -15,7 +16,22 @@ define(['libs/Class', 'jquery', 'underscore', 'libs/numeral.min'], function(Clas
                     item.priceClass = item.attach.increase_rate > 0 ? 'raise' : 'fall';
                 });
                 var html = compiled({ coins: res.data.data });
+
                 $('#coin_table tbody').html(html);
+                $('.loading-box').addClass('hidden-box');
+
+                window.app.table = $('#coin_table').DataTable({
+                     // stateSave: true,
+                     "pageLength": 100,
+                     "lengthChange":true,
+                     "paging": false,
+                     "searching": false,
+                     "info":false,
+                     "language": {
+                         "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
+                     },
+                     "order": [[ 2, "desc" ]]
+                });
             });
         }
     });
