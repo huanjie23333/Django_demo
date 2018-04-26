@@ -7,6 +7,7 @@ require([
         'subapp/gotop',
         'subapp/tools/bookmark',
         'datatable',
+        'subapp/render_coins_rank',
         'subapp/stockchart',
         'bootstrap'
     ],
@@ -17,7 +18,8 @@ require([
               Tracker,
               GoTop,
               DataTable,
-              BookMark
+              BookMark,
+              RenderCoinsRank
               ) {
 
         jQuery = $;
@@ -33,24 +35,27 @@ require([
         new Header();
         new Tracker();
         new GoTop();
+        new RenderCoinsRank();
 
         // header price fetch
         all_price_feed.run();
 
-        if($('#coin_table').length){
-            window.app.table = $('#coin_table').DataTable({
-                 // stateSave: true,
-                 "pageLength": 100,
-                 "lengthChange":true,
-                 "paging": false,
-                 "searching": false,
-                 "info":false,
-                 "language": {
-                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
-                 },
-                 "order": [[ 2, "desc" ]]
-            });
-        }
+        // datatable 移至 render_coins_rank 模块
+        // if($('#coin_table').length){
+        //     window.app.table = $('#coin_table').DataTable({
+        //          // stateSave: true,
+        //          "pageLength": 100,
+        //          "lengthChange":true,
+        //          "paging": false,
+        //          "searching": false,
+        //          "info":false,
+        //          "language": {
+        //              "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
+        //          },
+        //          "order": [[ 2, "desc" ]],
+        //         "columns": [{"width": '150px'},null,null,null,null,null]
+        //     });
+        // }
 
         console.log('finish');
 

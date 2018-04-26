@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.decorators.cache import cache_page
+from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
+from rest_framework import permissions
 
 from dquote.views import DQuoteListView
 
@@ -29,6 +31,11 @@ from web.views import ( CategoryView, SiteMapView, IndexView,
 from web.views.news import NewsListView
 
 from quark.views import page_error, webpage_not_found
+
+from django.views.generic import TemplateView
+
+from rest_framework.documentation import include_docs_urls
+
 
 handler404 = webpage_not_found
 handler500 = page_error
@@ -53,11 +60,24 @@ urlpatterns = [
     url(r'^crypto_index/', CryptoindexView.as_view(), name='crypto_index'),
     url(r'^daily_quote/', DQuoteListView.as_view(), name='dquote_list'),
     url(r'^baidu_verify_gpRRnqH8nr\.html$', bd_verify_view, name='veri_bd'),
+    url(r'^MP_verify_PcarGCDPGnDXv4Wx.txt$', lambda r: HttpResponse("PcarGCDPGnDXv4Wx", content_type="text/plain")),
+    url(r'^tokenlang\.htm$', TemplateView.as_view(template_name='token_langs/token_langs.html'),name="tokenlang"),
 
 ]
 
+# # leave it here in case some service use this
+# urlpatterns += [
+#     url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
+# ]
+
 urlpatterns += [
-    url(r'^api/nav/', include('nav.urls.api.web_site', namespace='api_nav')),
+    url(r'^api/', include('quark.urls.api', namespace='api')),
+    url(r'^docs/', include_docs_urls(title='Quark API Docs',
+                                     public=False,
+                                     permission_classes=[
+                                         permissions.IsAdminUser,
+                                     ])
+        ),
 ]
 
 # captcha
@@ -66,16 +86,22 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'^$', cache_page(60*30)(IndexView.as_view()), name='web_index'),
+    url(r'^$', IndexView.as_view(), name='web_index'),
     # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
     # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
+
+
+
 
 from django.contrib.flatpages import views
 
 urlpatterns += [
     url(r'^pages/(?P<url>.*/?)$', views.flatpage),
 ]
+
+# for silk
+# urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
 
 if settings.IS_LOCAL_TESTING:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -11,6 +11,7 @@
 @import "../csslib/animate.less";
 @import "../csslib/fork_item.less";
 @import "../csslib/create_chart.less";
+@import "../csslib/tokenlang.less";
 
 
 html, body {
@@ -84,9 +85,14 @@ body {
         position:relative;
      }
      li{
-        width: 150px;
-        display: inline-block;
+       width: 150px;
        line-height: 40px;
+       float: left;
+       &::after {
+         display: block;
+         content: '';
+         clear: both;
+       }
         a{
            color: @support-text-color;
            &:hover{
@@ -199,9 +205,9 @@ body {
 
 #content,.content-container {
   background-color: @default-content-background;
-  padding-bottom: @gutter-size * 3;
+  margin-bottom: @gutter-size * 3;
   .box {
-    margin-top: @gutter-size;
+    margin-bottom: @gutter-size;
     background-color: @box-bg-color;
     width: 100%;
     padding: 10px 20px 10px 20px;
@@ -683,6 +689,11 @@ body {
       //text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
    }
 }
+.amazon-ad{
+  @media screen and (max-width:768px){
+    display: none;
+  }
+}
 
 .site-submit-form {
   h2 {
@@ -744,27 +755,50 @@ body {
       outline: none;
     }
   }
-  .loading-box {
-    line-height:80px;
-    text-align: center;
-    font-color: @support-text-color;
-  }
+}
+
+.loading-box {
+  line-height:80px;
+  text-align: center;
+  font-color: @support-text-color;
   i.fa-spinner {
     -webkit-animation: 1s linear infinite loading-icon-rotate;
     -moz-animation: 1s linear infinite loading-icon-rotate;
     -o-animation: 1s linear infinite loading-icon-rotate;
+    animation: 1s linear infinite loading-icon-rotate;
   }
-
 }
 
 
-
+.sidebar{
+ /* hook sticky sidebar */
+ &__hook{
+  position: relative;
+  margin-left: @gutter-size * -1;
+ }
+ .box{
+   margin-left: @gutter-size;
+   //@media screen and (max-width:768px){
+   //  margin-left: 0;
+   //}
+ }
+ /* hook-end sticky sidebar */
+}
+.sidebar_default_sticky_hook{
+  //position: absolute;
+  //z-index: 1;
+  //top: 0;
+  //left: 0;
+}
 .sidebar, .news-wrapper{
+  overflow: hidden;
+  padding-bottom: @gutter-size;
+
   .advert-block{
       position: relative;
   }
   .ad-block{
-    height: 0px;
+    height: 0;
     width: 100%;
     position:relative;
     padding-bottom: 62.5%;
@@ -773,7 +807,7 @@ body {
     background-repeat: no-repeat;
     background-repeat-x: no-repeat;
     background-repeat-y: no-repeat;
-    margin-top: 10px;
+    //margin-top: 10px;
     margin-bottom: 10px;
   }
   .ad-sign{
@@ -785,6 +819,17 @@ body {
     color: #fff;
     border-radius: 5px;
 
+  }
+}
+#content{
+  .box.index-ad-box{
+    padding: 0;
+    width: auto;
+  }
+}
+.ft_cnt{
+  &>a:not(:last-child){
+    display: none;
   }
 }
 
@@ -1033,9 +1078,13 @@ flaepage-markdown
 flaepage-markdown end
  */
 
+.hidden-box {
+  display: none;
+}
+
 
 .test {
-  color: red;
+  color: black;
 
 }
 

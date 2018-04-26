@@ -1962,6 +1962,9 @@ define('subapp/newsline',['libs/Class','subapp/data/fakeFeed','subapp/data/Feed'
                 this.create_element(entry);
             },
             create_element: function (entry) {
+                if(!entry.tag_list){
+                    entry.tag_list = [];
+                }
                 this.$newsline.append($(this.template(entry)))
             },
 

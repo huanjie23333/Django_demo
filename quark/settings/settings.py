@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
+    'taggit_serializer',
     'django_filters',
     'django_markdown',
     'simplemde',
@@ -73,21 +74,23 @@ INSTALLED_APPS = [
     'coinfork',
     'advert',
     'dquote',
-    'utils'
+    'utils',
+    # 'silk',
     # 'captcha',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'silk.middleware.SilkyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',
+    #
+    # 'htmlmin.middleware.HtmlMinifyMiddleware',
+    # 'htmlmin.middleware.MarkRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'quark.urls'
@@ -372,3 +375,13 @@ NEWS_DETAIL_API = 'https://api.chainnews.com/api/news/'
 # import logging config
 ###
 from quark.settings.quark_logging import *
+
+
+## for silk permission
+
+SILKY_AUTHENTICATION = True  # User must login
+SILKY_AUTHORISATION = True  #
+
+SILKY_META = True
+
+SILKY_INTERCEPT_PERCENT = 20

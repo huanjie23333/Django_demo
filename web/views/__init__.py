@@ -1,4 +1,6 @@
 # -*- coding: UTF-8  -*-
+import timeit
+
 import requests
 from braces.views import StaffuserRequiredMixin
 from django.core.cache import cache
@@ -12,6 +14,7 @@ from django.db.models import Count
 from django.http import HttpResponseForbidden, HttpResponse
 
 from coinfork.models import CoinFork
+from flink.models import Flink
 from flink.views import FlinkMixin
 from nav.models import Nav, Category, SubNav
 from nav.forms import SubNavModelForm
@@ -23,6 +26,7 @@ import logging
 
 logger = logging.getLogger('django')
 
+from nav.block_chain_browsers import block_chain_browsers
 
 class SqsCategoryTagDataMixin(object):
     def _get_category_list(self):
@@ -36,8 +40,13 @@ class SqsCategoryTagDataMixin(object):
         ]
 
     def get_category_list(self):
+        # start = timeit.timeit()
         key = "category:tag:nav:list"
-        return cache.get_or_set(key, self._get_category_list, 5 * 60)
+        res = cache.get_or_set(key, self._get_category_list, 5 * 60)
+        # end = timeit.timeit()
+        # spend = end - start
+        # print('get_category_list time : %s'%spend)
+        return res
 
     def get_cate_tag_navs(self, cate_id, tag_name):
         return SearchQuerySet().filter(cate_id=cate_id, tags=tag_name).order_by("-rank")[:20]
@@ -121,7 +130,7 @@ class CategoryView(CategoryTagDataMixin, SideBarDataMixin, TemplateView):
 
 
 
-class IndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
+class IndexView(SqsCategoryTagDataMixin, TemplateView):
     template_name = 'web/index.html'
 
     def get(self, request, **kwargs):
@@ -133,10 +142,27 @@ class IndexView(SqsCategoryTagDataMixin, SideBarDataMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['recommend'] = self.get_recommend_nav()
         context['categories'] = self.get_category_list()
+        context['sidebar_bcinfo_list'] = self.get_bc_info_list()
+        context['flinks'] = self.get_flinks()
         return context
 
     def get_recommend_nav(self):
         return Nav.objects.filter(score__gte=85, status=Nav.STATUS.published)
+
+    def get_flinks(self):
+        return Flink.objects.all()[:30]
+
+    def get_bc_info_list(self):
+        bc_info_list = dict()
+        ids = block_chain_browsers.values()
+        d = dict()
+        [d.update({row.id: row}) for row in Nav.objects.filter(pk__in=ids)]
+        for name, id in block_chain_browsers.items():
+            try:
+                bc_info_list[name] = d[id]
+            except KeyError as e:
+                continue
+        return bc_info_list
 
 
 class SubNavCreateView(CreateView):
@@ -226,7 +252,7 @@ class ForkListView(FlinkMixin, ListView):
         return super().get(request, *args, **kwargs)
 
 class CountDownList(View):
-    def get(self,request):
+    def get(self):
         return redirect('web_fork_list', permanent=True)
 
 

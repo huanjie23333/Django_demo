@@ -1,16 +1,15 @@
 from .settings import *
 
+from .settings import *
+
 DEBUG = True
 
-SESSION_ENGINE  = 'django.contrib.sessions.backends.cache'
-
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 INSTALLED_APPS += [
     'debug_toolbar',
     'django_nose'
 ]
-
-
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
@@ -18,9 +17,13 @@ NOSE_ARGS = [
     '--cover-package=web,nav,quark,feed',
 ]
 
-# disable / enable debug toolbar
+# STATIC_ROOT = '/Users/yansy/Code/quark/static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(os.getcwd(), 'static'),
+)
 # INTERNAL_IPS =['127.0.0.1']
-ALLOWED_HOSTS=['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192','192.168.192.154']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.172.164', '192.168.172.176', '192.168.172.192', '192.168.192.154']
 
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
@@ -39,13 +42,11 @@ DEBUG_TOOLBAR_PANELS = [
 
 MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
-
 CACHES = {
     'default': {
         'BACKEND': 'diskcache.DjangoCache',
         'LOCATION': '/tmp/quark_cache',
         'SHARDS': 4,
-
         'DATABASE_TIMEOUT': 1.0,
         'OPTIONS': {
             'size_limit': 2 ** 32  # 4 gigabytes
@@ -57,9 +58,8 @@ IS_LOCAL_TESTING = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/god_sand/quark/templates'],
+        'DIRS': ['/Users/yansy/Code/quark/templates'],
         'APP_DIRS': True,
-
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -71,32 +71,34 @@ TEMPLATES = [
     },
 ]
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/god_sand/quark/static/'
-STATICFILES_DIRS = []
-
 Current_Dbhost = '127.0.0.1'
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'quark',
-        'USER': 'root',
-        'PASSWORD': 'mypass',
-        'HOST': Current_Dbhost,
-        'PORT': '3306',
-        'OPTIONS': {
-            'use_unicode':'utf8mb4',
-            'init_command':'SET default_storage_engine=INNODB',
-        },
-        'TEST': {
-            'CHARSET': 'utf8',
-            'COLLATION': 'utf8_general_ci',
-        },
-    },
-}
-
+# DATABASES = {
+#
+#     'default': {
+#
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'quark',
+#         'USER': 'root',
+#         'PASSWORD': 'mypass',
+#         'HOST': '127.0.0.1',
+#         'PORT': 3307,
+#         'TEST': {
+#             'CHARSET': 'utf8',
+#             'COLLATION': 'utf8_general_ci',
+#             'use_unicode': "true",
+#
+#         },
+#         'OPTIONS': {
+#             'charset': 'utf8',
+#             'use_unicode': "true",
+#             'init_command': "SET default_storage_engine=INNODB, sql_mode='STRICT_TRANS_TABLES'",
+#
+#         }
+#     }
+# }
 
 import os
+
 # HAYSTACK_CONNECTIONS = {
 #     'default': {
 #         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
@@ -160,6 +162,5 @@ LOGGING = {
     }
 }
 
-
-NEWS_TAG_API_URL = 'http://127.0.0.1:7000/api/news/tags.json'
-NEWS_DETAIL_API = 'http://127.0.0.1:7000/api/news/'
+NEWS_TAG_API_URL = 'http://127.0.0.1:8001/api/news/tags.json'
+NEWS_DETAIL_API = 'http://127.0.0.1:8001/api/news/'

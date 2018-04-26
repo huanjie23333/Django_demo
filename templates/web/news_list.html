@@ -5,7 +5,7 @@
 {% block meta %}
     {% include "web/partial/news_list_meta.html" %}
 {% endblock %}
-{% block title %}{{ tag }}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
+{% block title %}{% if tag_name %}{{ tag_name }} - {% endif %}{% trans '新闻快讯' %} - {% trans '区块链导航' %}{% endblock %}
 
 {% block content %}
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59c89b30b1eb72c4"></script>
@@ -90,16 +90,16 @@
                                 <i class="fa fa-spinner shareimg-loading" style="display:none"></i>
                             </span>
                         {% endif %}
-                        <span class="tag-list-wrapper">
-                            <ul class="tag-list">
-                                <li class="tag-list-head">
-                                    <i class="fa fa-tag"></i>
-                                </li>
-                                <% for( var i = 0; i < tag_list.length; i++ ) { %>
-                                <li class="tag-item"><a href="/news/tag<%=tag_list[i]%>/" target="_blank"><%=tag_list[i]%></a></li>
-                                <% } %>
-                            </ul>
-                        </span>
+                            <span class="tag-list-wrapper">
+                                <ul class="tag-list">
+                                    <li class="tag-list-head">
+                                        <i class="fa fa-tag"></i>
+                                    </li>
+                                    <% for( var i = 0; i < tag_list.length; i++ ) { %>
+                                    <li class="tag-item"><a href="/news/tag_<%=tag_list[i].id%>/" target="_blank"><%=tag_list[i].name%></a></li>
+                                    <% } %>
+                                </ul>
+                            </span>
                     </li>
                 </ul>
             </div>

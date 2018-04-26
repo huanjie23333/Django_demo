@@ -233,12 +233,11 @@
 }
 .inv-element {
   opacity: 0;
+  overflow: hidden;
 }
 .static-box {
-  top: 42px;
-  position: fixed;
   opacity: 1;
-  diplay: block;
+  z-index: 99;
 }
 .box-body.tag-cloud {
   padding: 0 0 20px;
@@ -308,7 +307,7 @@
   background-color: #2C2F39;
 }
 .silent_link:hover,
-.silent_link:hover,
+.silent_link:focus,
 .silent_link:active {
   color: #434446;
   text-decoration: none;

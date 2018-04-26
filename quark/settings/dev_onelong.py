@@ -18,7 +18,7 @@ NOSE_ARGS = [
     '--cover-package=web,nav,quark,feed',
 ]
 
-# disable / enable debug toolbar
+
 # INTERNAL_IPS =['127.0.0.1']
 ALLOWED_HOSTS=['127.0.0.1','192.168.172.164','192.168.172.176','192.168.172.192','192.168.192.154']
 
@@ -45,7 +45,6 @@ CACHES = {
         'BACKEND': 'diskcache.DjangoCache',
         'LOCATION': '/tmp/quark_cache',
         'SHARDS': 4,
-
         'DATABASE_TIMEOUT': 1.0,
         'OPTIONS': {
             'size_limit': 2 ** 32  # 4 gigabytes
@@ -57,9 +56,8 @@ IS_LOCAL_TESTING = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/god_sand/quark/templates'],
+        'DIRS': ['/Data/work/quark/templates'],
         'APP_DIRS': True,
-
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -72,7 +70,7 @@ TEMPLATES = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/god_sand/quark/static/'
+STATIC_ROOT = '/Data/work/quark/static/'
 STATICFILES_DIRS = []
 
 Current_Dbhost = '127.0.0.1'
@@ -159,7 +157,3 @@ LOGGING = {
         },
     }
 }
-
-
-NEWS_TAG_API_URL = 'http://127.0.0.1:7000/api/news/tags.json'
-NEWS_DETAIL_API = 'http://127.0.0.1:7000/api/news/'

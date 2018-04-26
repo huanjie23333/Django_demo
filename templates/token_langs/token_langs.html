@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load i18n static %}
+{% load cache %}
+{% load compress %}
+
+{% block title %}Token开发语言统计-区块链导航{% endblock %}
+
+{% block content %}
+
+<section id="content">
+        <div class="container">
+            <div class="row">
+                    <div class="col-sm-8 col-xs-12 tokenlang-container" id="main_column">
+                        <div class="tokenlang-search-wrapper">
+                            <input class="tokenlang-search-input" type="text" placeholder="请输入关键字，例如：bitcoin ...">
+                            <button class="tokenlang-search-button">搜索</button>
+                        </div>
+                        <div class="tokenlang-charts-wrapper">
+                            <div class="charts-text-wrapper">
+                                <div class="charts-title">Top100 Token Languages</div>
+                                <div class="charts-desc">搜索结果排名前100名的项目使用语言。</div>
+                            </div>
+                            <div class="loading-wrapper">加载中。。。</div>
+                            <div class="tokenlang-charts" id="tokenlang-charts-container">
+                            </div>
+                        </div>
+                    </div>
+                {% include 'web/partial/side_bar.html' %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
+

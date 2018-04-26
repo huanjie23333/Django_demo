@@ -19,7 +19,8 @@ require([
         'subapp/fork_list/fork_list',
         'subapp/news/shareimg',
         'bootstrap',
-        'subapp/tools/create_chart'
+        // 'subapp/tools/create_chart',
+        'subapp/tokenlang/tokenlang'
     ],
     function (polyfill,
               $,
@@ -41,7 +42,8 @@ require([
               ForkListApp,
               ShareImgApp,
               bootstrap,
-              Chart
+              // Chart,
+              Tokenlang
               ) {
 
         jQuery = $;
@@ -54,8 +56,9 @@ require([
         });
 
         new Header();
-        new SideBar();
-        new Tracker();
+        new SideBar()
+
+        // new Tracker();
         new NewsLine();
         new GoTop();
         new Captcha();
@@ -74,9 +77,11 @@ require([
         new ForkListApp();
         new ShareImgApp();
 
-        if($('#chart_container').length){
-            new Chart();
-        }
+        new Tokenlang();
+
+        // if($('#chart_container').length){
+        //     new Chart();
+        // }
         all_price_feed.run();
         console.log('finish');
 

@@ -593,12 +593,11 @@ ul li {
 }
 .inv-element {
   opacity: 0;
+  overflow: hidden;
 }
 .static-box {
-  top: 42px;
-  position: fixed;
   opacity: 1;
-  diplay: block;
+  z-index: 99;
 }
 .box-body.tag-cloud {
   padding: 0 0 20px;
@@ -668,7 +667,7 @@ ul li {
   background-color: #2C2F39;
 }
 .silent_link:hover,
-.silent_link:hover,
+.silent_link:focus,
 .silent_link:active {
   color: #434446;
   text-decoration: none;
@@ -2044,6 +2043,103 @@ table.dataTable tbody tr {
 #content .highcharts-input-group {
   display: none;
 }
+.tokenlang-search-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  height: 46px;
+  line-height: 44px;
+  font-size: 24px;
+  border: 1px solid #f3f3f3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: relative;
+  overflow: hidden;
+}
+.tokenlang-search-wrapper .tokenlang-search-input {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  outline-style: none;
+  border: none;
+  /* 使用webkit内核的浏览器 */
+  /* Firefox版本4-18 */
+  /* Firefox版本19+ */
+  /* IE浏览器 */
+}
+.tokenlang-search-wrapper .tokenlang-search-input::-webkit-input-placeholder {
+  color: #aaa;
+}
+.tokenlang-search-wrapper .tokenlang-search-input:-moz-placeholder {
+  color: #aaa;
+}
+.tokenlang-search-wrapper .tokenlang-search-input::-moz-placeholder {
+  color: #aaa;
+}
+.tokenlang-search-wrapper .tokenlang-search-input:-ms-input-placeholder {
+  color: #aaa;
+}
+.tokenlang-search-wrapper .tokenlang-search-button {
+  width: 76px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  border-left: 1px solid #f3f3f3;
+  outline-style: none;
+  background: #0E8ED8;
+  color: #fff;
+}
+.tokenlang-charts-wrapper {
+  margin-top: 30px;
+  color: #434446;
+}
+.tokenlang-charts-wrapper .charts-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+.tokenlang-charts-wrapper .charts-desc {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.tokenlang-charts-wrapper .loading-wrapper {
+  margin-top: 10px;
+}
+.tokenlang-charts-wrapper .tokenlang-charts {
+  margin-top: 10px;
+}
+@media screen and (max-width: 768px) {
+  .tokenlang-container {
+    background: #fff;
+    padding: 14px 20px 10px;
+    margin-bottom: 10px;
+  }
+  .tokenlang-container .tokenlang-search-wrapper {
+    width: 100%;
+    height: 36px;
+    line-height: 34px;
+    font-size: 18px;
+  }
+  .tokenlang-container .tokenlang-search-wrapper .tokenlang-search-input {
+    padding: 16px;
+  }
+  .tokenlang-container .tokenlang-search-wrapper .tokenlang-search-button {
+    width: 56px;
+  }
+  .tokenlang-container .tokenlang-charts-wrapper {
+    margin-top: 24px;
+  }
+  .tokenlang-container .tokenlang-charts-wrapper .charts-title {
+    font-size: 24px;
+  }
+  .tokenlang-container .tokenlang-charts-wrapper .tokenlang-charts {
+    margin-top: 10px;
+  }
+}
 html,
 body {
   min-height: 100vh;
@@ -2130,8 +2226,13 @@ body a:hover {
 }
 #search-row .promo-text-wrapper li {
   width: 150px;
-  display: inline-block;
   line-height: 40px;
+  float: left;
+}
+#search-row .promo-text-wrapper li::after {
+  display: block;
+  content: '';
+  clear: both;
 }
 #search-row .promo-text-wrapper li a {
   color: #aaa;
@@ -2242,11 +2343,11 @@ body a:hover {
 #content,
 .content-container {
   background-color: #F7F6F2;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 #content .box,
 .content-container .box {
-  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: #fff;
   width: 100%;
   padding: 10px 20px 10px 20px;
@@ -2358,8 +2459,8 @@ body a:hover {
 }
 #content .box .box-body .coin-list li a:hover,
 .content-container .box .box-body .coin-list li a:hover,
-#content .box .box-body .coin-list li a:hover,
-.content-container .box .box-body .coin-list li a:hover,
+#content .box .box-body .coin-list li a:focus,
+.content-container .box .box-body .coin-list li a:focus,
 #content .box .box-body .coin-list li a:active,
 .content-container .box .box-body .coin-list li a:active {
   color: #434446;
@@ -2840,6 +2941,11 @@ body a:hover {
   font-size: 14px;
   color: #434446;
 }
+@media screen and (max-width: 768px) {
+  .amazon-ad {
+    display: none;
+  }
+}
 .site-submit-form h2 {
   text-align: center;
   margin-top: 3em;
@@ -2891,15 +2997,32 @@ body a:hover {
 #ajax-news-content .box-footer .btn {
   outline: none;
 }
-#ajax-news-content .loading-box {
+.loading-box {
   line-height: 80px;
   text-align: center;
   font-color: #aaa;
 }
-#ajax-news-content i.fa-spinner {
+.loading-box i.fa-spinner {
   -webkit-animation: 1s linear infinite loading-icon-rotate;
   -moz-animation: 1s linear infinite loading-icon-rotate;
   -o-animation: 1s linear infinite loading-icon-rotate;
+  animation: 1s linear infinite loading-icon-rotate;
+}
+.sidebar {
+  /* hook sticky sidebar */
+  /* hook-end sticky sidebar */
+}
+.sidebar__hook {
+  position: relative;
+  margin-left: -10px;
+}
+.sidebar .box {
+  margin-left: 10px;
+}
+.sidebar,
+.news-wrapper {
+  overflow: hidden;
+  padding-bottom: 10px;
 }
 .sidebar .advert-block,
 .news-wrapper .advert-block {
@@ -2907,7 +3030,7 @@ body a:hover {
 }
 .sidebar .ad-block,
 .news-wrapper .ad-block {
-  height: 0px;
+  height: 0;
   width: 100%;
   position: relative;
   padding-bottom: 62.5%;
@@ -2916,7 +3039,6 @@ body a:hover {
   background-repeat: no-repeat;
   background-repeat-x: no-repeat;
   background-repeat-y: no-repeat;
-  margin-top: 10px;
   margin-bottom: 10px;
 }
 .sidebar .ad-sign,
@@ -2928,6 +3050,13 @@ body a:hover {
   padding: 5px 10px;
   color: #fff;
   border-radius: 5px;
+}
+#content .box.index-ad-box {
+  padding: 0;
+  width: auto;
+}
+.ft_cnt > a:not(:last-child) {
+  display: none;
 }
 .bc-info ul {
   margin-bottom: 20px;
@@ -3163,6 +3292,9 @@ flaepage-markdown
 /*
 flaepage-markdown end
  */
+.hidden-box {
+  display: none;
+}
 .test {
-  color: red;
+  color: black;
 }
