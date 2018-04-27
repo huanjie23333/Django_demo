@@ -2946,6 +2946,14 @@ body a:hover {
     display: none;
   }
 }
+.amazon-ad .wdgt_hd {
+  font-size: 14px!important;
+}
+.amazon-ad .asin_h1,
+.amazon-ad .asin_h2,
+.amazon-ad .asin_price {
+  margin-left: 50px;
+}
 .site-submit-form h2 {
   text-align: center;
   margin-top: 3em;
