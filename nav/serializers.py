@@ -16,14 +16,7 @@ class NavSerializer(serializers.ModelSerializer):
 
 class NavDetailSerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
-
-    # def create(self, validated_data):
-    #     logger.info('begin create Nav through DRF')
-    #     logger.info(validated_data)
-    #     res = super().create(validated_data)
-    #     return res
-
-
+    main_name = serializers.ReadOnlyField()
     class Meta:
         model = Nav
         fields = '__all__'
