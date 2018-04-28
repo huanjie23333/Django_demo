@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from nav.models import Nav, SubNav
+from nav.models import Nav, SubNav, Category
 import logging
 
 from taggit_serializer.serializers import (TagListSerializerField,
@@ -13,17 +13,15 @@ class NavSerializer(serializers.ModelSerializer):
         model = Nav
         fields = '__all__'
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
 
 class NavDetailSerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
-
-    # def create(self, validated_data):
-    #     logger.info('begin create Nav through DRF')
-    #     logger.info(validated_data)
-    #     res = super().create(validated_data)
-    #     return res
-
-
+    main_name = serializers.ReadOnlyField()
+    cate = CategorySerializer(read_only=False)
     class Meta:
         model = Nav
         fields = '__all__'
