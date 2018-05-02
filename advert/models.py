@@ -62,6 +62,17 @@ class Advertisement(models.Model):
     # def ad_img_url(self):
     #     return  "http://%s/%s" %(settings.QINIU_BUCKET_DOMAIN,self.image)
 
+    @property
+    def ad_img_url(self):
+        qiniu_url = "http://{qiniu_bucket_domain}".format(qiniu_bucket_domain=settings.QINIU_BUCKET_DOMAIN)
+        if self.image and self.image.url:
+            if self.image.url.startswith(qiniu_url):
+                return self.image.url.replace(qiniu_url, settings.QINIU_HTTPS_BUCKET_URL)
+            else:
+                return self.image.url
+        else:
+            return None
+
     class Meta:
         verbose_name = _("advertisement")
         verbose_name_plural = _("advertisement")
