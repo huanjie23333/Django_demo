@@ -36,7 +36,7 @@ QINIU_BUCKET_NAME = "coinbeef"
 
 QINIU_BUCKET_DOMAIN = 'ow1wrzsju.bkt.clouddn.com'
 QINIU_SECURE_URL = False
-
+QINIU_HTTPS_BUCKET_URL = 'https://img.chainnews.com'
 # Application definition
 
 LOCALE_PATHS = (
