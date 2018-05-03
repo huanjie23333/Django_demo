@@ -259,6 +259,11 @@ class CountDownList(View):
 class D3TestView(FlinkMixin, TemplateView):
     template_name = 'web/tools/d3_test.html'
 
+class FlinksView(FlinkMixin, TemplateView):
+    template_name = 'web/flinks.html'
+
+    def get_flinks(self):
+        return Flink.objects.all()
 
 class APIDataCacheMixin(object):
     def get_api_url(self):

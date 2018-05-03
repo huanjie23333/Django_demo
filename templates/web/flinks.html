@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load i18n static %}
+{% load cache %}
+{% load compress %}
+{% block content %}
+<div class="container">
+    <div class="flinks-box row">
+        <div class="col-sm-8 col-xs-10">
+            <h2 class="flinks-title">{% trans '友情链接' %}</h2>
+            <ul>
+                {% for flink in flinks %}
+                    <li class="flinks-item">
+                        <a class="flink" href="{{ flink.link }}" target="_blank"  title="{{ flink.site_name }}">
+                            {{ flink.site_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
