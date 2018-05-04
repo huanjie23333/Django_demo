@@ -21,7 +21,7 @@ define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
 
             var recommendNews = function(){
                 console.log('recommendation');
-                $.getJSON('http://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
+                $.getJSON('https://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
             };
 
             var renderTemplate = function (data) {
@@ -39,7 +39,7 @@ define(['libs/Class', 'jquery', 'underscore'], function(Class, $, _){
                 }
             };
 
-            searchVal = decodeURI(location.href.replace(/^http:\/\/.*?q=/, ''));
+            searchVal = decodeURI(location.href.replace(/^https?:\/\/.*?q=/, ''));
             $('#ajax-news-content .box-header').html(
                      '含「<span class="query-word">'
                      + searchVal
