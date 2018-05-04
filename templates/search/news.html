@@ -46,7 +46,7 @@
                                 <li class="tag-list-head"><i class="fa fa-tag"></i></li>
                                 <% for(var i = 0; i < results[j].tag_list.length; i++){ %>
                                     <li class="tag-item">
-                                        <a href="/news/tag/<%= results[j].tag_list[i] %>" target="_blank"><%= results[j].tag_list[i] %></a>
+                                        <a href="/news/tag_<%= results[j].tag_list[i].id %>" target="_blank"><%= results[j].tag_list[i].name %></a>
                                     </li>
                                 <% } %>
                             </ul>

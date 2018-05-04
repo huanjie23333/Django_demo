@@ -4842,7 +4842,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
 
             var recommendNews = function(){
                 console.log('recommendation');
-                $.getJSON('http://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
+                $.getJSON('https://www.chainnews.com/api/news/recommendation?t=' + searchVal, renderTemplate);
             };
 
             var renderTemplate = function (data) {
@@ -4860,7 +4860,7 @@ define('subapp/search/search_news_ajax',['libs/Class', 'jquery', 'underscore'], 
                 }
             };
 
-            searchVal = decodeURI(location.href.replace(/^http:\/\/.*?q=/, ''));
+            searchVal = decodeURI(location.href.replace(/^https?:\/\/.*?q=/, ''));
             $('#ajax-news-content .box-header').html(
                      '含「<span class="query-word">'
                      + searchVal
