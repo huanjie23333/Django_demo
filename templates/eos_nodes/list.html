@@ -1,0 +1,83 @@
+{% extends 'base/base.html' %}
+{% load i18n static %}
+{% load cache %}
+{% load compress %}
+
+{% block title %}
+    EOS 竞选超级节点 - 区块链导航
+{% endblock %}
+
+{% block content %}
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="eos-nodes col-sm-8 col-xs-12">
+                <div class="eos-banner"></div>
+                <ul class="eos-list"></ul>
+                <button>加载更多</button>
+            </div>
+            {% include 'web/partial/side_bar.html' %}
+        </div>
+    </div>
+</section>
+<a class="gotop-wrapper">
+    <div class="action-wrapper">
+    <span class="btn-top" id="top_link">
+        <i class="fa fa-angle-up"></i>
+    </span>
+    </div>
+</a>
+<script type="text/template" id="eos-nodes-banner-template">
+    <div class="eos-big-banner eos-item">
+        <a href="javascript:;" title="<%=data[0].name%>" style="background-image: url(<%=data[0].image%>)" target="_blank">
+            <div class="eos-content">
+                <img class="avatar" src="<%=data[0].image%>">
+                <p class="name"><%=data[0].name%></p>
+                <p class="introduction"><%=data[0].introduction%></p>
+                <div class="location-container">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span><%=data[0].location%></span>
+                </div>
+                <div class="website-container">
+                    <i class="fa fa-television" aria-hidden="true"></i>
+                    <span><%=data[0].website%></span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="eos-small-banners">
+        <% for(var i = 1; i < 3; i++){ %>
+            <div class="eos-item small-banner">
+                <a href="javascript:;" title="<%=data[i].name%>" style="background-image: url(<%=data[i].image%>)" target="_blank">
+                    <div class="eos-content">
+                        <img class="avatar" src="<%=data[i].image%>">
+                        <p class="name"><%=data[i].name%></p>
+                        <p class="introduction"><%=data[i].introduction%></p>
+                    </div>
+                </a>
+            </div>
+        <% } %>
+    </div>
+</script>
+
+<script type="text/template" id="eos-nodes-list-template">
+    <% for(var i = 0; i < data.length; i++){ %>
+        <li class="eos-item">
+            <a href="javascript:;" title="<%=data[i].name%>" style="background-image: url(<%=data[i].image%>)" target="_blank">
+                <div class="eos-content">
+                    <img class="avatar" src="<%=data[i].image%>">
+                    <p class="name"><%=data[i].name%></p>
+                    <p class="introduction"><%=data[i].introduction%></p>
+                </div>
+            </a>
+        </li>
+    <% } %>
+</script>
+{% endblock %}
+
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}

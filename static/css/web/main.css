@@ -3327,6 +3327,92 @@ flinks-page
   width: 25%;
   text-align: left;
 }
+.eos-nodes {
+  padding-left: 0;
+}
+.eos-nodes .eos-banner {
+  display: flex;
+  justify-content: space-between;
+}
+.eos-nodes .eos-banner .eos-big-banner {
+  flex-basis: 59%;
+  height: 380px;
+}
+.eos-nodes .eos-banner .eos-small-banners {
+  flex-basis: 39%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.eos-nodes .eos-banner .eos-small-banners .small-banner {
+  height: 180px;
+}
+.eos-nodes .eos-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.eos-nodes .eos-list .eos-item {
+  flex-basis: 32%;
+  height: 280px;
+  margin-top: 20px;
+}
+.eos-nodes .eos-item a {
+  display: block;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+.eos-nodes .eos-item a::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all .2s ease;
+  z-index: 2;
+}
+.eos-nodes .eos-item a:hover::after {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.eos-nodes .eos-item a:hover .eos-content {
+  height: 65%;
+}
+.eos-nodes .eos-item a .eos-content {
+  position: absolute;
+  height: 60%;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transition: all .2s ease;
+  background-color: #fff;
+  text-align: center;
+  z-index: 3;
+  color: #878787;
+  padding: 0 20px;
+}
+.eos-nodes .eos-item a .eos-content img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  border: 3px solid #fff;
+}
+.eos-nodes .eos-item a .eos-content .name {
+  color: #3b3b3b;
+  font-weight: 400;
+}
+.eos-nodes .eos-item a .eos-content .location-container {
+  margin-top: 25px;
+}
+.eos-nodes .eos-item a .eos-content .website-container {
+  margin-top: 10px;
+}
 .hidden-box {
   display: none;
 }
