@@ -2221,7 +2221,7 @@ body a:hover {
   overflow: hidden;
 }
 #search-row .promo-text-wrapper .promo-text-list {
-  width: 600px;
+  width: 900px;
   position: relative;
 }
 #search-row .promo-text-wrapper li {
@@ -3328,6 +3328,7 @@ flinks-page
   text-align: left;
 }
 .eos-nodes {
+  text-align: center;
   padding-left: 0;
 }
 .eos-nodes .eos-banner {
@@ -3412,6 +3413,9 @@ flinks-page
 }
 .eos-nodes .eos-item a .eos-content .website-container {
   margin-top: 10px;
+}
+.eos-nodes .load-more-btn {
+  margin: auto;
 }
 .hidden-box {
   display: none;
