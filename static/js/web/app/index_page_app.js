@@ -20,7 +20,8 @@ require([
         'subapp/news/shareimg',
         'bootstrap',
         // 'subapp/tools/create_chart',
-        'subapp/tokenlang/tokenlang'
+        'subapp/tokenlang/tokenlang',
+        'subapp/eos/eos_list'
     ],
     function (polyfill,
               $,
@@ -43,7 +44,8 @@ require([
               ShareImgApp,
               bootstrap,
               // Chart,
-              Tokenlang
+              Tokenlang,
+              eosListApp
               ) {
 
         jQuery = $;
@@ -78,6 +80,7 @@ require([
         new ShareImgApp();
 
         new Tokenlang();
+        new eosListApp();
 
         // if($('#chart_container').length){
         //     new Chart();

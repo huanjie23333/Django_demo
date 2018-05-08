@@ -1414,7 +1414,7 @@ define('subapp/header/promo_text',['libs/Class','jquery', 'underscore'], functio
             //      }
             //
             // }, 1000);
-            this.element_count = 4 ;
+            this.element_count = 6 ;
             this.current_ele_index = 1 ;
             this.element_width = 150;
             this.$ele_wrapper = $('.promo-text-list');
