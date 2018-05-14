@@ -31,6 +31,12 @@ class CommonNavListViewSet(viewsets.ModelViewSet):
     serializer_class = NavDetailSerializer
     queryset = Nav.objects.all().order_by('-id')
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return NavDetailSerializer
+        else:
+            return NavSerializer
+
 
 class NavDetailAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = NavSerializer
