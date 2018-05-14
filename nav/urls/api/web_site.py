@@ -1,7 +1,6 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from nav.views.api import NavListAPIView, NavDetailAPIView
-
+from nav.views.api import NavListAPIView, NavDetailAPIView, NavModelFieldsJsonView
 
 urlpatterns = [
     url(r'^$', NavListAPIView.as_view(), name='list'),
