@@ -26,7 +26,7 @@ from dquote.views import DQuoteListView
 
 from web.views import ( CategoryView, SiteMapView, IndexView,
                         SubNavCreateView, SubNavSuccessView, CountDownList,
-                        ForkListView, D3TestView, CryptoindexView, bd_verify_view, FlinksView)
+                        ForkListView, D3TestView, CryptoindexView, bd_verify_view, FlinksView, EosNodesView)
 
 from web.views.news import NewsListView
 
@@ -63,7 +63,7 @@ urlpatterns = [
     url(r'^MP_verify_PcarGCDPGnDXv4Wx.txt$', lambda r: HttpResponse("PcarGCDPGnDXv4Wx", content_type="text/plain")),
     url(r'^tokenlang\.htm$', TemplateView.as_view(template_name='token_langs/token_langs.html'),name="tokenlang"),
     url(r'^flinks/', FlinksView.as_view(), name='flinks'),
-
+    url(r'^eos_nodes/', EosNodesView.as_view(), name='eos_nodes'),
 ]
 
 # # leave it here in case some service use this
