@@ -402,7 +402,19 @@ body {
   margin-top: 30px;
   background-color: @nav_background;
 
-
+  .footer-seo-link {
+    &.align-bottom {
+      margin-left: 93px;
+      margin-top: 40px;
+    }
+    a:not(:first-child){
+      margin-left: 10px;
+    }
+    a{
+      .nav-common-link;
+      white-space: nowrap;
+    }
+  }
 
   .logo {
     img {
