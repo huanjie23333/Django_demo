@@ -3439,6 +3439,10 @@ flinks-page
 .eos-nodes .load-more-btn {
   margin: auto;
 }
+#search-coin-btn {
+  display: inline-block;
+  cursor: pointer;
+}
 .hidden-box {
   display: none;
 }
