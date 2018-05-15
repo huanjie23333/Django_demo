@@ -2590,6 +2590,28 @@ body a:hover {
   height: 0;
   clear: both;
 }
+#footer .footer-seo-link.align-bottom {
+  margin-left: 93px;
+  margin-top: 40px;
+}
+#footer .footer-seo-link a:not(:first-child) {
+  margin-left: 10px;
+}
+#footer .footer-seo-link a {
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  white-space: nowrap;
+}
+#footer .footer-seo-link a:hover,
+#footer .footer-seo-link a:active,
+#footer .footer-seo-link a:focus {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #2C2F39;
+}
 #footer .logo img {
   height: 40px;
 }
