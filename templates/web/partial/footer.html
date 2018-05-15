@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n cache %}
 
-{% cache 1800 foot_ver_5 %}
+{#{% cache 1800 foot_ver_5 %}#}
 <section id="footer">
     <div class="container">
         {% if flinks and request.path == '/' %}
@@ -21,6 +21,17 @@
                 </div>
             </div>
         {% endif %}
+        <div class="row">
+            <div class="col-sm-10 col-xs-12">
+                <div class="footer-seo-link {% ifnotequal request.path '/' %}align-bottom{% endifnotequal %}">
+                    <a href="https://www.chainnews.com/">区块链新闻</a>
+                    <a href="https://www.chainnews.com/">区块链快讯</a>
+                    <a href="https://www.chainnews.com/">区块链技术指南</a>
+                    <a href="https://www.chainnews.com/">区块链技术应用</a>
+                    <a href="https://www.chainnews.com/">区块链技术精选</a>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-10 col-xs-12 ">
                 <ul class="footer-list">
@@ -51,4 +62,4 @@
         </div>
     </div>
 </section>
-{% endcache %}
+{#{% endcache %}#}
