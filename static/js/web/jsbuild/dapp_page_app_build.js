@@ -1347,7 +1347,7 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
                         try { xhr.abort(); } catch(e){}
                         $.getJSON('/search/autocomplete/', {q: term},
                             function(data){
-                                $.ajax('http://www.chainnews.com/api/news/autocomplete/', {
+                                $.ajax('https://www.chainnews.com/api/news/autocomplete/', {
                                     jsonp: true,
                                     success: function(data2){
                                         var results = data.results.concat(data2.results);
