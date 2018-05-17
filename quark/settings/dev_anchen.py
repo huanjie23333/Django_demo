@@ -108,7 +108,7 @@ HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
         'URL': 'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'site',
+        'INDEX_NAME': 'site_test',
         'BATCH_SIZE': 1000,
     },
 }

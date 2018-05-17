@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from hashlib import md5
+from urllib.parse import urlparse
 
 from django.db import models
 from django.utils import timezone
@@ -12,6 +13,7 @@ from model_utils.fields import StatusField
 from model_utils import Choices
 from caching.base import CachingManager, CachingMixin
 import opencc
+from tldextract import tldextract
 
 
 class Category(CachingMixin, models.Model):
@@ -63,6 +65,23 @@ class Nav(CachingMixin, models.Model):
 
     def __str__(self):
         return self.ename or self.cname
+
+    @property
+    def domain_word(self):
+        '''
+        for extract domain from site ,
+        used for index , so word cryptopanic can be searched
+        see: https://tower.im/projects/01ba15006d574030a53f2b818ce00300/todos/31072f32a0f14200b9786f853f16c84f/
+        :return:
+        '''
+        if not self.web_site:
+            return None
+        else:
+            try:
+                parsed_uri = tldextract.extract(self.web_site)
+                return parsed_uri.domain
+            except:
+                return None
 
     ###
     # begin 繁体中文

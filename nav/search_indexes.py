@@ -8,6 +8,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     ename = indexes.CharField(model_attr='ename', default='')
     main_name = indexes.CharField(model_attr='main_name', boost=1.25)
     web_site = indexes.CharField(model_attr='web_site', default='')
+    domain_word = indexes.CharField(model_attr='domain_word', default='')
     location = indexes.FacetCharField(model_attr='location')
     tags = indexes.FacetMultiValueField()
     rank = indexes.FacetIntegerField(model_attr='score', default=0)
@@ -22,6 +23,7 @@ class NavIndex(indexes.Indexable, indexes.SearchIndex):
     updated_at = indexes.DateTimeField(model_attr='updated_at')
 
     main_name_auto = indexes.EdgeNgramField(model_attr='main_name')
+
 
     def get_model(self):
         return Nav
