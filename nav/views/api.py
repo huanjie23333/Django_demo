@@ -2,7 +2,7 @@
 from braces.views import JSONResponseMixin
 from django.views.generic import TemplateView
 from rest_framework import generics, viewsets
-from nav.serializers import NavSerializer, NavDetailSerializer, CategorySerializer
+from nav.serializers import NavSerializer, NavDetailSerializer, CategorySerializer, SubNavSerializer
 from nav.models import Nav, Category
 from rest_framework import pagination
 
@@ -11,6 +11,12 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 30
     page_size_query_param = 'size'
     max_page_size = 1000
+
+
+class CommonSubNavListViewSet(viewsets.ModelViewSet):
+    pagination_class = StandardResultsSetPagination
+    serializer_class = SubNavSerializer
+    queryset = Category.objects.all().order_by('-id')
 
 
 class CommonCateListViewSet(viewsets.ModelViewSet):
