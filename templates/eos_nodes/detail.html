@@ -1,0 +1,90 @@
+{% extends 'base/base.html' %}
+{% load i18n static %}
+{% load cache %}
+{% load compress %}
+
+{% block title %}
+    EOS 竞选超级节点 - 区块链导航
+{% endblock %}
+
+{% block content %}
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="eos-nodes col-sm-8 col-xs-12">
+                <div class="loading-box"><i class="fa fa-spinner"></i> 加载中</div>
+                <div class="eos-detail"></div>
+            </div>
+            {% include 'web/partial/side_bar.html' %}
+        </div>
+    </div>
+</section>
+<script type="text/template">
+    <div class="eos-name">
+        <div class="name">
+            <img src="<%=item.image%>">
+            <div class="">
+                <div><%=item.name%></div>
+                <div class="intro"><%=item.introduction%></div>
+            </div>
+        </div>
+        <div class="info">
+            <a class="site">
+                <i class="fa fa-television icon-detail"></i>
+                <%=item.website%>
+            </a>
+            <a href="#location-wrapper" class="location">
+                <i class="fa fa-map-marker icon-detail"></i>
+                <%=item.location%>
+            </a>
+        </div>
+    </div>
+    <div class="eos-desc">
+        <div class="title"><i class="fa fa-bars icon-detail"></i> 描述</div>
+        <article class="gitbook-markdown-body" itemprop="articleBody">
+            <%=item.desc%>
+        </article>
+    </div>
+    <div class="follow">
+        <div class="title"><i class="fa fa-check-square"></i> 关注</div>
+        <div class="social-links">
+            <% if(item.twitter){ %>
+                <a class="item" href="<%=item.twitter%>" rel="nofollow" title="twitter" target="_blank">
+                    <i class="fa fa-twitter" aria-hidden="true"></i> Twitter
+                </a>
+            <% } %>
+            <% if(item.facebook){ %>
+                <a class="item" href="<%=item.facebook%>" rel="nofollow" title="facebook" target="_blank">
+                    <i class="fa fa-facebook" aria-hidden="true"></i> Facebook
+                </a>
+            <% } %>
+            <% if(item.telegram){ %>
+                <a class="item" href="<%=item.telegram%>" rel="nofollow" title="telegram" target="_blank">
+                    <i class="fa fa-telegram" aria-hidden="true"></i> Telegram
+                </a>
+            <% } %>
+            <% if(item.steemit){ %>
+                <a class="item" href="<%=item.steemit%>" rel="nofollow" title="steemit" target="_blank">
+                    <i class="fa fa-bolt" aria-hidden="true"></i> Steemit
+                </a>
+            <% } %>
+            <% if(item.youtube){ %>
+                <a class="item" href="<%=item.youtube%>" rel="nofollow" title="youtube" target="_blank">
+                    <i class="fa fa-youtube" aria-hidden="true"></i> Youtube
+                </a>
+            <% } %>
+        </div>
+    </div>
+    <div id="location-wrapper">
+        <div class="title"><i class="fa fa-map-marker icon-detail"></i> 位置</div>
+        <div class="map-container" id="map-container"></div>
+    </div>
+</script>
+{% endblock %}
+
+{% block basic_script %}
+    {% compress js %}
+        <script src="{% static 'js/web/app/require.js' %}"></script>
+        <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>
+    {% endcompress %}
+{% endblock %}
