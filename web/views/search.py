@@ -24,7 +24,7 @@ class NavModelSearchForm(ModelSearchForm):
             return self.no_query_found()
 
         q = self.cleaned_data['q']
-        sqs = self.searchqueryset.auto_query(opencc.convert(q, config='t2s.json'))
+        sqs = self.searchqueryset.auto_query(q)
 
         if self.load_all:
             sqs = sqs.load_all()
