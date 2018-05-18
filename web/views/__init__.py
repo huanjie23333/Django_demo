@@ -268,6 +268,9 @@ class FlinksView(FlinkMixin, TemplateView):
 class EosNodesView(FlinkMixin, TemplateView):
     template_name = 'eos_nodes/list.html'
 
+class EosDetailView(FlinkMixin, TemplateView):
+    template_name = 'eos_nodes/detail.html'
+
 class APIDataCacheMixin(object):
     def get_api_url(self):
         return self.api_url

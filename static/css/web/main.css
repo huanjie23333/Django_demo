@@ -3439,6 +3439,124 @@ flinks-page
 .eos-nodes .load-more-btn {
   margin: auto;
 }
+.eos-detail .eos-name {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.eos-detail .eos-name .name {
+  display: flex;
+  align-items: flex-end;
+}
+.eos-detail .eos-name .name img {
+  width: 120px;
+  height: 120px;
+}
+.eos-detail .eos-name .name > div {
+  font-size: 24px;
+  color: #202020;
+  font-weight: 400;
+  margin-bottom: 6px;
+  margin-left: 20px;
+}
+.eos-detail .eos-name .name .intro {
+  font-size: 14px;
+  color: #878787;
+}
+.eos-detail .eos-name .info {
+  margin-top: 16px;
+}
+.eos-detail .eos-name .info a {
+  display: inline-block;
+  margin-right: 20px;
+  color: #878787;
+  transition: all .2s ease;
+}
+.eos-detail .eos-name .info a:hover {
+  color: #0056ff;
+}
+.eos-detail .eos-desc,
+.eos-detail .follow,
+.eos-detail .location-wrapper {
+  padding: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.eos-detail .eos-desc .title,
+.eos-detail .follow .title,
+.eos-detail .location-wrapper .title {
+  color: #202020;
+}
+.eos-detail .eos-desc .title i,
+.eos-detail .follow .title i,
+.eos-detail .location-wrapper .title i {
+  color: #878787;
+  margin-right: 10px;
+}
+.eos-detail .eos-desc article,
+.eos-detail .follow article,
+.eos-detail .location-wrapper article {
+  color: #878787;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+.eos-detail .eos-desc article p,
+.eos-detail .follow article p,
+.eos-detail .location-wrapper article p {
+  margin-bottom: 24px;
+}
+.eos-detail .eos-desc .social-links,
+.eos-detail .follow .social-links,
+.eos-detail .location-wrapper .social-links {
+  font-size: 0;
+  margin-top: 16px;
+}
+.eos-detail .eos-desc .social-links > div,
+.eos-detail .follow .social-links > div,
+.eos-detail .location-wrapper .social-links > div {
+  display: inline-block;
+  width: 50%;
+  margin-bottom: 10px;
+}
+.eos-detail .eos-desc .social-links > div a,
+.eos-detail .follow .social-links > div a,
+.eos-detail .location-wrapper .social-links > div a {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 36px;
+  color: #202020;
+  transition: all .2s ease;
+}
+.eos-detail .eos-desc .social-links > div a:hover,
+.eos-detail .follow .social-links > div a:hover,
+.eos-detail .location-wrapper .social-links > div a:hover {
+  color: #0056ff;
+}
+.eos-detail .eos-desc .social-links > div a:hover span,
+.eos-detail .follow .social-links > div a:hover span,
+.eos-detail .location-wrapper .social-links > div a:hover span {
+  background-color: #0056ff;
+  color: #fff;
+}
+.eos-detail .eos-desc .social-links > div a span,
+.eos-detail .follow .social-links > div a span,
+.eos-detail .location-wrapper .social-links > div a span {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ccc;
+  border-radius: 18px;
+  text-align: center;
+  line-height: 34px;
+  margin-right: 8px;
+  transition: all .2s ease;
+}
+.eos-detail .eos-desc .map-container,
+.eos-detail .follow .map-container,
+.eos-detail .location-wrapper .map-container {
+  margin-top: 16px;
+  height: 400px;
+}
 #search-coin-btn {
   display: inline-block;
   cursor: pointer;
