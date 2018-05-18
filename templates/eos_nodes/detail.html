@@ -11,7 +11,7 @@
 <section id="content">
     <div class="container">
         <div class="row">
-            <div class="eos-nodes col-sm-8 col-xs-12">
+            <div class="col-sm-8 col-xs-12">
                 <div class="loading-box"><i class="fa fa-spinner"></i> 加载中</div>
                 <div class="eos-detail"></div>
             </div>
@@ -19,7 +19,7 @@
         </div>
     </div>
 </section>
-<script type="text/template">
+<script type="text/template" id="eos-detail-template">
     <div class="eos-name">
         <div class="name">
             <img src="<%=item.image%>">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="info">
-            <a class="site">
+            <a class="site" href="<%=item.website%>">
                 <i class="fa fa-television icon-detail"></i>
                 <%=item.website%>
             </a>
@@ -41,7 +41,7 @@
     </div>
     <div class="eos-desc">
         <div class="title"><i class="fa fa-bars icon-detail"></i> 描述</div>
-        <article class="gitbook-markdown-body" itemprop="articleBody">
+        <article>
             <%=item.desc%>
         </article>
     </div>
@@ -49,33 +49,43 @@
         <div class="title"><i class="fa fa-check-square"></i> 关注</div>
         <div class="social-links">
             <% if(item.twitter){ %>
-                <a class="item" href="<%=item.twitter%>" rel="nofollow" title="twitter" target="_blank">
-                    <i class="fa fa-twitter" aria-hidden="true"></i> Twitter
-                </a>
+                <div>
+                    <a class="item" href="<%=item.twitter%>" rel="nofollow" title="twitter" target="_blank">
+                        <span><i class="fa fa-twitter" aria-hidden="true"></i></span> Twitter
+                    </a>
+                </div>
             <% } %>
             <% if(item.facebook){ %>
-                <a class="item" href="<%=item.facebook%>" rel="nofollow" title="facebook" target="_blank">
-                    <i class="fa fa-facebook" aria-hidden="true"></i> Facebook
-                </a>
+                <div>
+                    <a class="item" href="<%=item.facebook%>" rel="nofollow" title="facebook" target="_blank">
+                        <span><i class="fa fa-facebook" aria-hidden="true"></i></span> Facebook
+                    </a>
+                </div>
             <% } %>
             <% if(item.telegram){ %>
-                <a class="item" href="<%=item.telegram%>" rel="nofollow" title="telegram" target="_blank">
-                    <i class="fa fa-telegram" aria-hidden="true"></i> Telegram
-                </a>
+                <div>
+                    <a class="item" href="<%=item.telegram%>" rel="nofollow" title="telegram" target="_blank">
+                        <span><i class="fa fa-telegram" aria-hidden="true"></i></span> Telegram
+                    </a>
+                </div>
             <% } %>
             <% if(item.steemit){ %>
-                <a class="item" href="<%=item.steemit%>" rel="nofollow" title="steemit" target="_blank">
-                    <i class="fa fa-bolt" aria-hidden="true"></i> Steemit
-                </a>
+                <div>
+                    <a class="item" href="<%=item.steemit%>" rel="nofollow" title="steemit" target="_blank">
+                        <span><i class="fa fa-bolt" aria-hidden="true"></i></span> Steemit
+                    </a>
+                </div>
             <% } %>
             <% if(item.youtube){ %>
-                <a class="item" href="<%=item.youtube%>" rel="nofollow" title="youtube" target="_blank">
-                    <i class="fa fa-youtube" aria-hidden="true"></i> Youtube
-                </a>
+                <div>
+                    <a class="item" href="<%=item.youtube%>" rel="nofollow" title="youtube" target="_blank">
+                        <span><i class="fa fa-youtube" aria-hidden="true"></i></span> Youtube
+                    </a>
+                </div>
             <% } %>
         </div>
     </div>
-    <div id="location-wrapper">
+    <div class="location-wrapper">
         <div class="title"><i class="fa fa-map-marker icon-detail"></i> 位置</div>
         <div class="map-container" id="map-container"></div>
     </div>
@@ -83,6 +93,7 @@
 {% endblock %}
 
 {% block basic_script %}
+    <script type="text/javascript" src="https://ditu.gdgdocs.org/maps/api/js?v=3.exp&key=AIzaSyCsC2ONCtMwGQW_HcCSM6ADqzOuZq2No0U"></script>
     {% compress js %}
         <script src="{% static 'js/web/app/require.js' %}"></script>
         <script src="{% static 'js/web/jsbuild/index_page_app_build.js' %}"></script>

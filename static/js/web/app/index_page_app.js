@@ -21,7 +21,8 @@ require([
         'bootstrap',
         // 'subapp/tools/create_chart',
         'subapp/tokenlang/tokenlang',
-        'subapp/eos/eos_list'
+        'subapp/eos/eos_list',
+        'subapp/eos/eos_detail'
     ],
     function (polyfill,
               $,
@@ -45,7 +46,8 @@ require([
               bootstrap,
               // Chart,
               Tokenlang,
-              eosListApp
+              eosListApp,
+              eosDetailApp
               ) {
 
         jQuery = $;
@@ -81,6 +83,7 @@ require([
 
         new Tokenlang();
         new eosListApp();
+        new eosDetailApp();
 
         // if($('#chart_container').length){
         //     new Chart();
