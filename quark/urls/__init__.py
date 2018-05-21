@@ -30,13 +30,11 @@ from web.views import ( CategoryView, SiteMapView, IndexView,
                         FlinksView, EosNodesView, EosDetailView)
 
 from web.views.news import NewsListView
-
 from quark.views import page_error, webpage_not_found
-
 from django.views.generic import TemplateView
 
-from rest_framework.documentation import include_docs_urls
-
+# from rest_framework.documentation import include_docs_urls
+#
 
 handler404 = webpage_not_found
 handler500 = page_error
@@ -75,12 +73,12 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^api/', include('quark.urls.api', namespace='api')),
-    url(r'^docs/', include_docs_urls(title='Quark API Docs',
-                                     public=False,
-                                     permission_classes=[
-                                         permissions.IsAdminUser,
-                                     ])
-        ),
+    # url(r'^docs/', include_docs_urls(title='Quark API Docs',
+    #                                  public=False,
+    #                                  permission_classes=[
+    #                                      permissions.IsAdminUser,
+    #                                  ])
+    #     ),
 ]
 
 # captcha

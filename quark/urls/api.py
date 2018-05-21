@@ -17,7 +17,7 @@ router.register(r'subnav', CommonSubNavListViewSet)
 
 # web api
 urlpatterns = [
-    url(r'^docs/?$', get_swagger_view(title='Block123 API')),
+    url(r'^docs/?$', get_swagger_view(title='Quark API Docs')),
 ]
 urlpatterns += router.urls
 
