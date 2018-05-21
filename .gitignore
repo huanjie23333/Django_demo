@@ -106,7 +106,7 @@ db.sqlite3
 node_modules/
 
 #local setting file
-quark/settings/dev_anchen.py
+quark/settings/dev_*.py
 an_todo.md
 do_test.sh
 do_migrate.sh
@@ -126,4 +126,3 @@ design_document/*
 .qiniu_pythonsdk_hostscache.json
 
 ad/images
-.idea
