@@ -28,16 +28,6 @@ SITE_ID = 1
 
 ALLOWED_HOSTS = ["*"]
 
-DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
-
-QINIU_ACCESS_KEY = "9NHBMtlIls6lauJB-Uootml3Wt6vZ4n5_HL0uyxh"
-QINIU_SECRET_KEY = "PgOR8T7rlBfh1igNJz-bEg_WA_ju3KmnwrFnIjUP"
-QINIU_BUCKET_NAME = "coinbeef"
-
-QINIU_BUCKET_DOMAIN = 'ow1wrzsju.bkt.clouddn.com'
-QINIU_SECURE_URL = False
-QINIU_HTTPS_BUCKET_URL = 'https://img.chainnews.com'
-# Application definition
 
 LOCALE_PATHS = (
     os.path.join(os.getcwd(), 'conf/locale'),
@@ -211,14 +201,15 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-    ),
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',
-                                'rest_framework.filters.OrderingFilter',
-                                'rest_framework.filters.SearchFilter',
-                                ),
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+    ],
     'PAGE_SIZE': 20,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 }
@@ -247,12 +238,14 @@ HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 # ----------------------------------------------------------------------
 # https://docs.djangoproject.com/en/1.11/topics/logging/
 from .quark_logging import LOGGING as loggin_config
+
 LOGGING = loggin_config
 
 # django bootstrap3
 # ----------------------------------------------------------------------
 # https://django-bootstrap3.readthedocs.io/
 from .bootstrap_cofnig import BOOTSTRAP3 as bootstrap_config
+
 BOOTSTRAP3 = bootstrap_config
 
 # local and data format
@@ -272,13 +265,8 @@ BOT_URL = "https://9s.block123.com/"
 NEWS_TAG_API_URL = 'https://api.chainnews.com/api/news/tags.json'
 NEWS_DETAIL_API = 'https://api.chainnews.com/api/news/'
 
-
-
 ## for silk permission
-
 SILKY_AUTHENTICATION = True  # User must login
 SILKY_AUTHORISATION = True  #
-
 SILKY_META = True
-
 SILKY_INTERCEPT_PERCENT = 20
