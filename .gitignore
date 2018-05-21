@@ -126,3 +126,4 @@ design_document/*
 .qiniu_pythonsdk_hostscache.json
 
 ad/images
+.idea

@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django_markdown',
     'simplemde',
+    'rest_framework_swagger',
 
     'web',
     'nav',
@@ -75,8 +76,6 @@ INSTALLED_APPS = [
     'advert',
     'dquote',
     'utils',
-    # 'silk',
-    # 'captcha',
 ]
 
 MIDDLEWARE = [

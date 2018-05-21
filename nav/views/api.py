@@ -2,7 +2,8 @@
 from braces.views import JSONResponseMixin
 from django.views.generic import TemplateView
 from rest_framework import generics, viewsets
-from nav.serializers import NavSerializer, NavDetailSerializer, CategorySerializer, SubNavSerializer
+from nav.serializers import (NavSerializer, NavDetailSerializer,
+                             CategorySerializer, SubNavSerializer)
 from nav.models import Nav, Category, SubNav
 from rest_framework import pagination
 
