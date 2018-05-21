@@ -18,19 +18,19 @@ class CommonSubNavListViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     serializer_class = SubNavSerializer
     queryset = SubNav.objects.all().order_by('-id')
-    filter_fields = ('status', )
+    filter_fields = ('status',)
 
 
 class CommonCateListViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     serializer_class = CategorySerializer
-    queryset = Category.objects.all().order_by('-id')
+    queryset = Category.objects.all()
 
 
 class CommonNavListViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     serializer_class = NavDetailSerializer
-    queryset = Nav.objects.all().order_by('-id')
+    queryset = Nav.objects.all()
     filter_fields = ('status', 'highlight')
 
     def get_serializer_class(self):
