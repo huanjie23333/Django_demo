@@ -2,4 +2,5 @@
 {{ object.description }}
 {{ object.profile.description }}
 {{ object.alias }}
-
+{{ object.web_site}}
+{{ object.domain_word}}

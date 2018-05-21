@@ -11,7 +11,7 @@
                      <img  src="{% static 'images/9c866ccd1e1addd72043b2009af4ba17.png' %}" class="search-logo">
                      </a>
                 </div>
-                <form class="" action="{% url 'search:nav' %}" method="get">
+                <form class="search-row-form" action="{% url 'search:nav' %}" method="get">
                      <div class="form-group main-search-container">
 
                          <span  class="logo-wrapper">
@@ -23,8 +23,12 @@
                              <a href="#" class="input-cancel-btn">
                                  <i class="fa fa-times-circle" aria-hidden="true"></i>
                              </a>
-                            <button type="submit" class="search-button" id="search-site-btn">{% trans '搜站点' %}</button>
-                            <button class="search-button" id="search-news-btn">{% trans '搜快讯' %}</button>
+                             {% ifnotequal request.path '/tools/coinmarketcap/' %}
+                                <button type="submit" class="search-button" id="search-site-btn">{% trans '搜站点' %}</button>
+                                <button class="search-button" id="search-news-btn">{% trans '搜快讯' %}</button>
+                             {% else %}
+                                <a class="search-button" id="search-coin-btn">{% trans '搜币种' %}</a>
+                             {% endifnotequal %}
                          </span>
                           <span class="promo-text-wrapper">
                                 <ul class="promo-text-list">

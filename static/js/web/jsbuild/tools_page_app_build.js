@@ -1341,25 +1341,27 @@ define('subapp/header/search',['libs/Class', 'jquery', 'underscore','libs/autoco
     function (Class, $, _, AutoComplete) {
         var Search = Class.extend({
             init: function () {
-                new AutoComplete({
-                    selector: 'input[name="q"]',
-                    source: function (term, response) {
-                        try { xhr.abort(); } catch(e){}
-                        $.getJSON('/search/autocomplete/', {q: term},
-                            function(data){
-                                $.ajax('http://www.chainnews.com/api/news/autocomplete/', {
-                                    jsonp: true,
-                                    success: function(data2){
-                                        var results = data.results.concat(data2.results);
-                                        response(results);
-                                    },
-                                    method: 'GET',
-                                    data: {q: term}
-                                });
-                            }
-                        );
-                    }
-                });
+                if($('#search-site-btn').length){
+                    new AutoComplete({
+                        selector: 'input[name="q"]',
+                        source: function (term, response) {
+                            try { xhr.abort(); } catch(e){}
+                            $.getJSON('/search/autocomplete/', {q: term},
+                                function(data){
+                                    $.ajax('https://www.chainnews.com/api/news/autocomplete/', {
+                                        jsonp: true,
+                                        success: function(data2){
+                                            var results = data.results.concat(data2.results);
+                                            response(results);
+                                        },
+                                        method: 'GET',
+                                        data: {q: term}
+                                    });
+                                }
+                            );
+                        }
+                    });
+                }
 
                 // 搜索框内删除输入按钮
                 var $cancel = $('.input-cancel-btn');
@@ -17396,8 +17398,43 @@ define('subapp/render_coins_rank',['libs/Class', 'jquery', 'underscore', 'libs/n
     var renderCoinsRank = Class.extend({
         init: function(){
             if(!$('#coin_table').length) return;
+            $('form.search-row-form').submit(function(){
+                return false;
+            });
+            $('#search-coin-btn').click(searchCoin);
+            $('input[name="q"]').keyup(function(e){
+                if(e.key == 'Enter'){
+                    searchCoin();
+                }
+                return;
+            });
             var compiled = _.template($('#coins-rank-table').html());
             $.when($.ajax('https://www.chainnews.com/api/tokenlist?limit=100&skip=0')).then(function(res){
+                render(res);
+
+                window.app.table = $('#coin_table').DataTable({
+                     // stateSave: true,
+                     "pageLength": 100,
+                     "lengthChange":true,
+                     "paging": false,
+                     "searching": false,
+                     "info":false,
+                     "language": {
+                         "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
+                     },
+                     "order": [[ 2, "desc" ]]
+                });
+            });
+            function searchCoin(){
+                var text = $('input[name="q"]').val().trim();
+                var api = 'https://www.chainnews.com/api/tokenlist?limit=10&skip=0&query.$or[0].symbol=/Bitcoin/&query.$or[1].en_name=/Bitcoin/&query.$or[2].zh_name=/Bitcoin/';
+                $('#coin_table tbody').html('');
+                $('.loading-box').removeClass('hidden-box');
+                $.when($.ajax(api.replace(/Bitcoin/g, text))).then(function(res){
+                    render(res);
+                });
+            }
+            function render(res){
                 res.data.data.forEach(function(item, idx){
                     item.attach.total_market_cap_usd_f = numeral(item.attach.total_market_cap_usd).format('0,0.00');
                     item.attach.volume_usd_statistic.of24h_f = numeral(item.attach.volume_usd_statistic.of24h).format('0,0.00');
@@ -17413,20 +17450,7 @@ define('subapp/render_coins_rank',['libs/Class', 'jquery', 'underscore', 'libs/n
 
                 $('#coin_table tbody').html(html);
                 $('.loading-box').addClass('hidden-box');
-
-                window.app.table = $('#coin_table').DataTable({
-                     // stateSave: true,
-                     "pageLength": 100,
-                     "lengthChange":true,
-                     "paging": false,
-                     "searching": false,
-                     "info":false,
-                     "language": {
-                         "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
-                     },
-                     "order": [[ 2, "desc" ]]
-                });
-            });
+            }
         }
     });
     return renderCoinsRank;

@@ -2,25 +2,27 @@ define(['libs/Class', 'jquery', 'underscore','libs/autocomplete'],
     function (Class, $, _, AutoComplete) {
         var Search = Class.extend({
             init: function () {
-                new AutoComplete({
-                    selector: 'input[name="q"]',
-                    source: function (term, response) {
-                        try { xhr.abort(); } catch(e){}
-                        $.getJSON('/search/autocomplete/', {q: term},
-                            function(data){
-                                $.ajax('http://www.chainnews.com/api/news/autocomplete/', {
-                                    jsonp: true,
-                                    success: function(data2){
-                                        var results = data.results.concat(data2.results);
-                                        response(results);
-                                    },
-                                    method: 'GET',
-                                    data: {q: term}
-                                });
-                            }
-                        );
-                    }
-                });
+                if($('#search-site-btn').length){
+                    new AutoComplete({
+                        selector: 'input[name="q"]',
+                        source: function (term, response) {
+                            try { xhr.abort(); } catch(e){}
+                            $.getJSON('/search/autocomplete/', {q: term},
+                                function(data){
+                                    $.ajax('https://www.chainnews.com/api/news/autocomplete/', {
+                                        jsonp: true,
+                                        success: function(data2){
+                                            var results = data.results.concat(data2.results);
+                                            response(results);
+                                        },
+                                        method: 'GET',
+                                        data: {q: term}
+                                    });
+                                }
+                            );
+                        }
+                    });
+                }
 
                 // 搜索框内删除输入按钮
                 var $cancel = $('.input-cancel-btn');

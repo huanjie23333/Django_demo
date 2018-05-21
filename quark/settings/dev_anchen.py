@@ -57,7 +57,7 @@ IS_LOCAL_TESTING = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/god_sand/quark/templates'],
+        'DIRS': ['/purgatory/quark/templates'],
         'APP_DIRS': True,
 
         'OPTIONS': {
@@ -72,7 +72,7 @@ TEMPLATES = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/god_sand/quark/static/'
+STATIC_ROOT = '/purgatory/quark/static/'
 STATICFILES_DIRS = []
 
 Current_Dbhost = '127.0.0.1'
@@ -108,12 +108,9 @@ HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
         'URL': 'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'site',
+        'INDEX_NAME': 'site_test',
         'BATCH_SIZE': 1000,
     },
-    # 'KWARGS': {
-    #     'http_auth': ('user', 'pass'),
-    # }
 }
 
 LOGGING = {

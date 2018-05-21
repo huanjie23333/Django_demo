@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django_markdown',
     'simplemde',
+    'rest_framework_swagger',
 
     'web',
     'nav',
@@ -75,8 +76,6 @@ INSTALLED_APPS = [
     'advert',
     'dquote',
     'utils',
-    # 'silk',
-    # 'captcha',
 ]
 
 MIDDLEWARE = [
@@ -216,7 +215,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',
+                                'rest_framework.filters.OrderingFilter',
+                                'rest_framework.filters.SearchFilter',
+                                ),
     'PAGE_SIZE': 20,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 }
@@ -241,117 +243,17 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_DEFAULT_OPERATOR = 'AND'
 HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 
-##
 # logging
-##
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-            # 'format': '[%(asctime)s.%(msecs)d] %(levelname)s [%(module)s:%(funcName)s:%(lineno)d]- %(message)s',
-        },
-        'error': {
-            'format': '[%(asctime)s.%(msecs)d] [%(module)s:%(funcName)s:%(lineno)d]- %(message)s',
-        },
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'logging.NullHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'formatter': 'error',
-            'filename': '/tmp/django.log',
-            'mode': 'a',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file', 'console'],
-            'propagate': True,
-            'level': 'INFO',
-        },
-        'django.request': {
-            'handlers': ['file', ],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
+# ----------------------------------------------------------------------
+# https://docs.djangoproject.com/en/1.11/topics/logging/
+from .quark_logging import LOGGING as loggin_config
+LOGGING = loggin_config
 
-##
 # django bootstrap3
-##
-BOOTSTRAP3 = {
-
-    # The URL to the jQuery JavaScript file
-    # 'jquery_url': '//code.jquery.com/jquery.min.js',
-    'jquery_url': '//cdn.bootcss.com/jquery/1.12.3/jquery.js',
-
-    # The Bootstrap base URL
-    'base_url': '//cdn.bootcss.com/bootstrap/3.3.7/',
-
-    # The complete URL to the Bootstrap CSS file (None means derive it from base_url)
-    'css_url': None,
-
-    # The complete URL to the Bootstrap CSS file (None means no theme)
-    'theme_url': None,
-
-    # The complete URL to the Bootstrap JavaScript file (None means derive it from base_url)
-    'javascript_url': None,
-
-    # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap3.html)
-    'javascript_in_head': False,
-
-    # Include jQuery with Bootstrap JavaScript (affects django-bootstrap3 template tags)
-    'include_jquery': False,
-
-    # Label class to use in horizontal forms
-    'horizontal_label_class': 'col-md-3',
-
-    # Field class to use in horizontal forms
-    'horizontal_field_class': 'col-md-9',
-
-    # Set HTML required attribute on required fields, for Django <= 1.8 only
-    'set_required': True,
-
-    # Set HTML disabled attribute on disabled fields, for Django <= 1.8 only
-    'set_disabled': False,
-
-    # Set placeholder attributes to label if no placeholder is provided.
-    # This also considers the 'label' option of {% bootstrap_field %} tags.
-    'set_placeholder': True,
-
-    # Class to indicate required (better to set this in your Django form)
-    'required_css_class': '',
-
-    # Class to indicate error (better to set this in your Django form)
-    'error_css_class': 'has-error',
-
-    # Class to indicate success, meaning the field has valid input (better to set this in your Django form)
-    'success_css_class': 'has-success',
-
-    # Renderers (only set these if you have studied the source and understand the inner workings)
-    'formset_renderers': {
-        'default': 'bootstrap3.renderers.FormsetRenderer',
-    },
-    'form_renderers': {
-        'default': 'bootstrap3.renderers.FormRenderer',
-    },
-    'field_renderers': {
-        'default': 'bootstrap3.renderers.FieldRenderer',
-        'inline': 'bootstrap3.renderers.InlineFieldRenderer',
-    },
-}
+# ----------------------------------------------------------------------
+# https://django-bootstrap3.readthedocs.io/
+from .bootstrap_cofnig import BOOTSTRAP3 as bootstrap_config
+BOOTSTRAP3 = bootstrap_config
 
 # local and data format
 
@@ -370,12 +272,6 @@ BOT_URL = "https://9s.block123.com/"
 NEWS_TAG_API_URL = 'https://api.chainnews.com/api/news/tags.json'
 NEWS_DETAIL_API = 'https://api.chainnews.com/api/news/'
 
-
-
-###
-# import logging config
-###
-from quark.settings.quark_logging import *
 
 
 ## for silk permission

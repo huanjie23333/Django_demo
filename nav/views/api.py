@@ -2,8 +2,9 @@
 from braces.views import JSONResponseMixin
 from django.views.generic import TemplateView
 from rest_framework import generics, viewsets
-from nav.serializers import NavSerializer, NavDetailSerializer
-from nav.models import Nav
+from nav.serializers import (NavSerializer, NavDetailSerializer,
+                             CategorySerializer, SubNavSerializer)
+from nav.models import Nav, Category, SubNav
 from rest_framework import pagination
 
 
@@ -13,25 +14,31 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
     max_page_size = 1000
 
 
-# class NavListAPIView(generics.ListAPIView):
-#     serializer_class = NavSerializer
-#     queryset = Nav.objects.all()
-#     model = Nav
+class CommonSubNavListViewSet(viewsets.ModelViewSet):
+    pagination_class = StandardResultsSetPagination
+    serializer_class = SubNavSerializer
+    queryset = SubNav.objects.all().order_by('-id')
+    filter_fields = ('status',)
 
 
-# class CommonNavListAPIView(generics.ListCreateAPIView):
-#     serializer_class = NavDetailSerializer
-#     queryset = Nav.objects.all().order_by('-id')
-#     model = Nav
-#     pagination_class = StandardResultsSetPagination
+class CommonCateListViewSet(viewsets.ModelViewSet):
+    pagination_class = StandardResultsSetPagination
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
 
 
 class CommonNavListViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     serializer_class = NavDetailSerializer
-    queryset = Nav.objects.all().order_by('-id')
-    filter_fields = ('cate',)
-    search_fields = ('cname', 'ename', 'web_site', 'tags')
+    queryset = Nav.objects.all()
+    filter_fields = ('status', 'highlight', )
+    search_fields = ('cname', 'ename', )
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return NavDetailSerializer
+        else:
+            return NavSerializer
 
 
 class NavDetailAPIView(generics.RetrieveUpdateAPIView):

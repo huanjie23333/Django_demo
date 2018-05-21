@@ -24,18 +24,17 @@ from rest_framework import permissions
 
 from dquote.views import DQuoteListView
 
-from web.views import ( CategoryView, SiteMapView, IndexView,
-                        SubNavCreateView, SubNavSuccessView, CountDownList,
-                        ForkListView, D3TestView, CryptoindexView, bd_verify_view, FlinksView, EosNodesView)
+from web.views import (CategoryView, SiteMapView, IndexView,
+                       SubNavCreateView, SubNavSuccessView, CountDownList,
+                       ForkListView, D3TestView, CryptoindexView, bd_verify_view,
+                       FlinksView, EosNodesView, EosDetailView)
 
 from web.views.news import NewsListView
-
 from quark.views import page_error, webpage_not_found
-
 from django.views.generic import TemplateView
 
-from rest_framework.documentation import include_docs_urls
-
+# from rest_framework.documentation import include_docs_urls
+#
 
 handler404 = webpage_not_found
 handler500 = page_error
@@ -61,9 +60,10 @@ urlpatterns = [
     url(r'^daily_quote/', DQuoteListView.as_view(), name='dquote_list'),
     url(r'^baidu_verify_gpRRnqH8nr\.html$', bd_verify_view, name='veri_bd'),
     url(r'^MP_verify_PcarGCDPGnDXv4Wx.txt$', lambda r: HttpResponse("PcarGCDPGnDXv4Wx", content_type="text/plain")),
-    url(r'^tokenlang\.htm$', TemplateView.as_view(template_name='token_langs/token_langs.html'),name="tokenlang"),
+    url(r'^tokenlang\.htm$', TemplateView.as_view(template_name='token_langs/token_langs.html'), name="tokenlang"),
     url(r'^flinks/', FlinksView.as_view(), name='flinks'),
-    url(r'^eos_nodes/', EosNodesView.as_view(), name='eos_nodes'),
+    url(r'^eos_nodes/$', EosNodesView.as_view(), name='eos_nodes'),
+    url(r'^eos_nodes/\d+\.htm$', EosDetailView.as_view(), name='eos_detail'),
 ]
 
 # # leave it here in case some service use this
@@ -73,12 +73,12 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^api/', include('quark.urls.api', namespace='api')),
-    url(r'^docs/', include_docs_urls(title='Quark API Docs',
-                                     public=False,
-                                     permission_classes=[
-                                         permissions.IsAdminUser,
-                                     ])
-        ),
+    # url(r'^docs/', include_docs_urls(title='Quark API Docs',
+    #                                  public=False,
+    #                                  permission_classes=[
+    #                                      permissions.IsAdminUser,
+    #                                  ])
+    #     ),
 ]
 
 # captcha
@@ -91,9 +91,6 @@ urlpatterns += [
     # url(r'^test_index$', TestIndexView.as_view(), name='web_index_test'),
     # url(r'^$', cache_page(1800)(IndexView.as_view()), name='web_index'),
 ]
-
-
-
 
 from django.contrib.flatpages import views
 
@@ -115,6 +112,7 @@ if settings.IS_LOCAL_TESTING:
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns = [
                       url(r'^__debug__/', include(debug_toolbar.urls)),
                   ] + urlpatterns
