@@ -242,59 +242,16 @@ HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 
 # logging
 # ----------------------------------------------------------------------
+# https://docs.djangoproject.com/en/1.11/topics/logging/
 from .quark_logging import LOGGING as loggin_config
 LOGGING = loggin_config
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': True,
-#     'formatters': {
-#         'verbose': {
-#             'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-#             # 'format': '[%(asctime)s.%(msecs)d] %(levelname)s [%(module)s:%(funcName)s:%(lineno)d]- %(message)s',
-#         },
-#         'error': {
-#             'format': '[%(asctime)s.%(msecs)d] [%(module)s:%(funcName)s:%(lineno)d]- %(message)s',
-#         },
-#     },
-#     'handlers': {
-#         'null': {
-#             'level': 'DEBUG',
-#             'class': 'logging.NullHandler',
-#         },
-#         'console': {
-#             'level': 'DEBUG',
-#             'class': 'logging.StreamHandler',
-#             'formatter': 'verbose'
-#         },
-#         'file': {
-#             'level': 'ERROR',
-#             'class': 'logging.FileHandler',
-#             'formatter': 'error',
-#             'filename': '/tmp/django.log',
-#             'mode': 'a',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['file', 'console'],
-#             'propagate': True,
-#             'level': 'INFO',
-#         },
-#         'django.request': {
-#             'handlers': ['file', ],
-#             'level': 'ERROR',
-#             'propagate': True,
-#         },
-#     }
-# }
 
-##
 # django bootstrap3
-##
+# ----------------------------------------------------------------------
+# https://django-bootstrap3.readthedocs.io/
 BOOTSTRAP3 = {
 
     # The URL to the jQuery JavaScript file
-    # 'jquery_url': '//code.jquery.com/jquery.min.js',
     'jquery_url': '//cdn.bootcss.com/jquery/1.12.3/jquery.js',
 
     # The Bootstrap base URL
@@ -370,12 +327,6 @@ BOT_URL = "https://9s.block123.com/"
 NEWS_TAG_API_URL = 'https://api.chainnews.com/api/news/tags.json'
 NEWS_DETAIL_API = 'https://api.chainnews.com/api/news/'
 
-
-
-###
-# import logging config
-###
-from quark.settings.quark_logging import *
 
 
 ## for silk permission
