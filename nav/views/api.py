@@ -31,7 +31,8 @@ class CommonNavListViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     serializer_class = NavDetailSerializer
     queryset = Nav.objects.all()
-    filter_fields = ('status', 'highlight')
+    filter_fields = ('status', 'highlight', )
+    search_fields = ('cname', 'ename', )
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
