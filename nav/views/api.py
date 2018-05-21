@@ -30,6 +30,8 @@ class CommonNavListViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     serializer_class = NavDetailSerializer
     queryset = Nav.objects.all().order_by('-id')
+    filter_fields = ('cate',)
+    search_fields = ('cname', 'ename', 'web_site', 'tags')
 
 
 class NavDetailAPIView(generics.RetrieveUpdateAPIView):
