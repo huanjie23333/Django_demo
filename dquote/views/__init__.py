@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views import  generic
+from django.views import generic
 from dquote.models import DQoute
 
 
@@ -12,8 +12,3 @@ class DQuoteListView(generic.ListView):
 
     def get_queryset(self):
         return DQoute.objects.all()
-
-
-
-
-
