@@ -17427,7 +17427,7 @@ define('subapp/render_coins_rank',['libs/Class', 'jquery', 'underscore', 'libs/n
             });
             function searchCoin(){
                 var text = $('input[name="q"]').val().trim();
-                var api = 'https://www.chainnews.com/api/tokenlist?limit=10&skip=0&query.$or[0].symbol=/Bitcoin/&query.$or[1].en_name=/Bitcoin/&query.$or[2].zh_name=/Bitcoin/';
+                var api = 'https://www.chainnews.com/api/tokenlist?limit=10&skip=0&query.$or[0].symbol=/Bitcoin/i&query.$or[1].en_name=/Bitcoin/i&query.$or[2].zh_name=/Bitcoin/i&simple';
                 $('#coin_table tbody').html('');
                 $('.loading-box').removeClass('hidden-box');
                 $.when($.ajax(api.replace(/Bitcoin/g, text))).then(function(res){
