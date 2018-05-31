@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>作者信息展示</title>
+</head>
+<body>
+    <form action="/showWriterBook" method="post">
+        {% csrf_token %}
+        <h1>请输入需要查找书籍的作者</h1>
+        请输入作者名：<input type="text" name="q">
+        <input type="submit" value="Submit">
+    </form>
+    <p></p>
+
+    <table border="1">
+        <tr>
+             <th>作者名</th>
+             <th>书名</th>
+         </tr>
+         {% for item in li %}
+         <tr>
+             <td>{{ item.writer }}</td>
+             <td>{{ item.name }}</td>
+         </tr>
+         {% endfor %}
+    </table>
+</body>
+</html>

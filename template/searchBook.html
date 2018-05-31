@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>书籍管理</title>
+</head>
+<body>
+    <form action="/search-post" method="post">
+        {% csrf_token %}
+        <h1>请输入需要查找的书籍</h1>
+        请输入书名：<input type="text" name="q">
+        <input type="submit" value="Submit">
+    </form>
+    <p></p>
+
+    <table border="0">
+        <tr>
+             <th>书名</th>
+             <th>作者</th>
+         </tr>
+         <tr>
+             <td>{{ res.name }}</td>
+             <td>{{ res.writer }}</td>
+         </tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>书籍管理</title>
+</head>
+<body>
+    <form action="/modifyBook" method="post">
+        {% csrf_token %}
+        <h1>请输入需要修改书籍的信息</h1>
+        请输入书名<input type="text" name="q">
+        <p></p>
+        请输入新书名<input type="text" name="q1">
+        <p></p>
+        请输入新作者名<input type="text" name="p1">
+        <input type="submit" value="Submit">
+    </form>
+    <p></p>
+        {{ str }}
+
+</body>
+</html>
