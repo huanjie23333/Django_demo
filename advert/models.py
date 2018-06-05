@@ -45,7 +45,6 @@ class Advertisement(models.Model):
     )
 
     title = models.CharField(max_length=255,)
-    user = models.CharField(max_length=200,default='root')
     image = models.ImageField(upload_to=upload_dir, default='')
     link = models.URLField(max_length=255,)
     position = models.PositiveSmallIntegerField(default=Left_Top, choices=POSITION_CHOICES)

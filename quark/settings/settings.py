@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.contrib.auth import get_user_model
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +29,6 @@ DEBUG = True
 SITE_ID = 1
 
 ALLOWED_HOSTS = ["*"]
-
 
 LOCALE_PATHS = (
     os.path.join(os.getcwd(), 'conf/locale'),
@@ -270,3 +271,5 @@ SILKY_AUTHENTICATION = True  # User must login
 SILKY_AUTHORISATION = True  #
 SILKY_META = True
 SILKY_INTERCEPT_PERCENT = 20
+
+

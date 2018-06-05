@@ -25,14 +25,12 @@ class TestAdvertCase(APITestCase):
         self.ad_name = f.name()
         self.u = UserFactory()
         self.obj1 = Advertisement.objects.create(
-            user=f.name(),
             title=f.name(),
             image='1.jpg',
             link=f.url(),
             updated_at=datetime.now(),
         )
         self.obj2 = Advertisement.objects.create(
-            user=f.name(),
             title=f.name(),
             image='2.jpg',
             link=f.url(),
@@ -47,6 +45,7 @@ class TestAdvertCase(APITestCase):
             pass
 
     def test_advert(self):
+
         token, _ = Token.objects.get_or_create(user=self.u)
         self.u.is_superuser = True
         self.u.save()
@@ -56,3 +55,4 @@ class TestAdvertCase(APITestCase):
             path=_path,
         )
         self.assertEqual(res.status_code, status.HTTP_200_OK)
+
