@@ -55,4 +55,3 @@ class TestAdvertCase(APITestCase):
             path=_path,
         )
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-
